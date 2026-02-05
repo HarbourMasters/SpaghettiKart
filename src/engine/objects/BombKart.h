@@ -86,7 +86,7 @@ class OBombKart : public OObject {
     virtual void DrawEditorProperties() override;
     void DrawBattle(s32 cameraId);
     void SomeRender(Vec3f arg1);
-    void LoadMtx();
+    void LoadMtx(s32 cameraId);
     void Waypoint(s32 screenId);
 
     OBombKart::States Behaviour = OBombKart::States::COUNTERCLOCKWISE;
