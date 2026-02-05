@@ -923,8 +923,12 @@ void func_800596A8(void) {
 
 void render_hud_1p_multi(void) {
     if (gHUDDisable == 0) {
+        FrameInterpolation_RecordOpenChild("HudMatrix", 0);
+
         set_matrix_hud_screen();
         render_hud_lap_3p_4p(PLAYER_ONE);
+
+        FrameInterpolation_RecordCloseChild();
     }
 }
 
@@ -933,8 +937,12 @@ void func_80059710(void) {
 
 void render_hud_2p_multi(void) {
     if (gHUDDisable == 0) {
+        FrameInterpolation_RecordOpenChild("HudMatrix", 1);
+
         set_matrix_hud_screen();
         render_hud_lap_3p_4p(PLAYER_TWO);
+
+        FrameInterpolation_RecordCloseChild();
     }
 }
 
@@ -946,8 +954,12 @@ void func_80059750(void) {
 
 void render_hud_3p_multi(void) {
     if (gHUDDisable == 0) {
+        FrameInterpolation_RecordOpenChild("HudMatrix", 2);
+
         set_matrix_hud_screen();
         render_hud_lap_3p_4p(PLAYER_THREE);
+
+        FrameInterpolation_RecordCloseChild();
     }
 }
 
@@ -959,8 +971,12 @@ void func_800597B8(void) {
 
 void render_hud_4p_multi(void) {
     if (gHUDDisable == 0) {
+        FrameInterpolation_RecordOpenChild("HudMatrix", 3);
+
         set_matrix_hud_screen();
         render_hud_lap_3p_4p(PLAYER_FOUR);
+
+        FrameInterpolation_RecordCloseChild();
     }
 }
 
