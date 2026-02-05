@@ -384,11 +384,11 @@ char* gDebugScreenModeNames[] = {
 char* gDebugSoundModeNames[] = {
     "stereo",
     "head phone",
-    "xxx",
+    "surround",
     "monaural",
 };
 
-char* gSoundModeNames[NUM_SOUND_MODES] = { "STEREO", "HEADPHONE", "", "MONO" };
+char* gSoundModeNames[NUM_SOUND_MODES] = { "STEREO", "HEADPHONE", "SURROUND", "MONO" };
 
 char* gWinLoseText[] = {
     "WINNER!",
