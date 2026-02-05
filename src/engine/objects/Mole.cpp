@@ -1,6 +1,7 @@
 #include <libultraship.h>
 #include <libultra/gbi.h>
 #include "Mole.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 extern "C" {
 #include "macros.h"
@@ -23,7 +24,6 @@ extern "C" {
 #include "external.h"
 #include <assets/models/common_data.h>
 }
-#include "port/interpolation/FrameInterpolation.h"
 
 size_t OMole::_count = 0;
 
