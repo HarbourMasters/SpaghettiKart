@@ -923,8 +923,12 @@ void func_800596A8(void) {
 
 void render_hud_1p_multi(void) {
     if (gHUDDisable == 0) {
+        FrameInterpolation_RecordOpenChild("HudMatrix", 0);
+
         set_matrix_hud_screen();
         render_hud_lap_3p_4p(PLAYER_ONE);
+
+        FrameInterpolation_RecordCloseChild();
     }
 }
 
@@ -933,8 +937,12 @@ void func_80059710(void) {
 
 void render_hud_2p_multi(void) {
     if (gHUDDisable == 0) {
+        FrameInterpolation_RecordOpenChild("HudMatrix", 1);
+
         set_matrix_hud_screen();
         render_hud_lap_3p_4p(PLAYER_TWO);
+
+        FrameInterpolation_RecordCloseChild();
     }
 }
 
@@ -946,8 +954,12 @@ void func_80059750(void) {
 
 void render_hud_3p_multi(void) {
     if (gHUDDisable == 0) {
+        FrameInterpolation_RecordOpenChild("HudMatrix", 2);
+
         set_matrix_hud_screen();
         render_hud_lap_3p_4p(PLAYER_THREE);
+
+        FrameInterpolation_RecordCloseChild();
     }
 }
 
@@ -959,8 +971,12 @@ void func_800597B8(void) {
 
 void render_hud_4p_multi(void) {
     if (gHUDDisable == 0) {
+        FrameInterpolation_RecordOpenChild("HudMatrix", 3);
+
         set_matrix_hud_screen();
         render_hud_lap_3p_4p(PLAYER_FOUR);
+
+        FrameInterpolation_RecordCloseChild();
     }
 }
 
@@ -5769,8 +5785,7 @@ void render_battle_balloon(Player* player, s8 arg1, s16 arg2, s8 arg3) {
     sp12C[2] = D_8018D7D0[arg1][arg2] - (D_8018D860[arg1][arg2] * coss(temp_t1)) -
                ((D_8018D890[arg1][arg2] * 8) * sins(temp_t1));
 
-    // @port: Tag the transform.
-    FrameInterpolation_RecordOpenChild((uintptr_t) player, arg1 | arg2 << 16);
+    FrameInterpolation_RecordOpenChild("battle_balloon", (arg1 << 8) | (arg3 << 4) | arg2);
 
     mtxf_translate_rotate(mtx, sp134, sp12C);
     mtxf_scale(mtx, var_f20);
@@ -6287,7 +6302,7 @@ void func_8006D474(Player* player, s8 playerId, s8 screenId) {
     if ((player->unk_002 & (SIDE_OF_KART << (screenId * 4))) == (SIDE_OF_KART << (screenId * 4))) {
         for (var_s2 = 0; var_s2 < 10; var_s2++) {
             // @port: Tag the transform.
-            FrameInterpolation_RecordOpenChild("SmokeDust", TAG_SMOKE_DUST((playerId << 8) + var_s2));
+            FrameInterpolation_RecordOpenChild("smoke_dust", TAG_SMOKE_DUST((playerId << 8) | (screenId << 4) | var_s2));
             switch (player->particlePool0[var_s2].type) {
                 case 1:
                     if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
@@ -6309,7 +6324,7 @@ void func_8006D474(Player* player, s8 playerId, s8 screenId) {
                     break;
             }
             FrameInterpolation_RecordCloseChild();
-            FrameInterpolation_RecordOpenChild("SmokeDust", TAG_SMOKE_DUST((playerId << 8) + var_s2 + 30));
+            FrameInterpolation_RecordOpenChild("smoke_dust2", TAG_SMOKE_DUST((playerId << 8) | (screenId << 4) | var_s2));
             switch (player->particlePool3[var_s2].type) {
                 case 1:
                 case 9:
@@ -6372,7 +6387,7 @@ void func_8006D474(Player* player, s8 playerId, s8 screenId) {
                     break;
             }
             FrameInterpolation_RecordCloseChild();
-            FrameInterpolation_RecordOpenChild("SmokeDust", TAG_SMOKE_DUST((playerId << 8) + var_s2 + 10));
+            FrameInterpolation_RecordOpenChild("smoke_dust3", TAG_SMOKE_DUST((playerId << 8) | (screenId << 4) | var_s2));
             switch (player->particlePool1[var_s2].type) {
                 case DRIFT_PARTICLE:
                     if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
@@ -6459,7 +6474,7 @@ void func_8006DD3C(Player* player, s8 playerId, s8 arg2) {
         }
 
         if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && (arg2 == playerId)) {
-            FrameInterpolation_RecordOpenChild("onomatopoeia", TAG_SMOKE_DUST((playerId << 8) + 20));
+            FrameInterpolation_RecordOpenChild("onomatopoeia", TAG_SMOKE_DUST((playerId << 8) | (arg2 << 4)));
             switch (player->particlePool2[0].type) {
                 case 2:
                     render_player_onomatopoeia_crash(player, playerId, player->particlePool2[0].scale, arg2, 0);
