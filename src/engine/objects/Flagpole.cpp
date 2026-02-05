@@ -1,5 +1,6 @@
 #include "Flagpole.h"
 #include "World.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 extern "C" {
 #include "code_800029B0.h"
