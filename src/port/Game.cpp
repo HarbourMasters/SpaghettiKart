@@ -316,8 +316,11 @@ void CM_DrawTrack(ScreenContext* screen) {
     } else {
         switch(screen->camera->renderMode) {
             case RENDER_FULL_SCENE:
-                GetWorld()->GetTrack()->DrawCredits();
-                break;
+                if (gModeSelection == BATTLE) {
+                    GetWorld()->GetTrack()->Draw(screen);
+                } else {
+                    GetWorld()->GetTrack()->DrawCredits();
+                }
             case RENDER_TRACK_SECTIONS:
                 GetWorld()->GetTrack()->Draw(screen);
                 break;
