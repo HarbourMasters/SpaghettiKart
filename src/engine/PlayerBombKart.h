@@ -20,4 +20,7 @@ public:
     void func_800563DC(s32 cameraId, s32 arg2);
     void func_8005669C(s32 arg2);
     void func_800568A0(s32 cameraId);
+private:
+    static size_t _count;
+    size_t _idx;
 };
