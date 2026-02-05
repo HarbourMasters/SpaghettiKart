@@ -15,9 +15,13 @@ extern "C" {
 
 size_t PlayerBombKart::_count = 0;
 
+PlayerBombKart::PlayerBombKart() {
+    _idx = _count;
+    _count++;
+}
+
 void PlayerBombKart::Draw(size_t playerId, s32 cameraId) { // render_player_bomb_kart
     Player* player = &gPlayerOne[playerId];
-    _idx = _count;
     if (state != PlayerBombKartState::DISABLED) {
         pos.x = player->pos[0];
         pos.y = player->pos[1] - 2.0;
@@ -27,7 +31,6 @@ void PlayerBombKart::Draw(size_t playerId, s32 cameraId) { // render_player_bomb
         PlayerBombKart::func_8005669C(_primAlpha);
         PlayerBombKart::func_800568A0(cameraId);
     }
-    _count++;
 }
 
 void PlayerBombKart::func_800563DC(s32 cameraId, s32 arg2) {
