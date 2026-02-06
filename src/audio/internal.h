@@ -338,6 +338,7 @@ struct SequenceChannel {
     /*0x5C, 0x60*/ struct M64ScriptState scriptState;
     /*0x78, 0x7C*/ struct AdsrSettings adsr;
     /*0x80, 0x84*/ struct NotePool notePool;
+    /*          */ u8 surroundEffectIndex; // Surround depth: 0 = front, 0x7F = behind
 }; // size = 0xC0, 0xC4 in EU, 0xD0 in SH
 
 // Also known as a Track, according to debug strings.
@@ -460,6 +461,8 @@ struct Note {
     /*0x84, 0x8C*/ struct VibratoState vibratoState;
     u8 pad3[8];
     /*    , 0xB0, 0xB4*/ struct NoteSubEu noteSubEu;
+    /*          */ u8 surroundEffectIndex; // Surround depth: 0 = front, 0x7F = behind
+    /*          */ u8 notePan;             // Pan position for surround effect (0=left, 128=center, 255=right)
 }; // size = 0xC0, known to be 0xC8 on SH
 
 // While this struct needs to be size 0xA0, its not clear

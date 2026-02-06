@@ -291,6 +291,42 @@ s8 func_800C16E8(f32 arg0, f32 arg1, u8 cameraId) {
 GLOBAL_ASM("asm/non_matchings/audio/external/func_800C16E8.s")
 #endif
 
+/**
+ * Calculate surround effect index from Z position (depth relative to camera).
+ * In MK64's coordinate system, positive Z is behind the camera, negative Z is in front.
+ * 
+ * Returns:
+ *   0x00 - 0x3F: Sound is in front of camera (0 = far front, 0x3F = at camera)
+ *   0x40 - 0x7F: Sound is behind camera (0x40 = at camera, 0x7F = far behind)
+ */
+u8 get_sound_surround_effect_index(f32 z) {
+    f32 absZ;
+    s32 surroundEffectIndex;
+    f32 maxZ = 100.0f;
+
+    absZ = (z < 0) ? -z : z;
+    if (absZ > maxZ) {
+        absZ = maxZ;
+    }
+    
+    // In MK64, positive z means behind the camera
+    if (z > 0.0f) {
+        // Behind camera - surround effect index 0x3F (at camera) to 0x7F (far behind)
+        surroundEffectIndex = (s32)((absZ / maxZ) * 64.0f) + 0x3F;
+        if (surroundEffectIndex > 0x7F) {
+            surroundEffectIndex = 0x7F;
+        }
+    } else {
+        // In front of camera - surround effect index 0x3F (at camera) to 0x00 (far front)
+        surroundEffectIndex = 0x3F - (s32)((absZ / maxZ) * 63.0f);
+        if (surroundEffectIndex < 0) {
+            surroundEffectIndex = 0;
+        }
+    }
+    
+    return (u8)surroundEffectIndex;
+}
+
 f32 func_800C1934(u8 bank, u8 soundId) {
     f32 phi_f2;
 
@@ -325,6 +361,14 @@ void func_800C19D0(u8 arg0, u8 arg1, u8 arg2) {
             sp3B = func_800C15D0(arg0, arg1, arg2);
             sp34 = func_800C1934(arg0, arg1) * *temp_s0->unk10;
             sp33 = func_800C16E8(*temp_s0->unk00[0], *temp_s0->unk08, temp_s0->cameraId);
+            
+            // Set surround effect index when in surround mode
+            if (gAudioLibSoundMode == SOUND_MODE_SURROUND) {
+                struct SequenceChannel* channel = gSequencePlayers[2].channels[arg2];
+                if (IS_SEQUENCE_CHANNEL_VALID(channel)) {
+                    channel->surroundEffectIndex = get_sound_surround_effect_index(*temp_s0->unk08);
+                }
+            }
             break;
     }
     temp_s0_2 = &D_8018EF18[arg2];

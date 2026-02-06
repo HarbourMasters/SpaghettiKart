@@ -114,6 +114,7 @@ Acmd* func_800B86A0(Acmd* cmd, struct NoteSubEu* note, struct NoteSynthesisState
                     u16 inBuf, s32 headsetPanSettings, u32 flags);
 Acmd* note_apply_headset_pan_effects(Acmd* acmd, struct NoteSubEu* noteSubEu, struct NoteSynthesisState* note,
                                      s32 bufLen, s32 flags, s32 leftRight);
+Acmd* note_apply_surround_effect(Acmd* cmd, struct Note* note, s32 bufLen);
 
 extern struct SynthesisReverb gSynthesisReverbs[4];
 

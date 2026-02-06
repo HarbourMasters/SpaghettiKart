@@ -7,6 +7,7 @@
 #include "audio/load.h"
 #include "audio/seqplayer.h"
 #include "audio/internal.h"
+#include "audio/external.h"
 #include "port/Engine.h"
 #include <libultra/abi.h>
 
@@ -617,6 +618,12 @@ Acmd* synthesis_process_note(s32 noteIndex, struct NoteSubEu* noteSubEu, struct 
         // synthesisState->restart = 1;
         cmd = note_apply_headset_pan_effects(cmd, noteSubEu, synthesisState, inBuf * 2, flags, leftRight);
     }
+    
+    // Apply surround effect for notes with spatial effects enabled when in surround mode
+    if (noteSubEu->stereoHeadsetEffects && gAudioLibSoundMode == SOUND_MODE_SURROUND) {
+        cmd = note_apply_surround_effect(cmd, note, inBuf);
+    }
+    
     return cmd;
 }
 #else
@@ -788,4 +795,70 @@ Acmd* note_apply_headset_pan_effects(Acmd* acmd, struct NoteSubEu* noteSubEu, st
     aMix(acmd++, /*gain*/ 0x7FFF, /*in*/ 0x0200, /*out*/ dest, ALIGN(bufLen, 5));
 
     return acmd;
+}
+
+/**
+ * Apply surround sound effect using matrix encoding based on depth position.
+ * Uses surroundEffectIndex (0x00-0x7F) calculated from Z position:
+ *   0x00-0x3F: Sound in front (0 = far front, 0x3F = at camera) - less rear effect
+ *   0x40-0x7F: Sound behind (0x40 = at camera, 0x7F = far behind) - more rear effect
+ * 
+ * This creates a rear channel effect by phase-inverting and mixing based on pan and depth.
+ */
+Acmd* note_apply_surround_effect(Acmd* cmd, struct Note* note, s32 bufLen) {
+    s16 dryGain;
+    s32 wetGain;
+    f32 depthFactor;
+    u8 surroundIdx = note->surroundEffectIndex;
+    struct NoteSubEu* sub = &note->noteSubEu;
+
+    // Calculate depth factor: how much rear channel to add
+    // surroundEffectIndex: 0 = front, 0x3F = at camera, 0x7F = far behind
+    // We want sounds behind the camera to have stronger rear channel effect
+    depthFactor = (f32)surroundIdx / 127.0f;
+
+    // Convert u8 pan (0=left, 64=center, 127=right) to float (0.0-1.0)
+    f32 panPosition = (f32)note->notePan / 127.0f;
+
+    printf("depth: %f, panPosition: %f\n", depthFactor, panPosition);
+
+    // Calculate base gain from current volume and depth
+    dryGain = sub->targetVolLeft > sub->targetVolRight ? sub->targetVolLeft : sub->targetVolRight;
+    dryGain = (s16)(dryGain * depthFactor); // Scale by depth
+    dryGain = dryGain >> 2; // Scale down for subtle effect
+    if (dryGain > 0x1800) {
+        dryGain = 0x1800; // Limit surround intensity
+    }
+
+    // Skip if gain is too low
+    if (dryGain < 0x100) {
+        return cmd;
+    }
+
+    // Matrix surround encoding: steer surround based on pan
+    // The idea: add out-of-phase content to create width/depth
+    // Left-panned sounds get positive left, negative right (spreads to rear left)
+    // Right-panned sounds get negative left, positive right (spreads to rear right)
+    s16 leftGain = (s16)(dryGain * (1.0f - panPosition));
+    s16 rightGain = (s16)(dryGain * panPosition);
+
+    // Mix surround contribution into channels
+    // Left channel gets positive surround from left-panned content
+    aSetBuffer(cmd++, 0, 0, 0, bufLen * 2);
+    aMix(cmd++, 0, leftGain, DMEM_ADDR_LEFT_CH, DMEM_ADDR_LEFT_CH);
+
+    // Right channel gets phase-inverted surround contribution for matrix encoding
+    aMix(cmd++, 0, (s16)(rightGain ^ 0xFFFF), DMEM_ADDR_RIGHT_CH, DMEM_ADDR_RIGHT_CH);
+
+    // Apply to wet (reverb) channels for consistent spatialization
+    wetGain = (dryGain * sub->reverbVol) >> 7;
+    if (wetGain > 0) {
+        s16 wetLeftGain = (s16)(wetGain * (1.0f - panPosition));
+        s16 wetRightGain = (s16)(wetGain * panPosition);
+
+        aMix(cmd++, 0, wetLeftGain, DMEM_ADDR_WET_LEFT_CH, DMEM_ADDR_WET_LEFT_CH);
+        aMix(cmd++, 0, (s16)(wetRightGain ^ 0xFFFF), DMEM_ADDR_WET_RIGHT_CH, DMEM_ADDR_WET_RIGHT_CH);
+    }
+
+    return cmd;
 }

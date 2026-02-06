@@ -31,8 +31,9 @@
 #define SEQUENCE_ARGS(priority, seqId) ((priority << 8) | seqId)
 
 #define SOUND_MODE_STEREO 0
-#define SOUND_MODE_MONO 3
 #define SOUND_MODE_HEADSET 1
+#define SOUND_MODE_SURROUND 2
+#define SOUND_MODE_MONO 3
 
 #define SEQ_PLAYER_LEVEL 0 // Level background music
 #define SEQ_PLAYER_ENV 1   // Misc music like the puzzle jingle
@@ -204,6 +205,7 @@ void audio_reset_session_eu(OSMesg);
 f32 func_800C1480(u8, u8);
 s8 func_800C15D0(u8, u8, u8);
 s8 func_800C16E8(f32, f32, u8);
+u8 get_sound_surround_effect_index(f32 z);
 f32 func_800C1934(u8, u8);
 void func_800C19D0(u8, u8, u8);
 struct Unk_8018EFD8* func_800C1C88(u8, Vec3f, Vec3f, f32*, u8, u32);

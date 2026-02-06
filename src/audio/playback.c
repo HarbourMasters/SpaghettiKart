@@ -20,6 +20,9 @@ void note_set_vel_pan_reverb(struct Note* note, f32 velocity, u8 pan, u8 reverbV
     u16 unkMask = ~0x80;
 
     pan &= unkMask;
+    
+    // Store pan for surround effect
+    note->notePan = pan;
 
     if (note->noteSubEu.stereoHeadsetEffects && gAudioLibSoundMode == SOUND_MODE_HEADSET) {
         smallPanIndex = pan >> 3;
@@ -316,6 +319,11 @@ void process_notes(void) {
                 pan = playbackState->parentLayer->notePan;
                 reverbVol = playbackState->parentLayer->seqChannel->reverbVol;
                 bookOffset = playbackState->parentLayer->seqChannel->bookOffset & 0x7;
+                
+                // Transfer surround effect index from channel to note
+                if (gAudioLibSoundMode == SOUND_MODE_SURROUND) {
+                    note->surroundEffectIndex = playbackState->parentLayer->seqChannel->surroundEffectIndex;
+                }
             }
 
             frequency *= playbackState->vibratoFreqScale * playbackState->portamentoFreqScale;
