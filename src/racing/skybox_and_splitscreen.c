@@ -818,9 +818,15 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
     FrameInterpolation_RecordCloseChild();
 
     // Draw dynamic game objects
-    if (CVarGetInteger("gDrawCourseActors", true) == true) {
+    if (CVarGetInteger("gDrawCActors", true) == true) {
         render_course_actors(screen);
+    }
+
+    if (CVarGetInteger("gDrawCPPActors", true) == true) {
         CM_DrawActors(camera);
+    }
+
+    if (CVarGetInteger("gDrawStaticMeshActors", true) == true) {
         CM_DrawStaticMeshActors();
     }
 

@@ -569,28 +569,36 @@ void PortMenu::AddSceneVisibility() {
         .CVar("gDrawTrackGeometry")
         .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
 
-    AddWidget(path, "Draw Course Actors", WIDGET_CVAR_CHECKBOX)
-        .CVar("gDrawCourseActors")
-        .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
-
-    AddWidget(path, "Draw Objects", WIDGET_CVAR_CHECKBOX)
-        .CVar("gDrawObjects")
+    AddWidget(path, "Draw Transparent Track", WIDGET_CVAR_CHECKBOX)
+        .CVar("gDrawTransparentTrack")
         .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
 
     AddWidget(path, "Draw Players", WIDGET_CVAR_CHECKBOX)
         .CVar("gDrawPlayers")
         .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
 
-    AddWidget(path, "Draw Transparent Track", WIDGET_CVAR_CHECKBOX)
-        .CVar("gDrawTransparentTrack")
+    AddWidget(path, "Draw Item Boxes", WIDGET_CVAR_CHECKBOX)
+        .CVar("gDrawItemBoxes")
+        .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
+
+    AddWidget(path, "Draw C Actors", WIDGET_CVAR_CHECKBOX)
+        .CVar("gDrawCActors")
+        .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
+
+    AddWidget(path, "Draw C++ Actors", WIDGET_CVAR_CHECKBOX)
+        .CVar("gDrawCPPActors")
+        .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
+
+    AddWidget(path, "Draw Static Mesh", WIDGET_CVAR_CHECKBOX)
+        .CVar("gDrawStaticMeshActors")
+        .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
+
+    AddWidget(path, "Draw Objects", WIDGET_CVAR_CHECKBOX)
+        .CVar("gDrawObjects")
         .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
 
     AddWidget(path, "Draw Particles", WIDGET_CVAR_CHECKBOX)
         .CVar("gDrawParticles")
-        .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
-
-    AddWidget(path, "Draw Item Boxes", WIDGET_CVAR_CHECKBOX)
-        .CVar("gDrawItemBoxes")
         .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
 
     AddWidget(path, "Draw HUD", WIDGET_CVAR_CHECKBOX)
