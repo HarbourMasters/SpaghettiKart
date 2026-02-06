@@ -293,7 +293,7 @@ GLOBAL_ASM("asm/non_matchings/audio/external/func_800C16E8.s")
 
 /**
  * Calculate surround effect index from Z position (depth relative to camera).
- * In MK64's coordinate system, positive Z is behind the camera, negative Z is in front.
+ * Positive Z is behind the camera, negative Z is in front.
  * 
  * Returns:
  *   0x00 - 0x3F: Sound is in front of camera (0 = far front, 0x3F = at camera)
@@ -309,7 +309,7 @@ u8 get_sound_surround_effect_index(f32 z) {
         absZ = maxZ;
     }
     
-    // In MK64, positive z means behind the camera
+    // Positive z means behind the camera
     if (z > 0.0f) {
         // Behind camera - surround effect index 0x3F (at camera) to 0x7F (far behind)
         surroundEffectIndex = (s32)((absZ / maxZ) * 64.0f) + 0x3F;

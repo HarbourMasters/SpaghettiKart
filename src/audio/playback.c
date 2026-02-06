@@ -38,7 +38,7 @@ void note_set_vel_pan_reverb(struct Note* note, f32 velocity, u8 pan, u8 reverbV
 
         volLeft = gHeadsetPanVolume[pan];
         volRight = gHeadsetPanVolume[127 - pan];
-    } else if (sub->stereoHeadsetEffects && gAudioLibSoundMode == SOUND_MODE_STEREO) {
+    } else if (sub->stereoHeadsetEffects && (gAudioLibSoundMode == SOUND_MODE_STEREO || gAudioLibSoundMode == SOUND_MODE_SURROUND)) {
         strongRight = false;
         strongLeft = false;
         sub->headsetPanRight = 0;
