@@ -4983,7 +4983,7 @@ void func_80066714(Player* player, UNUSED s32 arg1, s16 arg2, s8 arg3) {
     }
 }
 
-void func_80066998(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
+void func_80066998(Player* player, s8 playerId, s16 arg2, s8 screenId) {
     Vec3f sp54;
     Vec3s sp4C;
     s16 red;
@@ -5000,8 +5000,9 @@ void func_80066998(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         sp54[1] = player->particlePool0[arg2].pos[1];
         sp54[2] = player->particlePool0[arg2].pos[2];
         sp4C[0] = 0x4000;
-        sp4C[1] = player->unk_048[arg3];
+        sp4C[1] = player->unk_048[screenId];
         sp4C[2] = 0;
+        FrameInterpolation_RecordOpenChild("some_ply_particle2", (arg2 << 8) | (playerId << 4) | screenId);
         func_800652D4(sp54, sp4C, player->particlePool0[arg2].scale * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D48C, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0,
@@ -5009,6 +5010,7 @@ void func_80066998(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
                             G_TX_NOLOD);
         func_8004B35C(red, green, blue, alpha);
         gSPDisplayList(gDisplayListHead++, D_0D008E48);
+        FrameInterpolation_RecordCloseChild();
         gMatrixEffectCount += 1;
     }
 }
@@ -5200,7 +5202,7 @@ void render_player_onomatopoeia_whrrrr(Player* player, UNUSED s8 arg1, f32 arg2,
     }
 }
 
-void render_player_speech_bubble(Player* player, s8 arg1, u8* texture, s8 arg3, f32 arg4, s32 arg5) {
+void render_player_speech_bubble(Player* player, s8 screenId, u8* texture, s8 arg3, f32 arg4, s32 arg5) {
     Vec3f sp7C;
     Vec3s sp74;
     f32 sp54[8] = { 0.0f, -1.2f, 0.1f, 1.2f, -1.7f, -0.8f, -0.2f, -1.9f };
@@ -5212,23 +5214,25 @@ void render_player_speech_bubble(Player* player, s8 arg1, u8* texture, s8 arg3, 
 
     if (player->particlePool2[arg3].isAlive == 1) {
         sp74[0] = 0;
-        sp74[1] = player->unk_048[arg1];
+        sp74[1] = player->unk_048[screenId];
         sp74[2] = 0;
         sp7C[0] = player->pos[0] + (sins((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->unk_0C0)) * arg4);
         sp7C[1] = player->pos[1] + player->boundingBoxSize - sp54[player->characterId] - 2.0f;
         sp7C[2] = player->pos[2] + (coss((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->unk_0C0)) * arg4);
         func_800652D4(sp7C, sp74, player->particlePool2[arg3].scale * player->size);
+        FrameInterpolation_RecordOpenChild("speech_bubble", ((player - gPlayerOne) << 4) | screenId);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPLoadTextureBlock(gDisplayListHead++, texture, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP,
                             G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 
         func_8004B414(red, green, blue, 0x000000FF);
         gSPDisplayList(gDisplayListHead++, D_0D008E20);
+        FrameInterpolation_RecordCloseChild();
         gMatrixEffectCount += 1;
     }
 }
 
-void render_music_note(Player* player, s8 arg1, u8* texture, s8 arg3, f32 arg4, s32 arg5) {
+void render_music_note(Player* player, s8 screenId, u8* texture, s8 arg3, f32 arg4, s32 arg5) {
     Vec3f sp7C;
     Vec3s sp74;
     f32 sp54[8] = { -0.7f, -1.9f, -0.6f, 0.4f, -2.5f, -1.6f, -0.95f, -2.7f };
@@ -5240,11 +5244,12 @@ void render_music_note(Player* player, s8 arg1, u8* texture, s8 arg3, f32 arg4, 
 
     if (player->particlePool2[arg3].isAlive == 1) {
         sp74[0] = 0;
-        sp74[1] = player->unk_048[arg1];
+        sp74[1] = player->unk_048[screenId];
         sp74[2] = 0;
         sp7C[0] = player->pos[0] + (sins((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->unk_0C0)) * arg4);
         sp7C[1] = player->pos[1] + player->boundingBoxSize - sp54[player->characterId] - 2.0f;
         sp7C[2] = player->pos[2] + (coss((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->unk_0C0)) * arg4);
+        FrameInterpolation_RecordOpenChild("music_note", ((player - gPlayerOne) << 4) | screenId);
         func_800652D4(sp7C, sp74, player->particlePool2[arg3].scale * player->size * 0.8);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPLoadTextureBlock(gDisplayListHead++, texture, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP,
@@ -5252,6 +5257,7 @@ void render_music_note(Player* player, s8 arg1, u8* texture, s8 arg3, f32 arg4, 
 
         func_8004B414(red, green, blue, 0x000000FF);
         gSPDisplayList(gDisplayListHead++, D_0D008E20);
+        FrameInterpolation_RecordCloseChild();
         gMatrixEffectCount += 1;
     }
 }
@@ -5586,7 +5592,7 @@ void func_8006A01C(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     }
 }
 
-void func_8006A280(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
+void func_8006A280(Player* player, s8 playerId, s16 arg2, s8 screenId) {
     Vec3f sp5C;
     Vec3s sp54;
     s16 red;
@@ -5601,8 +5607,9 @@ void func_8006A280(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         sp5C[1] = player->particlePool0[arg2].pos[1];
         sp5C[2] = player->particlePool0[arg2].pos[2];
         sp54[0] = 0;
-        sp54[1] = player->unk_048[arg3];
+        sp54[1] = player->unk_048[screenId];
         sp54[2] = 0;
+        FrameInterpolation_RecordOpenChild("some_ply_particle", (arg2 << 8) | (playerId << 4) | screenId);
         func_800652D4(sp5C, sp54, player->particlePool0[arg2].scale * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008D58);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
@@ -5613,6 +5620,7 @@ void func_8006A280(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
         gSPVertex(gDisplayListHead++, D_800E8780, 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D008DA0);
+        FrameInterpolation_RecordCloseChild();
         gMatrixEffectCount += 1;
     }
 }
@@ -6452,50 +6460,50 @@ void func_8006DC54(Player* player, s8 arg1, s8 arg2) {
     }
 }
 
-void func_8006DD3C(Player* player, s8 playerId, s8 arg2) {
+void func_8006DD3C(Player* player, s8 playerId, s8 screenId) {
     s16 temp_s0;
     s32 temp_v0;
 
-    temp_v0 = SIDE_OF_KART << (arg2 * 4);
+    temp_v0 = SIDE_OF_KART << (screenId * 4);
     if (temp_v0 == (player->unk_002 & temp_v0)) {
         for (temp_s0 = 0; temp_s0 < 10; ++temp_s0) {
             temp_v0 = player->particlePool0[temp_s0].type;
             if (temp_v0 != 3) {
                 if (temp_v0 == 5) {
-                    func_8006A280(player, playerId, temp_s0, arg2);
+                    func_8006A280(player, playerId, temp_s0, screenId);
                 }
             } else if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
-                if (arg2 == playerId) {
-                    func_80066998(player, playerId, temp_s0, arg2);
+                if (screenId == playerId) {
+                    func_80066998(player, playerId, temp_s0, screenId);
                 }
             } else {
-                func_80066998(player, playerId, temp_s0, arg2);
+                func_80066998(player, playerId, temp_s0, screenId);
             }
         }
 
-        if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && (arg2 == playerId)) {
-            FrameInterpolation_RecordOpenChild("onomatopoeia", TAG_SMOKE_DUST((playerId << 8) | (arg2 << 4)));
+        if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && (screenId == playerId)) {
+            FrameInterpolation_RecordOpenChild("onomatopoeia", TAG_SMOKE_DUST((playerId << 8) | (screenId << 4)));
             switch (player->particlePool2[0].type) {
                 case 2:
-                    render_player_onomatopoeia_crash(player, playerId, player->particlePool2[0].scale, arg2, 0);
+                    render_player_onomatopoeia_crash(player, playerId, player->particlePool2[0].scale, screenId, 0);
                     break;
                 case 3:
-                    render_player_onomatopoeia_whrrrr(player, playerId, player->particlePool2[0].scale, arg2, 0);
+                    render_player_onomatopoeia_whrrrr(player, playerId, player->particlePool2[0].scale, screenId, 0);
                     break;
                 case 4:
-                    func_80068724(player, playerId, player->particlePool2[0].scale, arg2, 0);
+                    func_80068724(player, playerId, player->particlePool2[0].scale, screenId, 0);
                     break;
                 case 5:
-                    render_player_onomatopoeia_boing(player, playerId, player->particlePool2[0].scale, arg2, 0);
+                    render_player_onomatopoeia_boing(player, playerId, player->particlePool2[0].scale, screenId, 0);
                     break;
                 case 6:
-                    render_player_onomatopoeia_pomp(player, playerId, player->particlePool2[0].scale, arg2, 0);
+                    render_player_onomatopoeia_pomp(player, playerId, player->particlePool2[0].scale, screenId, 0);
                     break;
             }
             FrameInterpolation_RecordCloseChild();
             if (player->particlePool2[1].type == 5) {
-                render_player_speech_bubble(player, arg2, D_8018D480, 1, 1.6f, 0xFFFFFF);
-                render_music_note(player, arg2, D_8018D484, 1, 1.6f, 0xFF);
+                render_player_speech_bubble(player, screenId, D_8018D480, 1, 1.6f, 0xFFFFFF);
+                render_music_note(player, screenId, D_8018D484, 1, 1.6f, 0xFF);
             }
         }
     }

@@ -534,6 +534,8 @@ void PortMenu::AddDevTools() {
         .CVar("gRenderCollisionMesh")
         .Options(CheckboxOptions().Tooltip("Draws the collision mesh instead of the track mesh"));
 
+    AddSceneVisibility();
+
     path = { "Developer", "Gfx Debugger", SECTION_COLUMN_1 };
     AddSidebarEntry("Developer", "Gfx Debugger", 1);
     AddWidget(path, "Popout Gfx Debugger", WIDGET_WINDOW_BUTTON)
@@ -557,6 +559,43 @@ void PortMenu::AddDevTools() {
         .Options(ButtonOptions().Tooltip(
             "Enables the console window, allowing you to input commands. Type help for some examples"))
         .WindowName("Console");
+}
+
+void PortMenu::AddSceneVisibility() {
+    WidgetPath path = { "Developer", "Scene Visibility", SECTION_COLUMN_1 };
+    AddSidebarEntry("Developer", "Scene Visibility", 1);
+
+    AddWidget(path, "Draw Track Geometry", WIDGET_CVAR_CHECKBOX)
+        .CVar("gDrawTrackGeometry")
+        .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
+
+    AddWidget(path, "Draw Course Actors", WIDGET_CVAR_CHECKBOX)
+        .CVar("gDrawCourseActors")
+        .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
+
+    AddWidget(path, "Draw Objects", WIDGET_CVAR_CHECKBOX)
+        .CVar("gDrawObjects")
+        .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
+
+    AddWidget(path, "Draw Players", WIDGET_CVAR_CHECKBOX)
+        .CVar("gDrawPlayers")
+        .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
+
+    AddWidget(path, "Draw Transparent Track", WIDGET_CVAR_CHECKBOX)
+        .CVar("gDrawTransparentTrack")
+        .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
+
+    AddWidget(path, "Draw Particles", WIDGET_CVAR_CHECKBOX)
+        .CVar("gDrawParticles")
+        .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
+
+    AddWidget(path, "Draw Item Boxes", WIDGET_CVAR_CHECKBOX)
+        .CVar("gDrawItemBoxes")
+        .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
+
+    AddWidget(path, "Draw HUD", WIDGET_CVAR_CHECKBOX)
+        .CVar("gDrawHUD")
+        .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
 }
 
 PortMenu::PortMenu(const std::string& consoleVariable, const std::string& name)

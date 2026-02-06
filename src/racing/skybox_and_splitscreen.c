@@ -811,46 +811,57 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
     render_set_position(trackMatrix, 0);
 
     // Draw track geography
-    render_track(screen);
+
+    if (CVarGetInteger("gDrawTrackGeometry", true) == true) {
+        render_track(screen);
+    }
     FrameInterpolation_RecordCloseChild();
 
     // Draw dynamic game objects
-    render_course_actors(screen);
-    CM_DrawActors(camera);
-    CM_DrawStaticMeshActors();
-    render_object(screen);
-
-    if (CM_IsTourEnabled() == false) {
-        render_players(camera, screenId);
+    if (CVarGetInteger("gDrawCourseActors", true) == true) {
+        render_course_actors(screen);
+        CM_DrawActors(camera);
+        CM_DrawStaticMeshActors();
     }
 
-    // Track geography
-    draw_transparent_geography(screen, playerId);
+    if (CVarGetInteger("gDrawObjects", true) == true) {
+        render_object(screen);
+    }
 
-    switch (playerId) { // Render player particles or some effect
-        case 0:
-            func_80021B0C();
-            break;
-        case 1:
-            func_80021C78();
-            break;
-        case 2:
-            func_80021D40();
-            break;
-        case 3:
-            func_80021DA8();
-            break;
-    };
+    if (CVarGetInteger("gDrawPlayers", true) == true) {
+        if (CM_IsTourEnabled() == false) {
+            render_players(camera, screenId);
+        }
+    }
 
-    render_item_boxes(screen);
+    if (CVarGetInteger("gDrawTransparentTrack", true) == true) {
+        // Track geography
+        draw_transparent_geography(screen, playerId);
+    }
+
+    if (CVarGetInteger("gDrawParticles", true) == true) {
+        switch (playerId) { // Render player particles or some effect
+            case 0: func_80021B0C(); break;
+            case 1: func_80021C78(); break;
+            case 2: func_80021D40(); break;
+            case 3: func_80021DA8(); break;
+        };
+    }
+
+    if (CVarGetInteger("gDrawItemBoxes", true) == true) {
+        render_item_boxes(screen);
+    }
     render_player_snow_effect(camera);
     func_80058BF4(); // Setup texture modes
     if (D_800DC5B8 != 0) {
         func_80058C20(mode); // Setup hud matrix
     }
     func_80093A5C(mode); // Perhaps pause render?
-    if (D_800DC5B8 != 0) {
-        render_hud(mode);
+
+    if (CVarGetInteger("gDrawHUD", true) == true) {
+        if (D_800DC5B8 != 0) {
+            render_hud(mode);
+        }
     }
 
     // Do not increment in single player mode
