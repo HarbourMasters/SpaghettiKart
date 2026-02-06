@@ -820,8 +820,6 @@ Acmd* note_apply_surround_effect(Acmd* cmd, struct Note* note, s32 bufLen) {
     // Convert u8 pan (0=left, 64=center, 127=right) to float (0.0-1.0)
     f32 panPosition = (f32)note->notePan / 127.0f;
 
-    printf("depth: %f, panPosition: %f\n", depthFactor, panPosition);
-
     // Calculate base gain from current volume and depth
     dryGain = sub->targetVolLeft > sub->targetVolRight ? sub->targetVolLeft : sub->targetVolRight;
     dryGain = (s16)(dryGain * depthFactor); // Scale by depth
