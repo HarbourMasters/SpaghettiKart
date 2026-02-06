@@ -81,9 +81,10 @@ void OHedgehog::func_800555BC(s32 objectIndex, s32 cameraId) {
 
     if (gObjectList[objectIndex].state >= 2) {
         camera = &camera1[cameraId];
-        OHedgehog::func_8004A870(objectIndex, 0.7f);
+        OHedgehog::func_8004A870(cameraId, objectIndex, 0.7f);
         gObjectList[objectIndex].orientation[1] =
             func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
+        FrameInterpolation_RecordOpenChild("hedgehog2", TAG_OBJECT((_idx << 5) | cameraId));
         rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation, gObjectList[objectIndex].sizeScaling);
         gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007D78);
         auto tlut = (u8*) gObjectList[objectIndex].activeTLUT;
@@ -96,10 +97,11 @@ void OHedgehog::func_800555BC(s32 objectIndex, s32 cameraId) {
         gSPVertex(gDisplayListHead++, (uintptr_t) vtx, 4, 0);
         gSPDisplayList(gDisplayListHead++, (Gfx*) common_rectangle_display);
         gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
+        FrameInterpolation_RecordCloseChild();
     }
 }
 
-void OHedgehog::func_8004A870(s32 objectIndex, f32 arg1) {
+void OHedgehog::func_8004A870(s32 cameraId, s32 objectIndex, f32 arg1) {
     Mat4 mtx;
     Object* object;
 
@@ -110,9 +112,7 @@ void OHedgehog::func_8004A870(s32 objectIndex, f32 arg1) {
         D_80183E50[1] = object->surfaceHeight + 0.8;
         D_80183E50[2] = object->pos[2];
 
-        // @port: Tag the transform.
-        FrameInterpolation_RecordOpenChild("hedgehog", (uintptr_t) &gObjectList[objectIndex]);
-
+        FrameInterpolation_RecordOpenChild("hedgehog", (uintptr_t) (_idx << 5) | cameraId);
         set_transform_matrix(mtx, object->unk_01C, D_80183E50, 0U, arg1);
         // convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], mtx);
         // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
@@ -121,7 +121,6 @@ void OHedgehog::func_8004A870(s32 objectIndex, f32 arg1) {
         AddHudMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007B98);
 
-        // @port Pop the transform id.
         FrameInterpolation_RecordCloseChild();
     }
 }

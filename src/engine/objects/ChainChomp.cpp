@@ -1,5 +1,6 @@
 #include "ChainChomp.h"
 #include "World.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 extern "C" {
 #include "render_objects.h"
@@ -79,15 +80,19 @@ void OChainChomp::func_80055AB8(s32 objectIndex, s32 cameraId) {
             D_80183E80[1] =
                 func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
             D_80183E80[2] = 0x8000;
+            FrameInterpolation_RecordOpenChild("chain_chomp", TAG_OBJECT((_idx << 5) | cameraId));
             func_800468E0(D_80183E40, D_80183E80, 0.54f, (u8*) d_course_rainbow_road_sphere, (Vtx*) D_0D0062B0,
                           0x00000020, 0x00000040, 0x00000020, 0x00000040, 5);
+            FrameInterpolation_RecordCloseChild();
         } else {
+            FrameInterpolation_RecordOpenChild("chain_chomp2", TAG_OBJECT((_idx << 5) | cameraId));
             rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].direction_angle,
                                           gObjectList[objectIndex].sizeScaling);
             gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D0077D0);
             render_animated_model((Armature*) gObjectList[objectIndex].model,
                                   (Animation**) gObjectList[objectIndex].vertex, 0,
                                   (s16) gObjectList[objectIndex].textureListIndex);
+            FrameInterpolation_RecordCloseChild();
         }
     }
 }

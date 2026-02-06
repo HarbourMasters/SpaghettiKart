@@ -52,7 +52,7 @@ public:
     virtual void DrawEditorProperties() override;
 
     void func_800555BC(s32 objectIndex, s32 cameraId);
-    void func_8004A870(s32 objectIndex, f32 arg1);
+    void func_8004A870(s32 cameraId, s32 objectIndex, f32 arg1);
 
     void func_8008311C(s32 objectIndex, s32 arg1);
     void func_80083248(s32 objectIndex);

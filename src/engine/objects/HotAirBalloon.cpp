@@ -1,6 +1,7 @@
 #include "HotAirBalloon.h"
 #include "World.h"
 #include "port/Game.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 extern "C" {
 #include "render_objects.h"
@@ -82,20 +83,26 @@ void OHotAirBalloon::func_80055CCC(s32 objectIndex, s32 cameraId) {
     if (gObjectList[objectIndex].state >= 2) {
         func_8008A454(objectIndex, cameraId, 0x0000012C);
         test = gObjectList[objectIndex].pos[1] - gObjectList[objectIndex].surfaceHeight;
+        FrameInterpolation_RecordOpenChild("hot_air_balloon", (_objectIndex << 5) | cameraId);
         func_8004A6EC(objectIndex, (20.0 / test) + 0.5);
+        FrameInterpolation_RecordCloseChild();
         if (is_obj_index_flag_status_inactive(objectIndex, 0x00100000) != 0) {
+            FrameInterpolation_RecordOpenChild("hot_air_balloon2", (_objectIndex << 5) | cameraId);
             func_80043328(gObjectList[objectIndex].pos, (u16*) gObjectList[objectIndex].direction_angle,
                           gObjectList[objectIndex].sizeScaling, (Gfx*)d_course_luigi_raceway_dl_F960);
             gSPDisplayList(gDisplayListHead++, (Gfx*)d_course_luigi_raceway_dl_F650);
+            FrameInterpolation_RecordCloseChild();
         } else {
             D_80183E80[0] = (s16) gObjectList[objectIndex].direction_angle[0];
             D_80183E80[1] =
                 (s16) (func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos) +
                        0x8000);
             D_80183E80[2] = (u16) gObjectList[objectIndex].direction_angle[2];
+            FrameInterpolation_RecordOpenChild("hot_air_balloon3", (_objectIndex << 5) | cameraId);
             func_80043328(gObjectList[objectIndex].pos, D_80183E80, gObjectList[objectIndex].sizeScaling,
                           (Gfx*)d_course_luigi_raceway_dl_FBE0);
             gSPDisplayList(gDisplayListHead++, (Gfx*)d_course_luigi_raceway_dl_FA20);
+            FrameInterpolation_RecordCloseChild();
             if (gPlayerCountSelection1 == 1) {
                 gObjectList[objectIndex].direction_angle[1] = 0;
             }

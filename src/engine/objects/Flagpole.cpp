@@ -1,5 +1,6 @@
 #include "Flagpole.h"
 #include "World.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 extern "C" {
 #include "code_800029B0.h"
@@ -51,13 +52,14 @@ void OFlagpole::Draw(s32 cameraId) { // func_80055228
 
     func_8008A364(objectIndex, cameraId, 0x4000U, 0x000005DC);
     if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
-        OFlagpole::func_80055164(objectIndex);
+        OFlagpole::func_80055164(cameraId, objectIndex);
     }
 }
 
-void OFlagpole::func_80055164(s32 objectIndex) { // func_80055164
+void OFlagpole::func_80055164(s32 cameraId, s32 objectIndex) { // func_80055164
     if (gObjectList[objectIndex].state >= 2) {
         gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D0077A0);
+        FrameInterpolation_RecordOpenChild("flagpole", TAG_OBJECT((_idx << 5) | cameraId));
         rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation,
                                       gObjectList[objectIndex].sizeScaling);
         if (gIsGamePaused == 0) {
@@ -68,6 +70,7 @@ void OFlagpole::func_80055164(s32 objectIndex) { // func_80055164
             render_animated_model((Armature*) gObjectList[objectIndex].model,
                                   (Animation**) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
         }
+        FrameInterpolation_RecordCloseChild();
     }
 }
 

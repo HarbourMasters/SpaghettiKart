@@ -123,8 +123,7 @@ void OSnowman::DrawHead(s32 cameraId) {
         func_8008A364(objectIndex, cameraId, 0x2AABU, 0x00000258);
         if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
 
-            // @port: Tag the transform.
-            FrameInterpolation_RecordOpenChild("OSnowman::DrawHead", (uintptr_t) &gObjectList[objectIndex]);
+            FrameInterpolation_RecordOpenChild("OSnowman::DrawHead", (uintptr_t) (_idx << 5) | cameraId);
 
             D_80183E80[0] = (s16) gObjectList[objectIndex].orientation[0];
             D_80183E80[1] =
@@ -179,8 +178,7 @@ void OSnowman::DrawBody(s32 cameraId) {
                     func_8008A364(objectIndex, cameraId, 0x2AABU, 0x000001F4);
                     if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
 
-                        // @port: Tag the transform.
-                        FrameInterpolation_RecordOpenChild("OSnowman::DrawBody", (uintptr_t) object);
+                        FrameInterpolation_RecordOpenChild("OSnowman::DrawBody", (uintptr_t) (_idx << 5) | cameraId);
 
                         object->orientation[1] = func_800418AC(object->pos[0], object->pos[2], sp44->pos);
                         rsp_set_matrix_gObjectList(objectIndex);

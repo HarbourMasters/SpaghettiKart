@@ -5,6 +5,7 @@
 #include "CoreMath.h"
 
 #include "port/Game.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 extern "C" {
 #include "macros.h"
@@ -75,9 +76,12 @@ void OCrab::Draw(s32 cameraId) {
     s32 objectIndex = _objectIndex;
     if (gObjectList[objectIndex].state >= 2) {
         camera = &camera1[cameraId];
+        FrameInterpolation_RecordOpenChild("crab", (_idx << 5) | cameraId);
         func_8004A6EC(objectIndex, 0.5f);
+        FrameInterpolation_RecordCloseChild();
         gObjectList[objectIndex].orientation[1] =
             func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
+        FrameInterpolation_RecordOpenChild("crab2", (_idx << 5) | cameraId);
         rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation,
                                       gObjectList[objectIndex].sizeScaling);
         gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007D78);
@@ -86,6 +90,7 @@ void OCrab::Draw(s32 cameraId) {
         gSPVertex(gDisplayListHead++, (uintptr_t) common_vtx_crab, 4, 0);
         gSPDisplayList(gDisplayListHead++, (Gfx*) common_rectangle_display);
         gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
+        FrameInterpolation_RecordCloseChild();
     }
 }
 
@@ -99,9 +104,12 @@ void OCrab::DrawModel(s32 cameraId) {
 
         if (gObjectList[objectIndex].state >= 2) {
             camera = &camera1[cameraId];
+            FrameInterpolation_RecordOpenChild("crab3", (_idx << 5) | cameraId);
             func_8004A6EC(objectIndex, 0.5f);
+            FrameInterpolation_RecordCloseChild();
             gObjectList[objectIndex].orientation[1] =
                 func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
+            FrameInterpolation_RecordOpenChild("crab4", (_idx << 5) | cameraId);
             rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation,
                                           gObjectList[objectIndex].sizeScaling);
             gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007D78);
@@ -110,6 +118,7 @@ void OCrab::DrawModel(s32 cameraId) {
             gSPVertex(gDisplayListHead++, (uintptr_t) common_vtx_crab, 4, 0);
             gSPDisplayList(gDisplayListHead++, (Gfx*) common_rectangle_display);
             gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
+            FrameInterpolation_RecordCloseChild();
         }
     }
 }

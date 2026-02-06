@@ -71,7 +71,7 @@ public:
     virtual void DrawEditorProperties() override;
     void SetVisibility(s32 objectIndex);
     void func_80080B28(s32 objectIndex, s32 playerId);
-    void DrawModel(s32);
+    void DrawModel(s32, s32);
     void TranslateThwompLights();
     void ThwompLights(s32 objectIndex);
     void func_80080DE4(s32 arg0);

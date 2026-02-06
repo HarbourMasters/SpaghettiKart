@@ -1,6 +1,7 @@
 #include <libultraship.h>
 #include <libultra/gbi.h>
 #include "Mole.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 extern "C" {
 #include "macros.h"
@@ -23,7 +24,6 @@ extern "C" {
 #include "external.h"
 #include <assets/models/common_data.h>
 }
-#include "port/interpolation/FrameInterpolation.h"
 
 size_t OMole::_count = 0;
 
@@ -66,7 +66,7 @@ void OMole::Draw(s32 cameraId) {
 
     OMole::func_80054D00(_objectIndex, cameraId);
 
-    OMole::func_80054EB8();
+    OMole::func_80054EB8(cameraId);
     if (_idx == 0) {
         OMole::func_80054F04(cameraId);
     }
@@ -323,12 +323,11 @@ void OMole::func_800821AC(s32 objectIndex, s32 arg1) {
 }
 
 // Holes
-void OMole::func_80054E10(s32 objectIndex) {
+void OMole::func_80054E10(s32 cameraId, s32 objectIndex) {
     if (gObjectList[objectIndex].state > 0) {
         if (is_obj_flag_status_active(objectIndex, 0x00800000) != 0) {
 
-            // @port: Tag the transform.
-            FrameInterpolation_RecordOpenChild("func_80054E10", TAG_OBJECT(&gObjectList[objectIndex]));
+            FrameInterpolation_RecordOpenChild("func_80054E10", TAG_OBJECT((_idx << 5) | cameraId));
 
             D_80183E50[0] = gObjectList[objectIndex].pos[0];
             D_80183E50[1] = gObjectList[objectIndex].surfaceHeight + 0.8;
@@ -338,18 +337,17 @@ void OMole::func_80054E10(s32 objectIndex) {
             D_80183E70[2] = gObjectList[objectIndex].velocity[2];
             func_8004A9B8(gObjectList[objectIndex].sizeScaling);
 
-            // @port Pop the transform id.
             FrameInterpolation_RecordCloseChild();
         }
     }
 }
 
 // Almost certainly responsible for spawning/handling the moles on Moo Moo farm
-void OMole::func_80054EB8() {
+void OMole::func_80054EB8(s32 cameraId) {
     s32 someIndex;
 
     // for (someIndex = 0; someIndex < NUM_TOTAL_MOLES; someIndex++) {
-    func_80054E10(_moleIndex);
+    func_80054E10(cameraId, _moleIndex);
     //}
 }
 
@@ -362,7 +360,7 @@ void OMole::func_80054D00(s32 objectIndex, s32 cameraId) {
         if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
 
             // @port: Tag the transform.
-            FrameInterpolation_RecordOpenChild("func_80054D00", (uintptr_t)&gObjectList[objectIndex]);
+            FrameInterpolation_RecordOpenChild("func_80054D00", TAG_OBJECT((_idx << 5) | cameraId));
 
             D_80183E80[0] = (s16) gObjectList[objectIndex].orientation[0];
             D_80183E80[1] =
@@ -394,14 +392,12 @@ void OMole::func_80054F04(s32 cameraId) {
                 if ((is_obj_flag_status_active(objectIndex, VISIBLE) != 0) &&
                     (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
 
-                    // @port: Tag the transform.
-                    FrameInterpolation_RecordOpenChild("func_80054F04", TAG_OBJECT(object) | (i << 32));
+                    FrameInterpolation_RecordOpenChild("func_80054F04", TAG_OBJECT(_idx << 13) | (cameraId << 8) | i);
 
                     object->orientation[1] = func_800418AC(object->pos[0], object->pos[2], camera->pos);
                     rsp_set_matrix_gObjectList(objectIndex);
                     gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D006980);
 
-                    // @port Pop the transform id.
                     FrameInterpolation_RecordCloseChild();
                 }
             }

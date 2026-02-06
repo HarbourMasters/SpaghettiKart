@@ -19,8 +19,7 @@ void render_actor_cow(Camera* camera, Mat4 arg1, struct Actor* arg2) {
         return;
     }
 
-    // @port: Tag the transform.
-    FrameInterpolation_RecordOpenChild("render_actor_cow", TAG_OBJECT(arg2));
+    FrameInterpolation_RecordOpenChild("render_actor_cow", TAG_OBJECT(((uintptr_t)arg2 << 5) | camera->cameraId));
 
     arg1[3][0] = arg2->pos[0];
     arg1[3][1] = arg2->pos[1];

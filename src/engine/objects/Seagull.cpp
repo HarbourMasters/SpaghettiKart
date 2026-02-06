@@ -5,6 +5,7 @@
 #include "World.h"
 
 #include "port/Game.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 extern "C" {
 #include "macros.h"
@@ -120,12 +121,13 @@ void OSeagull::Draw(s32 cameraId) { // render_object_seagulls
         _toggle = true;
     }
     if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
-        OSeagull::func_800552BC(objectIndex);
+        OSeagull::func_800552BC(cameraId, objectIndex);
     }
 }
 
-void OSeagull::func_800552BC(s32 objectIndex) {
+void OSeagull::func_800552BC(s32 cameraId, s32 objectIndex) {
     if (gObjectList[objectIndex].state >= 2) {
+        FrameInterpolation_RecordOpenChild("seagull", (objectIndex << 5) | cameraId);
         rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].direction_angle,
                                       gObjectList[objectIndex].sizeScaling);
         gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D0077D0);
@@ -137,6 +139,7 @@ void OSeagull::func_800552BC(s32 objectIndex) {
             render_animated_model((Armature*) gObjectList[objectIndex].model,
                                   (Animation**) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
         }
+        FrameInterpolation_RecordCloseChild();
     }
 }
 
