@@ -85,7 +85,7 @@ class OBombKart : public OObject {
     virtual void Translate(FVector pos) override;
     virtual void DrawEditorProperties() override;
     void DrawBattle(s32 cameraId);
-    void SomeRender(Vec3f arg1);
+    void SomeRender(s32 cameraId, Vec3f arg1);
     void LoadMtx(s32 cameraId);
     void Waypoint(s32 screenId);
 
