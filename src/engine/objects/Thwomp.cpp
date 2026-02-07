@@ -751,7 +751,9 @@ void OThwomp::Draw(s32 cameraId) {
             if ((object->state >= 2) && (Behaviour == States::MOVE_AND_ROTATE)) {
                 func_8004B138(0x000000FF, 0x000000FF, 0x000000FF, (s32) object->primAlpha);
                 D_80183E80[1] = func_800418AC(object->pos[0], object->pos[2], camera->pos);
+                FrameInterpolation_RecordOpenChild("thwomp_particle", (i << 16) | (_idx << 6) | cameraId);
                 func_800431B0(object->pos, D_80183E80, object->sizeScaling, (Vtx*) D_0D005AE0);
+                FrameInterpolation_RecordCloseChild();
             }
         }
     }
