@@ -360,7 +360,7 @@ void AText::DrawText3D(Camera* camera) { // Based on func_80095BD0
 
     AddObjectMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
-    FrameInterpolation_RecordOpenChild("actor_text", TAG_LETTER(this));
+    FrameInterpolation_RecordOpenChild("actor_text", ((uintptr_t)this << 6) | camera->cameraId);
     gSPDisplayList(gDisplayListHead++, (Gfx*)D_020077A8);
 
     for (CharacterList& tex : TextureList) {
