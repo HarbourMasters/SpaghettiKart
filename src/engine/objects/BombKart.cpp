@@ -381,7 +381,7 @@ void OBombKart::Draw(s32 cameraId) {
             D_80183E80[1] = func_800418AC(Pos[0], Pos[2], camera->pos);
             D_80183E80[2] = 0x8000;
             func_800563DC(_objectIndex, cameraId, 0x000000FF);
-            OBombKart::SomeRender(camera->pos);
+            OBombKart::SomeRender(cameraId, camera->pos);
             if (((u32) temp_s4 < 0x4E21U) && (state != OBombKart::States::EXPLODE)) {
                 OBombKart::LoadMtx(cameraId);
             }
@@ -393,19 +393,27 @@ void OBombKart::DrawBattle(s32 cameraId) {
 
 }
 
-void OBombKart::SomeRender(Vec3f arg1) {
+void OBombKart::SomeRender(s32 cameraId, Vec3f arg1) {
     D_80183E80[0] = 0;
     D_80183E80[2] = 0x8000;
     gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D0079C8);
     load_texture_block_rgba16_mirror((u8*) D_0D02AA58, 0x00000010, 0x00000010);
     D_80183E80[1] = func_800418AC(WheelPos[0][0], WheelPos[0][2], arg1);
+    FrameInterpolation_RecordOpenChild("bomb_kart_rect", (0 << 12) | (_idx << 5) | cameraId);
     func_800431B0(WheelPos[0], D_80183E80, 0.15f, (Vtx*)common_vtx_rectangle);
+    FrameInterpolation_RecordCloseChild();
     D_80183E80[1] = func_800418AC(WheelPos[1][0], WheelPos[1][2], arg1);
+    FrameInterpolation_RecordOpenChild("bomb_kart_rect2", (1 << 12) | (_idx << 5) | cameraId);
     func_800431B0(WheelPos[1], D_80183E80, 0.15f, (Vtx*)common_vtx_rectangle);
+    FrameInterpolation_RecordCloseChild();
     D_80183E80[1] = func_800418AC(WheelPos[2][0], WheelPos[2][2], arg1);
+    FrameInterpolation_RecordOpenChild("bomb_kart_rect3", (2 << 12) | (_idx << 5) | cameraId);
     func_800431B0(WheelPos[2], D_80183E80, 0.15f, (Vtx*)common_vtx_rectangle);
+    FrameInterpolation_RecordCloseChild();
     D_80183E80[1] = func_800418AC(WheelPos[3][0], WheelPos[3][2], arg1);
+    FrameInterpolation_RecordOpenChild("bomb_kart_rect4", (3 << 12) | (_idx << 5) | cameraId);
     func_800431B0(WheelPos[3], D_80183E80, 0.15f, (Vtx*)common_vtx_rectangle);
+    FrameInterpolation_RecordCloseChild();
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
