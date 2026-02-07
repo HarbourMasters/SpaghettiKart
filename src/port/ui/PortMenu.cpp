@@ -581,11 +581,11 @@ void PortMenu::AddSceneVisibility() {
         .CVar("gDrawItemBoxes")
         .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
 
-    AddWidget(path, "Draw C Actors", WIDGET_CVAR_CHECKBOX)
+    AddWidget(path, "Draw Original Actors", WIDGET_CVAR_CHECKBOX)
         .CVar("gDrawCActors")
         .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
 
-    AddWidget(path, "Draw C++ Actors", WIDGET_CVAR_CHECKBOX)
+    AddWidget(path, "Draw Rewrite Actors", WIDGET_CVAR_CHECKBOX)
         .CVar("gDrawCPPActors")
         .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
 
