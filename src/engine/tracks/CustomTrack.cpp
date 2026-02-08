@@ -9,6 +9,7 @@
 #include <cstring>
 #include <algorithm>
 
+#include "port/interpolation/FrameInterpolation.h"
 #include "engine/Matrix.h"
 #include "engine/editor/SceneManager.h"
 
@@ -289,9 +290,11 @@ void CustomTrack::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, 
     for (TrackSections& item : mTranslucentItems) {
         Mat4 matrix;
         FVector pos = {item.location[0], item.location[1], item.location[2]};
+        FrameInterpolation_RecordOpenChild("translucent_obj", item.crc);
         ApplyMatrixTransformations(matrix, pos, IRotator(0, 0, 0), FVector(1, 1, 1));
         AddObjectMatrix(matrix, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, (Gfx*) ResourceGetDataByCrc(item.crc));
+        FrameInterpolation_RecordCloseChild();
     }
 
     gSPClearGeometryMode(gDisplayListHead++, G_ZBUFFER);
