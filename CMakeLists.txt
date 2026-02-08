@@ -516,8 +516,10 @@ option(USE_STANDALONE "Build as a standalone executable" OFF)
 option(BUILD_STORMLIB "Build with StormLib support" OFF)
 
 option(BUILD_SM64 "Build with Super Mario 64 support" OFF)
+option(BUILD_MK64 "Build with Mario Kart 64 support" ON)
 option(BUILD_SF64 "Build with Star Fox 64 support" OFF)
 option(BUILD_FZERO "Build with F-Zero X support" OFF)
+option(BUILD_MARIO_ARTIST "Build with Mario Artist support" OFF)
 
 add_subdirectory(torch)
 target_link_libraries(${PROJECT_NAME} PRIVATE torch "${ADDITIONAL_LIBRARY_DEPENDENCIES}")
