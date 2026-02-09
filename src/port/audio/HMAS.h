@@ -58,7 +58,7 @@ struct HMAS_Effect {
 struct HMAS_ChannelInfo {
     ma_sound* sound;
 
-    uint64_t cursor;
+    ma_uint64 cursor;
     float pitch;
     float volume;
 
