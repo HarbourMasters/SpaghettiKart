@@ -70,7 +70,7 @@
 
 // Align to 16-byte boundary for audio lib requirements
 #ifdef __GNUC__
-#define ALIGNED16
+#define ALIGNED16 __attribute__((aligned(16)))
 #else
 #define ALIGNED16
 #endif
