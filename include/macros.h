@@ -75,6 +75,13 @@
 #define ALIGNED16
 #endif
 
+// Align to 4096-byte boundary for 64-bit page requirements
+#ifdef __GNUC__
+#define ALIGNED4096 __attribute__((aligned(4096)))
+#else
+#define ALIGNED4096
+#endif
+
 // Fixed point macros
 #define FTOFIX(f) ((s32) ((f) * 65536.0))
 #define ITOFIX(i) ((s32) ((i) << 16))

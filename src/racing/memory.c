@@ -25,7 +25,7 @@
 s32 sGfxSeekPosition;
 s32 sPackedSeekPosition;
 
-static u8 sMemoryPool[0xFFFFFFF] ALIGNED16; // Stock memory pool size: 0xAB630
+static u8 sMemoryPool[0x10000000] ALIGNED4096;
 uintptr_t sPoolEnd = sMemoryPool + sizeof(sMemoryPool);
 
 uintptr_t sPoolFreeSpace;
@@ -88,17 +88,16 @@ static uintptr_t get_texture2(size_t offset, const course_texture* textures) {
  * Default memory size, 701.984 Kilobytes.
  */
 void initialize_memory_pool() {
+    // Clear pool
+    memset(sMemoryPool, 0, sizeof(sMemoryPool));
 
-    uintptr_t poolStart = sMemoryPool;
-    // uintptr_t sPoolEnd = sMemoryPool + sizeof(sMemoryPool);
+    // Force the pointer to be exactly at the start of the aligned array
+    uintptr_t poolStart = (uintptr_t)sMemoryPool;
+    
+    // Ensure sPoolEnd is exactly at the end of the 256MB block
+    sPoolEnd = poolStart + sizeof(sMemoryPool);
 
-    bzero(sMemoryPool, sizeof(sMemoryPool));
-
-    poolStart = ALIGN16(poolStart);
-    // Truncate to a 16-byte boundary.
-    sPoolEnd &= ~0xF;
-
-    gFreeMemorySize = (sPoolEnd - poolStart) - 0x10;
+    gFreeMemorySize = sPoolEnd - poolStart;
     gNextFreeMemoryAddress = poolStart;
 
     PRINT_MEMPOOL;
@@ -309,7 +308,7 @@ u8* load_lakitu_tlut_x64(const char** textureList, size_t length) {
     }
 
     u8* textures = (u8*) gNextFreeMemoryAddress;
-    gNextFreeMemoryAddress += size;
+    gNextFreeMemoryAddress = ALIGN16(gNextFreeMemoryAddress + size);
     size_t offset = 0;
     for (size_t i = 0; i < length; i++) {
         u8* tex = (u8*) LOAD_ASSET_RAW(textureList[i]);
