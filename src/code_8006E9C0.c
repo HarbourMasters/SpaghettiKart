@@ -60,7 +60,7 @@ void reset_object_variable(void) {
     s32 j;
     func_8006EB10();
     clear_object_list();
-    bzero(playerHUD, HUD_PLAYERS_SIZE * sizeof(hud_player));
+    memset(playerHUD, 0, HUD_PLAYERS_SIZE * sizeof(hud_player));
 
     for (i = 0; i < HUD_PLAYERS_SIZE; i++) {
         playerHUD[i].lapCount = 0;
@@ -114,7 +114,7 @@ void func_8006EB10(void) {
 }
 
 void clear_object_list() {
-    bzero(gObjectList, OBJECT_LIST_SIZE * sizeof(Object));
+    memset(gObjectList, 0, OBJECT_LIST_SIZE * sizeof(Object));
     objectListSize = -1;
 }
 

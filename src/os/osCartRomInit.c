@@ -29,7 +29,7 @@ OSPiHandle* osCartRomInit(void) {
     CartRomHandle.domain = PI_DOMAIN1;
     // CartRomHandle.speed = 0;
 
-    bzero(&CartRomHandle.transferInfo, sizeof(__OSTranxInfo));
+    memset(&CartRomHandle.transferInfo, 0, sizeof(__OSTranxInfo));
 
     saveMask = __osDisableInt();
     CartRomHandle.next = __osPiTable;

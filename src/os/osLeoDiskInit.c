@@ -26,7 +26,7 @@ OSPiHandle* osLeoDiskInit(void) {
     HW_REG(PI_BSD_DOM2_PWD_REG, u32) = LeoDiskHandle.pulse;
     HW_REG(PI_BSD_DOM2_PGS_REG, u32) = LeoDiskHandle.pageSize;
     HW_REG(PI_BSD_DOM2_RLS_REG, u32) = LeoDiskHandle.relDuration;
-    bzero(&LeoDiskHandle.transferInfo, sizeof(__OSTranxInfo));
+    memset(&LeoDiskHandle.transferInfo, 0, sizeof(__OSTranxInfo));
     sp1c = __osDisableInt();
     LeoDiskHandle.next = __osPiTable;
     __osPiTable = &LeoDiskHandle;

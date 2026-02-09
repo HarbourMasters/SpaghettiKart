@@ -522,7 +522,7 @@ void display_and_vsync(void) {
 
 void init_segment_ending_sequences(void) {
 #ifdef TARGET_N64
-    bzero((void*) SEG_ENDING, SEG_ENDING_SIZE);
+    memset((void*) SEG_ENDING, 0, SEG_ENDING_SIZE);
     osWritebackDCacheAll();
     dma_copy((u8*) SEG_ENDING, (u8*) SEG_ENDING_ROM_START, SEG_ENDING_ROM_SIZE);
     osInvalICache((void*) SEG_ENDING, SEG_ENDING_SIZE);
@@ -532,7 +532,7 @@ void init_segment_ending_sequences(void) {
 
 void init_segment_racing(void) {
 #ifdef TARGET_N64
-    bzero((void*) SEG_RACING, SEG_RACING_SIZE);
+    memset((void*) SEG_RACING, 0, SEG_RACING_SIZE);
     osWritebackDCacheAll();
     dma_copy((u8*) SEG_RACING, (u8*) SEG_RACING_ROM_START, SEG_RACING_ROM_SIZE);
     osInvalICache((void*) SEG_RACING, SEG_RACING_SIZE);

@@ -105,7 +105,7 @@ CeremonyActor* find_available_entry(void) {
 
         // Find an inactive actor.
         if ((actor->isActive & 1) == 0) {
-            bzero(actor, sizeof(CeremonyActor));
+            memset(actor, 0, sizeof(CeremonyActor));
             actor->isActive = 1;
             actor->unk24 = 1.0f;
             return actor;
@@ -311,7 +311,7 @@ void unused_80280FA8(UNUSED CeremonyActor* actor) {
 void balloons_and_fireworks_init(void) {
     D_802874D8.actorTimer = 0;
     sPodiumActorList = (CeremonyActor*) get_next_available_memory_addr(sizeof(CeremonyActor) * 200);
-    bzero(sPodiumActorList, (sizeof(CeremonyActor) * 200));
+    memset(sPodiumActorList, 0, (sizeof(CeremonyActor) * 200));
     new_actor(&initDummy);
 }
 

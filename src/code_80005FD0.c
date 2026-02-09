@@ -3468,7 +3468,7 @@ void func_8000F124(void) {
 
 // Delete track waypoints
 void clear_path_point(TrackPathPoint* arg0, size_t size) {
-    bzero((void*) arg0, size * sizeof(TrackPathPoint));
+    memset((void*) arg0, 0, size * sizeof(TrackPathPoint));
 }
 
 // Appears to allocate memory for each track.

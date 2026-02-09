@@ -57,7 +57,7 @@ void osInitialize(void) {
     }
     osClockRate = osClockRate * 3 / 4;
     if (osResetType == RESET_TYPE_COLD_RESET) {
-        bzero(osAppNmiBuffer, sizeof(osAppNmiBuffer));
+        memset(osAppNmiBuffer, 0, sizeof(osAppNmiBuffer));
     }
 
     eu_sp30 = HW_REG(PI_STATUS_REG, u32);

@@ -15,7 +15,7 @@ extern OSViMode osViModeMpalLan1;
 extern OSViMode osViModeNtscLan1;
 
 void __osViInit(void) {
-    bzero(sViContexts, sizeof(sViContexts));
+    memset(sViContexts, 0, sizeof(sViContexts));
     __osViCurr = &sViContexts[0];
     __osViNext = &sViContexts[1];
     __osViNext->retraceCount = 1;
