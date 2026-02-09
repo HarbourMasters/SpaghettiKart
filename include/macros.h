@@ -63,7 +63,7 @@
 
 // Align to 8-byte boundary for DMA requirements
 #ifdef __GNUC__
-#define ALIGNED8
+#define ALIGNED8 __attribute__((aligned(8)))
 #else
 #define ALIGNED8
 #endif
