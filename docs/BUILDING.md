@@ -18,7 +18,7 @@ Doing so should also check one of the Windows SDKs by default.  Then, in the ins
 
 It is recommended that you install Python and Git standalone, the install process in VS Installer has given some issues in the past.
 
-1. Clone the Starship repository
+1. Clone the SpaghettiKart repository
 
 _Note: Be sure to either clone with the ``--recursive`` flag or do ``git submodule update --init`` after cloning to pull in the libultraship submodule!_
 
