@@ -4,6 +4,7 @@
 #include <libultraship.h>
 #include "engine/tracks/Track.h"
 #include "engine/HM_Intro.h"
+#include "macros.h"
 
 #ifdef __cplusplus
 #include "engine/editor/Editor.h"
@@ -235,17 +236,7 @@ void CM_ResetAudio(void);
 __attribute__((format(printf, 1, 2)))
 #endif
 
-// Add noreturn attribute
-#if defined(_MSC_VER)
-    __declspec(noreturn) 
-#elif defined(__APPLE__)
-#elif defined(__OpenBSD__)
-#elif defined(__cplusplus) || (__STDC_VERSION__ >= 202311)
-    [[noreturn]] 
-#elif defined(__GNUC__)
-    __attribute__((noreturn))
-#endif
-void CM_ThrowRuntimeError(const char* fmt, ...);
+NORETURN void CM_ThrowRuntimeError(const char* fmt, ...);
 
 // NOLINTEND(readability-identifier-naming)
 

@@ -4,6 +4,20 @@
 #include <math.h>
 #include <libultraship.h>
 
+// no return attribute
+#if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L
+    #include <stdnoreturn.h>
+    #define NORETURN noreturn
+#elif defined(__cplusplus) && __cplusplus >= 201103L
+    #define NORETURN [[noreturn]]
+#elif defined(_MSC_VER)
+    #define NORETURN __declspec(noreturn)
+#elif defined(__GNUC__) || defined(__clang__)
+    #define NORETURN __attribute__((noreturn))
+#else
+    #define NORETURN
+#endif
+
 #ifndef __sgi
 #define GLOBAL_ASM(...)
 #endif
