@@ -17,6 +17,7 @@
 extern "C" {
 #include "code_800029B0.h"
 #include "code_80057C60.h"
+#include "actors.h"
 }
 
 namespace TrackEditor {
@@ -146,6 +147,14 @@ namespace TrackEditor {
                 TrackBrowser::Instance->Refresh(gTrackRegistry);
                 CVarSetInteger("gFreecam", false);
                 CM_SetFreeCamera(false);
+
+                // Reload scene file
+                const TrackInfo* info = gTrackRegistry.GetInfo(GetWorld()->GetTrack()->ResourceName);
+                if (info) {
+                    TrackEditor::LoadTrackDataFromJson(GetWorld()->GetTrack(), info->Path);
+                } else {
+                    printf("[Tools.cpp] Failed load scenefile, TrackInfo nullptr\n");
+                }
             } else {
                 CM_ResetAudio();
                 CVarSetInteger("gFreecam", true);
@@ -226,6 +235,8 @@ namespace TrackEditor {
                 // Defer deletion until race_logic_loop
                 bCleanWorld = true;
                 gEditor.ResetGizmo();
+                destroy_all_actors();
+                GetWorld()->GetTrack()->SpawnList.clear();
                 ImGui::CloseCurrentPopup();
             }
             ImGui::SameLine();

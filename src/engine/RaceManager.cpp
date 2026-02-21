@@ -81,11 +81,12 @@ void RaceManager::BeginPlay() {
         if ((gGamestate != CREDITS_SEQUENCE) && (gModeSelection != BATTLE)) {
             if (track->bSpawnFinishline) {
                 if (track->FinishlineSpawnPoint.has_value()) {
-                    AFinishline::Spawn(track->FinishlineSpawnPoint.value(), IRotator(0, 0, 0));
+                    AFinishline* finishline = AFinishline::Spawn(track->FinishlineSpawnPoint.value(), IRotator(0, 0, 0));
+                    finishline->bIsFinishline = true;
                 } else {
-                    AFinishline::Spawn();
+                    AFinishline* finishline = AFinishline::Spawn();
+                    finishline->bIsFinishline = true;
                 }
-            
             }
         }
         gEditor.AddLight("Sun", nullptr, D_800DC610[1].l->l.dir);

@@ -46,6 +46,8 @@ public:
     virtual void Collision(Player* player, AActor* actor) override;
     virtual bool IsMod() override;
 
+    bool bIsFinishline = false;
+
     static size_t _count;
     bool PickedUp = false;
     uint32_t Timer = 0;

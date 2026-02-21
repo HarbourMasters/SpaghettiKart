@@ -18,6 +18,7 @@
 
 #include "engine/vehicles/Train.h"
 
+#include "engine/actors/Finishline.h"
 #include "engine/objects/Object.h"
 #include "engine/objects/Thwomp.h"
 #include "engine/objects/Snowman.h"
@@ -86,15 +87,11 @@ namespace TrackEditor {
 
             std::string sceneFile = info->Path + "/scene.json";
 
+            Ship::ResourceIdentifier id(sceneFile, 0, track->Archive);
             // Write file to disk
-            bool wrote = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager()->WriteFile(track->Archive, sceneFile, bytes);
-            if (wrote) {
-                // Tell the cache this file needs to be reloaded
-                auto resource = GameEngine::Instance->context->GetResourceManager()->GetCachedResource(sceneFile);
-                if (resource) {
-                    resource->Dirty();
-                }
-            } else {
+            auto rm = GameEngine::Instance->context->GetResourceManager();
+            bool wrote = rm->WriteResource(id, bytes);
+            if (!wrote) {
                 SPDLOG_INFO("[SceneManager] [SaveLevel] Failed to write scene file!");
             }
         } catch (const nlohmann::json::exception& e) {
@@ -129,8 +126,9 @@ namespace TrackEditor {
         initData->ResourceVersion = 0;
 
         // Load the scene file and return the json data
+        Ship::ResourceIdentifier id(sceneFile, 0, track->Archive);
         nlohmann::json data = std::static_pointer_cast<Ship::Json>(
-            GameEngine::Instance->context->GetResourceManager()->LoadResource(sceneFile, true, initData))->Data;
+            GameEngine::Instance->context->GetResourceManager()->LoadResource(id, true, initData))->Data;
 
         // Check that the data is valid
         if (data.is_null() || !data.is_object() || data.empty()) {
@@ -169,8 +167,9 @@ namespace TrackEditor {
         initData->ResourceVersion = 0;
 
         // Load the scene file and return the json data
+        Ship::ResourceIdentifier id(sceneFile, 0, archive);
         nlohmann::json data = std::static_pointer_cast<Ship::Json>(
-            GameEngine::Instance->context->GetResourceManager()->LoadResource(sceneFile, true, initData))->Data;
+            GameEngine::Instance->context->GetResourceManager()->LoadResource(id, true, initData))->Data;
 
         // Check that the data is valid
         if (data.is_null() || !data.is_object() || data.empty()) {
@@ -279,6 +278,11 @@ namespace TrackEditor {
             if (!alreadyProcessed) {
                 actor->SetSpawnParams(params);
                 if (!params.Name.empty()) {
+                    if (AFinishline* finishline = dynamic_cast<AFinishline*>(actor.get())) {
+                        if (finishline->bIsFinishline == true) {
+                            continue; // Do not add the default spawn finishline
+                        }
+                    }
                     actorList.push_back(params.to_json());
                 }
             }
