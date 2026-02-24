@@ -11,7 +11,7 @@ class GameCamera {
 public:
     GameCamera();
     GameCamera(FVector spawn, s16 rot, u32 mode);
-    ~GameCamera() {
+    virtual ~GameCamera() {
         _count--;
     }
 
