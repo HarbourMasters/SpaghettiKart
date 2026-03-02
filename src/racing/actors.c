@@ -2385,7 +2385,7 @@ void render_course_actors(ScreenContext* arg0) {
             continue;
         }
 
-        FrameInterpolation_RecordOpenChild(actor, i);
+        FrameInterpolation_RecordOpenChild(actor, (i << 4) || (screen - gScreenContexts));
 
         switch (actor->type) {
             default: // Skip custom actor
