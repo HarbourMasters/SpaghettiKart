@@ -2343,9 +2343,9 @@ void render_item_boxes(ScreenContext* arg0) {
     }
 }
 
-void render_course_actors(ScreenContext* arg0) {
-    Camera* camera = arg0->camera;
-    u16 pathCounter = arg0->pathCounter;
+void render_course_actors(ScreenContext* screen) {
+    Camera* camera = screen->camera;
+    u16 pathCounter = screen->pathCounter;
     UNUSED s32 pad[12];
     s32 i;
 
