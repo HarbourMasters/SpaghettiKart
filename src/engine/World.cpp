@@ -273,3 +273,10 @@ void World::CleanWorld(void) {
     Lakitus.clear();
     Sky::Instance->GetSkyActors().clear();
 }
+
+void World::CleanActors(void) {
+    World::Reset();
+    Actors.clear();
+    Lakitus.clear();
+    Objects.clear();
+}
