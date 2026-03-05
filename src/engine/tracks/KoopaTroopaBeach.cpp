@@ -136,9 +136,7 @@ void KoopaTroopaBeach::Load() {
         InvertTriangleWindingByName(d_course_koopa_troopa_beach_packed_dl_2C0);
         InvertTriangleWindingByName(d_course_koopa_troopa_beach_packed_dl_9E70);
     }
-
     add_vtx_from_quadrangle(mVtx, 4);
-
     parse_track_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_addr));
     func_80295C6C();
     find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_ADE0, 150, 255, 255, 255);
