@@ -737,7 +737,7 @@ void render_actor_shell(Camera* camera, Mat4 matrix, struct ShellActor* shell) {
     char* phi_t3;
     bool reverseShell = false;
 
-    FrameInterpolation_RecordOpenChild("shell", TAG_ITEM_ADDR(((shell - gActorList) << 5) || (camera - cameras)));
+    FrameInterpolation_RecordOpenChild("shell", TAG_ITEM_ADDR(((( (struct Actor*)shell ) - gActorList) << 5) || (camera - cameras)));
 
     f32 temp_f0 =
         is_within_render_distance(camera->pos, shell->pos, camera->rot[1], 0, camera->fieldOfView, 490000.0f);
