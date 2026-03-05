@@ -666,7 +666,7 @@ void OThwomp::func_80080B28(s32 objectIndex, s32 playerId) {
                 }
             } else if ((temp_f0 <= 17.5) && (func_80072320(objectIndex, 1) != 0) &&
                        (is_within_horizontal_distance_of_player(objectIndex, player,
-                                                                (player->speed * 0.5) + BoundingBoxSize) != 0)) {
+                                                                (player->speed * 0.5) + gObjectList[objectIndex].boundingBoxSize) != 0)) {
                 if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
                     if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
                         func_80072180();
