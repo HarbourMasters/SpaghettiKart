@@ -146,8 +146,10 @@ void OThwomp::Tick60fps() { // func_80081210
 
     player = gPlayerOne;
     for (var_s4 = 0; var_s4 < NUM_PLAYERS; var_s4++, player++) {
-        player->tyres[FRONT_LEFT].unk_14 &= ~3;
-        player->unk_046 &= ~0x0006;
+        if (_idx == 0) { // Clear only once per frame
+            player->tyres[FRONT_LEFT].unk_14 &= ~3;
+            player->unk_046 &= ~0x0006;
+        }
 
         if (!(player->effects & BOO_EFFECT)) {
             OThwomp::func_80080B28(_objectIndex, var_s4);
