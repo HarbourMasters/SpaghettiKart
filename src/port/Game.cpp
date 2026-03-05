@@ -366,7 +366,7 @@ void CM_DrawStaticMeshActors() {
 void CM_BeginPlay() {
     static bool tour = false;
     auto track = GetWorld()->GetTrack();
-    GetWorld()->Actors.clear();
+    GetWorld()->CleanActors();
     
     if (nullptr == track) {
         return; 
