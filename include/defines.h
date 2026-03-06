@@ -124,15 +124,6 @@
 #define FOUR_PLAYERS_SELECTED 4
 #define SELECTED_PLAYER_DEFINES_TOTAL 5
 
-// Camera index into cameras array
-enum CameraId {
-    CAMERA_ONE = 0,
-    CAMERA_TWO,
-    CAMERA_THREE,
-    CAMERA_FOUR,
-    CAMERA_FREECAM
-};
-
 enum PlayerId {
     PLAYER_NONE = -1,
     PLAYER_ONE = 0,

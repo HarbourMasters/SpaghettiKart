@@ -97,6 +97,7 @@ WarioStadium::WarioStadium() {
 
     Props.Clouds = gWarioStadiumStars;
     Props.CloudList = gWarioStadiumStars;
+    mCloudType = CloudType::STARS;
 
     FVector finish;
     finish.x = (gIsMirrorMode != 0) ? 13 + 12.0f : 13 - 12.0f;
@@ -166,14 +167,6 @@ void WarioStadium::BeginPlay() {
         SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
         SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
     }
-}
-
-void WarioStadium::InitClouds() {
-    init_stars(this->Props.Clouds);
-}
-
-void WarioStadium::TickClouds(s32 sp1C, Camera* camera) {
-    update_stars(sp1C, camera, this->Props.CloudList);
 }
 
 void WarioStadium::InitTrackObjects() {

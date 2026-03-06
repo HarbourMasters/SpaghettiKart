@@ -6,6 +6,7 @@
 #include <memory>
 #include "objects/Object.h"
 #include "port/Game.h"
+#include "engine/sky/Sky.h"
 
 extern "C" {
 #include "objects.h"
@@ -270,4 +271,12 @@ void World::CleanWorld(void) {
     Objects.clear();
     Emitters.clear();
     Lakitus.clear();
+    Sky::Instance->GetSkyActors().clear();
+}
+
+void World::CleanActors(void) {
+    World::Reset();
+    Actors.clear();
+    Lakitus.clear();
+    Objects.clear();
 }

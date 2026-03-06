@@ -36,7 +36,7 @@ void func_8005C674(s8, s16*, s16*, s16*);
 void func_80057C60(void);
 void func_80057CE4(void);
 void func_80057DD0(void);
-void func_80057FC4(u32);
+void func_80057FC4(ScreenContext* screen, u32);
 
 void render_object(ScreenContext* screen);
 void render_player_snow_effect(Camera* camera);

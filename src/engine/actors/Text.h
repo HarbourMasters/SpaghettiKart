@@ -60,7 +60,13 @@ public:
 
     // Constructor
     AText(const SpawnParams& params);
-    virtual ~AText() override = default;
+    virtual ~AText() {
+        _count--;
+    };
+
+    static size_t GetCount() {
+        return _count;
+    }
 
     /**
      * This is simply a helper function to keep Spawning code clean
@@ -147,4 +153,7 @@ public:
         {{{30, 0, 0}, 0, {1856, 1984}, {0xff, 0xff, 0xff, 0xff}}},
         {{{ 0, 0, 0}, 0, {   0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     };
+private:
+    static size_t _count;
+    size_t _idx;
 };

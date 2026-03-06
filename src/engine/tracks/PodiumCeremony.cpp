@@ -52,6 +52,7 @@ PodiumCeremony::PodiumCeremony() {
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
 
+    ResourceName = "mk:podium_ceremony";
     Props.SetText(Props.Name, "royal raceway", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "p circuit", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "1025m", sizeof(Props.TrackLength));

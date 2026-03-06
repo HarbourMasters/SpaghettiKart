@@ -25,7 +25,6 @@ public:
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void Load() override;
     virtual void BeginPlay() override;
-    //virtual void InitClouds() override;
     virtual void InitTrackObjects() override;
     virtual void TickTrackObjects() override;
     virtual void DrawTrackObjects(s32 cameraId) override;

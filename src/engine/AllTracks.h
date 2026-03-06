@@ -21,5 +21,6 @@
 #include "engine/tracks/DoubleDeck.h"
 #include "engine/tracks/DKJungle.h"
 #include "engine/tracks/BigDonut.h"
+#include "engine/tracks/PodiumCeremony.h"
 #include "engine/tracks/TestTrack.h"
 

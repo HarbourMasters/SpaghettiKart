@@ -1762,6 +1762,20 @@ void set_vtx_from_quadrangle(u32 line, s8 surfaceType, u16 sectionId) {
     add_collision_triangle(vtx1, vtx3, vtx4, surfaceType, sectionId);
 }
 
+void add_vtx_from_quadrangle(Vtx* vert, size_t count) {
+    Vtx* ptr = vert;
+    for (size_t i = 0; i < count / 4; i++) {
+        //set_vtx_buffer((uintptr_t)ptr, 4, 0);
+    
+        D_8015F5A4 = 1;
+        add_collision_triangle(&ptr[0], &ptr[1], &ptr[2], SURFACE_DEFAULT, 0xFF);
+        add_collision_triangle(&ptr[1], &ptr[2], &ptr[3], SURFACE_DEFAULT, 0xFF);
+        D_8015F5A4 = 0;
+
+        ptr++;
+    }
+}
+
 /**
  * Generates a list of pointers to track vtx.
  */

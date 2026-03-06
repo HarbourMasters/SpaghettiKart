@@ -23,7 +23,7 @@ void init_cloud_object(s32, s32, CloudData*);
 void init_clouds(CloudData*);
 void init_star_object(s32, s32, StarData*);
 void init_stars(StarData*);
-void func_8007055C(void);
+void func_8007055C(ScreenContext* screen);
 void func_80070714(void);
 void init_course_object(void);
 void init_hud_one_player(void);
@@ -31,6 +31,8 @@ void init_hud_two_player_vertical(void);
 void init_hud_three_four_player(void);
 void init_hud_two_player_horizontal(void);
 
+extern Vtx cloudvtx[4][4];
+extern Vtx cloudvtx2[3][4];
 extern s16 D_800E5520[];
 extern u8* gCourseOutlineTextures[0x14]; // 800e54d0
 

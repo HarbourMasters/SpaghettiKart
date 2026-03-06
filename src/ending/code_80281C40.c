@@ -61,7 +61,11 @@ void func_80281D00(void) {
     Mat4 matrix;
     UNUSED s32 pad2[3];
 
-    func_802A53A4();
+    race_begin_viewport(gScreenOneCtx, 0);
+    if ((CVarGetInteger("gDrawSky", true) == true)) {
+        CM_RaceDrawSky(gScreenOneCtx, 0);
+        func_80093A30(0); // Fill box for thunderbolt?
+    }
     init_rdp();
     if (gGotoMenu != 0xFFFF) {
         clear_framebuffer(0);

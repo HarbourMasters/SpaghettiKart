@@ -31,6 +31,7 @@
 #include "port/Engine.h"
 #include "engine/editor/Editor.h"
 #include "engine/tracks/Track.h"
+#include "engine/sky/Sky.h"
 
 void init_hud(void) {
 
@@ -613,11 +614,11 @@ void init_stars(StarData* starList) {
     D_8018D230 = 1;
 }
 
-void func_8007055C(void) {
+void func_8007055C(ScreenContext* screen) {
     s32 var_s0;
     s32 var_s4;
 
-    CM_InitClouds();
+    InitSkyActors(screen);
     func_8008C23C();
 }
 
@@ -656,8 +657,8 @@ void init_hud_one_player(void) {
     find_unused_obj_index(&gItemWindowObjectByPlayerId[0]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);
     init_object_list_index();
-    func_8007055C();
-    func_8007055C();
+    func_8007055C(gScreenOneCtx);
+    func_8007055C(gScreenTwoCtx);
     init_course_object();
     playerHUD[PLAYER_ONE].speedometerX = 0x0156;
     playerHUD[PLAYER_ONE].speedometerY = 0x0106;
@@ -734,8 +735,8 @@ void init_hud_two_player_vertical(void) {
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);
 
     init_object_list_index();
-    func_8007055C();
-    func_8007055C();
+    func_8007055C(gScreenOneCtx);
+    func_8007055C(gScreenTwoCtx);
     init_course_object();
 
     playerHUD[PLAYER_ONE].itemBoxX = -0x52;
@@ -799,8 +800,8 @@ void init_hud_two_player_horizontal() {
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);
 
     init_object_list_index();
-    func_8007055C();
-    func_8007055C();
+    func_8007055C(gScreenOneCtx);
+    func_8007055C(gScreenTwoCtx);
     init_course_object();
 
     playerHUD[PLAYER_ONE].itemBoxY = 0x22;
@@ -872,6 +873,16 @@ void init_hud_three_four_player(void) {
     find_unused_obj_index(&gItemWindowObjectByPlayerId[3]);
 
     init_object_list_index();
+
+    if (CVarGetInteger("gMultiplayerNoFeatureCuts", false) == true) {
+        func_8007055C(gScreenOneCtx);
+        func_8007055C(gScreenTwoCtx);
+        func_8007055C(gScreenThreeCtx);
+        if (gPlayerCountSelection1 == 4) {
+            func_8007055C(gScreenFourCtx);
+        }
+    }
+
     init_course_object();
 
     playerHUD[PLAYER_ONE].itemBoxX = -0x36;

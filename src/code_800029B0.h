@@ -5,7 +5,11 @@
 #include <libultraship.h>
 #include <actor_types.h>
 #include "camera.h"
-#include "engine/CoreMath.h"
+
+/**
+ * To include in C++, you must include libultraship.h
+ * and place this file in extern "C"
+ */
 
 typedef struct {
     /* 0x00 */ struct Controller* controllers; // gControllers ptr 800F6910
@@ -45,7 +49,7 @@ extern uintptr_t gCurrentlyLoadedTrackAddr;
 extern u16 D_800DC5A8;
 extern s32 D_800DC5AC;
 extern u16 D_800DC5B0;
-extern u16 D_800DC5B4;
+extern bool bDrawSkybox;
 extern u16 D_800DC5B8;
 extern bool bFog;
 extern u16 gIsInQuitToMenuTransition;

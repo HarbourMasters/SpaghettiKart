@@ -20,6 +20,7 @@ extern "C" {
 #include "menus.h"
 #include "race_logic.h"
 #include "external.h"
+#include "some_data.h"
 }
 
 size_t OBoos::_count = 0;

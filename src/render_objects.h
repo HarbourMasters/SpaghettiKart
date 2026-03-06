@@ -3,6 +3,7 @@
 
 #include <common_structs.h>
 #include "main.h"
+#include "code_800029B0.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -318,16 +319,14 @@ void func_80050E34(s32, s32);
 void func_800514BC(void);
 void render_object_leaf_particle(s32);
 void render_object_snowflakes_particles(void);
-void render_clouds(s32, s16, s16);
-void func_800519D4(s32, s16, s16);
-void func_80051ABC(s16, s32);
-void func_80051C60(s16, s32);
-void func_80051EBC(void);
-void func_80051EF8(void);
-void func_80051F9C(void);
+void func_80051ABC(ScreenContext* screen, s16, s32);
+void func_80051C60(ScreenContext* screen, s16, s32);
+void func_80051EBC(ScreenContext* screen);
+void func_80051EF8(ScreenContext* screen);
+void func_80051F9C(ScreenContext* screen);
+void func_80052044(ScreenContext* screen);
+void func_80052080(ScreenContext* screen);
 
-void func_80052044(void);
-void func_80052080(void);
 void func_800520C0(s32);
 void func_8005285C(s32);
 void func_800528EC(s32);

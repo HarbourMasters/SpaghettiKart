@@ -21,6 +21,9 @@ public:
 
     TrackBrowser(const Registry<TrackInfo>& registry) {
         mTracks = registry.GetAllInfo();
+
+        RemovePodiumCeremony();
+
         std::sort(mTracks.begin(), mTracks.end(), [](const TrackInfo* a, const TrackInfo* b) {
             return a->Id < b->Id;
         });
@@ -32,6 +35,9 @@ public:
     void Refresh(const Registry<TrackInfo>& registry) {
         mTracks.clear();
         mTracks = registry.GetAllInfo();
+
+        RemovePodiumCeremony();
+
         std::sort(mTracks.begin(), mTracks.end(), [](const TrackInfo* a, const TrackInfo* b) {
             return a->Id < b->Id;
         });
@@ -40,6 +46,17 @@ public:
 
     void Reset() {
         mTrackIndex = 0;
+    }
+
+    // Podium is not a valid user selectable option in the menus, remove it.
+    void RemovePodiumCeremony() {
+        mTracks.erase(
+            std::remove_if(mTracks.begin(), mTracks.end(),
+                [](const TrackInfo* track) {
+                    return track && track->ResourceName == "mk:podium_ceremony";
+                }),
+            mTracks.end()
+        );
     }
 
     void SetTrack(std::string name) {

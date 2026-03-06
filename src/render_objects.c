@@ -47,6 +47,7 @@
 #include "engine/Matrix.h"
 #include "engine/tracks/Track.h"
 #include "engine/TrackBrowser.h"
+#include "engine/sky/Sky.h"
 
 #include "port/interpolation/FrameInterpolation.h"
 #include "assets/textures/tracks/sherbet_land/sherbet_land_data.h"
@@ -3476,97 +3477,18 @@ void render_object_snowflakes_particles(void) {
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-struct ObjectInterpData {
-    s32 objectIndex;
-    s16 x, y;
-};
-
-struct ObjectInterpData prevObject[OBJECT_LIST_SIZE] = { 0 };
-
-void render_clouds(s32 objectIndex, s16 x, s16 y) {
-
-    // Search all recorded objects for the one we're drawing
-    for (size_t i = 0; i < OBJECT_LIST_SIZE; i++) {
-        if (objectIndex == prevObject[i].objectIndex) {
-            // Coincidence!
-            // Skip drawing the object this frame if it warped to the other side of the screen
-            if ((fabs(x - prevObject[i].x) > SCREEN_WIDTH / 2) || (fabs(y - prevObject[i].y) > SCREEN_HEIGHT / 2)) {
-                prevObject[objectIndex].x = x;
-                prevObject[objectIndex].y = y;
-                prevObject[objectIndex].objectIndex = objectIndex;
-                return;
-            }
-        }
-    }
-
-    if (gObjectList[objectIndex].status & 0x10) {
-
-        // @port: Tag the transform.
-        FrameInterpolation_RecordOpenChild("render_clouds", TAG_CLOUDS(objectIndex));
-
-        if (D_8018D228 != gObjectList[objectIndex].unk_0D5) {
-            D_8018D228 = gObjectList[objectIndex].unk_0D5;
-            func_80044DA0(gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].textureWidth,
-                          gObjectList[objectIndex].textureHeight);
-        }
-        func_80042330_unchanged(x, y, 0, gObjectList[objectIndex].sizeScaling);
-        gSPVertex(gDisplayListHead++, gObjectList[objectIndex].vertex, 4, 0);
-        gSPDisplayList(gDisplayListHead++, common_rectangle_display);
-
-        // @port Pop the transform id.
-        FrameInterpolation_RecordCloseChild();
-    }
-
-    // Save current cloud index and x position
-    prevObject[objectIndex].x = x;
-    prevObject[objectIndex].y = y;
-    prevObject[objectIndex].objectIndex = objectIndex;
-}
-
-void func_800519D4(s32 objectIndex, s16 arg1, s16 arg2) {
-    if (gObjectList[objectIndex].status & 0x10) {
-        if (D_8018D228 != gObjectList[objectIndex].unk_0D5) {
-            D_8018D228 = gObjectList[objectIndex].unk_0D5;
-            func_80044DA0(gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].textureWidth,
-                          gObjectList[objectIndex].textureHeight);
-        }
-        func_8004B138(0x000000FF, 0x000000FF, 0x000000FF, gObjectList[objectIndex].primAlpha);
-        func_80042330_unchanged(arg1, arg2, 0U, gObjectList[objectIndex].sizeScaling);
-        gSPVertex(gDisplayListHead++, gObjectList[objectIndex].vertex, 4, 0);
-        gSPDisplayList(gDisplayListHead++, common_rectangle_display);
-    }
-}
-
 // Render clouds
-void func_80051ABC(s16 arg0, s32 arg1) {
+void func_80051ABC(ScreenContext* screen, s16 arg0, s32 arg1) {
     s32 var_s0;
     s32 objectIndex;
     Object* object;
 
     D_8018D228 = 0xFF;
     gSPDisplayList(gDisplayListHead++, D_0D007A60);
-    if ((u8) D_8018D230 != 0) {
-        func_8004B414(255, 255, 255, 255);
-        for (var_s0 = 0; var_s0 < D_8018D1F0; var_s0++) {
-            objectIndex = D_8018CC80[arg1 + var_s0];
-            object = &gObjectList[objectIndex];
-            FrameInterpolation_RecordOpenChild("stars_cloud", TAG_OBJECT(object));
-
-            func_800519D4(objectIndex, object->unk_09C, arg0 - object->unk_09E);
-            FrameInterpolation_RecordCloseChild();
-        }
-    } else {
-        func_8004B6C4(255, 255, 255);
-        for (var_s0 = 0; var_s0 < D_8018D1F0; var_s0++) {
-            objectIndex = D_8018CC80[arg1 + var_s0];
-            object = &gObjectList[objectIndex];
-
-            render_clouds(objectIndex, object->unk_09C, arg0 - object->unk_09E);
-        }
-    }
+    DrawSkyActors(screen, arg0);
 }
 
-void func_80051C60(s16 arg0, s32 arg1) {
+void func_80051C60(ScreenContext* screen, s16 arg0, s32 arg1) {
     s16 var_s5;
     s32 var_s0;
     s32 objectIndex;
@@ -3590,32 +3512,17 @@ void func_80051C60(s16 arg0, s32 arg1) {
 
     D_8018D228 = 0xFF;
     gSPDisplayList(gDisplayListHead++, D_0D007A60);
-
-    if ((u8) D_8018D230 != 0) {
-        func_8004B414(255, 255, 255, 255);
-        for (var_s0 = 0; var_s0 < D_8018D1F0; var_s0++) {
-            objectIndex = D_8018CC80[arg1 + var_s0];
-            object = &gObjectList[objectIndex];
-            func_800519D4(objectIndex, object->unk_09C, (var_s5 - object->unk_09E) / 2);
-        }
-    } else {
-        func_8004B6C4(255, 255, 255);
-        for (var_s0 = 0; var_s0 < D_8018D1F0; var_s0++) {
-            objectIndex = D_8018CC80[arg1 + var_s0];
-            object = &gObjectList[objectIndex];
-            render_clouds(objectIndex, object->unk_09C, (var_s5 - object->unk_09E) / 2);
-        }
-    }
+    DrawSkyActors(screen, arg0);
 }
 
-void func_80051EBC(void) {
-    func_80051ABC(240 - gScreenOneCtx->cameraHeight, 0); // 28
+void func_80051EBC(ScreenContext* screen) {
+    func_80051ABC(screen, 240 - screen->cameraHeight, 0); // 28
 }
 
-void func_80051EF8(void) {
+void func_80051EF8(ScreenContext* screen) {
     s16 temp_a0;
 
-    temp_a0 = 0xF0 - gScreenOneCtx->cameraHeight;
+    temp_a0 = 0xF0 - screen->cameraHeight;
     if (IsKoopaTroopaBeach()) {
         temp_a0 = temp_a0 - 0x30;
     } else if (IsMooMooFarm()) {
@@ -3625,13 +3532,13 @@ void func_80051EF8(void) {
     } else {
         temp_a0 = temp_a0 - 0x30;
     }
-    func_80051ABC(temp_a0, 0);
+    func_80051ABC(screen, temp_a0, 0);
 }
 
-void func_80051F9C(void) {
+void func_80051F9C(ScreenContext* screen) {
     s16 temp_a0;
 
-    temp_a0 = 0xF0 - gScreenTwoCtx->cameraHeight;
+    temp_a0 = 0xF0 - screen->cameraHeight;
     if (IsKoopaTroopaBeach()) {
         temp_a0 = temp_a0 - 0x30;
     } else if (IsMooMooFarm()) {
@@ -3641,15 +3548,15 @@ void func_80051F9C(void) {
     } else {
         temp_a0 = temp_a0 - 0x30;
     }
-    func_80051ABC(temp_a0, D_8018D1F0);
+    func_80051ABC(screen, temp_a0, D_8018D1F0);
 }
 
-void func_80052044(void) {
-    func_80051C60(240 - gScreenOneCtx->cameraHeight, 0);
+void func_80052044(ScreenContext* screen) {
+    func_80051C60(screen, 240 - screen->cameraHeight, 0);
 }
 
-void func_80052080(void) {
-    func_80051C60(240 - gScreenTwoCtx->cameraHeight, D_8018D1F0);
+void func_80052080(ScreenContext* screen) {
+    func_80051C60(screen, 240 - screen->cameraHeight, D_8018D1F0);
 }
 
 void func_800520C0(s32 arg0) {

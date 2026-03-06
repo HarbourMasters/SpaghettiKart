@@ -75,7 +75,7 @@ Vtx D_802B8A10[] = {
     { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x00, 0xDC, 0x00, 0xFF } } },
 };
 
-void func_802A3730(ScreenContext* arg0) {
+void race_set_viewport(ScreenContext* arg0) {
     s32 ulx;
     s32 uly;
     s32 lrx;
@@ -209,7 +209,7 @@ void init_z_buffer(void) {
     gDPSetFillColor(gDisplayListHead++, 0xFFFCFFFC);
     gDPPipeSync(gDisplayListHead++);
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    gDPFillRectangle(gDisplayListHead++, 0, 0, 319, 239);
+    gDPFillRectangle(gDisplayListHead++, 0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
     gDPPipeSync(gDisplayListHead++);
     gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH,
                      VIRTUAL_TO_PHYSICAL(gPhysicalFramebuffers[sRenderingFramebuffer]));
@@ -424,8 +424,8 @@ void func_802A487C(Vtx* arg0) {
     }
 }
 
-void func_802A4A0C(Vtx* vtx, ScreenContext* arg1) {
-    Camera* camera = arg1->camera;
+void func_802A4A0C(Vtx* vtx, ScreenContext* screen) {
+    Camera* camera = screen->camera;
     s16 temp_t5;
     f32 temp_f0;
     UNUSED s32 pad[2];
@@ -439,6 +439,7 @@ void func_802A4A0C(Vtx* vtx, ScreenContext* arg1) {
 
     func_802A450C(vtx);
     // Widescreen skybox
+    // Note that this is the correct fit for each screen due to how the viewport works
     vtx[0].v.ob[0] = OTRGetRectDimensionFromRightEdge(SCREEN_WIDTH);
     vtx[1].v.ob[0] = OTRGetRectDimensionFromRightEdge(SCREEN_WIDTH);
     vtx[2].v.ob[0] = OTRGetRectDimensionFromLeftEdge(0);
@@ -470,7 +471,7 @@ void func_802A4A0C(Vtx* vtx, ScreenContext* arg1) {
     sp5C[1] *= 120.0f;
 
     temp_t5 = 120 - (s32) sp5C[1];
-    arg1->cameraHeight = temp_t5;
+    screen->cameraHeight = temp_t5;
     vtx[1].v.ob[1] = temp_t5;
     vtx[2].v.ob[1] = temp_t5;
     vtx[4].v.ob[1] = temp_t5;
@@ -540,259 +541,122 @@ void func_802A4EF4(void) {
     }
 }
 
-void func_802A5004(void) {
-
+/**
+ * Refactored function, a little wonky due to preserving
+ * the original logic.
+ * 
+ * The swapping of logic may be a required for proper draw order.
+ * Or, perhaps they slapped functions in differing orders for each screen on a wim.
+ */
+void race_begin_viewport(ScreenContext* screen, s32 mode) {
     init_rdp();
-    func_802A3730(gScreenTwoCtx);
 
-    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
-
-    gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
-
-    func_802A39E0(gScreenTwoCtx);
-    if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8910, gScreenTwoCtx);
-        func_80057FC4(2);
-        func_802A487C((Vtx*) D_802B8910);
-        func_80093A30(2);
+    // --------------------------------------------------
+    // Depth clear BEFORE viewport (horizontal + 3P/4P)
+    // --------------------------------------------------
+    switch(gActiveScreenMode) {
+        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+        case SCREEN_MODE_3P_4P_SPLITSCREEN:
+            func_802A39E0(screen); // Clear z-buffer only for this screen
+            break;
     }
-}
 
-void func_802A50EC(void) {
-
-    init_rdp();
-    func_802A3730(gScreenOneCtx);
-
-    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
-    gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
-
-    func_802A39E0(gScreenOneCtx);
-    if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8890, gScreenOneCtx);
-        func_80057FC4(1);
-        func_802A487C((Vtx*) D_802B8890);
-        func_80093A30(1);
-    }
-}
-
-void func_802A51D4(void) {
-
-    init_rdp();
-    func_802A39E0(gScreenOneCtx);
-    func_802A3730(gScreenOneCtx);
+    race_set_viewport(screen); // differ on p3
 
     gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
-    if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8890, gScreenOneCtx);
-        func_80057FC4(3);
-        func_802A487C((Vtx*) D_802B8890);
-        func_80093A30(3);
+    switch(gActiveScreenMode) {
+        case SCREEN_MODE_1P:
+            init_z_buffer(); // Clear the whole z-buffer
+            select_framebuffer();
+            break;
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+            func_802A39E0(screen); // Clear z-buffer only for this screen
+            break;
     }
 }
 
-void func_802A52BC(void) {
-
-    init_rdp();
-    func_802A39E0(gScreenTwoCtx);
-    func_802A3730(gScreenTwoCtx);
-
-    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
-    gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
-
-    if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8910, gScreenTwoCtx);
-        func_80057FC4(4);
-        func_802A487C((Vtx*) D_802B8910);
-        func_80093A30(4);
-    }
-}
-
-void func_802A53A4(void) {
-    init_rdp();
-    func_802A3730(gScreenOneCtx);
-
-    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
-    gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
-
-    init_z_buffer();
-    select_framebuffer();
-    if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8890, gScreenOneCtx);
-        if (gGamestate != CREDITS_SEQUENCE) {
-            func_80057FC4(0);
-        }
-        func_802A487C((Vtx*) D_802B8890);
-        func_80093A30(0);
-    }
-}
-
-void func_802A54A8(void) {
-
-    init_rdp();
-    func_802A39E0(gScreenOneCtx);
-    func_802A3730(gScreenOneCtx);
-
-    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
-    gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
-
-    if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8890, gScreenOneCtx);
-        func_80057FC4(8);
-        func_802A487C((Vtx*) D_802B8890);
-        func_80093A30(8);
-    }
-}
-
-void func_802A5590(void) {
-
-    init_rdp();
-    func_802A39E0(gScreenTwoCtx);
-    func_802A3730(gScreenTwoCtx);
-
-    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
-    gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
-
-    if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8910, gScreenTwoCtx);
-        func_80057FC4(9);
-        func_802A487C((Vtx*) D_802B8910);
-        func_80093A30(9);
-    }
-}
-
-void func_802A5678(void) {
-
-    init_rdp();
-    func_802A39E0(gScreenThreeCtx);
-    func_802A3730(gScreenThreeCtx);
-
-    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
-    gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
-
-    if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8990, gScreenThreeCtx);
-        func_80057FC4(10);
-        func_802A487C((Vtx*) D_802B8990);
-        func_80093A30(10);
-    }
-}
-
-void func_802A5760(void) {
-
+/**
+ * Creates the blank screen for player four in
+ * three player mode
+ */
+void race_blank_viewport(ScreenContext* screen) {
     init_rdp();
 
     gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
-    if (gPlayerCountSelection1 == 3) {
+    gDPPipeSync(gDisplayListHead++);
+    func_802A39E0(screen);
+    gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
+    gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH,
+                        VIRTUAL_TO_PHYSICAL(gPhysicalFramebuffers[sRenderingFramebuffer]));
+    gDPSetFillColor(gDisplayListHead++, 0x00010001);
+    gDPPipeSync(gDisplayListHead++);
+    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 160, 120, SCREEN_WIDTH, SCREEN_HEIGHT);
+    gDPFillRectangle(gDisplayListHead++, 160, 120, OTRGetDimensionFromRightEdge(320), SCREEN_HEIGHT - 1);
+    gDPPipeSync(gDisplayListHead++);
+    gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
 
-        gDPPipeSync(gDisplayListHead++);
-        func_802A39E0(gScreenFourCtx);
-        gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
-        gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH,
-                         VIRTUAL_TO_PHYSICAL(gPhysicalFramebuffers[sRenderingFramebuffer]));
-        gDPSetFillColor(gDisplayListHead++, 0x00010001);
-        gDPPipeSync(gDisplayListHead++);
-        gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 160, 120, SCREEN_WIDTH, SCREEN_HEIGHT);
-        gDPFillRectangle(gDisplayListHead++, 160, 120, OTRGetDimensionFromRightEdge(320), SCREEN_HEIGHT - 1);
-        gDPPipeSync(gDisplayListHead++);
-        gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
-
-        func_802A3730(gScreenFourCtx);
-
-    } else {
-        func_802A3730(gScreenFourCtx);
-        func_802A39E0(gScreenFourCtx);
-
-        if (D_800DC5B4 != 0) {
-            func_802A4A0C(D_802B8A10, gScreenFourCtx);
-            func_80057FC4(11);
-            func_802A487C(D_802B8A10);
-            func_80093A30(11);
-        }
-    }
+    race_set_viewport(screen);
 }
 
-void render_screens(s32 mode, s32 cameraId, s32 playerId) {
+void race_begin_viewport_4p(ScreenContext* screen) {
+    init_rdp();
+
+    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
+    gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
+
+    race_set_viewport(screen);
+    func_802A39E0(screen);
+}
+
+void render_screens(ScreenContext* screen, s32 mode, s32 someId, s32 playerId) {
     Mat4 matrix;
+    Camera* camera = screen->camera;
+    s32 screenId = screen - gScreenContexts;
 
-    s32 screenId = 0;
-    s32 screenMode = SCREEN_MODE_1P;
+    if (NULL == camera) {
+        printf("[skybox_and_splitscreen.c] Skipping rendering for screen %d. This viewport has no camera\n", screen - gScreenContexts);
+        return;
+    }
 
-    switch (mode) {
-        case RENDER_SCREEN_MODE_1P_PLAYER_ONE:
-            func_802A53A4();
-            screenId = 0;
-            screenMode = SCREEN_MODE_1P;
-            break;
-        case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE:
-            func_802A51D4();
-            screenId = 0;
-            screenMode = SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL;
-            break;
-        case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO:
-            func_802A52BC();
-            screenId = 1;
-            screenMode = SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL;
-            break;
-        case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE:
-            func_802A50EC();
-            screenId = 0;
-            screenMode = SCREEN_MODE_2P_SPLITSCREEN_VERTICAL;
-            break;
-        case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO:
-            func_802A5004();
-            screenId = 1;
-            screenMode = SCREEN_MODE_2P_SPLITSCREEN_VERTICAL;
-            break;
-        case RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE:
-            func_802A54A8();
-            screenId = 0;
-            screenMode = SCREEN_MODE_3P_4P_SPLITSCREEN;
-            break;
-        case RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO:
-            func_802A5590();
-            screenId = 1;
-            screenMode = SCREEN_MODE_3P_4P_SPLITSCREEN;
-            break;
-        case RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE:
-            func_802A5678();
-            screenId = 2;
-            screenMode = SCREEN_MODE_3P_4P_SPLITSCREEN;
-            break;
-        case RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR:
-            func_802A5760();
-            screenId = 3;
-            screenMode = SCREEN_MODE_3P_4P_SPLITSCREEN;
+    switch(mode) {
+        case RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR: // Blank screen
             if (gPlayerCountSelection1 == 3) {
+                race_blank_viewport(screen);
                 func_80093A5C(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR);
                 if (D_800DC5B8 != 0) {
                     render_hud(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR);
                 }
                 gNumScreens += 1;
                 return;
+            } else { // Player four
+                race_begin_viewport_4p(screen);
+
+                if ((CVarGetInteger("gDrawSky", true) == true)) {
+                    CM_RaceDrawSky(screen, someId);
+                    func_80093A30(someId); // Fill box for thunderbolt?
+                }
+            }
+            break;
+        default:
+            race_begin_viewport(screen, mode);
+
+            if ((CVarGetInteger("gDrawSky", true) == true)) {
+                CM_RaceDrawSky(screen, someId);
+                func_80093A30(someId); // Fill box for thunderbolt?
             }
             break;
     }
 
-    ScreenContext* screen = &gScreenContexts[screenId];
-    Camera* camera = screen->camera;
-    cameraId = camera->cameraId;
-    // CM_GetCamera(cameraId);
-
-    if (NULL == camera) {
-        printf("NO CAMERA SELECTED\n");
-        return;
-    }
-
-    if (screenMode == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL) {
+    if (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL) {
         gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH);
     }
 
     init_rdp();
-    func_802A3730(screen);
+    race_set_viewport(screen);
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
@@ -800,7 +664,7 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
     CM_SetViewProjection(camera);
 
     // Create a matrix for the track and game objects
-    FrameInterpolation_RecordOpenChild("track", TAG_TRACK((cameraId | (playerId << 2))));
+    FrameInterpolation_RecordOpenChild("track", TAG_TRACK((camera->cameraId | (playerId << 2))));
     Mat4 trackMatrix;
     mtxf_identity(trackMatrix);
     if (gIsMirrorMode != 0) {

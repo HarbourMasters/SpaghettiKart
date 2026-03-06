@@ -1946,11 +1946,6 @@ void func_8008BF64(s32 objectIndex) {
     D_80183E80[2] = object->direction_angle[2];
 }
 
-void func_8008BFC0(s32 objectIndex) {
-    gObjectList[objectIndex].unk_09C = gObjectList[objectIndex].pos[0];
-    gObjectList[objectIndex].unk_09E = gObjectList[objectIndex].pos[1];
-}
-
 void func_8008BFFC(s32 objectIndex) {
     Object* object;
 

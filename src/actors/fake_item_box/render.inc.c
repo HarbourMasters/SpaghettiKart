@@ -25,8 +25,7 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
     f32 temp_f2_2;
     f32 someMultiplier;
 
-    // @port: Tag the transform.
-    FrameInterpolation_RecordOpenChild("Fake Item Box", TAG_ITEM_ADDR(fakeItemBox));
+    FrameInterpolation_RecordOpenChild("Fake Item Box", TAG_ITEM_ADDR((((struct Actor*)fakeItemBox) - gActorList) << 5) || (camera - cameras));
 
     if (is_within_render_distance(camera->pos, fakeItemBox->pos, camera->rot[1], 2500.0f, camera->fieldOfView,
                                   1000000.0f) < 0 &&

@@ -83,10 +83,8 @@ enum ActorType {
     ACTOR_CAR,
     ACTOR_KIWANO_FRUIT
 };
-size_t CM_GetActorSize(void);
-#define ACTOR_LIST_SIZE CM_GetActorSize()
 
-struct Actor* CM_GetActor(size_t);
+#define ACTOR_LIST_SIZE CM_GetActorSize()
 #define GET_ACTOR(index) CM_GetActor(index)
 
 // Actor flags

@@ -22,8 +22,6 @@ public:
 
     virtual void Load() override;
     virtual void BeginPlay() override;
-    virtual void InitClouds() override;
-    virtual void TickClouds(s32 sp1C, Camera* camera) override;
     virtual void InitTrackObjects() override;
     virtual void TickTrackObjects() override;
     virtual void Draw(ScreenContext*) override;

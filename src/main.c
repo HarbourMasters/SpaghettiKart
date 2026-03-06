@@ -740,50 +740,49 @@ void race_logic_loop(void) {
 
     switch (gActiveScreenMode) {
         case SCREEN_MODE_1P:
-            render_screens(RENDER_SCREEN_MODE_1P_PLAYER_ONE, 0, 0);
+            render_screens(gScreenOneCtx, RENDER_SCREEN_MODE_1P_PLAYER_ONE, 0, 0);
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             if (gPlayerWinningIndex == 0) {
                 // In VS Mode the winning player's viewport takes over the whole screen.
                 // Rendering the winning player last places their screen above the other screens
-                render_screens(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO, 1, 1);
-                render_screens(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE, 0, 0);
+                render_screens(gScreenTwoCtx, RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO, 4, 1);
+                render_screens(gScreenOneCtx, RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE, 3, 0);
             } else {
-                render_screens(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE, 0, 0);
-                render_screens(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO, 1, 1);
+                render_screens(gScreenOneCtx, RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE, 3, 0);
+                render_screens(gScreenTwoCtx, RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO, 4, 1);
             }
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             if (gPlayerWinningIndex == 0) {
-                render_screens(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO, 1, 1);
-                render_screens(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE, 0, 0);
+                render_screens(gScreenTwoCtx, RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO, 2, 1);
+                render_screens(gScreenOneCtx, RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE, 1, 0);
             } else {
-                render_screens(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE, 0, 0);
-                render_screens(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO, 1, 1);
+                render_screens(gScreenOneCtx, RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE, 1, 0);
+                render_screens(gScreenTwoCtx, RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO, 2, 1);
             }
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
             if (gPlayerWinningIndex == 0) {
-                render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO, 1, 1);
-                render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE, 2, 2);
-                render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR, 3, 3);
-                render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE, 0, 0);
+                render_screens(gScreenTwoCtx, RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO, 9, 1);
+                render_screens(gScreenThreeCtx, RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE, 10, 2);
+                render_screens(gScreenFourCtx, RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR, 11, 3);
+                render_screens(gScreenOneCtx, RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE, 8, 0);
             } else if (gPlayerWinningIndex == 1) {
-                render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE, 0, 0);
-                render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE, 2, 2);
-                render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR, 3, 3);
-                render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO, 1, 1);
+                render_screens(gScreenOneCtx, RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE, 8, 0);
+                render_screens(gScreenThreeCtx, RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE, 10, 2);
+                render_screens(gScreenFourCtx, RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR, 11, 3);
+                render_screens(gScreenTwoCtx, RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO, 9, 1);
             } else if (gPlayerWinningIndex == 2) {
-
-                render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE, 0, 0);
-                render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO, 1, 1);
-                render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR, 3, 3);
-                render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE, 2, 2);
+                render_screens(gScreenOneCtx, RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE, 8, 0);
+                render_screens(gScreenTwoCtx, RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO, 9, 1);
+                render_screens(gScreenFourCtx, RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR, 11, 3);
+                render_screens(gScreenThreeCtx, RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE, 10, 2);
             } else {
-                render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE, 0, 0);
-                render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO, 1, 1);
-                render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE, 2, 2);
-                render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR, 3, 3);
+                render_screens(gScreenOneCtx, RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE, 8, 0);
+                render_screens(gScreenTwoCtx, RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO, 9, 1);
+                render_screens(gScreenThreeCtx, RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE, 10, 2);
+                render_screens(gScreenFourCtx, RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR, 11, 3);
             }
             break;
     }

@@ -565,6 +565,14 @@ void PortMenu::AddSceneVisibility() {
     WidgetPath path = { "Developer", "Scene Visibility", SECTION_COLUMN_1 };
     AddSidebarEntry("Developer", "Scene Visibility", 1);
 
+    AddWidget(path, "Draw Sky", WIDGET_CVAR_CHECKBOX)
+        .CVar("gDrawSky")
+        .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
+
+    AddWidget(path, "Draw Sky Actors", WIDGET_CVAR_CHECKBOX)
+        .CVar("gDrawSkyActors")
+        .Options(UIWidgets::CheckboxOptions().DefaultValue(true));
+
     AddWidget(path, "Draw Track Geometry", WIDGET_CVAR_CHECKBOX)
         .CVar("gDrawTrackGeometry")
         .Options(UIWidgets::CheckboxOptions().DefaultValue(true));

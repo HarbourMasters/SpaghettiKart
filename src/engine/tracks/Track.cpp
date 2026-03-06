@@ -31,6 +31,7 @@ extern "C" {
 #include "math_util.h"
 #include "code_80005FD0.h"
 extern StaffGhost* d_mario_raceway_staff_ghost;
+extern s8 gPlayerCount;
 }
 
 void ResizeMinimap(MinimapProps* minimap) {
@@ -406,6 +407,7 @@ Track::Track() {
 
     Props.Clouds = NULL;
     Props.CloudList = NULL;
+    mCloudType = CloudType::CLOUDS;
     Props.Sequence = MusicSeq::MUSIC_SEQ_UNKNOWN;
 
     bFog = false;
@@ -462,26 +464,6 @@ void Track::BeginPlay() {
 void Track::SpawnActors() {
     for (const auto& params : SpawnList) {
         gActorRegistry.Invoke(params.Name, params);
-    }
-}
-
-void Track::InitClouds() {
-    if (this->Props.Clouds) {
-        init_clouds(this->Props.Clouds);
-    }
-}
-
-void Track::TickClouds(s32 arg0, Camera* camera) {
-    s32 cloudIndex;
-    s32 objectIndex;
-    CloudData* cloud;
-
-    if (this->Props.CloudList) {
-        for (cloudIndex = 0; cloudIndex < D_8018D1F0; cloudIndex++) {
-            cloud = &this->Props.CloudList[cloudIndex];
-            objectIndex = D_8018CC80[arg0 + cloudIndex];
-            func_800788F8(objectIndex, cloud->rotY, camera);
-        }
     }
 }
 

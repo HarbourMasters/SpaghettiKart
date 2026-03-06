@@ -521,6 +521,7 @@ void render_cows(Camera* camera, Mat4 arg1) {
     struct ActorSpawnData* var_s1;
     struct ActorSpawnData* var_s5;
     Vec3f sp88;
+    size_t i = 0;
     u32 soundThing = SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x4D);
 
     var_t1 = (struct ActorSpawnData*) LOAD_ASSET(d_course_moo_moo_farm_cow_spawn);
@@ -546,10 +547,7 @@ void render_cows(Camera* camera, Mat4 arg1) {
             arg1[3][1] = sp88[1];
             arg1[3][2] = sp88[2];
 
-            // @port: Tag the transform.
-            FrameInterpolation_RecordOpenChild("render_actor_cow", ((var_s1->pos[0] & 0xFFFF) << 32) |
-                                                                       ((var_s1->pos[1] & 0xFFFF) << 16) |
-                                                                       (var_s1->pos[2] & 0xFFFF));
+            FrameInterpolation_RecordOpenChild("render_actor_cow", TAG_ITEM_ADDR((i << 5) || (camera - cameras)));
 
             if ((gMatrixObjectCount < MTX_OBJECT_POOL_SIZE) && (render_set_position(arg1, 0) != 0)) {
                 switch (var_s1->someId) {
@@ -577,6 +575,7 @@ void render_cows(Camera* camera, Mat4 arg1) {
             FrameInterpolation_RecordCloseChild();
         }
         var_s1++;
+        i++;
     }
 
     if ((camera == camera1) && (var_s5 != NULL)) {
@@ -650,6 +649,7 @@ void render_palm_trees(Camera* camera, Mat4 arg1) {
     Mat4 sp90;
     Vec3s sp88 = { 0, 0, 0 };
     s32 test;
+    size_t i = 0;
 
     if (gGamestate == CREDITS_SEQUENCE) {
         var_f22 = 9000000.0f;
@@ -684,11 +684,7 @@ void render_palm_trees(Camera* camera, Mat4 arg1) {
             var_s1++;
             continue;
         }
-
-        // @port: Tag the transform.
-        FrameInterpolation_RecordOpenChild("render_actor_cow", ((var_s1->pos[0] & 0xFFFF) << 32) |
-                                                                   ((var_s1->pos[1] & 0xFFFF) << 16) |
-                                                                   (var_s1->pos[2] & 0xFFFF));
+        FrameInterpolation_RecordOpenChild("render_palm_tree", TAG_ITEM_ADDR((i << 5) || (camera - cameras)));
 
         test &= 0xF;
         test = (s16) test;
@@ -728,6 +724,7 @@ void render_palm_trees(Camera* camera, Mat4 arg1) {
         }
         // @port Pop the transform id.
         FrameInterpolation_RecordCloseChild();
+        i++;
     }
 }
 
@@ -740,8 +737,7 @@ void render_actor_shell(Camera* camera, Mat4 matrix, struct ShellActor* shell) {
     char* phi_t3;
     bool reverseShell = false;
 
-    // @port: Tag the transform.
-    FrameInterpolation_RecordOpenChild("Shell", TAG_ITEM_ADDR(shell));
+    FrameInterpolation_RecordOpenChild("shell", TAG_ITEM_ADDR(((( (struct Actor*)shell ) - gActorList) << 5) || (camera - cameras)));
 
     f32 temp_f0 =
         is_within_render_distance(camera->pos, shell->pos, camera->rot[1], 0, camera->fieldOfView, 490000.0f);
@@ -1173,7 +1169,6 @@ void destroy_all_actors(void) {
 void init_actors_and_load_textures(void) {
     init_red_shell_texture();
     destroy_all_actors();
-    CM_CleanWorld();
 
     gNumPermanentActors = 0;
     CM_BeginPlay();
@@ -2344,9 +2339,9 @@ void render_item_boxes(ScreenContext* arg0) {
     }
 }
 
-void render_course_actors(ScreenContext* arg0) {
-    Camera* camera = arg0->camera;
-    u16 pathCounter = arg0->pathCounter;
+void render_course_actors(ScreenContext* screen) {
+    Camera* camera = screen->camera;
+    u16 pathCounter = screen->pathCounter;
     UNUSED s32 pad[12];
     s32 i;
 
@@ -2386,7 +2381,7 @@ void render_course_actors(ScreenContext* arg0) {
             continue;
         }
 
-        FrameInterpolation_RecordOpenChild(actor, i);
+        FrameInterpolation_RecordOpenChild(actor, (i << 4) || (screen - gScreenContexts));
 
         switch (actor->type) {
             default: // Skip custom actor

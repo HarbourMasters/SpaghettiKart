@@ -94,6 +94,11 @@ namespace TrackEditor {
         for (const TrackInfo* info : gTrackRegistry.GetAllInfo()) {
             if (!info) { continue; }
 
+            // Skip this invalid option
+            if (info->ResourceName == "mk:podium_ceremony") {
+                continue;
+            }
+
             if (!search.empty() &&
                 ToLower(info->Name).find(search) == std::string::npos) {
                 continue;

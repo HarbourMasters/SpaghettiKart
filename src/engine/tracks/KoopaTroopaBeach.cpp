@@ -112,6 +112,11 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     Props.Skybox.FloorTopLeft = {48, 152, 120};
     Props.Sequence = MusicSeq::MUSIC_SEQ_KOOPA_TROOPA_BEACH;
 
+    mVtx[0].v.ob[0] = 129; mVtx[0].v.ob[1] = 1; mVtx[0].v.ob[2] = 2257;
+    mVtx[1].v.ob[0] = 112; mVtx[1].v.ob[1] = 1; mVtx[1].v.ob[2] = 2298;
+    mVtx[2].v.ob[0] = 129; mVtx[2].v.ob[1] = 40; mVtx[2].v.ob[2] = 2257;
+    mVtx[3].v.ob[0] = 112; mVtx[3].v.ob[1] = 40; mVtx[3].v.ob[2] = 2298;
+
     Props.WaterLevel = 0.0f;
     gWaterVelocity = -0.1f;
     WaterVolumes.push_back({0.8f, 67.0f, 239.0f, 2233.0f, 2405.0f});
@@ -131,6 +136,7 @@ void KoopaTroopaBeach::Load() {
         InvertTriangleWindingByName(d_course_koopa_troopa_beach_packed_dl_2C0);
         InvertTriangleWindingByName(d_course_koopa_troopa_beach_packed_dl_9E70);
     }
+    add_vtx_from_quadrangle(mVtx, 4);
     parse_track_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_addr));
     func_80295C6C();
     find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_ADE0, 150, 255, 255, 255);

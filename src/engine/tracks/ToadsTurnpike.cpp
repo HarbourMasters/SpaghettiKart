@@ -102,6 +102,7 @@ ToadsTurnpike::ToadsTurnpike() {
 
     Props.Clouds = gToadsTurnpikeRainbowRoadStars;
     Props.CloudList = gToadsTurnpikeRainbowRoadStars;
+    mCloudType = CloudType::STARS;
 
     FVector finish;
     finish.x = -38.0f * xOrientation;
@@ -197,14 +198,6 @@ void ToadsTurnpike::BeginPlay() {
             SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
         }
     }
-}
-
-void ToadsTurnpike::InitClouds() {
-    init_stars(this->Props.Clouds);
-}
-
-void ToadsTurnpike::TickClouds(s32 sp1C, Camera* camera) {
-    update_stars(sp1C, camera, this->Props.CloudList);
 }
 
 void ToadsTurnpike::SomeSounds() {}

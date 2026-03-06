@@ -28,6 +28,7 @@ u16 actor_terrain_collision(Collision*, f32, f32, f32, f32, f32, f32, f32);
 u16 check_bounding_collision(Collision*, f32, f32, f32, f32);
 f32 spawn_actor_on_surface(f32, f32, f32);
 void set_vtx_buffer(uintptr_t, u32, u32);
+void add_vtx_from_quadrangle(Vtx* vert, size_t count);
 s32 is_line_intersecting_rectangle(s16, s16, s16, s16, s16, s16, s16, s16);
 s32 is_triangle_intersecting_bounding_box(s16, s16, s16, s16, u16);
 void generate_collision_grid(void);

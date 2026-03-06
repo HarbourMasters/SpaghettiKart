@@ -25,8 +25,6 @@ public:
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void Load() override;
     virtual void BeginPlay() override;
-    virtual void InitClouds() override;
-    virtual void TickClouds(s32, Camera*) override;
     virtual void SomeSounds() override;
     virtual void WhatDoesThisDo(Player* player, int8_t playerId) override;
     virtual void WhatDoesThisDoAI(Player* player, int8_t playerId) override;

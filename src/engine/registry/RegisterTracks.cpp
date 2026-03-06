@@ -214,6 +214,15 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<BigDonut>()); });
 
     info = {
+        .ResourceName = "mk:podium_ceremony",
+        .Name = "podium ceremony",
+        .DebugName = "podium",
+        .Length = "1025m",
+    };
+
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<PodiumCeremony>()); });
+
+    info = {
         .ResourceName = "hm:test_track",
         .Name = "test track",
         .DebugName = "test track",

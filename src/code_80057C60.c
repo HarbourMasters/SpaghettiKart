@@ -412,31 +412,31 @@ void func_80057C60(void) {
 void func_80057CE4(void) {
     switch (D_8018D21C) {
         case 0:
-            func_802A3730(gScreenOneCtx);
+            race_set_viewport(gScreenOneCtx);
             break;
         case 1:
-            func_802A3730(gScreenOneCtx);
+            race_set_viewport(gScreenOneCtx);
             break;
         case 2:
-            func_802A3730(gScreenTwoCtx);
+            race_set_viewport(gScreenTwoCtx);
             break;
         case 3:
-            func_802A3730(gScreenOneCtx);
+            race_set_viewport(gScreenOneCtx);
             break;
         case 4:
-            func_802A3730(gScreenTwoCtx);
+            race_set_viewport(gScreenTwoCtx);
             break;
         case 8:
-            func_802A3730(gScreenOneCtx);
+            race_set_viewport(gScreenOneCtx);
             break;
         case 9:
-            func_802A3730(gScreenTwoCtx);
+            race_set_viewport(gScreenTwoCtx);
             break;
         case 10:
-            func_802A3730(gScreenThreeCtx);
+            race_set_viewport(gScreenThreeCtx);
             break;
         case 11:
-            func_802A3730(gScreenFourCtx);
+            race_set_viewport(gScreenFourCtx);
             break;
     }
 }
@@ -458,7 +458,7 @@ void func_80057DD0(void) {
     }
 }
 
-void func_80057FC4(u32 arg0) {
+void func_80057FC4(ScreenContext* ctx, u32 arg0) {
     UNUSED Gfx* temp_v1;
 
     if ((gHUDDisable != 0)) {
@@ -473,19 +473,27 @@ void func_80057FC4(u32 arg0) {
 
     switch (arg0) {
         case 0:
-            func_80051EBC();
+            func_80051EBC(ctx);
             break;
         case 1:
-            func_80051EF8();
+            func_80051EF8(ctx);
             break;
         case 2:
-            func_80051F9C();
+            func_80051F9C(ctx);
             break;
         case 3:
-            func_80052044();
+            func_80052044(ctx);
             break;
         case 4:
-            func_80052080();
+            func_80052080(ctx);
+            break;
+        case 8:
+        case 9:
+        case 10:
+        case 11:
+            if (CVarGetInteger("gMultiplayerNoFeatureCuts", 0) == true) {
+                func_80052080(ctx);
+            }
             break;
     }
 }
@@ -1113,16 +1121,16 @@ void func_80059D00(void) {
                     if (!gDemoMode) {
                         // func_8007AA44(0);
                     }
-                    func_80078C70(0);
+                    func_80078C70();
                     if (playerHUD[PLAYER_ONE].raceCompleteBool == 0) {
                         func_8005C360((gPlayerOne->speed / 18.0f) * 216.0f);
                     }
                     func_8005D0FC(PLAYER_ONE);
                 } else {
                     func_80059820(PLAYER_ONE);
-                    func_80078C70(1);
+                    func_80078C70();
                     func_80059820(PLAYER_TWO);
-                    func_80078C70(2);
+                    //func_80078C70();
                 }
                 break;
             case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
@@ -1133,14 +1141,14 @@ void func_80059D00(void) {
                 if (!gDemoMode) {
                     // func_8007AA44(0);
                 }
-                func_80078C70(1);
+                func_80078C70();
                 func_8005D1F4(0);
                 func_80059820(PLAYER_TWO);
                 func_8005D0FC(PLAYER_TWO);
                 if (!gDemoMode) {
                     // func_8007AA44(1);
                 }
-                func_80078C70(2);
+                //func_80078C70();
                 func_8005D1F4(1);
                 break;
             case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
@@ -1151,14 +1159,13 @@ void func_80059D00(void) {
                 if (!gDemoMode) {
                     // func_8007AA44(0);
                 }
-                func_80078C70(3);
+                func_80078C70();
                 func_8005D1F4(0);
                 func_80059820(PLAYER_TWO);
                 func_8005D0FC(PLAYER_TWO);
                 if (!gDemoMode) {
                     // func_8007AA44(1);
                 }
-                func_80078C70(4);
                 func_8005D1F4(1);
                 break;
             case SCREEN_MODE_3P_4P_SPLITSCREEN:
@@ -1171,6 +1178,7 @@ void func_80059D00(void) {
                 if (!gDemoMode) {
                     // func_8007AA44(0);
                 }
+                func_80078C70();
                 func_8005D1F4(0);
                 func_80059820(PLAYER_TWO);
                 func_8005D0FC(PLAYER_TWO);
@@ -1217,7 +1225,7 @@ void func_8005A070(void) {
             CM_TickParticles();
         } else if (gGamestate == CREDITS_SEQUENCE) {
             func_80059820(PLAYER_ONE);
-            func_80078C70(0);
+            func_80078C70();
             CM_TickObjects();
             CM_TickParticles();
         } else { // normal gameplay

@@ -100,6 +100,7 @@ FrappeSnowland::FrappeSnowland() {
 
     Props.Clouds = NULL; // not used for frappe
     Props.CloudList = NULL;
+    mCloudType = CloudType::SNOW;
 
     Props.Skybox.TopRight = {28, 11, 90};
     Props.Skybox.BottomRight = {0, 99, 164};
@@ -163,26 +164,6 @@ void FrappeSnowland::BeginPlay() {
         SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
         SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
     }
-}
-
-void FrappeSnowland::InitClouds() {
-    s32 var_s0;
-    s32 var_s4;
-    if (gPlayerCount == 1) {
-        var_s4 = 0x32;
-    } else {
-        var_s4 = 0x19;
-    }
-    for (var_s0 = 0; var_s0 < var_s4; var_s0++) {
-        find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]);
-    }
-    D_8018D1F8 += var_s0;
-    D_8018D1F0 = var_s0;
-    D_8018D230 = 0; // This must be turned off or mayhem ensues
-}
-
-void FrappeSnowland::TickClouds(s32 sp1C, Camera* camera) {
-    func_80078170(sp1C, camera);
 }
 
 void FrappeSnowland::InitTrackObjects() {

@@ -447,7 +447,7 @@ jobs:
           mkdir -p spaghetti-${{ matrix.config }}
           wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
           mv gamecontrollerdb.txt spaghetti-${{ matrix.config }}/
-          cp build/*.appimage spaghetti-${{ matrix.config }}/ 2>/dev/null || true
+          cp build/*.appimage spaghetti-${{ matrix.config }}/spaghetti.appimage 2>/dev/null || true
 
       - name: Publish packaged artifacts
         uses: actions/upload-artifact@v4

@@ -94,6 +94,7 @@ RainbowRoad::RainbowRoad() {
 
     Props.Clouds = gToadsTurnpikeRainbowRoadStars;
     Props.CloudList = gToadsTurnpikeRainbowRoadStars;
+    mCloudType = CloudType::STARS;
 
     Props.Skybox.TopRight = {0, 0, 0};
     Props.Skybox.BottomRight = {0, 0, 0};
@@ -148,14 +149,6 @@ void RainbowRoad::BeginPlay() {
         SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
         SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
     }
-}
-
-void RainbowRoad::InitClouds() {
-    init_stars(this->Props.Clouds);
-}
-
-void RainbowRoad::TickClouds(s32 sp1C, Camera* camera) {
-    update_stars(sp1C, camera, this->Props.CloudList);
 }
 
 void RainbowRoad::InitTrackObjects() {

@@ -159,7 +159,6 @@ void object_origin_pos_randomize_around_xz(s32, s16, s16, u16, u16);
 void object_origin_pos_randomize_around_xyz(s32, s16, s16, s16, u16, u16, u16);
 void object_origin_pos_around_player_one(s32, s16, u16);
 void func_8008BEA4(s32, u16, u16);
-void func_8008BFC0(s32);
 void object_calculate_new_pos_offset(s32);
 void func_8008BF64(s32);
 void func_8008BFFC(s32);

@@ -99,7 +99,7 @@ void setup_podium_ceremony(void) {
 
     gCurrentCourseId = TRACK_ROYAL_RACEWAY;
     SelectPodiumCeremony();
-    D_800DC5B4 = (u16) 1;
+    bDrawSkybox = true;
     set_mirror_mode(0);
     gGotoMenu = 0xFFFF;
     D_80287554 = 0;

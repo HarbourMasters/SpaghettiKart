@@ -72,8 +72,6 @@ void CM_ActivateSecondLapLakitu(s32 playerId);
 void CM_ActivateFinalLapLakitu(s32 playerId);
 void CM_ActivateReverseLakitu(s32 playerId);
 
-void CM_InitClouds();
-
 void CM_DrawActors(Camera* camera);
 void CM_DrawStaticMeshActors();
 
@@ -102,7 +100,7 @@ void Editor_CleanWorld();
 void CM_TickParticles(void);
 void CM_DrawParticles(s32 cameraId);
 
-void CM_TickClouds(s32 arg0, Camera* camera);
+void CM_RaceDrawSky(ScreenContext* screen, s32 someId);
 
 void CM_Waypoints(Player* player, int8_t playerId);
 

@@ -52,9 +52,13 @@ void func_80280038(Camera* camera) {
     gMatrixEffectCount = 0;
     gMatrixHudCount = 0;
     init_rdp();
-    func_802A53A4();
+    race_begin_viewport(gScreenOneCtx, 0);
+    if ((CVarGetInteger("gDrawSky", true) == true)) {
+        CM_RaceDrawSky(gScreenOneCtx, 0);
+        func_80093A30(0); // Fill box for thunderbolt?
+    }
     init_rdp();
-    func_80057FC4(0);
+    func_80057FC4(gScreenOneCtx, 0);
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
     guPerspective(camera->perspectiveMatrix , &perspNorm, camera->fieldOfView, gScreenAspect, CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
@@ -140,16 +144,24 @@ void load_credits(void) {
     if (!camera) {
         CM_ThrowRuntimeError("[code_80280000] [load_credits] NULL camera while attempting to create camera for player one");
     }
-
     CM_AttachCamera(camera, PLAYER_ONE);
     gScreenOneCtx->camera = camera;
+
+    // init_hud_one_player uses a second camera for whatever reason...
+    Camera* camera2 = CM_AddCamera(spawn, 0, 0);
+    if (!camera2) {
+        CM_ThrowRuntimeError("[code_80280000] [load_credits] NULL camera while attempting to create camera for player two");
+    }
+    CM_AttachCamera(camera2, PLAYER_TWO);
+    gScreenTwoCtx->camera = camera2;
+
     camera->renderMode = RENDER_FULL_SCENE;
     camera->unk_B4 = 60.0f;
     camera->fieldOfView = 60.0f;
 
     gCurrentCourseId = gCreditsCourseId;
     TrackBrowser_SetTrackByIdx(gCreditsCourseId);
-    D_800DC5B4 = 1;
+    bDrawSkybox = true;
     func_802A4D18();
     set_screen();
     gScreenOneCtx->screenWidth = SCREEN_WIDTH;

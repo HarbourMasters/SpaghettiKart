@@ -26,7 +26,6 @@ public:
     virtual void Load() override;
     void SpawnStockThwomp();
     virtual void BeginPlay() override;
-    //virtual void InitClouds() override;
     virtual void InitTrackObjects() override;
     virtual void TickTrackObjects() override;
     virtual void DrawTrackObjects(s32 cameraId) override;

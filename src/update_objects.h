@@ -8,8 +8,6 @@
 
 /** @cond */
 
-void func_80078170(s32 arg0, Camera* arg1);
-void func_80077D5C(s32);
 s32 find_unused_obj_index(s32*);
 void delete_object(s32*);
 s32 func_80071FBC(void);
@@ -168,17 +166,12 @@ void func_80077B14(s32);
 void func_80077B3C(s32);
 void func_80077BCC(s32);
 void update_leaf(void);
-void func_80077E20(s32);
 void func_80078220(s32);
 void func_80078288(s32);
 void func_800786EC(s32);
 void func_80078790(void);
 void update_snowflakes(void);
-void func_800788F8(s32, u16, Camera*);
-void update_clouds(s32, Camera*, CloudData*);
-void update_stars(s32, Camera*, StarData*);
-void func_80078C68(void);
-void func_80078C70(s32);
+void func_80078C70();
 void func_80078F64(void);
 void func_80079054(s32);
 void func_80079084(s32);

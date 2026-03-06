@@ -32,6 +32,7 @@
 
 #include "engine/TrackBrowser.h"
 #include "engine/RandomItemTable.h"
+#include "engine/sky/Sky.h"
 
 #ifdef _WIN32
 #include <locale.h>
@@ -47,6 +48,7 @@ extern "C" {
 #include "spawn_players.h"
 #include "src/enhancements/collision_viewer.h"
 #include "code_800029B0.h"
+#include "code_80057C60.h"
 // #include "engine/wasm.h"
 }
 
@@ -81,6 +83,7 @@ Registry<ItemInfo> gItemRegistry;
 DataRegistry<RandomItemTable> gItemTableRegistry;
 
 std::unique_ptr<TrackBrowser> gTrackBrowser;
+std::unique_ptr<Sky> gSky;
 
 World* GetWorld() {
     return World::Instance;
@@ -91,6 +94,8 @@ void CustomEngineInit() {
     // This also turns off freecam
     gEditor.Disable();
 
+    
+    gSky = std::make_unique<Sky>();
     RegisterTracks(gTrackRegistry);
     gTrackBrowser = std::make_unique<TrackBrowser>(gTrackRegistry);
     TrackBrowser::Instance->FindCustomTracks();
@@ -361,6 +366,7 @@ void CM_DrawStaticMeshActors() {
 void CM_BeginPlay() {
     static bool tour = false;
     auto track = GetWorld()->GetTrack();
+    GetWorld()->CleanActors();
     
     if (nullptr == track) {
         return; 
@@ -554,15 +560,14 @@ void CM_DrawParticles(s32 cameraId) {
     }
 }
 
-void CM_InitClouds() {
-    if (GetWorld()->GetTrack()) {
-        GetWorld()->GetTrack()->InitClouds();
-    }
-}
-
-void CM_TickClouds(s32 arg0, Camera* camera) {
-    if (GetWorld()->GetTrack()) {
-        GetWorld()->GetTrack()->TickClouds(arg0, camera);
+void CM_RaceDrawSky(ScreenContext* screen, s32 someId) {
+    // if (bDrawSkybox) {
+    if (CVarGetInteger("gDrawSky", true) == true) {
+        Sky::Instance->Draw(screen);
+        if (gGamestate != CREDITS_SEQUENCE) {
+            func_80057FC4(screen, someId); // DrawSkyActors
+        }
+        Sky::Instance->DrawFloor(screen);
     }
 }
 
@@ -664,6 +669,14 @@ void CM_SpawnStarterLakitu() {
     }
 
     for (size_t i = 0; i < gPlayerCountSelection1; i++) {
+        // Retry does not respawn actors, therefore, re-use lakitu.
+        if (auto it = GetWorld()->Lakitus.find(i); it != GetWorld()->Lakitus.end()) {
+            if (it->second) {
+                it->second->Activate(OLakitu::STARTER);
+            }
+            continue; // Already exists, skip spawning
+        }
+
         auto lakitu = std::make_unique<OLakitu>(i, OLakitu::LakituType::STARTER);
         GetWorld()->Lakitus[i] = lakitu.get();
         GetWorld()->AddObject(std::move(lakitu));
