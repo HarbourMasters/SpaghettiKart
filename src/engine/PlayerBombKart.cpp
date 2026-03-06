@@ -29,7 +29,7 @@ void PlayerBombKart::Draw(size_t playerId, s32 cameraId) { // render_player_bomb
         surfaceHeight = player->unk_074;
         PlayerBombKart::func_800563DC(cameraId, _primAlpha);
         PlayerBombKart::func_8005669C(cameraId, _primAlpha);
-        PlayerBombKart::func_800568A0(cameraId);
+        PlayerBombKart::LoadMtx(cameraId);
     }
 }
 
