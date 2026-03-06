@@ -6,10 +6,6 @@
 #include "port/Game.h"
 #include "port/interpolation/FrameInterpolation.h"
 #include "engine/Matrix.h"
-#include "network/network.h"
-#include "network/communication/transport/net_packet.h"
-
-#include <iostream>
 
 extern "C" {
 #include "macros.h"
@@ -146,23 +142,22 @@ void OBombKart::Tick() {
             if (IsPodiumCeremony()) {
                 if (D_8016347E == 1) {
                     player = gPlayerFour;
-                    if (!(player->type & PLAYER_REMOTE)) {
-                        temp_f0 = newPos[0] - player->pos[0];
-                        temp_f2 = newPos[2] - player->pos[1];
-                        temp_f12 = newPos[2] - player->pos[2];
-                        if ((((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) + (temp_f12 * temp_f12)) < 25.0f) {
-                            circleTimer = 0;
-                            state = States::EXPLODE;
-                            Behaviour = States::EXPLODE;
-                            player->triggers |= VERTICAL_TUMBLE_TRIGGER;
-                            player->type &= ~PLAYER_START_SEQUENCE;
-                        }
+                    temp_f0 = newPos[0] - player->pos[0];
+                    temp_f2 = newPos[2] - player->pos[1];
+                    temp_f12 = newPos[2] - player->pos[2];
+                    if ((((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) + (temp_f12 * temp_f12)) < 25.0f) {
+                        circleTimer = 0;
+                        state = States::EXPLODE;
+                        Behaviour = States::EXPLODE;
+                        player->triggers |= VERTICAL_TUMBLE_TRIGGER;
+                        player->type &= ~PLAYER_START_SEQUENCE;
                     }
                 }
             } else {
+
                 for (size_t i = 0; i < gPlayerCount; i++) {
                     player = &gPlayers[i];
-                    if (!(player->type & PLAYER_REMOTE) && !(player->effects & 0x80000000)) {
+                    if (!(player->effects & 0x80000000)) {
                         temp_f0 = newPos[0] - player->pos[0];
                         temp_f2 = newPos[1] - player->pos[1];
                         temp_f12 = newPos[2] - player->pos[2];
@@ -170,14 +165,6 @@ void OBombKart::Tick() {
                             state = States::EXPLODE;
                             Behaviour = States::EXPLODE;
                             circleTimer = 0;
-
-							if (is_online_game())
-							{
-                                NetEventDestroyActorPacket packet = create_net_destroy_actor_packet(_objectIndex);
-                                send_reliable(reinterpret_cast<NetPacket*>(&packet));
-							}
-
-							std::cout << "Exploded bomb with id: " << _objectIndex << std::endl;
                             if (IsFrappeSnowland()) {
                                 player->triggers |= HIT_BY_STAR_TRIGGER;
                             } else {
@@ -531,7 +518,7 @@ void OBombKart::Waypoint(s32 screenId) {
 
 Player* OBombKart::FindTarget() {
     for (size_t i = 0; i < NUM_PLAYERS; i++) {
-        if ((gPlayers[i].type & PLAYER_HUMAN) || (gPlayers[i].type & PLAYER_REMOTE)) {
+        if (gPlayers[i].type & PLAYER_HUMAN) {
             if (is_within_distance_2d(Pos[0], Pos[2], gPlayers[i].pos[0], gPlayers[i].pos[2], 500)) {
                 return &gPlayers[i];
             }
