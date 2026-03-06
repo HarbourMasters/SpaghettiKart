@@ -90,7 +90,7 @@ namespace TrackEditor {
             Ship::ResourceIdentifier id(sceneFile, 0, track->Archive);
             // Write file to disk
             auto rm = GameEngine::Instance->context->GetResourceManager();
-            bool wrote = rm->WriteResource(id, bytes);
+            bool wrote = rm->WriteResource(id, bytes, true);
             if (!wrote) {
                 SPDLOG_INFO("[SceneManager] [SaveLevel] Failed to write scene file!");
             }
