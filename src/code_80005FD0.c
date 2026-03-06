@@ -7930,18 +7930,6 @@ void func_8001C14C(void) {
     }
 }
 
-void render_bomb_karts_wrap(s32 cameraId) {
-    if (IsPodiumCeremony()) {
-        if (gBombKarts[0].waypointIndex >= 16) {
-            render_bomb_karts(PLAYER_FOUR);
-        }
-    } else {
-        if (gModeSelection == VERSUS) {
-            render_bomb_karts(cameraId);
-        }
-    }
-}
-
 UNUSED void func_8001C42C(void) {
     if (D_800DDB20 == 0) {
         if ((gControllerThree->buttonPressed & 0x20) != 0) {

@@ -6,6 +6,10 @@
 #include "port/Game.h"
 #include "port/interpolation/FrameInterpolation.h"
 #include "engine/Matrix.h"
+#include "network/network.h"
+#include "network/communication/transport/net_packet.h"
+
+#include <iostream>
 
 extern "C" {
 #include "macros.h"
@@ -142,22 +146,23 @@ void OBombKart::Tick() {
             if (IsPodiumCeremony()) {
                 if (D_8016347E == 1) {
                     player = gPlayerFour;
-                    temp_f0 = newPos[0] - player->pos[0];
-                    temp_f2 = newPos[2] - player->pos[1];
-                    temp_f12 = newPos[2] - player->pos[2];
-                    if ((((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) + (temp_f12 * temp_f12)) < 25.0f) {
-                        circleTimer = 0;
-                        state = States::EXPLODE;
-                        Behaviour = States::EXPLODE;
-                        player->triggers |= VERTICAL_TUMBLE_TRIGGER;
-                        player->type &= ~PLAYER_START_SEQUENCE;
+                    if (!(player->type & PLAYER_REMOTE)) {
+                        temp_f0 = newPos[0] - player->pos[0];
+                        temp_f2 = newPos[2] - player->pos[1];
+                        temp_f12 = newPos[2] - player->pos[2];
+                        if ((((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) + (temp_f12 * temp_f12)) < 25.0f) {
+                            circleTimer = 0;
+                            state = States::EXPLODE;
+                            Behaviour = States::EXPLODE;
+                            player->triggers |= VERTICAL_TUMBLE_TRIGGER;
+                            player->type &= ~PLAYER_START_SEQUENCE;
+                        }
                     }
                 }
             } else {
-
                 for (size_t i = 0; i < gPlayerCount; i++) {
                     player = &gPlayers[i];
-                    if (!(player->effects & 0x80000000)) {
+                    if (!(player->type & PLAYER_REMOTE) && !(player->effects & 0x80000000)) {
                         temp_f0 = newPos[0] - player->pos[0];
                         temp_f2 = newPos[1] - player->pos[1];
                         temp_f12 = newPos[2] - player->pos[2];
@@ -165,6 +170,14 @@ void OBombKart::Tick() {
                             state = States::EXPLODE;
                             Behaviour = States::EXPLODE;
                             circleTimer = 0;
+
+							if (is_online_game())
+							{
+                                NetEventDestroyActorPacket packet = create_net_destroy_actor_packet(_objectIndex);
+                                send_reliable(reinterpret_cast<NetPacket*>(&packet));
+							}
+
+							std::cout << "Exploded bomb with id: " << _objectIndex << std::endl;
                             if (IsFrappeSnowland()) {
                                 player->triggers |= HIT_BY_STAR_TRIGGER;
                             } else {
@@ -380,7 +393,7 @@ void OBombKart::Draw(s32 cameraId) {
             D_80183E80[0] = 0;
             D_80183E80[1] = func_800418AC(Pos[0], Pos[2], camera->pos);
             D_80183E80[2] = 0x8000;
-            func_800563DC(_objectIndex, cameraId, 0x000000FF);
+            OBombKart::func_800563DC(cameraId, 0x000000FF);
             OBombKart::SomeRender(cameraId, camera->pos);
             if (((u32) temp_s4 < 0x4E21U) && (state != OBombKart::States::EXPLODE)) {
                 OBombKart::LoadMtx(cameraId);
@@ -391,6 +404,71 @@ void OBombKart::Draw(s32 cameraId) {
 
 void OBombKart::DrawBattle(s32 cameraId) {
 
+}
+
+void OBombKart::func_800563DC(s32 cameraId, s32 arg2) {
+    s32 temp_s0;
+    s32 temp_v0;
+    s32 residue;
+    Camera* camera;
+    Object* object;
+
+    camera = &camera1[cameraId];
+    object = &gObjectList[_objectIndex];
+    residue = D_801655CC % 4U;
+    D_80183E40[0] = object->pos[0];
+    D_80183E40[1] = object->pos[1] + 1.0;
+    D_80183E40[2] = object->pos[2];
+    D_80183E80[0] = 0;
+    D_80183E80[1] = func_800418AC(object->pos[0], object->pos[2], camera->pos);
+    D_80183E80[2] = 0x8000;
+    FrameInterpolation_RecordOpenChild("bomb_kart2", (_idx << 4) | cameraId);
+    rsp_set_matrix_transformation(D_80183E40, D_80183E80, 0.2f);
+    gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D007E98);
+    func_8004B310(arg2);
+
+    int heigh = 32;
+    int width = 32;
+
+    gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_bomb);
+    rsp_load_texture((u8*) common_texture_bomb[residue], width, heigh);
+    gSPVertex(gDisplayListHead++, (uintptr_t) D_0D005AE0, 4, 0);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) common_rectangle_display);
+    gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
+
+    temp_s0 = D_8018D400;
+    gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D007B00);
+    FrameInterpolation_RecordCloseChild();
+    func_8004B414(0, 0, 0, arg2);
+    D_80183E40[1] = D_80183E40[1] + 4.0;
+    D_80183E80[2] = 0;
+    OBombKart::func_800562E4(cameraId, temp_s0 % 3, temp_s0 % 4, arg2, 0);
+    temp_v0 = temp_s0 + 1;
+    D_80183E80[2] = 0x6000;
+    OBombKart::func_800562E4(cameraId, temp_v0 % 3, temp_v0 % 4, arg2, 1);
+    temp_v0 = temp_s0 + 2;
+    D_80183E80[2] = 0xA000;
+    OBombKart::func_800562E4(cameraId, temp_v0 % 3, temp_v0 % 4, arg2, 2);
+    gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
+}
+
+u32 OBombKart::vec[3][3] = {
+    { 255, 255, 255 },
+    { 255, 255, 0 },
+    { 255, 0, 0 },
+};
+
+void OBombKart::func_800562E4(s32 cameraId, s32 arg0, s32 arg1, s32 arg2, s32 id) {
+    D_80165860 = vec[arg0][0]; // used to be D_800E46F8A
+    D_8016586C = vec[arg0][1];
+    D_80165878 = vec[arg0][2];
+    func_8004B138(D_80165860, D_8016586C, D_80165878, arg2);
+    FrameInterpolation_RecordOpenChild("bomb_kart_spark", (id << 12) | (_idx << 5) | cameraId);
+    rsp_set_matrix_transformation(D_80183E40, D_80183E80, 0.2f);
+    func_80044BF8((uint8_t*)common_texture_particle_spark[arg1], 32, 32);
+    gSPVertex(gDisplayListHead++, (uintptr_t)D_0D005AE0, 4, 0);
+    gSPDisplayList(gDisplayListHead++, (Gfx*)common_rectangle_display);
+    FrameInterpolation_RecordCloseChild();
 }
 
 void OBombKart::SomeRender(s32 cameraId, Vec3f arg1) {
@@ -453,7 +531,7 @@ void OBombKart::Waypoint(s32 screenId) {
 
 Player* OBombKart::FindTarget() {
     for (size_t i = 0; i < NUM_PLAYERS; i++) {
-        if (gPlayers[i].type & PLAYER_HUMAN) {
+        if ((gPlayers[i].type & PLAYER_HUMAN) || (gPlayers[i].type & PLAYER_REMOTE)) {
             if (is_within_distance_2d(Pos[0], Pos[2], gPlayers[i].pos[0], gPlayers[i].pos[2], 500)) {
                 return &gPlayers[i];
             }
