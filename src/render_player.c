@@ -1446,6 +1446,9 @@ void render_ghost(Player* player, s8 playerId, s8 screenId, s8 flipOffset) {
     } else {
         spC2 = 0x0070;
     }
+
+    FrameInterpolation_RecordOpenChild("player_ghost", (playerId << 4) | screenId);
+
     thing = (u16) (player->unk_048[screenId] - player->rotation[1]);
     spD4[0] = (-(s16) (sins(thing) * (0.0f * 0.0f)) * 0.8);
     spD4[1] = player->unk_048[screenId];
@@ -1491,6 +1494,8 @@ void render_ghost(Player* player, s8 playerId, s8 screenId, s8 flipOffset) {
     gSP2Triangles(gDisplayListHead++, 4, 5, 6, 4, 4, 6, 7, 4);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
+
+    FrameInterpolation_RecordCloseChild();
 }
 
 void func_80025DE8(Player* player, s8 playerId, s8 screenId, s8 flipOffset) {
