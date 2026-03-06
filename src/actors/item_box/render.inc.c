@@ -27,7 +27,7 @@ void render_actor_item_box(Camera* camera, struct ItemBox* item_box) {
     f32 temp_f2_2;
     f32 someMultiplier;
 
-    FrameInterpolation_RecordOpenChild("itembox", TAG_ITEM_ADDR((((struct Actor*)item_box) - gActorList) << 5) || (camera - cameras));
+    FrameInterpolation_RecordOpenChild("itembox", TAG_ITEM_ADDR((((struct Actor*)item_box) - gActorList) << 5) | (camera - cameras));
 
     temp_f0 = is_within_render_distance(camera->pos, item_box->pos, camera->rot[1], 0.0f, camera->fieldOfView,
                                         4000000.0f);

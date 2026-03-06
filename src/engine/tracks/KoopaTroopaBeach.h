@@ -40,5 +40,4 @@ public:
     virtual void Tick() override;
     virtual void DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) override;
     virtual void Destroy() override;
-    Vtx mVtx[4];
 };
