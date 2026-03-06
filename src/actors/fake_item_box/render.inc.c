@@ -51,14 +51,20 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
     if (fakeItemBox->state != 2) {
 
         if (!render_set_position(someMatrix2, 0)) {
+            FrameInterpolation_RecordCloseChild();
             return;
         }
 
         gSPDisplayList(gDisplayListHead++, common_model_fake_itembox);
+        FrameInterpolation_RecordCloseChild();
+
+        FrameInterpolation_RecordOpenChild("fake_item_box_part2", TAG_ITEM_ADDR((((struct Actor*)fakeItemBox) - gActorList) << 5) | (camera - cameras));
+
         mtxf_pos_rotation_xyz(someMatrix2, fakeItemBox->pos, fakeItemBox->rot);
         mtxf_scale(someMatrix2, fakeItemBox->sizeScaling);
 
         if (!render_set_position(someMatrix2, 0)) {
+            FrameInterpolation_RecordCloseChild();
             return;
         }
 
@@ -87,6 +93,7 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
         }
 #endif
         gSPDisplayList(gDisplayListHead++, D_0D003090);
+        FrameInterpolation_RecordCloseChild();
     } else {
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
         gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
@@ -111,33 +118,43 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
         add_translate_mat4_vec3f(someMatrix2, someMatrix3, someVec);
 
         if (!render_set_position(someMatrix3, 0)) {
+            FrameInterpolation_RecordCloseChild();
             return;
         }
 
         gSPDisplayList(gDisplayListHead++, D_0D003158);
+        FrameInterpolation_RecordCloseChild();
         temp_f2_2 = 0.8f * thing;
         temp_f12 = 0.5f * thing;
         someVec[0] = temp_f2_2;
         someVec[1] = 2.3f * thing;
         someVec[2] = temp_f12;
+        FrameInterpolation_RecordOpenChild("fake_item_box_part3", TAG_ITEM_ADDR((((struct Actor*)fakeItemBox) - gActorList) << 5) | (camera - cameras));
+
         add_translate_mat4_vec3f(someMatrix2, someMatrix3, someVec);
 
         if (!render_set_position(someMatrix3, 0)) {
+            FrameInterpolation_RecordCloseChild();
             return;
         }
-
         gSPDisplayList(gDisplayListHead++, D_0D0031B8);
+        FrameInterpolation_RecordCloseChild();
+
         temp_f0_2 = -0.5f * thing;
         someVec[0] = temp_f2_2;
         someVec[1] = 1.2f * thing;
         someVec[2] = temp_f0_2;
+        FrameInterpolation_RecordOpenChild("fake_item_box_part4", TAG_ITEM_ADDR((((struct Actor*)fakeItemBox) - gActorList) << 5) | (camera - cameras));
         add_translate_mat4_vec3f(someMatrix2, someMatrix3, someVec);
 
         if (!render_set_position(someMatrix3, 0)) {
+            FrameInterpolation_RecordCloseChild();
             return;
         }
 
         gSPDisplayList(gDisplayListHead++, D_0D003128);
+        FrameInterpolation_RecordCloseChild();
+
         if (!(fakeItemBox->someTimer & 1)) {
             gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         } else {
@@ -146,13 +163,18 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
         someVec[0] = 0.0f;
         someVec[1] = 1.8f * thing;
         someVec[2] = -1.0f * thing;
+        FrameInterpolation_RecordOpenChild("fake_item_box_part5", TAG_ITEM_ADDR((((struct Actor*)fakeItemBox) - gActorList) << 5) | (camera - cameras));
+
         add_translate_mat4_vec3f(someMatrix2, someMatrix3, someVec);
 
         if (!render_set_position(someMatrix3, 0)) {
+            FrameInterpolation_RecordCloseChild();
             return;
         }
-
         gSPDisplayList(gDisplayListHead++, D_0D0031E8);
+        FrameInterpolation_RecordCloseChild();
+        FrameInterpolation_RecordOpenChild("fake_item_box_part6", TAG_ITEM_ADDR((((struct Actor*)fakeItemBox) - gActorList) << 5) | (camera - cameras));
+
         temp_f0_3 = -0.8f * thing;
         someVec[0] = temp_f0_3;
         someVec[1] = 0.6f * thing;
@@ -160,22 +182,25 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
         add_translate_mat4_vec3f(someMatrix2, someMatrix3, someVec);
 
         if (!render_set_position(someMatrix3, 0)) {
+            FrameInterpolation_RecordCloseChild();
             return;
         }
 
         gSPDisplayList(gDisplayListHead++, D_0D003188);
+        FrameInterpolation_RecordCloseChild();
+        FrameInterpolation_RecordOpenChild("fake_item_box_part7", TAG_ITEM_ADDR((((struct Actor*)fakeItemBox) - gActorList) << 5) | (camera - cameras));
+
         someVec[0] = temp_f0_3;
         someVec[1] = temp_f2;
         someVec[2] = temp_f12;
         add_translate_mat4_vec3f(someMatrix2, someMatrix3, someVec);
 
         if (!render_set_position(someMatrix3, 0)) {
+            FrameInterpolation_RecordCloseChild();
             return;
         }
-
         gSPDisplayList(gDisplayListHead++, D_0D0030F8);
+        FrameInterpolation_RecordCloseChild();
         gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     }
-    // @port Pop the transform id.
-    FrameInterpolation_RecordCloseChild();
 }
