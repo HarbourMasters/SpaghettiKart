@@ -727,9 +727,11 @@ void OThwomp::Draw(s32 cameraId) {
         if (objectIndex != NULL_OBJECT_ID) {
             object = &gObjectList[objectIndex];
             if ((object->state > 0) && (Behaviour == States::MOVE_FAR)) {
+                FrameInterpolation_RecordOpenChild("thwomp_particle2", (_idx << 12) | (i << 4) | cameraId);
                 rsp_set_matrix_transformation(object->pos, object->orientation, object->sizeScaling);
                 gSPVertex(gDisplayListHead++, (uintptr_t) D_0D005C00, 3, 0);
                 gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D006930);
+                FrameInterpolation_RecordCloseChild();
             }
         }
     }

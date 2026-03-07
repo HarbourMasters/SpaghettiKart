@@ -1,5 +1,6 @@
 #include "CheepCheep.h"
 #include "port/Game.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 #include "assets/models/tracks/banshee_boardwalk/banshee_boardwalk_data.h"
 #include "assets/models/common_data.h"
@@ -64,6 +65,7 @@ void OCheepCheep::Draw(s32 cameraId) { // func_8005217C
     object = &gObjectList[temp_a3];
     if (object->state >= 2) {
         if (is_obj_flag_status_active(temp_a3, 0x10) != 0) {
+            FrameInterpolation_RecordOpenChild("cheep_cheep", (temp_a3 << 4) | cameraId);
             rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
             func_800520C0(temp_a3);
 
@@ -80,6 +82,7 @@ void OCheepCheep::Draw(s32 cameraId) { // func_8005217C
             gSPLight(gDisplayListHead++, &D_800E45C0l[3].l[0], LIGHT_1);
             gSPLight(gDisplayListHead++, &D_800E45C0l[3].a, LIGHT_2);
             gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_banshee_boardwalk_dl_7650);
+            FrameInterpolation_RecordCloseChild();
         }
     }
 }
