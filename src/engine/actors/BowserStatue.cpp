@@ -14,6 +14,8 @@ extern "C" {
 Vtx gBowserStatueVtx[717];
 Gfx gBowserStatueGfx[162];
 
+size_t ABowserStatue::_count = 0;
+
 ABowserStatue::ABowserStatue(const SpawnParams& params) {
     Name = "Bowser Statue";
     ResourceName = "mk:bowser_statue";
@@ -26,6 +28,8 @@ ABowserStatue::ABowserStatue(const SpawnParams& params) {
     Scale = params.Scale.value_or(FVector(1.0f, 1.0f, 1.0f));
 
     mBehaviour = static_cast<ABowserStatue::Behaviour>(params.Behaviour.value_or(0));
+    _idx = _count;
+    _count += 1;
 }
 
 void ABowserStatue::Tick() {
@@ -44,7 +48,7 @@ void ABowserStatue::Draw(Camera *camera) {
     
     FVector pos = FVector(Pos[0] + 76, Pos[1], Pos[2] + 1846);
 
-    FrameInterpolation_RecordOpenChild("mk:bowser_statue", TAG_OBJECT(this));
+    FrameInterpolation_RecordOpenChild("mk:bowser_statue", TAG_OBJECT((_idx << 4) | camera->cameraId));
     ApplyMatrixTransformations(mtx, pos, *(IRotator*)Rot, Scale);
     AddObjectMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gDPSetCombineMode(gDisplayListHead++,G_CC_MODULATEIA, G_CC_MODULATEIA);

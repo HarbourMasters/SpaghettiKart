@@ -30,4 +30,6 @@ public:
     virtual bool IsMod() override;
 private:
     ABowserStatue::Behaviour mBehaviour;
+    static size_t _count;
+    size_t _idx;
 };
