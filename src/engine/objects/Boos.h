@@ -63,7 +63,7 @@ public:
     virtual void Tick() override;
     virtual void Draw(s32 cameraId) override;
     virtual void DrawEditorProperties() override;
-    void func_800523B8(s32 objectIndex, s32 arg1, u32 arg2);
+    void func_800523B8(s32 objectIndex, s32 cameraId, u32 arg2);
 
     void func_8007CA70(void);
     void func_8007C5B4(s32 objectIndex);

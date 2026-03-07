@@ -115,17 +115,19 @@ void OBoos::Draw(s32 cameraId) {
     }
 }
 
-void OBoos::func_800523B8(s32 objectIndex, s32 arg1, u32 arg2) {
+void OBoos::func_800523B8(s32 objectIndex, s32 cameraId, u32 arg2) {
     UNUSED s32 pad[2];
     Object* object;
-    Camera* camera = &camera1[arg1];
+    Camera* camera = &camera1[cameraId];
 
     object = &gObjectList[objectIndex];
     object->orientation[1] = func_800418AC(object->pos[0], object->pos[2], camera->pos);
     func_800484BC(object->pos, object->orientation, object->sizeScaling, object->primAlpha, (u8*) object->activeTLUT,
                   (u8*) object->activeTexture, object->vertex, 0x00000030, 0x00000028, 0x00000030, 0x00000028);
     if ((is_obj_flag_status_active(objectIndex, 0x00000020) != 0) && (arg2 < 0x15F91U)) {
+        FrameInterpolation_RecordOpenChild("boo_hoo", (objectIndex << 4) | cameraId);
         func_8004A630(&D_8018C830, object->pos, 0.4f);
+        FrameInterpolation_RecordCloseChild();
     }
 }
 

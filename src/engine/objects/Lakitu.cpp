@@ -118,8 +118,6 @@ void OLakitu::Draw(s32 cameraId) {
         return;
     }
 
-    FrameInterpolation_RecordOpenChild("Lakitu", (uintptr_t) this);
-
     objectIndex = mLakituId;
     camera = &cameras[cameraId];
     if (is_obj_flag_status_active(objectIndex, 0x00000010) != 0) {
@@ -130,6 +128,7 @@ void OLakitu::Draw(s32 cameraId) {
         if (func_80072354(objectIndex, 2) != 0) {
             s32 width = object->textureWidth;
             s32 height = object->textureHeight;
+            FrameInterpolation_RecordOpenChild("lakitu", (_idx << 4) | cameraId);
             rsp_set_matrix_transformation(object->pos, object->orientation, object->sizeScaling);
             gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007D78);
             s32 heightIndex;
@@ -140,10 +139,12 @@ void OLakitu::Draw(s32 cameraId) {
                                G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             gSPVertex(gDisplayListHead++, (uintptr_t) object->vertex, 4, 0);
             gSPDisplayList(gDisplayListHead++, (Gfx*) common_rectangle_display);
+            FrameInterpolation_RecordCloseChild();
             gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
         } else {
             s32 width = object->textureWidth;
             s32 height = object->textureHeight;
+            FrameInterpolation_RecordOpenChild("lakitu2", (_idx << 4) | cameraId);
             rsp_set_matrix_transformation(object->pos, object->orientation, object->sizeScaling);
             gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007E98);
             gDPSetAlphaCompare(gDisplayListHead++, G_AC_DITHER);
@@ -156,6 +157,7 @@ void OLakitu::Draw(s32 cameraId) {
             rsp_load_texture((u8*) object->activeTexture, width, height);
             gSPVertex(gDisplayListHead++, (uintptr_t) object->vertex, 4, 0);
             gSPDisplayList(gDisplayListHead++, (Gfx*) common_rectangle_display);
+            FrameInterpolation_RecordCloseChild();
             gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 
             gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
@@ -170,11 +172,12 @@ void OLakitu::Draw(s32 cameraId) {
                 var_f2 = -var_f2;
             }
             if ((var_f0 + var_f2) <= 200.0) {
+                FrameInterpolation_RecordOpenChild("lakitu3", (_idx << 4) | cameraId);
                 func_8004A630(&D_8018C0B0[cameraId], object->pos, 0.35f);
+                FrameInterpolation_RecordCloseChild();
             }
         }
     }
-    FrameInterpolation_RecordCloseChild();
 }
 
 void OLakitu::func_80079114(s32 objectIndex, s32 playerId, s32 arg2) {
