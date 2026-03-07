@@ -4765,7 +4765,7 @@ void func_8006538C(Player* player, s8 arg1, s16 arg2, s8 arg3) {
     }
 }
 
-void func_800658A0(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
+void func_800658A0(Player* player, s8 playerId, s16 idx, s8 screenId) {
     Vec3f sp54;
     Vec3s sp4C;
     s16 red;
@@ -4773,24 +4773,26 @@ void func_800658A0(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     s16 blue;
     s16 alpha;
 
-    if (player->particlePool0[arg2].isAlive == 1) {
-        red = player->particlePool0[arg2].red;
-        green = player->particlePool0[arg2].green;
-        blue = player->particlePool0[arg2].blue;
-        alpha = player->particlePool0[arg2].alpha;
-        sp54[0] = player->particlePool0[arg2].pos[0];
-        sp54[1] = player->particlePool0[arg2].pos[1];
-        sp54[2] = player->particlePool0[arg2].pos[2];
+    if (player->particlePool0[idx].isAlive == 1) {
+        red = player->particlePool0[idx].red;
+        green = player->particlePool0[idx].green;
+        blue = player->particlePool0[idx].blue;
+        alpha = player->particlePool0[idx].alpha;
+        sp54[0] = player->particlePool0[idx].pos[0];
+        sp54[1] = player->particlePool0[idx].pos[1];
+        sp54[2] = player->particlePool0[idx].pos[2];
         sp4C[0] = 0;
-        sp4C[1] = player->unk_048[arg3];
+        sp4C[1] = player->unk_048[screenId];
         sp4C[2] = 0;
-        func_800652D4(sp54, sp4C, player->particlePool0[arg2].scale * player->size);
+        FrameInterpolation_RecordOpenChild("some_ply_part4", (idx << 8) | (playerId << 4) | screenId);
+        func_800652D4(sp54, sp4C, player->particlePool0[idx].scale * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D48C, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0,
                             G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
                             G_TX_NOLOD);
         func_8004B35C(red, green, blue, alpha);
         gSPDisplayList(gDisplayListHead++, D_0D008E48);
+        FrameInterpolation_RecordCloseChild();
         gMatrixEffectCount += 1;
     }
 }
@@ -4958,7 +4960,7 @@ void func_800664E0(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     }
 }
 
-void func_80066714(Player* player, UNUSED s32 arg1, s16 arg2, s8 arg3) {
+UNUSED void func_80066714(Player* player, UNUSED s32 arg1, s16 arg2, s8 arg3) {
     Vec3f sp5C;
     Vec3s sp54;
     s16 red;
@@ -5147,7 +5149,7 @@ void func_80067280(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     }
 }
 
-void render_player_boost_spark_particles(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
+void render_player_boost_spark_particles(Player* player, s8 playerId, s16 arg2, s8 screenId) {
     Vec3f sp8C;
     Vec3s sp84;
     UNUSED s32 stackPadding[4];
@@ -5157,8 +5159,9 @@ void render_player_boost_spark_particles(Player* player, UNUSED s8 arg1, s16 arg
         sp8C[1] = player->particlePool3[arg2].pos[1];
         sp8C[2] = player->particlePool3[arg2].pos[2];
         sp84[0] = 0;
-        sp84[1] = player->unk_048[arg3];
+        sp84[1] = player->unk_048[screenId];
         sp84[2] = 0;
+        FrameInterpolation_RecordOpenChild("boost_spark_particle", TAG_SMOKE_DUST((arg2 << 8) | (playerId << 4) | screenId));
         func_800652D4(sp8C, sp84, player->particlePool3[arg2].scale * player->size);
         if (player->particlePool3[arg2].unk_010 == 1) {
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
@@ -5175,6 +5178,7 @@ void render_player_boost_spark_particles(Player* player, UNUSED s8 arg1, s16 arg
             func_8004B72C(0x000000FF, 0x000000FF, 0x000000DF, 0x000000FF, 0x0000005F, 0, 0x00000060);
             gSPDisplayList(gDisplayListHead++, D_0D008E48);
         }
+        FrameInterpolation_RecordCloseChild();
         gMatrixEffectCount += 1;
     }
 }
@@ -5964,7 +5968,7 @@ void render_balloon(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
     gMatrixEffectCount += 1;
 }
 
-void func_8006C0C8(Vec3f arg0, f32 arg1, s32 rgb, s16 alpha) {
+UNUSED void func_8006C0C8(Vec3f arg0, f32 arg1, s32 rgb, s16 alpha) {
     Vec3f sp4C;
     Vec3s sp44;
     s16 red;
@@ -6454,15 +6458,15 @@ void func_8006D474(Player* player, s8 playerId, s8 screenId) {
     }
 }
 
-void func_8006DC54(Player* player, s8 arg1, s8 arg2) {
+void func_8006DC54(Player* player, s8 playerId, s8 screenId) {
     s16 i;
     s32 bitwiseMask;
 
-    bitwiseMask = SIDE_OF_KART << (arg2 * 4);
+    bitwiseMask = SIDE_OF_KART << (screenId * 4);
     if (bitwiseMask == (player->unk_002 & bitwiseMask)) {
         for (i = 0; i < 10; i++) {
             if (player->particlePool0[i].type == 7) {
-                func_800658A0(player, arg1, i, arg2);
+                func_800658A0(player, playerId, i, screenId);
             }
         }
     }
