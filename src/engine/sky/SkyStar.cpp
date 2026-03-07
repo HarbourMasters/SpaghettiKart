@@ -107,7 +107,7 @@ void SkyStar::Draw(ScreenContext* screen, s32 arg0) { // render_stars
     s32 posY = arg0 - mY;
     func_8004B414(255, 255, 255, 255);
     if (mVisible) {
-        FrameInterpolation_RecordOpenChild("render_stars", TAG_CLOUDS((_idx << 4) | (screen - gScreenOneCtx)));
+        FrameInterpolation_RecordOpenChild("render_stars", TAG_CLOUDS((_idx << 4) | (screen - gScreenContexts)));
 
         func_80044DA0((u8*)mTexture, mTextureWidth, mTextureHeight);
 

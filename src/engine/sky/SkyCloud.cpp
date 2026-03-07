@@ -95,7 +95,7 @@ void SkyCloud::Draw(ScreenContext* screen, s32 arg0) { // render_clouds
         return;
     }
     if (mVisible) {
-        FrameInterpolation_RecordOpenChild("render_clouds", TAG_CLOUDS((_idx << 4) | (mScreen - gScreenOneCtx)));
+        FrameInterpolation_RecordOpenChild("render_clouds", TAG_CLOUDS((_idx << 4) | (mScreen - gScreenContexts)));
 
         if (D_8018D228 != mCloudVariant) {
             D_8018D228 = mCloudVariant;

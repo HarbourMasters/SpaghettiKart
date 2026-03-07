@@ -85,7 +85,7 @@ void SkySnow::Draw(ScreenContext* screen, s32 arg0) { // render_clouds
     }
     
     if (mVisible) {
-        FrameInterpolation_RecordOpenChild("render_snow", TAG_CLOUDS((_idx << 4) | (screen - gScreenOneCtx)));
+        FrameInterpolation_RecordOpenChild("render_snow", TAG_CLOUDS((_idx << 4) | (screen - gScreenContexts)));
 
         if (D_8018D228 != mCloudVariant) {
             D_8018D228 = mCloudVariant;

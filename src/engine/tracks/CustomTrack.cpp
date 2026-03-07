@@ -290,7 +290,7 @@ void CustomTrack::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, 
     for (TrackSections& item : mTranslucentItems) {
         Mat4 matrix;
         FVector pos = {item.location[0], item.location[1], item.location[2]};
-        FrameInterpolation_RecordOpenChild("translucent_obj", item.crc);
+        FrameInterpolation_RecordOpenChild("translucent_obj", (item.crc << 4) | screen - gScreenContexts);
         ApplyMatrixTransformations(matrix, pos, IRotator(0, 0, 0), FVector(1, 1, 1));
         AddObjectMatrix(matrix, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, (Gfx*) ResourceGetDataByCrc(item.crc));
@@ -301,9 +301,11 @@ void CustomTrack::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, 
     for (TrackSections& item : mTranslucentNoZBufferItems) {
         Mat4 matrix;
         FVector pos = {item.location[0], item.location[1], item.location[2]};
+        FrameInterpolation_RecordOpenChild("translucent_no_z", (item.crc << 4) | screen - gScreenContexts);
         ApplyMatrixTransformations(matrix, pos, IRotator(0, 0, 0), FVector(1, 1, 1));
         AddObjectMatrix(matrix, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, (Gfx*) ResourceGetDataByCrc(item.crc));
+        FrameInterpolation_RecordCloseChild();
     }
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER);
 }
