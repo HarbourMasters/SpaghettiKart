@@ -8,7 +8,9 @@
 class AWarioSign : public AActor {
 public:
 
-    virtual ~AWarioSign() = default;
+    virtual ~AWarioSign() {
+        _count -= 1;
+    };
     explicit AWarioSign(const SpawnParams& params);
 
     // This is simply a helper function to keep Spawning code clean
@@ -27,4 +29,7 @@ public:
     virtual bool IsMod() override;
     virtual void Tick() override;
     virtual void Draw(Camera*) override;
+private:
+    static size_t _count;
+    size_t _idx;
 };

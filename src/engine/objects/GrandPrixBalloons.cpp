@@ -104,7 +104,7 @@ void OGrandPrixBalloons::Draw(s32 cameraId) {
     }
 }
 
-void OGrandPrixBalloons::func_80053D74(s32 objectIndex, UNUSED s32 arg1, s32 vertexIndex, s32 index) {
+void OGrandPrixBalloons::func_80053D74(s32 objectIndex, s32 cameraId, s32 vertexIndex, s32 index) {
     Object* object;
 
     Vtx* vtx = (Vtx*) LOAD_ASSET_RAW(common_vtx_hedgehog);
@@ -113,7 +113,7 @@ void OGrandPrixBalloons::func_80053D74(s32 objectIndex, UNUSED s32 arg1, s32 ver
     if (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX) {
         object = &gObjectList[objectIndex];
 
-        FrameInterpolation_RecordOpenChild("Balloon", TAG_ITEM_ADDR((objectIndex << 7 | index)));
+        FrameInterpolation_RecordOpenChild("balloon", TAG_ITEM_ADDR((objectIndex << 11 | (cameraId << 7) | index)));
 
         D_80183E80[2] = (s16) (object->unk_084[6] + 0x8000);
         rsp_set_matrix_transformation(object->pos, (u16*) D_80183E80, object->sizeScaling);

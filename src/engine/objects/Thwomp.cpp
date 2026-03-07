@@ -170,8 +170,6 @@ void OThwomp::Tick60fps() { // func_80081210
 
     if (_idx == 0) {
         for (var_s4 = 0; var_s4 < gObjectParticle2_SIZE; var_s4++) {
-            FrameInterpolation_RecordOpenChild("Thwomp_smoke", (uintptr_t) (var_s4 << 5));
-
             objectIndex = gObjectParticle2[var_s4];
             if (objectIndex == DELETED_OBJECT_ID) {
                 continue;
@@ -184,9 +182,6 @@ void OThwomp::Tick60fps() { // func_80081210
                 continue;
             }
             delete_object_wrapper(&gObjectParticle2[var_s4]);
-
-            // @port Pop the transform id.
-            FrameInterpolation_RecordCloseChild();
         }
     }
 }
@@ -753,7 +748,7 @@ void OThwomp::Draw(s32 cameraId) {
             if ((object->state >= 2) && (Behaviour == States::MOVE_AND_ROTATE)) {
                 func_8004B138(0x000000FF, 0x000000FF, 0x000000FF, (s32) object->primAlpha);
                 D_80183E80[1] = func_800418AC(object->pos[0], object->pos[2], camera->pos);
-                FrameInterpolation_RecordOpenChild("thwomp_particle", (i << 16) | (_idx << 6) | cameraId);
+                FrameInterpolation_RecordOpenChild("thwomp_particle", (_idx << 12) | (i << 4) | cameraId);
                 func_800431B0(object->pos, D_80183E80, object->sizeScaling, (Vtx*) D_0D005AE0);
                 FrameInterpolation_RecordCloseChild();
             }

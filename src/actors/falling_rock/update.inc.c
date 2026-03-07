@@ -58,6 +58,8 @@ void update_actor_falling_rocks(struct FallingRock* rock) {
     f32 pad0;
     f32 pad1;
 
+    return; // No longer used! Use C++ actor
+
     if (rock->respawnTimer != 0) {
         rock->respawnTimer -= 1;
         return;

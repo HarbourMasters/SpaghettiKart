@@ -24,6 +24,7 @@ size_t AFinishline::_count = 0;
 AFinishline::AFinishline(const SpawnParams& params) : AActor(params) {
     Name = "Finishline";
     ResourceName = "mk:finishline";
+    _idx = _count;
 
     if (params.Location.has_value()) {
         FVector pos = params.Location.value_or(FVector(0, 0, 0));
@@ -47,6 +48,8 @@ AFinishline::AFinishline(const SpawnParams& params) : AActor(params) {
     Flags = -0x8000 | 0x4000;
 
     BoundingBoxSize = 0.0f;
+
+    _count +=1;
 }
 
 void AFinishline::BeginPlay() {
@@ -70,7 +73,7 @@ void AFinishline::Draw(Camera *camera) {
         return;
     }
 
-    FrameInterpolation_RecordOpenChild("Finishline", _count);
+    FrameInterpolation_RecordOpenChild("finishline", (_idx << 4) | (camera->cameraId));
 
     mtxf_pos_rotation_xyz(mtx, Pos, Rot);
 

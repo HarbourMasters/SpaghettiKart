@@ -64,8 +64,7 @@ void OTrashBin::Draw(s32 cameraId) {
             Vec3f Pos = { _pos.x + 63, _pos.y + 12, _pos.z + 25 };
             Vec3s Rot = { 0, 0x4000, 0 };
 
-            // @port: Tag the transform.
-            FrameInterpolation_RecordOpenChild("OTrashBin", (uintptr_t) object);
+            FrameInterpolation_RecordOpenChild("OTrashBin", (_objectIndex << 4) | cameraId);
 
             mtxf_pos_rotation_xyz(mtx, Pos, Rot);
             //mtxf_scale(mtx, 1.0f);
@@ -73,7 +72,6 @@ void OTrashBin::Draw(s32 cameraId) {
                 gSPDisplayList(gDisplayListHead++, BinMod);
             }
 
-            // @port Pop the transform id.
             FrameInterpolation_RecordCloseChild();
         }
     }

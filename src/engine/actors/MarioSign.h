@@ -13,7 +13,9 @@ extern "C" {
 class AMarioSign : public AActor {
 public:
 
-    virtual ~AMarioSign() = default;
+    virtual ~AMarioSign() {
+        _count -= 1;
+    };
     explicit AMarioSign(const SpawnParams& params);
 
     // This is simply a helper function to keep Spawning code clean
@@ -33,4 +35,7 @@ public:
     virtual void SetSpawnParams(SpawnParams& params) override;
     virtual void Tick() override;
     virtual void Draw(Camera*) override;
+private:
+    static size_t _count;
+    size_t _idx;
 };

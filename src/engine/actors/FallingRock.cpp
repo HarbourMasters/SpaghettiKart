@@ -24,6 +24,7 @@ AFallingRock::AFallingRock(SpawnParams params) : AActor(params) {
     Type = ACTOR_FALLING_ROCK;
     Name = "Falling Rock";
     ResourceName = "mk:falling_rock";
+    _idx = _count;
 
     FVector pos = params.Location.value_or(FVector(0, 0, 0));
     TimerLength = params.Behaviour.value_or(80);
@@ -179,7 +180,7 @@ void AFallingRock::Draw(Camera* camera) {
             sp98[2] = 0;
             sp8C[1] = height + 2.0f;
 
-            FrameInterpolation_RecordOpenChild("rock_shadow", (uintptr_t) this);
+            FrameInterpolation_RecordOpenChild("rock_shadow", (_idx << 4) | camera->cameraId);
             mtxf_pos_rotation_xyz(mtx, sp8C, sp98);
             if (render_set_position(mtx, 0) == 0) {
                 FrameInterpolation_RecordCloseChild();
@@ -190,18 +191,15 @@ void AFallingRock::Draw(Camera* camera) {
         }
     }
 
-    // @port: Tag the transform.
-    FrameInterpolation_RecordOpenChild("rock", (uintptr_t) this);
+    FrameInterpolation_RecordOpenChild("rock", (_idx << 4) | camera->cameraId);
 
     mtxf_pos_rotation_xyz(mtx, Pos, Rot);
     if (render_set_position(mtx, 0) == 0) {
-        // @port Pop the transform id.
         FrameInterpolation_RecordCloseChild();
         return;
     }
     gSPDisplayList(gDisplayListHead++, (Gfx*)d_course_choco_mountain_dl_falling_rock);
 
-    // @port Pop the transform id.
     FrameInterpolation_RecordCloseChild();
 }
 

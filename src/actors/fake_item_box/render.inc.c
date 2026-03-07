@@ -25,7 +25,15 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
     f32 temp_f2_2;
     f32 someMultiplier;
 
-    FrameInterpolation_RecordOpenChild("Fake Item Box", TAG_ITEM_ADDR((((struct Actor*)fakeItemBox) - gActorList) << 5) | (camera - cameras));
+    size_t actorIdx = CM_FindActorIndex((struct Actor*)fakeItemBox);
+    if (-1 == actorIdx) {
+        printf("[render_actor_fake_item_box] Could not find fake item box for FI, skipping!\n");
+        return;
+    }
+
+    u32 uniqueIdentifier = TAG_ITEM_ADDR((actorIdx << 4) | (camera - cameras));
+
+    FrameInterpolation_RecordOpenChild("fake_item_box", uniqueIdentifier);
 
     if (is_within_render_distance(camera->pos, fakeItemBox->pos, camera->rot[1], 2500.0f, camera->fieldOfView,
                                   1000000.0f) < 0 &&
@@ -58,7 +66,7 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
         gSPDisplayList(gDisplayListHead++, common_model_fake_itembox);
         FrameInterpolation_RecordCloseChild();
 
-        FrameInterpolation_RecordOpenChild("fake_item_box_part2", TAG_ITEM_ADDR((((struct Actor*)fakeItemBox) - gActorList) << 5) | (camera - cameras));
+        FrameInterpolation_RecordOpenChild("fake_item_box_part2", uniqueIdentifier);
 
         mtxf_pos_rotation_xyz(someMatrix2, fakeItemBox->pos, fakeItemBox->rot);
         mtxf_scale(someMatrix2, fakeItemBox->sizeScaling);
@@ -129,7 +137,7 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
         someVec[0] = temp_f2_2;
         someVec[1] = 2.3f * thing;
         someVec[2] = temp_f12;
-        FrameInterpolation_RecordOpenChild("fake_item_box_part3", TAG_ITEM_ADDR((((struct Actor*)fakeItemBox) - gActorList) << 5) | (camera - cameras));
+        FrameInterpolation_RecordOpenChild("fake_item_box_part3", uniqueIdentifier);
 
         add_translate_mat4_vec3f(someMatrix2, someMatrix3, someVec);
 
@@ -144,7 +152,7 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
         someVec[0] = temp_f2_2;
         someVec[1] = 1.2f * thing;
         someVec[2] = temp_f0_2;
-        FrameInterpolation_RecordOpenChild("fake_item_box_part4", TAG_ITEM_ADDR((((struct Actor*)fakeItemBox) - gActorList) << 5) | (camera - cameras));
+        FrameInterpolation_RecordOpenChild("fake_item_box_part4", uniqueIdentifier);
         add_translate_mat4_vec3f(someMatrix2, someMatrix3, someVec);
 
         if (!render_set_position(someMatrix3, 0)) {
@@ -163,7 +171,7 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
         someVec[0] = 0.0f;
         someVec[1] = 1.8f * thing;
         someVec[2] = -1.0f * thing;
-        FrameInterpolation_RecordOpenChild("fake_item_box_part5", TAG_ITEM_ADDR((((struct Actor*)fakeItemBox) - gActorList) << 5) | (camera - cameras));
+        FrameInterpolation_RecordOpenChild("fake_item_box_part5", uniqueIdentifier);
 
         add_translate_mat4_vec3f(someMatrix2, someMatrix3, someVec);
 
@@ -173,7 +181,7 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
         }
         gSPDisplayList(gDisplayListHead++, D_0D0031E8);
         FrameInterpolation_RecordCloseChild();
-        FrameInterpolation_RecordOpenChild("fake_item_box_part6", TAG_ITEM_ADDR((((struct Actor*)fakeItemBox) - gActorList) << 5) | (camera - cameras));
+        FrameInterpolation_RecordOpenChild("fake_item_box_part6", uniqueIdentifier);
 
         temp_f0_3 = -0.8f * thing;
         someVec[0] = temp_f0_3;
@@ -188,7 +196,7 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
 
         gSPDisplayList(gDisplayListHead++, D_0D003188);
         FrameInterpolation_RecordCloseChild();
-        FrameInterpolation_RecordOpenChild("fake_item_box_part7", TAG_ITEM_ADDR((((struct Actor*)fakeItemBox) - gActorList) << 5) | (camera - cameras));
+        FrameInterpolation_RecordOpenChild("fake_item_box_part7", uniqueIdentifier);
 
         someVec[0] = temp_f0_3;
         someVec[1] = temp_f2;

@@ -14,12 +14,15 @@ extern "C" {
 #include "collision.h"
 }
 
+size_t AMarioSign::_count = 0;
+
 AMarioSign::AMarioSign(const SpawnParams& params) : AActor(params) {
     Name = "Mario Sign";
     ResourceName = "mk:mario_sign";
     Model = d_course_mario_raceway_dl_sign;
 
     Speed = params.Speed.value_or(182);
+    _idx = _count;
 
     FVector pos = params.Location.value_or(FVector(0, 0, 0));
     Pos[0] = pos.x * gTrackDirection;
@@ -36,6 +39,8 @@ AMarioSign::AMarioSign(const SpawnParams& params) : AActor(params) {
     func_802AAAAC(&Unk30);
     Flags = -0x8000;
     Flags |= 0x4000;
+
+    _count += 1;
 }
 
 bool AMarioSign::IsMod() {
@@ -73,7 +78,7 @@ void AMarioSign::Draw(Camera *camera) {
         unk = MAX(unk, 0.0f);
     }
     if (!(unk < 0.0f)) {
-        FrameInterpolation_RecordOpenChild("mk:mario_sign", TAG_OBJECT(this));
+        FrameInterpolation_RecordOpenChild("mk:mario_sign", TAG_OBJECT((_idx << 4) | camera->cameraId));
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
         mtxf_pos_rotation_xyz(sp40, Pos, Rot);

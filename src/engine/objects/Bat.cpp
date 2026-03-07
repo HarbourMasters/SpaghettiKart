@@ -126,7 +126,7 @@ void OBat::Draw(s32 cameraId) {
 
             if ((gObjectList[objectIndex].state >= 2) && (gMatrixHudCount < 0x2EF)) {
                 // @port: Tag the transform.
-                FrameInterpolation_RecordOpenChild("Bat set 1", (uintptr_t) &gObjectList[objectIndex]);
+                FrameInterpolation_RecordOpenChild("bat_1", (objectIndex << 4) | cameraId);
 
                 D_80183E80[1] =
                     func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], cam->pos);
@@ -149,7 +149,7 @@ void OBat::Draw(s32 cameraId) {
 
             if ((gObjectList[objectIndex].state >= 2) && (gMatrixHudCount < 0x2EF)) {
                 // @port: Tag the transform.
-                FrameInterpolation_RecordOpenChild("Bat set 2", (uintptr_t) &gObjectList[objectIndex]);
+                FrameInterpolation_RecordOpenChild("bat_2", (objectIndex << 4) | cameraId);
 
                 D_80183E80[1] =
                     func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], cam->pos);

@@ -37,7 +37,8 @@ public:
     virtual void DrawEditorProperties() override;
     void Reset();
 
-    private:
+private:
     uint32_t RespawnTimer = 0;
     static size_t _count;
+    size_t _idx;
 };

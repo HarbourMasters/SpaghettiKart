@@ -153,11 +153,11 @@ f32 gWaterLevel;
 f32 gWaterVelocity;
 s16 gPlayerPositionLUT[8]; // Player index at each position
 u16 gNumPermanentActors;
-s32 code_800029B0_bss_pad2[44];
+//s32 code_800029B0_bss_pad2[44];
 
-struct Actor gActorList[100];
+//struct Actor gActorList[100]; use CM_FindActorIndex(actor) instead
 //! @warning todo: Is this apart of the actor array?
-UNUSED u8 D_80162578[sizeof(struct Actor)];
+//UNUSED u8 D_80162578[sizeof(struct Actor)];
 
 s16 gDebugPathCount;
 s16 sIsController1Unplugged;

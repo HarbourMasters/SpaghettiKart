@@ -2635,7 +2635,6 @@ void draw_simplified_lap_count(s32 playerId) {
 }
 
 void func_8004E800(s32 playerId) {
-    // @port: Tag the transform.
     FrameInterpolation_RecordOpenChild("Player place HUD", playerId);
     if (playerHUD[playerId].unk_81 != 0) {
         if (playerHUD[playerId].lapCount != 3) {
@@ -2652,7 +2651,6 @@ void func_8004E800(s32 playerId) {
                           0x00000040, 0x00000080, 0x00000040);
         }
     }
-    // @port Pop the transform id.
     FrameInterpolation_RecordCloseChild();
 }
 
@@ -3099,8 +3097,7 @@ void func_80050320(void) {
                     var_a0 = 1;
                 }
 
-                // @port: Tag the transform.
-                FrameInterpolation_RecordOpenChild("ranking portraits", i | var_a0 << 16);
+                FrameInterpolation_RecordOpenChild("ranking_portraits", (var_a0 << 4) | i);
 
                 temp_v0 = gGPCurrentRacePlayerIdByRank[i];
                 characterId = gGPCurrentRaceCharacterIdByRank[i];
@@ -3111,7 +3108,6 @@ void func_80050320(void) {
                     func_8004FDB4(D_8018D028[i], D_8018D050[i], i, lapCount, characterId, D_8018D3E0, 0, var_a0, 0);
                 }
 
-                // @port Pop the transform id.
                 FrameInterpolation_RecordCloseChild();
             }
         }
@@ -3123,8 +3119,7 @@ void func_80050320(void) {
                     var_a0 = 1;
                 }
 
-                // @port: Tag the transform.
-                FrameInterpolation_RecordOpenChild("ranking portraits 2", i | var_a0 << 16);
+                FrameInterpolation_RecordOpenChild("ranking_portraits2", (var_a0 << 4) | i);
 
                 temp_v0 = gGPCurrentRacePlayerIdByRank[i];
                 // ????
@@ -3136,7 +3131,6 @@ void func_80050320(void) {
                     func_8004FDB4(D_8018D028[i], D_8018D050[i], i, lapCount, characterId, 0x000000FF, 0, var_a0, 1);
                 }
 
-                // @port Pop the transform id.
                 FrameInterpolation_RecordCloseChild();
             }
         }
@@ -3435,8 +3429,7 @@ void render_object_leaf_particle(UNUSED s32 cameraId) {
     for (i = 0; i < gLeafParticle_SIZE; i++) {
         leafIndex = gLeafParticle[i];
 
-        // @port: Tag the transform.
-        FrameInterpolation_RecordOpenChild("Leaves", leafIndex);
+        FrameInterpolation_RecordOpenChild("leaves", (leafIndex << 4) | cameraId);
 
         if (leafIndex != -1) {
             object = &gObjectList[leafIndex];
@@ -3446,14 +3439,13 @@ void render_object_leaf_particle(UNUSED s32 cameraId) {
             }
         }
 
-        // @port Pop the transform id.
         FrameInterpolation_RecordCloseChild();
     }
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void render_object_snowflakes_particles(void) {
+void render_object_snowflakes_particles(s32 cameraId) {
     size_t i;
     s32 snowflakeIndex;
 
@@ -3463,15 +3455,13 @@ void render_object_snowflakes_particles(void) {
     for (i = 0; i < NUM_SNOWFLAKES; i++) {
         snowflakeIndex = gObjectParticle1[i];
 
-        // @port: Tag the transform.
-        FrameInterpolation_RecordOpenChild("SnowFlakes", snowflakeIndex);
+        FrameInterpolation_RecordOpenChild("snowFlakes", (snowflakeIndex << 4) | cameraId);
 
         if (gObjectList[snowflakeIndex].state >= 2) {
             rsp_set_matrix_gObjectList(snowflakeIndex);
             gSPDisplayList(gDisplayListHead++, D_0D006980);
         }
 
-        // @port Pop the transform id.
         FrameInterpolation_RecordCloseChild();
     }
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
@@ -3578,20 +3568,22 @@ void func_800520C0(s32 arg0) {
     }
 }
 
-void func_8005285C(s32 arg0) {
+void func_8005285C(s32 cameraId, s32 playerId) {
     Player* temp_v0;
 
-    temp_v0 = &gPlayerOne[arg0];
+    temp_v0 = &gPlayerOne[playerId];
     D_80183E40[0] = temp_v0->pos[0];
     D_80183E40[1] = temp_v0->pos[1];
     D_80183E40[2] = temp_v0->pos[2];
     D_80183E80[0] = 0;
     D_80183E80[1] = 0;
     D_80183E80[2] = 0;
+    FrameInterpolation_RecordOpenChild("ice_block", (playerId << 4) | cameraId);
     func_80043500(D_80183E40, D_80183E80, 0.02f, d_course_sherbet_land_dl_ice_block);
+    FrameInterpolation_RecordCloseChild();
 }
 
-void func_800528EC(s32 playerId) {
+void func_800528EC(s32 cameraId) {
     s32 var_s3;
     s32 objectIndex;
     Object* object;
@@ -3614,9 +3606,11 @@ void func_800528EC(s32 playerId) {
             if (objectIndex != NULL_OBJECT_ID) {
                 object = &gObjectList[objectIndex];
                 if (object->state > 0) {
+                    FrameInterpolation_RecordOpenChild("ice_block2", (var_s3 << 4) | cameraId);
                     rsp_set_matrix_transformation(object->pos, D_80183E80, object->sizeScaling);
                     gSPVertex(gDisplayListHead++, D_0D005BD0, 3, 0);
                     gSPDisplayList(gDisplayListHead++, D_0D006930);
+                    FrameInterpolation_RecordCloseChild();
                 }
             }
         }
@@ -3625,11 +3619,13 @@ void func_800528EC(s32 playerId) {
             objectIndex = gObjectParticle2[var_s3];
             if (objectIndex != NULL_OBJECT_ID) {
                 object = &gObjectList[objectIndex];
-                if ((object->state > 0) && (playerId == object->unk_084[7]) &&
+                if ((object->state > 0) && (cameraId == object->unk_084[7]) &&
                     (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+                    FrameInterpolation_RecordOpenChild("ice_block3", (var_s3 << 4) | cameraId);
                     rsp_set_matrix_transformation(object->pos, D_80183E80, object->sizeScaling);
                     gSPVertex(gDisplayListHead++, D_0D005BD0, 3, 0);
                     gSPDisplayList(gDisplayListHead++, D_0D006930);
+                    FrameInterpolation_RecordCloseChild();
                 }
             }
         }
@@ -3639,7 +3635,7 @@ void func_800528EC(s32 playerId) {
     gSPTexture(gDisplayListHead++, 0x0001, 0x0001, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void render_ice_block(s32 playerId) {
+void render_ice_block(s32 cameraId) {
     s32 objectIndex;
     // Lights1 D_800E4620l = *(Lights1 *) LOAD_ASSET(D_800E4620);
     D_800E4620.l[0].l.dir[0] = D_80165840[0];
@@ -3651,14 +3647,14 @@ void render_ice_block(s32 playerId) {
         objectIndex = gIndexLakituList[i];
         if (objectIndex) {}
         if (func_80072320(objectIndex, 4) != false) {
-            func_8005285C(i);
+            func_8005285C(cameraId, i);
         }
         func_80072320(objectIndex, 0x00000010);
     }
-    func_800528EC(playerId);
+    func_800528EC(cameraId);
 }
 
-void func_80052D70(s32 playerId) {
+void func_80052D70(s32 cameraId, s32 playerId) {
     s32 test;
     Player* temp_v1;
 
@@ -3668,11 +3664,13 @@ void func_80052D70(s32 playerId) {
         D_80183E40[0] = temp_v1->pos[0];
         D_80183E40[1] = temp_v1->unk_074 - 6.5;
         D_80183E40[2] = temp_v1->pos[2];
+        FrameInterpolation_RecordOpenChild("some_snow_thing", (playerId << 4) | cameraId);
         func_800435A0(D_80183E40, (u16*) D_80183E80, 0.02f, d_course_sherbet_land_dl_ice_block, 0x000000FF);
+        FrameInterpolation_RecordCloseChild();
     }
 }
 
-void func_80052E30(UNUSED s32 arg0) {
+void func_80052E30(s32 cameraId) {
     s32 var_s0;
     D_800E4620.l[0].l.dir[0] = D_80165840[0];
     D_800E4620.l[0].l.dir[1] = D_80165840[1];
@@ -3684,7 +3682,7 @@ void func_80052E30(UNUSED s32 arg0) {
     D_80183E80[2] = 0;
     if (gPlayerCount == 1) {
         for (var_s0 = 0; var_s0 < gPlayerCountSelection1; var_s0++) {
-            func_80052D70(var_s0);
+            func_80052D70(cameraId, var_s0);
         }
     }
 }
@@ -3800,8 +3798,7 @@ void render_object_bowser_flame_particle(s32 objectIndex, s32 cameraId) {
     if (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX) {
         object = &gObjectList[objectIndex];
 
-        // @port: Tag the transform.
-        FrameInterpolation_RecordOpenChild("Bowser Statue Flame", TAG_ITEM_ADDR(object));
+        FrameInterpolation_RecordOpenChild("bowser_statue_flame", TAG_ITEM_ADDR((objectIndex << 4) | cameraId));
         if (object->unk_0D5 == 9) {
             func_8004B72C(0xFF, (s32) object->type, 0, (s32) object->unk_0A2, 0, 0, (s32) object->primAlpha);
         } else {
@@ -3810,7 +3807,6 @@ void render_object_bowser_flame_particle(s32 objectIndex, s32 cameraId) {
         D_80183E80[1] = func_800418AC(object->pos[0], object->pos[2], camera->pos);
         func_800431B0(object->pos, D_80183E80, object->sizeScaling, D_0D005AE0);
 
-        // @port Pop the transform id.
         FrameInterpolation_RecordCloseChild();
     }
 }
@@ -3873,8 +3869,8 @@ void render_object_smoke_particles(s32 cameraId) {
         objectIndex = gObjectParticle4[i];
         if (objectIndex != NULL_OBJECT_ID) {
             object = &gObjectList[objectIndex];
-            // @port: Tag the transform.
-            FrameInterpolation_RecordOpenChild("SmokeParticles", (uintptr_t) object);
+
+            FrameInterpolation_RecordOpenChild("smokes_particles", (uintptr_t) (objectIndex << 4) | cameraId);
             if (object->state >= 2) {
                 if (object->unk_0D8 == 3) {
                     func_8008A364(objectIndex, cameraId, 0x4000U, 0x00000514);
@@ -3885,7 +3881,6 @@ void render_object_smoke_particles(s32 cameraId) {
                     func_8005477C(objectIndex, object->unk_0D8, sp54->pos);
                 }
             }
-            // @port Pop the transform id.
             FrameInterpolation_RecordCloseChild();
         }
     }
@@ -3894,14 +3889,13 @@ void render_object_smoke_particles(s32 cameraId) {
 UNUSED void func_800557AC() {
 }
 
-void func_800557B4(s32 objectIndex, u32 arg1, u32 arg2) {
+void func_800557B4(s32 objectIndex, s32 cameraId, u32 arg1, u32 arg2) {
     Vec3f sp34;
     Object* object;
 
     object = &gObjectList[objectIndex];
 
-    // @port: Tag the transform.
-    FrameInterpolation_RecordOpenChild("Penguin", (uintptr_t) object);
+    FrameInterpolation_RecordOpenChild("penguin", (objectIndex << 4) | cameraId);
     if (object->state >= 2) {
         if (is_obj_flag_status_active(objectIndex, 0x00000020) != 0) {
             if (func_80072320(objectIndex, 4) != 0) {
@@ -3925,7 +3919,6 @@ void func_800557B4(s32 objectIndex, u32 arg1, u32 arg2) {
                               (s16) object->textureListIndex);
     }
 
-    // @port Pop the transform id.
     FrameInterpolation_RecordCloseChild();
 }
 
@@ -3956,7 +3949,7 @@ void render_object_neon(s32 cameraId) {
         objectIndex = indexObjectList1[i];
         if (D_8018E838[cameraId] == 0) {
             object = &gObjectList[objectIndex];
-            FrameInterpolation_RecordOpenChild(object, TAG_OBJECT((objectIndex << 8) + i));
+            FrameInterpolation_RecordOpenChild("neon_sign", TAG_OBJECT((objectIndex << 8) | (cameraId << 4) | i));
             if ((object->state >= 2) && (is_obj_index_flag_status_inactive(objectIndex, 0x00080000) != 0) &&
                 (is_object_visible_on_camera(objectIndex, camera, 0x2AABU) != 0)) {
                 object->orientation[1] = angle_between_object_camera(objectIndex, camera);

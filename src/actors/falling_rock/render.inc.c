@@ -17,6 +17,8 @@ void render_actor_falling_rock(Camera* camera, struct FallingRock* rock) {
     f32 height;
     UNUSED s32 pad[4];
 
+    return; // No longer used. Use the C++ actor!
+
     if (rock->respawnTimer != 0) {
         return;
     }

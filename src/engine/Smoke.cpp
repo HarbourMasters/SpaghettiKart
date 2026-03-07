@@ -89,7 +89,7 @@ void TrainSmokeDraw(s32 cameraId) {
 
             if ((train->SomeFlags != 0) && (is_particle_on_screen(train->Locomotive.position, camera, 0x4000U) != 0)) {
                 for (size_t i = 0; i < 128; i++) {
-                    FrameInterpolation_RecordOpenChild("TrainSmokeParticle", train->SmokeParticles[i]);
+                    FrameInterpolation_RecordOpenChild("train_smoke_particle", (train->SmokeParticles[i] << 4) | camera->cameraId);
                     render_object_train_smoke_particle(train->SmokeParticles[i], cameraId);
                     FrameInterpolation_RecordCloseChild();
                 }
@@ -103,7 +103,7 @@ void TrainSmokeDraw(s32 cameraId) {
             D_80183E80[2] = 0x8000;
             if ((boat->SomeFlags != 0) && (is_particle_on_screen(boat->Position, camera, 0x4000U) != 0)) {
                 for (size_t i = 0; i < gObjectParticle2_SIZE; i++) {
-                    FrameInterpolation_RecordOpenChild("BoatSmokeParticle", boat->SmokeParticles[i]);
+                    FrameInterpolation_RecordOpenChild("boat_smoke_particle", (boat->SmokeParticles[i] << 4) | camera->cameraId);
                     render_object_paddle_boat_smoke_particle(boat->SmokeParticles[i], cameraId);
                     FrameInterpolation_RecordCloseChild();
                 }

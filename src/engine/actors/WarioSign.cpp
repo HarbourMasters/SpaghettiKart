@@ -13,6 +13,8 @@ extern "C" {
 #include "collision.h"
 }
 
+size_t AWarioSign::_count = 0;
+
 AWarioSign::AWarioSign(const SpawnParams& params) : AActor(params) {
     Type = ACTOR_WARIO_SIGN;
     Name = "Wario Sign";
@@ -20,6 +22,7 @@ AWarioSign::AWarioSign(const SpawnParams& params) : AActor(params) {
     Model = d_course_wario_stadium_dl_sign;
 
     Speed = params.Speed.value_or(182);
+    _idx = _count;
 
     FVector pos = params.Location.value_or(FVector(0, 0, 0));
     Pos[0] = pos.x * gTrackDirection;
@@ -35,6 +38,8 @@ AWarioSign::AWarioSign(const SpawnParams& params) : AActor(params) {
 
     func_802AAAAC(&Unk30);
     Flags = -0x8000;
+
+    _count += 1;
 }
 
 bool AWarioSign::IsMod() {
@@ -54,7 +59,7 @@ void AWarioSign::Draw(Camera *camera) {
         unk = MAX(unk, 0.0f);
     }
     if (!(unk < 0.0f)) {
-        FrameInterpolation_RecordOpenChild("mk:mario_sign", TAG_OBJECT(this));
+        FrameInterpolation_RecordOpenChild("mk:mario_sign", TAG_OBJECT((_idx << 4) | camera->cameraId));
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 

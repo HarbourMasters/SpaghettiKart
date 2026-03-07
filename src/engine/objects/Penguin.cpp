@@ -137,7 +137,7 @@ void OPenguin::Draw(s32 cameraId) {
         //}
         temp_s1 = func_8008A364(objectIndex, cameraId, var_s1, drawDistance);
         if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
-            func_800557B4(objectIndex, (u32) temp_s1, var_s3);
+            func_800557B4(objectIndex, cameraId, (u32) temp_s1, var_s3);
         }
     }
 }

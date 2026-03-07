@@ -104,14 +104,12 @@ void OBoos::Draw(s32 cameraId) {
                 temp_s2 = MIN(temp_s2, 0x15F91U);
             }
 
-            // @port: Tag the transform.
-            FrameInterpolation_RecordOpenChild("Boo", (uintptr_t)&gObjectList[objectIndex]);
+            FrameInterpolation_RecordOpenChild("boo", (objectIndex << 4) | cameraId);
             
             if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
                 func_800523B8(objectIndex, cameraId, temp_s2);
             }
 
-            // @port Pop the transform id.
             FrameInterpolation_RecordCloseChild();
         }
     }

@@ -317,7 +317,7 @@ void func_80050E34(s32, s32);
 
 void func_800514BC(void);
 void render_object_leaf_particle(s32);
-void render_object_snowflakes_particles(void);
+void render_object_snowflakes_particles(s32 cameraId);
 void func_80051ABC(ScreenContext* screen, s16, s32);
 void func_80051C60(ScreenContext* screen, s16, s32);
 void func_80051EBC(ScreenContext* screen);
@@ -327,10 +327,10 @@ void func_80052044(ScreenContext* screen);
 void func_80052080(ScreenContext* screen);
 
 void func_800520C0(s32);
-void func_8005285C(s32);
+void func_8005285C(s32, s32);
 void func_800528EC(s32);
 void render_ice_block(s32);
-void func_80052D70(s32);
+void func_80052D70(s32, s32);
 void func_80052E30(s32);
 void render_object_snowmans_list_2(s32);
 
@@ -359,7 +359,7 @@ void func_80055228(s32);
 void render_object_seagulls(s32);
 void render_object_crabs(s32);
 void func_800557AC(void);
-void func_800557B4(s32, u32, u32);
+void func_800557B4(s32, s32, u32, u32);
 void func_80055AB8(s32, s32);
 void render_object_chain_chomps(s32);
 void func_80055EF4(s32, s32);

@@ -562,18 +562,18 @@ void render_object_for_player(s32 cameraId) {
     }
 }
 
-void render_snowing_effect(s32 playerId) {
+void render_snowing_effect(s32 cameraId) {
     if (IsFrappeSnowland()) {
         if (gGamestate != 9) {
             if ((D_8015F894 == 0) && (gPlayerCountSelection1 == 1)) {
-                render_object_snowflakes_particles();
+                render_object_snowflakes_particles(cameraId);
             }
         } else {
-            render_object_snowflakes_particles();
+            render_object_snowflakes_particles(cameraId);
         }
     }
     if (CM_GetProps()->LakituTowType == 1) {
-        render_ice_block(playerId);
+        render_ice_block(cameraId);
     }
 }
 

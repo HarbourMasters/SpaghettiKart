@@ -547,7 +547,7 @@ void render_cows(Camera* camera, Mat4 arg1) {
             arg1[3][1] = sp88[1];
             arg1[3][2] = sp88[2];
 
-            FrameInterpolation_RecordOpenChild("render_actor_cow", TAG_ITEM_ADDR((i << 5) | (camera - cameras)));
+            FrameInterpolation_RecordOpenChild("render_actor_cow", TAG_ITEM_ADDR((i << 4) | (camera - cameras)));
 
             if ((gMatrixObjectCount < MTX_OBJECT_POOL_SIZE) && (render_set_position(arg1, 0) != 0)) {
                 switch (var_s1->someId) {
@@ -684,7 +684,7 @@ void render_palm_trees(Camera* camera, Mat4 arg1) {
             var_s1++;
             continue;
         }
-        FrameInterpolation_RecordOpenChild("render_palm_tree", TAG_ITEM_ADDR((i << 5) | (camera - cameras)));
+        FrameInterpolation_RecordOpenChild("render_palm_tree", TAG_ITEM_ADDR((i << 4) | (camera - cameras)));
 
         test &= 0xF;
         test = (s16) test;
@@ -737,7 +737,13 @@ void render_actor_shell(Camera* camera, Mat4 matrix, struct ShellActor* shell) {
     char* phi_t3;
     bool reverseShell = false;
 
-    FrameInterpolation_RecordOpenChild("shell", TAG_ITEM_ADDR(((( (struct Actor*)shell ) - gActorList) << 5) | (camera - cameras)));
+    size_t actorIdx = CM_FindActorIndex((struct Actor*)shell);
+    if (-1 == actorIdx) {
+        printf("[render_actor_shell] Could not find actor index for FI, skipping!\n");
+        return;
+    }
+
+    FrameInterpolation_RecordOpenChild("shell", TAG_ITEM_ADDR(((actorIdx << 4) | (camera - cameras))));
 
     f32 temp_f0 =
         is_within_render_distance(camera->pos, shell->pos, camera->rot[1], 0, camera->fieldOfView, 490000.0f);

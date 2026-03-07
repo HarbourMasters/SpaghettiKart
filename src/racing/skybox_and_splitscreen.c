@@ -664,7 +664,7 @@ void render_screens(ScreenContext* screen, s32 mode, s32 someId, s32 playerId) {
     CM_SetViewProjection(camera);
 
     // Create a matrix for the track and game objects
-    FrameInterpolation_RecordOpenChild("track", TAG_TRACK((camera->cameraId | (playerId << 2))));
+    FrameInterpolation_RecordOpenChild("track", TAG_TRACK(((playerId << 4) | camera->cameraId)));
     Mat4 trackMatrix;
     mtxf_identity(trackMatrix);
     if (gIsMirrorMode != 0) {

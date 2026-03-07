@@ -108,13 +108,11 @@ void StarEmitter::Draw(s32 cameraId) { // func_80054BE8
     D_80183E80[0] = 0;
     for (var_s0 = 0; var_s0 < gObjectParticle3_SIZE; var_s0++) {
         temp_a0 = ObjectIndex[var_s0];
-        // @port: Tag the transform.
-        FrameInterpolation_RecordOpenChild("Ceremony Stars", (uintptr_t) &ObjectIndex[var_s0]);
         if ((temp_a0 != -1) && (gObjectList[temp_a0].state >= 2)) {
+            FrameInterpolation_RecordOpenChild("trophy_stars", (var_s0 << 4) | cameraId);
             StarEmitter::func_80054AFC(temp_a0, camera->pos);
+            FrameInterpolation_RecordCloseChild();
         }
-        // @port Pop the transform id.
-        FrameInterpolation_RecordCloseChild();
     }
 }
 

@@ -19,6 +19,12 @@ void render_actor_yoshi_egg(Camera* camera, Mat4 arg1, struct YoshiValleyEgg* eg
     Vec3f sp54;
     f32 temp_f0;
 
+    size_t actorIdx = CM_FindActorIndex((struct Actor*) egg);
+    if (-1 == actorIdx) {
+        printf("[render_actor_yoshi_egg] Could not find actor for FI, skipping\n");
+        return;
+    }
+
     if (gGamestate != CREDITS_SEQUENCE) {
         temp_f0 = is_within_render_distance(camera->pos, egg->pos, camera->rot[1], 200.0f, camera->fieldOfView,
                                             16000000.0f);
@@ -53,7 +59,7 @@ void render_actor_yoshi_egg(Camera* camera, Mat4 arg1, struct YoshiValleyEgg* eg
         sp5C[1] = egg->eggRot;
         sp5C[2] = 0;
 
-        FrameInterpolation_RecordOpenChild("yoshi_egg", TAG_OBJECT(egg));
+        FrameInterpolation_RecordOpenChild("yoshi_egg", TAG_OBJECT((actorIdx << 4) | camera->cameraId)));
 
         mtxf_pos_rotation_xyz(sp60, egg->pos, sp5C);
         if (render_set_position(sp60, 0) == 0) {
@@ -68,7 +74,7 @@ void render_actor_yoshi_egg(Camera* camera, Mat4 arg1, struct YoshiValleyEgg* eg
         arg1[3][1] = egg->pos[1];
         arg1[3][2] = egg->pos[2];
 
-        FrameInterpolation_RecordOpenChild("yoshi_egg2", TAG_OBJECT(egg));
+        FrameInterpolation_RecordOpenChild("yoshi_egg2", TAG_OBJECT((actorIdx << 4) | camera->cameraId)));
 
         if (render_set_position(arg1, 0) != 0) {
             gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
