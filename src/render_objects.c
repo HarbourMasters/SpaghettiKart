@@ -2621,9 +2621,11 @@ void func_8004E6C4(s32 playerId) {
     object = &gObjectList[objectIndex];
     if (object->state >= 2) {
         temp_v0 = &playerHUD[playerId];
+        FrameInterpolation_RecordOpenChild("item_window_splitscreen", playerId);
         func_80047910(temp_v0->slideItemBoxX + temp_v0->itemBoxX, temp_v0->slideItemBoxY + temp_v0->itemBoxY, 0U,
-                      temp_v0->unknownScaling, (u8*) object->activeTLUT, (u8*) object->activeTexture, D_0D005C30,
+                      temp_v0->unknownScaling, (u8*) object->activeTLUT, (u8*) object->activeTexture, (Vtx*)LOAD_ASSET(D_0D005C30),
                       0x00000028, 0x00000020, 0x00000028, 0x00000020);
+        FrameInterpolation_RecordCloseChild();
     }
 }
 
