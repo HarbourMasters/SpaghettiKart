@@ -106,6 +106,7 @@ docs/doxygen_syms.md
 mingw64/
 .ash_history
 !tools/ido-recomp/*/*
+/properties.h
 
 # models
 models/**.blend

@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 
 # Set the project version and language
+project(Spaghettify VERSION 1.0.0 LANGUAGES C CXX ASM)
 include(FetchContent)
 
 set(NATO_PHONETIC_ALPHABET
@@ -9,6 +10,15 @@ set(NATO_PHONETIC_ALPHABET
   "Quebec" "Romeo" "Sierra" "Tango" "Uniform" "Victor" "Whiskey"
   "Xray" "Yankee" "Zulu"
 )
+
+# Get the patch version number from the project version
+math(EXPR PATCH_INDEX "${PROJECT_VERSION_PATCH}")
+
+# Use the patch number to select the correct word
+list(GET NATO_PHONETIC_ALPHABET ${PATCH_INDEX} PROJECT_PATCH_WORD)
+
+set(PROJECT_BUILD_NAME "Bolognese ${PROJECT_PATCH_WORD}" CACHE STRING "" FORCE)
+set(PROJECT_TEAM "SpaghettiKart Team - HarbourMasters")
 
 execute_process(
   COMMAND git config --global --add safe.directory ${CMAKE_SOURCE_DIR}
@@ -46,17 +56,6 @@ else()
   set(PROJECT_VERSION_PATCH 0)
 endif()
 
-# Get the patch version number from the project version
-math(EXPR PATCH_INDEX "${PROJECT_VERSION_PATCH}")
-
-# Use the patch number to select the correct word
-list(GET NATO_PHONETIC_ALPHABET ${PATCH_INDEX} PROJECT_PATCH_WORD)
-
-set(PROJECT_BUILD_NAME "Bolognese ${PROJECT_PATCH_WORD}" CACHE STRING "" FORCE)
-set(PROJECT_TEAM "github.com/harbourmasters" CACHE STRING "" FORCE)
-
-project(Spaghettify VERSION ${PROJECT_VERSION_PATCH} LANGUAGES C CXX ASM)
-
 message("Spaghetti Kart version: ${PROJECT_VERSION} ${PROJECT_PATCH_WORD}")
 
 if(APPLE)
@@ -74,7 +73,6 @@ set(CMAKE_CXX_STANDARD 20 CACHE STRING "The C++ standard to use")
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_C_STANDARD 11 CACHE STRING "The C standard to use")
 set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT Spaghettify)
-set(PROJECT_TEAM "MegaMech")
 #add_compile_options(-fsanitize=address)
 #add_link_options(-fsanitize=address)
 
