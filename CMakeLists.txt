@@ -192,7 +192,14 @@ set(SKIP_XCODE_VERSION_CHECK ON)
 set(GFX_DEBUG_DISASSEMBLER OFF)
 
 # Add compile definitions for the target
-add_compile_options("$<$<COMPILE_LANGUAGE:C>:-Wno-error=incompatible-pointer-types>" "$<$<COMPILE_LANGUAGE:C>:-Wno-error=int-conversion>" "$<$<COMPILE_LANGUAGE:CXX>:-Wno-error=changes-meaning>" "$<$<COMPILE_LANGUAGE:CXX>:-Wno-error=narrowing>")
+include(CheckCCompilerFlag)
+check_c_compiler_flag("-Wno-error=int-conversion" HAS_WNO_ERROR_INT_CONVERSION)
+
+if(HAS_WNO_ERROR_INT_CONVERSION)
+    add_compile_options("$<$<COMPILE_LANGUAGE:C>:-Wno-error=incompatible-pointer-types>" "$<$<COMPILE_LANGUAGE:C>:-Wno-error=int-conversion>" "$<$<COMPILE_LANGUAGE:CXX>:-Wno-error=changes-meaning>" "$<$<COMPILE_LANGUAGE:CXX>:-Wno-error=narrowing>")
+else()
+    add_compile_options("$<$<COMPILE_LANGUAGE:C>:-Wno-error=incompatible-pointer-types>" "$<$<COMPILE_LANGUAGE:CXX>:-Wno-error=narrowing>")
+endif()
 add_compile_definitions(
     VERSION_US=1
     ENABLE_RUMBLE=1
