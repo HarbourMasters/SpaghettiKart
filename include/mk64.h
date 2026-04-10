@@ -26,7 +26,11 @@ extern "C" {
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 240
 
+#ifdef TARGET_N64
 #define STACKSIZE 0x2000
+#else
+#define STACKSIZE 0x10000
+#endif
 
 // Border Height Define for NTSC Versions
 #define BORDER_HEIGHT 1

@@ -10,8 +10,8 @@ HMAS::HMAS() {
     ma_result result;
     ma_engine_config engine = ma_engine_config_init();
 
-    engine.channels   = 2;
-    engine.noDevice   = MA_TRUE;
+    engine.channels = 2;
+    engine.noDevice = MA_TRUE;
     engine.sampleRate = GameEngine_GetSampleRate();
 
     result = ma_engine_init(&engine, &gAudioEngine);
@@ -33,7 +33,7 @@ void HMAS::RegisterSound(HMAS_AudioId id, const std::string& filePath, HMAS_Info
         return;
     }
 
-    if(info.loop.start != -1 && info.loop.end != -1) {
+    if (info.loop.start != -1 && info.loop.end != -1) {
         ma_data_source* source = ma_sound_get_data_source(&gRegistry[id].sound);
         ma_data_source_set_loop_point_in_pcm_frames(source, info.loop.start, info.loop.end);
     }
@@ -48,14 +48,15 @@ void HMAS::RegisterSound(HMAS_AudioId id, uint8_t* data, uint32_t size, HMAS_Inf
         return;
     }
 
-    ma_decoder_config config = ma_decoder_config_init(ma_format_f32, ma_engine_get_channels(&gAudioEngine), ma_engine_get_sample_rate(&gAudioEngine));
+    ma_decoder_config config = ma_decoder_config_init(ma_format_f32, ma_engine_get_channels(&gAudioEngine),
+                                                      ma_engine_get_sample_rate(&gAudioEngine));
     ma_result result = ma_decoder_init_memory(data, size, &config, &gRegistry[id].decoder);
     if (result != MA_SUCCESS) {
         SPDLOG_ERROR("Failed to initialize decoder from memory: {}", ma_result_description(result));
         return;
     }
 
-    if(info.loop.start != -1 && info.loop.end != -1) {
+    if (info.loop.start != -1 && info.loop.end != -1) {
         ma_data_source_set_loop_point_in_pcm_frames(&gRegistry[id].decoder, info.loop.start, info.loop.end);
     }
 
@@ -72,7 +73,7 @@ void HMAS::RegisterSound(HMAS_AudioId id, uint8_t* data, uint32_t size, HMAS_Inf
 }
 
 void HMAS::Play(HMAS_ChannelId channelId, HMAS_AudioId id, bool loop) {
-    if(channelId == HMAS_ChannelId::HMAS_MUSIC){
+    if (channelId == HMAS_ChannelId::HMAS_MUSIC) {
         this->Stop(channelId);
     }
 
@@ -150,8 +151,8 @@ void HMAS::SetPause(HMAS_ChannelId channelId, bool pause) {
         return;
     }
 
-    if(pause) {
-        ma_sound_get_cursor_in_pcm_frames(channel->sound, &channel->cursor);
+    if (pause) {
+        ma_sound_get_cursor_in_pcm_frames(channel->sound, (ma_uint64*) &channel->cursor);
         ma_sound_stop(channel->sound);
     } else {
         ma_result result = ma_sound_start(channel->sound);
@@ -163,9 +164,10 @@ void HMAS::SetPause(HMAS_ChannelId channelId, bool pause) {
     }
 }
 
-void HMAS::AddEffect(HMAS_ChannelId channelId, HMAS_EffectType type, HMAS_EffectTransition transition, uint32_t frames, float target) {
+void HMAS::AddEffect(HMAS_ChannelId channelId, HMAS_EffectType type, HMAS_EffectTransition transition, uint32_t frames,
+                     float target) {
     auto& channel = gChannelSound[channelId];
-    channel.effects.push_back({type, transition, frames, target});
+    channel.effects.push_back({ type, transition, frames, target });
 }
 
 bool HMAS::IsIDRegistered(HMAS_AudioId id) {
@@ -173,7 +175,7 @@ bool HMAS::IsIDRegistered(HMAS_AudioId id) {
 }
 
 void HMAS::ProcessEffects() {
-    for (size_t i = 0; i < sizeof(gChannelSound) / sizeof(gChannelSound[0]); i++){
+    for (size_t i = 0; i < sizeof(gChannelSound) / sizeof(gChannelSound[0]); i++) {
         auto& channel = gChannelSound[i];
 
         if (channel.sound == nullptr) {
@@ -189,14 +191,16 @@ void HMAS::ProcessEffects() {
             effect.numFrames--;
             switch (effect.type) {
                 case HMAS_EffectType::HMAS_EFFECT_VOLUME: {
-                    float volume = effect.transition == HMAS_EffectTransition::HMAS_LINEAR ?
-                    Lerp(channel.volume, effect.target, 1.0f / effect.numFrames) : effect.target;
+                    float volume = effect.transition == HMAS_EffectTransition::HMAS_LINEAR
+                                       ? Lerp(channel.volume, effect.target, 1.0f / effect.numFrames)
+                                       : effect.target;
                     this->SetVolume((HMAS_ChannelId) i, std::max(0.0f, volume));
                     break;
                 }
                 case HMAS_EffectType::HMAS_EFFECT_PITCH: {
-                    float pitch = effect.transition == HMAS_EffectTransition::HMAS_LINEAR ?
-                    Lerp(channel.pitch, effect.target, 1.0f / effect.numFrames) : effect.target;
+                    float pitch = effect.transition == HMAS_EffectTransition::HMAS_LINEAR
+                                      ? Lerp(channel.pitch, effect.target, 1.0f / effect.numFrames)
+                                      : effect.target;
                     this->SetPitch((HMAS_ChannelId) i, std::max(0.1f, pitch));
                     break;
                 }
@@ -213,15 +217,17 @@ void HMAS::ProcessEffects() {
                     break;
             }
         } else {
-            SPDLOG_DEBUG("Removing effect: Type={}, Frames={}, Target={}", static_cast<int>(effect.type), effect.numFrames, effect.target);
+            SPDLOG_DEBUG("Removing effect: Type={}, Frames={}, Target={}", static_cast<int>(effect.type),
+                         effect.numFrames, effect.target);
             channel.effects.erase(channel.effects.begin());
         }
     }
 }
 
-void HMAS::CreateBuffer(uint8_t *samples, uint32_t bufferSizeInBytes) {
+void HMAS::CreateBuffer(uint8_t* samples, uint32_t bufferSizeInBytes) {
     this->ProcessEffects();
-    ma_uint32 bufferSizeInFrames = bufferSizeInBytes / ma_get_bytes_per_frame(ma_format_f32, ma_engine_get_channels(&gAudioEngine));
+    ma_uint32 bufferSizeInFrames =
+        bufferSizeInBytes / ma_get_bytes_per_frame(ma_format_f32, ma_engine_get_channels(&gAudioEngine));
     ma_engine_read_pcm_frames(&gAudioEngine, samples, bufferSizeInFrames, NULL);
 }
 
@@ -259,7 +265,8 @@ extern "C" void HMAS_SetPause(HMAS_ChannelId channelId, bool pause) {
     GameEngine::Instance->gHMAS->SetPause(channelId, pause);
 }
 
-extern "C" void HMAS_AddEffect(HMAS_ChannelId channelId, HMAS_EffectType type, HMAS_EffectTransition transition, uint32_t frames, float target) {
+extern "C" void HMAS_AddEffect(HMAS_ChannelId channelId, HMAS_EffectType type, HMAS_EffectTransition transition,
+                               uint32_t frames, float target) {
     GameEngine::Instance->gHMAS->AddEffect(channelId, type, transition, frames, target);
 }
 

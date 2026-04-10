@@ -89,7 +89,10 @@ void RaceManager::BeginPlay() {
                 }
             }
         }
-        gEditor.AddLight("Sun", nullptr, D_800DC610[1].l->l.dir);
+
+        if (gEditor.IsEnabled()) {
+            gEditor.AddLight("Sun", nullptr, D_800DC610[1].l->l.dir);
+        }
 
         track->BeginPlay();
     }

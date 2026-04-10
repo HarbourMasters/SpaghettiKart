@@ -7,7 +7,9 @@ TrackSectionsClass::TrackSectionsClass() : Resource(std::shared_ptr<Ship::Resour
 }
 
 TrackSections* TrackSectionsClass::GetPointer() {
-    return TrackSectionsList.data();
+    PointerData = TrackSectionsList;
+    PointerData.push_back({});
+    return PointerData.data();
 }
 
 size_t TrackSectionsClass::GetPointerSize() {
@@ -18,7 +20,9 @@ TrackSectionsO2RClass::TrackSectionsO2RClass() : Resource(std::shared_ptr<Ship::
 }
 
 TrackSections* TrackSectionsO2RClass::GetPointer() {
-    return TrackSectionsList.data();
+    PointerData = TrackSectionsList;
+    PointerData.push_back({});
+    return PointerData.data();
 }
 
 size_t TrackSectionsO2RClass::GetPointerSize() {
