@@ -257,6 +257,7 @@ struct MainMenuEntry {
 static const std::unordered_map<Ship::AudioBackend, const char*> audioBackendsMap = {
     { Ship::AudioBackend::WASAPI, "Windows Audio Session API" },
     { Ship::AudioBackend::SDL, "SDL" },
+    { Ship::AudioBackend::COREAUDIO, "CoreAudio" },
 };
 
 static const std::unordered_map<Ship::WindowBackend, const char*> windowBackendsMap = {
