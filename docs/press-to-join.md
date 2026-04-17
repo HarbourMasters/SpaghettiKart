@@ -59,16 +59,22 @@ std::unordered_map<uint8_t, int32_t> mPressToJoinAssignments; // port → instan
 | `StartMultiplayer(uint8_t portCount)` | Enter state 2. Ignore all devices on all active ports (everyone starts unassigned). Sets both `mMultiplayerActive` and `mPressToJoinActive`. Press-to-join fills ports starting at 0 — first press is P1, second is P2, etc. |
 | `StopPressToJoin()` | Enter state 3. Sets `mPressToJoinActive = false`. Assignments stay, LUS stops all automatic behavior |
 | `StartPressToJoin()` | Re-enter state 2 (e.g. back to character select from map select). Sets `mPressToJoinActive = true`. Frees any assigned ports whose devices are disconnected, so they can be re-joined |
-| `StopMultiplayer()` | Back to state 1. Clear all state, call `RefreshConnectedSDLGamepads()` to restore default all-on-port-0 |
+| `StopMultiplayer()` | Back to state 1. Wipe `mIgnoredInstanceIds`, then call `RefreshConnectedSDLGamepads()` — the wipe matters because port 0 accumulated "ignore everyone except the assigned device" during multiplayer, and refresh alone only repopulates ports 1-3 |
 | `GetPortDeviceStatus(uint8_t port)` | 0 = unassigned, 1 = assigned+connected, -1 = assigned+disconnected |
 
 LUS handles press-to-join detection and assignment internally — when `mPressToJoinActive` is true, it polls for input each frame and assigns to empty active ports. The game doesn't need to drive this — it just reads port status.
 
 **Polling logic (each frame when `mPressToJoinActive`):**
 
-Iterate active ports in order (0 through portCount-1). For each port without an assigned device:
-1. If this port has keyboard mappings configured and `Window::GetLastScancode() != -1` → assign keyboard (pseudo instance ID `-2`) to this port
-2. Check all unassigned SDL gamepads — raw `SDL_GameControllerGetButton`/`SDL_GameControllerGetAxis` with reasonable deadzone — assign first match
+Two-phase timing guards:
+
+1. **Activation grace (15 frames):** skip polling for the first 15 frames after `mPressToJoinActive` goes true. The button that triggered the menu transition into char select is typically still held for a few frames, and we don't want it counted. Implemented via function-local static frame counter.
+
+2. **Release-edge detection:** track per-device "had any input last frame" state. Assign on the transition held→not-held. The alternative (assign on press) fails because `ReadToPad` runs right after `PollPressToJoin` in the same frame — if we claim the port while the button is still held, the game sees the join press as a confirm/select. Assigning on release means SDL state reads empty on the assign frame.
+
+Inside those guards, iterate active ports in order (0 through portCount-1). For each port without an assigned device:
+1. If this port has keyboard mappings and `Window::GetLastScancode() != -1` → assign keyboard (pseudo instance ID `-2`). Keyboard uses `GetLastScancode` which is already event-based (fires once per press), so release-edge isn't required there.
+2. Otherwise, pick the first device in the release-edge set that isn't already assigned to another port.
 
 Assignment always goes to the lowest-indexed empty active port. If port 2 disconnects while ports 0, 1, 3 are active, the next press fills port 2.
 
@@ -76,7 +82,7 @@ Keyboard can only join the port it's already mapped to (usually port 0). There's
 
 **Modify existing methods:**
 
-- `RefreshConnectedSDLGamepads()` (lines 103-105): Wrap the "ignore all on ports 1-3" logic in `if (!mMultiplayerActive)`. When multiplayer IS active, rebuild ignore lists from `mPressToJoinAssignments` instead — for each active port, ignore all devices except the assigned one; for unassigned ports, ignore everything.
+- `RefreshConnectedSDLGamepads()`: Wrap the "ignore all on ports 1-3" logic in `if (!mMultiplayerActive)`. When multiplayer IS active, rebuild ignore lists from `mPressToJoinAssignments` instead — for each active port, ignore all devices except the assigned one; for unassigned ports, ignore everything.
 
 - `HandlePhysicalDeviceDisconnect()`: After refresh, if `mPressToJoinActive` and disconnected device was in `mPressToJoinAssignments`, free the port — the next press will fill it again. If NOT `mPressToJoinActive` (racing), don't touch anything — the port stays assigned-but-disconnected. No input flows, kart sits idle.
 
@@ -139,25 +145,34 @@ Keyboard input bypasses the SDL ignore system entirely (goes through `ProcessKey
 
 ### Part 5: SpaghettiKart — Character Select Press-to-Join
 
-**File:** `src/menus.c`
+**Files:** `src/menus.c`, `src/menu_items.c`
 
-**Character select init (line 1987-1994):** When multiplayer is active, all players start with greyed-out cursors at their default grid positions (`gCharacterGridSelections[i] = i + 1` as normal). The grey state indicates "waiting for a controller." When a device joins via press-to-join, the cursor lights up to the player's color. This is clearer than no cursor — users can see the slot exists and is waiting.
+Single source of truth for "is this port joined" is `MultiplayerGetPortStatus(port) == 1`. We deliberately do not overload `gCharacterGridSelections == 0` to mean "unjoined."
 
-**Port status polling:** Each frame during character select, check `MultiplayerGetPortStatus()` for each port. When a port transitions from 0 (unassigned) to 1 (assigned+connected), change the cursor from greyed-out to the player's color via dlist color patching (proven approach from SoH). The player can now navigate and select their character. If a port transitions from 1 to -1 (disconnected) or 0 (freed), grey out the cursor again.
+**Character select init (menus.c, `MENU_FADE_TYPE_MAIN` case):** Always set `gCharacterGridSelections[i] = i + 1` for `i < gPlayerCount`, regardless of press-to-join state. Unjoined cursors still render at their default grid slot — just greyed out.
 
-The existing `player_select_menu_act` already handles `gCharacterGridSelections[i] == 0` correctly (line 1580-1586): controllers with no cursor can only press B to go back. Once we set a cursor position, the controller naturally starts working.
+**Per-frame logic (menus.c, `player_select_menu_act`):** On `PLAYER_ONE`'s call, iterate ports and detect status transitions 0→1 to play the join sound. A `static s8 sPrevPortStatus[MAXCONTROLLERS]` tracks previous-frame status. Grid selection itself is never modified here; the cursor's *position* is already driven by grid, and its *color* is driven by port status.
 
-**All-selected check (lines 1604-1610):** Currently transitions to OK state if no controller has (grid != 0 AND not selected). An unjoined player (grid == 0, i < gPlayerCount) passes this check incorrectly. Add a check: if `i < gPlayerCount && gCharacterGridSelections[i] == 0`, that player hasn't joined yet → not ready.
+**Input routing for unjoined ports:** No explicit gate needed. The ignore lists handle it: every unjoined port has every device in its ignore list, so `controller->ReadToPad` writes zero and `btnAndStick` is 0. The switch cases never see input. (Edge case: if the user manually configured keyboard mappings on port 2/3, keyboard input could leak to those unjoined ports — POC ignores this.)
+
+**Cursor render (menu_items.c, `render_cursor_player`):** When press-to-join is enabled and `MultiplayerGetPortStatus(port) != 1`, wrap the cursor render in `gDPSetGrayscaleColor(0xFF, 0xFF, 0xFF, 0xFF)` + `gSPGrayscale(true/false)`. Keeps the colored frame and number-badge visuals intact but desaturates them. This is the same mechanism used by `MAIN_MENU_BACKGROUND` rendering elsewhere in the file.
+
+Using `gSPGrayscale` rather than swapping prim color: each player's border is two chained textures, and only the first responds to prim color tint. The second (`gTextureP1BorderBlue` etc.) has color baked into texture data. Grayscale post-process desaturates both.
+
+**All-selected check (menus.c, around line 1618):** transition to OK state only when no cursor is unconfirmed AND (if press-to-join is active) every active port has `MultiplayerGetPortStatus == 1`.
 
 ### Part 6: SpaghettiKart — Race Start / Menu Return Hooks
 
 **File:** `src/menus.c`
 
-**Leave character select (forward to map select):** When all players have confirmed characters (`PLAYER_SELECT_MENU_OK` state), call `MultiplayerStopPressToJoin()`. LUS stops all automatic behavior. Character select is the only screen with visual feedback for joins/disconnects, so press-to-join shouldn't be active elsewhere.
+| Location | Call |
+|----------|------|
+| A in `PLAYER_SELECT_MENU_OK` case (forward to map select) | `MultiplayerStopPressToJoin()` |
+| B in `SUB_MENU_MAP_SELECT_CUP` (back to char select) | `MultiplayerStartPressToJoin()` |
+| B in `SUB_MENU_MAP_SELECT_BATTLE_COURSE` (back to char select) | `MultiplayerStartPressToJoin()` |
+| B in `PLAYER_SELECT_MENU_MAIN` (back to main menu, both `savedSelection == 0` and cursor paths) | `MultiplayerStop()` |
 
-**Return to character select (back from map select):** Call `MultiplayerStartPressToJoin()` to re-enable automatic assignment.
-
-**Back to main menu:** At `func_8009E208()` (called on B press from character select, line 1582) and when going back from mode select to player select (B in `MAIN_MENU_MODE_SELECT`): call `MultiplayerStop()`.
+The planned "B in `MAIN_MENU_MODE_SELECT`" hook wasn't needed in practice — `MultiplayerStart` only fires at A in `MAIN_MENU_OK_SELECT`, so there's no active multiplayer state to tear down when backing out of mode select.
 
 ### Part 7: Disconnect During Race (minimal POC)
 
@@ -166,6 +181,16 @@ Controller disconnects during race → kart sits idle, race continues. `mPressTo
 If the player needs time, they ask another player to pause (existing pause mechanic). Social layer handles it.
 
 Future enhancement: game polls `MultiplayerGetPortStatus()` to detect -1 (assigned+disconnected) and show a notification via LUS notification system.
+
+### Part 8: Defaults on ports 1-3 (POC)
+
+**File:** `libultraship/src/ship/controller/controldeck/ControlDeck.cpp`, gated behind `#ifdef ENABLE_PRESS_TO_JOIN`.
+
+Stock LUS only applies default mappings to port 0. Without mappings on ports 1-3, press-to-join flips the ignore lists but `ReadToPad` has nothing to translate SDL state into OSContPad — the game gets zero input on joined ports 2/3/4.
+
+For the POC, `ControlDeck::Init` extends the existing port-0 defaults block with a follow-up loop that calls `AddDefaultMappings(PhysicalDeviceType::SDLGamepad)` on each other port that has `HasConfig() == false`. Keyboard/Mouse are excluded — those only make sense on one port.
+
+**This is flagged as POC in code.** A proper solution would let games express per-port defaults via `ControllerDefaultMappings` rather than hardcoding a loop in library code. The current hack is unconditional when `ENABLE_PRESS_TO_JOIN` is on, which is fine for Spaghetti but wouldn't generalize.
 
 ## Keyboard Handling
 
@@ -186,8 +211,20 @@ Keyboard has no SDL instance ID and no ignore system — it's fundamentally diff
 - **Thread safety**: All on main thread (SDL events, game loop, menus)
 - **LUS handles press-to-join internally**: The game doesn't drive detection or assignment — it just reads port status. LUS polls unassigned gamepads via raw SDL when `mPressToJoinActive` is true
 - **Press-to-join assignments are bookkeeping only**: The `mPressToJoinAssignments` map tracks what the automatic system did — the ignore lists remain the real source of truth for input routing
+- **Game-side source of truth is the status bridge**: `MultiplayerGetPortStatus` is the only signal the game consults for "is this port joined." Grid selection is never overloaded with that meaning
+- **Assign on release, not press**: Prevents the join button from also being read as a confirm by the same-frame `ReadToPad`. Costs ~30ms of perceived latency on a tap — acceptable for POC
 - **Input Editor UX**: Press-to-join checkbox sits next to the per-device-per-port checkboxes. When on, those checkboxes are disabled. Unchecking press-to-join gives immediate manual control
 - **Controllers do unpredictable things**: This is why press-to-join only operates during the explicit join phase (character select), never during gameplay. No silent reassignment during races
+
+## POC Limitations / Known Gaps
+
+Not blockers for the POC, but flagged for any path to merge:
+
+- **Per-port defaults** is a hardcoded library-layer loop (Part 8). Wants a proper API for games.
+- **Keyboard release-edge** isn't implemented; if a user has keyboard mapped to multiple ports, they could race-claim two ports at once. `GetLastScancode` is event-based so the press-side case is usually fine.
+- **Controller "stolen input" mystery** observed once, not reproducible. Suspected to be keyboard multi-port or a race condition in refresh timing.
+- **Analog stick feel on release-edge:** user may find stick-deflect-as-join awkward. Revisit if it does.
+- **Disconnect-during-race** leaves the kart idle (Part 7). Acceptable; notification UI is a future nicety.
 
 ## Build Note
 
@@ -200,14 +237,15 @@ cmake --build build --target Spaghettify
 
 ## Verification
 
-1. Build SpaghettiKart with the changes
-2. Connect 2+ controllers
-3. Select 2P mode — verify transition to character select with two greyed-out cursors
-4. Press a button on controller 1 — verify it claims P1 (port 0) and cursor lights up
-5. Press a button on controller 2 — verify it claims P2 (port 1) and gets a cursor
-6. Both players select characters — verify game proceeds to race
-7. Disconnect controller 2 mid-race — verify kart sits idle, no automatic reassignment
-8. Back to main menu — verify all controllers work normally again (all on port 0)
-9. Disconnect during character select — verify port is freed and can be re-joined
-10. Uncheck press-to-join in Input Editor — verify multiplayer still works via manual assignment
-11. Verify checkbox only appears when `ENABLE_PRESS_TO_JOIN` is ON
+1. Delete `build/spaghettify.cfg.json` to simulate fresh install so Part 8 defaults apply to ports 1-3.
+2. Build SpaghettiKart.
+3. Connect 2+ controllers.
+4. Select 2P mode — verify transition to character select with two greyed-out cursors (frames and number badges still visible, just desaturated).
+5. Press and release a button on controller 1 — verify it claims P1 (port 0), cursor lights up to full color, and the release press does NOT also confirm a character.
+6. Press and release a button on controller 2 — verify it claims P2 (port 1) and gets a cursor.
+7. Both players select characters — verify game proceeds to race.
+8. Disconnect controller 2 mid-race — verify kart sits idle, no automatic reassignment.
+9. Back to main menu — verify all controllers work normally again (all on port 0). This is the `StopMultiplayer` ignore-list wipe at work.
+10. Disconnect during character select — verify port is freed and can be re-joined.
+11. Uncheck press-to-join in Input Editor — verify multiplayer still works via manual assignment.
+12. Verify checkbox only appears when `ENABLE_PRESS_TO_JOIN` is ON.
