@@ -1578,12 +1578,14 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
 
     if (controllerIdx == PLAYER_ONE && gPlayerCount >= 2 &&
         CVarGetInteger("gPressToJoinEnabled", 1)) {
+        static s8 sPrevPortStatus[MAXCONTROLLERS] = {0};
         s8 p;
         for (p = 0; p < gPlayerCount; p++) {
-            if (gCharacterGridSelections[p] == 0 && MultiplayerGetPortStatus(p) == 1) {
-                gCharacterGridSelections[p] = p + 1;
+            s8 status = MultiplayerGetPortStatus(p);
+            if (status == 1 && sPrevPortStatus[p] != 1) {
                 play_sound2(0x49008000);
             }
+            sPrevPortStatus[p] = status;
         }
     }
 
@@ -1618,14 +1620,18 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                 }
                 // L800B36F4
                 selected = false;
-                for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
-                    if ((gCharacterGridSelections[i] != 0) && (gCharacterGridIsSelected[i] == 0)) {
-                        selected = true;
-                        break;
-                    }
-                    if (i < gPlayerCount && gCharacterGridSelections[i] == 0) {
-                        selected = true;
-                        break;
+                {
+                    s32 pressToJoinActive = (gPlayerCount >= 2) &&
+                        CVarGetInteger("gPressToJoinEnabled", 1);
+                    for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
+                        if ((gCharacterGridSelections[i] != 0) && (gCharacterGridIsSelected[i] == 0)) {
+                            selected = true;
+                            break;
+                        }
+                        if (pressToJoinActive && i < gPlayerCount && MultiplayerGetPortStatus(i) != 1) {
+                            selected = true;
+                            break;
+                        }
                     }
                 }
                 // L800B3738
@@ -2007,15 +2013,9 @@ void load_menu_states(s32 menuSelection) {
                 case MENU_FADE_TYPE_MAIN: {
                     gPlayerSelectMenuSelection = PLAYER_SELECT_MENU_MAIN;
                     if (gGamestate == 0) {
-                        s32 pressToJoinActive = (gPlayerCount >= 2) &&
-                            CVarGetInteger("gPressToJoinEnabled", 1);
                         for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
                             if (i < gPlayerCount) {
-                                if (pressToJoinActive && MultiplayerGetPortStatus(i) != 1) {
-                                    gCharacterGridSelections[i] = 0;
-                                } else {
-                                    gCharacterGridSelections[i] = i + 1;
-                                }
+                                gCharacterGridSelections[i] = i + 1;
                             } else {
                                 gCharacterGridSelections[i] = 0;
                             }

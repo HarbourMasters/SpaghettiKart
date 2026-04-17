@@ -7109,12 +7109,21 @@ void func_800A10CC(MenuItem* arg0) {
 
 void render_cursor_player(MenuItem* arg0, s32 arg1, s32 arg2) {
     RGBA16* temp_v1;
+    s32 useGrayscale = (gPlayerCount >= 2) && CVarGetInteger("gPressToJoinEnabled", 1) &&
+                       MultiplayerGetPortStatus(arg1) != 1;
 
     temp_v1 = &D_800E74A8[arg1];
     gDPSetPrimColor(gDisplayListHead++, 0, 0, temp_v1->red, temp_v1->green, temp_v1->blue, temp_v1->alpha);
     gDPSetEnvColor(gDisplayListHead++, arg2, arg2, arg2, 0x00);
+    if (useGrayscale) {
+        gDPSetGrayscaleColor(gDisplayListHead++, 0xFF, 0xFF, 0xFF, 0xFF);
+        gSPGrayscale(gDisplayListHead++, true);
+    }
     gDisplayListHead = render_menu_textures(
         gDisplayListHead, gMenuTexturesBorderPlayer[arg1], arg0->column, arg0->row);
+    if (useGrayscale) {
+        gSPGrayscale(gDisplayListHead++, false);
+    }
 }
 
 void func_800A12BC(MenuItem* arg0, MenuTexture* arg1) {
