@@ -1511,6 +1511,9 @@ void main_menu_act(struct Controller* controller, u16 controllerIdx) {
                     newMode = gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
                 } else if (btnAndStick & A_BUTTON) {
                     // L800B33D8
+                    if (gPlayerCount >= 2) {
+                        MultiplayerStart(gPlayerCount);
+                    }
                     func_8009E1C0();
                     play_sound2(SOUND_MENU_OK_CLICKED);
                     setup_game_mode_selected();
@@ -1573,12 +1576,24 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
         btnAndStick |= A_BUTTON;
     }
 
+    if (controllerIdx == PLAYER_ONE && gPlayerCount >= 2 &&
+        CVarGetInteger("gPressToJoinEnabled", 1)) {
+        s8 p;
+        for (p = 0; p < gPlayerCount; p++) {
+            if (gCharacterGridSelections[p] == 0 && MultiplayerGetPortStatus(p) == 1) {
+                gCharacterGridSelections[p] = p + 1;
+                play_sound2(0x49008000);
+            }
+        }
+    }
+
     if (!is_screen_being_faded()) {
         switch (gPlayerSelectMenuSelection) {
             case PLAYER_SELECT_MENU_MAIN: {
                 savedSelection = gCharacterGridSelections[controllerIdx];
                 if (savedSelection == 0) {
                     if (btnAndStick & B_BUTTON) {
+                        MultiplayerStop();
                         func_8009E208();
                         play_sound2(0x49008002);
                     }
@@ -1590,6 +1605,7 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                         gCharacterGridIsSelected[controllerIdx] = false;
                         play_sound2(SOUND_MENU_GO_BACK);
                     } else {
+                        MultiplayerStop();
                         func_8009E208();
                         play_sound2(0x49008002);
                     }
@@ -1604,6 +1620,10 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                 selected = false;
                 for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
                     if ((gCharacterGridSelections[i] != 0) && (gCharacterGridIsSelected[i] == 0)) {
+                        selected = true;
+                        break;
+                    }
+                    if (i < gPlayerCount && gCharacterGridSelections[i] == 0) {
                         selected = true;
                         break;
                     }
@@ -1729,6 +1749,7 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                     break;
                 }
                 if (btnAndStick & A_BUTTON) {
+                    MultiplayerStopPressToJoin();
                     func_8009E1C0();
                     play_sound2(0x49008016);
                     func_8000F124();
@@ -1782,6 +1803,7 @@ void course_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                 gCurrentCourseId = gCupCourseOrder[gCupSelection][gCourseIndexInCup];
                 TrackBrowser_SetTrackFromCup();
                 if ((btnAndStick & B_BUTTON) != 0) {
+                    MultiplayerStartPressToJoin();
                     func_8009E208();
                     play_sound2(SOUND_MENU_GO_BACK);
                 } else if ((btnAndStick & A_BUTTON) != 0) {
@@ -1820,6 +1842,7 @@ void course_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                     if (gSubMenuSelection == SUB_MENU_MAP_SELECT_COURSE) {
                         gSubMenuSelection = SUB_MENU_MAP_SELECT_CUP;
                     } else {
+                        MultiplayerStartPressToJoin();
                         func_8009E208();
                     }
                     reset_cycle_flash_menu();
@@ -1984,9 +2007,15 @@ void load_menu_states(s32 menuSelection) {
                 case MENU_FADE_TYPE_MAIN: {
                     gPlayerSelectMenuSelection = PLAYER_SELECT_MENU_MAIN;
                     if (gGamestate == 0) {
+                        s32 pressToJoinActive = (gPlayerCount >= 2) &&
+                            CVarGetInteger("gPressToJoinEnabled", 1);
                         for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
                             if (i < gPlayerCount) {
-                                gCharacterGridSelections[i] = i + 1;
+                                if (pressToJoinActive && MultiplayerGetPortStatus(i) != 1) {
+                                    gCharacterGridSelections[i] = 0;
+                                } else {
+                                    gCharacterGridSelections[i] = i + 1;
+                                }
                             } else {
                                 gCharacterGridSelections[i] = 0;
                             }
