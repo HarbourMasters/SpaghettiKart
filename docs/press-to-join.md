@@ -189,6 +189,15 @@ Keyboard has no SDL instance ID and no ignore system — it's fundamentally diff
 - **Input Editor UX**: Press-to-join checkbox sits next to the per-device-per-port checkboxes. When on, those checkboxes are disabled. Unchecking press-to-join gives immediate manual control
 - **Controllers do unpredictable things**: This is why press-to-join only operates during the explicit join phase (character select), never during gameplay. No silent reassignment during races
 
+## Build Note
+
+Configure with `-DCMAKE_BUILD_TYPE=Debug` (or Release) — a bare `cmake -B build` without a build type triggers `-Wincompatible-pointer-types` errors in `courses/*/course_offsets.c` on GCC 15. The course offset files declare `const Gfx*` arrays initialized from `const char*` generated symbols, which is a warning under default flags but becomes an error without an explicit build type on this GCC version.
+
+```
+cmake -DCMAKE_BUILD_TYPE=Debug -B build -G Ninja
+cmake --build build --target Spaghettify
+```
+
 ## Verification
 
 1. Build SpaghettiKart with the changes
