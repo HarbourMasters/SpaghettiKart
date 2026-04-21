@@ -1,5 +1,6 @@
 #include <libultraship.h>
 #include <libultra/gbi.h>
+#include <macros.h>
 
 Gfx ship2_flag_rgba16_aligner[] = {gsSPEndDisplayList()};
 u8 ship2_flag_rgba16[] = {
@@ -263,7 +264,7 @@ u8 ship2_flag_rgba16[] = {
 };
 
 Gfx ship2_window_i8_aligner[] = {gsSPEndDisplayList()};
-u8 ship2_window_i8[] = {
+ALIGNED8 u8 ship2_window_i8[] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
 	
