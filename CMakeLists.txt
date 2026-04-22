@@ -421,6 +421,7 @@ include_directories(
   ${dr_libs_SOURCE_DIR}
 )
 
+set(ENABLE_PRESS_TO_JOIN ON)
 add_subdirectory(libultraship ${CMAKE_CURRENT_SOURCE_DIR}/libultraship)
 add_dependencies(${PROJECT_NAME} libultraship)
 target_link_libraries(${PROJECT_NAME} PRIVATE libultraship)
