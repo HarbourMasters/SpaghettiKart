@@ -189,6 +189,21 @@ set(SKIP_XCODE_VERSION_CHECK ON)
 # TODO: Sorry i broke this
 set(GFX_DEBUG_DISASSEMBLER OFF)
 
+include(CheckCCompilerFlag)
+include(CheckCXXCompilerFlag)
+check_c_compiler_flag("-Wno-error=int-conversion" HAS_WNO_ERROR_INT_CONVERSION)
+check_cxx_compiler_flag("-Wno-error=changes-meaning" HAS_WNO_ERROR_CHANGES_MEANING)
+
+add_compile_options("$<$<COMPILE_LANGUAGE:C>:-Wno-error=incompatible-pointer-types>" "$<$<COMPILE_LANGUAGE:CXX>:-Wno-error=narrowing>")
+
+if(HAS_WNO_ERROR_INT_CONVERSION)
+  add_compile_options("$<$<COMPILE_LANGUAGE:C>:-Wno-error=int-conversion>")
+endif()
+
+if(HAS_WNO_ERROR_CHANGES_MEANING)
+  add_compile_options("$<$<COMPILE_LANGUAGE:CXX>:-Wno-error=changes-meaning>")
+endif()
+
 # Add compile definitions for the target
 add_compile_definitions(
     VERSION_US=1
