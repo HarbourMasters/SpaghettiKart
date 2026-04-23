@@ -1,6 +1,12 @@
 #pragma once
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 bool GameEngine_OTRSigCheck(const char* imgData);
+#ifdef __cplusplus
+}
+#endif
 
 #if defined(_WIN32)
 #define ALIGN_ASSET(x) __declspec(align(x))

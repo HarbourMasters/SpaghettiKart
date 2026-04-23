@@ -76,6 +76,7 @@ class GameEngine {
     void ProcessFrame(void (*run_one_game_iter)()) const;
     static void Destroy();
     static void ProcessGfxCommands(Gfx* pool);
+    static void RenderHMUI();
     static uint8_t GetBankIdByName(const std::string& name);
     static int ShowYesNoBox(const char* title, const char* box);
     static void ShowMessage(const char* title, const char* message, SDL_MessageBoxFlags type = SDL_MESSAGEBOX_ERROR);
@@ -110,6 +111,7 @@ struct AudioSequenceData* GameEngine_LoadSequence(uint8_t seqId);
 uint32_t GameEngine_GetSequenceCount();
 uint8_t GameEngine_IsSequenceLoaded(uint8_t seqId);
 void GameEngine_UnloadSequence(uint8_t seqId);
+void HMUI_SetActive(bool state);
 // bool GameEngine_OTRSigCheck(char* imgData); -> align_asset_macro.h
 float OTRGetAspectRatio(void);
 float OTRGetDimensionFromLeftEdge(float v);

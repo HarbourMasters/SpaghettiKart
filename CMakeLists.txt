@@ -230,6 +230,11 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${CMAKE_CURRENT_SOURCE_DIR}/include/assets
     ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/port
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/port/ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/port/hmui
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/port/hmui/os
+    ${CMAKE_CURRENT_SOURCE_DIR}/hmui/src
     ${CMAKE_CURRENT_SOURCE_DIR}/src/racing
     ${CMAKE_CURRENT_SOURCE_DIR}/src/ending
     ${CMAKE_CURRENT_SOURCE_DIR}/src/data
@@ -303,6 +308,14 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "src/enhancements/freecam/*.h"
     "src/engine/*.cpp"
     "src/engine/*.h"
+    "hmui/src/hmui/HMUI.cpp"
+    "hmui/src/hmui/Navigator.cpp"
+    "hmui/src/hmui/MouseEvents.cpp"
+    "hmui/src/hmui/input/FocusManager.cpp"
+    "hmui/src/hmui/*.h"
+    "hmui/src/hmui/graphics/ImGuiGraphicsContext.cpp"
+    "hmui/src/hmui/graphics/ImGuiGraphicsContext.h"
+    "hmui/src/hmui/graphics/GraphicsContext.h"
     "Resource.rc"
 )
 

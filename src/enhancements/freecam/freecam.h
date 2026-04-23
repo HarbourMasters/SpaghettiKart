@@ -15,6 +15,7 @@ void freecam_loop(Camera*);
 void freecam_update_controller(void);
 void freecam_mouse_manager(Camera*, Vec3f);
 void freecam_keyboard_manager(Camera*, Vec3f);
+bool FreecamKeyDown(int virtualKey);
 
 extern f32 gFreecamSpeed;
 extern f32 gFreecamSpeedMultiplier;

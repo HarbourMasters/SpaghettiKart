@@ -841,9 +841,24 @@ void game_state_handler(void) {
         case COURSE_SELECT_MENU_FROM_QUIT:
             // Display black
             osViBlack(0);
-            update_menus();
+            if (CVarGetInteger("gNewMenu", true) == true) {
+                switch(gMenuSelection) {
+                    case CONTROLLER_PAK_MENU:
+                    case HARBOUR_MASTERS_MENU:
+                    case LOGO_INTRO_MENU:
+                    case START_MENU:
+                        update_menus(); // Tick old menu
+                        break;
+                }
+            } else {
+                update_menus();
+            }
             init_rcp();
-            func_80094A64(gGfxPool);
+            if ((CVarGetInteger("gNewMenus", true) == true) && (gMenuSelection == MAIN_MENU)) {
+                HMUI_SetActive(true);
+            } else {
+                func_80094A64(gGfxPool); // Draw old menu
+            }
 #if DVDL
             display_dvdl();
 #endif

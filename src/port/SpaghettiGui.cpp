@@ -1,5 +1,6 @@
 #include <libultraship.h>
 #include "SpaghettiGui.h"
+#include "Engine.h"
 #include <ship/window/gui/Gui.h>
 #include <ship/window/Window.h>
 #ifdef __SWITCH__
@@ -157,6 +158,16 @@ namespace Ship {
             windowIter.second->Draw();
         }
 
+        ImGui::End();
+        ImGui::SetNextWindowPos(viewport->WorkPos);
+        ImGui::SetNextWindowSize(ImVec2((int)wnd->GetWidth(), (int)wnd->GetHeight()));
+//        ImGui::SetNextWindowViewport(viewport->ID);
+        ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
+        ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
+        ImGui::PushStyleVar(ImGuiStyleVar_ChildBorderSize, 0.0f);
+        ImGui::Begin("HMUI", nullptr, windowFlags);
+        ImGui::PopStyleVar(3);
+        GameEngine::RenderHMUI();
         ImGui::End();
     }
 

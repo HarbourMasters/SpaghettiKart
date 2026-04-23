@@ -63,6 +63,10 @@ typedef struct {
     u16 numTriangles;
 } CollisionGrid;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void create_thread(OSThread*, OSId, void (*entry)(void*), void*, void*, OSPri);
 void main_func(void);
 void thread1_idle(void*);
@@ -227,5 +231,9 @@ extern f32 gVBlankTimer;
 extern f32 gCourseTimer;
 
 // end of definition of main.c variables
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

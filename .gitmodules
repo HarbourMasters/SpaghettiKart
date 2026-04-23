@@ -13,3 +13,6 @@
 [submodule "tools/blender/fast64"]
 	path = tools/blender/fast64
 	url = https://github.com/Fast-64/fast64.git
+[submodule "hmui"]
+	path = hmui
+	url = https://github.com/KiritoDv/HMUI
