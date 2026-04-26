@@ -5,8 +5,10 @@
 #include "port/Engine.h"
 #include "semver.hpp"
 #include "utils/StringHelper.h"
+#include <filesystem>
 #include <memory>
 #include <optional>
+#include <set>
 #include <string>
 
 #include "ModManager.h"
@@ -64,11 +66,15 @@ void GenerateAssetsMods() {
 
 std::vector<std::string> ListMods() {
     const std::string main_path = Ship::Context::GetPathRelativeToAppDirectory(game_asset_file);
+    const std::string main_path_local_app = Ship::Context::LocateFileAcrossAppDirs(game_asset_file);
     const std::string assets_path = Ship::Context::LocateFileAcrossAppDirs(engine_asset_file);
 
     std::vector<std::string> archiveFiles;
+    std::set<std::string> seenArchivePaths;
     if (std::filesystem::exists(main_path)) {
         archiveFiles.push_back(main_path);
+    } else if (std::filesystem::exists(main_path_local_app)) {
+        archiveFiles.push_back(main_path_local_app);
     } else { // should not happen, but just in case
         GenerateAssetsMods();
         archiveFiles.push_back(main_path);
@@ -89,12 +95,12 @@ std::vector<std::string> ListMods() {
     if (std::filesystem::exists(mods_path) && std::filesystem::is_directory(mods_path)) {
         for (const auto& p : std::filesystem::directory_iterator(mods_path)) {
             auto ext = p.path().extension().string();
-            if (StringHelper::IEquals(ext, ".zip") || StringHelper::IEquals(ext, ".o2r") || std::filesystem::is_directory(p.path())) {
+            if (StringHelper::IEquals(ext, ".zip") || StringHelper::IEquals(ext, ".o2r") ||
+                std::filesystem::is_directory(p.path())) {
                 archiveFiles.push_back(p.path().generic_string());
             }
         }
     }
-
     return archiveFiles;
 }
 
@@ -104,9 +110,8 @@ std::optional<std::vector<std::string>> CheckCyclicDependencies() {
         for (const auto& [metaB, _] : Mods) {
             if (metaA.name != metaB.name) {
                 // If A depends on B and B depends on A, we have a cycle
-                if (metaA.dependencies.contains(metaB.name) &&
-                    metaB.dependencies.contains(metaA.name)) {
-                    list.push_back(metaA.name + " <-> " +  metaB.name);
+                if (metaA.dependencies.contains(metaB.name) && metaB.dependencies.contains(metaA.name)) {
+                    list.push_back(metaA.name + " <-> " + metaB.name);
                 }
             }
         }
@@ -126,7 +131,8 @@ std::optional<std::vector<std::string>> CheckOutdatedDependencies(const ModMetad
                 found = true;
                 auto range = depVersion.first;
                 if (!range.contains(otherMeta.version)) {
-                    list.push_back(depName + " (required: " + depVersion.second + ", found: " + otherMeta.version.to_string() + ")");
+                    list.push_back(depName + " (required: " + depVersion.second +
+                                   ", found: " + otherMeta.version.to_string() + ")");
                 }
                 break;
             }
@@ -196,16 +202,18 @@ void AddCoreDependencies() {
     semver::range_set<int, int, int> assetsVer;
     semver::parse("1.0.0-alpha1", assetsVer);
     meta.dependencies = {
-        {"mk64-assets", {mk64Ver, "1.0.0-alpha1"}},
-        {"extended-assets", {assetsVer, "1.0.0-alpha1"}},
+        { "mk64-assets", { mk64Ver, "1.0.0-alpha1" } },
+        { "extended-assets", { assetsVer, "1.0.0-alpha1" } },
     };
     AddModMetadata(meta, nullptr);
 }
 
 void CheckMK64O2RExists() {
     const std::string main_path = Ship::Context::GetPathRelativeToAppDirectory(game_asset_file);
+    const std::string main_path_local_app = Ship::Context::LocateFileAcrossAppDirs(game_asset_file);
 
-    if (!std::filesystem::exists(main_path)) {
+    // some build can prefer have mk64.o2r in the app application
+    if (!std::filesystem::exists(main_path) && !std::filesystem::exists(main_path_local_app)) {
         GenerateAssetsMods();
     }
 }
@@ -245,7 +253,8 @@ void FindAndLoadMods() {
             }
             metadata.name = std::filesystem::path(path).stem().string();
             semver::parse("0.0.0", metadata.version);
-            SPDLOG_WARN("The mod at path {} is missing a mods.toml file. Using default metadata:\n{}", path, metadata.ToString());
+            SPDLOG_WARN("The mod at path {} is missing a mods.toml file. Using default metadata:\n{}", path,
+                        metadata.ToString());
         }
 
         AddModMetadata(metadata, archive);

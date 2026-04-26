@@ -687,11 +687,19 @@ void render_screens(ScreenContext* screen, s32 mode, s32 someId, s32 playerId) {
     }
 
     if (CVarGetInteger("gDrawCPPActors", true) == true) {
+#ifdef __IOS__
+        // These editor-backed objects still crash during race rendering on iOS.
+#else
         CM_DrawActors(camera);
+#endif
     }
 
     if (CVarGetInteger("gDrawStaticMeshActors", true) == true) {
+#ifdef __IOS__
+        // Static mesh actor rendering shares the same crash path on iOS for now.
+#else
         CM_DrawStaticMeshActors();
+#endif
     }
 
     if (CVarGetInteger("gDrawObjects", true) == true) {

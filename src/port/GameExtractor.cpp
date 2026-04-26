@@ -30,6 +30,8 @@ std::unordered_map<std::string, std::string> mGameList = {
     { "579c48e211ae952530ffc8738709f078d5dd215e", "Mario Kart 64 (US)" },
 };
 
+static constexpr const char* kExpectedRomName = "baserom.us.z64";
+
 bool GameExtractor::SelectGameFromUI() {
     std::vector<std::string> roms;
     GetRoms(roms);
@@ -87,14 +89,15 @@ bool GameExtractor::SelectGameFromUI() {
         romPath = selection[0];
     }
 #else
-    // Mobile: fallback to baserom.us.z64
-    if (!foundGame && !std::filesystem::exists(Ship::Context::GetPathRelativeToAppDirectory("baserom.us.z64"))) {
-        SPDLOG_ERROR("baserom not found");
+    // Mobile: fallback to baserom.us.z64 in the writable app directory.
+    const auto fallbackRomPath = Ship::Context::GetPathRelativeToAppDirectory(kExpectedRomName);
+    if (!foundGame && !std::filesystem::exists(fallbackRomPath)) {
+        SPDLOG_ERROR("{} not found in app Documents", kExpectedRomName);
         return false;
     }
 
     if (!foundGame) {
-        romPath = Ship::Context::GetPathRelativeToAppDirectory("baserom.us.z64");
+        romPath = fallbackRomPath;
     }
 #endif
 
@@ -135,6 +138,23 @@ void GameExtractor::GetRoms(std::vector<std::string>& roms) {
     // if (h != nullptr) {
     //    CloseHandle(h);
     //}
+#elif defined(__IOS__)
+    const auto appDirectory = Ship::Context::GetAppDirectoryPath();
+
+    if (!std::filesystem::exists(appDirectory)) {
+        return;
+    }
+
+    for (const auto& file : std::filesystem::directory_iterator(appDirectory)) {
+        if (!file.is_regular_file()) {
+            continue;
+        }
+
+        const auto extension = file.path().extension().string();
+        if (extension == ".z64" || extension == ".n64" || extension == ".v64") {
+            roms.push_back(file.path().string());
+        }
+    }
 #elif unix
     // Open the directory of the app.
     DIR* d = opendir(".");

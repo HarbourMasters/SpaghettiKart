@@ -269,7 +269,12 @@ bool GameEngine::GenAssetFile() {
     auto extractor = new GameExtractor();
 
     if (!extractor->SelectGameFromUI()) {
+#ifdef __IOS__
+        ShowMessage("ROM Required",
+                    "Copy a supported Mario Kart 64 ROM to this app's Documents folder as baserom.us.z64, then relaunch the app.");
+#else
         ShowMessage("Error", "No ROM selected.\n\nExiting...");
+#endif
         exit(1);
     }
 

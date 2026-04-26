@@ -232,6 +232,93 @@ cpack
 cmake --build build-cmake --target clean
 ```
 
+## iOS
+Requires:
+  * macOS with Xcode installed
+  * CMake and Ninja in `PATH`
+  * Homebrew packages: `cmake ninja sdl2 libpng glew nlohmann-json libzip vorbis-tools sdl2_net tinyxml2 pkg-config git`
+  * Your own supported Mario Kart 64 ROM
+
+Install the Homebrew dependencies:
+
+```bash
+brew install cmake ninja sdl2 libpng glew nlohmann-json libzip vorbis-tools sdl2_net tinyxml2 pkg-config git
+```
+
+Build steps:
+
+```bash
+# Clone the repo
+git clone --recurse-submodules https://github.com/HarbourMasters/SpaghettiKart.git
+cd SpaghettiKart
+
+# If needed later
+git submodule update --init --recursive
+
+# Put your supported ROM at the repo root with this filename
+ln -sf "/path/to/your/baserom.us.z64" baserom.us.z64
+
+# Generate mk64.o2r and spaghetti.o2r from your own ROM
+cmake -S . -B build-cmake -GNinja
+cmake --build build-cmake --target ExtractAssets
+
+# Configure the iOS build
+cmake -S . -B build-ios-make -DCMAKE_BUILD_TYPE=Release -DIOS=ON -DSIGN_LIBRARY=OFF
+
+# Build the app
+cmake --build build-ios-make --config Release
+
+# Package an unsigned IPA
+# The IPA must contain Payload/ at the archive root.
+rm -rf ipa-package
+mkdir -p ipa-package/Payload
+cp -R build-ios-make/Spaghettify.app ipa-package/Payload/Spaghettify.app
+(cd ipa-package && zip -qry ../SpaghettiKart-unsigned.ipa Payload)
+
+# Output
+ls SpaghettiKart-unsigned.ipa
+```
+
+Notes:
+  * The IPA produced by these steps is unsigned.
+  * The build generates `mk64.o2r` and `spaghetti.o2r` from your own ROM and copies them into the iOS app bundle.
+  * Do not zip `build-ios-make/Payload` directly, or the archive will have the wrong root folder for signing tools.
+  * No additional mod pack is required for the current iOS build flow.
+
+## iOS Simulator (macOS)
+To run the project on the iOS Simulator on a macOS host (Apple Silicon `arm64`), use the following steps. This assumes you have already extracted the assets as shown in the iOS or macOS sections.
+
+### Build steps
+
+```bash
+# Clean previous builds to avoid conflicts
+rm -rf build-ios-make
+
+# Configure the project for the simulator
+# This ensures we target the simulator's arm64 architecture instead of physical devices
+cmake -B build-ios-make -G "Unix Makefiles" \
+    -DCMAKE_TOOLCHAIN_FILE=cmake/ios.toolchain.cmake \
+    -DPLATFORM=SIMULATORARM64 \
+    -DCMAKE_OSX_SYSROOT=iphonesimulator \
+    -DCMAKE_OSX_ARCHITECTURES=arm64
+
+# Compile the project
+cmake --build build-ios-make
+```
+
+### Running on the Simulator
+
+```bash
+# Boot your preferred simulator (e.g., iPhone 16 Pro)
+xcrun simctl boot "iPhone 16 Pro"
+
+# Install the app onto the booted simulator
+xcrun simctl install booted build-ios-make/Spaghettify.app
+
+# Launch the app
+xcrun simctl launch booted dev.net64.game
+```
+
 ## Getting CI to work on your fork
 
 The CI works via [Github Actions](https://github.com/features/actions) where we mostly make use of machines hosted by Github; except for the very first step of the CI process called "Extract assets". This steps extracts assets from the game file and generates an "assets" folder in `mm/`.
