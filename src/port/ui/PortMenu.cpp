@@ -97,11 +97,13 @@ void PortMenu::AddSettings() {
     WidgetPath path = { "Settings", "General", SECTION_COLUMN_1 };
 
     static bool isFullscreen = false;
+#ifndef __SWITCH__
     AddWidget(path, "Toggle Fullscreen", WIDGET_CHECKBOX)
         .ValuePointer(&isFullscreen)
         .PreFunc([](WidgetInfo& info) { isFullscreen = Ship::Context::GetInstance()->GetWindow()->IsFullscreen(); })
         .Callback([](WidgetInfo& info) { Ship::Context::GetInstance()->GetWindow()->ToggleFullscreen(); })
         .Options(CheckboxOptions().Tooltip("Toggles Fullscreen On/Off."));
+#endif
 
     AddWidget(path, "Startup Behaviour", WIDGET_CVAR_COMBOBOX)
         .CVar("gSkipIntro")
@@ -170,12 +172,14 @@ void PortMenu::AddSettings() {
         .CVar("gEnhancements.Mods.AlternateAssetsHotkey")
         .Options(
             CheckboxOptions().Tooltip("Allows pressing the Tab key to toggle alternate assets").DefaultValue(true));
+#ifndef __SWITCH__
     AddWidget(path, "Open App Files Folder", WIDGET_BUTTON)
         .Callback([](WidgetInfo& info) {
             std::string filesPath = Ship::Context::GetInstance()->GetAppDirectoryPath();
             SDL_OpenURL(std::string("file:///" + std::filesystem::absolute(filesPath).string()).c_str());
         })
         .Options(ButtonOptions().Tooltip("Opens the folder that contains the save and mods folders, etc."));
+#endif
 
     // Audio Settings
     path.sidebarName = "Audio";
