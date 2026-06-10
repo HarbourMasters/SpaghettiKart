@@ -84,7 +84,6 @@ GameEngine::GameEngine() {
 
 #ifdef __SWITCH__
     Ship::Switch::Init(Ship::PreInitPhase);
-    Ship::Switch::Init(Ship::PostInitPhase);
 #endif
 
 #ifdef _WIN32
