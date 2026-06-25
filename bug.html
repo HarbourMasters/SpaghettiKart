@@ -116,9 +116,9 @@ $(function(){initNavTree('bug.html',''); initResizable(true); });
 <dt>Global <a class="el" href="code__80005FD0_8c.html#a61da9c57e00b21e4a075bf9d41b932a1">func_8001969C</a>  (UNUSED s32 playerId, UNUSED f32 arg1, s32 cameraId, UNUSED s16 pathIndex)</dt>
 <dd><a class="anchor" id="_bug000007"></a>Adding an (f32) cast changes asm, why?  </dd>
 <dt>Global <a class="el" href="heap_8h.html#ab4f80aff560307d96b2c40b5c0ed82f8">func_800B9BE4</a>  (f32, f32, u16 *)</dt>
-<dd><a class="anchor" id="_bug000004"></a>they probably meant to store the value to tmp[i] and tmp[8 + i]  </dd>
+<dd><a class="anchor" id="_bug000002"></a>they probably meant to store the value to tmp[i] and tmp[8 + i]  </dd>
 <dt>Global <a class="el" href="load_8h.html#ab3527402c5b0ba729e379fb33e802291">func_800BB388</a>  (s32 bankId, s32 instId, s32 arg2)</dt>
-<dd><a class="anchor" id="_bug000002"></a>missing return  </dd>
+<dd><a class="anchor" id="_bug000003"></a>missing return  </dd>
 <dt>Global <a class="el" href="seqplayer_8h.html#a96fd2718691a0e1c86de13d55670a8b1">init_sequence_players</a>  (void)</dt>
 <dd><a class="anchor" id="_bug000006"></a>Size of wrong array. Zeroes out second half of gSequenceChannels[0], all of gSequenceChannels[1..31], and part of gSequenceLayers[0]. However, this is only called at startup, so it's harmless.  </dd>
 <dt>Global <a class="el" href="podium__ceremony__actors_8h.html#a186674a03da1d9fce04a3211d6f4ec4d">new_actor</a>  (<a class="el" href="structActorInitParams.html">ActorInitParams</a> *)</dt>
@@ -128,7 +128,7 @@ $(function(){initNavTree('bug.html',''); initResizable(true); });
 <dt>Global <a class="el" href="playback_8h.html#a281646ee32b4a0af33bcb1e95afd624e">note_set_vel_pan_reverb</a>  (struct <a class="el" href="structNote.html">Note</a> *note, f32 velocity, u8 pan, u8 reverbVol)</dt>
 <dd><a class="anchor" id="_bug000005"></a>for the change to UQ0.7, the if statement should also have been changed accordingly  </dd>
 <dt>Global <a class="el" href="load_8h.html#a9c1bfb29806b05fc3a700184dcac6880">preload_sequence</a>  (u32, u8)</dt>
-<dd><a class="anchor" id="_bug000003"></a>should be IS_SEQ_LOAD_COMPLETE  </dd>
+<dd><a class="anchor" id="_bug000004"></a>should be IS_SEQ_LOAD_COMPLETE  </dd>
 <dt>Global <a class="el" href="menu__items_8h.html#a5b9f65d326f8281c8d77ab26a178de52">render_menu_item_data_course_image</a>  (<a class="el" href="structMenuItem.html">MenuItem</a> *)</dt>
 <dd><a class="anchor" id="_bug000014"></a>todo: This function will not work in custom courses.  </dd>
 <dt>Global <a class="el" href="code__80281780_8h.html#a59f61302f1f5f6ecab728bf08608d16b">setup_podium_ceremony</a>  (void)</dt>

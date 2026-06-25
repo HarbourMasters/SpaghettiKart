@@ -74,7 +74,7 @@ var NAVTREE =
     [ "Courses", "coursesmenu.html", "coursesmenu" ],
     [ "Custom Audio", "md_docs_2custom-audio.html", [
       [ "Example:", "md_docs_2custom-audio.html#example", null ],
-      [ "Future plans", "md_docs_2custom-audio.html#future-plans-1", null ]
+      [ "Future plans", "md_docs_2custom-audio.html#future-plans", null ]
     ] ],
     [ "Custom characters", "md_docs_2custom-characters.html", [
       [ "Examples for all characters:", "md_docs_2custom-characters.html#examples-for-all-characters-1", null ],
@@ -82,8 +82,8 @@ var NAVTREE =
         [ "Tips", "md_docs_2custom-characters.html#tips-1", [
           [ "Change Viewport Render Settings", "md_docs_2custom-characters.html#change-viewport-render-settings-1", null ]
         ] ],
-        [ "Tools To Help", "md_docs_2custom-characters.html#tools-to-help-1", null ],
-        [ "Future plans", "md_docs_2custom-characters.html#future-plans-2", null ]
+        [ "Tools To Help", "md_docs_2custom-characters.html#tools-to-help", null ],
+        [ "Future plans", "md_docs_2custom-characters.html#future-plans-1", null ]
       ] ]
     ] ],
     [ "faq", "md_docs_2faq.html", null ],
@@ -141,8 +141,8 @@ var NAVTREE =
     ] ],
     [ "Texture Pack", "md_docs_2textures-pack.html", [
       [ "Example:", "md_docs_2textures-pack.html#example-1", null ],
-      [ "Tools To Help", "md_docs_2textures-pack.html#tools-to-help-2", null ],
-      [ "Future plans", "md_docs_2textures-pack.html#future-plans-3", null ]
+      [ "Tools To Help", "md_docs_2textures-pack.html#tools-to-help-1", null ],
+      [ "Future plans", "md_docs_2textures-pack.html#future-plans-2", null ]
     ] ],
     [ "Returning Tracks", "md_docs_2track__returns.html", [
       [ "Specifically Used to help find music and to see how courses are adapted in the future including refer...", "md_docs_2track__returns.html#specifically-used-to-help-find-music-and-to-see-how-courses-are-adapted-in-the-future-including-references-too", null ],

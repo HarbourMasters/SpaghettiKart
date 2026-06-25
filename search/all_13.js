@@ -231,7 +231,7 @@ var searchData=
   ['pixelcountpresets_228',['pixelCountPresets',['../namespaceGameUI.html#a3ec999dd45c253f4028a9799c2097bf3',1,'GameUI']]],
   ['pjobs_229',['pJobs',['../structma__job__queue.html#aa451ed367f2b32c7290478552e6bed72',1,'ma_job_queue']]],
   ['place_230',['PLACE',['../defines_8h.html#a553ccae20425334722a8255176db6b58',1,'defines.h']]],
-  ['plans_231',['plans',['../characteroverview.html#future-plans',1,'Future plans'],['../md_docs_2custom-audio.html#future-plans-1',1,'Future plans'],['../md_docs_2custom-characters.html#future-plans-2',1,'Future plans'],['../md_docs_2textures-pack.html#future-plans-3',1,'Future plans']]],
+  ['plans_231',['plans',['../md_docs_2custom-audio.html#future-plans',1,'Future plans'],['../md_docs_2custom-characters.html#future-plans-1',1,'Future plans'],['../md_docs_2textures-pack.html#future-plans-2',1,'Future plans'],['../characteroverview.html#future-plans-3',1,'Future plans']]],
   ['platform_232',['platform',['../classpfd_1_1internal_1_1platform.html',1,'pfd::internal']]],
   ['play_5fcpu_5fsound_5feffect_233',['play_cpu_sound_effect',['../code__80005FD0_8c.html#adb9b8cd30f2be4e125706fa55ea2272d',1,'play_cpu_sound_effect(s32 arg0, Player *player):&#160;code_80005FD0.c'],['../code__80005FD0_8h.html#a7fd9348353fad2f9e3c09149b4ac6848',1,'play_cpu_sound_effect(s32, Player *):&#160;code_80005FD0.c']]],
   ['play_5fcutscene_234',['play_cutscene',['../ceremony__and__credits_8c.html#a4a6457529772eb72fe5e0fd85793e4ca',1,'play_cutscene(CinematicCamera *camera):&#160;ceremony_and_credits.c'],['../ceremony__and__credits_8h.html#a5b5ed72310520791870bbf9bd3fe930e',1,'play_cutscene(CinematicCamera *):&#160;ceremony_and_credits.c']]],
