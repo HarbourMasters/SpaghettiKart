@@ -560,6 +560,11 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
           submodules: recursive
+      - name: Download spaghetti.o2r
+        uses: actions/download-artifact@v4
+        with:
+          name: spaghetti.o2r
+          path: .
       - name: Install dependencies
         run: |
           sudo apt-get update
@@ -591,6 +596,5 @@ jobs:
           name: Spaghettify-switch
           path: |
             Spaghettify.nro
-            config.yml
-            assets
-            gamecontrollerdb.txt
+            spaghetti.o2r
+            
