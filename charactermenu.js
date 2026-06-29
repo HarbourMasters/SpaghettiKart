@@ -7,8 +7,8 @@ var charactermenu =
         [ "Tips", "characteroverview.html#tips", [
           [ "Change Viewport Render Settings", "characteroverview.html#change-viewport-render-settings", null ]
         ] ],
-        [ "Tools To Help", "characteroverview.html#tools-to-help-2", null ],
-        [ "Future plans", "characteroverview.html#future-plans-3", null ]
+        [ "Tools To Help", "characteroverview.html#tools-to-help", null ],
+        [ "Future plans", "characteroverview.html#future-plans", null ]
       ] ]
     ] ]
 ];
