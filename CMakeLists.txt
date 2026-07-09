@@ -251,6 +251,7 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/src/engine/particles
     ${CMAKE_CURRENT_SOURCE_DIR}/src/enhancements
     ${CMAKE_CURRENT_SOURCE_DIR}/src/enhancements/freecam
+    ${CMAKE_CURRENT_SOURCE_DIR}/raphnetraw/src
 )
 
 # Collect source files to build the executable
@@ -310,6 +311,8 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "src/enhancements/freecam/*.h"
     "src/engine/*.cpp"
     "src/engine/*.h"
+    "raphnetraw/src/*.c"
+    "raphnetraw/src/*.h"
     "Resource.rc"
 )
 
@@ -495,6 +498,9 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU|Clang|AppleClang")
   "_UNICODE"
  )
 endif()
+
+find_package(hidapi REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE hidapi::hidapi)
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
   find_package(Ogg CONFIG REQUIRED)

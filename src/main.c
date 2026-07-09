@@ -41,6 +41,9 @@
 #include "port/Engine.h"
 #include "engine/Matrix.h"
 
+#include "raphnetraw/src/plugin_front.h"
+#include "port/Raphnet.h"
+
 // Declarations (not in this file)
 void func_80091B78(void);
 
@@ -333,7 +336,8 @@ void calculate_delta_time(void) {
 void init_controllers(void) {
     osCreateMesgQueue(&gSIEventMesgQueue, &gSIEventMesgBuf[0], ARRAY_COUNT(gSIEventMesgBuf));
     osSetEventMesg(OS_EVENT_SI, &gSIEventMesgQueue, OS_MESG_32(0x33333333));
-    osContInit(&gSIEventMesgQueue, &gControllerBits, gControllerStatuses);
+    // osContInit(&gSIEventMesgQueue, &gControllerBits, gControllerStatuses);
+    Raphnet_osContGetInitData(&gControllerBits, gControllerStatuses);
     if ((gControllerBits & 1) == 0) {
         sIsController1Unplugged = true;
     } else {
@@ -390,9 +394,11 @@ void update_controller(s32 index) {
 void read_controllers(void) {
     OSMesg msg;
 
-    osContStartReadData(&gSIEventMesgQueue);
+    // osContStartReadData(&gSIEventMesgQueue);
+    Raphnet_osContStartReadData(&gSIEventMesgQueue);
     // osRecvMesg(&gSIEventMesgQueue, &msg, OS_MESG_BLOCK);
-    osContGetReadData(gControllerPads);
+    // osContGetReadData(gControllerPads);
+    Raphnet_osContGetReadData(gControllerPads);
     update_controller(0);
     update_controller(1);
     update_controller(2);
@@ -1151,6 +1157,9 @@ void thread5_game_loop(void) {
 void thread5_iteration(void) {
     func_800CB2C4();
     calculate_delta_time();
+
+    Raphnet_osContGetInitData(&gControllerBits, gControllerStatuses);
+
 #ifdef TARGET_N64
     while (true) {
         func_800CB2C4();

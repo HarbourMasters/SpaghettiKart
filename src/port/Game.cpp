@@ -50,6 +50,9 @@ extern "C" {
 #include "code_800029B0.h"
 #include "code_80057C60.h"
 // #include "engine/wasm.h"
+
+// Raphnet Raw
+#include "raphnetraw/src/plugin_front.h"
 }
 
 extern "C" void Graphics_PushFrame(Gfx* pool) {
@@ -958,6 +961,8 @@ extern "C"
 #endif
     // load_wasm();
     GameEngine::Create();
+    RaphnetInitialize();
+    ScanControllers();
     audio_init();
     sound_init();
 
@@ -989,6 +994,7 @@ extern "C"
         push_frame();
     }
     CustomEngineDestroy();
+    RaphnetShutdown();
     // GameEngine::Instance->ProcessFrame(push_frame);
     GameEngine::Instance->Destroy();
     return 0;
