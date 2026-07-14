@@ -4,6 +4,19 @@ cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 project(Spaghettify VERSION 1.0.0 LANGUAGES C CXX ASM)
 include(FetchContent)
 
+# fmt's consteval format-string checking fails to compile under newer
+# AppleClang (Xcode 16+) with the spdlog/fmt versions in use (both vcpkg's on
+# CI and Torch's bundled copy — see cmake/TorchExternalFixes.cmake for the
+# latter):
+#   error: call to consteval function 'fmt::basic_format_string<...>' is not
+#   a constant expression
+# Defining FMT_CONSTEVAL as empty falls back to fmt's pre-C++20 constexpr
+# checking, which compiles cleanly with identical runtime behavior. Scoped to
+# AppleClang; other platforms and compilers are untouched.
+if(APPLE AND CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    add_compile_definitions("FMT_CONSTEVAL=")
+endif()
+
 set(NATO_PHONETIC_ALPHABET
   "Alfa" "Bravo" "Charlie" "Delta" "Echo" "Foxtrot" "Golf" "Hotel"
   "India" "Juliett" "Kilo" "Lima" "Mike" "November" "Oscar" "Papa"
