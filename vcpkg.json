@@ -31,5 +31,17 @@
     "libogg",
     "libvorbis"
   ],
+  "overrides": [
+    {
+      "$reason": "fmt 11.0.2 (spdlog's dependency) fails to compile under newer AppleClang (consteval format-string checking) and hard-defines FMT_CONSTEVAL with no override guard, so it cannot be disabled either. 10.2.1 keeps the #ifndef guard, letting the AppleClang-scoped FMT_CONSTEVAL= define in CMakeLists.txt take effect. spdlog is pinned to the matching 1.14.1 (1.15.x requires fmt >= 11).",
+      "name": "fmt",
+      "version": "10.2.1",
+      "port-version": 2
+    },
+    {
+      "name": "spdlog",
+      "version": "1.14.1"
+    }
+  ],
   "builtin-baseline": "2e58bb35ff7a3a037920d959ce20cb4d8c22319a"
 }
