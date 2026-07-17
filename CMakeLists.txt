@@ -13,6 +13,10 @@ include(FetchContent)
 # Defining FMT_CONSTEVAL as empty falls back to fmt's pre-C++20 constexpr
 # checking, which compiles cleanly with identical runtime behavior. Scoped to
 # AppleClang; other platforms and compilers are untouched.
+# TODO: Temporary hack. Remove this (plus cmake/TorchExternalFixes.cmake and
+# the vcpkg.json fmt/spdlog pins) once the Torch pin is bumped past Torch's
+# spdlog/fmt update. Note the bump also needs matching MK64 loader changes,
+# see the discussion on PR #712.
 if(APPLE AND CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     add_compile_definitions("FMT_CONSTEVAL=")
 endif()
@@ -724,6 +728,9 @@ if(NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
   # CMakeLists overwrites CMAKE_CXX_FLAGS, so flags can't be injected that
   # way). Fixes the build-macos-arm64 job; the intel runner's older Xcode
   # doesn't hit it.
+  # TODO: Temporary hack. Remove the CMAKE_PROJECT_INCLUDE line below (plus
+  # cmake/TorchExternalFixes.cmake itself) once the Torch pin is bumped past
+  # Torch's spdlog/fmt update, see the discussion on PR #712.
   ExternalProject_Add(TorchExternal
     PREFIX TorchExternal
     SOURCE_DIR ${CMAKE_SOURCE_DIR}/torch

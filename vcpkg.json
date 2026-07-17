@@ -33,7 +33,7 @@
   ],
   "overrides": [
     {
-      "$reason": "fmt 11.0.2 (spdlog's dependency) fails to compile under newer AppleClang (consteval format-string checking) and hard-defines FMT_CONSTEVAL with no override guard, so it cannot be disabled either. 10.2.1 keeps the #ifndef guard, letting the AppleClang-scoped FMT_CONSTEVAL= define in CMakeLists.txt take effect. spdlog is pinned to the matching 1.14.1 (1.15.x requires fmt >= 11).",
+      "$reason": "fmt 11.0.2 (spdlog's dependency) fails to compile under newer AppleClang (consteval format-string checking) and hard-defines FMT_CONSTEVAL with no override guard, so it cannot be disabled either. 10.2.1 keeps the #ifndef guard, letting the AppleClang-scoped FMT_CONSTEVAL= define in CMakeLists.txt take effect. spdlog is pinned to the matching 1.14.1 (1.15.x requires fmt >= 11). TODO: Temporary hack. Remove both pins (plus the FMT_CONSTEVAL blocks in CMakeLists.txt and cmake/TorchExternalFixes.cmake) once the Torch pin is bumped past Torch's spdlog/fmt update. Note the bump also needs matching MK64 loader changes, see the discussion on PR #712.",
       "name": "fmt",
       "version": "10.2.1",
       "port-version": 2
