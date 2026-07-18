@@ -263,6 +263,64 @@ GameEngine::GameEngine() {
     fontStandardLarger = CreateFontWithSize(20.0f, "fonts/Montserrat-Regular.ttf");
     fontStandardLargest = CreateFontWithSize(24.0f, "fonts/Montserrat-Regular.ttf");
     ImGui::GetIO().FontDefault = fontMono;
+
+
+    // Warm the platform shader cache for the shader combinations MK64 uses in
+    // boot, menus, and racing. On Metal, first use of each combination costs
+    // ~70 ms of synchronous source compilation on the render path (frame
+    // hitch + audio dropout); prewarming compiles them on a background thread
+    // at boot, after which the render thread's compiles are cache hits. The
+    // list was captured from instrumented play sessions (boot -> menus -> GP
+    // race). Harmless if stale: unknown combinations still compile lazily.
+    static const uint64_t kShaderWarmList[][2] = {
+    { 0x0000000001080108ULL, 0xfffffffffffe0000ULL },
+    { 0x0000000001080108ULL, 0xfffffffffffe0001ULL },
+    { 0x0000000001080108ULL, 0xfffffffffffe0005ULL },
+    { 0x0000000001080108ULL, 0xfffffffffffe0301ULL },
+    { 0x0000000001080108ULL, 0xffffffffffff0001ULL },
+    { 0x0000000001080108ULL, 0xffffffffffff0201ULL },
+    { 0x0000000001081000ULL, 0xfffffffffffe0001ULL },
+    { 0x0000000001081000ULL, 0xffffffffffff0001ULL },
+    { 0x0000000001082821ULL, 0xfffffffffffe0001ULL },
+    { 0x0000000001082821ULL, 0xfffffffffffe0009ULL },
+    { 0x000000000801281cULL, 0xfffffffffffe0005ULL },
+    { 0x000000000801281cULL, 0xfffffffffffe0021ULL },
+    { 0x000000000801281cULL, 0xfffffffffffe0301ULL },
+    { 0x0000000010000108ULL, 0xffffffffffff0000ULL },
+    { 0x0000000010000201ULL, 0xfffffffffffe0000ULL },
+    { 0x0000000010001000ULL, 0xfffffffffffe0000ULL },
+    { 0x0000000010001000ULL, 0xfffffffffffe0001ULL },
+    { 0x0000000010001000ULL, 0xffffffffffff0000ULL },
+    { 0x0000000010001000ULL, 0xffffffffffff0001ULL },
+    { 0x0000000010008000ULL, 0xfffffffffffe0000ULL },
+    { 0x0000000010008000ULL, 0xfffffffffffe0001ULL },
+    { 0x0000000080000108ULL, 0xfffffffffffe0005ULL },
+    { 0x0000000080000108ULL, 0xffffffffffff0001ULL },
+    { 0x0000000080001000ULL, 0xfffffffffffe0001ULL },
+    { 0x0000000080008000ULL, 0xfffffffffffe0000ULL },
+    { 0x0000000080008000ULL, 0xfffffffffffe0001ULL },
+    { 0x0000000080008000ULL, 0xfffffffffffe0005ULL },
+    { 0x0000000080008000ULL, 0xfffffffffffe0080ULL },
+    { 0x0000000080008000ULL, 0xfffffffffffe0305ULL },
+    { 0x0000000080008000ULL, 0xfffffffffffe0325ULL },
+    { 0x0000000080008000ULL, 0xffffffffffff0000ULL },
+    { 0x0000000080008000ULL, 0xffffffffffff0001ULL },
+    { 0x010d020d80000108ULL, 0xfffffffffffe0013ULL },
+    { 0xd000010d80008000ULL, 0xfffffffffffe0315ULL },
+    { 0xd000010dc0008000ULL, 0xfffffffffffe0012ULL },
+    { 0xd000020d80000108ULL, 0xfffffffffffe0015ULL },
+    { 0xd000020d80000108ULL, 0xfffffffffffe0017ULL },
+    { 0xd000020dc0000108ULL, 0xfffffffffffe0010ULL },
+    { 0xd000020dc0000108ULL, 0xfffffffffffe0012ULL },
+    { 0xd000020dc0000108ULL, 0xfffffffffffe0015ULL },
+    { 0xd000020dc0000108ULL, 0xfffffffffffe0312ULL },
+    { 0xd000020dc0001000ULL, 0xfffffffffffe0012ULL },
+    };
+    if (auto interpreter = wnd->GetInterpreterWeak().lock()) {
+        if (auto* rapi = interpreter->GetCurrentRenderingAPI()) {
+            rapi->PrewarmShaders(kShaderWarmList, sizeof(kShaderWarmList) / sizeof(kShaderWarmList[0]));
+        }
+    }
 }
 
 bool GameEngine::GenAssetFile() {
@@ -351,6 +409,8 @@ void GameEngine::Create() {
     instance->gHMAS = new HMAS();
     instance->AudioInit();
     GameUI::SetupGuiElements();
+
+
 #if defined(__SWITCH__) || defined(__WIIU__)
     CVarRegisterInteger("gControlNav", 1); // always enable controller nav on switch/wii u
 #endif
