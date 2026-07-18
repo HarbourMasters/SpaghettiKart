@@ -59,14 +59,14 @@ void SetTextMatrix(Mat4 mf, f32 x, f32 y, f32 arg3, f32 arg4) {
 // AddMatrix but with custom gfx ptr arg and flags are predefined
 Gfx* AddTextMatrix(Gfx* displayListHead, Mat4 mtx) {
     // Push a new matrix to the stack
-    GetWorld()->Mtx.Objects.emplace_back();
+    GetWorld()->world_mtx.Objects.emplace_back();
 
     // Convert to a fixed-point matrix
-    FrameInterpolation_RecordMatrixMtxFToMtx((MtxF*)mtx, &GetWorld()->Mtx.Objects.back());
-    guMtxF2L(mtx, &GetWorld()->Mtx.Objects.back());
+    FrameInterpolation_RecordMatrixMtxFToMtx((MtxF*)mtx, &GetWorld()->world_mtx.Objects.back());
+    guMtxF2L(mtx, &GetWorld()->world_mtx.Objects.back());
 
     // Load the matrix
-    gSPMatrix(displayListHead++, &GetWorld()->Mtx.Objects.back(), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(displayListHead++, &GetWorld()->world_mtx.Objects.back(), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
     return displayListHead;
 }
@@ -195,43 +195,43 @@ void AddLocalRotation(Mat4 mat, IRotator rot) {
 extern "C" {
 
     void AddHudMatrix(Mat4 mtx, s32 flags) {
-        AddMatrix(GetWorld()->Mtx.Objects, mtx, flags);
+        AddMatrix(GetWorld()->world_mtx.Objects, mtx, flags);
     }
 
     Mtx* GetScreenMatrix(void) {
-        return &GetWorld()->Mtx.Screen2D;
+        return &GetWorld()->world_mtx.Screen2D;
     }
 
     Mtx* GetOrthoMatrix(void) {
-        return &GetWorld()->Mtx.Ortho;
+        return &GetWorld()->world_mtx.Ortho;
     }
 
     Mtx* GetPerspMatrix(size_t cameraId) {
-        return &GetWorld()->Mtx.Persp[cameraId];
+        return &GetWorld()->world_mtx.Persp[cameraId];
     }
 
     Mtx* GetLookAtMatrix(size_t cameraId) {
-        return &GetWorld()->Mtx.LookAt[cameraId];
+        return &GetWorld()->world_mtx.LookAt[cameraId];
     }
 
     void AddObjectMatrix(Mat4 mtx, s32 flags) {
-        AddMatrix(GetWorld()->Mtx.Objects, mtx, flags);
+        AddMatrix(GetWorld()->world_mtx.Objects, mtx, flags);
     }
 
     Mtx* GetShadowMatrix(size_t playerId) {
-        return &GetWorld()->Mtx.Shadows[playerId];
+        return &GetWorld()->world_mtx.Shadows[playerId];
     }
 
     Mtx* GetKartMatrix(size_t playerId) {
-        return &GetWorld()->Mtx.Karts[playerId];
+        return &GetWorld()->world_mtx.Karts[playerId];
     }
 
     void AddEffectMatrix(Mat4 mtx, s32 flags) {
-        AddMatrix(GetWorld()->Mtx.Objects, mtx, flags);
+        AddMatrix(GetWorld()->world_mtx.Objects, mtx, flags);
     }
 
     void AddEffectMatrixOrtho(void) {
-        auto& stack = GetWorld()->Mtx.Objects;
+        auto& stack = GetWorld()->world_mtx.Objects;
         stack.emplace_back();
 
         guOrtho(&stack.back(), 0.0f, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1, 0.0f, -100.0f, 100.0f, 1.0f);
@@ -240,7 +240,7 @@ extern "C" {
     }
 
     Mtx* GetEffectMatrix(void) {
-        return GetMatrix(GetWorld()->Mtx.Objects);
+        return GetMatrix(GetWorld()->world_mtx.Objects);
     }
 
 
@@ -249,14 +249,14 @@ extern "C" {
      * We might need to adjust which ones we clear.
      */
     void ClearMatrixPools(void) {
-        GetWorld()->Mtx.Objects.clear();
-       // GetWorld()->Mtx.Shadows.clear();
-        //GetWorld()->Mtx.Karts.clear();
-       // GetWorld()->Mtx.Effects.clear();
+        GetWorld()->world_mtx.Objects.clear();
+       // GetWorld()->world_mtx.Shadows.clear();
+        //GetWorld()->world_mtx.Karts.clear();
+       // GetWorld()->world_mtx.Effects.clear();
     }
 
     void ClearObjectsMatrixPool(void) {
-        GetWorld()->Mtx.Objects.clear();
+        GetWorld()->world_mtx.Objects.clear();
     }
 }
 

@@ -42,7 +42,7 @@ void spawn_falling_rocks(struct ActorSpawnData* spawnData) {
         temp_v1 = (struct FallingRock*) GET_ACTOR(temp);
 
         temp_v1->unk_06 = temp_s0->someId;
-        func_802AAAAC((Collision*) &temp_v1->unk30);
+        func_802AAAAC((CollisionData*) &temp_v1->unk30);
         temp_s0++;
     }
 }

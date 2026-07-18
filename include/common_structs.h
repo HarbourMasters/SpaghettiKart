@@ -144,7 +144,7 @@ typedef struct {
 } StaffGhost;
 // 80160ADC Banana's remaining
 
-typedef struct {
+typedef struct{
     /* 0x00 */ u16 unk30;
     /* 0x02 */ u16 unk32;
     /* 0x04 */ u16 unk34;
@@ -157,7 +157,7 @@ typedef struct {
     /* 0x24 */ Vec3f unk54;
     /* 0x30 */ Vec3f orientationVector;
     /* 0x3C */ f32 unk6C;
-} Collision;
+} CollisionData;
 
 typedef struct {
     /* 0x00 */ Vec3f pos;
@@ -336,7 +336,7 @@ typedef struct {
     /* 0x0108 */ f32 hopVerticalOffset;
     /* 0x010C */ s16 unk_10C;
     /* 0x010E */ char unk_10E[0x2];
-    /* 0x0110 */ Collision collision;
+    /* 0x0110 */ CollisionData collision;
     /* 0x0150 */ Mat3 unk_150;
     /* 0x0174 */ Mat3 orientationMatrix;
     /* 0x0198 */ KartTyre tyres[4];

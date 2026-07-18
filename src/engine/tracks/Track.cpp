@@ -550,7 +550,7 @@ void Track::Draw(ScreenContext* arg0) {
 void Track::DrawCredits() {
 }
 
-f32 Track::GetWaterLevel(FVector pos, Collision* collision) {
+f32 Track::GetWaterLevel(FVector pos, CollisionData* collision) {
     float highestWater = -FLT_MAX;
     bool found = false;
 

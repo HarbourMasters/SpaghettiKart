@@ -132,7 +132,7 @@ void SherbetLand::Load() {
     find_vtx_and_set_colours((Gfx*) d_course_sherbet_land_packed_dl_2308, 150, 255, 255, 255);
 }
 
-f32 SherbetLand::GetWaterLevel(FVector pos, Collision* collision) {
+f32 SherbetLand::GetWaterLevel(FVector pos, CollisionData* collision) {
     if ((get_surface_type(collision->meshIndexZX) & 0xFF) == SNOW) {
         return (f32) (gTrackMinY - 0xA);
     }

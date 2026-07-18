@@ -24,7 +24,7 @@ public:
 //    virtual void Load(const char* courseVtx, 
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void Load() override;
-    virtual f32 GetWaterLevel(FVector pos, Collision* collision) override;
+    virtual f32 GetWaterLevel(FVector pos, CollisionData* collision) override;
     virtual void BeginPlay() override;
     virtual void InitTrackObjects() override;
     virtual void TickTrackObjects() override;

@@ -17,7 +17,7 @@
 #include "sounds.h"
 #include "port/Game.h"
 
-void copy_collision(Collision* src, Collision* dest) {
+void copy_collision(CollisionData* src, CollisionData* dest) {
     dest->unk30 = src->unk30;
     dest->unk32 = src->unk32;
     dest->unk34 = src->unk34;

@@ -7,25 +7,25 @@
 #define NO_COLLISION 0x0
 
 void nullify_displaylist(uintptr_t);
-void func_802AAAAC(Collision*);
+void func_802AAAAC(CollisionData*);
 f32 get_water_level(Player*);
-s32 check_collision_zx(Collision*, f32, f32, f32, f32, u16);
-s32 check_collision_yx(Collision*, f32, f32, f32, f32, u16);
-s32 check_collision_zy(Collision*, f32, f32, f32, f32, u16);
+s32 check_collision_zx(CollisionData*, f32, f32, f32, f32, u16);
+s32 check_collision_yx(CollisionData*, f32, f32, f32, f32, u16);
+s32 check_collision_zy(CollisionData*, f32, f32, f32, f32, u16);
 s8 get_surface_type(u16);
 s16 get_track_section_id(u16);
 s16 func_802ABD7C(u16);
 s16 func_802ABDB8(u16);
 s16 func_802ABDF4(u16);
 f32 calculate_surface_height(f32, f32, f32, u16);
-f32 func_802ABEAC(Collision*, Vec3f);
-void shell_collision(Collision*, Vec3f);
+f32 func_802ABEAC(CollisionData*, Vec3f);
+void shell_collision(CollisionData*, Vec3f);
 void process_shell_collision(Vec3f, f32, Vec3f, f32);
 u16 player_terrain_collision(Player*, KartTyre*, f32, f32, f32);
 void adjust_pos_orthogonally(Vec3f, f32, Vec3f, f32);
 s32 detect_tyre_collision(KartTyre*);
-u16 actor_terrain_collision(Collision*, f32, f32, f32, f32, f32, f32, f32);
-u16 check_bounding_collision(Collision*, f32, f32, f32, f32);
+u16 actor_terrain_collision(CollisionData*, f32, f32, f32, f32, f32, f32, f32);
+u16 check_bounding_collision(CollisionData*, f32, f32, f32, f32);
 f32 spawn_actor_on_surface(f32, f32, f32);
 void set_vtx_buffer(uintptr_t, u32, u32);
 void add_vtx_from_quadrangle(Vtx* vert, size_t count);
