@@ -587,11 +587,28 @@ uint8_t GameEngine::GetBankIdByName(const std::string& name) {
 ImFont* GameEngine::CreateFontWithSize(float size, std::string fontPath) {
     auto mImGuiIo = &ImGui::GetIO();
     ImFont* font;
+    // On a HiDPI display the ImGui overlay is rendered into a scaled framebuffer, but the glyph
+    // atlas is rasterized at the logical point size, so menu text gets stretched up and looks
+    // fuzzy. RasterizerDensity rasterizes glyphs at a higher resolution WITHOUT changing the
+    // logical font size/metrics, so the text stays sharp under the 2x framebuffer.
+    //
+    // The atlas is baked once here, but the Menu Scale setting (gSettings.Menu.Scale) changes
+    // FontGlobalScale at runtime, stretching the fixed atlas -> text blurs again at larger
+    // scales. Bake at retinaScale * maxMenuScale so FontGlobalScale only ever downsamples a
+    // high-res atlas (supersampling, still sharp) instead of upscaling a low-res one -> crisp at
+    // every menu scale. On a standard-DPI Mac this just supersamples: correct, slightly sharper.
+    float rasterDensity = 1.0f;
+#if defined(__APPLE__)
+    constexpr float kRetinaScale = 2.0f;  // Retina backing scale
+    constexpr float kMaxMenuScale = 2.0f; // keep in sync with the gSettings.Menu.Scale slider Max
+    rasterDensity = kRetinaScale * kMaxMenuScale;
+#endif
     if (fontPath == "") {
         ImFontConfig fontCfg = ImFontConfig();
         fontCfg.OversampleH = fontCfg.OversampleV = 1;
         fontCfg.PixelSnapH = true;
         fontCfg.SizePixels = size;
+        fontCfg.RasterizerDensity = rasterDensity;
         font = mImGuiIo->Fonts->AddFontDefault(&fontCfg);
     } else {
         auto initData = std::make_shared<Ship::ResourceInitData>();
@@ -603,7 +620,9 @@ ImFont* GameEngine::CreateFontWithSize(float size, std::string fontPath) {
             Ship::Context::GetInstance()->GetResourceManager()->LoadResource(fontPath, false, initData));
         char* fontDataPtr = (char*) malloc(fontData->DataSize);
         memcpy(fontDataPtr, fontData->Data, fontData->DataSize);
-        font = mImGuiIo->Fonts->AddFontFromMemoryTTF(fontDataPtr, fontData->DataSize, size);
+        ImFontConfig fontCfg = ImFontConfig();
+        fontCfg.RasterizerDensity = rasterDensity;
+        font = mImGuiIo->Fonts->AddFontFromMemoryTTF(fontDataPtr, fontData->DataSize, size, &fontCfg);
     }
     // FontAwesome fonts need to have their sizes reduced by 2.0f/3.0f in order to align correctly
     float iconFontSize = size * 2.0f / 3.0f;
@@ -612,6 +631,7 @@ ImFont* GameEngine::CreateFontWithSize(float size, std::string fontPath) {
     iconsConfig.MergeMode = true;
     iconsConfig.PixelSnapH = true;
     iconsConfig.GlyphMinAdvanceX = iconFontSize;
+    iconsConfig.RasterizerDensity = rasterDensity;
     mImGuiIo->Fonts->AddFontFromMemoryCompressedBase85TTF(fontawesome_compressed_data_base85, iconFontSize,
                                                           &iconsConfig, sIconsRanges);
     return font;
