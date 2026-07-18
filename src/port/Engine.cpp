@@ -587,16 +587,9 @@ uint8_t GameEngine::GetBankIdByName(const std::string& name) {
 ImFont* GameEngine::CreateFontWithSize(float size, std::string fontPath) {
     auto mImGuiIo = &ImGui::GetIO();
     ImFont* font;
-    // On a HiDPI display the ImGui overlay is rendered into a scaled framebuffer, but the glyph
-    // atlas is rasterized at the logical point size, so menu text gets stretched up and looks
-    // fuzzy. RasterizerDensity rasterizes glyphs at a higher resolution WITHOUT changing the
-    // logical font size/metrics, so the text stays sharp under the 2x framebuffer.
-    //
-    // The atlas is baked once here, but the Menu Scale setting (gSettings.Menu.Scale) changes
-    // FontGlobalScale at runtime, stretching the fixed atlas -> text blurs again at larger
-    // scales. Bake at retinaScale * maxMenuScale so FontGlobalScale only ever downsamples a
-    // high-res atlas (supersampling, still sharp) instead of upscaling a low-res one -> crisp at
-    // every menu scale. On a standard-DPI Mac this just supersamples: correct, slightly sharper.
+    // Rasterize the glyph atlas at higher density so menu text stays sharp on HiDPI/Retina
+    // displays. Bake at retinaScale * maxMenuScale so the runtime Menu Scale setting
+    // (FontGlobalScale) only ever downsamples the atlas rather than stretching it blurry.
     float rasterDensity = 1.0f;
 #if defined(__APPLE__)
     constexpr float kRetinaScale = 2.0f;  // Retina backing scale
