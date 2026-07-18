@@ -263,6 +263,12 @@ GameEngine::GameEngine() {
     fontStandardLarger = CreateFontWithSize(20.0f, "fonts/Montserrat-Regular.ttf");
     fontStandardLargest = CreateFontWithSize(24.0f, "fonts/Montserrat-Regular.ttf");
     ImGui::GetIO().FontDefault = fontMono;
+
+    // Alternate assets (texture-pack replacements) are on by default; seed the
+    // resource manager before any texture loads so the toggle state and the
+    // loaded assets stay in sync.
+    prevAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 1);
+    Ship::Context::GetInstance()->GetResourceManager()->SetAltAssetsEnabled(prevAltAssets);
 }
 
 bool GameEngine::GenAssetFile() {
@@ -377,7 +383,10 @@ void GameEngine::StartFrame() const {
     switch (dwScancode) {
         case KbScancode::LUS_KB_TAB: {
             // Toggle HD Assets
-            CVarSetInteger("gEnhancements.Mods.AlternateAssets", !CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0));
+            if (CVarGetInteger("gEnhancements.Mods.AlternateAssetsHotkey", 1)) {
+                CVarSetInteger("gEnhancements.Mods.AlternateAssets",
+                               !CVarGetInteger("gEnhancements.Mods.AlternateAssets", 1));
+            }
             break;
         }
         case KbScancode::LUS_KB_P: {
@@ -413,10 +422,15 @@ void GameEngine::RunCommands(Gfx* pool, const std::vector<std::unordered_map<Mtx
         interpreter->mInterpolationIndex++;
     }
 
-    bool curAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0);
+    bool curAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 1);
     if (prevAltAssets != curAltAssets) {
         prevAltAssets = curAltAssets;
         Ship::Context::GetInstance()->GetResourceManager()->SetAltAssetsEnabled(curAltAssets);
+        // Texture-pack replacements load under the SAME path as the originals
+        // (png-sibling shortcut in the texture factory), so cached textures must
+        // be evicted for the toggle to take effect; they lazily reload through
+        // the factory in the new state.
+        Ship::Context::GetInstance()->GetResourceManager()->UnloadResources("textures/*");
         gfx_texture_cache_clear();
     }
 }

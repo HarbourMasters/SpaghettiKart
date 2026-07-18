@@ -44,12 +44,16 @@ ResourceFactoryBinaryTextureV0::ReadResource(std::shared_ptr<Ship::File> file,
     uint32_t binWidth = reader->ReadUInt32();
     uint32_t binHeight = reader->ReadUInt32();
 
-    for (const auto& ext : extension) {
-        auto filePng = Ship::Context::GetInstance()->GetResourceManager()->LoadFileProcess(
-        initData->Path + ext);
+    // Image replacements (texture packs) are the port's "alternate assets";
+    // skipping them here is what makes the alt-assets toggle work.
+    if (Ship::Context::GetInstance()->GetResourceManager()->IsAltAssetsEnabled()) {
+        for (const auto& ext : extension) {
+            auto filePng = Ship::Context::GetInstance()->GetResourceManager()->LoadFileProcess(
+            initData->Path + ext);
 
-        if (filePng != nullptr) {
-            return loadPngTexture(filePng, initData, binWidth, binHeight);
+            if (filePng != nullptr) {
+                return loadPngTexture(filePng, initData, binWidth, binHeight);
+            }
         }
     }
 
@@ -78,12 +82,16 @@ ResourceFactoryBinaryTextureV1::ReadResource(std::shared_ptr<Ship::File> file,
     uint32_t binWidth = reader->ReadUInt32();
     uint32_t binHeight = reader->ReadUInt32();
 
-    for (const auto& ext : extension) {
-        auto filePng = Ship::Context::GetInstance()->GetResourceManager()->LoadFileProcess(
-        initData->Path + ext);
+    // Image replacements (texture packs) are the port's "alternate assets";
+    // skipping them here is what makes the alt-assets toggle work.
+    if (Ship::Context::GetInstance()->GetResourceManager()->IsAltAssetsEnabled()) {
+        for (const auto& ext : extension) {
+            auto filePng = Ship::Context::GetInstance()->GetResourceManager()->LoadFileProcess(
+            initData->Path + ext);
 
-        if (filePng != nullptr) {
-            return loadPngTexture(filePng, initData, binWidth, binHeight);
+            if (filePng != nullptr) {
+                return loadPngTexture(filePng, initData, binWidth, binHeight);
+            }
         }
     }
 
