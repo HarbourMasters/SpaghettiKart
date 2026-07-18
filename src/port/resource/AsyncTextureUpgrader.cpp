@@ -36,7 +36,7 @@ void AsyncTextureUpgrader::Enqueue(std::shared_ptr<Fast::Texture> texture, std::
         if (mStop) {
             return;
         }
-        mPending.push_back({ std::move(texture), std::move(imageFile), origWidth, origHeight });
+        mPending.push_back({ std::move(texture), std::move(imageFile), origWidth, origHeight, mGeneration });
         EnsureWorker();
     }
     mCondVar.notify_one();
@@ -79,7 +79,13 @@ void AsyncTextureUpgrader::WorkerLoop() {
                 delete[] pixels;
                 return;
             }
-            mDecoded.push_back({ std::move(job.texture), pixels, width, height, job.origWidth, job.origHeight });
+            if (job.generation != mGeneration) {
+                // The toggle evicted this texture while it was being decoded.
+                delete[] pixels;
+                continue;
+            }
+            mDecoded.push_back(
+                { std::move(job.texture), pixels, width, height, job.origWidth, job.origHeight, job.generation });
         }
     }
 }
@@ -113,8 +119,16 @@ void AsyncTextureUpgrader::PrefetchSiblings(const std::string& resourcePath) {
 
 void AsyncTextureUpgrader::ResetPrefetch() {
     const std::lock_guard<std::mutex> lock(mMutex);
+    mGeneration++;
     mPrefetchDirs.clear();
     mQueuedDirs.clear();
+    // Drop queued decode jobs and undelivered results: they all target texture
+    // objects the toggle just evicted from the resource cache.
+    mPending.clear();
+    for (Decoded& d : mDecoded) {
+        delete[] d.pixels;
+    }
+    mDecoded.clear();
 }
 
 // Image-sibling extensions the texture factory recognizes (kept in sync with

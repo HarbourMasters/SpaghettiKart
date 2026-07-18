@@ -43,8 +43,11 @@ class AsyncTextureUpgrader {
     // Each directory is prefetched at most once per ResetPrefetch().
     void PrefetchSiblings(const std::string& resourcePath);
 
-    // Forget which directories were prefetched (call when the resource cache
-    // is evicted, e.g. on the alt-assets toggle).
+    // Forget which directories were prefetched and drop all queued/decoded
+    // work from before the reset (call when the resource cache is evicted,
+    // e.g. on the alt-assets toggle). Without the drain, rapid toggling piles
+    // stale decode jobs for evicted textures in front of the single decode
+    // worker and live textures stop upgrading.
     void ResetPrefetch();
 
     // Main thread, between frames. `invalidate` evicts a data pointer from the
@@ -62,6 +65,7 @@ class AsyncTextureUpgrader {
         std::shared_ptr<Ship::File> imageFile;
         uint16_t origWidth;
         uint16_t origHeight;
+        uint64_t generation;
     };
     struct Decoded {
         std::shared_ptr<Fast::Texture> texture;
@@ -70,6 +74,7 @@ class AsyncTextureUpgrader {
         int height;
         uint16_t origWidth;
         uint16_t origHeight;
+        uint64_t generation;
     };
 
     void WorkerLoop();
@@ -81,6 +86,9 @@ class AsyncTextureUpgrader {
     std::condition_variable mCondVar;
     std::deque<Job> mPending;
     std::deque<Decoded> mDecoded;
+    // Bumped by ResetPrefetch(); work stamped with an older generation targets
+    // textures that were evicted by the toggle and is dropped, not applied.
+    uint64_t mGeneration = 0;
     std::thread mWorker;
     bool mWorkerRunning = false;
     bool mStop = false;
