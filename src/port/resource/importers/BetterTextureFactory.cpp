@@ -8,7 +8,8 @@
 
 namespace MK64 {
 
-std::shared_ptr<Ship::IResource> loadPngTexture(std::shared_ptr<Ship::File> filePng, std::shared_ptr<Ship::ResourceInitData> initData) {
+std::shared_ptr<Ship::IResource> loadPngTexture(std::shared_ptr<Ship::File> filePng, std::shared_ptr<Ship::ResourceInitData> initData,
+                                                uint16_t origWidth, uint16_t origHeight) {
     auto texture = std::make_shared<Fast::Texture>(initData);
 
     int height, width = 0;
@@ -16,6 +17,13 @@ std::shared_ptr<Ship::IResource> loadPngTexture(std::shared_ptr<Ship::File> file
                                                filePng->Buffer.get()->size(), &width, &height, nullptr, 4);
     texture->Width = width;
     texture->Height = height;
+    // Record the dimensions of the texture this image replaces. The N64 game
+    // often samples a TILE slightly larger than the texture (clamp repeats
+    // the edge); UVs must be normalized in the ORIGINAL texture's texel
+    // space or the tile overhang crops the replacement art (visible as text
+    // glyphs cut off at the bottom/right with 4K packs).
+    texture->OrigWidth = origWidth;
+    texture->OrigHeight = origHeight;
     texture->Type = Fast::TextureType::RGBA32bpp;
     texture->ImageDataSize = texture->Width * texture->Height * 4;
     texture->Flags = TEX_FLAG_LOAD_AS_IMG;
@@ -31,21 +39,25 @@ ResourceFactoryBinaryTextureV0::ReadResource(std::shared_ptr<Ship::File> file,
         return nullptr;
     }
 
+    auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
+    auto binType = (Fast::TextureType)reader->ReadUInt32();
+    uint32_t binWidth = reader->ReadUInt32();
+    uint32_t binHeight = reader->ReadUInt32();
+
     for (const auto& ext : extension) {
         auto filePng = Ship::Context::GetInstance()->GetResourceManager()->LoadFileProcess(
         initData->Path + ext);
 
         if (filePng != nullptr) {
-            return loadPngTexture(filePng, initData);
+            return loadPngTexture(filePng, initData, binWidth, binHeight);
         }
     }
 
     auto texture = std::make_shared<Fast::Texture>(initData);
-    auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
 
-    texture->Type = (Fast::TextureType)reader->ReadUInt32();
-    texture->Width = reader->ReadUInt32();
-    texture->Height = reader->ReadUInt32();
+    texture->Type = binType;
+    texture->Width = binWidth;
+    texture->Height = binHeight;
     texture->ImageDataSize = reader->ReadUInt32();
     texture->ImageData = new uint8_t[texture->ImageDataSize];
 
@@ -61,21 +73,25 @@ ResourceFactoryBinaryTextureV1::ReadResource(std::shared_ptr<Ship::File> file,
         return nullptr;
     }
 
+    auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
+    auto binType = (Fast::TextureType)reader->ReadUInt32();
+    uint32_t binWidth = reader->ReadUInt32();
+    uint32_t binHeight = reader->ReadUInt32();
+
     for (const auto& ext : extension) {
         auto filePng = Ship::Context::GetInstance()->GetResourceManager()->LoadFileProcess(
         initData->Path + ext);
 
         if (filePng != nullptr) {
-            return loadPngTexture(filePng, initData);
+            return loadPngTexture(filePng, initData, binWidth, binHeight);
         }
     }
 
     auto texture = std::make_shared<Fast::Texture>(initData);
-    auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
 
-    texture->Type = (Fast::TextureType)reader->ReadUInt32();
-    texture->Width = reader->ReadUInt32();
-    texture->Height = reader->ReadUInt32();
+    texture->Type = binType;
+    texture->Width = binWidth;
+    texture->Height = binHeight;
     texture->Flags = reader->ReadUInt32();
     texture->HByteScale = reader->ReadFloat();
     texture->VPixelScale = reader->ReadFloat();
