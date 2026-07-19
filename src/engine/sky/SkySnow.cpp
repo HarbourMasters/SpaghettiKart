@@ -102,10 +102,9 @@ void SkySnow::Draw(ScreenContext* screen, s32 arg0) { // render_clouds
 }
 
 void SkySnow::func_80077E20() {
-    u8* tex = (u8*) LOAD_ASSET(D_0D0293D8);
-    //Vtx* vtx = (Vtx*) LOAD_ASSET(common_vtx_rectangle);
-
-    mTexture = tex;
+    // Pass the asset name (like SkyStar), resolved fresh at import time: an
+    // eagerly-resolved pointer dangles after the alt-assets toggle reloads it.
+    mTexture = (u8*) D_0D0293D8;
     //! @bug frappe snowland There's something up with the handling of common_vtx_rectangle and the loading of 0x10
     //! right here
     // root function: func_80078C70
