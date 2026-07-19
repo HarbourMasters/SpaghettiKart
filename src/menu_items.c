@@ -3476,12 +3476,9 @@ Gfx* draw_box_fill_wide(Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry
     gSPDisplayList(displayListHead++, D_02008030);
     gDPSetFillColor(displayListHead++, (GPACK_RGBA5551(red, green, (u32) blue, alpha) << 0x10 |
                                         GPACK_RGBA5551(red, green, (u32) blue, alpha)));
-    // Use the integer Rect getters here: feeding the float getters' negative
-    // left-edge result into _SHIFTL casts float->unsigned, which is UB — x86
-    // wraps (and the wide-rect handler sign-extends it back), but ARM64
-    // saturates negatives to 0, so on Apple Silicon the fill started at the
-    // 4:3 left edge instead of the true left edge (visible as a sky notch
-    // left of the race-intro letterbox bars in widescreen).
+    // Use the integer Rect getters: the float getters' negative left edge goes
+    // through a float->unsigned cast in _SHIFTL (UB) that ARM64 saturates to 0,
+    // pushing the fill's left edge to the 4:3 boundary in widescreen.
     gDPFillWideRectangle(displayListHead++, OTRGetRectDimensionFromLeftEdge(ulx) - 1, uly,
                          OTRGetRectDimensionFromRightEdge(lrx) + 1, lry);
     gDPFillRectangle(displayListHead++, ulx, uly, lrx, lry);
