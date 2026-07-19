@@ -294,7 +294,7 @@ const char** gLakituTexturePtr;
  */
 s32 indexObjectList4[32];
 //! Array of (4) Collisions?
-CollisionData D_8018C0B0[4];
+struct Collision D_8018C0B0[4];
 /**
  * List of object list indices used for:
  *   Moles in Moo Moo Farm
@@ -303,7 +303,7 @@ CollisionData D_8018C0B0[4];
  *   Potentially other things
  */
 s32 gObjectParticle1[gObjectParticle2_SIZE];
-CollisionData D_8018C3B0;
+struct Collision D_8018C3B0;
 /**
  * List of object list indices used for:
  * - Bats in Banshee's Boardwalk (but only 1 player mode?)
@@ -312,14 +312,14 @@ CollisionData D_8018C3B0;
  */
 s32 gObjectParticle2[gObjectParticle2_SIZE];
 // Maybe some unused Collision?
-UNUSED CollisionData D_8018C5F0;
+UNUSED struct Collision D_8018C5F0;
 /**
  * List of object list indices used for:
  * - Train index 1 smoke in Kalimari Desert
  * - Ferry index 1 smoke in DK Jungle
  */
 s32 gObjectParticle3[gObjectParticle3_SIZE];
-CollisionData D_8018C830;
+struct Collision D_8018C830;
 /**
  * List of object list indices. Used both for the fires in the DK Jungle cave
  * and, seemingly for the trail that shells leave behind them.

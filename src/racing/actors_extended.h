@@ -6,7 +6,7 @@
 
 /** @cond */
 
-void copy_collision(CollisionData*, CollisionData*);
+void copy_collision(struct Collision*, struct Collision*);
 void triple_shell_actor_collide_with_player(struct ShellActor*, s32);
 void func_802B039C(struct BananaActor*);
 void func_802B0464(s16);

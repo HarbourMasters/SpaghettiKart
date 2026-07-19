@@ -41,7 +41,7 @@ class OBombKart : public OObject {
     u16 Unk_4A = 0;
     s16 Unk_4C = 1;
     f32 CenterY; // Center of the circle
-    CollisionData _Collision;
+    struct Collision _Collision;
 
 
     // This is simply a helper function to keep Spawning code clean

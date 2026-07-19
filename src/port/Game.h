@@ -168,7 +168,7 @@ void CM_ActorCollision(Player* player, struct Actor* actor);
 void CM_CleanCameras(void);
 void CM_CleanWorld(void);
 
-f32 CM_GetWaterLevel(Vec3f pos, CollisionData* collision);
+f32 CM_GetWaterLevel(Vec3f pos, struct Collision* collision);
 
 bool IsMarioRaceway();
 bool IsLuigiRaceway();

@@ -405,7 +405,7 @@ void func_802976D8(Vec3s arg0) {
     arg0[2] = 0;
 }
 
-void func_802976EC(CollisionData* arg0, Vec3s arg1) {
+void func_802976EC(struct Collision* arg0, Vec3s arg1) {
     f32 x, y, z;
 
     if (arg0->unk34 == 0) {
@@ -953,8 +953,8 @@ void spawn_palm_trees(struct ActorSpawnData* spawnData) {
                 break;
         }
         CM_ActorGenerateCollision(temp_v1);
-        check_bounding_collision((CollisionData*) &temp_v1->unk30, 5.0f, temp_v1->pos[0], temp_v1->pos[1], temp_v1->pos[2]);
-        func_802976EC((CollisionData*) &temp_v1->unk30, temp_v1->rot);
+        check_bounding_collision((struct Collision*) &temp_v1->unk30, 5.0f, temp_v1->pos[0], temp_v1->pos[1], temp_v1->pos[2]);
+        func_802976EC((struct Collision*) &temp_v1->unk30, temp_v1->rot);
         temp_s0++;
     }
 }

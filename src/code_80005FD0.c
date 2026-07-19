@@ -45,7 +45,7 @@
 #include "engine/RaceManager.h"
 
 s32 unk_code_80005FD0_pad[24];
-CollisionData D_80162E70;
+struct Collision D_80162E70;
 s16 D_80162EB0; // Possibly a float.
 s16 D_80162EB2; // possibly [3]
 
@@ -161,7 +161,7 @@ VehicleStuff gTankerTruckList[NUM_RACE_TANKER_TRUCKS];
 VehicleStuff gCarList[NUM_RACE_CARS];
 s32 D_80163DD8[4];
 BombKart gBombKarts[NUM_BOMB_KARTS_MAX];
-CollisionData gBombKartCollision[NUM_BOMB_KARTS_MAX];
+struct Collision gBombKartCollision[NUM_BOMB_KARTS_MAX];
 struct unexpiredActors gUnexpiredActorsList[8];
 CpuItemStrategyData cpu_ItemStrategy[8];
 s16 D_80164358;
@@ -2665,7 +2665,7 @@ s16 find_closest_vehicles_path_point(f32 xPos, UNUSED f32 yPos, f32 zPos, s16 wa
 
 s16 func_8000D24C(f32 posX, f32 posY, f32 posZ, s32* pathIndex) {
     UNUSED s32 pad;
-    CollisionData sp24;
+    struct Collision sp24;
 
     check_bounding_collision(&sp24, 10.0f, posX, posY, posZ);
     return find_closest_path_point_track_section(posX, posY, posZ, get_track_section_id(sp24.meshIndexZX), pathIndex);
@@ -2978,7 +2978,7 @@ s16 update_vehicle_following_path(Vec3f pos, s16* waypointIndex, f32 speed) {
 }
 
 void set_bomb_kart_spawn_positions(void) {
-    UNUSED CollisionData* var_s2;
+    UNUSED struct Collision* var_s2;
     f32 startingXPos;
     f32 startingZPos;
     f32 startingYPos;
@@ -3084,7 +3084,7 @@ void func_8000DF8C(s32 bombKartId) {
     TrackPathPoint* temp_v0_4;
     BombKart* bombKart;
     BombKart* bombKart2;
-    CollisionData* temp_a0_4;
+    struct Collision* temp_a0_4;
     Player* var_v0;
 
     bombKart = &gBombKarts[bombKartId];

@@ -295,7 +295,7 @@ void func_8001C42C(void);
 
 /* This is where I'd put my static data, if I had any */
 
-extern CollisionData D_80162E70;
+extern struct Collision D_80162E70;
 extern s16 D_80162EB0; // Possibly a float.
 extern s16 D_80162EB2; // possibly [3]
 extern CPUBehaviour* gCoursesCPUBehaviour[];

@@ -15,7 +15,7 @@ void actor_not_rendered(Camera*, struct Actor*);
 void actor_rendered(Camera*, struct Actor*);
 void func_80297340(Camera*);
 void func_802976D8(Vec3s);
-void func_802976EC(CollisionData*, Vec3s);
+void func_802976EC(struct Collision*, Vec3s);
 void func_80297760(struct Actor*, Vec3f);
 void func_802977B0(Player*);
 void func_802977E4(Player*);

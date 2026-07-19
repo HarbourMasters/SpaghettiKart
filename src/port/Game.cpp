@@ -821,7 +821,7 @@ void CM_ActorCollision(Player* player, Actor* actor) {
     }
 }
 
-f32 CM_GetWaterLevel(Vec3f pos, CollisionData* collision) {
+f32 CM_GetWaterLevel(Vec3f pos, struct Collision* collision) {
     FVector fPos = {pos[0], pos[1], pos[2]};
     return GetWorld()->GetTrack()->GetWaterLevel(fPos, collision);
 }

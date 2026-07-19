@@ -205,7 +205,7 @@ extern s32 D_8018D1D8;
 //! Limit on some object type (ice chips?) in Sherbet Land
 extern s32 D_8018D3C0;
 
-extern CollisionData D_8018C0B0[];
+extern struct Collision D_8018C0B0[];
 
 /**
  * indexObjectList1, indexObjectList2, indexObjectList3, and indexObjectList4 are all lists of indices in gObjectList.
