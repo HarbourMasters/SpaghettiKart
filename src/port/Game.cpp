@@ -6,6 +6,7 @@
 
 #include <fast/Fast3dWindow.h>
 #include <memory>
+#include <atomic>
 #include "engine/World.h"
 #include "engine/AllTracks.h"
 
@@ -911,7 +912,54 @@ void CM_ResetAudio(void) {
 }
 }
 
+static std::atomic<bool> sResetRequested{ false };
+
+void CM_RequestReset(void) {
+    sResetRequested.store(true);
+}
+
+// The reset widget only requests; the reset is applied here at the top of the
+// game frame. Applying it from the widget raced the menu state machine: a
+// press landing mid-fade was re-advanced by the in-flight transition, and a
+// repeat press rewrote the gamestate it had already set, which the != guard
+// in main.c swallows while the audio fade still runs (silent no-op).
+static void ApplyPendingReset() {
+    if (!sResetRequested.exchange(false)) {
+        return;
+    }
+
+    // The FROM_QUIT gamestates run identical inits; alternating keeps
+    // gGamestateNext != gGamestate true so every press re-enters the menus.
+    gGamestateNext = (gGamestate == MAIN_MENU_FROM_QUIT) ? START_MENU_FROM_QUIT : MAIN_MENU_FROM_QUIT;
+    gIsGamePaused = 0;
+    // Reset credits
+    D_800DC5E4 = 0;
+    gTourComplete = false;
+    SetMarioRaceway();
+    memset(&gGameModeMenuColumn, 0, sizeof(s8) * NUM_ROWS_GAME_MODE_MENU);
+    memset(&gGameModeSubMenuColumn, 0, sizeof(s8) * NUM_COLUMN_GAME_MODE_SUB_MENU * NUM_ROWS_GAME_MODE_SUB_MENU);
+
+    CM_ResetAudio();
+
+    // Close the editor.
+    if (gEditor.IsEnabled()) {
+        gEditor.Disable();
+    }
+
+    // Set the debug menu track browsing index back to zero
+    TrackBrowser::Instance->Reset();
+
+    gMenuSelection = CVarGetInteger("gEnableDebugMode", 0) ? START_MENU : LOGO_INTRO_MENU;
+    // Re-enter through the intro's own transition protocol (see HM_TickIntro):
+    // FADE_MODE_LOGO makes setup_menus rebuild the menu items and start a
+    // fresh fade-in, replacing any in-flight transition that would otherwise
+    // advance the stale screen right after the reset.
+    gMenuFadeType = 0;
+    gFadeModeSelection = FADE_MODE_LOGO;
+}
+
 void push_frame() {
+    ApplyPendingReset();
     GameEngine::StartAudioFrame();
     GameEngine::Instance->StartFrame();
     thread5_iteration();
