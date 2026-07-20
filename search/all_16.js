@@ -132,7 +132,7 @@ var searchData=
   ['sectionfunc_129',['SectionFunc',['../namespaceUIWidgets.html#ae6baa537b60cf1d33e03e5e0c440c962',1,'UIWidgets']]],
   ['sectionid_130',['sectionId',['../structTrackSections.html#a53d5aca8370d2850514a4507044dcbd3',1,'TrackSections']]],
   ['sectionname_131',['sectionName',['../structWidgetPath.html#ab953da1f493fd3c8841a1f852772c58c',1,'WidgetPath']]],
-  ['see_20also_132',['See Also',['../md_docs_2mods-toml.html#see-also-1',1,'See Also'],['../md_docs_2migrations.html#see-also',1,'See Also']]],
+  ['see_20also_132',['See Also',['../md_docs_2mods-toml.html#see-also',1,'See Also'],['../md_docs_2migrations.html#see-also-1',1,'See Also']]],
   ['see_20how_20courses_20are_20adapted_20in_20the_20future_20including_20references_20too_133',['Specifically Used to help find music and to see how courses are adapted in the future including references too.',['../md_docs_2track__returns.html#specifically-used-to-help-find-music-and-to-see-how-courses-are-adapted-in-the-future-including-references-too',1,'']]],
   ['seed_134',['seed',['../structma__noise__config.html#ac0ef7cd156ee4eb07587823e2f1b8384',1,'ma_noise_config']]],
   ['seekdatastream_135',['seekDataStream',['../structma__job.html#a170fa6cddb463cc92e741fe02e9122b9',1,'ma_job']]],
