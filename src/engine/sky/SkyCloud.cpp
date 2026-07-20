@@ -107,8 +107,14 @@ void SkyCloud::Draw(ScreenContext* screen, s32 arg0) { // render_clouds
         FrameInterpolation_RecordOpenChild("render_clouds", TAG_CLOUDS((_idx << 4) | (mScreen - gScreenContexts)));
 
         ResolveTexture();
-        if (D_8018D228 != mCloudVariant) {
+        // Rebind when the resolved pointer moves, not just on variant change:
+        // in static scenes (e.g. the Harbour intro) the variant never cycles,
+        // so after the alt-assets toggle evicts the texture the gate would keep
+        // drawing from the freed buffer's address (foreign pixels once reused).
+        static const u8* sLastBoundTex = nullptr;
+        if (D_8018D228 != mCloudVariant || sLastBoundTex != mTexture) {
             D_8018D228 = mCloudVariant;
+            sLastBoundTex = mTexture;
             func_80044DA0(mTexture, mTextureWidth, mTextureHeight);
         }
         func_80042330_unchanged(mX, posY, 0, mScale);
