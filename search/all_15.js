@@ -299,7 +299,7 @@ var searchData=
   ['render_5fvehicle_296',['RENDER_VEHICLE',['../vehicles_8h.html#a517619ead80e138f6903b3db70297289',1,'vehicles.h']]],
   ['render_5fwall_5fbonk_5fstar_5fparticles_297',['render_wall_bonk_star_particles',['../code__80057C60_8c.html#acfa3e2dc72a4d48ff003d661cda4be26',1,'code_80057C60.c']]],
   ['rendering_5finit_298',['rendering_init',['../main_8c.html#ab6de5c4a438055408ee2c63f8a86464a',1,'rendering_init(void):&#160;main.c'],['../main_8h.html#ab6de5c4a438055408ee2c63f8a86464a',1,'rendering_init(void):&#160;main.c']]],
-  ['rendermode_299',['RenderMode',['../camera_8h.html#ac9e546db27bb4f76f47d7e25f24abb88',1,'camera.h']]],
+  ['rendermode_299',['RenderMode',['../camera_8h.html#ac9e546db27bb4f76f47d7e25f24abb88',1,'RenderMode:&#160;camera.h'],['../camera_8h.html#a3da462c99634e27b12ec1a24790f756d',1,'RenderMode:&#160;camera.h']]],
   ['rendermode_300',['renderMode',['../structCamera.html#a7c27c5869b9371dfc10a53fa5b0a8ba7',1,'Camera']]],
   ['rendertext_301',['RenderText',['../namespaceUIWidgets.html#ae0f4f1b0659f0e53e3077a5acb0c6b05',1,'UIWidgets']]],
   ['repaired_302',['repaired',['../struct____OSPackId.html#ac0f67f0eb966699b7fd2002d9a24cf61',1,'__OSPackId']]],

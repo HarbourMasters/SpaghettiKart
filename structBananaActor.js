@@ -11,7 +11,7 @@ var structBananaActor =
     [ "rot", "structBananaActor.html#a125826669f88f4663fb32d45e39fb6de", null ],
     [ "state", "structBananaActor.html#af75dd2dea48081a38272afd39b13b0e6", null ],
     [ "type", "structBananaActor.html#a81f389d1c3c8687bee8fdcb205690a4d", null ],
-    [ "unk30", "structBananaActor.html#a23b3c1167f55987ca33a44a544c1b000", null ],
+    [ "unk30", "structBananaActor.html#acaf134645aaebac65f5bd6dbe9d24afa", null ],
     [ "unk_04", "structBananaActor.html#ac39f5deb313095419b8e2d5a749b54a0", null ],
     [ "unk_16", "structBananaActor.html#a4598dafe53e7c6710f6d31b33dc3cef6", null ],
     [ "velocity", "structBananaActor.html#a10bc99e6eeda7a4c8c7368dc8df52777", null ],

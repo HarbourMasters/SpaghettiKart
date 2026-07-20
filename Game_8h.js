@@ -42,7 +42,7 @@ var Game_8h =
     [ "CM_GetPlayerCamera", "Game_8h.html#ad62d65b13bb8c7fbbfe39c28d4f73758", null ],
     [ "CM_GetProps", "Game_8h.html#a3416a195a0c7be6ec3783bbf4842dc3e", null ],
     [ "CM_GetTrack", "Game_8h.html#a4b0b6efd68e3514c5c4014b2d5f547f5", null ],
-    [ "CM_GetWaterLevel", "Game_8h.html#a7ff5610a2d67bb8a510d93cf238e6ffb", null ],
+    [ "CM_GetWaterLevel", "Game_8h.html#ad67598b92b4fcdbd59e913da2726b0e7", null ],
     [ "CM_InitTrackObjects", "Game_8h.html#a872b3eafef96f83081b83794fb4681e5", null ],
     [ "CM_IsTourEnabled", "Game_8h.html#a7a5ca7cbd6c70c0ef872405d46503896", null ],
     [ "CM_RaceDrawSky", "Game_8h.html#aa97d48e199aac53548393bfad5a6d2ca", null ],

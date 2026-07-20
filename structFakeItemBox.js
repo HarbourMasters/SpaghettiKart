@@ -11,7 +11,7 @@ var structFakeItemBox =
     [ "state", "structFakeItemBox.html#ac40351f6f80e83eeb4f2821d38f25bb4", null ],
     [ "targetY", "structFakeItemBox.html#a340c35ebd10c6000661e1edcf8a91e42", null ],
     [ "type", "structFakeItemBox.html#adcadd689481f522875279387ed5d0660", null ],
-    [ "unk30", "structFakeItemBox.html#a82f986c6d7570407077c1c01bd53bcdb", null ],
+    [ "unk30", "structFakeItemBox.html#a3be9b48d6777077324f1bcd33de89d21", null ],
     [ "unk_02C", "structFakeItemBox.html#af8abef83f63456bc800357917aa3517c", null ],
     [ "unk_16", "structFakeItemBox.html#ad1acc2bc2fef7b5ed76382dc9fff8978", null ]
 ];

@@ -7,7 +7,7 @@ var structPlayer =
     [ "boostTimer", "structPlayer.html#aafb0ae0bc7c46b3482a20c6ce79812d5", null ],
     [ "boundingBoxSize", "structPlayer.html#a681f0fac4abe58cf5919dd4c6ac503d0", null ],
     [ "characterId", "structPlayer.html#a3c54f7cdfdf596fcb7500e4b56a3340d", null ],
-    [ "collision", "structPlayer.html#a649c835eb5117a45758d3ac1946070b4", null ],
+    [ "collision", "structPlayer.html#a09aa619780973bd1b1e9438f8b68b32b", null ],
     [ "currentItemCopy", "structPlayer.html#ab3ec920cd686937617af44c57507fcad", null ],
     [ "currentRank", "structPlayer.html#af68a201da4cc5a0628252a352d147767", null ],
     [ "currentSpeed", "structPlayer.html#a197746819eb3897e92708f939da92aeb", null ],

@@ -1,5 +1,7 @@
 var NAVTREEINDEX85 =
 {
+"structma__device__job__thread__config.html#ad8117c4d1da4bae9fda1f26008d7b999":[19,0,206,2],
+"structma__device__job__thread__config.html#adae694dab33cff4a123b542e9cb6f156":[19,0,206,1],
 "structma__device__notification.html":[19,0,207],
 "structma__device__notification.html#a0bb5823f25d666715172ca3053449107":[19,0,207,3],
 "structma__device__notification.html#a267e1b26d0c0075fc81af34f341d3042":[19,0,207,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX85 =
 "structma__job__queue.html#a659324f703f418d8c4ffea5f8c7ca977":[19,0,234,1],
 "structma__job__queue.html#a9ec9c9f01b77ba6b922e0044fb83fb85":[19,0,234,9],
 "structma__job__queue.html#aa451ed367f2b32c7290478552e6bed72":[19,0,234,8],
-"structma__job__queue.html#aad5ffd5f116c21453dcd23f032de199b":[19,0,234,7],
-"structma__job__queue.html#abd7ab645d2e8c4bf337cfc60ed923ea6":[19,0,234,2],
-"structma__job__queue.html#ae8eba4b3dbae6d50607445739e880a1d":[19,0,234,5]
+"structma__job__queue.html#aad5ffd5f116c21453dcd23f032de199b":[19,0,234,7]
 };

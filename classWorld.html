@@ -110,6 +110,7 @@ $(function(){initNavTree('classWorld.html',''); initResizable(true); });
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Data Fields</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
 <a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle"><div class="title">World Class Reference</div></div>
 </div><!--header-->
@@ -206,8 +207,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:ae9ce07f0239d6ddc4485d1a285cb3a14" id="r_ae9ce07f0239d6ddc4485d1a285cb3a14"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWorld_1_1Matrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9ce07f0239d6ddc4485d1a285cb3a14">Mtx</a></td></tr>
-<tr class="separator:ae9ce07f0239d6ddc4485d1a285cb3a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e3e6ed372981d57f8473417b47d0e00" id="r_a3e3e6ed372981d57f8473417b47d0e00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWorld_1_1Matrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e3e6ed372981d57f8473417b47d0e00">world_mtx</a></td></tr>
+<tr class="separator:a3e3e6ed372981d57f8473417b47d0e00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5867ae6125d8a60a2053bf49ad7e229" id="r_aa5867ae6125d8a60a2053bf49ad7e229"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classCup.html">Cup</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5867ae6125d8a60a2053bf49ad7e229">Cups</a></td></tr>
 <tr class="separator:aa5867ae6125d8a60a2053bf49ad7e229"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46358439ccabf4a7c7901a675a081b46" id="r_a46358439ccabf4a7c7901a675a081b46"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46358439ccabf4a7c7901a675a081b46">CupIndex</a> = 1</td></tr>
@@ -234,6 +235,11 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:ae5232a83ce9a364ca135d27fa6848161" id="r_ae5232a83ce9a364ca135d27fa6848161"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classWorld.html">World</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5232a83ce9a364ca135d27fa6848161">Instance</a></td></tr>
 <tr class="separator:ae5232a83ce9a364ca135d27fa6848161"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-types" name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:af2e8be7576d8a3170ab38f804c8d064f" id="r_af2e8be7576d8a3170ab38f804c8d064f"><td class="memItemLeft" align="right" valign="top">typedef struct World::Matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2e8be7576d8a3170ab38f804c8d064f">Matrix</a></td></tr>
+<tr class="separator:af2e8be7576d8a3170ab38f804c8d064f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:adc7e2f067fffbdcbfabc04c93dc82f0d" id="r_adc7e2f067fffbdcbfabc04c93dc82f0d"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classTrack.html">Track</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc7e2f067fffbdcbfabc04c93dc82f0d">mTrack</a></td></tr>
@@ -243,6 +249,29 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:acdeb8c0608b0f76c2b2f2595c509b8b7" id="r_acdeb8c0608b0f76c2b2f2595c509b8b7"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; RaceManager &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdeb8c0608b0f76c2b2f2595c509b8b7">RaceManagerInstance</a></td></tr>
 <tr class="separator:acdeb8c0608b0f76c2b2f2595c509b8b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="af2e8be7576d8a3170ab38f804c8d064f" name="af2e8be7576d8a3170ab38f804c8d064f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2e8be7576d8a3170ab38f804c8d064f">&#9670;&#160;</a></span>Matrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct World::Matrix World::Matrix</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="afa39d4e6f714a7a3691ac0c656f5e8a8" name="afa39d4e6f714a7a3691ac0c656f5e8a8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afa39d4e6f714a7a3691ac0c656f5e8a8">&#9670;&#160;</a></span>World()</h2>
@@ -1324,20 +1353,6 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ae9ce07f0239d6ddc4485d1a285cb3a14" name="ae9ce07f0239d6ddc4485d1a285cb3a14"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae9ce07f0239d6ddc4485d1a285cb3a14">&#9670;&#160;</a></span>Mtx</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structWorld_1_1Matrix.html">Matrix</a> World::Mtx</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a23319a7a3335ca173d1597f041f31b55" name="a23319a7a3335ca173d1597f041f31b55"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a23319a7a3335ca173d1597f041f31b55">&#9670;&#160;</a></span>Objects</h2>
 
@@ -1382,6 +1397,20 @@ Here is the caller graph for this function:</div>
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt;std::unique_ptr&lt;<a class="el" href="classStaticMeshActor.html">StaticMeshActor</a>&gt; &gt; World::StaticMeshActors</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3e3e6ed372981d57f8473417b47d0e00" name="a3e3e6ed372981d57f8473417b47d0e00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e3e6ed372981d57f8473417b47d0e00">&#9670;&#160;</a></span>world_mtx</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structWorld_1_1Matrix.html">Matrix</a> World::world_mtx</td>
         </tr>
       </table>
 </div><div class="memdoc">

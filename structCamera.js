@@ -1,7 +1,7 @@
 var structCamera =
 [
     [ "cameraId", "structCamera.html#a15388e5b99931adebdf818711a3724e0", null ],
-    [ "collision", "structCamera.html#ae87778b1cb8804985aad9c5eb7c4b36f", null ],
+    [ "collision", "structCamera.html#afbf0c5bbd0744fb79f3bc4d324b80faa", null ],
     [ "fieldOfView", "structCamera.html#a7b3ff9e1366b31d516a32bbfb469cde4", null ],
     [ "lookAt", "structCamera.html#ae16ab2b8e885264666d7e7e20bb872a1", null ],
     [ "lookAtMatrix", "structCamera.html#a1f91a97b1506773fa8da30908cdb89cf", null ],

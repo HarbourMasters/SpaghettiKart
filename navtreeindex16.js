@@ -1,5 +1,6 @@
 var NAVTREEINDEX16 =
 {
+"classSF64_1_1Vec3sArray.html#aff2bdc9808eb651161e3a209dd9806c1":[18,0,6,29,2],
 "classSF64_1_1Vec3sArray.html#aff2bdc9808eb651161e3a209dd9806c1":[19,0,3,29,2],
 "classSM64_1_1AudioBank.html":[18,0,8,0],
 "classSM64_1_1AudioBank.html":[19,0,5,0],
@@ -49,7 +50,6 @@ var NAVTREEINDEX16 =
 "classSM64_1_1AudioSequenceFactoryV0.html#a2da4d26faf5f22b42eee98734dd681ef":[19,0,5,4,0],
 "classSherbetLand.html":[19,0,402],
 "classSherbetLand.html#a019d70103fc5aac86286658521c6d2df":[19,0,402,0],
-"classSherbetLand.html#a163bf1164702a3cb7cc2ac1aca586c92":[19,0,402,7],
 "classSherbetLand.html#a47792717cebb7f927b73d3810b1147f0":[19,0,402,2],
 "classSherbetLand.html#a54e0935ef61f7dd799aedf133fe0e2a0":[19,0,402,3],
 "classSherbetLand.html#a78c492377c0d7710b9ddc02358bb6a63":[19,0,402,6],
@@ -57,6 +57,7 @@ var NAVTREEINDEX16 =
 "classSherbetLand.html#a8a4f997aca9cf49e4f1859051d1706e0":[19,0,402,8],
 "classSherbetLand.html#aa4ee7a3c264bfa0031792ca76e9b528e":[19,0,402,5],
 "classSherbetLand.html#aaf3ff18960e8e9896f51bd93e2d8ff9a":[19,0,402,1],
+"classSherbetLand.html#af32da3462b21eafa54f08a7b0f6f1ff7":[19,0,402,7],
 "classSherbetLand.html#af56127eec2379734c8c5e02dfcd1eb91":[19,0,402,4],
 "classShip_1_1Menu.html":[18,0,7,0],
 "classShip_1_1Menu.html":[19,0,4,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX16 =
 "classTestTrack.html#ae3bf027de914e7e9e7e814ebbf301efc":[19,0,450,2],
 "classToadsTurnpike.html":[19,0,454],
 "classToadsTurnpike.html#a25009a2dd4f7e438741965b0a9fc9a7e":[19,0,454,1],
-"classToadsTurnpike.html#a35b679b83f24475ff3944f043be65207":[19,0,454,0],
-"classToadsTurnpike.html#a3fdc56084b2cb6c95376104700a3a7a6":[19,0,454,8]
+"classToadsTurnpike.html#a35b679b83f24475ff3944f043be65207":[19,0,454,0]
 };
