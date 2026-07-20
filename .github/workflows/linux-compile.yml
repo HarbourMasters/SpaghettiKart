@@ -152,11 +152,6 @@ jobs:
           fetch-tags: true
           submodules: recursive
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-        with:
-          platforms: linux/386
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
