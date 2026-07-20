@@ -20,6 +20,60 @@ extern "C" {
 
 size_t SkyCloud::_count = 0;
 
+// Pack-branch variant selection, calibrated empirically with tracer art on
+// both sheet groups. The quad's T space spans 2048 units per sheet, so the
+// per-variant pitch is 2048/N, shifted up one original texel (32 units) to
+// match the renderer's sampling convention. S spans 0..2016: upstream's
+// shared cloudvtx tables span double that (every cloud drew twice side by
+// side with replacement packs) and their fixed T pitch only suits 4-slice
+// sheets.
+static const Vtx sPackCloudVtx4[4][4] = {
+    {
+        { { { -32, -16, 0 }, 0, { 0, -32 }, { 255, 255, 255, 255 } } },
+        { { { 31, -16, 0 }, 0, { 2016, -32 }, { 255, 255, 255, 255 } } },
+        { { { 31, 15, 0 }, 0, { 2016, 480 }, { 255, 255, 255, 255 } } },
+        { { { -32, 15, 0 }, 0, { 0, 480 }, { 255, 255, 255, 255 } } },
+    },
+    {
+        { { { -32, -16, 0 }, 0, { 0, 480 }, { 255, 255, 255, 255 } } },
+        { { { 31, -16, 0 }, 0, { 2016, 480 }, { 255, 255, 255, 255 } } },
+        { { { 31, 15, 0 }, 0, { 2016, 992 }, { 255, 255, 255, 255 } } },
+        { { { -32, 15, 0 }, 0, { 0, 992 }, { 255, 255, 255, 255 } } },
+    },
+    {
+        { { { -32, -16, 0 }, 0, { 0, 992 }, { 255, 255, 255, 255 } } },
+        { { { 31, -16, 0 }, 0, { 2016, 992 }, { 255, 255, 255, 255 } } },
+        { { { 31, 15, 0 }, 0, { 2016, 1504 }, { 255, 255, 255, 255 } } },
+        { { { -32, 15, 0 }, 0, { 0, 1504 }, { 255, 255, 255, 255 } } },
+    },
+    {
+        { { { -32, -16, 0 }, 0, { 0, 1504 }, { 255, 255, 255, 255 } } },
+        { { { 31, -16, 0 }, 0, { 2016, 1504 }, { 255, 255, 255, 255 } } },
+        { { { 31, 15, 0 }, 0, { 2016, 2016 }, { 255, 255, 255, 255 } } },
+        { { { -32, 15, 0 }, 0, { 0, 2016 }, { 255, 255, 255, 255 } } },
+    },
+};
+static const Vtx sPackCloudVtx3[3][4] = {
+    {
+        { { { -32, -16, 0 }, 0, { 0, -32 }, { 255, 255, 255, 255 } } },
+        { { { 31, -16, 0 }, 0, { 2016, -32 }, { 255, 255, 255, 255 } } },
+        { { { 31, 15, 0 }, 0, { 2016, 651 }, { 255, 255, 255, 255 } } },
+        { { { -32, 15, 0 }, 0, { 0, 651 }, { 255, 255, 255, 255 } } },
+    },
+    {
+        { { { -32, -16, 0 }, 0, { 0, 651 }, { 255, 255, 255, 255 } } },
+        { { { 31, -16, 0 }, 0, { 2016, 651 }, { 255, 255, 255, 255 } } },
+        { { { 31, 15, 0 }, 0, { 2016, 1333 }, { 255, 255, 255, 255 } } },
+        { { { -32, 15, 0 }, 0, { 0, 1333 }, { 255, 255, 255, 255 } } },
+    },
+    {
+        { { { -32, -16, 0 }, 0, { 0, 1333 }, { 255, 255, 255, 255 } } },
+        { { { 31, -16, 0 }, 0, { 2016, 1333 }, { 255, 255, 255, 255 } } },
+        { { { 31, 15, 0 }, 0, { 2016, 2016 }, { 255, 255, 255, 255 } } },
+        { { { -32, 15, 0 }, 0, { 0, 2016 }, { 255, 255, 255, 255 } } },
+    },
+};
+
 SkyCloud::SkyCloud(ScreenContext* screen, u16 cloudVariant, u16 posY, u16 rotY, u16 scalePercent) : SkyActor(screen) {
     _idx = _count;
     mScreen = screen;
@@ -49,13 +103,9 @@ void SkyCloud::ResolveTexture() {
         if ((strcmp((const char*)CM_GetProps()->CloudTexture, gTextureExhaust3) == 0) ||
            (strcmp((const char*)CM_GetProps()->CloudTexture, gTextureExhaust4) == 0) ||
            (strcmp((const char*)CM_GetProps()->CloudTexture, gTextureExhaust5) == 0)) {
-            mVtx = cloudvtx[mCloudVariant];
-        } else if (strcmp((const char*)CM_GetProps()->CloudTexture, gTextureExhaust0) == 0 ||
-            strcmp((const char*)CM_GetProps()->CloudTexture, gTextureExhaust1) == 0 ||
-            strcmp((const char*)CM_GetProps()->CloudTexture, gTextureExhaust2) == 0) {
-            mVtx = cloudvtx2[mCloudVariant];
+            mVtx = (Vtx*)sPackCloudVtx4[mCloudVariant];
         } else {
-            mVtx = cloudvtx2[mCloudVariant];
+            mVtx = (Vtx*)sPackCloudVtx3[mCloudVariant];
         }
     }
 }
