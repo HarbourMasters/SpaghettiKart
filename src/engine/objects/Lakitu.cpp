@@ -3,6 +3,9 @@
 #include "Lakitu.h"
 #include <vector>
 #include "port/interpolation/FrameInterpolation.h"
+#include "port/resource/AsyncTextureUpgrader.h"
+
+static void RegisterLakituFrameSets();
 
 #include "port/Game.h"
 
@@ -247,6 +250,7 @@ Vtx fixed_common_vtx_lakitu[] = {
 };
 
 void OLakitu::init_obj_lakitu_starter_and_checkered_flag(s32 objectIndex, s32 playerId) {
+    RegisterLakituFrameSets();
     if (playerId == 0) {
         D_801656F0 = 0;
         D_8018D168 = 0;
@@ -404,6 +408,7 @@ Vtx fixed_common_vtx_also_lakitu[] = {
 };
 
 void OLakitu::init_obj_lakitu_checkered_flag(s32 objectIndex, s32 playerIndex) {
+    RegisterLakituFrameSets();
     Object* object;
 
     OLakitu::func_800791F0(objectIndex, playerIndex);
@@ -494,6 +499,7 @@ Vtx fixed_D_0D005F30[] = {
 };
 
 void OLakitu::init_obj_lakitu_red_flag_fishing(s32 objectIndex, s32 arg1) {
+    RegisterLakituFrameSets();
 
     OLakitu::func_800791F0(objectIndex, arg1);
     init_texture_object(objectIndex, (u8*) common_tlut_lakitu_fishing, sLakituFishingTextures, 0x38U, (u16) 0x00000048);
@@ -782,6 +788,23 @@ static const char* sLakituReverseTextures[] = {
     gTextureLakituReverse09, gTextureLakituReverse10, gTextureLakituReverse11, gTextureLakituReverse12,
     gTextureLakituReverse13, gTextureLakituReverse14, gTextureLakituReverse15, gTextureLakituReverse16
 };
+
+// Register Lakitu's frame sets with the texture streamer so replacement
+// frames of one animation swap in together instead of angle by angle.
+static void RegisterLakituFrameSets() {
+    static bool sDone = false;
+    if (sDone) {
+        return;
+    }
+    sDone = true;
+    auto& up = MK64::AsyncTextureUpgrader::Instance();
+    up.RegisterFrameSet(sLakituTextures, ARRAY_COUNT(sLakituTextures));
+    up.RegisterFrameSet(sLakituCheckeredList, ARRAY_COUNT(sLakituCheckeredList));
+    up.RegisterFrameSet(sLakituFishingTextures, ARRAY_COUNT(sLakituFishingTextures));
+    up.RegisterFrameSet(sLakituSecondLapTextures, ARRAY_COUNT(sLakituSecondLapTextures));
+    up.RegisterFrameSet(sLakituReverseTextures, ARRAY_COUNT(sLakituReverseTextures));
+}
+
 
 void OLakitu::func_8007A3F0(s32 objectIndex, s32 arg1) {
     f32 var = 5000.0f;

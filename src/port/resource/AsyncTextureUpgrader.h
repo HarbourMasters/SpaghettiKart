@@ -8,6 +8,7 @@
 #include <mutex>
 #include <string>
 #include <thread>
+#include <unordered_map>
 #include <unordered_set>
 #include <vector>
 
@@ -43,6 +44,11 @@ class AsyncTextureUpgrader {
     // Each directory is prefetched at most once per ResetPrefetch().
     void PrefetchSiblings(const std::string& resourcePath);
 
+    // Register an explicit sprite frame set (e.g. Lakitu's rotation angles):
+    // replacements for these paths are swapped in together. Callable from C
+    // via AsyncTextureUpgrader_RegisterFrameSet.
+    void RegisterFrameSet(const char* const* names, size_t count);
+
     // Forget which directories were prefetched and drop all queued/decoded
     // work from before the reset (call when the resource cache is evicted,
     // e.g. on the alt-assets toggle). Without the drain, rapid toggling piles
@@ -66,6 +72,7 @@ class AsyncTextureUpgrader {
         uint16_t origWidth;
         uint16_t origHeight;
         uint64_t generation;
+        std::string group;
     };
     struct Decoded {
         std::shared_ptr<Fast::Texture> texture;
@@ -75,6 +82,7 @@ class AsyncTextureUpgrader {
         uint16_t origWidth;
         uint16_t origHeight;
         uint64_t generation;
+        std::string group;
     };
 
     void WorkerLoop();
@@ -86,11 +94,19 @@ class AsyncTextureUpgrader {
     std::condition_variable mCondVar;
     std::deque<Job> mPending;
     std::deque<Decoded> mDecoded;
+    // Frames of one sprite set (same name minus trailing digits) swap in
+    // together: completed frames wait here until the whole group has decoded,
+    // so multi-frame sprites (e.g. Lakitu's 16 rotation angles) pop to HD as
+    // one coherent object instead of flickering in frame by frame.
+    std::deque<Decoded> mHeldByGroup;
+    std::unordered_map<std::string, int> mInflightByGroup;
+    // path -> group id for explicitly registered frame sets only; textures
+    // outside a registered set swap individually (course tiles must not batch).
+    std::unordered_map<std::string, std::string> mFrameSetOfPath;
     // Bumped by ResetPrefetch(); work stamped with an older generation targets
     // textures that were evicted by the toggle and is dropped, not applied.
     uint64_t mGeneration = 0;
-    std::thread mWorker;
-    bool mWorkerRunning = false;
+    std::vector<std::thread> mDecodeWorkers;
     bool mStop = false;
 
     std::condition_variable mPrefetchCondVar;

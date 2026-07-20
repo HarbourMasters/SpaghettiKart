@@ -6,8 +6,10 @@
 #include "ship/resource/ResourceManager.h"
 #include "ship/resource/archive/ArchiveManager.h"
 #include "spdlog/spdlog.h"
+#include <libultraship.h>
 #include <stb_image.h>
 #include <algorithm>
+#include <cctype>
 #include <cstring>
 
 namespace MK64 {
@@ -22,10 +24,22 @@ AsyncTextureUpgrader::~AsyncTextureUpgrader() {
 }
 
 void AsyncTextureUpgrader::EnsureWorker() {
-    // Caller holds mMutex.
-    if (!mWorkerRunning) {
-        mWorkerRunning = true;
-        mWorker = std::thread(&AsyncTextureUpgrader::WorkerLoop, this);
+    // Caller holds mMutex. Decoding is CPU-bound and embarrassingly parallel;
+    // a single worker made scheduling zero-sum (prioritizing one sprite set
+    // starved everything else), so run a small pool instead. Sized to the
+    // machine (quarter of the cores, 1..4); workers sleep outside streaming
+    // bursts, so steady-state racing pays nothing. gTexturePack.DecodeThreads
+    // overrides for unusual setups (0 = auto).
+    static const size_t kDecodeThreads = [] {
+        const int32_t forced = CVarGetInteger("gTexturePack.DecodeThreads", 0);
+        if (forced > 0) {
+            return (size_t)std::min(forced, 8);
+        }
+        const unsigned hc = std::thread::hardware_concurrency();
+        return (size_t)std::clamp(hc / 2u, 1u, 8u);
+    }();
+    if (mDecodeWorkers.size() < kDecodeThreads && mPending.size() > mDecodeWorkers.size()) {
+        mDecodeWorkers.emplace_back(&AsyncTextureUpgrader::WorkerLoop, this);
     }
 }
 
@@ -36,7 +50,20 @@ void AsyncTextureUpgrader::Enqueue(std::shared_ptr<Fast::Texture> texture, std::
         if (mStop) {
             return;
         }
-        mPending.push_back({ std::move(texture), std::move(imageFile), origWidth, origHeight, mGeneration });
+        std::string group;
+        auto setIt = mFrameSetOfPath.find(texture->GetInitData()->Path);
+        if (setIt != mFrameSetOfPath.end()) {
+            group = setIt->second;
+            mInflightByGroup[group]++;
+        }
+        if (!group.empty()) {
+            // Registered frame sets decode ahead of the general queue: the set
+            // can only swap once its slowest member lands, so its members must
+            // not wait behind the whole scene's textures.
+            mPending.push_front({ std::move(texture), std::move(imageFile), origWidth, origHeight, mGeneration, group });
+        } else {
+            mPending.push_back({ std::move(texture), std::move(imageFile), origWidth, origHeight, mGeneration, group });
+        }
         EnsureWorker();
     }
     mCondVar.notify_one();
@@ -64,6 +91,13 @@ void AsyncTextureUpgrader::WorkerLoop() {
             if (decoded != nullptr) {
                 stbi_image_free(decoded);
             }
+            if (!job.group.empty()) {
+                const std::lock_guard<std::mutex> lock(mMutex);
+                auto it = mInflightByGroup.find(job.group);
+                if (it != mInflightByGroup.end() && --it->second <= 0) {
+                    mInflightByGroup.erase(it);
+                }
+            }
             continue; // keep the original binary art
         }
 
@@ -79,13 +113,19 @@ void AsyncTextureUpgrader::WorkerLoop() {
                 delete[] pixels;
                 return;
             }
+            if (!job.group.empty()) {
+                auto it = mInflightByGroup.find(job.group);
+                if (it != mInflightByGroup.end() && --it->second <= 0) {
+                    mInflightByGroup.erase(it);
+                }
+            }
             if (job.generation != mGeneration) {
                 // The toggle evicted this texture while it was being decoded.
                 delete[] pixels;
                 continue;
             }
-            mDecoded.push_back(
-                { std::move(job.texture), pixels, width, height, job.origWidth, job.origHeight, job.generation });
+            mDecoded.push_back({ std::move(job.texture), pixels, width, height, job.origWidth, job.origHeight,
+                                 job.generation, std::move(job.group) });
         }
     }
 }
@@ -93,7 +133,11 @@ void AsyncTextureUpgrader::WorkerLoop() {
 void AsyncTextureUpgrader::EnsurePrefetchWorkers() {
     // Caller holds mMutex.
     if (mPrefetchWorkers.empty()) {
-        constexpr int kPrefetchThreads = 2;
+        // Scaled with the decode pool: prefetch does the archive extraction
+        // that feeds the decoders, so two fixed workers would bottleneck a
+        // larger pool.
+        static const int kPrefetchThreads =
+            (int)std::clamp(std::thread::hardware_concurrency() / 4u, 2u, 4u);
         for (int i = 0; i < kPrefetchThreads; i++) {
             mPrefetchWorkers.emplace_back(&AsyncTextureUpgrader::PrefetchLoop, this);
         }
@@ -117,6 +161,33 @@ void AsyncTextureUpgrader::PrefetchSiblings(const std::string& resourcePath) {
     mPrefetchCondVar.notify_one();
 }
 
+void AsyncTextureUpgrader::RegisterFrameSet(const char* const* names, size_t count) {
+    if (names == nullptr || count < 2) {
+        return;
+    }
+    const std::lock_guard<std::mutex> lock(mMutex);
+    // Asset-name symbols carry the __OTR__ signature; resource paths are
+    // stored without it, so strip it or the lookups never match.
+    auto canonical = [](const char* name) -> std::string {
+        static const char kSig[] = "__OTR__";
+        if (strncmp(name, kSig, sizeof(kSig) - 1) == 0) {
+            return std::string(name + sizeof(kSig) - 1);
+        }
+        return std::string(name);
+    };
+    // First name identifies the set.
+    std::string groupId = canonical(names[0]);
+    for (size_t i = 0; i < count; i++) {
+        if (names[i] != nullptr) {
+            mFrameSetOfPath[canonical(names[i])] = groupId;
+        }
+    }
+}
+
+extern "C" void AsyncTextureUpgrader_RegisterFrameSet(const char* const* names, size_t count) {
+    AsyncTextureUpgrader::Instance().RegisterFrameSet(names, count);
+}
+
 void AsyncTextureUpgrader::ResetPrefetch() {
     const std::lock_guard<std::mutex> lock(mMutex);
     mGeneration++;
@@ -125,10 +196,15 @@ void AsyncTextureUpgrader::ResetPrefetch() {
     // Drop queued decode jobs and undelivered results: they all target texture
     // objects the toggle just evicted from the resource cache.
     mPending.clear();
+    mInflightByGroup.clear();
     for (Decoded& d : mDecoded) {
         delete[] d.pixels;
     }
     mDecoded.clear();
+    for (Decoded& d : mHeldByGroup) {
+        delete[] d.pixels;
+    }
+    mHeldByGroup.clear();
 }
 
 // Image-sibling extensions the texture factory recognizes (kept in sync with
@@ -187,7 +263,21 @@ void AsyncTextureUpgrader::ApplyCompleted(const std::function<void(const uint8_t
     std::deque<Decoded> ready;
     {
         const std::lock_guard<std::mutex> lock(mMutex);
-        ready.swap(mDecoded);
+        // Merge newly decoded frames with any held back for group completion,
+        // then hold back whichever groups still have frames in flight.
+        for (Decoded& d : mDecoded) {
+            mHeldByGroup.push_back(std::move(d));
+        }
+        mDecoded.clear();
+        std::deque<Decoded> stillHeld;
+        for (Decoded& d : mHeldByGroup) {
+            if (!d.group.empty() && mInflightByGroup.count(d.group)) {
+                stillHeld.push_back(std::move(d));
+            } else {
+                ready.push_back(std::move(d));
+            }
+        }
+        mHeldByGroup.swap(stillHeld);
     }
 
     for (Decoded& d : ready) {
@@ -233,9 +323,12 @@ void AsyncTextureUpgrader::Shutdown() {
     }
     mCondVar.notify_all();
     mPrefetchCondVar.notify_all();
-    if (mWorker.joinable()) {
-        mWorker.join();
+    for (std::thread& t : mDecodeWorkers) {
+        if (t.joinable()) {
+            t.join();
+        }
     }
+    mDecodeWorkers.clear();
     for (std::thread& t : mPrefetchWorkers) {
         if (t.joinable()) {
             t.join();
