@@ -57,7 +57,7 @@ var searchData=
   ['none_54',['None',['../classTrackEditor_1_1Gizmo.html#a914ef09ef658ea87d83e38b8623e4e9ba6adf97f83acf6453d4a6a4b1070f3754',1,'TrackEditor::Gizmo::None'],['../namespaceUIWidgets.html#a23ae264367182e084aed61c4b582521baf6c9204d3b575d2f94614341a8fcb652',1,'UIWidgets::None']]],
   ['none_55',['none',['../namespacepfd.html#a1a482ccd57bb939dcbf7d9caacd3f997a334c4a4c42fdb79d7ebc3e73b517e6f8',1,'pfd']]],
   ['nopresilencedoutputbuffer_56',['noPreSilencedOutputBuffer',['../structma__device__config.html#aeefdb958746bcb9dc8871b51ba0b8d5a',1,'ma_device_config::noPreSilencedOutputBuffer'],['../structma__device.html#a3799c81e4ffa8787131e76890d281ad9',1,'ma_device::noPreSilencedOutputBuffer']]],
-  ['noreturn_57',['NORETURN',['../macros_8h.html#aa1728270d73c5d1598de1fd691762eb1',1,'macros.h']]],
+  ['noreturn_57',['NORETURN',['../macros_8h.html#aa1728270d73c5d1598de1fd691762eb1',1,'NORETURN:&#160;macros.h'],['../macros_8h.html#aa1728270d73c5d1598de1fd691762eb1',1,'NORETURN:&#160;macros.h']]],
   ['norm_58',['norm',['../structSF64_1_1ColPolyData.html#a1ab2f8a9483c76c8278684c5c37d1cd9',1,'SF64::ColPolyData']]],
   ['normal_59',['NORMAL',['../classOLakitu.html#aaac2fc8b2404c3db2c5c14eb57a88925a241a031f157712b83cce93e1afad90d3',1,'OLakitu']]],
   ['normalnotessound_60',['normalNotesSound',['../structInstrument.html#ad9b0c8f41eb2d53ea4efcdca85dae2d5',1,'Instrument::normalNotesSound'],['../structInstrument.html#a547b41b98601a9f17745412d792d4929',1,'Instrument::normalNotesSound']]],

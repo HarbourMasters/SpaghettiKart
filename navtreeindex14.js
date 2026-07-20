@@ -1,6 +1,5 @@
 var NAVTREEINDEX14 =
 {
-"classOLakitu.html#ae19e651acac142202de7b4e1bb737b6b":[19,0,344,10],
 "classOLakitu.html#ae289dfcb3c3015fe450ec5184b459989":[19,0,344,27],
 "classOLakitu.html#ae2d55a829f7aa8bdf53987d45f5dd3b7":[19,0,344,34],
 "classOLakitu.html#ae76d444a529be6c5991529e5d0ba6f15":[19,0,344,14],
@@ -249,5 +248,6 @@ var NAVTREEINDEX14 =
 "classOTrophy.html#a43bb5d1394bcac120ff52ec88f765891add7e83223730d6f88797adde88ff9ffd":[19,0,360,1,3],
 "classOTrophy.html#a43bb5d1394bcac120ff52ec88f765891af882c6b91edfc9bb4650be9750014e6c":[19,0,360,1,2],
 "classOTrophy.html#a49dec562364c78fb2a3fd1a318249c74":[19,0,360,12],
-"classOTrophy.html#a4ca051131f7359fd3579a12c537d538e":[19,0,360,16]
+"classOTrophy.html#a4ca051131f7359fd3579a12c537d538e":[19,0,360,16],
+"classOTrophy.html#a5c03cbdb2860998f8f88aca4dfdd69ba":[19,0,360,6]
 };

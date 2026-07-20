@@ -5,7 +5,7 @@ var searchData=
   ['no_5flayer_2',['NO_LAYER',['../internal_8h.html#adcd746aa20f55157139af6e09fb473a6',1,'internal.h']]],
   ['no_5fpak_3',['NO_PAK',['../save_8h.html#abf20455a1339f600de5abdbbaa9c9d4b',1,'save.h']]],
   ['no_5freorder_4',['NO_REORDER',['../macros_8h.html#a981d727c769c9516175fef643b82477d',1,'macros.h']]],
-  ['noreturn_5',['NORETURN',['../macros_8h.html#aa1728270d73c5d1598de1fd691762eb1',1,'macros.h']]],
+  ['noreturn_5',['NORETURN',['../macros_8h.html#aa1728270d73c5d1598de1fd691762eb1',1,'NORETURN:&#160;macros.h'],['../macros_8h.html#aa1728270d73c5d1598de1fd691762eb1',1,'NORETURN:&#160;macros.h']]],
   ['note_5falloc_5fchannel_6',['NOTE_ALLOC_CHANNEL',['../playback_8h.html#adfbbcc03a0a8cd327e60e10bee1a9e19',1,'playback.h']]],
   ['note_5falloc_5fglobal_5ffreelist_7',['NOTE_ALLOC_GLOBAL_FREELIST',['../playback_8h.html#abe9cedc9bee1ad483029367cda7fce4e',1,'playback.h']]],
   ['note_5falloc_5flayer_8',['NOTE_ALLOC_LAYER',['../playback_8h.html#ad207555e373f6d6c77469487897e9f41',1,'playback.h']]],

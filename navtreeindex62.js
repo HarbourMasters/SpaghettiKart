@@ -1,7 +1,5 @@
 var NAVTREEINDEX62 =
 {
-"podium__ceremony__actors_8c.html#ab2ac33a173465c17c9774eb06eb2b006":[20,0,3,5,13,42],
-"podium__ceremony__actors_8c.html#ab4a2b3023e104635f01e66a08874f578":[20,0,3,5,13,21],
 "podium__ceremony__actors_8c.html#abe5e7d6664a9f39449fbf6848898baa1":[20,0,3,5,13,7],
 "podium__ceremony__actors_8c.html#aca4471232210cb9f7177a97d0300af4e":[20,0,3,5,13,8],
 "podium__ceremony__actors_8c.html#acd848a10e2c1967db92d232e007fcc94":[20,0,3,5,13,22],
@@ -249,5 +247,7 @@ var NAVTREEINDEX62 =
 "race__logic_8c.html#a8248cb723a9174c8f6cc066ff76804b8":[20,0,3,10,12,39],
 "race__logic_8c.html#a836d0734cc365cdfb4b35561107bfe4e":[20,0,3,10,12,12],
 "race__logic_8c.html#a89ac412ce30c2e0e583d74258a887c8b":[20,0,3,10,12,45],
-"race__logic_8c.html#a9c6f4eb059607fcd18e4df0dcaaeec5b":[20,0,3,10,12,32]
+"race__logic_8c.html#a9c6f4eb059607fcd18e4df0dcaaeec5b":[20,0,3,10,12,32],
+"race__logic_8c.html#a9eda822eb897f015332a199f25aee562":[20,0,3,10,12,41],
+"race__logic_8c.html#aa064451699e55c64c16a2e0da8dbca71":[20,0,3,10,12,43]
 };

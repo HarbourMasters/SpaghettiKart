@@ -7,7 +7,7 @@ var structBananaBunchParent =
     [ "playerId", "structBananaBunchParent.html#a1797405069f8c96889c9aeb59f5adbde", null ],
     [ "state", "structBananaBunchParent.html#a4ea1e279d4c3e9c579dd740973c746fc", null ],
     [ "type", "structBananaBunchParent.html#afb695515f0750a61ead8bda3c38cd033", null ],
-    [ "unk30", "structBananaBunchParent.html#ab83e15be5ca3958f9f30ea3ae8767be5", null ],
+    [ "unk30", "structBananaBunchParent.html#ae1c190eae7f8f237b5a37aa109a3e7b5", null ],
     [ "unk_04", "structBananaBunchParent.html#a51be60b0ee4aaf0418157b25163904c2", null ],
     [ "unk_08", "structBananaBunchParent.html#a523049b0bb754bb1474e316a939734e1", null ],
     [ "unk_0C", "structBananaBunchParent.html#ace9ff16f10758860c1c120eb60d9cfc4", null ],

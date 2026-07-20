@@ -113,7 +113,7 @@ var searchData=
   ['getupdatefuncs_110',['GetUpdateFuncs',['../structMenuInit.html#a54de6672f1a266b1a0c2975b80510839',1,'MenuInit']]],
   ['getvectorindexof_111',['GetVectorIndexOf',['../namespaceShip.html#aa346db7804e4175df73113e9e2391358',1,'Ship']]],
   ['getvehiclepathpointdistributed_112',['GetVehiclePathPointDistributed',['../Utils_8cpp.html#aeaf9fffe1458c3ce2a95a80906db76c3',1,'GetVehiclePathPointDistributed(std::vector&lt; uint32_t &gt; &amp;existingTrains, uint32_t numWaypoints):&#160;Utils.cpp'],['../Utils_8h.html#aeaf9fffe1458c3ce2a95a80906db76c3',1,'GetVehiclePathPointDistributed(std::vector&lt; uint32_t &gt; &amp;existingTrains, uint32_t numWaypoints):&#160;Utils.cpp']]],
-  ['getwaterlevel_113',['GetWaterLevel',['../classDKJungle.html#a398a56536710709d268839e500a7a835',1,'DKJungle::GetWaterLevel()'],['../classSherbetLand.html#af32da3462b21eafa54f08a7b0f6f1ff7',1,'SherbetLand::GetWaterLevel()']]],
+  ['getwaterlevel_113',['GetWaterLevel',['../classDKJungle.html#a967ee0922db46ff0b7c571e9c88f5999',1,'DKJungle::GetWaterLevel()'],['../classSherbetLand.html#a163bf1164702a3cb7cc2ac1aca586c92',1,'SherbetLand::GetWaterLevel()']]],
   ['getwindowbuttontext_114',['GetWindowButtonText',['../namespaceGameUI.html#a4f232e5e3c44c017f796550f928b5370',1,'GameUI']]],
   ['getworld_115',['GetWorld',['../classWorld.html#a425b754be9118b76205c27066b23c8d7',1,'World::GetWorld()'],['../Game_8cpp.html#ae2fa844b3cb1021ecbc357f8ed2ad8cc',1,'GetWorld():&#160;Game.cpp']]],
   ['gfx_5fcreate_5fframebuffer_116',['gfx_create_framebuffer',['../framebuffer__effects_8c.html#a2f1c2e5501c8eb00e81301658dc63137',1,'framebuffer_effects.c']]],

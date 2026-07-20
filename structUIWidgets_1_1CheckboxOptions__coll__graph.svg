@@ -47,7 +47,7 @@
   </g>
 </defs>
 <script type="application/ecmascript">
-var viewWidth = 607;
+var viewWidth = 545;
 var viewHeight = 170;
 var sectionId = 'dynsection-1';
 </script>
@@ -164,8 +164,8 @@ var sectionId = 'dynsection-1';
 <g id="Node000006" class="node">
 <title>Node6</title>
 <g id="a_Node000006"><a xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="467,-85 313,-85 313,-66 467,-66 467,-85"/>
-<text text-anchor="middle" x="390" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">enum ComponentAlignment</text>
+<polygon fill="white" stroke="#666666" points="436.5,-85 313.5,-85 313.5,-66 436.5,-66 436.5,-85"/>
+<text text-anchor="middle" x="375" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">ComponentAlignment</text>
 </a>
 </g>
 </g>
@@ -173,18 +173,18 @@ var sectionId = 'dynsection-1';
 <g id="edge6_Node000001_Node000006" class="edge">
 <title>Node6&#45;&gt;Node1</title>
 <g id="a_edge6_Node000001_Node000006"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M364.43,-61.19C340.2,-48.59 304.51,-30.01 283.72,-19.2"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="362.93,-64.36 373.41,-65.87 366.16,-58.15 362.93,-64.36"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M351.7,-60.69C330.44,-48.09 299.69,-29.87 281.68,-19.2"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="350.05,-63.78 360.43,-65.87 353.62,-57.76 350.05,-63.78"/>
 </a>
 </g>
-<text text-anchor="middle" x="362.5" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> alignment</text>
+<text text-anchor="middle" x="354.5" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> alignment</text>
 </g>
 <!-- Node7 -->
 <g id="Node000007" class="node">
 <title>Node7</title>
 <g id="a_Node000007"><a xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="598.5,-85 485.5,-85 485.5,-66 598.5,-66 598.5,-85"/>
-<text text-anchor="middle" x="542" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">enum LabelPosition</text>
+<polygon fill="white" stroke="#666666" points="537,-85 455,-85 455,-66 537,-66 537,-85"/>
+<text text-anchor="middle" x="496" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">LabelPosition</text>
 </a>
 </g>
 </g>
@@ -192,11 +192,11 @@ var sectionId = 'dynsection-1';
 <g id="edge7_Node000001_Node000007" class="edge">
 <title>Node7&#45;&gt;Node1</title>
 <g id="a_edge7_Node000001_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M499.49,-63.33C469.75,-55.63 429.04,-45.32 393,-37 365.34,-30.61 334.11,-24.04 309.67,-19.04"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="498.98,-66.81 509.53,-65.94 500.74,-60.04 498.98,-66.81"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M463.33,-62.45C441.36,-54.61 411.67,-44.48 385,-37 360.44,-30.11 332.61,-23.79 310.15,-19.06"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="462.24,-65.78 472.83,-65.88 464.61,-59.2 462.24,-65.78"/>
 </a>
 </g>
-<text text-anchor="middle" x="471.5" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> labelPosition</text>
+<text text-anchor="middle" x="451.5" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> labelPosition</text>
 </g>
 </g>
 </svg>

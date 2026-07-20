@@ -11,7 +11,7 @@ var bomb__kart_8h =
     [ "NUM_BOMB_KARTS_BATTLE", "bomb__kart_8h.html#abcecd1bb778612f9abaec48133c6f248", null ],
     [ "NUM_BOMB_KARTS_MAX", "bomb__kart_8h.html#a4e55b67d5f1a388b6fb2cec53ec24846", null ],
     [ "NUM_BOMB_KARTS_VERSUS", "bomb__kart_8h.html#aa5f0e977131ff31701339219d424359f", null ],
-    [ "gBombKartCollision", "bomb__kart_8h.html#a9633fe2991cdb194ba4214a324a96549", null ],
+    [ "gBombKartCollision", "bomb__kart_8h.html#a6453b1c7409232f848e8fbda7987b763", null ],
     [ "gBombKarts", "bomb__kart_8h.html#ac3cbac5b1e139c4891df180254ec34b3", null ],
     [ "gIndexObjectBombKart", "bomb__kart_8h.html#a7478ae92d607d5622fc21aab2ad5bd46", null ]
 ];

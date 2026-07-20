@@ -5,7 +5,7 @@ var structPaddleWheelBoat =
     [ "model", "structPaddleWheelBoat.html#aec9fa21a1ff1f51cce7065102f8f8052", null ],
     [ "pos", "structPaddleWheelBoat.html#a04c8b0f00d8fa9d26e2190baacca43da", null ],
     [ "type", "structPaddleWheelBoat.html#ad0d6d44e3080845246da23854683a756", null ],
-    [ "unk30", "structPaddleWheelBoat.html#aea35ddd3091c75afb37d3e439ad61a1e", null ],
+    [ "unk30", "structPaddleWheelBoat.html#aef82506c4c95dcbec21f80008b4816f2", null ],
     [ "unk_04", "structPaddleWheelBoat.html#a1f0605c31f4b5daac9882f80c2637117", null ],
     [ "unk_08", "structPaddleWheelBoat.html#acae546f754e8b0f66afe45c6f28e3268", null ],
     [ "unk_0C", "structPaddleWheelBoat.html#a4b167594716e305f92305e1b6c9e09a0", null ],

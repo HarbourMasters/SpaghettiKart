@@ -1,7 +1,5 @@
 var NAVTREEINDEX81 =
 {
-"structUIWidgets_1_1IntSliderOptions.html#ad5564b4b45983d86313f32703cb5530e":[18,0,10,5,18],
-"structUIWidgets_1_1IntSliderOptions.html#ad5564b4b45983d86313f32703cb5530e":[19,0,7,4,18],
 "structUIWidgets_1_1IntSliderOptions.html#aeb3c7df2e6e8c9fe8c68cce6a96e4d13":[18,0,10,5,3],
 "structUIWidgets_1_1IntSliderOptions.html#aeb3c7df2e6e8c9fe8c68cce6a96e4d13":[19,0,7,4,3],
 "structUIWidgets_1_1IntSliderOptions.html#af7d904f2ed0b37c6e389e1a053a00c64":[18,0,10,5,5],
@@ -249,5 +247,7 @@ var NAVTREEINDEX81 =
 "structWaterVolume.html#aae4914d2c831314fb1d05d72cdaa02bd":[19,0,500,3],
 "structWaterVolume.html#af39a4134d3dcedc062b969caebf337e2":[19,0,500,2],
 "structWidgetInfo.html":[19,0,501],
-"structWidgetInfo.html#a1ec9c6db27a66f88ec750045282e46f3":[19,0,501,17]
+"structWidgetInfo.html#a1ec9c6db27a66f88ec750045282e46f3":[19,0,501,17],
+"structWidgetInfo.html#a2ac569a44c89eded7195693d250f6c16":[19,0,501,19],
+"structWidgetInfo.html#a31d40206a297372d1527c53c82f61c2b":[19,0,501,7]
 };

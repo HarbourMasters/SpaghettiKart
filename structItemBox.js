@@ -10,7 +10,7 @@ var structItemBox =
     [ "someTimer", "structItemBox.html#a0da3ae45931357d0c3e53712f842069d", null ],
     [ "state", "structItemBox.html#a8770643814f0a75ee870072d5600055a", null ],
     [ "type", "structItemBox.html#a759e68102fd37f6cac8bc11822bc9664", null ],
-    [ "unk30", "structItemBox.html#a6837f4f2c774286370cf25fa8db0b436", null ],
+    [ "unk30", "structItemBox.html#af8f78b9ee3b51c94f1c5e9492c06b54c", null ],
     [ "unk_028", "structItemBox.html#a479e6887df34129f957616214f1cc426", null ],
     [ "unk_02C", "structItemBox.html#acbe8c0af0b7e62a73c6537404b952999", null ],
     [ "unk_16", "structItemBox.html#afbe6f4cee304f147c300049c1e8b95b7", null ]

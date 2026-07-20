@@ -11,7 +11,6 @@ var namespaceUIWidgets =
     [ "IntSliderOptions", "structUIWidgets_1_1IntSliderOptions.html", "structUIWidgets_1_1IntSliderOptions" ],
     [ "TextFilters", "structUIWidgets_1_1TextFilters.html", "structUIWidgets_1_1TextFilters" ],
     [ "WidgetOptions", "structUIWidgets_1_1WidgetOptions.html", "structUIWidgets_1_1WidgetOptions" ],
-    [ "Colors", "namespaceUIWidgets.html#a20505336f67ae9f7fb097fac83a5b731", null ],
     [ "SectionFunc", "namespaceUIWidgets.html#ae6baa537b60cf1d33e03e5e0c440c962", null ],
     [ "Colors", "namespaceUIWidgets.html#ab518b3979a369a95a6e490c6d8f87d26", [
       [ "Red", "namespaceUIWidgets.html#ab518b3979a369a95a6e490c6d8f87d26a197d0422f331777e7c59bbf3d5215250", null ],

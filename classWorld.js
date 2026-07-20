@@ -1,7 +1,6 @@
 var classWorld =
 [
     [ "Matrix", "structWorld_1_1Matrix.html", "structWorld_1_1Matrix" ],
-    [ "Matrix", "classWorld.html#af2e8be7576d8a3170ab38f804c8d064f", null ],
     [ "World", "classWorld.html#afa39d4e6f714a7a3691ac0c656f5e8a8", null ],
     [ "~World", "classWorld.html#a8c73fba541a5817fff65147ba47cd827", null ],
     [ "ActorBeginPlay", "classWorld.html#a0f40d5f6f8bd3c76ad1e1ca4ccc4b74f", null ],
@@ -50,8 +49,8 @@ var classWorld =
     [ "Lakitus", "classWorld.html#a1c54380783984ed65326a87dec631556", null ],
     [ "mPlayerBombKart", "classWorld.html#ad37e69520d6e295417b367621eec788b", null ],
     [ "mTrack", "classWorld.html#adc7e2f067fffbdcbfabc04c93dc82f0d", null ],
+    [ "Mtx", "classWorld.html#ae9ce07f0239d6ddc4485d1a285cb3a14", null ],
     [ "Objects", "classWorld.html#a23319a7a3335ca173d1597f041f31b55", null ],
     [ "RaceManagerInstance", "classWorld.html#acdeb8c0608b0f76c2b2f2595c509b8b7", null ],
-    [ "StaticMeshActors", "classWorld.html#af7d7ec4f75f47071f83655159f47bb9d", null ],
-    [ "world_mtx", "classWorld.html#a3e3e6ed372981d57f8473417b47d0e00", null ]
+    [ "StaticMeshActors", "classWorld.html#af7d7ec4f75f47071f83655159f47bb9d", null ]
 ];

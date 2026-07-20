@@ -158,7 +158,7 @@ var render__objects_8c =
     [ "func_8004A4FC", "render__objects_8c.html#a44ec9b797d303fdee99ad5ec0c0827be", null ],
     [ "func_8004A570", "render__objects_8c.html#acc2a03d6d53933d4ccb918ac978cf340", null ],
     [ "func_8004A5E4", "render__objects_8c.html#aa993d5303978c8aa1ee474a5856dd226", null ],
-    [ "func_8004A630", "render__objects_8c.html#a14c937ce9ac226cd5cd7765044364c46", null ],
+    [ "func_8004A630", "render__objects_8c.html#ae2e5b979255388934c7b7091f24997b6", null ],
     [ "func_8004A6EC", "render__objects_8c.html#a65b9725086a1a39b3b82333dedaaeae1", null ],
     [ "func_8004A7AC", "render__objects_8c.html#afbf522fbac558ae375119cb8820d0f40", null ],
     [ "func_8004A9B8", "render__objects_8c.html#ac00ba86ba7fa436f9065efc70a70a480", null ],

@@ -142,8 +142,6 @@ Data Structures</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:ae6baa537b60cf1d33e03e5e0c440c962" id="r_ae6baa537b60cf1d33e03e5e0c440c962"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6baa537b60cf1d33e03e5e0c440c962">SectionFunc</a> = void(*)()</td></tr>
 <tr class="separator:ae6baa537b60cf1d33e03e5e0c440c962"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20505336f67ae9f7fb097fac83a5b731" id="r_a20505336f67ae9f7fb097fac83a5b731"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="#ab518b3979a369a95a6e490c6d8f87d26">UIWidgets::Colors</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20505336f67ae9f7fb097fac83a5b731">Colors</a></td></tr>
-<tr class="separator:a20505336f67ae9f7fb097fac83a5b731"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -297,20 +295,6 @@ Variables</h2></td></tr>
 <tr class="separator:ac226a6b7b4a3dbf5ae79cf6a5925449a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="a20505336f67ae9f7fb097fac83a5b731" name="a20505336f67ae9f7fb097fac83a5b731"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20505336f67ae9f7fb097fac83a5b731">&#9670;&#160;</a></span>Colors</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef enum <a class="el" href="#ab518b3979a369a95a6e490c6d8f87d26">UIWidgets::Colors</a> <a class="el" href="#ab518b3979a369a95a6e490c6d8f87d26">UIWidgets::Colors</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ae6baa537b60cf1d33e03e5e0c440c962" name="ae6baa537b60cf1d33e03e5e0c440c962"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae6baa537b60cf1d33e03e5e0c440c962">&#9670;&#160;</a></span>SectionFunc</h2>
 
@@ -1672,28 +1656,49 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">        { Colors::Pink, ImVec4(0.87f, 0.3f, 0.87f, 1.0f) },</div>
-<div class="line">        { Colors::Red, ImVec4(0.55f, 0.0f, 0.0f, 1.0f) },</div>
-<div class="line">        { Colors::DarkRed, ImVec4(0.3f, 0.0f, 0.0f, 1.0f) },</div>
-<div class="line">        { Colors::Orange, ImVec4(0.85f, 0.55f, 0.0f, 1.0f) },</div>
-<div class="line">        { Colors::Yellow, ImVec4(0.95f, 0.95f, 0.0f, 1.0f) },</div>
-<div class="line">        { Colors::Green, ImVec4(0.0f, 0.55f, 0.0f, 1.0f) },</div>
-<div class="line">        { Colors::DarkGreen, ImVec4(0.0f, 0.3f, 0.0f, 1.0f) },</div>
-<div class="line">        { Colors::Cyan, ImVec4(0.0f, 0.9f, 0.9f, 1.0f) },</div>
-<div class="line">        { Colors::LightBlue, ImVec4(0.0f, 0.24f, 0.8f, 1.0f) },</div>
-<div class="line">        { Colors::Blue, ImVec4(0.08f, 0.03f, 0.65f, 1.0f) },</div>
-<div class="line">        { Colors::DarkBlue, ImVec4(0.03f, 0.0f, 0.5f, 1.0f) },</div>
-<div class="line">        { Colors::Indigo, ImVec4(0.35f, 0.0f, 0.87f, 1.0f) },</div>
-<div class="line">        { Colors::Violet, ImVec4(0.5f, 0.0f, 0.9f, 1.0f) },</div>
-<div class="line">        { Colors::Purple, ImVec4(0.31f, 0.0f, 0.67f, 1.0f) },</div>
-<div class="line">        { Colors::Brown, ImVec4(0.37f, 0.18f, 0.0f, 1.0f) },</div>
-<div class="line">        { Colors::LightGray, ImVec4(0.75f, 0.75f, 0.75f, 1.0f) },</div>
-<div class="line">        { Colors::Gray, ImVec4(0.45f, 0.45f, 0.45f, 1.0f) },</div>
-<div class="line">        { Colors::DarkGray, ImVec4(0.15f, 0.15f, 0.15f, 1.0f) },</div>
-<div class="line">        { Colors::Black, ImVec4(0.0f, 0.0f, 0.0f, 1.0f)},</div>
-<div class="line">        { Colors::White, ImVec4(1.0f, 1.0f, 1.0f, 1.0f) },</div>
-<div class="line">        { Colors::NoColor, ImVec4(0.0f, 0.0f, 0.0f, 0.0f)},</div>
+<div class="line">        { <a class="code hl_enumvalue" href="#ab518b3979a369a95a6e490c6d8f87d26a7c71c5773058fe7d911dfd965be21055">Colors::Pink</a>, ImVec4(0.87f, 0.3f, 0.87f, 1.0f) },</div>
+<div class="line">        { <a class="code hl_enumvalue" href="#ab518b3979a369a95a6e490c6d8f87d26a197d0422f331777e7c59bbf3d5215250">Colors::Red</a>, ImVec4(0.55f, 0.0f, 0.0f, 1.0f) },</div>
+<div class="line">        { <a class="code hl_enumvalue" href="#ab518b3979a369a95a6e490c6d8f87d26a23c53943bad3c4bde433c8aeb607120a">Colors::DarkRed</a>, ImVec4(0.3f, 0.0f, 0.0f, 1.0f) },</div>
+<div class="line">        { <a class="code hl_enumvalue" href="#ab518b3979a369a95a6e490c6d8f87d26ab4728f66731c1a35334ffd5f1850fb42">Colors::Orange</a>, ImVec4(0.85f, 0.55f, 0.0f, 1.0f) },</div>
+<div class="line">        { <a class="code hl_enumvalue" href="#ab518b3979a369a95a6e490c6d8f87d26ad9418c4e4b134af8068f09d9edfe461d">Colors::Yellow</a>, ImVec4(0.95f, 0.95f, 0.0f, 1.0f) },</div>
+<div class="line">        { <a class="code hl_enumvalue" href="#ab518b3979a369a95a6e490c6d8f87d26a4aa97605ed54be5bf4f734aeb8c1a0c3">Colors::Green</a>, ImVec4(0.0f, 0.55f, 0.0f, 1.0f) },</div>
+<div class="line">        { <a class="code hl_enumvalue" href="#ab518b3979a369a95a6e490c6d8f87d26ad9523466569662cc0bb246521b09e3aa">Colors::DarkGreen</a>, ImVec4(0.0f, 0.3f, 0.0f, 1.0f) },</div>
+<div class="line">        { <a class="code hl_enumvalue" href="#ab518b3979a369a95a6e490c6d8f87d26aa132c584cd3ae34427f723222beb7423">Colors::Cyan</a>, ImVec4(0.0f, 0.9f, 0.9f, 1.0f) },</div>
+<div class="line">        { <a class="code hl_enumvalue" href="#ab518b3979a369a95a6e490c6d8f87d26af09727d11e63c3a65782bba8b4ffb471">Colors::LightBlue</a>, ImVec4(0.0f, 0.24f, 0.8f, 1.0f) },</div>
+<div class="line">        { <a class="code hl_enumvalue" href="#ab518b3979a369a95a6e490c6d8f87d26a0edf31a391d52283430d2bd99f6b6ac1">Colors::Blue</a>, ImVec4(0.08f, 0.03f, 0.65f, 1.0f) },</div>
+<div class="line">        { <a class="code hl_enumvalue" href="#ab518b3979a369a95a6e490c6d8f87d26a5dfbfc9efeddf706c5e281752db7c573">Colors::DarkBlue</a>, ImVec4(0.03f, 0.0f, 0.5f, 1.0f) },</div>
+<div class="line">        { <a class="code hl_enumvalue" href="#ab518b3979a369a95a6e490c6d8f87d26a760324a705378e3de4e3639161131885">Colors::Indigo</a>, ImVec4(0.35f, 0.0f, 0.87f, 1.0f) },</div>
+<div class="line">        { <a class="code hl_enumvalue" href="#ab518b3979a369a95a6e490c6d8f87d26a2fa2a6ba71f7e292c424321a64637405">Colors::Violet</a>, ImVec4(0.5f, 0.0f, 0.9f, 1.0f) },</div>
+<div class="line">        { <a class="code hl_enumvalue" href="#ab518b3979a369a95a6e490c6d8f87d26a2b67f0b08aa6a5047d2ef6a161a9e44e">Colors::Purple</a>, ImVec4(0.31f, 0.0f, 0.67f, 1.0f) },</div>
+<div class="line">        { <a class="code hl_enumvalue" href="#ab518b3979a369a95a6e490c6d8f87d26a498232d0967df69172d6ef5e21c6e100">Colors::Brown</a>, ImVec4(0.37f, 0.18f, 0.0f, 1.0f) },</div>
+<div class="line">        { <a class="code hl_enumvalue" href="#ab518b3979a369a95a6e490c6d8f87d26a4271bd8520b13309c8b78e0c44bfe6f0">Colors::LightGray</a>, ImVec4(0.75f, 0.75f, 0.75f, 1.0f) },</div>
+<div class="line">        { <a class="code hl_enumvalue" href="#ab518b3979a369a95a6e490c6d8f87d26a53f8ac366897849ea731c8780865c6ff">Colors::Gray</a>, ImVec4(0.45f, 0.45f, 0.45f, 1.0f) },</div>
+<div class="line">        { <a class="code hl_enumvalue" href="#ab518b3979a369a95a6e490c6d8f87d26a2ea00829ca38c543e737550157502b2b">Colors::DarkGray</a>, ImVec4(0.15f, 0.15f, 0.15f, 1.0f) },</div>
+<div class="line">        { <a class="code hl_enumvalue" href="#ab518b3979a369a95a6e490c6d8f87d26ad96b23c74ba7e191040188a2a0ec54c3">Colors::Black</a>, ImVec4(0.0f, 0.0f, 0.0f, 1.0f)},</div>
+<div class="line">        { <a class="code hl_enumvalue" href="#ab518b3979a369a95a6e490c6d8f87d26a5fcd4b9a5ef547f9210e74bc98283a44">Colors::White</a>, ImVec4(1.0f, 1.0f, 1.0f, 1.0f) },</div>
+<div class="line">        { <a class="code hl_enumvalue" href="#ab518b3979a369a95a6e490c6d8f87d26a770f5a54c74f7a1a7fd9f2f53279d51f">Colors::NoColor</a>, ImVec4(0.0f, 0.0f, 0.0f, 0.0f)},</div>
 <div class="line">    }</div>
+<div class="ttc" id="anamespaceUIWidgets_html_ab518b3979a369a95a6e490c6d8f87d26a0edf31a391d52283430d2bd99f6b6ac1"><div class="ttname"><a href="#ab518b3979a369a95a6e490c6d8f87d26a0edf31a391d52283430d2bd99f6b6ac1">UIWidgets::Blue</a></div><div class="ttdeci">@ Blue</div><div class="ttdef"><b>Definition</b> UIWidgets.h:47</div></div>
+<div class="ttc" id="anamespaceUIWidgets_html_ab518b3979a369a95a6e490c6d8f87d26a197d0422f331777e7c59bbf3d5215250"><div class="ttname"><a href="#ab518b3979a369a95a6e490c6d8f87d26a197d0422f331777e7c59bbf3d5215250">UIWidgets::Red</a></div><div class="ttdeci">@ Red</div><div class="ttdef"><b>Definition</b> UIWidgets.h:41</div></div>
+<div class="ttc" id="anamespaceUIWidgets_html_ab518b3979a369a95a6e490c6d8f87d26a23c53943bad3c4bde433c8aeb607120a"><div class="ttname"><a href="#ab518b3979a369a95a6e490c6d8f87d26a23c53943bad3c4bde433c8aeb607120a">UIWidgets::DarkRed</a></div><div class="ttdeci">@ DarkRed</div><div class="ttdef"><b>Definition</b> UIWidgets.h:42</div></div>
+<div class="ttc" id="anamespaceUIWidgets_html_ab518b3979a369a95a6e490c6d8f87d26a2b67f0b08aa6a5047d2ef6a161a9e44e"><div class="ttname"><a href="#ab518b3979a369a95a6e490c6d8f87d26a2b67f0b08aa6a5047d2ef6a161a9e44e">UIWidgets::Purple</a></div><div class="ttdeci">@ Purple</div><div class="ttdef"><b>Definition</b> UIWidgets.h:51</div></div>
+<div class="ttc" id="anamespaceUIWidgets_html_ab518b3979a369a95a6e490c6d8f87d26a2ea00829ca38c543e737550157502b2b"><div class="ttname"><a href="#ab518b3979a369a95a6e490c6d8f87d26a2ea00829ca38c543e737550157502b2b">UIWidgets::DarkGray</a></div><div class="ttdeci">@ DarkGray</div><div class="ttdef"><b>Definition</b> UIWidgets.h:54</div></div>
+<div class="ttc" id="anamespaceUIWidgets_html_ab518b3979a369a95a6e490c6d8f87d26a2fa2a6ba71f7e292c424321a64637405"><div class="ttname"><a href="#ab518b3979a369a95a6e490c6d8f87d26a2fa2a6ba71f7e292c424321a64637405">UIWidgets::Violet</a></div><div class="ttdeci">@ Violet</div><div class="ttdef"><b>Definition</b> UIWidgets.h:50</div></div>
+<div class="ttc" id="anamespaceUIWidgets_html_ab518b3979a369a95a6e490c6d8f87d26a4271bd8520b13309c8b78e0c44bfe6f0"><div class="ttname"><a href="#ab518b3979a369a95a6e490c6d8f87d26a4271bd8520b13309c8b78e0c44bfe6f0">UIWidgets::LightGray</a></div><div class="ttdeci">@ LightGray</div><div class="ttdef"><b>Definition</b> UIWidgets.h:60</div></div>
+<div class="ttc" id="anamespaceUIWidgets_html_ab518b3979a369a95a6e490c6d8f87d26a498232d0967df69172d6ef5e21c6e100"><div class="ttname"><a href="#ab518b3979a369a95a6e490c6d8f87d26a498232d0967df69172d6ef5e21c6e100">UIWidgets::Brown</a></div><div class="ttdeci">@ Brown</div><div class="ttdef"><b>Definition</b> UIWidgets.h:52</div></div>
+<div class="ttc" id="anamespaceUIWidgets_html_ab518b3979a369a95a6e490c6d8f87d26a4aa97605ed54be5bf4f734aeb8c1a0c3"><div class="ttname"><a href="#ab518b3979a369a95a6e490c6d8f87d26a4aa97605ed54be5bf4f734aeb8c1a0c3">UIWidgets::Green</a></div><div class="ttdeci">@ Green</div><div class="ttdef"><b>Definition</b> UIWidgets.h:44</div></div>
+<div class="ttc" id="anamespaceUIWidgets_html_ab518b3979a369a95a6e490c6d8f87d26a53f8ac366897849ea731c8780865c6ff"><div class="ttname"><a href="#ab518b3979a369a95a6e490c6d8f87d26a53f8ac366897849ea731c8780865c6ff">UIWidgets::Gray</a></div><div class="ttdeci">@ Gray</div><div class="ttdef"><b>Definition</b> UIWidgets.h:53</div></div>
+<div class="ttc" id="anamespaceUIWidgets_html_ab518b3979a369a95a6e490c6d8f87d26a5dfbfc9efeddf706c5e281752db7c573"><div class="ttname"><a href="#ab518b3979a369a95a6e490c6d8f87d26a5dfbfc9efeddf706c5e281752db7c573">UIWidgets::DarkBlue</a></div><div class="ttdeci">@ DarkBlue</div><div class="ttdef"><b>Definition</b> UIWidgets.h:48</div></div>
+<div class="ttc" id="anamespaceUIWidgets_html_ab518b3979a369a95a6e490c6d8f87d26a5fcd4b9a5ef547f9210e74bc98283a44"><div class="ttname"><a href="#ab518b3979a369a95a6e490c6d8f87d26a5fcd4b9a5ef547f9210e74bc98283a44">UIWidgets::White</a></div><div class="ttdeci">@ White</div><div class="ttdef"><b>Definition</b> UIWidgets.h:61</div></div>
+<div class="ttc" id="anamespaceUIWidgets_html_ab518b3979a369a95a6e490c6d8f87d26a760324a705378e3de4e3639161131885"><div class="ttname"><a href="#ab518b3979a369a95a6e490c6d8f87d26a760324a705378e3de4e3639161131885">UIWidgets::Indigo</a></div><div class="ttdeci">@ Indigo</div><div class="ttdef"><b>Definition</b> UIWidgets.h:49</div></div>
+<div class="ttc" id="anamespaceUIWidgets_html_ab518b3979a369a95a6e490c6d8f87d26a770f5a54c74f7a1a7fd9f2f53279d51f"><div class="ttname"><a href="#ab518b3979a369a95a6e490c6d8f87d26a770f5a54c74f7a1a7fd9f2f53279d51f">UIWidgets::NoColor</a></div><div class="ttdeci">@ NoColor</div><div class="ttdef"><b>Definition</b> UIWidgets.h:62</div></div>
+<div class="ttc" id="anamespaceUIWidgets_html_ab518b3979a369a95a6e490c6d8f87d26a7c71c5773058fe7d911dfd965be21055"><div class="ttname"><a href="#ab518b3979a369a95a6e490c6d8f87d26a7c71c5773058fe7d911dfd965be21055">UIWidgets::Pink</a></div><div class="ttdeci">@ Pink</div><div class="ttdef"><b>Definition</b> UIWidgets.h:56</div></div>
+<div class="ttc" id="anamespaceUIWidgets_html_ab518b3979a369a95a6e490c6d8f87d26aa132c584cd3ae34427f723222beb7423"><div class="ttname"><a href="#ab518b3979a369a95a6e490c6d8f87d26aa132c584cd3ae34427f723222beb7423">UIWidgets::Cyan</a></div><div class="ttdeci">@ Cyan</div><div class="ttdef"><b>Definition</b> UIWidgets.h:58</div></div>
+<div class="ttc" id="anamespaceUIWidgets_html_ab518b3979a369a95a6e490c6d8f87d26ab4728f66731c1a35334ffd5f1850fb42"><div class="ttname"><a href="#ab518b3979a369a95a6e490c6d8f87d26ab4728f66731c1a35334ffd5f1850fb42">UIWidgets::Orange</a></div><div class="ttdeci">@ Orange</div><div class="ttdef"><b>Definition</b> UIWidgets.h:43</div></div>
+<div class="ttc" id="anamespaceUIWidgets_html_ab518b3979a369a95a6e490c6d8f87d26ad9418c4e4b134af8068f09d9edfe461d"><div class="ttname"><a href="#ab518b3979a369a95a6e490c6d8f87d26ad9418c4e4b134af8068f09d9edfe461d">UIWidgets::Yellow</a></div><div class="ttdeci">@ Yellow</div><div class="ttdef"><b>Definition</b> UIWidgets.h:57</div></div>
+<div class="ttc" id="anamespaceUIWidgets_html_ab518b3979a369a95a6e490c6d8f87d26ad9523466569662cc0bb246521b09e3aa"><div class="ttname"><a href="#ab518b3979a369a95a6e490c6d8f87d26ad9523466569662cc0bb246521b09e3aa">UIWidgets::DarkGreen</a></div><div class="ttdeci">@ DarkGreen</div><div class="ttdef"><b>Definition</b> UIWidgets.h:45</div></div>
+<div class="ttc" id="anamespaceUIWidgets_html_ab518b3979a369a95a6e490c6d8f87d26ad96b23c74ba7e191040188a2a0ec54c3"><div class="ttname"><a href="#ab518b3979a369a95a6e490c6d8f87d26ad96b23c74ba7e191040188a2a0ec54c3">UIWidgets::Black</a></div><div class="ttdeci">@ Black</div><div class="ttdef"><b>Definition</b> UIWidgets.h:59</div></div>
+<div class="ttc" id="anamespaceUIWidgets_html_ab518b3979a369a95a6e490c6d8f87d26af09727d11e63c3a65782bba8b4ffb471"><div class="ttname"><a href="#ab518b3979a369a95a6e490c6d8f87d26af09727d11e63c3a65782bba8b4ffb471">UIWidgets::LightBlue</a></div><div class="ttdeci">@ LightBlue</div><div class="ttdef"><b>Definition</b> UIWidgets.h:46</div></div>
 </div><!-- fragment -->
 </div>
 </div>

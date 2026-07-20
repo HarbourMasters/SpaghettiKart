@@ -1,7 +1,5 @@
 var NAVTREEINDEX79 =
 {
-"structSequenceChannel.html#aba80ebc742588c90ece54666ed0cfc00":[19,0,397,45],
-"structSequenceChannel.html#abf2b47257aa645eda0acca176e25d10a":[19,0,397,18],
 "structSequenceChannel.html#ac28336aa1b2f34a4f95ab24d24ecc680":[19,0,397,5],
 "structSequenceChannel.html#ac52f6431cf860520640e89d37a845398":[19,0,397,28],
 "structSequenceChannel.html#aca133567ad3c965a02afe14490e9e4ea":[19,0,397,7],
@@ -108,11 +106,11 @@ var NAVTREEINDEX79 =
 "structShellActor.html#a6d1756d5e7cf11fdb35eec5ef86c6951":[19,0,401,9],
 "structShellActor.html#a6eb62ab515773b295e7d8c4f6c10ae1b":[19,0,401,13],
 "structShellActor.html#a77c5d4878d9a0867430326a1d63491dc":[19,0,401,5],
-"structShellActor.html#a88b3a83269c9ac761d711fdd5db63363":[19,0,401,14],
 "structShellActor.html#a89a884c6ba2b5b022b7dcb5e74d50910":[19,0,401,16],
 "structShellActor.html#abb69af2d8de513a7f3ddadb94b2b6078":[19,0,401,2],
 "structShellActor.html#ac40ddee32f5d1a093578e3f23ed76e0b":[19,0,401,3],
 "structShellActor.html#acd41b01d05450b6a241a81907bb4fbb8":[19,0,401,6],
+"structShellActor.html#acf7c6324c79136005a8a16b0280862d4":[19,0,401,14],
 "structShellActor.html#ad503d4399dfef15a8aeb4cfec64ac155":[19,0,401,12],
 "structShellActor.html#adaca452aa94770d8d57f99cc1f3b7151":[19,0,401,10],
 "structShellActor.html#af3da1448ac4320471aadbc7652ea81a5":[19,0,401,4],
@@ -249,5 +247,7 @@ var NAVTREEINDEX79 =
 "structTemporaryPool.html#a24a042e0593ca803b8d6fdc52d950be5":[19,0,448,0],
 "structTemporaryPool.html#a9e76933800efc66eef61fe322f49c69c":[19,0,448,1],
 "structTextureMap.html":[19,0,451],
-"structTextureMap.html#a8b4286ddfe639a65e498930733799cf6":[19,0,451,0]
+"structTextureMap.html#a8b4286ddfe639a65e498930733799cf6":[19,0,451,0],
+"structTextureMap.html#ad91eea22f2775fcc40c7627062c429b3":[19,0,451,1],
+"structThwompSpawn.html":[19,0,453]
 };

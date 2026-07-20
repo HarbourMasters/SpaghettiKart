@@ -8,7 +8,6 @@ var UIWidgets_8h =
     [ "UIWidgets::IntSliderOptions", "structUIWidgets_1_1IntSliderOptions.html", "structUIWidgets_1_1IntSliderOptions" ],
     [ "UIWidgets::FloatSliderOptions", "structUIWidgets_1_1FloatSliderOptions.html", "structUIWidgets_1_1FloatSliderOptions" ],
     [ "IMGUI_DEFINE_MATH_OPERATORS", "UIWidgets_8h.html#adf4d73301961430d50d7edd96f92ce38", null ],
-    [ "UIWidgets::Colors", "namespaceUIWidgets.html#a20505336f67ae9f7fb097fac83a5b731", null ],
     [ "UIWidgets::SectionFunc", "namespaceUIWidgets.html#ae6baa537b60cf1d33e03e5e0c440c962", null ],
     [ "UIWidgets::Colors", "namespaceUIWidgets.html#ab518b3979a369a95a6e490c6d8f87d26", [
       [ "UIWidgets::Red", "namespaceUIWidgets.html#ab518b3979a369a95a6e490c6d8f87d26a197d0422f331777e7c59bbf3d5215250", null ],

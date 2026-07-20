@@ -19,6 +19,7 @@ var macros_8h =
     [ "MIN", "macros_8h.html#a3acffbd305ee72dcd4593c0d8af64a4f", null ],
     [ "NO_REORDER", "macros_8h.html#a981d727c769c9516175fef643b82477d", null ],
     [ "NORETURN", "macros_8h.html#aa1728270d73c5d1598de1fd691762eb1", null ],
+    [ "NORETURN", "macros_8h.html#aa1728270d73c5d1598de1fd691762eb1", null ],
     [ "PHYSICAL_TO_VIRTUAL", "macros_8h.html#ac1d0bb67b7c87d4c00796bc18d1f2e23", null ],
     [ "STATIC_ASSERT", "macros_8h.html#a8ce491b27b644889db1ca99d8c99c24e", null ],
     [ "toFixedInt", "macros_8h.html#af55e3de19a43cfde88382154130a2edc", null ],

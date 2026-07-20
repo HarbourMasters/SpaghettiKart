@@ -1,7 +1,5 @@
 var NAVTREEINDEX82 =
 {
-"structWidgetInfo.html#a2ac569a44c89eded7195693d250f6c16":[19,0,501,19],
-"structWidgetInfo.html#a31d40206a297372d1527c53c82f61c2b":[19,0,501,7],
 "structWidgetInfo.html#a3f87fb7af882a2c3c86c135be60c7179":[19,0,501,23],
 "structWidgetInfo.html#a563f62120cb5a60ad347cd28ebf517fd":[19,0,501,22],
 "structWidgetInfo.html#a5fedbe00431ae3b0d1c72af3dbf8ff19":[19,0,501,8],
@@ -42,6 +40,7 @@ var NAVTREEINDEX82 =
 "structYVFlagPoleSpawn.html#aadd9629a5899fd9ee91eeb5f637e1a92":[19,0,506,1],
 "structYoshiValleyEgg.html":[19,0,505],
 "structYoshiValleyEgg.html#a0ab1923c00ae6a34e0ef6d397abb3a29":[19,0,505,12],
+"structYoshiValleyEgg.html#a217fb03109992b5767e9828e0784beb1":[19,0,505,9],
 "structYoshiValleyEgg.html#a310c040e760d3aa654300c466e7598f6":[19,0,505,1],
 "structYoshiValleyEgg.html#a401f74c6a09c1ee3fb2e7c3b4826fffd":[19,0,505,3],
 "structYoshiValleyEgg.html#a4c5b57a229178a92a9d4f9396deb52d8":[19,0,505,8],
@@ -51,7 +50,6 @@ var NAVTREEINDEX82 =
 "structYoshiValleyEgg.html#a8a74a2489416bb29ba6e5e404e8aeb91":[19,0,505,13],
 "structYoshiValleyEgg.html#ab647b34e2ed6932e70aba54660ef07ee":[19,0,505,11],
 "structYoshiValleyEgg.html#ac486de582beae25b78579fd195079111":[19,0,505,10],
-"structYoshiValleyEgg.html#ad9986d898c51d26e9e57febefd517264":[19,0,505,9],
 "structYoshiValleyEgg.html#ae635c1dc57de8906f0fa04d720564ff9":[19,0,505,0],
 "structYoshiValleyEgg.html#af69126005d92263176a9ab66e2d4672d":[19,0,505,4],
 "structYoshiValleyEgg.html#afa5af4be9c951961bc44cff55f16574a":[19,0,505,6],
@@ -249,5 +247,7 @@ var NAVTREEINDEX82 =
 "structhud__player.html#a65e66264b8804f915ec8390f186b53d7":[19,0,141,33],
 "structhud__player.html#a724ea061bcdd9df5685d632e7c2f9ca4":[19,0,141,36],
 "structhud__player.html#a73b4a6d5420a5cc79cbe31851c1e2b51":[19,0,141,6],
-"structhud__player.html#a7a31992913104a88b798146e070a609d":[19,0,141,63]
+"structhud__player.html#a7a31992913104a88b798146e070a609d":[19,0,141,63],
+"structhud__player.html#a7d9d9f0b14aeb16c6a211fccdc332d97":[19,0,141,12],
+"structhud__player.html#a7f91d07ccfbcba743200852915a9aac0":[19,0,141,16]
 };

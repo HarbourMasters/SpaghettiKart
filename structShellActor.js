@@ -14,7 +14,7 @@ var structShellActor =
     [ "state", "structShellActor.html#a62b51240387f83c669e3e279aaecbed8", null ],
     [ "targetPlayer", "structShellActor.html#ad503d4399dfef15a8aeb4cfec64ac155", null ],
     [ "type", "structShellActor.html#a6eb62ab515773b295e7d8c4f6c10ae1b", null ],
-    [ "unk30", "structShellActor.html#a88b3a83269c9ac761d711fdd5db63363", null ],
+    [ "unk30", "structShellActor.html#acf7c6324c79136005a8a16b0280862d4", null ],
     [ "unk_16", "structShellActor.html#a3e3e92aa8acac3a0560b75ae34be6369", null ],
     [ "velocity", "structShellActor.html#a89a884c6ba2b5b022b7dcb5e74d50910", null ]
 ];

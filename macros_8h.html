@@ -134,6 +134,8 @@ Macros</h2></td></tr>
 <tr class="separator:a8aacf963fc7253845c961ed3912d78a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:addf5ec070e9499d36b7f2009ce736076" id="r_addf5ec070e9499d36b7f2009ce736076"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addf5ec070e9499d36b7f2009ce736076">UNUSED</a></td></tr>
 <tr class="separator:addf5ec070e9499d36b7f2009ce736076"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1728270d73c5d1598de1fd691762eb1" id="r_aa1728270d73c5d1598de1fd691762eb1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1728270d73c5d1598de1fd691762eb1">NORETURN</a></td></tr>
+<tr class="separator:aa1728270d73c5d1598de1fd691762eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a981d727c769c9516175fef643b82477d" id="r_a981d727c769c9516175fef643b82477d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a981d727c769c9516175fef643b82477d">NO_REORDER</a></td></tr>
 <tr class="separator:a981d727c769c9516175fef643b82477d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ce491b27b644889db1ca99d8c99c24e" id="r_a8ce491b27b644889db1ca99d8c99c24e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ce491b27b644889db1ca99d8c99c24e">STATIC_ASSERT</a>(cond,  msg)</td></tr>
@@ -517,7 +519,21 @@ Macros</h2></td></tr>
 </div>
 </div>
 <a id="aa1728270d73c5d1598de1fd691762eb1" name="aa1728270d73c5d1598de1fd691762eb1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1728270d73c5d1598de1fd691762eb1">&#9670;&#160;</a></span>NORETURN</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1728270d73c5d1598de1fd691762eb1">&#9670;&#160;</a></span>NORETURN <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NORETURN</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa1728270d73c5d1598de1fd691762eb1" name="aa1728270d73c5d1598de1fd691762eb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1728270d73c5d1598de1fd691762eb1">&#9670;&#160;</a></span>NORETURN <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -586,7 +602,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">(<a class="code hl_define" href="#a10664b2f9bc7d6aca323c2176607ed25">FTOFIX</a>(f) &gt;&gt; 16)</div>
-<div class="ttc" id="amacros_8h_html_a10664b2f9bc7d6aca323c2176607ed25"><div class="ttname"><a href="#a10664b2f9bc7d6aca323c2176607ed25">FTOFIX</a></div><div class="ttdeci">#define FTOFIX(f)</div><div class="ttdef"><b>Definition</b> macros.h:79</div></div>
+<div class="ttc" id="amacros_8h_html_a10664b2f9bc7d6aca323c2176607ed25"><div class="ttname"><a href="#a10664b2f9bc7d6aca323c2176607ed25">FTOFIX</a></div><div class="ttdeci">#define FTOFIX(f)</div><div class="ttdef"><b>Definition</b> macros.h:86</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -690,8 +706,8 @@ Macros</h2></td></tr>
 <div class="line">                (<a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x13) &lt;&lt; 16) | <a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x14), (<a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x15) &lt;&lt; 16) | <a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x16)                                 \</div>
 <div class="line">        }                                                                                                            \</div>
 <div class="line">    }</div>
-<div class="ttc" id="amacros_8h_html_af55e3de19a43cfde88382154130a2edc"><div class="ttname"><a href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a></div><div class="ttdeci">#define toFixedInt(f)</div><div class="ttdef"><b>Definition</b> macros.h:85</div></div>
-<div class="ttc" id="amacros_8h_html_afb95d4bc9307ade70d0ac672aa24b82f"><div class="ttname"><a href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a></div><div class="ttdeci">#define toFrac(f)</div><div class="ttdef"><b>Definition</b> macros.h:86</div></div>
+<div class="ttc" id="amacros_8h_html_af55e3de19a43cfde88382154130a2edc"><div class="ttname"><a href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a></div><div class="ttdeci">#define toFixedInt(f)</div><div class="ttdef"><b>Definition</b> macros.h:92</div></div>
+<div class="ttc" id="amacros_8h_html_afb95d4bc9307ade70d0ac672aa24b82f"><div class="ttname"><a href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a></div><div class="ttdeci">#define toFrac(f)</div><div class="ttdef"><b>Definition</b> macros.h:93</div></div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -436,7 +436,7 @@ var searchData=
   ['shelfslope_433',['shelfSlope',['../structma__loshelf2__config.html#a8f3d3a3167b1ff6d623f046f110dd6ec',1,'ma_loshelf2_config::shelfSlope'],['../structma__hishelf2__config.html#a268cdfe99780f33370dfb240eeacd0cf',1,'ma_hishelf2_config::shelfSlope']]],
   ['shell_5factor_434',['SHELL_ACTOR',['../code__80005FD0_8c.html#a8975b512d83bf1a17248f095843e1afc',1,'code_80005FD0.c']]],
   ['shell_5fcollision_435',['SHELL_COLLISION',['../defines_8h.html#a083cc9ce13c404296f814cd20f21e908',1,'defines.h']]],
-  ['shell_5fcollision_436',['shell_collision',['../collision_8c.html#a415860ec87546ee164b790ce07326ea3',1,'shell_collision(struct Collision *collision, Vec3f velocity):&#160;collision.c'],['../collision_8h.html#a65b75db3ccb9dee4f55db8fe4c7b7573',1,'shell_collision(struct Collision *, Vec3f):&#160;collision.c']]],
+  ['shell_5fcollision_436',['shell_collision',['../collision_8c.html#a24c9df6b00fc739e341b6f28b06396e4',1,'shell_collision(Collision *collision, Vec3f velocity):&#160;collision.c'],['../collision_8h.html#a99aab337d05429f6a81d3ebb18052db7',1,'shell_collision(Collision *, Vec3f):&#160;collision.c']]],
   ['shell_5fquote_437',['shell_quote',['../classpfd_1_1internal_1_1dialog.html#a1a4f28c3c2bbd1629f2f882314fff63e',1,'pfd::internal::dialog']]],
   ['shellactor_438',['ShellActor',['../structShellActor.html',1,'']]],
   ['shellid_439',['shellId',['../structShellActor.html#a6d1756d5e7cf11fdb35eec5ef86c6951',1,'ShellActor']]],

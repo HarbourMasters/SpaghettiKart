@@ -150,7 +150,7 @@ var searchData=
   ['setupvtx_147',['SetupVtx',['../classAText.html#a32775153b99a75e6aae246788736707c',1,'AText']]],
   ['setviewprojection_148',['SetViewProjection',['../classFreeCamera.html#a8cc5e7a4d41e540e96d0008b12a4c057',1,'FreeCamera::SetViewProjection()'],['../classGameCamera.html#a96870ea78675e370cdfd9f65ae134beb',1,'GameCamera::SetViewProjection()'],['../classTourCamera.html#adfb50a603c5e2b03d9c6dff377976700',1,'TourCamera::SetViewProjection()']]],
   ['setvisibility_149',['SetVisibility',['../classOThwomp.html#a143589fa70ddc0442a1db2cdc08e47fd',1,'OThwomp']]],
-  ['shell_5fcollision_150',['shell_collision',['../collision_8c.html#a415860ec87546ee164b790ce07326ea3',1,'shell_collision(struct Collision *collision, Vec3f velocity):&#160;collision.c'],['../collision_8h.html#a65b75db3ccb9dee4f55db8fe4c7b7573',1,'shell_collision(struct Collision *, Vec3f):&#160;collision.c']]],
+  ['shell_5fcollision_150',['shell_collision',['../collision_8c.html#a24c9df6b00fc739e341b6f28b06396e4',1,'shell_collision(Collision *collision, Vec3f velocity):&#160;collision.c'],['../collision_8h.html#a99aab337d05429f6a81d3ebb18052db7',1,'shell_collision(Collision *, Vec3f):&#160;collision.c']]],
   ['shell_5fquote_151',['shell_quote',['../classpfd_1_1internal_1_1dialog.html#a1a4f28c3c2bbd1629f2f882314fff63e',1,'pfd::internal::dialog']]],
   ['sherbetland_152',['SherbetLand',['../classSherbetLand.html#a019d70103fc5aac86286658521c6d2df',1,'SherbetLand']]],
   ['ship_5fcreatequadvertexgroup_153',['Ship_CreateQuadVertexGroup',['../ShipUtils_8cpp.html#a7231f96490e45e0edea92117da7ec70d',1,'ShipUtils.cpp']]],
