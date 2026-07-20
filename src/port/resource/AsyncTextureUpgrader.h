@@ -66,6 +66,14 @@ class AsyncTextureUpgrader {
     AsyncTextureUpgrader() = default;
     ~AsyncTextureUpgrader();
 
+    struct CacheEntry {
+        uint8_t* pixels;
+        int width;
+        int height;
+        uint16_t origWidth;
+        uint16_t origHeight;
+        size_t bytes;
+    };
     struct Job {
         std::shared_ptr<Fast::Texture> texture;
         std::shared_ptr<Ship::File> imageFile;
@@ -73,6 +81,7 @@ class AsyncTextureUpgrader {
         uint16_t origHeight;
         uint64_t generation;
         std::string group;
+        const CacheEntry* cached = nullptr;
     };
     struct Decoded {
         std::shared_ptr<Fast::Texture> texture;
@@ -86,6 +95,7 @@ class AsyncTextureUpgrader {
     };
 
     void WorkerLoop();
+    void FinishJobLocked(bool cacheHit); // mMutex held; logs a batch summary when the queue drains
     void EnsureWorker();
     void PrefetchLoop();
     void EnsurePrefetchWorkers();
@@ -103,6 +113,15 @@ class AsyncTextureUpgrader {
     // path -> group id for explicitly registered frame sets only; textures
     // outside a registered set swap individually (course tiles must not batch).
     std::unordered_map<std::string, std::string> mFrameSetOfPath;
+    // Session cache of decoded replacements: the first toggle pays the decode
+    // cost, every later toggle is a memcpy. Sized from system RAM (unified on
+    // Apple Silicon), see CacheLimitBytes(); entries live until Shutdown.
+    std::unordered_map<std::string, CacheEntry> mDecodedCache;
+    size_t mDecodedCacheBytes = 0;
+    // Instrumentation: per-drain counts of cache hits vs fresh decodes.
+    size_t mBatchHits = 0;
+    size_t mBatchDecodes = 0;
+    int mInflightJobs = 0;
     // Bumped by ResetPrefetch(); work stamped with an older generation targets
     // textures that were evicted by the toggle and is dropped, not applied.
     uint64_t mGeneration = 0;

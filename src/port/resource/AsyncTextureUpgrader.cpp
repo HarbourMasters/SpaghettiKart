@@ -8,6 +8,7 @@
 #include "spdlog/spdlog.h"
 #include <libultraship.h>
 #include <stb_image.h>
+#include <SDL2/SDL.h>
 #include <algorithm>
 #include <cctype>
 #include <cstring>
@@ -43,12 +44,41 @@ void AsyncTextureUpgrader::EnsureWorker() {
     }
 }
 
+// 0 disables caching. Tiered by physical RAM: plenty of headroom on 32GB+
+// machines (unified memory on Apple Silicon), conservative at 16GB, off below.
+// gTexturePack.CacheMB overrides (-1 forces off).
+static size_t CacheLimitBytes() {
+    static const size_t limit = [] {
+        size_t bytes = 0;
+        const int32_t forcedMB = CVarGetInteger("gTexturePack.CacheMB", 0);
+        const int ramMB = SDL_GetSystemRAM();
+        if (forcedMB > 0) {
+            bytes = (size_t)forcedMB * 1024 * 1024;
+        } else if (forcedMB == 0) {
+            if (ramMB >= 32 * 1024) {
+                bytes = (size_t)ramMB / 4 * 1024 * 1024;
+            } else if (ramMB >= 16 * 1024) {
+                bytes = (size_t)2048 * 1024 * 1024;
+            }
+        }
+        SPDLOG_INFO("AsyncTextureUpgrader: system RAM {} MB, decoded-cache limit {} MB{}", ramMB,
+                    bytes / (1024 * 1024), forcedMB != 0 ? " (gTexturePack.CacheMB override)" : "");
+        return bytes;
+    }();
+    return limit;
+}
+
 void AsyncTextureUpgrader::Enqueue(std::shared_ptr<Fast::Texture> texture, std::shared_ptr<Ship::File> imageFile,
                                    uint16_t origWidth, uint16_t origHeight) {
     {
         const std::lock_guard<std::mutex> lock(mMutex);
         if (mStop) {
             return;
+        }
+        const CacheEntry* cached = nullptr;
+        auto cacheIt = mDecodedCache.find(texture->GetInitData()->Path);
+        if (cacheIt != mDecodedCache.end()) {
+            cached = &cacheIt->second;
         }
         std::string group;
         auto setIt = mFrameSetOfPath.find(texture->GetInitData()->Path);
@@ -60,13 +90,28 @@ void AsyncTextureUpgrader::Enqueue(std::shared_ptr<Fast::Texture> texture, std::
             // Registered frame sets decode ahead of the general queue: the set
             // can only swap once its slowest member lands, so its members must
             // not wait behind the whole scene's textures.
-            mPending.push_front({ std::move(texture), std::move(imageFile), origWidth, origHeight, mGeneration, group });
+            mPending.push_front({ std::move(texture), std::move(imageFile), origWidth, origHeight, mGeneration, group, cached });
         } else {
-            mPending.push_back({ std::move(texture), std::move(imageFile), origWidth, origHeight, mGeneration, group });
+            mPending.push_back({ std::move(texture), std::move(imageFile), origWidth, origHeight, mGeneration, group, cached });
         }
         EnsureWorker();
     }
     mCondVar.notify_one();
+}
+
+void AsyncTextureUpgrader::FinishJobLocked(bool cacheHit) {
+    mInflightJobs--;
+    if (cacheHit) {
+        mBatchHits++;
+    } else {
+        mBatchDecodes++;
+    }
+    if (mPending.empty() && mInflightJobs == 0) {
+        SPDLOG_INFO("AsyncTextureUpgrader: batch drained: {} cache hits, {} decodes, cache holds {} MB",
+                    mBatchHits, mBatchDecodes, mDecodedCacheBytes / (1024 * 1024));
+        mBatchHits = 0;
+        mBatchDecodes = 0;
+    }
 }
 
 void AsyncTextureUpgrader::WorkerLoop() {
@@ -80,6 +125,30 @@ void AsyncTextureUpgrader::WorkerLoop() {
             }
             job = std::move(mPending.front());
             mPending.pop_front();
+            mInflightJobs++;
+        }
+
+        if (job.cached != nullptr) {
+            // Session-cache hit: a memcpy instead of a PNG decode (~50x faster),
+            // which is what makes repeat toggles feel instant.
+            const CacheEntry& e = *job.cached;
+            uint8_t* copy = new uint8_t[e.bytes];
+            std::memcpy(copy, e.pixels, e.bytes);
+            const std::lock_guard<std::mutex> lock(mMutex);
+            if (!job.group.empty()) {
+                auto it = mInflightByGroup.find(job.group);
+                if (it != mInflightByGroup.end() && --it->second <= 0) {
+                    mInflightByGroup.erase(it);
+                }
+            }
+            FinishJobLocked(true);
+            if (job.generation != mGeneration) {
+                delete[] copy;
+                continue;
+            }
+            mDecoded.push_back({ std::move(job.texture), copy, e.width, e.height, e.origWidth, e.origHeight,
+                                 job.generation, std::move(job.group) });
+            continue;
         }
 
         int width = 0, height = 0;
@@ -91,12 +160,15 @@ void AsyncTextureUpgrader::WorkerLoop() {
             if (decoded != nullptr) {
                 stbi_image_free(decoded);
             }
-            if (!job.group.empty()) {
+            {
                 const std::lock_guard<std::mutex> lock(mMutex);
-                auto it = mInflightByGroup.find(job.group);
-                if (it != mInflightByGroup.end() && --it->second <= 0) {
-                    mInflightByGroup.erase(it);
+                if (!job.group.empty()) {
+                    auto it = mInflightByGroup.find(job.group);
+                    if (it != mInflightByGroup.end() && --it->second <= 0) {
+                        mInflightByGroup.erase(it);
+                    }
                 }
+                FinishJobLocked(false);
             }
             continue; // keep the original binary art
         }
@@ -106,6 +178,20 @@ void AsyncTextureUpgrader::WorkerLoop() {
         uint8_t* pixels = new uint8_t[size];
         std::memcpy(pixels, decoded, size);
         stbi_image_free(decoded);
+
+        // Remember the decoded result for the rest of the session if the
+        // machine has room, so later toggles skip the decode entirely.
+        if (CacheLimitBytes() > 0) {
+            const std::lock_guard<std::mutex> lock(mMutex);
+            const std::string& path = job.texture->GetInitData()->Path;
+            if (mDecodedCache.find(path) == mDecodedCache.end() &&
+                mDecodedCacheBytes + size <= CacheLimitBytes()) {
+                uint8_t* keep = new uint8_t[size];
+                std::memcpy(keep, pixels, size);
+                mDecodedCache[path] = { keep, width, height, job.origWidth, job.origHeight, size };
+                mDecodedCacheBytes += size;
+            }
+        }
 
         {
             const std::lock_guard<std::mutex> lock(mMutex);
@@ -119,6 +205,7 @@ void AsyncTextureUpgrader::WorkerLoop() {
                     mInflightByGroup.erase(it);
                 }
             }
+            FinishJobLocked(false);
             if (job.generation != mGeneration) {
                 // The toggle evicted this texture while it was being decoded.
                 delete[] pixels;
@@ -335,6 +422,11 @@ void AsyncTextureUpgrader::Shutdown() {
         }
     }
     mPrefetchWorkers.clear();
+    for (auto& [path, entry] : mDecodedCache) {
+        delete[] entry.pixels;
+    }
+    mDecodedCache.clear();
+    mDecodedCacheBytes = 0;
 
     const std::lock_guard<std::mutex> lock(mMutex);
     for (Decoded& d : mDecoded) {
