@@ -991,5 +991,9 @@ extern "C"
     CustomEngineDestroy();
     // GameEngine::Instance->ProcessFrame(push_frame);
     GameEngine::Instance->Destroy();
-    return 0;
+    // Everything user-visible (config, saves) is persisted by Destroy(). Skip the
+    // remaining static destructors: their order is unspecified and some log after
+    // spdlog's own statics are gone, crashing on quit (same class as issue #689).
+    // Mirrors the _Exit precedent on the extraction error paths.
+    _Exit(0);
 }
