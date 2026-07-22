@@ -7,7 +7,7 @@ var structFallingRock =
     [ "respawnTimer", "structFallingRock.html#a2f0889a792eb41e695782460e49b4107", null ],
     [ "rot", "structFallingRock.html#a4e01cc977edd28d2b84aecb215980491", null ],
     [ "type", "structFallingRock.html#ad5d8e6c753785be4c17e80f1778813f9", null ],
-    [ "unk30", "structFallingRock.html#a1813485d40d1ba84720c6ac416bd685e", null ],
+    [ "unk30", "structFallingRock.html#ad491be26199f3898459b04adb4220aba", null ],
     [ "unk_06", "structFallingRock.html#a5e49dea5026d0b37a10275ebdb0b58cb", null ],
     [ "unk_08", "structFallingRock.html#a373091fb2a25dcdb1a895dba44078564", null ],
     [ "unk_16", "structFallingRock.html#aa5bc8e9b49f55e2ed881d53e286f2e29", null ],

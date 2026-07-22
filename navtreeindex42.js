@@ -28,6 +28,7 @@ var NAVTREEINDEX42 =
 "math__util__2_8h.html#ae4327c5df49b333e448da750f14387ce":[20,0,3,47,26],
 "math__util__2_8h.html#ae43d750d31e45ae2a51b6ca6d87d1570":[20,0,3,47,18],
 "math__util__2_8h.html#ae61c678b4cb30631beb8b1c084f053e2":[20,0,3,47,42],
+"math__util__2_8h.html#aee51db34e8e4abb4a90b7b76c6a3ef0f":[20,0,3,47,15],
 "math__util__2_8h.html#aee56cd5056c8add4c6834233bc79675e":[20,0,3,47,49],
 "math__util__2_8h.html#af24cd139f7cde4fa245d4c872d40e6a5":[20,0,3,47,29],
 "math__util__2_8h.html#af9195037e8bc4ee55b0f1b9a2d2768f6":[20,0,3,47,16],
@@ -159,7 +160,7 @@ var NAVTREEINDEX42 =
 "md_docs_2migrations.html#other-textures":[8,2,0,2],
 "md_docs_2migrations.html#overview":[8,0],
 "md_docs_2migrations.html#path-changes":[8,2],
-"md_docs_2migrations.html#see-also-1":[8,7],
+"md_docs_2migrations.html#see-also":[8,7],
 "md_docs_2migrations.html#textures":[8,2,0],
 "md_docs_2migrations.html#track-textures":[8,2,0,0],
 "md_docs_2migrations.html#troubleshooting":[8,6],
@@ -181,7 +182,7 @@ var NAVTREEINDEX42 =
 "md_docs_2mods-toml.html#location":[10,0],
 "md_docs_2mods-toml.html#migration-script-support":[10,8],
 "md_docs_2mods-toml.html#mod-section":[10,3,0],
-"md_docs_2mods-toml.html#see-also":[10,9],
+"md_docs_2mods-toml.html#see-also-1":[10,9],
 "md_docs_2mods-toml.html#validation":[10,5],
 "md_docs_2mods-toml.html#version-requirements":[10,3,1,0],
 "md_docs_2sequences-information.html":[11],
@@ -248,6 +249,5 @@ var NAVTREEINDEX42 =
 "memory_8h.html#a88d4b28279c8474e3bca4cd73dc1e33f":[20,0,3,10,11,6],
 "memory_8h.html#a965d7e25d594cd29e02ed8b9a482c65d":[20,0,3,10,11,12],
 "memory_8h.html#a9a9b12bc2d88d2229242fc7846056f90":[20,0,3,10,11,5],
-"memory_8h.html#aa9e0c3b8dc07656f8777f7a3fdd5914b":[20,0,3,10,11,23],
-"memory_8h.html#aae653f94864d5c6a1b4cd5f3d9ededc3":[20,0,3,10,11,19]
+"memory_8h.html#aa9e0c3b8dc07656f8777f7a3fdd5914b":[20,0,3,10,11,23]
 };

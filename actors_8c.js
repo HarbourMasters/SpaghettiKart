@@ -22,7 +22,7 @@ var actors_8c =
     [ "func_80297340", "actors_8c.html#af3679e7269b472294b3d91b070c1ff25", null ],
     [ "func_80297524", "actors_8c.html#a8fd591464106cdb5d34c160c9a6b4cfa", null ],
     [ "func_802976D8", "actors_8c.html#a6fd7dc3bc34357287535b6f06ab7d85c", null ],
-    [ "func_802976EC", "actors_8c.html#a09d879c67b2c1430dd8ba2d5c9c136e1", null ],
+    [ "func_802976EC", "actors_8c.html#a8786467cfca527d54cfec719207c1ec1", null ],
     [ "func_80297760", "actors_8c.html#a83bcf2234f4c65898ed5d48a7301f86b", null ],
     [ "func_802977B0", "actors_8c.html#a6968a4585e6457d53306634fbf66d0d1", null ],
     [ "func_802977E4", "actors_8c.html#a786b41fb3a8c328ede15995af2b4a0eb", null ],

@@ -1,5 +1,7 @@
 var NAVTREEINDEX99 =
 {
+"yoshi__valley_2course__offsets_8c.html#a960edbc8698401e040375c3e020e5eed":[20,0,0,20,0,2],
+"yoshi__valley__displaylists_8h.html":[20,0,2,0,0,0,19,1],
 "yoshi__valley__displaylists_8h.html#a38c2d98e463bc9fa5d249ab8c86d8202":[20,0,2,0,0,0,19,1,0],
 "yoshi__valley__displaylists_8h_source.html":[20,0,2,0,0,0,19,1],
 "yoshi__valley__vertices_8h.html":[20,0,2,0,0,0,19,2],

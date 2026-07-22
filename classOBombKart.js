@@ -26,7 +26,7 @@ var classOBombKart =
     [ "Tick", "classOBombKart.html#ae45058df866237b65f841ece4c611bf6", null ],
     [ "Translate", "classOBombKart.html#ac0a7b2a5f5851e6f343746fc618533d4", null ],
     [ "Waypoint", "classOBombKart.html#a6cbaf3a28c3c6f44d8677cb9c5ec6554", null ],
-    [ "_Collision", "classOBombKart.html#a31e0a54dd4042eedd519737054617a3c", null ],
+    [ "_Collision", "classOBombKart.html#abb195211ddcb2e941a6d2b33d04a8678", null ],
     [ "_count", "classOBombKart.html#a29a3bf5efab4305d3dfd6aada9fe51ac", null ],
     [ "_idx", "classOBombKart.html#a26f1101186aa5216fc8d4ef278ac2000", null ],
     [ "_target", "classOBombKart.html#a63ebc569536c0cf3e439762995657a14", null ],

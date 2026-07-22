@@ -4,6 +4,7 @@ var camera_8h =
     [ "Camera", "structCamera.html", "structCamera" ],
     [ "BAD_RETURN", "camera_8h.html#a5d473430986a7e9d5ceca3b538321cc8", null ],
     [ "NUM_CAMERAS", "camera_8h.html#a676fd455b512d2b69f626ea4bd738bce", null ],
+    [ "RenderMode", "camera_8h.html#a3da462c99634e27b12ec1a24790f756d", null ],
     [ "RenderMode", "camera_8h.html#ac9e546db27bb4f76f47d7e25f24abb88", [
       [ "RENDER_TRACK_SECTIONS", "camera_8h.html#ac9e546db27bb4f76f47d7e25f24abb88a8b3974ce281d2b6c98d3a7989387eddd", null ],
       [ "RENDER_FULL_SCENE", "camera_8h.html#ac9e546db27bb4f76f47d7e25f24abb88af02c1454ac695a5ad0ac268a7557515f", null ],

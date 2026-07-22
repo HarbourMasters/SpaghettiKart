@@ -8,7 +8,7 @@ var classDKJungle =
     [ "DrawCredits", "classDKJungle.html#a12318bf5157cc46ff34eb0540c94a961", null ],
     [ "DrawTrackObjects", "classDKJungle.html#abd289b79657e6cb7501eb406e988d67b", null ],
     [ "DrawTransparency", "classDKJungle.html#a1d134bbfe930cf45a7eb337ab7f9606b", null ],
-    [ "GetWaterLevel", "classDKJungle.html#a967ee0922db46ff0b7c571e9c88f5999", null ],
+    [ "GetWaterLevel", "classDKJungle.html#a398a56536710709d268839e500a7a835", null ],
     [ "InitTrackObjects", "classDKJungle.html#a0a69be60de65739eead71e7692a1eefa", null ],
     [ "Load", "classDKJungle.html#ae6f4feea68935b39c57f17a86a21a932", null ],
     [ "SomeCollisionThing", "classDKJungle.html#ad8596d831e76290489a1843f3ad89947", null ],

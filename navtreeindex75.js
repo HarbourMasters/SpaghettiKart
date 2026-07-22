@@ -1,5 +1,7 @@
 var NAVTREEINDEX75 =
 {
+"structGfxPool.html#a42d7257d731853b49605659bfcb607bf":[19,0,136,6],
+"structGfxPool.html#a6412eaab6e773364bbe4a114f7ce5381":[19,0,136,2],
 "structGfxPool.html#a705e6036f85bdb4c3f708e0e938610db":[19,0,136,8],
 "structGfxPool.html#a70f20c70d9af0bf2e7001d904987cb0e":[19,0,136,12],
 "structGfxPool.html#a7b4ba3aad2315e3d209f42511c456cb6":[19,0,136,0],
@@ -50,6 +52,7 @@ var NAVTREEINDEX75 =
 "structItemBox.html#a160bba22d28fcae6f869677df5788390":[19,0,146,1],
 "structItemBox.html#a479e6887df34129f957616214f1cc426":[19,0,146,11],
 "structItemBox.html#a5710f43670047b82840061ec6362409c":[19,0,146,3],
+"structItemBox.html#a6837f4f2c774286370cf25fa8db0b436":[19,0,146,10],
 "structItemBox.html#a6b37d97242511db5433fe8cface653a4":[19,0,146,0],
 "structItemBox.html#a759e68102fd37f6cac8bc11822bc9664":[19,0,146,9],
 "structItemBox.html#a7a0945c90ee7304aa05729d0b59a4413":[19,0,146,4],
@@ -58,7 +61,6 @@ var NAVTREEINDEX75 =
 "structItemBox.html#aa61066eefb600fd439ffca1deb6beecc":[19,0,146,2],
 "structItemBox.html#aad7a9f46654608486a15ebd5251b70e7":[19,0,146,6],
 "structItemBox.html#acbe8c0af0b7e62a73c6537404b952999":[19,0,146,12],
-"structItemBox.html#af8f78b9ee3b51c94f1c5e9492c06b54c":[19,0,146,10],
 "structItemBox.html#afbe6f4cee304f147c300049c1e8b95b7":[19,0,146,13],
 "structItemInfo.html":[19,0,147],
 "structItemInfo.html#a4741ef0e9155a48bb4126a2be44a74c7":[19,0,147,1],
@@ -139,7 +141,6 @@ var NAVTREEINDEX75 =
 "structKartTyre.html#afe443f169ee3c48e1c99931d65cf01ef":[19,0,151,0],
 "structKiwanoFruit.html":[19,0,152],
 "structKiwanoFruit.html#a188f60f643194dc691ea02d9a4ca5e36":[19,0,152,3],
-"structKiwanoFruit.html#a33b682d0233daccaaa7f8f2a52e7f3ea":[19,0,152,10],
 "structKiwanoFruit.html#a395221128fc4678e43d97556c14b0b75":[19,0,152,2],
 "structKiwanoFruit.html#a42e01e9caa040b6c495d7d30a93536c2":[19,0,152,13],
 "structKiwanoFruit.html#a45799822f9f1e3ac2fd213a6012ff510":[19,0,152,0],
@@ -148,6 +149,7 @@ var NAVTREEINDEX75 =
 "structKiwanoFruit.html#a84bcafb455436df44151349caf4f7946":[19,0,152,12],
 "structKiwanoFruit.html#a950aff93d9e44ce1ef637f94c0211df3":[19,0,152,11],
 "structKiwanoFruit.html#aa0f27c3d651683f99a007212680bdf40":[19,0,152,4],
+"structKiwanoFruit.html#ab1488dd694f15ccc4a12190bd1100134":[19,0,152,10],
 "structKiwanoFruit.html#ac2024c25671678292ad713fc6a337fe2":[19,0,152,8],
 "structKiwanoFruit.html#ac3f39d0c46c091b04cb44a6dbc51a478":[19,0,152,6],
 "structKiwanoFruit.html#adf70a7f3dc53798340be6b62a77cdf43":[19,0,152,7],
@@ -247,7 +249,5 @@ var NAVTREEINDEX75 =
 "structNote.html#a735fb38930defbb072e29145b7cddebb":[19,0,325,18],
 "structNote.html#a962842df6352d781b95daa1d5ef52f77":[19,0,325,14],
 "structNote.html#a9951b24128dbb11640130bf5c04e4b34":[19,0,325,9],
-"structNote.html#aaa15be4fbf957b58ad50c760e971eeb5":[19,0,325,0],
-"structNote.html#ab73b89a768849a5806b65e60c3234719":[19,0,325,13],
-"structNote.html#ab876ff55ca7a84677ba76c12dedf9ec5":[19,0,325,7]
+"structNote.html#aaa15be4fbf957b58ad50c760e971eeb5":[19,0,325,0]
 };

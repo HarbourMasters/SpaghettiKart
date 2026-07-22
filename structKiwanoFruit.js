@@ -10,7 +10,7 @@ var structKiwanoFruit =
     [ "state", "structKiwanoFruit.html#adf70a7f3dc53798340be6b62a77cdf43", null ],
     [ "targetPlayer", "structKiwanoFruit.html#ac2024c25671678292ad713fc6a337fe2", null ],
     [ "type", "structKiwanoFruit.html#a75579b57acf1c579a4d1c76630e63d06", null ],
-    [ "unk30", "structKiwanoFruit.html#a33b682d0233daccaaa7f8f2a52e7f3ea", null ],
+    [ "unk30", "structKiwanoFruit.html#ab1488dd694f15ccc4a12190bd1100134", null ],
     [ "unk_14", "structKiwanoFruit.html#a950aff93d9e44ce1ef637f94c0211df3", null ],
     [ "unk_16", "structKiwanoFruit.html#a84bcafb455436df44151349caf4f7946", null ],
     [ "velocity", "structKiwanoFruit.html#a42e01e9caa040b6c495d7d30a93536c2", null ]
