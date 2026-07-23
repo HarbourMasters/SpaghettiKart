@@ -3,7 +3,7 @@
 #include <libultraship.h>
 #include <libultra/gbi.h>
 #include "engine/Actor.h"
-#include "CoreMath.h"
+#include "engine/CoreMath.h"
 
 extern "C" {
 #include "common_structs.h"

@@ -17,7 +17,7 @@ extern "C" {
 #include "memory.h"
 #include "common_structs.h"
 #include "course_offsets.h"
-#include "some_data.h"
+#include "data/some_data.h"
 #include "code_8006E9C0.h"
 #include "code_8003DC40.h"
 #include "assets/models/common_data.h"
@@ -25,10 +25,10 @@ extern "C" {
 #include "save.h"
 #include "replays.h"
 #include "code_800029B0.h"
-#include "render_courses.h"
-#include "collision.h"
-#include "actors.h"
-#include "math_util.h"
+#include "racing/render_courses.h"
+#include "racing/collision.h"
+#include "racing/actors.h"
+#include "racing/math_util.h"
 #include "code_80005FD0.h"
 extern StaffGhost* d_mario_raceway_staff_ghost;
 extern s8 gPlayerCount;

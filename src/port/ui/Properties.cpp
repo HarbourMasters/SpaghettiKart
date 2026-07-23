@@ -20,7 +20,7 @@
 #include "engine/vehicles/Train.h"
 
 extern "C" {
-#include "actors.h"
+#include "racing/actors.h"
 }
 
 namespace TrackEditor {

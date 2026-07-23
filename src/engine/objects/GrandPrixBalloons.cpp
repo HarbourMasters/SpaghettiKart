@@ -11,7 +11,7 @@ extern "C" {
 #include "render_objects.h"
 #include "code_80057C60.h"
 #include "code_80086E70.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "math_util_2.h"
 #include "menus.h"
 }

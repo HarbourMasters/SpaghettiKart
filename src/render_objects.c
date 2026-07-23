@@ -14,7 +14,7 @@
 #include <actor_types.h>
 #include "camera.h"
 #include "memory.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "math_util_2.h"
 #include "objects.h"
 #include "waypoints.h"
@@ -28,7 +28,7 @@
 #include "render_objects.h"
 #include "update_objects.h"
 #include "menu_items.h"
-#include "collision.h"
+#include "racing/collision.h"
 #include "main.h"
 #include "menus.h"
 #include "code_80086E70.h"

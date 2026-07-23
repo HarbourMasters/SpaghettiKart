@@ -7,7 +7,7 @@
 #include "engine/CoreMath.h"
 #include "engine/World.h"
 
-#include "Actor.h"
+#include "engine/Actor.h"
 
 extern "C" {
 #include "main.h"

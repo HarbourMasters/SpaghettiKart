@@ -13,7 +13,7 @@ extern "C" {
 #include "main.h"
 #include "menus.h"
 #include "code_800029B0.h"
-#include "external.h"
+#include "audio/external.h"
 }
 
 namespace Ship {

@@ -4,7 +4,7 @@
 
 #include "camera_junk.h"
 #include "camera.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "ceremony_and_credits.h"
 #include "main.h"
 

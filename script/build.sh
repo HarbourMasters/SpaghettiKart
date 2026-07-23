@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
 # Unified build script for SpaghettiKart
 #
@@ -22,6 +22,19 @@ GROUP_ID=$(id -g)
 
 cd "$PROJECT_DIR"
 
+case "$BUILD_TYPE" in
+    Debug|Release|RelWithDebInfo|MinSizeRel) ;;
+    *)
+        echo "Unsupported build type: ${BUILD_TYPE}" >&2
+        exit 1
+        ;;
+esac
+
+if [[ -n "$PACKAGE" && "$PACKAGE" != "appimage" ]]; then
+    echo "Unsupported package type: ${PACKAGE}" >&2
+    exit 1
+fi
+
 build_arch() {
     local arch=$1
     local build_type=$2
@@ -30,7 +43,6 @@ build_arch() {
     local image_name="spaghettikart-${arch}"
     local dockerfile=""
     local platform=""
-    local triplet=""
     
     echo "========================================"
     echo "Building ${arch} ${build_type}"
@@ -40,12 +52,10 @@ build_arch() {
     if [ "$arch" = "x86" ]; then
         dockerfile="script/Dockerfile.x86"
         platform="--platform linux/386"
-        triplet="x86-linux"
         # Ensure QEMU is set up for i386 emulation
         docker run --rm --privileged multiarch/qemu-user-static --reset -p yes 2>/dev/null || true
     else
         dockerfile="script/Dockerfile"
-        triplet="x64-linux"
     fi
     
     # Build Docker image
@@ -62,9 +72,9 @@ build_arch() {
     fi
     
     # Build package command if requested
-    local package_cmd=""
+    local package_cmd=":"
     if [ "$package" = "appimage" ]; then
-        package_cmd="&& cd ${build_dir} && cpack -G External"
+        package_cmd="cd ${build_dir} && cpack -G External"
     fi
     
     # Run build in Docker
@@ -81,15 +91,17 @@ build_arch() {
             -e GROUP_ID="${GROUP_ID}" \
             "${image_name}" \
             bash -c "
+                set -e
                 cmake -B ${build_dir} -G Ninja \
                     -DCMAKE_BUILD_TYPE=${build_type} && \
                 cmake --build ${build_dir} --parallel && \
-                cp -f spaghetti.o2r ${build_dir}/ 2>/dev/null || true && \
-                cp -f mk64.o2r ${build_dir}/ 2>/dev/null || true ${package_cmd} && \
-                chown -R ${USER_ID}:${GROUP_ID} /project/${build_dir} 2>/dev/null || true
+                (cp -f spaghetti.o2r ${build_dir}/ 2>/dev/null || true) && \
+                (cp -f mk64.o2r ${build_dir}/ 2>/dev/null || true) && \
+                ${package_cmd} && \
+                (chown -R ${USER_ID}:${GROUP_ID} /project/${build_dir} 2>/dev/null || true)
             "
     else
-        # x64: Use vcpkg for static linking
+        # x64: Let the CMake integration bootstrap and configure vcpkg.
         docker run --rm \
             ${platform} \
             -v "$(pwd):/project" \
@@ -98,21 +110,15 @@ build_arch() {
             -e GROUP_ID="${GROUP_ID}" \
             "${image_name}" \
             bash -c "
-                # Install vcpkg dependencies
-                if [ -f vcpkg.json ]; then
-                    cp vcpkg.json /tmp/vcpkg.json && \
-                    cd /tmp && \
-                    \${VCPKG_ROOT}/vcpkg install --triplet ${triplet} 2>/dev/null || true && \
-                    cd /project
-                fi && \
+                set -e
                 cmake -B ${build_dir} -G Ninja \
                     -DCMAKE_BUILD_TYPE=${build_type} \
-                    -DCMAKE_TOOLCHAIN_FILE=/opt/vcpkg/scripts/buildsystems/vcpkg.cmake \
-                    -DVCPKG_TARGET_TRIPLET=${triplet} && \
+                    -DENABLE_VCPKG=ON && \
                 cmake --build ${build_dir} --parallel && \
-                cp -f spaghetti.o2r ${build_dir}/ 2>/dev/null || true && \
-                cp -f mk64.o2r ${build_dir}/ 2>/dev/null || true ${package_cmd} && \
-                chown -R ${USER_ID}:${GROUP_ID} /project/${build_dir} 2>/dev/null || true
+                (cp -f spaghetti.o2r ${build_dir}/ 2>/dev/null || true) && \
+                (cp -f mk64.o2r ${build_dir}/ 2>/dev/null || true) && \
+                ${package_cmd} && \
+                (chown -R ${USER_ID}:${GROUP_ID} /project/${build_dir} 2>/dev/null || true)
             "
     fi
     

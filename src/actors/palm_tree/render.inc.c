@@ -1,4 +1,4 @@
-#include <actors.h>
+#include <racing/actors.h>
 #include <main.h>
 #include <assets/models/tracks/koopa_troopa_beach/koopa_troopa_beach_data.h>
 #include "port/interpolation/FrameInterpolation.h"

@@ -4,7 +4,7 @@
 
 extern "C" {
 #include "common_structs.h"
-#include "actors.h"
+#include "racing/actors.h"
 #include "actor_types.h"
 #include "assets/textures/other_textures.h"
 }

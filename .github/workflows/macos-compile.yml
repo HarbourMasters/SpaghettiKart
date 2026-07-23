@@ -18,13 +18,9 @@ jobs:
           submodules: recursive
       - name: Install dependencies
         run: brew install ninja cmake
-      - name: Install vcpkg
-        uses: lukka/run-vcpkg@v11.5
-        with:
-          vcpkgDirectory: '${{ github.workspace }}/vcpkg'
       - name: Build
         run: |
-          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=${{ matrix.config }} -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=${{ matrix.config }} -DENABLE_VCPKG=ON
           cmake --build build-cmake -j --config ${{ matrix.config }}
       - name: Create Package
         run: |

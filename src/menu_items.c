@@ -13,22 +13,23 @@
 #include "code_80005FD0.h"
 #include "code_8006E9C0.h"
 #include "menus.h"
+#include "racing/memory.h"
 #include "save.h"
 #include "code_80057C60.h"
-#include "credits.h"
+#include "ending/credits.h"
 #include "assets/models/data_segment2.h"
 #include "code_800AF9B0.h"
-#include "code_80281780.h"
+#include "ending/code_80281780.h"
 #include "memory.h"
 #include "audio/external.h"
 #include "render_objects.h"
 #include "replays.h"
 #include <assets/models/common_data.h>
 #include "textures.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "save_data.h"
-#include "podium_ceremony_actors.h"
-#include "skybox_and_splitscreen.h"
+#include "ending/podium_ceremony_actors.h"
+#include "racing/skybox_and_splitscreen.h"
 #include <assets/textures/startup_logo.h>
 #include "buffers.h"
 #include "racing/race_logic.h"
@@ -50,7 +51,7 @@
 #include "engine/TrackBrowser.h"
 #include "src/engine/HM_Intro.h"
 #include "src/port/interpolation/FrameInterpolation.h"
-#include "heap.h"
+#include "audio/heap.h"
 #include <assets/models/startup_logo.h>
 
 const char* GetCupName(void);

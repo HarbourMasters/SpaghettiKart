@@ -21,8 +21,8 @@
 extern "C" {
 #include "code_800029B0.h"
 #include "sounds.h"
-#include "external.h"
-#include "render_courses.h"
+#include "audio/external.h"
+#include "racing/render_courses.h"
 #include "render_objects.h"
 }
 

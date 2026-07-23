@@ -17,7 +17,7 @@ extern "C" {
 #include "assets/textures/common_data.h"
 #include "math_util_2.h"
 #include "render_objects.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 }
 
 size_t SkySnow::_count = 0;
