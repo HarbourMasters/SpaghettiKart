@@ -949,7 +949,26 @@ static void ApplyPendingReset() {
     // Set the debug menu track browsing index back to zero
     TrackBrowser::Instance->Reset();
 
-    gMenuSelection = CVarGetInteger("gEnableDebugMode", 0) ? START_MENU : LOGO_INTRO_MENU;
+    // Land on the same screen the gSkipIntro setting picks at boot.
+    switch (CVarGetInteger("gSkipIntro", 0)) {
+        case 0:
+            gMenuSelection = HARBOUR_MASTERS_MENU;
+            break;
+        case 1:
+            gMenuSelection = LOGO_INTRO_MENU;
+            break;
+        case 2:
+            gMenuSelection = START_MENU;
+            break;
+        case 3:
+            gMenuSelection = MAIN_MENU;
+            break;
+    }
+
+    // Debug mode override gSkipIntro
+    if (CVarGetInteger("gEnableDebugMode", 0) == true) {
+        gMenuSelection = START_MENU;
+    }
     // Re-enter through the intro's own transition protocol (see HM_TickIntro):
     // FADE_MODE_LOGO makes setup_menus rebuild the menu items and start a
     // fresh fade-in, replacing any in-flight transition that would otherwise
