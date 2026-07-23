@@ -15,7 +15,7 @@
 #include "port/Game.h"
 #include "libultraship/bridge/resourcebridge.h"
 #include <stdio.h>
-#include "RaceManager.h"
+#include "engine/RaceManager.h"
 
 #pragma intrinsic(sqrtf)
 
@@ -28,7 +28,7 @@ void nullify_displaylist(uintptr_t addr) {
     macro->words.w1 = 0;
 }
 
-void func_802AAAAC(Collision* collision) {
+void func_802AAAAC(struct Collision* collision) {
     collision->meshIndexYX = 5000;
     collision->meshIndexZY = 5000;
     collision->meshIndexZX = 5000;
@@ -47,7 +47,7 @@ f32 get_water_level(Player* player) {
     return CM_GetWaterLevel(player->pos, &player->collision);
 }
 
-s32 check_collision_zx(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ, u16 index) {
+s32 check_collision_zx(struct Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ, u16 index) {
     CollisionTriangle* triangle = &gCollisionMesh[index];
     UNUSED f32 pad;
     f32 x3;
@@ -156,7 +156,7 @@ s32 check_collision_zx(Collision* collision, f32 boundingBoxSize, f32 posX, f32 
     return 0;
 }
 
-s32 check_collision_yx(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ, u16 index) {
+s32 check_collision_yx(struct Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ, u16 index) {
     CollisionTriangle* triangle = &gCollisionMesh[index];
     UNUSED f32 pad[6];
     f32 x3;
@@ -264,7 +264,7 @@ s32 check_collision_yx(Collision* collision, f32 boundingBoxSize, f32 posX, f32 
     return 0;
 }
 
-s32 check_collision_zy(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ, u16 index) {
+s32 check_collision_zy(struct Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ, u16 index) {
     CollisionTriangle* triangle = &gCollisionMesh[index];
     s32 b = true;
     UNUSED f32 pad[7];
@@ -471,7 +471,7 @@ f32 calculate_surface_height(f32 x, f32 y, f32 z, u16 index) {
     return ((triangle->normalX * x) + (triangle->normalZ * z) + triangle->distance) / -triangle->normalY;
 }
 
-f32 func_802ABEAC(Collision* collision, Vec3f pos) {
+f32 func_802ABEAC(struct Collision* collision, Vec3f pos) {
     if (collision->unk34 == 1) {
         return calculate_surface_height(pos[0], pos[1], pos[2], collision->meshIndexZX);
     }
@@ -530,7 +530,7 @@ void process_shell_collision(Vec3f pos, UNUSED f32 boundingBoxSize, Vec3f veloci
     velocity[2] = z * scaleFactor;
 }
 
-void shell_collision(Collision* collision, Vec3f velocity) {
+void shell_collision(struct Collision* collision, Vec3f velocity) {
     if (collision->surfaceDistance[0] < 0.0f) {
         process_shell_collision(collision->unk48, collision->surfaceDistance[0], velocity, 2.0f);
     }
@@ -580,7 +580,7 @@ void adjust_pos_orthogonally(Vec3f pos1, f32 boundingBoxSize, Vec3f pos2, UNUSED
 }
 
 UNUSED s32 detect_tyre_collision(KartTyre* tyre) {
-    Collision collision;
+    struct Collision collision;
     UNUSED s32 pad[12];
     s32 trackLengthX;
     s32 trackLengthZ;
@@ -695,7 +695,7 @@ UNUSED s32 detect_tyre_collision(KartTyre* tyre) {
     // depending on which (if any) if statements were entered on the loop's last cycle
 }
 
-s32 is_colliding_with_drivable_surface(Collision* collision, f32 boundingBoxSize, f32 newX, f32 newY, f32 newZ,
+s32 is_colliding_with_drivable_surface(struct Collision* collision, f32 boundingBoxSize, f32 newX, f32 newY, f32 newZ,
                                        u16 index, f32 oldX, f32 oldY, f32 oldZ) {
     CollisionTriangle* triangle = &gCollisionMesh[index];
     UNUSED s32 pad;
@@ -810,7 +810,7 @@ s32 is_colliding_with_drivable_surface(Collision* collision, f32 boundingBoxSize
 /**
  * Wall collision
  */
-s32 is_colliding_with_wall2(Collision* arg, f32 boundingBoxSize, f32 x1, f32 y1, f32 z1, u16 surfaceIndex, f32 posX,
+s32 is_colliding_with_wall2(struct Collision* arg, f32 boundingBoxSize, f32 x1, f32 y1, f32 z1, u16 surfaceIndex, f32 posX,
                             f32 posY, f32 posZ) {
     if (CVarGetInteger("gNoWallColision", 0)) {
         return NO_COLLISION;
@@ -995,7 +995,7 @@ s32 is_colliding_with_wall2(Collision* arg, f32 boundingBoxSize, f32 x1, f32 y1,
 /**
  * This is actually more like colliding with face X/Y/Z
  */
-s32 is_colliding_with_wall1(Collision* arg, f32 boundingBoxSize, f32 x1, f32 y1, f32 z1, u16 surfaceIndex, f32 posX,
+s32 is_colliding_with_wall1(struct Collision* arg, f32 boundingBoxSize, f32 x1, f32 y1, f32 z1, u16 surfaceIndex, f32 posX,
                             f32 posY, f32 posZ) {
     if (CVarGetInteger("gNoWallColision", 0)) {
         return NO_COLLISION;
@@ -1178,7 +1178,7 @@ s32 is_colliding_with_wall1(Collision* arg, f32 boundingBoxSize, f32 x1, f32 y1,
     return COLLISION;
 }
 
-u16 actor_terrain_collision(Collision* collision, f32 boundingBoxSize, f32 newX, f32 newY, f32 newZ, f32 oldX, f32 oldY,
+u16 actor_terrain_collision(struct Collision* collision, f32 boundingBoxSize, f32 newX, f32 newY, f32 newZ, f32 oldX, f32 oldY,
                             f32 oldZ) {
     s32 trackLengthX;
     s32 trackLengthZ;
@@ -1296,7 +1296,7 @@ u16 actor_terrain_collision(Collision* collision, f32 boundingBoxSize, f32 newX,
     return flags;
 }
 
-u16 check_bounding_collision(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ) {
+u16 check_bounding_collision(struct Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ) {
     u16 numTriangles;
     s32 trackLengthX;
     s32 trackLengthZ;
@@ -2236,8 +2236,8 @@ void subtract_scaled_vector(Vec3f pos1, f32 boundingBoxSize, Vec3f pos2) {
 }
 
 u16 player_terrain_collision(Player* player, KartTyre* tyre, f32 tyre2X, f32 tyre2Y, f32 tyre2Z) {
-    Collision wtf;
-    Collision* collision = &wtf;
+    struct Collision wtf;
+    struct Collision* collision = &wtf;
     UNUSED s32 pad;
     u16 i;
     u16 meshIndex;

@@ -6,6 +6,7 @@
 
 #include <fast/Fast3dWindow.h>
 #include <memory>
+#include <atomic>
 #include "engine/World.h"
 #include "engine/AllTracks.h"
 
@@ -17,7 +18,7 @@
 #include "engine/objects/BombKart.h"
 #include "engine/objects/Lakitu.h"
 
-#include "Smoke.h"
+#include "engine/Smoke.h"
 
 #include "engine/HM_Intro.h"
 
@@ -42,7 +43,7 @@ extern "C" {
 #include "main.h"
 #include "audio/load.h"
 #include "audio/external.h"
-#include "render_courses.h"
+#include "racing/render_courses.h"
 #include "menus.h"
 #include "update_objects.h"
 #include "spawn_players.h"
@@ -821,7 +822,7 @@ void CM_ActorCollision(Player* player, Actor* actor) {
     }
 }
 
-f32 CM_GetWaterLevel(Vec3f pos, Collision* collision) {
+f32 CM_GetWaterLevel(Vec3f pos, struct Collision* collision) {
     FVector fPos = {pos[0], pos[1], pos[2]};
     return GetWorld()->GetTrack()->GetWaterLevel(fPos, collision);
 }
@@ -911,7 +912,73 @@ void CM_ResetAudio(void) {
 }
 }
 
+static std::atomic<bool> sResetRequested{ false };
+
+void CM_RequestReset(void) {
+    sResetRequested.store(true);
+}
+
+// The reset widget only requests; the reset is applied here at the top of the
+// game frame. Applying it from the widget raced the menu state machine: a
+// press landing mid-fade was re-advanced by the in-flight transition, and a
+// repeat press rewrote the gamestate it had already set, which the != guard
+// in main.c swallows while the audio fade still runs (silent no-op).
+static void ApplyPendingReset() {
+    if (!sResetRequested.exchange(false)) {
+        return;
+    }
+
+    // The FROM_QUIT gamestates run identical inits; alternating keeps
+    // gGamestateNext != gGamestate true so every press re-enters the menus.
+    gGamestateNext = (gGamestate == MAIN_MENU_FROM_QUIT) ? START_MENU_FROM_QUIT : MAIN_MENU_FROM_QUIT;
+    gIsGamePaused = 0;
+    // Reset credits
+    D_800DC5E4 = 0;
+    gTourComplete = false;
+    SetMarioRaceway();
+    memset(&gGameModeMenuColumn, 0, sizeof(s8) * NUM_ROWS_GAME_MODE_MENU);
+    memset(&gGameModeSubMenuColumn, 0, sizeof(s8) * NUM_COLUMN_GAME_MODE_SUB_MENU * NUM_ROWS_GAME_MODE_SUB_MENU);
+
+    CM_ResetAudio();
+
+    // Close the editor.
+    if (gEditor.IsEnabled()) {
+        gEditor.Disable();
+    }
+
+    // Set the debug menu track browsing index back to zero
+    TrackBrowser::Instance->Reset();
+
+    // Land on the same screen the gSkipIntro setting picks at boot.
+    switch (CVarGetInteger("gSkipIntro", 0)) {
+        case 0:
+            gMenuSelection = HARBOUR_MASTERS_MENU;
+            break;
+        case 1:
+            gMenuSelection = LOGO_INTRO_MENU;
+            break;
+        case 2:
+            gMenuSelection = START_MENU;
+            break;
+        case 3:
+            gMenuSelection = MAIN_MENU;
+            break;
+    }
+
+    // Debug mode override gSkipIntro
+    if (CVarGetInteger("gEnableDebugMode", 0) == true) {
+        gMenuSelection = START_MENU;
+    }
+    // Re-enter through the intro's own transition protocol (see HM_TickIntro):
+    // FADE_MODE_LOGO makes setup_menus rebuild the menu items and start a
+    // fresh fade-in, replacing any in-flight transition that would otherwise
+    // advance the stale screen right after the reset.
+    gMenuFadeType = 0;
+    gFadeModeSelection = FADE_MODE_LOGO;
+}
+
 void push_frame() {
+    ApplyPendingReset();
     GameEngine::StartAudioFrame();
     GameEngine::Instance->StartFrame();
     thread5_iteration();
@@ -943,6 +1010,10 @@ void CM_ThrowRuntimeError(const char* fmt, ...) {
     exit(EXIT_FAILURE);
 }
 
+#ifdef __APPLE__
+#include <CoreFoundation/CoreFoundation.h>
+#endif
+
 #ifdef _WIN32
 int SDL_main(int argc, char** argv) {
 #else
@@ -955,6 +1026,14 @@ extern "C"
 #ifdef _WIN32
     // Allow non-ascii characters for Windows
     setlocale(LC_ALL, ".UTF8");
+#endif
+#if defined(__APPLE__)
+    // Disable the macOS "press and hold" accent/diacritic popup for this app. SDL keeps a Cocoa text
+    // input context active, so holding a movement key is interpreted as holding a letter key in a text
+    // field, and macOS shows the accent picker instead of repeating it. Per-app equivalent of
+    // `defaults write -app <App> ApplePressAndHoldEnabled -bool false`; key repeat still works.
+    CFPreferencesSetAppValue(CFSTR("ApplePressAndHoldEnabled"), kCFBooleanFalse, kCFPreferencesCurrentApplication);
+    CFPreferencesAppSynchronize(kCFPreferencesCurrentApplication);
 #endif
     // load_wasm();
     GameEngine::Create();

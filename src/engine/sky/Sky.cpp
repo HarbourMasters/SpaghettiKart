@@ -15,8 +15,8 @@
 extern "C" {
 #include "macros.h"
 #include "mk64.h"
-#include "math_util.h"
-#include "skybox_and_splitscreen.h"
+#include "racing/math_util.h"
+#include "racing/skybox_and_splitscreen.h"
 #include "menus.h"
 }
 

@@ -96,13 +96,9 @@ jobs:
           submodules: recursive
       - name: Install dependencies
         run: brew install ninja cmake
-      - name: Install vcpkg
-        uses: lukka/run-vcpkg@v11.5
-        with:
-          vcpkgDirectory: '${{ github.workspace }}/vcpkg'
       - name: Build
         run: |
-          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=${{ matrix.config }} -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=${{ matrix.config }} -DENABLE_VCPKG=ON
           cmake --build build-cmake --config ${{ matrix.config }} -j3
       - name: Download spaghetti.o2r
         uses: actions/download-artifact@v4
@@ -139,13 +135,9 @@ jobs:
           submodules: recursive
       - name: Install dependencies
         run: brew install ninja cmake
-      - name: Install vcpkg
-        uses: lukka/run-vcpkg@v11.5
-        with:
-          vcpkgDirectory: '${{ github.workspace }}/vcpkg'
       - name: Build
         run: |
-          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=${{ matrix.config }} -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=${{ matrix.config }} -DENABLE_VCPKG=ON
           cmake --build build-cmake --config ${{ matrix.config }} -j3
       - name: Download spaghetti.o2r
         uses: actions/download-artifact@v4
@@ -413,14 +405,9 @@ jobs:
             -v "${{ github.workspace }}:/project" \
             spaghettikart-builder:latest \
             bash -c "
-              cp vcpkg.json /tmp/vcpkg.json && \
-              cd /tmp && \
-              \${VCPKG_ROOT}/vcpkg install --triplet x64-linux && \
-              cd /project && \
               cmake -B build -G Ninja \
                 -DCMAKE_BUILD_TYPE=${{ matrix.config }} \
-                -DCMAKE_TOOLCHAIN_FILE=/opt/vcpkg/scripts/buildsystems/vcpkg.cmake \
-                -DVCPKG_TARGET_TRIPLET=x64-linux && \
+                -DENABLE_VCPKG=ON && \
               cmake --build build --parallel
             "
 
@@ -525,7 +512,7 @@ jobs:
             spaghettikart-x86:latest \
             bash -c "
               cd /project/build-x86 && \
-              cpack -G External || true
+              cpack -G External
             "
 
       - name: Create Package
@@ -533,7 +520,7 @@ jobs:
           mkdir -p spaghetti-x86-${{ matrix.config }}
           wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
           mv gamecontrollerdb.txt spaghetti-x86-${{ matrix.config }}/
-          cp build-x86/*.appimage spaghetti-x86-${{ matrix.config }}/spaghetti.appimage 2>/dev/null || true
+          cp build-x86/*.appimage spaghetti-x86-${{ matrix.config }}/spaghetti.appimage
 
       - name: Publish packaged artifacts
         uses: actions/upload-artifact@v4

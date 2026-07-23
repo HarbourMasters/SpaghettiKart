@@ -59,7 +59,7 @@ s32 get_angle_between_xy(f32, f32, f32, f32);
 u16 func_800417B4(u16, u16);
 s32 func_800418AC(f32, f32, Vec3f);
 s32 func_800418E8(f32, f32, Vec3f);
-s32 func_80041924(Collision*, Vec3f);
+s32 func_80041924(struct Collision*, Vec3f);
 bool is_particle_on_screen(Vec3f, Camera*, u16);
 void func_800419F8(void);
 void mtfx_translation_x_y(Mat4, s32, s32);

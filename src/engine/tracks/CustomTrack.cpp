@@ -14,10 +14,10 @@
 #include "engine/editor/SceneManager.h"
 
 extern "C" {
-#include "collision.h"
-#include "render_courses.h"
-#include "actors.h"
-#include "math_util.h"
+#include "racing/collision.h"
+#include "racing/render_courses.h"
+#include "racing/actors.h"
+#include "racing/math_util.h"
 }
 
 CustomTrack::CustomTrack() {

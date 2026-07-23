@@ -2,8 +2,8 @@
 
 #include <libultraship.h>
 #include <vector>
-#include "World.h"
-#include "CoreMath.h"
+#include "engine/World.h"
+#include "engine/CoreMath.h"
 #include "Mole.h"
 
 class OMole;

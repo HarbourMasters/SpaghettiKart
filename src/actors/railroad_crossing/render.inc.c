@@ -1,4 +1,4 @@
-#include <actors.h>
+#include <racing/actors.h>
 #include <libultra/gbi.h>
 #include <main.h>
 #include "assets/models/tracks/kalimari_desert/kalimari_desert_data.h"

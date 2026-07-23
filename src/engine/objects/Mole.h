@@ -3,7 +3,7 @@
 #include <libultraship.h>
 #include <vector>
 #include "Object.h"
-#include "CoreMath.h"
+#include "engine/CoreMath.h"
 #include "MoleGroup.h"
 
 extern "C" {
@@ -14,7 +14,7 @@ extern "C" {
 #include "common_structs.h"
 #include "objects.h"
 #include "course_offsets.h"
-#include "some_data.h"
+#include "textures/some_data.h"
 }
 
 class OMoleGroup;

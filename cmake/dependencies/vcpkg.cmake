@@ -1,0 +1,30 @@
+include(cmake/automate-vcpkg.cmake)
+
+if(WIN32)
+  if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+    set(VCPKG_TRIPLET x64-windows-static)
+    set(VCPKG_TARGET_TRIPLET x64-windows-static)
+  else()
+    set(VCPKG_TRIPLET x86-windows-static)
+    set(VCPKG_TARGET_TRIPLET x86-windows-static)
+  endif()
+
+  set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
+  set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+elseif(APPLE)
+  if(CMAKE_SYSTEM_PROCESSOR MATCHES "arm64|aarch64")
+    set(VCPKG_TRIPLET arm64-osx)
+    set(VCPKG_TARGET_TRIPLET arm64-osx)
+  else()
+    set(VCPKG_TRIPLET x64-osx)
+    set(VCPKG_TARGET_TRIPLET x64-osx)
+  endif()
+elseif(UNIX AND NOT APPLE)
+  set(VCPKG_TRIPLET x64-linux)
+  set(VCPKG_TARGET_TRIPLET x64-linux)
+endif()
+
+vcpkg_bootstrap()
+# install package from vcpkg.json
+vcpkg_install_packages()
+

@@ -11,7 +11,7 @@ extern "C" {
     #include "camera.h"
     #include "data/some_data.h"
     #include "objects.h"
-    #include "path_spawn_metadata.h"
+    #include "data/path_spawn_metadata.h"
     #include "code_800029B0.h"
     extern const course_texture sherbet_land_textures[];
 }
@@ -24,7 +24,7 @@ public:
 //    virtual void Load(const char* courseVtx, 
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void Load() override;
-    virtual f32 GetWaterLevel(FVector pos, Collision* collision) override;
+    virtual f32 GetWaterLevel(FVector pos, struct Collision* collision) override;
     virtual void BeginPlay() override;
     virtual void TickTrackObjects() override;
     virtual void DrawTrackObjects(s32 cameraId) override;

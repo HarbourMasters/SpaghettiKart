@@ -12,7 +12,7 @@ extern "C" {
     #include "camera.h"
     #include "data/some_data.h"
     #include "objects.h"
-    #include "path_spawn_metadata.h"
+    #include "data/path_spawn_metadata.h"
     #include "code_800029B0.h"
     extern const course_texture moo_moo_farm_textures[];
 }

@@ -23,10 +23,10 @@
 extern "C" {
 #include "common_structs.h"
 #include "main.h"
-#include "actors.h"
+#include "racing/actors.h"
 #include "camera.h"
 #include "src/racing/collision.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 }
 
 namespace TrackEditor {

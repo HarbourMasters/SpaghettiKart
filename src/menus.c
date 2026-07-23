@@ -7,11 +7,11 @@
 #include <stubs.h>
 
 #include "menus.h"
-#include "TrackBrowser.h"
-#include "editor/Editor.h"
+#include "engine/TrackBrowser.h"
+#include "engine/editor/Editor.h"
 #include "main.h"
 #include "code_800029B0.h"
-#include "actors.h"
+#include "racing/actors.h"
 #include "audio/external.h"
 #include "code_800029B0.h"
 #include "code_80005FD0.h"

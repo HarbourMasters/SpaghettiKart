@@ -1,5 +1,5 @@
 #include <camera.h>
-#include <actors.h>
+#include <racing/actors.h>
 #include <main.h>
 #include <libultra/gbi.h>
 #include <assets/models/tracks/moo_moo_farm/moo_moo_farm_data.h>

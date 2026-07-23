@@ -11,11 +11,11 @@ extern "C" {
 #include "main.h"
 #include "camera.h"
 #include "code_800029B0.h"
-#include "ceremony_and_credits.h"
+#include "ending/ceremony_and_credits.h"
 #include "common_structs.h"
 #include "spawn_players.h"
-#include "math_util.h"
-#include "external.h"
+#include "racing/math_util.h"
+#include "audio/external.h"
 }
 
 TourCamera::TourCamera(FVector pos, s16 rot, u32 mode) : GameCamera() {

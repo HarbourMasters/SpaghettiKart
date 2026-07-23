@@ -2,7 +2,7 @@
 #define ENGINE_TRACK_H
 
 #include <libultraship/libultraship.h>
-#include "CoreMath.h"
+#include "engine/CoreMath.h"
 
 #ifdef __cplusplus
 #include "engine/SpawnParams.h"
@@ -17,7 +17,7 @@ extern "C" {
 #include "camera.h"
 #include "data/some_data.h"
 #include "bomb_kart.h"
-#include "path_spawn_metadata.h"
+#include "data/path_spawn_metadata.h"
 #include "waypoints.h"
 #include "sounds.h"
 #include "common_structs.h"
@@ -366,7 +366,7 @@ public:
     virtual void Draw(ScreenContext*);
     virtual void DrawCredits();
     virtual void Waypoints(Player* player, int8_t playerId);
-    virtual f32 GetWaterLevel(FVector pos, Collision* collision);
+    virtual f32 GetWaterLevel(FVector pos, struct Collision* collision);
     virtual void Tick();
     // Draw transparent models (water, signs, arrows, etc.) 
     virtual void DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,

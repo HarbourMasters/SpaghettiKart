@@ -20,8 +20,8 @@ extern "C" {
 #include "code_80005FD0.h"
 #include <SDL2/SDL.h>
 #include "freecam_engine.h"
-#include "math_util.h"
-#include "skybox_and_splitscreen.h"
+#include "racing/math_util.h"
+#include "racing/skybox_and_splitscreen.h"
 #include "freecam.h"
 }
 

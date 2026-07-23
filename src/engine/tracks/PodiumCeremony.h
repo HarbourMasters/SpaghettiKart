@@ -1,7 +1,7 @@
 #pragma once
 
 #include <libultraship.h>
-#include "CoreMath.h"
+#include "engine/CoreMath.h"
 #include "Track.h"
 
 extern "C" {
@@ -12,7 +12,7 @@ extern "C" {
     #include "camera.h"
     #include "data/some_data.h"
     #include "objects.h"
-    #include "path_spawn_metadata.h"
+    #include "data/path_spawn_metadata.h"
     #include "code_800029B0.h"
     extern const course_texture royal_raceway_textures[];
 }

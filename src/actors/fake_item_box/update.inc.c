@@ -1,9 +1,9 @@
-#include "actors_extended.h"
-#include "collision.h"
+#include "racing/actors_extended.h"
+#include "racing/collision.h"
 #include "defines.h"
-#include "external.h"
+#include "audio/external.h"
 #include "sounds.h"
-#include <actors.h>
+#include <racing/actors.h>
 #include <main.h>
 
 /**

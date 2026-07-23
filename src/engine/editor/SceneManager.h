@@ -1,7 +1,7 @@
 #pragma once
 
 #include <libultraship/libultraship.h>
-#include "CoreMath.h"
+#include "engine/CoreMath.h"
 #include "engine/tracks/Track.h"
 #include <optional>
 #include <nlohmann/json.hpp>

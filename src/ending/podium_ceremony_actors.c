@@ -8,6 +8,7 @@
 #include "main.h"
 #include "memory.h"
 #include <assets/models/common_data.h>
+#include "racing/memory.h"
 #include "render_player.h"
 #include "render_objects.h"
 #include "podium_ceremony_actors.h"
@@ -16,7 +17,7 @@
 #include "code_80057C60.h"
 #include "code_80005FD0.h"
 #include "code_80281C40.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include <string.h>
 #include "port/interpolation/FrameInterpolation.h"
 

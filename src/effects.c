@@ -5,7 +5,7 @@
 #include <defines.h>
 #include <sounds.h>
 #include "code_800029B0.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "kart_attributes.h"
 #include "waypoints.h"
 #include "code_80005FD0.h"

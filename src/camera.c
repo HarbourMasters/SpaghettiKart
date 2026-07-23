@@ -12,7 +12,7 @@
 #include "racing/memory.h"
 #include "waypoints.h"
 #include "render_player.h"
-#include "collision.h"
+#include "racing/collision.h"
 #include "code_80057C60.h"
 #include "code_80005FD0.h"
 #include "main.h"

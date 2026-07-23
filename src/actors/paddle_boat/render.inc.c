@@ -3,7 +3,7 @@
 #include <actor_types.h>
 #include "camera.h"
 #include "main.h"
-#include "actors.h"
+#include "racing/actors.h"
 #include "courses/all_course_data.h"
 #include <assets/models/tracks/dks_jungle_parkway/dks_jungle_parkway_data.h>
 #include <libultra/gbi.h>

@@ -3,7 +3,7 @@
 #include <libultraship.h>
 #include <vector>
 #include "Object.h"
-#include "World.h"
+#include "engine/World.h"
 
 extern "C" {
 #include "macros.h"

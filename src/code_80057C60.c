@@ -12,11 +12,11 @@
 #include "camera.h"
 #include "code_80057C60.h"
 #include "main.h"
-#include "actors.h"
+#include "racing/actors.h"
 #include "code_800029B0.h"
 #include "racing/memory.h"
 #include <defines.h>
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "math_util_2.h"
 #include "code_80005FD0.h"
 #include "render_player.h"
@@ -26,7 +26,7 @@
 #include "code_80086E70.h"
 #include "effects.h"
 #include <assets/models/data_800E8700.h>
-#include "skybox_and_splitscreen.h"
+#include "racing/skybox_and_splitscreen.h"
 #include <assets/models/common_data.h>
 #include "audio/external.h"
 #include "objects.h"
@@ -294,7 +294,7 @@ const char** gLakituTexturePtr;
  */
 s32 indexObjectList4[32];
 //! Array of (4) Collisions?
-Collision D_8018C0B0[4];
+struct Collision D_8018C0B0[4];
 /**
  * List of object list indices used for:
  *   Moles in Moo Moo Farm
@@ -303,7 +303,7 @@ Collision D_8018C0B0[4];
  *   Potentially other things
  */
 s32 gObjectParticle1[gObjectParticle2_SIZE];
-Collision D_8018C3B0;
+struct Collision D_8018C3B0;
 /**
  * List of object list indices used for:
  * - Bats in Banshee's Boardwalk (but only 1 player mode?)
@@ -312,14 +312,14 @@ Collision D_8018C3B0;
  */
 s32 gObjectParticle2[gObjectParticle2_SIZE];
 // Maybe some unused Collision?
-UNUSED Collision D_8018C5F0;
+UNUSED struct Collision D_8018C5F0;
 /**
  * List of object list indices used for:
  * - Train index 1 smoke in Kalimari Desert
  * - Ferry index 1 smoke in DK Jungle
  */
 s32 gObjectParticle3[gObjectParticle3_SIZE];
-Collision D_8018C830;
+struct Collision D_8018C830;
 /**
  * List of object list indices. Used both for the fires in the DK Jungle cave
  * and, seemingly for the trail that shells leave behind them.

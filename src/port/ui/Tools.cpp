@@ -17,7 +17,7 @@
 extern "C" {
 #include "code_800029B0.h"
 #include "code_80057C60.h"
-#include "actors.h"
+#include "racing/actors.h"
 }
 
 namespace TrackEditor {

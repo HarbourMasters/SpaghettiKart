@@ -404,14 +404,14 @@ extern const char* gLakituTextureBuffer[4][2];
 
 extern const char** gLakituTexturePtr;
 // extern s32 indexObjectList4[]; -> objects.h
-// extern Collision D_8018C0B0[]; -> objects.h
+// extern struct Collision D_8018C0B0[]; -> objects.h
 // extern s32 gObjectParticle1[]; -> objects.h
 
-extern Collision D_8018C3B0;
+extern struct Collision D_8018C3B0;
 // extern s32 gObjectParticle2[]; -> objects.h
 // extern s32 gObjectParticle3[]; -> objects.h
 
-extern Collision D_8018C830;
+extern struct Collision D_8018C830;
 // extern s32 gObjectParticle4[]; -> objects.h
 // extern s32 gLeafParticle[]; -> objects.h
 
