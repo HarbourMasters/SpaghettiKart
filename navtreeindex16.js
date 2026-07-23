@@ -1,5 +1,8 @@
 var NAVTREEINDEX16 =
 {
+"classSF64_1_1Vec3sArray.html#a4d0bf0d9310a9919299bb0bd1d9382dc":[19,0,3,29,3],
+"classSF64_1_1Vec3sArray.html#af79fceba9764695cfe64d2e0015e734d":[18,0,6,29,1],
+"classSF64_1_1Vec3sArray.html#af79fceba9764695cfe64d2e0015e734d":[19,0,3,29,1],
 "classSF64_1_1Vec3sArray.html#aff2bdc9808eb651161e3a209dd9806c1":[18,0,6,29,2],
 "classSF64_1_1Vec3sArray.html#aff2bdc9808eb651161e3a209dd9806c1":[19,0,3,29,2],
 "classSM64_1_1AudioBank.html":[18,0,8,0],
@@ -246,8 +249,5 @@ var NAVTREEINDEX16 =
 "classTestTrack.html#a95bee9f5b4542551c01f639d7317e09b":[19,0,450,4],
 "classTestTrack.html#ad49a1c8a2764c822549a48cdc55f3ac1":[19,0,450,0],
 "classTestTrack.html#adf4af6c299fc83f1bb0e7ea222869c82":[19,0,450,3],
-"classTestTrack.html#ae3bf027de914e7e9e7e814ebbf301efc":[19,0,450,2],
-"classToadsTurnpike.html":[19,0,454],
-"classToadsTurnpike.html#a25009a2dd4f7e438741965b0a9fc9a7e":[19,0,454,1],
-"classToadsTurnpike.html#a35b679b83f24475ff3944f043be65207":[19,0,454,0]
+"classTestTrack.html#ae3bf027de914e7e9e7e814ebbf301efc":[19,0,450,2]
 };

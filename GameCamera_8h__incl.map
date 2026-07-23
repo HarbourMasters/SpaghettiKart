@@ -1,14 +1,14 @@
 <map id="src/engine/cameras/GameCamera.h" name="src/engine/cameras/GameCamera.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,155,45"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="69,240,176,265"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="65,47,43,76,22,113,12,153,14,172,21,191,43,215,72,232,69,237,40,219,16,193,9,173,7,152,17,111,38,73,61,44"/>
-<area shape="rect" id="Node000003" href="$CoreMath_8h.html" title=" " alt="" coords="31,167,129,192"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="83,46,83,153,77,153,77,46"/>
-<area shape="rect" id="Node000004" href="$camera_8h.html" title=" " alt="" coords="125,93,208,119"/>
-<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="103,44,145,82,142,86,99,48"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="89,191,111,227,107,230,85,194"/>
-<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="166,120,133,228,128,226,161,118"/>
-<area shape="rect" id="Node000005" href="$common__structs_8h.html" title=" " alt="" coords="205,167,347,192"/>
-<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="186,116,248,157,245,161,183,121"/>
-<area shape="poly" id="edge7_Node000005_Node000002" title=" " alt="" coords="252,194,161,237,159,232,250,190"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="26,5,175,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="102,240,209,265"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,48,50,77,23,113,14,133,9,153,10,172,18,191,32,207,49,220,90,237,88,242,47,224,28,211,13,193,4,173,3,152,9,131,18,111,46,73,76,44"/>
+<area shape="rect" id="Node000003" href="$CoreMath_8h.html" title=" " alt="" coords="28,167,173,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="103,46,103,153,98,153,98,46"/>
+<area shape="rect" id="Node000004" href="$camera_8h.html" title=" " alt="" coords="170,93,253,119"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="129,43,185,83,182,87,126,48"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="112,191,140,228,136,231,108,194"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="211,120,187,193,171,229,166,226,182,191,206,118"/>
+<area shape="rect" id="Node000005" href="$common__structs_8h.html" title=" " alt="" coords="249,167,392,192"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="230,116,293,157,290,161,227,121"/>
+<area shape="poly" id="edge7_Node000005_Node000002" title=" " alt="" coords="295,194,196,237,194,232,293,190"/>
 </map>

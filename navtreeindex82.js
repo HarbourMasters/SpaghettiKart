@@ -1,5 +1,8 @@
 var NAVTREEINDEX82 =
 {
+"structWaterVolume.html#af39a4134d3dcedc062b969caebf337e2":[19,0,500,2],
+"structWidgetInfo.html":[19,0,501],
+"structWidgetInfo.html#a1ec9c6db27a66f88ec750045282e46f3":[19,0,501,17],
 "structWidgetInfo.html#a2ac569a44c89eded7195693d250f6c16":[19,0,501,19],
 "structWidgetInfo.html#a31d40206a297372d1527c53c82f61c2b":[19,0,501,7],
 "structWidgetInfo.html#a3f87fb7af882a2c3c86c135be60c7179":[19,0,501,23],
@@ -246,8 +249,5 @@ var NAVTREEINDEX82 =
 "structhud__player.html#a5a65d708042223bf005c82849272d2b6":[19,0,141,29],
 "structhud__player.html#a5b750a7ef7342dae79a9d71429a2ac2b":[19,0,141,60],
 "structhud__player.html#a5d8891aed8eaa047d3e6ca7870c22e4d":[19,0,141,43],
-"structhud__player.html#a65e66264b8804f915ec8390f186b53d7":[19,0,141,33],
-"structhud__player.html#a724ea061bcdd9df5685d632e7c2f9ca4":[19,0,141,36],
-"structhud__player.html#a73b4a6d5420a5cc79cbe31851c1e2b51":[19,0,141,6],
-"structhud__player.html#a7a31992913104a88b798146e070a609d":[19,0,141,63]
+"structhud__player.html#a65e66264b8804f915ec8390f186b53d7":[19,0,141,33]
 };

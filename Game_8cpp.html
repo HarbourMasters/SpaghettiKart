@@ -117,6 +117,7 @@ $(function(){initNavTree('Game_8cpp.html',''); initResizable(true); });
 <code>#include &quot;<a class="el" href="Engine_8h_source.html">port/Engine.h</a>&quot;</code><br />
 <code>#include &lt;fast/Fast3dWindow.h&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
+<code>#include &lt;atomic&gt;</code><br />
 <code>#include &quot;<a class="el" href="World_8h_source.html">engine/World.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="AllTracks_8h_source.html">engine/AllTracks.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="PodiumCeremony_8h_source.html">engine/tracks/PodiumCeremony.h</a>&quot;</code><br />
@@ -124,7 +125,7 @@ $(function(){initNavTree('Game_8cpp.html',''); initResizable(true); });
 <code>#include &quot;<a class="el" href="TrainCrossing_8h_source.html">engine/TrainCrossing.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="BombKart_8h_source.html">engine/objects/BombKart.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Lakitu_8h_source.html">engine/objects/Lakitu.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="Smoke_8h_source.html">Smoke.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Smoke_8h_source.html">engine/Smoke.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="HM__Intro_8h_source.html">engine/HM_Intro.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Editor_8h_source.html">engine/editor/Editor.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="SceneManager_8h_source.html">engine/editor/SceneManager.h</a>&quot;</code><br />
@@ -139,7 +140,7 @@ $(function(){initNavTree('Game_8cpp.html',''); initResizable(true); });
 <code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="load_8h_source.html">audio/load.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="external_8h_source.html">audio/external.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="render__courses_8h_source.html">render_courses.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="render__courses_8h_source.html">racing/render_courses.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="menus_8h_source.html">menus.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="update__objects_8h_source.html">update_objects.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="spawn__players_8h_source.html">spawn_players.h</a>&quot;</code><br />
@@ -424,6 +425,10 @@ Functions</h2></td></tr>
 <tr class="separator:a653209c17a221876506140f4d377270b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c3b9e6da7b395aa8a1b97ba2e966fff" id="r_a6c3b9e6da7b395aa8a1b97ba2e966fff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c3b9e6da7b395aa8a1b97ba2e966fff">CM_ResetAudio</a> (void)</td></tr>
 <tr class="separator:a6c3b9e6da7b395aa8a1b97ba2e966fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1f6a2bb62440f976ce8d6cbfcb8e883" id="r_ab1f6a2bb62440f976ce8d6cbfcb8e883"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1f6a2bb62440f976ce8d6cbfcb8e883">CM_RequestReset</a> (void)</td></tr>
+<tr class="separator:ab1f6a2bb62440f976ce8d6cbfcb8e883"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc1378a58e0c8b803a7e81d30391c3ee" id="r_adc1378a58e0c8b803a7e81d30391c3ee"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc1378a58e0c8b803a7e81d30391c3ee">ApplyPendingReset</a> ()</td></tr>
+<tr class="separator:adc1378a58e0c8b803a7e81d30391c3ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e10f41e410b6fdab17e0388f164f61d" id="r_a7e10f41e410b6fdab17e0388f164f61d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e10f41e410b6fdab17e0388f164f61d">push_frame</a> ()</td></tr>
 <tr class="separator:a7e10f41e410b6fdab17e0388f164f61d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80db20776c19d77be4a28e58df4dfbf2" id="r_a80db20776c19d77be4a28e58df4dfbf2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80db20776c19d77be4a28e58df4dfbf2">CM_ThrowRuntimeError</a> (const char *<a class="el" href="pak_8cpp.html#a24ae7463666f625674a1f1d44146784f">fmt</a>,...)</td></tr>
@@ -465,8 +470,45 @@ Variables</h2></td></tr>
 <tr class="separator:ad866a6e3610a5cfb4da749c662c14e77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad45ac18eee07abbc3b312919d27edbf" id="r_aad45ac18eee07abbc3b312919d27edbf"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; Sky &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad45ac18eee07abbc3b312919d27edbf">gSky</a></td></tr>
 <tr class="separator:aad45ac18eee07abbc3b312919d27edbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af99be9d5ad652d048e7710931390c7b4" id="r_af99be9d5ad652d048e7710931390c7b4"><td class="memItemLeft" align="right" valign="top">static std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af99be9d5ad652d048e7710931390c7b4">sResetRequested</a> { false }</td></tr>
+<tr class="separator:af99be9d5ad652d048e7710931390c7b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="adc1378a58e0c8b803a7e81d30391c3ee" name="adc1378a58e0c8b803a7e81d30391c3ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc1378a58e0c8b803a7e81d30391c3ee">&#9670;&#160;</a></span>ApplyPendingReset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void ApplyPendingReset </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="Game_8cpp_adc1378a58e0c8b803a7e81d30391c3ee_cgraph.svg" width="100%" height="551"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="Game_8cpp_adc1378a58e0c8b803a7e81d30391c3ee_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
 <a id="a7ad8bd6ab5cb1d16d5f6120d0288b1eb" name="a7ad8bd6ab5cb1d16d5f6120d0288b1eb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7ad8bd6ab5cb1d16d5f6120d0288b1eb">&#9670;&#160;</a></span>CM_ActivateFinalLapLakitu()</h2>
 
@@ -1734,6 +1776,28 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="ab1f6a2bb62440f976ce8d6cbfcb8e883" name="ab1f6a2bb62440f976ce8d6cbfcb8e883"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1f6a2bb62440f976ce8d6cbfcb8e883">&#9670;&#160;</a></span>CM_RequestReset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CM_RequestReset </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="Game_8cpp_ab1f6a2bb62440f976ce8d6cbfcb8e883_icgraph.svg" width="100%" height="364"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
 <a id="a6c3b9e6da7b395aa8a1b97ba2e966fff" name="a6c3b9e6da7b395aa8a1b97ba2e966fff"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6c3b9e6da7b395aa8a1b97ba2e966fff">&#9670;&#160;</a></span>CM_ResetAudio()</h2>
 
@@ -1756,7 +1820,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="Game_8cpp_a6c3b9e6da7b395aa8a1b97ba2e966fff_icgraph.svg" width="100%" height="413"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="Game_8cpp_a6c3b9e6da7b395aa8a1b97ba2e966fff_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -2632,7 +2696,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000046">Todo</a></b></dt><dd>Move gGfxPool out of <a class="el" href="main_8h.html">main.h</a> </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000029">Todo</a></b></dt><dd>Move gGfxPool out of <a class="el" href="main_8h.html">main.h</a> </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -4354,6 +4418,28 @@ Here is the caller graph for this function:</div>
           <td class="memname">s32 gTrophyIndex = <a class="el" href="objects_8h.html#aaef5bbff2b02b834bbec4150c33adcc4">NULL_OBJECT_ID</a></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af99be9d5ad652d048e7710931390c7b4" name="af99be9d5ad652d048e7710931390c7b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af99be9d5ad652d048e7710931390c7b4">&#9670;&#160;</a></span>sResetRequested</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::atomic&lt;bool&gt; sResetRequested { false }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

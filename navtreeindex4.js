@@ -1,5 +1,8 @@
 var NAVTREEINDEX4 =
 {
+"ModManager_8cpp.html#ae3d6dbc917100f1d518ea35677d95939":[20,0,3,6,4,0,5],
+"ModManager_8cpp.html#af7086f01c55d70c50b70991523450d18":[20,0,3,6,4,0,8],
+"ModManager_8h.html":[20,0,3,6,4,1],
 "ModManager_8h.html#a9d0a65c78ca0da1f4042d278992cda9b":[20,0,3,6,4,1,0],
 "ModManager_8h.html#adb21fd7d6f39f4b982b7bf70f2893c6d":[20,0,3,6,4,1,1],
 "ModManager_8h_source.html":[20,0,3,6,4,1],
@@ -246,8 +249,5 @@ var NAVTREEINDEX4 =
 "Thwomp_8cpp.html#ad215bb7475acbc736936cc6c514fc5b3":[20,0,3,6,5,36,6],
 "Thwomp_8cpp.html#aea0a81fd6b6c908933320101a3c53a08":[20,0,3,6,5,36,3],
 "Thwomp_8h.html":[20,0,3,6,5,37],
-"Thwomp_8h_source.html":[20,0,3,6,5,37],
-"ToadsTurnpike_8cpp.html":[20,0,3,6,9,42],
-"ToadsTurnpike_8cpp.html#a60c6a69449720d514d1f6569c45f626e":[20,0,3,6,9,42,2],
-"ToadsTurnpike_8cpp.html#a938fd7b1353d683a94e7a30294aabefb":[20,0,3,6,9,42,1]
+"Thwomp_8h_source.html":[20,0,3,6,5,37]
 };

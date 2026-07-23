@@ -1,17 +1,17 @@
 <map id="src/actors/tanker_truck/render.inc.c" name="src/actors/tanker_truck/render.inc.c">
 <area shape="rect" id="Node000001" title=" " alt="" coords="356,5,527,45"/>
-<area shape="rect" id="Node000002" href="$actors_8h.html" title=" " alt="" coords="288,93,363,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="415,48,355,88,352,83,412,43"/>
+<area shape="rect" id="Node000002" href="$actors_8h.html" title=" " alt="" coords="255,93,374,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="412,48,346,88,343,84,409,43"/>
 <area shape="rect" id="Node000011" href="$main_8h.html" title=" " alt="" coords="419,240,485,265"/>
 <area shape="poly" id="edge18_Node000001_Node000011" title=" " alt="" coords="445,45,453,226,448,226,440,46"/>
 <area shape="rect" id="Node000016" href="$defines_8h.html" title=" " alt="" coords="479,93,561,119"/>
 <area shape="poly" id="edge25_Node000001_Node000016" title=" " alt="" coords="462,44,500,82,497,85,458,47"/>
 <area shape="rect" id="Node000003" href="$actor__types_8h.html" title=" " alt="" coords="119,240,230,265"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="289,117,239,135,215,149,195,168,182,196,177,226,172,225,177,195,191,165,212,145,237,130,287,112"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="271,121,230,139,211,152,196,168,182,197,177,226,172,226,177,195,191,165,208,148,228,135,269,116"/>
 <area shape="rect" id="Node000009" href="$code__800029B0_8h.html" title=" " alt="" coords="206,167,343,192"/>
-<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="319,121,293,157,289,154,315,117"/>
+<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="310,120,290,156,286,153,306,118"/>
 <area shape="rect" id="Node000010" href="$camera_8h.html" title=" " alt="" coords="312,240,395,265"/>
-<area shape="poly" id="edge17_Node000002_Node000010" title=" " alt="" coords="335,118,347,139,357,166,361,197,360,226,354,226,355,197,352,167,343,142,331,120"/>
+<area shape="poly" id="edge17_Node000002_Node000010" title=" " alt="" coords="328,117,344,139,357,166,362,197,360,226,355,226,357,197,352,167,339,141,323,121"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="247,387,353,412"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="187,264,283,375,279,378,183,268"/>
 <area shape="rect" id="Node000005" href="$macros_8h.html" title=" " alt="" coords="5,313,88,339"/>

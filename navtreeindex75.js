@@ -1,5 +1,8 @@
 var NAVTREEINDEX75 =
 {
+"structGfxPool.html#a02b315fc7893c7d8693f8d675ade4799":[19,0,136,3],
+"structGfxPool.html#a383e380ba49ea2ba6c12d961dccf32f8":[19,0,136,5],
+"structGfxPool.html#a394e0a1d01dd843336dedfdd7b357a89":[19,0,136,4],
 "structGfxPool.html#a42d7257d731853b49605659bfcb607bf":[19,0,136,6],
 "structGfxPool.html#a6412eaab6e773364bbe4a114f7ce5381":[19,0,136,2],
 "structGfxPool.html#a705e6036f85bdb4c3f708e0e938610db":[19,0,136,8],
@@ -246,8 +249,5 @@ var NAVTREEINDEX75 =
 "structNote.html#a1cbe020fa2840d75876de187e32714a2":[19,0,325,17],
 "structNote.html#a3eb33b9e8ffaa2c7a8993de8ecbedf0a":[19,0,325,6],
 "structNote.html#a6cbdb20c3942e004aefd26210196f138":[19,0,325,15],
-"structNote.html#a735fb38930defbb072e29145b7cddebb":[19,0,325,18],
-"structNote.html#a962842df6352d781b95daa1d5ef52f77":[19,0,325,14],
-"structNote.html#a9951b24128dbb11640130bf5c04e4b34":[19,0,325,9],
-"structNote.html#aaa15be4fbf957b58ad50c760e971eeb5":[19,0,325,0]
+"structNote.html#a735fb38930defbb072e29145b7cddebb":[19,0,325,18]
 };

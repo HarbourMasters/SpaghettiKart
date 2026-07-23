@@ -1,5 +1,8 @@
 var NAVTREEINDEX87 =
 {
+"structma__rb.html#a76755eecd3f8f4d2cf40a61d023538f1":[19,0,278,7],
+"structma__rb.html#a8ef3399ff623c338e6165e811d2f080f":[19,0,278,1],
+"structma__rb.html#a9d7dffc2cee1c0ec0c749f270d3664d0":[19,0,278,8],
 "structma__rb.html#acab6e4d4c05b0b2238d72ad625316605":[19,0,278,4],
 "structma__resampler.html":[19,0,279],
 "structma__resampler.html#a25ff21463eee8993137bc0c4ea621319":[19,0,279,1],
@@ -246,8 +249,5 @@ var NAVTREEINDEX87 =
 "structma__spatializer__listener__config.html":[19,0,302],
 "structma__spatializer__listener__config.html#a242d2044883d88cb9bbb68e9eca851e1":[19,0,302,5],
 "structma__spatializer__listener__config.html#a2c43e7115aa36adc8d9719bf642ddbd0":[19,0,302,4],
-"structma__spatializer__listener__config.html#a571e099d0cd78977d9c6a089cca8f2e7":[19,0,302,6],
-"structma__spatializer__listener__config.html#a57aa6e16d954fe559bf972761120696e":[19,0,302,3],
-"structma__spatializer__listener__config.html#a645c60a5b487413db3a78acae605ae92":[19,0,302,7],
-"structma__spatializer__listener__config.html#a6572e7c17634f6c30ef1dd15b658d259":[19,0,302,0]
+"structma__spatializer__listener__config.html#a571e099d0cd78977d9c6a089cca8f2e7":[19,0,302,6]
 };

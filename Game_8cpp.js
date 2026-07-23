@@ -1,5 +1,6 @@
 var Game_8cpp =
 [
+    [ "ApplyPendingReset", "Game_8cpp.html#adc1378a58e0c8b803a7e81d30391c3ee", null ],
     [ "CM_ActivateFinalLapLakitu", "Game_8cpp.html#a7ad8bd6ab5cb1d16d5f6120d0288b1eb", null ],
     [ "CM_ActivateFinishLakitu", "Game_8cpp.html#a9689aae9cead5040be5b1527fe877348", null ],
     [ "CM_ActivateReverseLakitu", "Game_8cpp.html#a9fcd2793a55728b268b9ddb2624d86f4", null ],
@@ -45,6 +46,7 @@ var Game_8cpp =
     [ "CM_InitTrackObjects", "Game_8cpp.html#a872b3eafef96f83081b83794fb4681e5", null ],
     [ "CM_IsTourEnabled", "Game_8cpp.html#a7a5ca7cbd6c70c0ef872405d46503896", null ],
     [ "CM_RaceDrawSky", "Game_8cpp.html#aa97d48e199aac53548393bfad5a6d2ca", null ],
+    [ "CM_RequestReset", "Game_8cpp.html#ab1f6a2bb62440f976ce8d6cbfcb8e883", null ],
     [ "CM_ResetAudio", "Game_8cpp.html#a6c3b9e6da7b395aa8a1b97ba2e966fff", null ],
     [ "CM_RunGarbageCollector", "Game_8cpp.html#a653209c17a221876506140f4d377270b", null ],
     [ "CM_SetCup", "Game_8cpp.html#a6b67bd0fcac20b25c70bc3a90b7bfde4", null ],
@@ -153,5 +155,6 @@ var Game_8cpp =
     [ "gTrackBrowser", "Game_8cpp.html#ad866a6e3610a5cfb4da749c662c14e77", null ],
     [ "gTrackRegistry", "Game_8cpp.html#a01280f16a3f7ce7488988c1912c35783", null ],
     [ "gTrophyIndex", "Game_8cpp.html#a64d8699124ee0fb6d04c76e786ef28ef", null ],
+    [ "sResetRequested", "Game_8cpp.html#af99be9d5ad652d048e7710931390c7b4", null ],
     [ "sWorldInstance", "Game_8cpp.html#ad6cf34e5c8efe08268df342c49fb1cbc", null ]
 ];

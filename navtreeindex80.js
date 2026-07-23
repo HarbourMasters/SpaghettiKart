@@ -1,5 +1,8 @@
 var NAVTREEINDEX80 =
 {
+"structTemporaryPool.html#a9e76933800efc66eef61fe322f49c69c":[19,0,448,1],
+"structTextureMap.html":[19,0,451],
+"structTextureMap.html#a8b4286ddfe639a65e498930733799cf6":[19,0,451,0],
 "structTextureMap.html#ad91eea22f2775fcc40c7627062c429b3":[19,0,451,1],
 "structThwompSpawn.html":[19,0,453],
 "structThwompSpawn.html#a37b6087d0a9347a416e26a4d7079bd28":[19,0,453,0],
@@ -246,8 +249,5 @@ var NAVTREEINDEX80 =
 "structUIWidgets_1_1IntSliderOptions.html#aa733c535f03679e2f44fa36afeafdb82":[19,0,7,4,7],
 "structUIWidgets_1_1IntSliderOptions.html#abb66dbfef8c8a77150fbadc7f448efa8":[18,0,10,5,8],
 "structUIWidgets_1_1IntSliderOptions.html#abb66dbfef8c8a77150fbadc7f448efa8":[19,0,7,4,8],
-"structUIWidgets_1_1IntSliderOptions.html#abeea8647e31396e58705c4f19ac4f256":[18,0,10,5,10],
-"structUIWidgets_1_1IntSliderOptions.html#abeea8647e31396e58705c4f19ac4f256":[19,0,7,4,10],
-"structUIWidgets_1_1IntSliderOptions.html#abfddd81049e57c1e832969aab1de9833":[18,0,10,5,12],
-"structUIWidgets_1_1IntSliderOptions.html#abfddd81049e57c1e832969aab1de9833":[19,0,7,4,12]
+"structUIWidgets_1_1IntSliderOptions.html#abeea8647e31396e58705c4f19ac4f256":[18,0,10,5,10]
 };
