@@ -3,8 +3,8 @@
 #include "code_800029B0.h"
 #include "code_80091440.h"
 #include "camera.h"
-#include "math_util.h"
-#include "collision.h"
+#include "racing/math_util.h"
+#include "racing/collision.h"
 
 void func_800914A0(void) {
     D_80152308 = gPlayerOne->unk_006 + 7;

@@ -2,7 +2,7 @@
 
 #include "port/Game.h"
 #include "engine/CoreMath.h"
-#include "World.h"
+#include "engine/World.h"
 #include "GameObject.h"
 
 #include <iostream>
@@ -27,11 +27,11 @@
 
 extern "C" {
 #include "common_structs.h"
-#include "actors.h"
+#include "racing/actors.h"
 #include "actor_types.h"
 #include "code_80005FD0.h"
 #include "code_800029B0.h"
-#include "render_courses.h"
+#include "racing/render_courses.h"
 }
 
 namespace TrackEditor {

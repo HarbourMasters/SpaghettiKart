@@ -4,7 +4,7 @@
 #include <memory>
 
 #include "WarioStadium.h"
-#include "World.h"
+#include "engine/World.h"
 #include "engine/objects/BombKart.h"
 #include "assets/models/tracks/wario_stadium/wario_stadium_data.h"
 #include "assets/other/tracks/wario_stadium/wario_stadium_data.h"
@@ -16,23 +16,23 @@ extern "C" {
 #include "camera.h"
 #include "course_offsets.h"
 #include "code_800029B0.h"
-#include "render_courses.h"
+#include "racing/render_courses.h"
 #include "code_8006E9C0.h"
 #include "code_80057C60.h"
 #include "defines.h"
-#include "math_util.h"
-#include "external.h"
+#include "racing/math_util.h"
+#include "audio/external.h"
 #include "code_80005FD0.h"
 #include "spawn_players.h"
 #include "render_objects.h"
 #include "assets/models/common_data.h"
 #include "save.h"
 #include "replays.h"
-#include "actors.h"
-#include "collision.h"
+#include "racing/actors.h"
+#include "racing/collision.h"
 #include "code_8003DC40.h"
 #include "memory.h"
-#include "skybox_and_splitscreen.h"
+#include "racing/skybox_and_splitscreen.h"
 extern const char* wario_stadium_dls[108];
 extern s16 currentScreenSection;
 }

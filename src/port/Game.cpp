@@ -17,7 +17,7 @@
 #include "engine/objects/BombKart.h"
 #include "engine/objects/Lakitu.h"
 
-#include "Smoke.h"
+#include "engine/Smoke.h"
 
 #include "engine/HM_Intro.h"
 
@@ -42,7 +42,7 @@ extern "C" {
 #include "main.h"
 #include "audio/load.h"
 #include "audio/external.h"
-#include "render_courses.h"
+#include "racing/render_courses.h"
 #include "menus.h"
 #include "update_objects.h"
 #include "spawn_players.h"
@@ -821,7 +821,7 @@ void CM_ActorCollision(Player* player, Actor* actor) {
     }
 }
 
-f32 CM_GetWaterLevel(Vec3f pos, Collision* collision) {
+f32 CM_GetWaterLevel(Vec3f pos, struct Collision* collision) {
     FVector fPos = {pos[0], pos[1], pos[2]};
     return GetWorld()->GetTrack()->GetWaterLevel(fPos, collision);
 }
@@ -943,6 +943,10 @@ void CM_ThrowRuntimeError(const char* fmt, ...) {
     exit(EXIT_FAILURE);
 }
 
+#ifdef __APPLE__
+#include <CoreFoundation/CoreFoundation.h>
+#endif
+
 #ifdef _WIN32
 int SDL_main(int argc, char** argv) {
 #else
@@ -955,6 +959,14 @@ extern "C"
 #ifdef _WIN32
     // Allow non-ascii characters for Windows
     setlocale(LC_ALL, ".UTF8");
+#endif
+#if defined(__APPLE__)
+    // Disable the macOS "press and hold" accent/diacritic popup for this app. SDL keeps a Cocoa text
+    // input context active, so holding a movement key is interpreted as holding a letter key in a text
+    // field, and macOS shows the accent picker instead of repeating it. Per-app equivalent of
+    // `defaults write -app <App> ApplePressAndHoldEnabled -bool false`; key repeat still works.
+    CFPreferencesSetAppValue(CFSTR("ApplePressAndHoldEnabled"), kCFBooleanFalse, kCFPreferencesCurrentApplication);
+    CFPreferencesAppSynchronize(kCFPreferencesCurrentApplication);
 #endif
     // load_wasm();
     GameEngine::Create();

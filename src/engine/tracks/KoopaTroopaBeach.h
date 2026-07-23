@@ -4,7 +4,7 @@
 #include "../CoreMath.h"
 #include "Track.h"
 
-#include "World.h"
+#include "engine/World.h"
 
 extern "C" {
     #include "assets/models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices.h"
@@ -14,7 +14,7 @@ extern "C" {
     #include "camera.h"
     #include "data/some_data.h"
     #include "objects.h"
-    #include "path_spawn_metadata.h"
+    #include "data/path_spawn_metadata.h"
     #include "code_800029B0.h"
     extern const course_texture koopa_troopa_beach_textures[];
 }

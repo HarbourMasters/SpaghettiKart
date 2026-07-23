@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include "ship/utils/StringHelper.h"
 #include "GameExtractor.h"
-#include "mods/ModManager.h"
+#include "engine/mods/ModManager.h"
 #include "ui/ImguiUI.h"
 #include "ship/Context.h"
 #include "ship/controller/controldevice/controller/mapping/ControllerDefaultMappings.h"

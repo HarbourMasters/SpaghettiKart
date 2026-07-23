@@ -151,7 +151,7 @@ struct IRotator {
         return *this;
     }
 
-    [[nodiscard]] void Set(uint16_t p, uint16_t y, uint16_t r) {
+    void Set(uint16_t p, uint16_t y, uint16_t r) {
         pitch = p;
         yaw = y;
         roll = r;

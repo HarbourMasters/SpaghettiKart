@@ -1,7 +1,7 @@
 #include <libultraship.h>
 #include <mk64.h>
 #include <macros.h>
-#include <math_util.h>
+#include <racing/math_util.h>
 #include <main.h>
 #include "buffers.h"
 #include "buffers/trig_tables.h"

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <libultraship.h>
-#include "Actor.h"
+#include "engine/Actor.h"
 #include <vector>
 #include "engine/registry/RegisterContent.h"
 #include "engine/SpawnParams.h"

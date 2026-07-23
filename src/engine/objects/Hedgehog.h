@@ -15,7 +15,7 @@ extern "C" {
 #include "common_structs.h"
 #include "objects.h"
 #include "camera.h"
-#include "some_data.h"
+#include "textures/some_data.h"
 }
 
 /**

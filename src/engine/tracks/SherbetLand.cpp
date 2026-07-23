@@ -4,7 +4,7 @@
 #include <memory>
 
 #include "SherbetLand.h"
-#include "World.h"
+#include "engine/World.h"
 #include "engine/actors/Finishline.h"
 #include "engine/objects/BombKart.h"
 #include "assets/models/tracks/sherbet_land/sherbet_land_data.h"
@@ -17,20 +17,20 @@ extern "C" {
     #include "camera.h"
     #include "course_offsets.h"
     #include "code_800029B0.h"
-    #include "render_courses.h"
+    #include "racing/render_courses.h"
     #include "code_8006E9C0.h"
     #include "code_80057C60.h"
     #include "defines.h"
-    #include "math_util.h"
-    #include "external.h"
+    #include "racing/math_util.h"
+    #include "audio/external.h"
     #include "code_80005FD0.h"
     #include "spawn_players.h"
     #include "render_objects.h"
     #include "assets/models/common_data.h"
     #include "save.h"
     #include "replays.h"
-    #include "actors.h"
-    #include "collision.h"
+    #include "racing/actors.h"
+    #include "racing/collision.h"
     #include "memory.h"
     extern const char *sherbet_land_dls[72];
     extern const char *sherbet_land_dls_2[72];
@@ -132,7 +132,7 @@ void SherbetLand::Load() {
     find_vtx_and_set_colours((Gfx*) d_course_sherbet_land_packed_dl_2308, 150, 255, 255, 255);
 }
 
-f32 SherbetLand::GetWaterLevel(FVector pos, Collision* collision) {
+f32 SherbetLand::GetWaterLevel(FVector pos, struct Collision* collision) {
     if ((get_surface_type(collision->meshIndexZX) & 0xFF) == SNOW) {
         return (f32) (gTrackMinY - 0xA);
     }

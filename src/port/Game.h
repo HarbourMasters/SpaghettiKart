@@ -168,7 +168,7 @@ void CM_ActorCollision(Player* player, struct Actor* actor);
 void CM_CleanCameras(void);
 void CM_CleanWorld(void);
 
-f32 CM_GetWaterLevel(Vec3f pos, Collision* collision);
+f32 CM_GetWaterLevel(Vec3f pos, struct Collision* collision);
 
 bool IsMarioRaceway();
 bool IsLuigiRaceway();
@@ -229,12 +229,11 @@ void* GetCup();
 void CM_RunGarbageCollector(void);
 void CM_ResetAudio(void);
 
-// Add print formatting check attribute
+NORETURN void CM_ThrowRuntimeError(const char* fmt, ...)
 #if defined(__GNUC__) || defined(__clang__)
-__attribute__((format(printf, 1, 2)))
+    __attribute__((format(printf, 1, 2)))
 #endif
-
-NORETURN void CM_ThrowRuntimeError(const char* fmt, ...);
+    ;
 
 // NOLINTEND(readability-identifier-naming)
 

@@ -1,7 +1,7 @@
 #include "FallingRock.h"
 
 #include <libultra/gbi.h>
-#include "CoreMath.h"
+#include "engine/CoreMath.h"
 #include <assets/textures/tracks/choco_mountain/choco_mountain_data.h>
 #include <assets/models/tracks/choco_mountain/choco_mountain_data.h>
 #include "port/interpolation/FrameInterpolation.h"
@@ -9,13 +9,13 @@
 
 extern "C" {
 #include "common_structs.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "main.h"
 #include "actor_types.h"
 #include "code_800029B0.h"
-#include "collision.h"
+#include "racing/collision.h"
 #include "code_800029B0.h"
-#include "external.h"
+#include "audio/external.h"
 }
 
 size_t AFallingRock::_count = 0;

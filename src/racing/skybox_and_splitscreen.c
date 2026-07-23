@@ -308,11 +308,16 @@ void func_802A4300(void) {
             gDPFillRectangle(gDisplayListHead++, 157, 0, 159, 239);
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-            gDPFillWideRectangle(gDisplayListHead++, OTRGetDimensionFromLeftEdge(0), 119, OTRGetGameRenderWidth(), 121);
+            // Integer Rect getter: the float getter's negative result through
+            // _SHIFTL is float->unsigned UB, which saturates to 0 on ARM64 and
+            // clips the divider's left extension (see draw_box_fill_wide).
+            gDPFillWideRectangle(gDisplayListHead++, OTRGetRectDimensionFromLeftEdge(0), 119,
+                                 OTRGetGameRenderWidth(), 121);
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
             gDPFillRectangle(gDisplayListHead++, 157, 0, 159, 239);
-            gDPFillWideRectangle(gDisplayListHead++, OTRGetDimensionFromLeftEdge(0), 119, OTRGetGameRenderWidth(), 121);
+            gDPFillWideRectangle(gDisplayListHead++, OTRGetRectDimensionFromLeftEdge(0), 119,
+                                 OTRGetGameRenderWidth(), 121);
             break;
     }
     gDPPipeSync(gDisplayListHead++);

@@ -4,7 +4,7 @@
 #include <vector>
 #include "Object.h"
 
-#include "World.h"
+#include "engine/World.h"
 
 extern "C" {
 #include "macros.h"
@@ -14,7 +14,7 @@ extern "C" {
 #include "common_structs.h"
 #include "objects.h"
 #include "camera.h"
-#include "some_data.h"
+#include "assets/textures/some_data.h"
 }
 
 /**

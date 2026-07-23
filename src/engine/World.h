@@ -51,7 +51,7 @@ typedef struct Matrix {
     Matrix()
         : Hud(200), Objects(1000)
     {}
-};
+} Matrix;
 private:
     std::unique_ptr<Track> mTrack;
     Cup* CurrentCup;
@@ -112,7 +112,7 @@ public:
 
     void SetCurrentTrack(std::unique_ptr<Track> track);
 
-    Matrix Mtx;
+    Matrix world_mtx;
 
     std::vector<Cup*> Cups;
     size_t CupIndex = 1;

@@ -1,5 +1,5 @@
 #include "Snowman.h"
-#include "World.h"
+#include "engine/World.h"
 
 extern "C" {
 #include "render_objects.h"
@@ -7,7 +7,7 @@ extern "C" {
 #include "assets/models/tracks/frappe_snowland/frappe_snowland_data.h"
 #include "assets/textures/tracks/frappe_snowland/frappe_snowland_data.h"
 #include "assets/models/common_data.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "math_util_2.h"
 #include "code_80086E70.h"
 #include "code_80057C60.h"

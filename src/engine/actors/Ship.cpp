@@ -1,13 +1,13 @@
 #include "Ship.h"
 
 #include <libultra/gbi.h>
-#include "CoreMath.h"
+#include "engine/CoreMath.h"
 #include "port/Game.h"
-#include "Matrix.h"
+#include "engine/Matrix.h"
 
 extern "C" {
 #include "common_structs.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "main.h"
 #include "courses/harbour/ghostship_model.h"
 #include "courses/harbour/ship2_model.h"

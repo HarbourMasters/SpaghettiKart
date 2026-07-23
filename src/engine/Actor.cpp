@@ -7,7 +7,7 @@
 #include "engine/editor/Collision.h"
 
 extern "C" {
-#include "math_util.h"
+#include "racing/math_util.h"
 }
 
 AActor::AActor() {}

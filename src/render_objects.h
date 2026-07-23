@@ -167,7 +167,7 @@ void func_8004A488(Vec3f, Vec3su, f32, u8*, Vtx*, s32, s32, s32, s32);
 void func_8004A4FC(Vec3f, Vec3su, f32, u8*, Vtx*, s32, s32, s32, s32);
 void func_8004A570(Vec3f, Vec3su, f32, u8*, Vtx*, s32, s32, s32, s32);
 void func_8004A5E4(Vec3f, Vec3su, f32, u8*, Vtx*);
-void func_8004A630(Collision*, Vec3f, f32);
+void func_8004A630(struct Collision*, Vec3f, f32);
 void func_8004A6EC(s32, f32);
 void func_8004A7AC(s32, f32);
 void func_8004A9B8(f32);
