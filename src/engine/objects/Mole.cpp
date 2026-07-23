@@ -2,6 +2,7 @@
 #include <libultra/gbi.h>
 #include "Mole.h"
 #include "port/interpolation/FrameInterpolation.h"
+#include "port/resource/AsyncTextureUpgrader.h"
 
 extern "C" {
 #include "macros.h"
@@ -247,7 +248,19 @@ static const char* frames[] = {
     gTextureMole5, gTextureMole6, gTextureMole7, d_course_moo_moo_farm_mole_dirt,
 };
 
+// Register the animation frames with the texture streamer so replacement
+// frames swap in together instead of one by one.
+static void RegisterMoleFrameSet() {
+    static bool sDone = false;
+    if (sDone) {
+        return;
+    }
+    sDone = true;
+    MK64::AsyncTextureUpgrader::Instance().RegisterFrameSet(frames, ARRAY_COUNT(frames));
+}
+
 void OMole::func_80081848(s32 objectIndex) {
+    RegisterMoleFrameSet();
     init_texture_object(objectIndex, (u8*) d_course_moo_moo_farm_mole_tlut, (const char**) frames, 0x20U,
                         (u16) 0x00000040);
     // gObjectList[objectIndex].activeTexture = (const char*)d_course_moo_moo_farm_mole_frames;

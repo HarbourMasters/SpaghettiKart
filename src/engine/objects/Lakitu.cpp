@@ -802,6 +802,7 @@ static void RegisterLakituFrameSets() {
     up.RegisterFrameSet(sLakituCheckeredList, ARRAY_COUNT(sLakituCheckeredList));
     up.RegisterFrameSet(sLakituFishingTextures, ARRAY_COUNT(sLakituFishingTextures));
     up.RegisterFrameSet(sLakituSecondLapTextures, ARRAY_COUNT(sLakituSecondLapTextures));
+    up.RegisterFrameSet(sLakituFinalLapTextures, ARRAY_COUNT(sLakituFinalLapTextures));
     up.RegisterFrameSet(sLakituReverseTextures, ARRAY_COUNT(sLakituReverseTextures));
 }
 
