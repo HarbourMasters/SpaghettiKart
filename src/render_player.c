@@ -1037,7 +1037,8 @@ void render_light_environment_on_player(Player* player, s8 arg1) {
             ((gNearestPathPointByPlayerId[arg1] >= 0x216) && (gNearestPathPointByPlayerId[arg1] < 0x21D)) ||
             ((gNearestPathPointByPlayerId[arg1] >= 0x230) && (gNearestPathPointByPlayerId[arg1] < 0x23A)) ||
             ((gNearestPathPointByPlayerId[arg1] >= 0x24C) && (gNearestPathPointByPlayerId[arg1] < 0x256)) ||
-            ((gNearestPathPointByPlayerId[arg1] >= 0x288) && (gNearestPathPointByPlayerId[arg1] < 0x269)) ||
+            // Vanilla also tested (>= 0x288 && < 0x269), an impossible range
+            // (present on retail N64 too): that lamp stretch never glowed.
             ((gNearestPathPointByPlayerId[arg1] >= 0x274) &&
              (gNearestPathPointByPlayerId[arg1] < 0x27E))) { // under a lamp
             change_player_color_effect_rgb(player, arg1, COLOR_LIGHT, 0.3f);
