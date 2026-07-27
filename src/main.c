@@ -458,7 +458,7 @@ void end_master_display_list(void) {
 
 // clear_frame_buffer from SM64, with a few edits
 //! @todo Why did void* work for matching
-void* clear_framebuffer(s32 color) {
+void clear_framebuffer(s32 color) {
     gDPPipeSync(gDisplayListHead++);
 
     gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);

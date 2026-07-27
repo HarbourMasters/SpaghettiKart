@@ -77,7 +77,7 @@ void dispatch_audio_sptask(struct SPTask*);
 void exec_display_list(struct SPTask*);
 void init_rcp(void);
 void end_master_display_list(void);
-void* clear_framebuffer(s32);
+void clear_framebuffer(s32);
 void rendering_init(void);
 void config_gfx_pool(void);
 void display_and_vsync(void);

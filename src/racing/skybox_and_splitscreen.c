@@ -257,7 +257,7 @@ UNUSED void func_802A40D4(void) {
 UNUSED void func_802A40DC(void) {
 }
 
-UNUSED s32 set_viewport2(void) {
+UNUSED void set_viewport2(void) {
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gScreenOneCtx->viewport));
     gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++,
@@ -623,7 +623,7 @@ void render_screens(ScreenContext* screen, s32 mode, s32 someId, s32 playerId) {
     s32 screenId = screen - gScreenContexts;
 
     if (NULL == camera) {
-        printf("[skybox_and_splitscreen.c] Skipping rendering for screen %d. This viewport has no camera\n", screen - gScreenContexts);
+        printf("[skybox_and_splitscreen.c] Skipping rendering for screen %ld. This viewport has no camera\n", (long)(screen - gScreenContexts));
         return;
     }
 
