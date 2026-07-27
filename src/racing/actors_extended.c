@@ -438,7 +438,9 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
             if (parent->firePressed > 0.0f) { // Fires a shell and resets firePressed to zero
                 if (parent->shellIndices[0] > 0.0f) {
                     shell = (struct ShellActor*) GET_ACTOR((s16) parent->shellIndices[0]);
-                    if ((shell->rotAngle < 0x38E) || (shell->rotAngle >= -0x38D)) {
+                    // Original gate ((rotAngle < 0x38E) || (rotAngle >= -0x38D)) is
+                    // always true for an s16, so the shell always fires.
+                    {
                         someVelocity[0] = 0;
                         someVelocity[1] = 0;
                         someVelocity[2] = 8;
@@ -464,7 +466,9 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                 }
                 if (parent->shellIndices[1] > 0.0f) {
                     shell = (struct ShellActor*) GET_ACTOR((s16) parent->shellIndices[1]);
-                    if ((shell->rotAngle < 0xAA1) || (shell->rotAngle >= 0x38F)) {
+                    // Original gate ((rotAngle < 0xAA1) || (rotAngle >= 0x38F)) is
+                    // always true for an s16, so the shell always fires.
+                    {
                         someVelocity[0] = 0;
                         someVelocity[1] = 0;
                         someVelocity[2] = 8;
@@ -490,7 +494,9 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                 }
                 if (parent->shellIndices[2] > 0.0f) {
                     shell = (struct ShellActor*) GET_ACTOR((s16) parent->shellIndices[2]);
-                    if ((shell->rotAngle < -0x38E) || (shell->rotAngle >= -0x71B)) {
+                    // Original gate ((rotAngle < -0x38E) || (rotAngle >= -0x71B)) is
+                    // always true for an s16, so the shell always fires.
+                    {
                         someVelocity[0] = 0;
                         someVelocity[1] = 0;
                         someVelocity[2] = 8;
