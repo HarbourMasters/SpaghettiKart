@@ -36,55 +36,57 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 # ---------------------------------------------------------------------------
 # App icon.
 #
-# Preferred path (Xcode 26+): compile the Icon Composer package
-# (cmake/macos/SpaghettiKartIcon.icon) with actool at configure time. This
-# produces:
-#   - Assets.car             : compiled asset catalog with the Liquid Glass icon,
-#                              used on macOS 26 (Tahoe) and later via CFBundleIconName
-#                              ("SpaghettiKartIcon" — must match the .icon basename).
-#   - SpaghettiKartIcon.icns : a flattened fallback rendered by actool, renamed to
-#                              SpaghettiKart.icns to match CFBundleIconFile, used by
-#                              macOS versions that predate Liquid Glass.
+# The repo ships the compiled icon artifacts (same approach as other ports that
+# ship a prebuilt Assets.car), so no special Xcode is needed at build time:
+#   - Assets.car          : compiled asset catalog with the layered Liquid Glass
+#                           icon, used on macOS 26+ via CFBundleIconName
+#                           ("SpaghettiKartIcon").
+#   - SpaghettiKart.icns  : flattened icon for macOS versions before 26, via
+#                           CFBundleIconFile.
+# Both are built from cmake/macos/SpaghettiKartIcon.icon (Icon Composer package;
+# the ship-kart art from icon.png with the subject separated from the background
+# so the system can render the glass depth).
 #
-# Fallback path (older Xcode without .icon support): generate the flat
-# SpaghettiKart.icns from icon.png with sips/iconutil as before, and strip
-# CFBundleIconName from the bundled Info.plist after the build so macOS 26
-# doesn't look for an asset catalog that isn't there.
+# Staleness guard: if icon.png ever changes without the icon artifacts being
+# regenerated, the build detects it via the source hash stamp and falls back to
+# generating a flat icns from the CURRENT icon.png with sips/iconutil, so an
+# outdated icon can never ship and updating the logo requires no macOS work.
+#
+# To regenerate after a logo change (needs a Mac with Xcode 26+):
+#   1. Recreate the cut-out art layer and update SpaghettiKartIcon.icon in
+#      Apple's Icon Composer.
+#   2. xcrun actool cmake/macos/SpaghettiKartIcon.icon --compile /tmp/iconout \
+#        --app-icon SpaghettiKartIcon --output-partial-info-plist /tmp/iconout/p.plist \
+#        --platform macosx --target-device mac --minimum-deployment-target 11.0
+#   3. cp /tmp/iconout/Assets.car cmake/macos/Assets.car
+#      cp /tmp/iconout/SpaghettiKartIcon.icns cmake/macos/SpaghettiKart.icns
+#   4. shasum -a 256 icon.png > cmake/macos/SpaghettiKartIcon.icon.source-sha256
 # ---------------------------------------------------------------------------
-set(ICON_COMPOSER_SRC ${MACOS_DIR}/SpaghettiKartIcon.icon)
-set(ICON_COMPILE_DIR ${CMAKE_BINARY_DIR}/macosx/AppIconAssets)
+set(ICON_SOURCE_STAMP ${MACOS_DIR}/SpaghettiKartIcon.icon.source-sha256)
+set(ICON_PREBUILT_CAR ${MACOS_DIR}/Assets.car)
+set(ICON_PREBUILT_ICNS ${MACOS_DIR}/SpaghettiKart.icns)
 set(ICNS_FILE ${CMAKE_BINARY_DIR}/macosx/SpaghettiKart.icns)
+file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/macosx)
 
-# CMAKE_OSX_DEPLOYMENT_TARGET can be empty here (the project's set(... CACHE)
-# doesn't override a pre-existing empty cache entry); an empty value would eat
-# actool's argument parsing, so fall back explicitly.
-if(CMAKE_OSX_DEPLOYMENT_TARGET)
-    set(ICON_MIN_TARGET ${CMAKE_OSX_DEPLOYMENT_TARGET})
-else()
-    set(ICON_MIN_TARGET "11.0")
+set(ICON_SOURCE_FRESH FALSE)
+if(EXISTS ${ICON_SOURCE_STAMP} AND EXISTS ${ICON_PREBUILT_CAR} AND EXISTS ${ICON_PREBUILT_ICNS})
+    file(SHA256 ${CMAKE_SOURCE_DIR}/icon.png ICON_PNG_HASH)
+    file(READ ${ICON_SOURCE_STAMP} ICON_STAMP_HASH)
+    string(STRIP "${ICON_STAMP_HASH}" ICON_STAMP_HASH)
+    if(ICON_PNG_HASH STREQUAL ICON_STAMP_HASH)
+        set(ICON_SOURCE_FRESH TRUE)
+    else()
+        message(STATUS "App icon: icon.png changed since the icon artifacts were made; using a flat icon from the current icon.png")
+    endif()
 endif()
 
-file(MAKE_DIRECTORY ${ICON_COMPILE_DIR})
-execute_process(
-    COMMAND xcrun actool ${ICON_COMPOSER_SRC}
-            --compile ${ICON_COMPILE_DIR}
-            --app-icon SpaghettiKartIcon
-            --output-partial-info-plist ${ICON_COMPILE_DIR}/icon-partial-info.plist
-            --platform macosx
-            --target-device mac
-            --minimum-deployment-target ${ICON_MIN_TARGET}
-    RESULT_VARIABLE ACTOOL_RESULT
-    OUTPUT_QUIET ERROR_QUIET
-)
-
-if(ACTOOL_RESULT EQUAL 0 AND EXISTS ${ICON_COMPILE_DIR}/Assets.car)
-    message(STATUS "App icon: Liquid Glass (actool) + flattened icns fallback")
-    file(COPY_FILE ${ICON_COMPILE_DIR}/SpaghettiKartIcon.icns ${ICNS_FILE})
+if(ICON_SOURCE_FRESH)
+    message(STATUS "App icon: prebuilt Liquid Glass catalog + flattened icns fallback")
+    file(COPY_FILE ${ICON_PREBUILT_ICNS} ${ICNS_FILE})
+    file(COPY_FILE ${ICON_PREBUILT_CAR} ${CMAKE_BINARY_DIR}/macosx/Assets.car)
     set(ICON_BUNDLE_FILES ${CMAKE_BINARY_DIR}/macosx/Assets.car ${ICNS_FILE})
-    file(COPY_FILE ${ICON_COMPILE_DIR}/Assets.car ${CMAKE_BINARY_DIR}/macosx/Assets.car)
     set(SPAGHETTI_ICON_HAS_GLASS TRUE)
 else()
-    message(STATUS "App icon: actool unavailable or lacks .icon support; flat icns from icon.png")
     set(ICON_SRC ${CMAKE_SOURCE_DIR}/icon.png)
     set(ICONSET_DIR ${CMAKE_BINARY_DIR}/macosx/SpaghettiKart.iconset)
     file(MAKE_DIRECTORY ${ICONSET_DIR})
