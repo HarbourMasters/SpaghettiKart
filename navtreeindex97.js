@@ -55,7 +55,7 @@ var NAVTREEINDEX97 =
 "trackoverview.html#game-test":[14,0,0,5,0],
 "trackoverview.html#materials-1":[14,0,0,6],
 "trackoverview.html#mods-path":[14,0,0,4,0],
-"trackoverview.html#name-1":[14,0,0,4,1],
+"trackoverview.html#name":[14,0,0,4,1],
 "trackoverview.html#packaging-1":[14,0,0,5],
 "trackoverview.html#path-point-alignment":[14,0,0,2,0,0],
 "trackoverview.html#prepare-for-export":[14,0,0,3],
