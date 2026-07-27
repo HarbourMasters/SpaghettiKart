@@ -238,7 +238,7 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
     MenuItem* sp38;
     s32 res;
     struct_8018EE10_entry* sp30;
-    bool tempVar; // cursorWasMoved or communicateStoredAction
+    s32 tempVar; // cursorWasMoved or communicateStoredAction; also holds PFS_* status codes
     UNUSED u32 pad;
 
     btnAndStick = (controller->buttonPressed | controller->stickPressed);
