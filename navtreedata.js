@@ -141,8 +141,8 @@ var NAVTREE =
     ] ],
     [ "Texture Pack", "md_docs_2textures-pack.html", [
       [ "Example:", "md_docs_2textures-pack.html#example-1", null ],
-      [ "Tools To Help", "md_docs_2textures-pack.html#tools-to-help-1", null ],
-      [ "Future plans", "md_docs_2textures-pack.html#future-plans-2", null ]
+      [ "Tools To Help", "md_docs_2textures-pack.html#tools-to-help-2", null ],
+      [ "Future plans", "md_docs_2textures-pack.html#future-plans-3", null ]
     ] ],
     [ "Returning Tracks", "md_docs_2track__returns.html", [
       [ "Specifically Used to help find music and to see how courses are adapted in the future including refer...", "md_docs_2track__returns.html#specifically-used-to-help-find-music-and-to-see-how-courses-are-adapted-in-the-future-including-references-too", null ],
@@ -216,7 +216,7 @@ var NAVTREEINDEX =
 "classTrackEditor_1_1LightObject.html#a10bd6b8249511cf8c15811c0653b8ac0",
 "classpfd_1_1internal_1_1executor.html#a2730c595c2994a227d46aa6b74b95987",
 "code__800029B0_8h.html#a400480f631a30b3b2e03db7e291f73d1",
-"code__80005FD0_8c.html#a61da9c57e00b21e4a075bf9d41b932a1",
+"code__80005FD0_8c.html#a61c267f79fb996461d6fdd7d65685dd2",
 "code__80005FD0_8c.html#acf2f8f122ed1b45482706d70656f6962",
 "code__80005FD0_8h.html#a6a3987fc720b4d6bdb1566d092553bcaa37ffa31ac2dd170065878993d3d3477c",
 "code__80057C60_8c.html#a09166dfe40fd134c26f86630266ab4f7",

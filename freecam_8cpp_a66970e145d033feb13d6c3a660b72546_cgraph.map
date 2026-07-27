@@ -1,23 +1,25 @@
 <map id="freecam_loop" name="freecam_loop">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,157,116,183"/>
-<area shape="rect" id="Node000002" href="$freecam__engine_8c.html#a8274a8d234eadb39b99538fbf0f6cdc6" title=" " alt="" coords="169,43,367,83"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,155,113,124,163,93,178,86,181,91,165,98,116,129,78,159"/>
-<area shape="rect" id="Node000005" href="$freecam_8cpp.html#ab6fa6cecb51b8b290060c8114d0a4a64" title=" " alt="" coords="164,108,372,133"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="112,155,163,142,198,134,199,139,165,147,113,160"/>
-<area shape="rect" id="Node000007" href="$freecam_8cpp.html#a307860332ed4cd3e4e1d65e679ef471d" title=" " alt="" coords="172,157,364,183"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="116,167,158,167,158,173,116,173"/>
-<area shape="rect" id="Node000009" href="$freecam__engine_8c.html#a8ffbf8b3b6ee75e8dd673a5db124085a" title=" " alt="" coords="183,207,353,232"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="113,180,165,193,199,201,198,206,163,198,112,185"/>
-<area shape="rect" id="Node000011" href="$freecam__engine_8c.html#a19cee9a005133fdcc37c73d257b9eafe" title=" " alt="" coords="215,256,321,281"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="78,181,116,212,165,242,202,255,200,260,163,247,112,216,74,185"/>
-<area shape="rect" id="Node000003" href="$cosf_8c.html#a7b126b2344591e649c21c9ab0b8adb40" title=" " alt="" coords="465,5,514,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="365,41,450,23,451,28,366,46"/>
-<area shape="rect" id="Node000004" href="$sinf_8c.html#a8a7dc2a88e109f4e15b661247665709a" title=" " alt="" coords="466,55,513,80"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="368,62,452,64,452,69,368,68"/>
-<area shape="rect" id="Node000006" href="$freecam_8cpp.html#a62838d2831b41fe6a50a946aa05d108f" title=" " alt="" coords="420,108,559,133"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="372,118,407,118,407,123,372,123"/>
-<area shape="rect" id="Node000008" href="$math__util_8h.html#a8fb5c0b9b43a108724b355136d29d2f9" title=" " alt="" coords="464,157,515,183"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="365,167,450,167,450,173,365,173"/>
-<area shape="rect" id="Node000010" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="463,207,515,232"/>
-<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="354,217,450,217,450,222,354,222"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,219,116,244"/>
+<area shape="rect" id="Node000002" href="$freecam__engine_8c.html#a8274a8d234eadb39b99538fbf0f6cdc6" title=" " alt="" coords="169,47,367,87"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,216,229,94,233,98,80,221"/>
+<area shape="rect" id="Node000005" href="$freecam_8cpp.html#ab6fa6cecb51b8b290060c8114d0a4a64" title=" " alt="" coords="164,169,372,195"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="112,216,163,203,198,195,199,200,165,209,113,221"/>
+<area shape="rect" id="Node000008" href="$freecam_8cpp.html#a307860332ed4cd3e4e1d65e679ef471d" title=" " alt="" coords="172,219,364,244"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="116,229,158,229,158,234,116,234"/>
+<area shape="rect" id="Node000010" href="$freecam__engine_8c.html#a8ffbf8b3b6ee75e8dd673a5db124085a" title=" " alt="" coords="183,268,353,293"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="113,242,165,254,199,262,198,267,163,259,112,247"/>
+<area shape="rect" id="Node000012" href="$freecam__engine_8c.html#a19cee9a005133fdcc37c73d257b9eafe" title=" " alt="" coords="215,317,321,343"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="78,242,116,273,165,304,202,316,200,321,163,308,112,278,74,247"/>
+<area shape="rect" id="Node000003" href="$cosf_8c.html#a7b126b2344591e649c21c9ab0b8adb40" title=" " alt="" coords="487,5,536,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="367,45,473,23,474,28,368,50"/>
+<area shape="rect" id="Node000004" href="$sinf_8c.html#a8a7dc2a88e109f4e15b661247665709a" title=" " alt="" coords="488,55,535,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="368,65,474,65,474,70,368,70"/>
+<area shape="rect" id="Node000006" href="$FrameInterpolation_8cpp.html#a4c86e5d5fc84cc004fe2059cea4b3068" title=" " alt="" coords="420,105,603,145"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="322,167,412,145,414,150,323,172"/>
+<area shape="rect" id="Node000007" href="$freecam_8cpp.html#a62838d2831b41fe6a50a946aa05d108f" title=" " alt="" coords="442,169,581,195"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="372,179,428,179,428,185,372,185"/>
+<area shape="rect" id="Node000009" href="$math__util_8h.html#a8fb5c0b9b43a108724b355136d29d2f9" title=" " alt="" coords="486,219,537,244"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="364,229,472,229,472,234,364,234"/>
+<area shape="rect" id="Node000011" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="485,268,537,293"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="354,278,472,278,472,283,354,283"/>
 </map>
