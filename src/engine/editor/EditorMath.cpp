@@ -65,13 +65,13 @@ FVector ScreenRayTrace() {
     guPerspectiveF(perspMtx, &perspNorm, camera->fieldOfView, OTRGetAspectRatio(), CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
 
     Mat4 inversePerspMtx;
-    if (InverseMatrix((float*)&perspMtx, (float*)&inversePerspMtx) != 2) {
+    if (InverseMatrix((float*)&perspMtx, (float*)&inversePerspMtx)) {
         FVector4 rayEye = MultiplyMatrixVector(inversePerspMtx, (float*)&rayClip.x);
 
         Mat4 lookAtMtx;
         guLookAtF(lookAtMtx, camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
         Mat4 inverseViewMtx;
-        if (InverseMatrix((float*)&lookAtMtx, (float*)&inverseViewMtx[0][0]) != 2) {
+        if (InverseMatrix((float*)&lookAtMtx, (float*)&inverseViewMtx[0][0])) {
             rayEye.w = 0;
             FVector4 invRayWor = MultiplyMatrixVector(inverseViewMtx, (float*)&rayEye.x);
 
@@ -206,7 +206,7 @@ FVector TransformVecDirection(const FVector& dir, const float mtx[4][4]) {
 Ray RayToLocalSpace(MtxF mtx, const Ray& ray) {
     MtxF inverse;
 
-    if (InverseMatrix((float*)&mtx, (float*)&inverse) != 2) {
+    if (InverseMatrix((float*)&mtx, (float*)&inverse)) {
         FVector localRayOrigin = TransformVecByMatrix(ray.Origin, (float(*)[4])&inverse);
         FVector localRayDir = TransformVecDirection(ray.Direction, (float(*)[4])&inverse);
         return Ray{localRayOrigin, localRayDir.Normalize()};
