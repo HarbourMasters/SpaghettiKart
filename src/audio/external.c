@@ -1966,7 +1966,6 @@ void func_800C6108(u8 playerId) {
     D_800E9E64[playerId] = (player->unk_098 / D_800E9DC4[playerId]) + D_800E9DD4[playerId];
     if ((player->unk_098 < 1800.0f) && ((player->kartProps & THROTTLE) != THROTTLE)) {
         D_800E9E64[playerId] = (player->unk_098 / D_800E9F7C[playerId].unk_34) + D_800E9F7C[playerId].unk_28;
-        if (D_800E9EC4) {} // ?
     }
     if (player->speed > 4.75f) {
         if (D_800E9EB4[playerId] < (D_800E9F7C[playerId].unk_18 + 0.4f)) {
