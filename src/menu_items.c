@@ -2847,7 +2847,11 @@ void func_80095574(void) {
     if (gMenuTimingCounter == DEBUG_MENU_DEBUG_MODE) {
         play_sound2(SOUND_INTRO_WELCOME);
     }
-    if (gMenuTimingCounter >= 0x12D) {
+    // Don't arm the demo reel while another fade is in flight: pressing start
+    // in the last moments before the attract timeout let this overwrite the
+    // press-start fade's gMenuFadeType mid-fade, hijacking it into the demo
+    // with the menu music already faded out. (Vanilla bug.)
+    if (gMenuTimingCounter >= 0x12D && is_screen_being_faded() == 0) {
         func_8009E230();
         func_800CA0A0();
     }
