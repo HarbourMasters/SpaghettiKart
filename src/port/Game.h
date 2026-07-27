@@ -35,6 +35,7 @@ extern Registry<ActorInfo, const SpawnParams&> gActorRegistry;
 extern Registry<ItemInfo> gItemRegistry;
 extern DataRegistry<RandomItemTable> gItemTableRegistry;
 World* GetWorld(void); // Retrieve the world instance
+void CM_RequestReset(void); // Queue a game reset; applied at the top of the next game frame
 #endif
 // NOLINTBEGIN(readability-identifier-naming)
 
@@ -229,12 +230,11 @@ void* GetCup();
 void CM_RunGarbageCollector(void);
 void CM_ResetAudio(void);
 
-// Add print formatting check attribute
+NORETURN void CM_ThrowRuntimeError(const char* fmt, ...)
 #if defined(__GNUC__) || defined(__clang__)
-__attribute__((format(printf, 1, 2)))
+    __attribute__((format(printf, 1, 2)))
 #endif
-
-NORETURN void CM_ThrowRuntimeError(const char* fmt, ...);
+    ;
 
 // NOLINTEND(readability-identifier-naming)
 

@@ -1,6 +1,6 @@
 #include "Boos.h"
-#include "World.h"
-#include "CoreMath.h"
+#include "engine/World.h"
+#include "engine/CoreMath.h"
 #include "port/interpolation/FrameInterpolation.h"
 
 extern "C" {
@@ -11,16 +11,16 @@ extern "C" {
 #include "assets/models/common_data.h"
 #include "assets/textures/boo_frames.h"
 #include "assets/textures/other_textures.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "math_util_2.h"
 #include "code_80086E70.h"
 #include "code_80057C60.h"
 #include "code_800029B0.h"
 #include "code_80005FD0.h"
 #include "menus.h"
-#include "race_logic.h"
-#include "external.h"
-#include "some_data.h"
+#include "racing/race_logic.h"
+#include "audio/external.h"
+#include "textures/some_data.h"
 }
 
 size_t OBoos::_count = 0;

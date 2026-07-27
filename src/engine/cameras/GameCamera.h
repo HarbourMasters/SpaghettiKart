@@ -1,7 +1,7 @@
 #pragma once
 
 #include <libultraship.h>
-#include "CoreMath.h"
+#include "engine/CoreMath.h"
 
 extern "C" {
 #include "camera.h"

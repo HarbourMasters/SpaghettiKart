@@ -9,14 +9,14 @@
 extern "C" {
 #include "main.h"
 #include "memory.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "courses/harbour/track.h"
 #include "courses/harbour/powered.h"
 #include "courses/harbour/ship2_model.h"
 #include "courses/harbour/ship3_model.h"
-#include "collision.h"
+#include "racing/collision.h"
 #include "menu_items.h"
-#include "external.h"
+#include "audio/external.h"
 #include "menus.h"
 extern Gfx ship1_spag1_mesh[];
 }

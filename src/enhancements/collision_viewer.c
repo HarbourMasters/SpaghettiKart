@@ -9,7 +9,7 @@
 #include "engine/Matrix.h"
 
 #include "collision_viewer.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 
 #include "assets/textures/other_textures.h"
 #include "assets/models/common_data.h"

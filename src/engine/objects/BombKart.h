@@ -4,7 +4,7 @@
 #include "engine/registry/RegisterContent.h"
 #include "engine/objects/Object.h"
 
-#include "World.h"
+#include "engine/World.h"
 
 extern "C" {
 #include "common_structs.h"

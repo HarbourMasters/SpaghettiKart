@@ -1,4 +1,4 @@
-#include <actors.h>
+#include <racing/actors.h>
 #include <libultra/gbi.h>
 #include <main.h>
 #include <assets/models/common_data.h>

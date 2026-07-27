@@ -1,5 +1,5 @@
-#include "math_util.h"
-#include <actors.h>
+#include "racing/math_util.h"
+#include <racing/actors.h>
 #include <code_800029B0.h>
 #include <main.h>
 #include <assets/models/tracks/choco_mountain/choco_mountain_data.h>

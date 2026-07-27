@@ -94,14 +94,9 @@ jobs:
             -v "${{ github.workspace }}:/project" \
             spaghettikart-builder:latest \
             bash -c "
-              cp vcpkg.json /tmp/vcpkg.json && \
-              cd /tmp && \
-              \${VCPKG_ROOT}/vcpkg install --triplet x64-linux && \
-              cd /project && \
               cmake -B build -G Ninja \
                 -DCMAKE_BUILD_TYPE=${{ matrix.config }} \
-                -DCMAKE_TOOLCHAIN_FILE=/opt/vcpkg/scripts/buildsystems/vcpkg.cmake \
-                -DVCPKG_TARGET_TRIPLET=x64-linux && \
+                -DENABLE_VCPKG=ON && \
               cmake --build build --parallel && \
               make -C torch type=release -j\$(nproc) && \
               torch/cmake-build-release/torch pack assets build/spaghetti.o2r o2r

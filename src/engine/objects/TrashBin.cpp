@@ -1,7 +1,7 @@
 #include <libultraship.h>
 #include <libultra/gbi.h>
 #include "TrashBin.h"
-#include "World.h"
+#include "engine/World.h"
 #include "port/Game.h"
 #include "port/interpolation/FrameInterpolation.h"
 
@@ -12,7 +12,7 @@ extern "C" {
 #include "update_objects.h"
 #include "assets/models/tracks/banshee_boardwalk/banshee_boardwalk_data.h"
 #include "assets/models/common_data.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "math_util_2.h"
 #include "code_80086E70.h"
 #include "code_80057C60.h"

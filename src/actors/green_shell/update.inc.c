@@ -1,8 +1,8 @@
-#include <actors.h>
+#include <racing/actors.h>
 #include <main.h>
 #include <code_800029B0.h>
 #include <defines.h>
-#include "collision.h"
+#include "racing/collision.h"
 #include "port/Game.h"
 
 /**

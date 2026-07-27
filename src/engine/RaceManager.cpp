@@ -8,7 +8,7 @@
 #include "engine/RandomItemTable.h"
 
 extern "C" {
-#include "render_courses.h"
+#include "racing/render_courses.h"
 }
 
 RaceManager::RaceManager(World& world) : WorldContext(world) {

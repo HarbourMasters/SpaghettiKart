@@ -15,7 +15,7 @@
 #include "port/Game.h"
 #include "libultraship/bridge/resourcebridge.h"
 #include <stdio.h>
-#include "RaceManager.h"
+#include "engine/RaceManager.h"
 
 #pragma intrinsic(sqrtf)
 

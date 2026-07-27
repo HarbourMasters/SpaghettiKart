@@ -1,8 +1,8 @@
-#include <actors.h>
+#include <racing/actors.h>
 #include <waypoints.h>
 #include <defines.h>
 #include <main.h>
-#include <actors_extended.h>
+#include <racing/actors_extended.h>
 #include <code_800029B0.h>
 #include "port/Game.h"
 

@@ -2,7 +2,7 @@
 #include <libultra/gbi.h>
 #include "Seagull.h"
 #include <vector>
-#include "World.h"
+#include "engine/World.h"
 
 #include "port/Game.h"
 #include "port/interpolation/FrameInterpolation.h"
@@ -14,14 +14,14 @@ extern "C" {
 #include "camera.h"
 #include "update_objects.h"
 #include "render_objects.h"
-#include "actors.h"
+#include "racing/actors.h"
 #include "code_80057C60.h"
 #include "code_80086E70.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "math_util_2.h"
 #include "code_80005FD0.h"
-#include "some_data.h"
-#include "ceremony_and_credits.h"
+#include "textures/some_data.h"
+#include "ending/ceremony_and_credits.h"
 #include "assets/models/common_data.h"
 #include "course_offsets.h"
 extern SplineData D_800E6034;

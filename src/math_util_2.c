@@ -3,11 +3,11 @@
 #include <common_structs.h>
 #include "math_util_2.h"
 #include "main.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "objects.h"
 
 #include "memory.h"
-#include "collision.h"
+#include "racing/collision.h"
 #include "render_player.h"
 #include "code_80057C60.h"
 #include "defines.h"

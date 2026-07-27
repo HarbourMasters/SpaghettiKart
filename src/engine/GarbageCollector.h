@@ -2,7 +2,7 @@
 
 #include <libultraship.h>
 #include <vector>
-#include "Object.h"
+#include "objects/Object.h"
 #include "World.h"
 
 

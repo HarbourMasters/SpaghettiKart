@@ -3,7 +3,7 @@
 #include <libultraship.h>
 #include "engine/registry/RegisterContent.h"
 #include "engine/Actor.h"
-#include "CoreMath.h"
+#include "engine/CoreMath.h"
 #include "engine/SpawnParams.h"
 #include "engine/CoreMath.h"
 

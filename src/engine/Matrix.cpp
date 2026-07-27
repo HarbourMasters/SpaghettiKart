@@ -5,7 +5,7 @@
 
 extern "C" {
 #include "common_structs.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "math_util_2.h"
 }
 

@@ -1,4 +1,4 @@
-#include <actors.h>
+#include <racing/actors.h>
 #include <code_800029B0.h>
 #include <libultra/gbi.h>
 #include <main.h>

@@ -1,10 +1,10 @@
 #include <libultraship.h>
 #include <libultra/gbi.h>
-#include "CoreMath.h"
+#include "engine/CoreMath.h"
 
 #include "Finishline.h"
 #include "engine/Actor.h"
-#include "World.h"
+#include "engine/World.h"
 #include "assets/models/common_data.h"
 #include "src/port/Game.h"
 #include "port/interpolation/FrameInterpolation.h"
@@ -12,9 +12,9 @@
 extern "C" {
 #include "macros.h"
 #include "common_structs.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "actor_types.h"
-#include "actors.h"
+#include "racing/actors.h"
 extern f32 gKartHopInitialVelocityTable[];
 extern f32 gKartGravityTable[];
 }

@@ -2,7 +2,7 @@
 #define ENGINE_TRACK_H
 
 #include <libultraship/libultraship.h>
-#include "CoreMath.h"
+#include "engine/CoreMath.h"
 
 #ifdef __cplusplus
 #include "engine/SpawnParams.h"
@@ -17,7 +17,7 @@ extern "C" {
 #include "camera.h"
 #include "data/some_data.h"
 #include "bomb_kart.h"
-#include "path_spawn_metadata.h"
+#include "data/path_spawn_metadata.h"
 #include "waypoints.h"
 #include "sounds.h"
 #include "common_structs.h"

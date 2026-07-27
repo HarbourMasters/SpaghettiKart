@@ -12,11 +12,11 @@
 #include "camera.h"
 #include "code_80057C60.h"
 #include "main.h"
-#include "actors.h"
+#include "racing/actors.h"
 #include "code_800029B0.h"
 #include "racing/memory.h"
 #include <defines.h>
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "math_util_2.h"
 #include "code_80005FD0.h"
 #include "render_player.h"
@@ -26,7 +26,7 @@
 #include "code_80086E70.h"
 #include "effects.h"
 #include <assets/models/data_800E8700.h>
-#include "skybox_and_splitscreen.h"
+#include "racing/skybox_and_splitscreen.h"
 #include <assets/models/common_data.h>
 #include "audio/external.h"
 #include "objects.h"

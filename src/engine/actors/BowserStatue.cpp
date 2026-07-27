@@ -5,7 +5,7 @@
 #include "port/interpolation/FrameInterpolation.h"
 extern "C" {
 #include "common_structs.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "main.h"
 #include "assets/models/tracks/bowsers_castle/bowsers_castle_data.h"
 #include "assets/models/tracks/bowsers_castle/bowsers_castle_displaylists.h"

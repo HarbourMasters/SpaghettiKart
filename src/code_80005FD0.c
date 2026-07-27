@@ -6,17 +6,17 @@
 #include <align_asset_macro.h>
 
 #include "code_80005FD0.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "code_800029B0.h"
 #include "racing/memory.h"
 #include "waypoints.h"
 #include "camera.h"
-#include "actors.h"
-#include "actors_extended.h"
+#include "racing/actors.h"
+#include "racing/actors_extended.h"
 #include "render_player.h"
 #include "player_controller.h"
 #include "update_objects.h"
-#include "collision.h"
+#include "racing/collision.h"
 #include <actor_types.h>
 #include "vehicles.h"
 #include "render_objects.h"

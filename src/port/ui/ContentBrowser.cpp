@@ -3,7 +3,7 @@
 #include "UIWidgets.h"
 #include "ship/Context.h"
 #include "port/Engine.h"
-#include "SpawnParams.h"
+#include "engine/SpawnParams.h"
 
 #include <imgui.h>
 #include <map>
@@ -14,19 +14,19 @@
 #include "spdlog/formatter.h"
 #include <common_structs.h>
 #include <defines.h>
-#include "CoreMath.h"
-#include "World.h"
-#include "AllActors.h"
+#include "engine/CoreMath.h"
+#include "engine/World.h"
+#include "engine/AllActors.h"
 #include "port/Game.h"
 #include "src/engine/editor/SceneManager.h"
 #include "engine/TrackBrowser.h"
 
-#include "World.h"
+#include "engine/World.h"
 
 extern "C" {
 #include "common_structs.h"
-#include "actors.h"
-#include "collision.h"
+#include "racing/actors.h"
+#include "racing/collision.h"
 }
 
 namespace TrackEditor {
