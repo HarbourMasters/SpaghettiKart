@@ -1331,7 +1331,9 @@ void func_8008A1D0(s32 objectIndex, s32 cameraId, s32 arg2, s32 arg3) {
 // This function is really cool, it tests the value of an unitialized local variable
 UNUSED void func_8008A2CC(s32 objectIndex, s32 cameraId, u16 arg2) {
     Camera* camera;
-    u32 no_init;
+    // Deliberately(?) read uninitialized on the N64 (hence the decomp name);
+    // fixed at zero so the small-angle branch is taken deterministically.
+    u32 no_init = 0;
     u16 var_a2;
 
     camera = &camera1[cameraId];

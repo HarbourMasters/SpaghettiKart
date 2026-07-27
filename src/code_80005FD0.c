@@ -2988,6 +2988,11 @@ void set_bomb_kart_spawn_positions(void) {
     BombKartSpawn* bombKartSpawn;
 
     for (var_s3 = 0; var_s3 < NUM_BOMB_KARTS_VERSUS; var_s3++) {
+        // Dead code: the only caller is commented out and the original
+        // gBombKartSpawns table no longer exists (bomb karts moved to the
+        // C++ engine). NULL keeps the pointer initialized until this is
+        // either removed or rewired.
+        bombKartSpawn = NULL;
         // bombKartSpawn = &gBombKartSpawns[gCurrentCourseId][var_s3];
         if (IsYoshiValley()) {
             startingXPos = bombKartSpawn->startingXPos;
