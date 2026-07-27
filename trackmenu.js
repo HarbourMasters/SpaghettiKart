@@ -12,7 +12,7 @@ var trackmenu =
         [ "Prepare for export", "trackoverview.html#prepare-for-export", null ],
         [ "Export", "trackoverview.html#export-2", [
           [ "Mods Path", "trackoverview.html#mods-path", null ],
-          [ "Name", "trackoverview.html#name", null ]
+          [ "Name", "trackoverview.html#name-1", null ]
         ] ],
         [ "Packaging", "trackoverview.html#packaging-1", [
           [ "Game Test", "trackoverview.html#game-test", null ],
@@ -86,7 +86,7 @@ var trackmenu =
       [ "Import", "import.html#import", [
         [ "Launch the Game", "import.html#launch-the-game", [
           [ "Resource Name", "import.html#resource-name", null ],
-          [ "Name", "import.html#name-1", null ],
+          [ "Name", "import.html#name", null ],
           [ "Debug Name", "import.html#debug-name", null ],
           [ "Track Length", "import.html#track-length", null ]
         ] ],

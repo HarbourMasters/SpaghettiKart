@@ -84,7 +84,7 @@ var searchData=
   ['evaluate_5fcubic_5fspline_81',['evaluate_cubic_spline',['../ceremony__and__credits_8c.html#a53bc41b708fd9b7fb8e0b8c3a0ef32e3',1,'evaluate_cubic_spline(f32 arg0, Vec3f point, f32 *arg2, f32 controlPoints1[], f32 controlPoints2[], f32 controlPoints3[], f32 controlPoints4[]):&#160;ceremony_and_credits.c'],['../ceremony__and__credits_8h.html#aea05f618f158918d416b886c83d08c7d',1,'evaluate_cubic_spline(f32, Vec3f, f32 *, f32[], f32[], f32[], f32[]):&#160;ceremony_and_credits.c']]],
   ['evaluation_82',['evaluation',['../structdisabledInfo.html#a801386722981f5883efa4e8c09623b4f',1,'disabledInfo']]],
   ['example_3a_83',['Example:',['../md_docs_2custom-audio.html#example',1,'Example:'],['../md_docs_2textures-pack.html#example-1',1,'Example:']]],
-  ['examples_20for_20all_20characters_3a_84',['Examples for all characters:',['../characteroverview.html#examples-for-all-characters',1,'Examples for all characters:'],['../md_docs_2custom-characters.html#examples-for-all-characters-1',1,'Examples for all characters:']]],
+  ['examples_20for_20all_20characters_3a_84',['Examples for all characters:',['../md_docs_2custom-characters.html#examples-for-all-characters',1,'Examples for all characters:'],['../characteroverview.html#examples-for-all-characters-1',1,'Examples for all characters:']]],
   ['exception_5fcache_5ferror_85',['EXCEPTION_CACHE_ERROR',['../osInitialize_8c.html#a73decdcff42cf813e4f32cb79f561f4e',1,'osInitialize.c']]],
   ['exception_5fgeneral_86',['EXCEPTION_GENERAL',['../osInitialize_8c.html#ac3f701802ea091ac52d9d80840bb7cd0',1,'osInitialize.c']]],
   ['exception_5ftlb_5fmiss_87',['EXCEPTION_TLB_MISS',['../osInitialize_8c.html#a710667fb116fff9559086a26b8cfba09',1,'osInitialize.c']]],

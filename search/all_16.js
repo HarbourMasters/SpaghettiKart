@@ -401,7 +401,7 @@ var searchData=
   ['settext_398',['SetText',['../classAText.html#a4126b6c7023fd999cda64a4c72da05a3',1,'AText']]],
   ['settextmatrix_399',['SetTextMatrix',['../Matrix_8cpp.html#a9818099a1ee20606a7d622e744846366',1,'SetTextMatrix(Mat4 mf, f32 x, f32 y, f32 arg3, f32 arg4):&#160;Matrix.cpp'],['../Matrix_8h.html#ac228d3c5bc5c4fed9df85ba99cd24304',1,'SetTextMatrix(Mat4 mf, f32 arg1, f32 arg2, f32 arg3, f32 arg4):&#160;Matrix.cpp']]],
   ['setting_400',['setting',['../namespaceGameUI.html#a5029f49635f14cdb801f6018a936e5b4',1,'GameUI']]],
-  ['settings_401',['Settings',['../characteroverview.html#change-viewport-render-settings',1,'Change Viewport Render Settings'],['../md_docs_2custom-characters.html#change-viewport-render-settings-1',1,'Change Viewport Render Settings']]],
+  ['settings_401',['Settings',['../md_docs_2custom-characters.html#change-viewport-render-settings',1,'Change Viewport Render Settings'],['../characteroverview.html#change-viewport-render-settings-1',1,'Change Viewport Render Settings']]],
   ['settings_402',['settings',['../classpfd_1_1settings.html',1,'pfd::settings'],['../classpfd_1_1settings.html#a7190e52d512b1321acb78731a8cddf42',1,'pfd::settings::settings()']]],
   ['settrack_403',['SetTrack',['../classCup.html#a2df105b4e6b6478ff4beef1231ee6b64',1,'Cup']]],
   ['setup_404',['Setup',['../setup.html',1,'Setup'],['../export.html#setup',1,'Setup'],['../setup.html#setup-1',1,'Setup']]],
