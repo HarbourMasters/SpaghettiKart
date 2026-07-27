@@ -2545,21 +2545,21 @@ void set_particle_position_and_rotation(Player* player, UnkPlayerStruct258* arg1
     arg1->unk_010 = arg6;
 }
 
-s32 init_particle_player(UnkPlayerStruct258* arg0, s8 type, f32 arg2) {
+void init_particle_player(UnkPlayerStruct258* arg0, s8 type, f32 arg2) {
     arg0->isAlive = true;
     arg0->type = type;
     arg0->unk_01E = 0;
     arg0->scale = arg2;
 }
 
-s32 set_particle_colour(UnkPlayerStruct258* arg0, s32 arg1, s16 arg2) {
+void set_particle_colour(UnkPlayerStruct258* arg0, s32 arg1, s16 arg2) {
     arg0->red = (u8) (arg1 >> 16);
     arg0->green = (u8) (arg1 >> 8);
     arg0->blue = (u8) arg1;
     arg0->alpha = arg2;
 }
 
-s32 set_particle_colour_randomly_varried(UnkPlayerStruct258* arg0, s32 arg1, s16 arg2) {
+void set_particle_colour_randomly_varried(UnkPlayerStruct258* arg0, s32 arg1, s16 arg2) {
     s32 temp_v0;
     temp_v0 = random_int(0x30);
 
