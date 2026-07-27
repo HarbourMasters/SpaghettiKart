@@ -41,7 +41,7 @@ ACar::ACar(const SpawnParams& params) : AActor(params) {
             CarCounts[PathIndex].push_back(PathPoint);
             break;
         case SpawnMode::AUTO: // Automatically distribute cars based on a specific path point
-            printf("vehicle path size %d\n", gVehiclePathSize);
+            printf("vehicle path size %zu\n", gVehiclePathSize);
             PathPoint = GetVehiclePathPointDistributed(CarCounts[PathIndex], gVehiclePathSize);
             CarCounts[PathIndex].push_back(PathPoint);
             printf("train spawn path point: %d\n", PathPoint);

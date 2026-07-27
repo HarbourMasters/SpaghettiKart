@@ -333,5 +333,6 @@ void ContentBrowserWindow::AddActorContent(std::string search) {
             }
         }
         ImGui::End();
+        return nullptr;
     }
 }

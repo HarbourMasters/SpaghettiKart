@@ -288,6 +288,7 @@ s32 CM_GetCrossingOnTriggered(uintptr_t* crossing) {
     if (ptr) {
         return ptr->OnTriggered;
     }
+    return 0;
 }
 
 /**

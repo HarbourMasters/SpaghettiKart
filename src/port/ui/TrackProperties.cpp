@@ -389,15 +389,15 @@ namespace TrackEditor {
             RGB8ToFloat((u8*)&D_800DC610[i].l->l.dir, direction);
 
             // Edit the ambient RGB colour
-            ImGui::Text("Light %d - Ambient Colour", i + 1);
+            ImGui::Text("Light %zu - Ambient Colour", i + 1);
             ImGui::ColorEdit3(("Ambient Colour " + std::to_string(i)).c_str(), ambient); // Modify ambient colour
 
             // Edit the diffuse RGB colour
-            ImGui::Text("Light %d - Diffuse Colour", i + 1);
+            ImGui::Text("Light %zu - Diffuse Colour", i + 1);
             ImGui::ColorEdit3(("Diffuse Colour " + std::to_string(i)).c_str(), diffuse); // Modify diffuse colour
     
             // Edit the direction RGB colour (this could be represented as a direction vector)
-            ImGui::Text("Light %d - Direction", i + 1);
+            ImGui::Text("Light %zu - Direction", i + 1);
             ImGui::ColorEdit3(("Direction Colour " + std::to_string(i)).c_str(), direction); // Modify direction vector colour
 
             FloatToRGB8(ambient, (u8*)&D_800DC610[i].a.l.col);

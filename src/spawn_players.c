@@ -1325,7 +1325,7 @@ void spawn_multiplayer_cameras(u32 mode) {
         Vec3f spawn = {gPlayers[i].pos[0], gPlayers[i].pos[1], gPlayers[i].pos[2]};
         camera = CM_AddCamera(spawn, gPlayers[i].rotation[1], mode);
         if (!camera) {
-            CM_ThrowRuntimeError("[spawn_players] [spawn_multiplayer_cameras] NULL camera while attempting to create camera for player %d", i);
+            CM_ThrowRuntimeError("[spawn_players] [spawn_multiplayer_cameras] NULL camera while attempting to create camera for player %zu", i);
         }
         CM_AttachCamera(camera, i);
         gScreenContexts[i].camera = camera;
@@ -1336,7 +1336,7 @@ void spawn_multiplayer_cameras(u32 mode) {
         Vec3f spawn = {gPlayers[i].pos[0], gPlayers[i].pos[1], gPlayers[i].pos[2]};
         camera = CM_AddLookBehindCamera(spawn, gPlayers[i].rotation[1], mode);
         if (!camera) {
-            CM_ThrowRuntimeError("[spawn_players] [spawn_multiplayer_cameras] NULL camera while attempting to create LookBehind camera for player %d", i);
+            CM_ThrowRuntimeError("[spawn_players] [spawn_multiplayer_cameras] NULL camera while attempting to create LookBehind camera for player %zu", i);
         }
         CM_AttachCamera(camera, i);
         gScreenContexts[i].lookBehindCamera = camera;

@@ -40,7 +40,7 @@ ATruck::ATruck(const SpawnParams& params) : AActor(params) {
             TruckCounts[PathIndex].push_back(PathPoint);
             break;
         case SpawnMode::AUTO: // Automatically distribute trucks based on a specific path point
-            printf("vehicle path size %d\n", gVehiclePathSize);
+            printf("vehicle path size %zu\n", gVehiclePathSize);
             PathPoint = GetVehiclePathPointDistributed(TruckCounts[PathIndex], gVehiclePathSize);
             TruckCounts[PathIndex].push_back(PathPoint);
             printf("train spawn path point: %d\n", PathPoint);
