@@ -2181,11 +2181,13 @@ UNUSED void func_8004CD18(s32 arg0, s32 arg1, u8* texture) {
     func_8004C91C(arg0, arg1, texture, 64, 64, 32);
 }
 
-UNUSED void func_8004CD48(s32 arg0, s32 arg1, UNUSED u8* texture, s32 width, s32 arg4, s32 height) {
+UNUSED void func_8004CD48(s32 arg0, s32 arg1, u8* texture, s32 width, s32 arg4, s32 height) {
     UNUSED s32 pad;
     s32 var_s0;
     s32 i;
-    u8* img;
+    // img was never initialized; the (formerly UNUSED) texture param is
+    // clearly what the loop was meant to walk.
+    u8* img = texture;
 
     var_s0 = arg1 - (arg4 / 2);
     gSPDisplayList(gDisplayListHead++, D_0D007FE0);
