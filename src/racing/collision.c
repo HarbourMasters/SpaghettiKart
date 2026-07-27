@@ -26,7 +26,7 @@ void nullify_displaylist(uintptr_t addr) {
     macro = (Gfx*) addr;
     // G_ENDDL is negative under F3DEX; mask to the opcode byte before
     // shifting so the shift is defined.
-    macro->words.w0 = ((u32)(G_ENDDL & 0xFF) << 24);
+    macro->words.w0 = ((u32) (G_ENDDL & 0xFF) << 24);
     macro->words.w1 = 0;
 }
 
@@ -2189,7 +2189,7 @@ void find_vtx_and_set_colours(Gfx* displayList, s8 alpha, u8 red, u8 green, u8 b
         lo = gfx->words.w0;
         hi = gfx->words.w1;
         opcode = GFX_GET_OPCODE(lo);
-        if (opcode == ((u32)(G_ENDDL & 0xFF) << 24)) {
+        if (opcode == ((u32) (G_ENDDL & 0xFF) << 24)) {
             break;
         } else if (opcode == (G_DL << 24)) {
             find_vtx_and_set_colours((Gfx*) hi, alpha, red, green, blue);

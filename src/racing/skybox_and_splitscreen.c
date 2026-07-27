@@ -623,7 +623,8 @@ void render_screens(ScreenContext* screen, s32 mode, s32 someId, s32 playerId) {
     s32 screenId = screen - gScreenContexts;
 
     if (NULL == camera) {
-        printf("[skybox_and_splitscreen.c] Skipping rendering for screen %ld. This viewport has no camera\n", (long)(screen - gScreenContexts));
+        printf("[skybox_and_splitscreen.c] Skipping rendering for screen %ld. This viewport has no camera\n",
+               (long) (screen - gScreenContexts));
         return;
     }
 
