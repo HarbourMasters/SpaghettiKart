@@ -95,22 +95,22 @@ u16* gItemWindowTLUTs[] = { common_tlut_item_window_none,
                             common_tlut_item_window_triple_mushroom,
                             common_tlut_item_window_super_mushroom };
 
-u8* gItemWindowTextures[] = { common_texture_item_window_none,
-                              common_texture_item_window_banana,
-                              common_texture_item_window_banana_bunch,
-                              common_texture_item_window_green_shell,
-                              common_texture_item_window_triple_green_shell,
-                              common_texture_item_window_red_shell,
-                              common_texture_item_window_triple_red_shell,
-                              common_texture_item_window_blue_shell,
-                              common_texture_item_window_thunder_bolt,
-                              common_texture_item_window_fake_item_box,
-                              common_texture_item_window_star,
-                              common_texture_item_window_boo,
-                              common_texture_item_window_mushroom,
-                              common_texture_item_window_double_mushroom,
-                              common_texture_item_window_triple_mushroom,
-                              common_texture_item_window_super_mushroom };
+u8* gItemWindowTextures[] = { (u8*) common_texture_item_window_none,
+                              (u8*) common_texture_item_window_banana,
+                              (u8*) common_texture_item_window_banana_bunch,
+                              (u8*) common_texture_item_window_green_shell,
+                              (u8*) common_texture_item_window_triple_green_shell,
+                              (u8*) common_texture_item_window_red_shell,
+                              (u8*) common_texture_item_window_triple_red_shell,
+                              (u8*) common_texture_item_window_blue_shell,
+                              (u8*) common_texture_item_window_thunder_bolt,
+                              (u8*) common_texture_item_window_fake_item_box,
+                              (u8*) common_texture_item_window_star,
+                              (u8*) common_texture_item_window_boo,
+                              (u8*) common_texture_item_window_mushroom,
+                              (u8*) common_texture_item_window_double_mushroom,
+                              (u8*) common_texture_item_window_triple_mushroom,
+                              (u8*) common_texture_item_window_super_mushroom };
 
 u16* gHudLapTextures[] = { common_texture_hud_lap_1_on_3, common_texture_hud_lap_2_on_3,
                            common_texture_hud_lap_3_on_3 };
@@ -119,10 +119,10 @@ u16* gPortraitTLUTs[] = { common_tlut_portrait_mario, common_tlut_portrait_luigi
                           common_tlut_portrait_toad,  common_tlut_portrait_donkey_kong, common_tlut_portrait_wario,
                           common_tlut_portrait_peach, common_tlut_portrait_bowser };
 
-u8* gPortraitTextures[] = { common_texture_portrait_mario,       common_texture_portrait_luigi,
-                            common_texture_portrait_yoshi,       common_texture_portrait_toad,
-                            common_texture_portrait_donkey_kong, common_texture_portrait_wario,
-                            common_texture_portrait_peach,       common_texture_portrait_bowser };
+u8* gPortraitTextures[] = { (u8*) common_texture_portrait_mario,       (u8*) common_texture_portrait_luigi,
+                            (u8*) common_texture_portrait_yoshi,       (u8*) common_texture_portrait_toad,
+                            (u8*) common_texture_portrait_donkey_kong, (u8*) common_texture_portrait_wario,
+                            (u8*) common_texture_portrait_peach,       (u8*) common_texture_portrait_bowser };
 
 s32 find_unused_obj_index(s32* arg0) {
     s32 temp_v0;
@@ -746,7 +746,7 @@ void init_texture_object(s32 objectIndex, u8* texture, const char** arg2, u8 arg
 }
 
 UNUSED void func_8007348C(s32 objectIndex, u8* arg1, u8 arg2, u8 arg3, Vtx* arg4) {
-    gObjectList[objectIndex].activeTLUT = arg1;
+    gObjectList[objectIndex].activeTLUT = (const char*) arg1;
     gObjectList[objectIndex].tlutList = arg1;
     gObjectList[objectIndex].textureWidth = arg2;
     gObjectList[objectIndex].textureHeight = arg3;
@@ -761,16 +761,16 @@ UNUSED void func_800734D4() {
 
 void update_neon_texture(s32 objectIndex) {
     // I have no idea why this typecast works
-    gObjectList[objectIndex].activeTLUT =
+    gObjectList[objectIndex].activeTLUT =(const char*) 
         (u8*) ((u32*) gObjectList[objectIndex].tlutList + (gObjectList[objectIndex].textureListIndex * 128));
     int idx = gObjectList[objectIndex].textureListIndex;
-    char* texture = gObjectList[objectIndex].textureList[idx];
+    UNUSED char* texture = gObjectList[objectIndex].textureList[idx];
     gObjectList[objectIndex].activeTexture =
         gObjectList[objectIndex].textureList[gObjectList[objectIndex].textureListIndex];
 }
 
 void func_80073514(s32 objectIndex) {
-    gObjectList[objectIndex].activeTLUT = gObjectList[objectIndex].tlutList;
+    gObjectList[objectIndex].activeTLUT = (const char*) gObjectList[objectIndex].tlutList;
     gObjectList[objectIndex].activeTexture =
         gObjectList[objectIndex].textureList[gObjectList[objectIndex].textureListIndex];
 }
@@ -1209,7 +1209,7 @@ void func_800744CC(void) {
 
 uintptr_t devaddr2;
 
-void func_80074510(const char** lakituTexturePtr, const char* devAddr, size_t vaddr, size_t nbytes) {
+void func_80074510(const char** lakituTexturePtr, const char* devAddr, size_t vaddr, UNUSED size_t nbytes) {
     func_800744CC();
     lakituTexturePtr[vaddr] = devAddr;
     D_8018D224 = 1;
@@ -1226,7 +1226,7 @@ void func_800745C8(s32 objectIndex, const char** lakituTexturePtr) {
     if ((gObjectList[objectIndex].status & 1) != 0) {
         phi_a1 = 0;
         if (gObjectList[objectIndex].tlutList != (const u8*) gObjectList[objectIndex].activeTLUT) {
-            gObjectList[objectIndex].activeTLUT = gObjectList[objectIndex].tlutList;
+            gObjectList[objectIndex].activeTLUT = (const char*) gObjectList[objectIndex].tlutList;
         }
 
         gObjectList[objectIndex].status ^= 2;
@@ -1244,7 +1244,7 @@ void func_8007466C(s32 objectIndex, const char** lakituTexturePtr) {
 
     if ((gObjectList[objectIndex].status & 1) != 0) {
         // I have no idea why this typecase works
-        gObjectList[objectIndex].activeTLUT =
+        gObjectList[objectIndex].activeTLUT =(const char*) 
             (u8*) ((u32*) gObjectList[objectIndex].tlutList + (gObjectList[objectIndex].unk_0D3 << 7));
         gObjectList[objectIndex].status ^= 2;
         phi_a1 = 0;
@@ -1260,7 +1260,7 @@ void func_80074704(s32 objectIndex, const char** lakituTexturePtr) {
     s32 phi_a1;
 
     if ((gObjectList[objectIndex].status & 1) != 0) {
-        gObjectList[objectIndex].activeTLUT = gObjectList[objectIndex].tlutList;
+        gObjectList[objectIndex].activeTLUT = (const char*) gObjectList[objectIndex].tlutList;
         gObjectList[objectIndex].status ^= 2;
         phi_a1 = 0;
         if ((gObjectList[objectIndex].status & 2) != 0) {
@@ -1272,7 +1272,7 @@ void func_80074704(s32 objectIndex, const char** lakituTexturePtr) {
 }
 
 // Since the buffer only holds two textures, phi_a2 chooses which spot to load into
-size_t func_80074790(s32 objectIndex, const char** lakituTexturePtr) {
+size_t func_80074790(s32 objectIndex, UNUSED const char** lakituTexturePtr) {
     s32 phi_a2;
 
     gObjectList[objectIndex].status ^= 4;
@@ -1390,7 +1390,7 @@ s32 spawn_train_smoke(s32 trainIndex, Vec3f pos, f32 velocity) {
 
 void func_80075698(s32 objectIndex) {
     gObjectList[objectIndex].unk_0D5 = 1;
-    gObjectList[objectIndex].activeTexture = D_8018D490;
+    gObjectList[objectIndex].activeTexture = (const char*) D_8018D490;
     gObjectList[objectIndex].textureList = D_8018D490;
     gObjectList[objectIndex].primAlpha = 0xFF;
     gObjectList[objectIndex].direction_angle[1] = 0;
@@ -1511,7 +1511,7 @@ s32 spawn_ferry_smoke(s32 ferryIndex, Vec3f pos, f32 velocity) {
 
 void func_80075B08(s32 objectIndex) {
     gObjectList[objectIndex].unk_0D5 = 6;
-    gObjectList[objectIndex].activeTexture = D_8018D490;
+    gObjectList[objectIndex].activeTexture = (const char*) D_8018D490;
     gObjectList[objectIndex].textureList = D_8018D490;
     gObjectList[objectIndex].primAlpha = 0xFF;
     gObjectList[objectIndex].direction_angle[1] = 0;
@@ -2101,7 +2101,7 @@ void init_object_leaf_particle(s32 objectIndex, Vec3f arg1, s32 num) {
 
     init_object(objectIndex, 0);
     gObjectList[objectIndex].unk_0D5 = 7;
-    gObjectList[objectIndex].activeTLUT = (u8*) common_texture_particle_leaf;
+    gObjectList[objectIndex].activeTLUT = (const char*) (u8*) common_texture_particle_leaf;
     gObjectList[objectIndex].tlutList = (u8*) common_texture_particle_leaf;
     gObjectList[objectIndex].sizeScaling = 0.1f;
     gObjectList[objectIndex].surfaceHeight = arg1[1];
@@ -2220,7 +2220,7 @@ void func_80078220(s32 objectIndex) {
     Object* object;
 
     object = &gObjectList[objectIndex];
-    object->activeTexture = tex;
+    object->activeTexture = (const char*) tex;
     object->textureList = tex;
     object->vertex = vtx;
     object->sizeScaling = 0.15f;
@@ -2691,8 +2691,8 @@ void func_8007B34C(s32 playerId) {
             }
         }
     }
-    object->activeTLUT = (u8*) gItemWindowTLUTs[object->textureListIndex];
-    object->activeTexture = gItemWindowTextures[object->textureListIndex];
+    object->activeTLUT = (const char*) (u8*) gItemWindowTLUTs[object->textureListIndex];
+    object->activeTexture = (const char*) gItemWindowTextures[object->textureListIndex];
     sp38->currentItemCopy = object->type;
 }
 
@@ -2732,7 +2732,7 @@ void func_8007C420(s32 objectIndex, Player* player, Camera* camera) {
 void func_8007CE0C(s32 objectIndex) {
     Object* object;
 
-    init_texture_object(objectIndex, d_course_banshee_boardwalk_boo_tlut, gTextureGhosts, 0x30U, (u16) 0x00000028);
+    init_texture_object(objectIndex, (u8*) d_course_banshee_boardwalk_boo_tlut, gTextureGhosts, 0x30U, (u16) 0x00000028);
     object = &gObjectList[objectIndex];
     object->textureListIndex = 0x1C;
     object->pos[0] = 0.0f;
@@ -3074,7 +3074,7 @@ void func_80083FD0(s32 objectIndex, s32 arg1, s32 playerId) {
     object->unk_084[7] = playerId;
     init_object(objectIndex, 0);
     object->activeTLUT = d_course_sherbet_land_ice;
-    object->tlutList = d_course_sherbet_land_ice;
+    object->tlutList = (u8*) d_course_sherbet_land_ice;
     object->sizeScaling = ((f32) random_int(0x01F4U) * 0.0002) + 0.04;
     object->velocity[1] = ((f32) random_int(0x0032U) * 0.05) + 1.0;
     object->unk_034 = ((f32) random_int(0x000AU) * 0.1) + 1.0;
@@ -3269,7 +3269,7 @@ void func_80085F74(s32 objectIndex) {
 
 void func_80086074(s32 objectIndex, s32 arg1) {
     set_obj_origin_pos(objectIndex, D_800E6734[arg1][0] * xOrientation, D_800E6734[arg1][1], D_800E6734[arg1][2]);
-    init_texture_object(objectIndex, d_course_rainbow_road_static_tluts[arg1],
+    init_texture_object(objectIndex, (u8*) d_course_rainbow_road_static_tluts[arg1],
                         &d_course_rainbow_road_static_textures[arg1], 64, 64);
     func_80085BB4(objectIndex);
 }
