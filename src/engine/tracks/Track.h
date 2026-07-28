@@ -120,7 +120,6 @@ typedef struct Properties {
 #ifdef __cplusplus
     nlohmann::json to_json() const {
         nlohmann::json j;
-        // These are arrays, so the old null checks here could never fail.
         j["Name"] = Name;
         j["DebugName"] = DebugName;
         j["TrackLength"] = TrackLength;

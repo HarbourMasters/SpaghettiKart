@@ -100,8 +100,6 @@ void OCrab::DrawModel(s32 cameraId) {
     func_8008A364(objectIndex, cameraId, 0x2AABU, 800);
     if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
         Camera* camera;
-        // An inner 's32 objectIndex;' used to shadow the initialized outer
-        // one here, so everything below read an uninitialized slot.
 
         if (gObjectList[objectIndex].state >= 2) {
             camera = &camera1[cameraId];

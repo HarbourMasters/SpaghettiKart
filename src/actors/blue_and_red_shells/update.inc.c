@@ -186,8 +186,6 @@ s16 func_802B3FD0(Player* owner, struct ShellActor* shell) {
 }
 
 void func_802B4104(struct ShellActor* shell) {
-    // The original also tested (unk48[1] < 0.25f || unk48[1] > -0.25f),
-    // which is always true for any value, so only the distance check matters.
     if (shell->unk30.surfaceDistance[0] < 0.0f) {
         destroy_destructable_actor((struct Actor*) shell);
         func_800C98B8(shell->pos, shell->velocity, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x54));

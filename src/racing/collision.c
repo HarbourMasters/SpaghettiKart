@@ -24,8 +24,6 @@ void nullify_displaylist(uintptr_t addr) {
     Gfx* macro;
 
     macro = (Gfx*) addr;
-    // G_ENDDL is negative under F3DEX; mask to the opcode byte before
-    // shifting so the shift is defined.
     macro->words.w0 = ((u32) (G_ENDDL & 0xFF) << 24);
     macro->words.w1 = 0;
 }

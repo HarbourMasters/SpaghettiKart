@@ -3824,7 +3824,6 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
         func_8002BD58(player);
     }
     player->effects &= 0xDFFFFFFF;
-    // The > 0xE branch was a self-assignment (matching artifact).
     if (((s32) player->tyres[BACK_RIGHT].surfaceType) <= 0xE) {
         var_f12 += D_800E3410[player->characterId][player->tyres[BACK_RIGHT].surfaceType];
     }

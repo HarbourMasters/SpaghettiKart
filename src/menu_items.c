@@ -4314,8 +4314,6 @@ void func_8009A9FC(s32 arg0, s32 arg1, u32 arg2, s32 arg3) {
     color0 = LOAD_ASSET(sMenuTextureList[sMenuTextureMap[arg0].offset]);
     color1 = LOAD_ASSET(sMenuTextureList[sMenuTextureMap[arg1].offset]);
     for (size_t i = 0; i < arg2; i++) {
-        // BSWAP16 evaluates its argument twice on little-endian builds, so a
-        // ++ inside it advanced the pointer twice and mixed two pixels.
         temp_a0 = BSWAP16(*color0);
         color0++;
         red = (temp_a0 & 0xF800) >> 0xB;
@@ -4533,8 +4531,7 @@ Gfx* func_8009B9D0(Gfx* displayListHead, MenuTexture* textures) {
     if (found) {
         gSPDisplayList(displayListHead++, displayList);
     }
-    // Not-found used to fall off the end and return whatever was in the
-    // return register (see comment above); draw nothing instead.
+    // Texture not found: draw nothing.
     return displayListHead;
 }
 
