@@ -3109,8 +3109,8 @@ Gfx* func_80095E10_alt(Gfx* displayListHead, s8 textureFormat, s32 texScaleS, s3
 }
 
 Gfx* func_800963F0(Gfx* displayListHead, s8 textureFormat, s32 texScaleS, s32 texScaleT, f32 scaleX, f32 scaleY,
-                   s32 srcX, s32 srcY, UNUSED s32 srcHeight, UNUSED s32 srcWidth, s32 screenX, s32 screenY, u8* textureData,
-                   u32 texWidth, u32 texHeight) {
+                   s32 srcX, s32 srcY, UNUSED s32 srcHeight, UNUSED s32 srcWidth, s32 screenX, s32 screenY,
+                   u8* textureData, u32 texWidth, u32 texHeight) {
     gDPLoadTextureTile(displayListHead++, textureData, textureFormat, G_IM_SIZ_16b, texWidth, texHeight, srcX, srcY,
                        srcX + texWidth - 1, srcY + texHeight - 1, 0, G_TX_NOMIRROR | G_TX_WRAP,
                        G_TX_NOMIRROR | G_TX_WRAP, 0, 0, G_TX_NOLOD, G_TX_NOLOD);
@@ -3316,8 +3316,8 @@ Gfx* func_80097AE4(Gfx* displayListHead, s8 textureFormat, s32 destX, s32 destY,
 }
 
 // Render player characters at player select menu
-Gfx* func_80097E58(Gfx* displayListHead, s8 textureFormat, u32 uls, u32 ult, UNUSED u32 lrs, UNUSED u32 lrt, s32 screenX, s32 screenY,
-                   u8* textureData, u32 textureWidth, u32 textureHeight, s32 width) {
+Gfx* func_80097E58(Gfx* displayListHead, s8 textureFormat, u32 uls, u32 ult, UNUSED u32 lrs, UNUSED u32 lrt,
+                   s32 screenX, s32 screenY, u8* textureData, u32 textureWidth, u32 textureHeight, s32 width) {
     if (width >= 32) {
         return displayListHead;
     }

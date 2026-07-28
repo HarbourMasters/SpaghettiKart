@@ -292,7 +292,6 @@ uintptr_t MIO0_0F(UNUSED u8* arg0, uintptr_t arg1, uintptr_t arg2) {
     return oldHeapEndPtr;
 }
 
-
 /* To help verify if ptrs are pointing within segments see gfx_pc.cpp gfx_step() */
 uintptr_t vtxSegEnd;
 uintptr_t dlSegEnd;

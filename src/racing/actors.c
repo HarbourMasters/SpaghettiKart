@@ -1119,7 +1119,7 @@ void spawn_fake_item_box(Vec3f pos) {
     startingRot[2] = random_u16();
     s32 id = add_actor_to_empty_slot(pos, startingRot, startingVelocity, ACTOR_FAKE_ITEM_BOX);
     UNUSED f32 height = spawn_actor_on_surface(pos[0], pos[1], pos[2]);
-    
+
     struct FakeItemBox* box = (struct FakeItemBox*) CM_GetActor(id);
     box->state = 1;
     box->targetY = pos[1];

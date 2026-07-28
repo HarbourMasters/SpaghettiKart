@@ -761,8 +761,8 @@ UNUSED void func_800734D4() {
 
 void update_neon_texture(s32 objectIndex) {
     // I have no idea why this typecast works
-    gObjectList[objectIndex].activeTLUT =(const char*) 
-        (u8*) ((u32*) gObjectList[objectIndex].tlutList + (gObjectList[objectIndex].textureListIndex * 128));
+    gObjectList[objectIndex].activeTLUT = (const char*) (u8*) ((u32*) gObjectList[objectIndex].tlutList +
+                                                               (gObjectList[objectIndex].textureListIndex * 128));
     int idx = gObjectList[objectIndex].textureListIndex;
     UNUSED char* texture = gObjectList[objectIndex].textureList[idx];
     gObjectList[objectIndex].activeTexture =
@@ -1244,8 +1244,8 @@ void func_8007466C(s32 objectIndex, const char** lakituTexturePtr) {
 
     if ((gObjectList[objectIndex].status & 1) != 0) {
         // I have no idea why this typecase works
-        gObjectList[objectIndex].activeTLUT =(const char*) 
-            (u8*) ((u32*) gObjectList[objectIndex].tlutList + (gObjectList[objectIndex].unk_0D3 << 7));
+        gObjectList[objectIndex].activeTLUT =
+            (const char*) (u8*) ((u32*) gObjectList[objectIndex].tlutList + (gObjectList[objectIndex].unk_0D3 << 7));
         gObjectList[objectIndex].status ^= 2;
         phi_a1 = 0;
         if ((gObjectList[objectIndex].status & 2) != 0) {
@@ -2732,7 +2732,8 @@ void func_8007C420(s32 objectIndex, Player* player, Camera* camera) {
 void func_8007CE0C(s32 objectIndex) {
     Object* object;
 
-    init_texture_object(objectIndex, (u8*) d_course_banshee_boardwalk_boo_tlut, gTextureGhosts, 0x30U, (u16) 0x00000028);
+    init_texture_object(objectIndex, (u8*) d_course_banshee_boardwalk_boo_tlut, gTextureGhosts, 0x30U,
+                        (u16) 0x00000028);
     object = &gObjectList[objectIndex];
     object->textureListIndex = 0x1C;
     object->pos[0] = 0.0f;

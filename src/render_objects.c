@@ -935,8 +935,8 @@ void func_80048438(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8* tlut, u8* te
     func_80047068(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
-void func_800484BC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8* tlut, u8* texture, Vtx* arg6, UNUSED s32 arg7, s32 arg8,
-                   s32 arg9, UNUSED s32 argA) {
+void func_800484BC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8* tlut, u8* texture, Vtx* arg6, UNUSED s32 arg7,
+                   s32 arg8, s32 arg9, UNUSED s32 argA) {
     rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E18);
     set_transparency(arg3);
@@ -2651,8 +2651,8 @@ void func_8004E800(s32 playerId) {
             func_8004A384(playerHUD[playerId].rankX + playerHUD[playerId].slideRankX,
                           playerHUD[playerId].rankY + playerHUD[playerId].slideRankY, 0U,
                           playerHUD[playerId].rankScaling, 0x000000FF, D_800E55F8[D_80165594], 0, 0x000000FF,
-                          (u8*) common_texture_hud_place[gGPCurrentRaceRankByPlayerId[playerId]], D_0D0068F0, 0x00000080,
-                          0x00000040, 0x00000080, 0x00000040);
+                          (u8*) common_texture_hud_place[gGPCurrentRaceRankByPlayerId[playerId]], D_0D0068F0,
+                          0x00000080, 0x00000040, 0x00000080, 0x00000040);
         }
     }
     FrameInterpolation_RecordCloseChild();
@@ -2740,8 +2740,8 @@ void render_speedometer(s32 playerIdx) {
                   CM_GetProps()->Minimap.Colour.r, CM_GetProps()->Minimap.Colour.g, CM_GetProps()->Minimap.Colour.b,
                   0xFF, (u8*) common_texture_speedometer, speedometer_vtx, 64, 96, 64, 48);
     // x, y, needle rot
-    func_8004A258(D_8018CFEC, D_8018CFF4, D_8016579E, 1.0f, (u8*) common_texture_speedometer_needle, D_0D005FF0, 0x40, 0x20,
-                  0x40, 0x20);
+    func_8004A258(D_8018CFEC, D_8018CFF4, D_8016579E, 1.0f, (u8*) common_texture_speedometer_needle, D_0D005FF0, 0x40,
+                  0x20, 0x40, 0x20);
 }
 
 // player is only 0 or 1
@@ -2772,8 +2772,8 @@ void func_8004EF9C(s32 arg0) {
 
     width = ResourceGetTexWidthByName(minimap);
     height = ResourceGetTexHeightByName(minimap);
-    func_8004D37C(0x00000104, 0x0000003C, (u8*) minimap, 0x000000FF, 0x000000FF,
-                  0x000000FF, 0x000000FF, width, height, width, height);
+    func_8004D37C(0x00000104, 0x0000003C, (u8*) minimap, 0x000000FF, 0x000000FF, 0x000000FF, 0x000000FF, width, height,
+                  width, height);
 }
 
 void set_minimap_finishline_position(s32 playerId) {

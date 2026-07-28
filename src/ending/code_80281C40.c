@@ -37,7 +37,8 @@ void func_80281C40(void) {
     s32 i;
 
     for (i = 0; i < D_802874FC; i++) {
-        func_800579F8(D_80287560[i].unk0, D_80287560[i].unk2, (char*) (uintptr_t) D_80287560[i].unk8, D_80287560[i].unk4);
+        func_800579F8(D_80287560[i].unk0, D_80287560[i].unk2, (char*) (uintptr_t) D_80287560[i].unk8,
+                      D_80287560[i].unk4);
     }
 }
 

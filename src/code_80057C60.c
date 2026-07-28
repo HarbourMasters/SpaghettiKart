@@ -908,15 +908,16 @@ void render_hud_lap_3p_4p(s32 playerId) {
         if (D_801657F8 && gIsHUDVisible) {
             // draw_hud_2d_texture_32x8(playerHUD[playerId].lapX, playerHUD[playerId].lapY, (u8*)
             // common_texture_hud_lap);
-            draw_hud_2d_texture(playerHUD[playerId].lapX, playerHUD[playerId].lapY, 32, 8, (u8*) common_texture_hud_lap);
+            draw_hud_2d_texture(playerHUD[playerId].lapX, playerHUD[playerId].lapY, 32, 8,
+                                (u8*) common_texture_hud_lap);
             draw_lap_count(playerHUD[playerId].lapX - 12, playerHUD[playerId].lapY + 4,
                            playerHUD[playerId].alsoLapCount);
         }
         if (gHUDModes == 2) {
             if (playerHUD[playerId].unk_74 && D_80165608) {
                 func_80047910(playerHUD[playerId].unk_6C, playerHUD[playerId].unk_6E, 0, 1.0f,
-                              (u8*) common_tlut_portrait_bomb_kart_and_question_mark, (u8*) common_texture_portrait_bomb_kart,
-                              D_0D005AE0, 0x20, 0x20, 0x20, 0x20);
+                              (u8*) common_tlut_portrait_bomb_kart_and_question_mark,
+                              (u8*) common_texture_portrait_bomb_kart, D_0D005AE0, 0x20, 0x20, 0x20, 0x20);
             }
         }
     }

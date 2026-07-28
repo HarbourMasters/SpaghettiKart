@@ -43,7 +43,8 @@ s32 mio0encode(UNUSED s32 input, UNUSED s32 arg1, UNUSED s32 arg2) {
 void osStartThread(UNUSED OSThread* thread) {
 }
 
-void osCreateThread(UNUSED OSThread* thread, UNUSED OSId id, void (UNUSED *entry)(void*), UNUSED void* arg, UNUSED void* sp, UNUSED OSPri pri) {
+void osCreateThread(UNUSED OSThread* thread, UNUSED OSId id, void(UNUSED* entry)(void*), UNUSED void* arg,
+                    UNUSED void* sp, UNUSED OSPri pri) {
 }
 
 void osInitialize(void) {

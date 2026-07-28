@@ -304,32 +304,28 @@ void load_kart_texture_and_render_kart_particles(s32 screenIdx) {
             D_801651D0[gPlayersToRenderScreenId[i]][gPlayersToRenderPlayerId[i]]
         );
 
-        strcpy(
-            (char*) D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[i - 1]]
-                                 [gPlayersToRenderPlayerId[i - 1]]]
-                                 [gPlayersToRenderScreenId[i - 1] + screenOffset]
-                                 [gPlayersToRenderPlayerId[i - 1] + playerOffset]
-            .pixel_index_array,
-            gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[i - 1]]
-                               [gPlayersToRenderPlayerId[i - 1]]]
-                               [gPlayersToRenderScreenId[i - 1] + screenOffset]
-                               [gPlayersToRenderPlayerId[i - 1] + playerOffset]
-            .unk_00
-        );
+        strcpy((char*) D_802BFB80
+                   .arraySize8[D_801651D0[gPlayersToRenderScreenId[i - 1]][gPlayersToRenderPlayerId[i - 1]]]
+                              [gPlayersToRenderScreenId[i - 1] + screenOffset]
+                              [gPlayersToRenderPlayerId[i - 1] + playerOffset]
+                   .pixel_index_array,
+               gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[i - 1]][gPlayersToRenderPlayerId[i - 1]]]
+                                  [gPlayersToRenderScreenId[i - 1] + screenOffset]
+                                  [gPlayersToRenderPlayerId[i - 1] + playerOffset]
+                                      .unk_00);
     }
 
-    strcpy(
-        (char*) D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount - 1]]
-                             [gPlayersToRenderPlayerId[gPlayersToRenderCount - 1]]]
-                             [gPlayersToRenderScreenId[gPlayersToRenderCount - 1] + screenOffset]
-                             [gPlayersToRenderPlayerId[gPlayersToRenderCount - 1] + playerOffset]
-        .pixel_index_array,
-        gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount - 1]]
-                           [gPlayersToRenderPlayerId[gPlayersToRenderCount - 1]]]
-                           [gPlayersToRenderScreenId[gPlayersToRenderCount - 1] + screenOffset]
-                           [gPlayersToRenderPlayerId[gPlayersToRenderCount - 1] + playerOffset]
-        .unk_00
-    );
+    strcpy((char*) D_802BFB80
+               .arraySize8[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount - 1]]
+                                     [gPlayersToRenderPlayerId[gPlayersToRenderCount - 1]]]
+                          [gPlayersToRenderScreenId[gPlayersToRenderCount - 1] + screenOffset]
+                          [gPlayersToRenderPlayerId[gPlayersToRenderCount - 1] + playerOffset]
+               .pixel_index_array,
+           gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount - 1]]
+                                         [gPlayersToRenderPlayerId[gPlayersToRenderCount - 1]]]
+                              [gPlayersToRenderScreenId[gPlayersToRenderCount - 1] + screenOffset]
+                              [gPlayersToRenderPlayerId[gPlayersToRenderCount - 1] + playerOffset]
+                                  .unk_00);
 }
 
 void try_rendering_player(Player* player, s8 playerId, s8 screenIdx) {
