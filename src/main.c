@@ -388,7 +388,7 @@ void update_controller(s32 index) {
 }
 
 void read_controllers(void) {
-    OSMesg msg;
+    UNUSED OSMesg msg;
 
     osContStartReadData(&gSIEventMesgQueue);
     // osRecvMesg(&gSIEventMesgQueue, &msg, OS_MESG_BLOCK);
@@ -417,7 +417,7 @@ void read_controllers(void) {
 }
 
 void func_80000BEC(void) {
-    gPhysicalZBuffer = VIRTUAL_TO_PHYSICAL(&gZBuffer);
+    gPhysicalZBuffer = (uintptr_t) VIRTUAL_TO_PHYSICAL(&gZBuffer);
 }
 
 void dispatch_audio_sptask(struct SPTask* spTask) {
@@ -721,7 +721,7 @@ void race_logic_loop(void) {
     }
 
     if (gIsGamePaused == false) {
-        for (size_t i = 0; i < gTickLogic; i++) {
+        for (size_t i = 0; i < (size_t) gTickLogic; i++) {
             process_game_tick();
         }
         if (Editor_IsPaused() == false) {
@@ -1087,19 +1087,19 @@ void update_gamestate(void) {
     switch (gGamestate) {
         case START_MENU_FROM_QUIT:
             func_80002658();
-            gCurrentlyLoadedTrackAddr = NULL;
+            gCurrentlyLoadedTrackAddr = (uintptr_t) NULL;
             break;
         case MAIN_MENU_FROM_QUIT:
             func_800025D4();
-            gCurrentlyLoadedTrackAddr = NULL;
+            gCurrentlyLoadedTrackAddr = (uintptr_t) NULL;
             break;
         case PLAYER_SELECT_MENU_FROM_QUIT:
             func_80002600();
-            gCurrentlyLoadedTrackAddr = NULL;
+            gCurrentlyLoadedTrackAddr = (uintptr_t) NULL;
             break;
         case COURSE_SELECT_MENU_FROM_QUIT:
             func_8000262C();
-            gCurrentlyLoadedTrackAddr = NULL;
+            gCurrentlyLoadedTrackAddr = (uintptr_t) NULL;
             break;
         case RACING:
             /**
@@ -1110,12 +1110,12 @@ void update_gamestate(void) {
             setup_race();
             break;
         case ENDING:
-            gCurrentlyLoadedTrackAddr = NULL;
+            gCurrentlyLoadedTrackAddr = (uintptr_t) NULL;
             init_segment_ending_sequences();
             setup_podium_ceremony();
             break;
         case CREDITS_SEQUENCE:
-            gCurrentlyLoadedTrackAddr = NULL;
+            gCurrentlyLoadedTrackAddr = (uintptr_t) NULL;
             // init_segment_racing();
             init_segment_ending_sequences();
             load_credits();

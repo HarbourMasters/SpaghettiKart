@@ -1201,14 +1201,14 @@ bool func_800088D8(s32 playerId, s16 lapNum, s16 arg2) {
     s32 progress;
     f32 interp;
     s16 var_t1;
-    u16* var_a0_3;
+    UNUSED u16* var_a0_3;
     s16 temp;
     s16 temp2;
     s32 i;
     s32 var_a0;
     s16 var_v0;
     s16 var_a0_4;
-    s32* var_v1;
+    UNUSED s32* var_v1;
     s16 STEMP_V1;
     s16 STEMP_V0;
     s16 rank;
@@ -1554,7 +1554,7 @@ void update_player_path_completion(s32 playerId, Player* player) {
 }
 
 void update_vehicles(void) {
-    s32 i;
+    UNUSED s32 i;
     generate_player_smoke();
     D_8016337C++;
 
@@ -4239,7 +4239,7 @@ void cpu_behaviour_start(s32 playerId, Player* player) {
     s32 behaviourType;
     UNUSED s32 test;
 
-    CPUBehaviour* beh = (CPUBehaviour*) LOAD_ASSET(CM_GetProps()->AIBehaviour);
+    UNUSED CPUBehaviour* beh = (CPUBehaviour*) LOAD_ASSET(CM_GetProps()->AIBehaviour);
 
     sCurrentCPUBehaviour = &((CPUBehaviour*) LOAD_ASSET(CM_GetProps()->AIBehaviour))[gCurrentCPUBehaviourId[playerId]];
 
@@ -5962,13 +5962,13 @@ void func_80016C3C(UNUSED s32 playerId, UNUSED f32 arg1, s32 cameraId) {
 
 void func_80017054(Camera* camera, UNUSED Player* player, UNUSED s32 index, s32 cameraId);
 void func_80017054(Camera* camera, UNUSED Player* player, UNUSED s32 index, s32 cameraId) {
-    s32 stackPadding0;
-    s32 stackPadding1;
+    UNUSED s32 stackPadding0;
+    UNUSED s32 stackPadding1;
     f32 spAC;
     f32 spA8;
     f32 spA4;
-    s32 stackPadding2;
-    s32 stackPadding3;
+    UNUSED s32 stackPadding2;
+    UNUSED s32 stackPadding3;
     f32 camX;
     f32 camY;
     f32 camZ;
@@ -5978,8 +5978,8 @@ void func_80017054(Camera* camera, UNUSED Player* player, UNUSED s32 index, s32 
     f32 diffX;
     f32 diffY;
     f32 diffZ;
-    s32 stackPadding7;
-    s32 stackPadding8;
+    UNUSED s32 stackPadding7;
+    UNUSED s32 stackPadding8;
     s16 waypoint1;
     s16 waypoint2;
     f32 stackPadding9;
@@ -6689,7 +6689,7 @@ void func_80019C50(s32 arg0) {
 void look_behind_toggle(s32 cameraIdx) {
     static bool lookBehindActive[NUM_CAMERAS] = {0};
     bool pressed = gControllers[cameraIdx].button & L_CBUTTONS; // button held
-    Camera* camera = &cameras[cameraIdx];
+    UNUSED Camera* camera = &cameras[cameraIdx];
     ScreenContext* screenCtx = NULL;
 
     if (CVarGetInteger("gLookBehind", false) == false) {
@@ -7392,7 +7392,7 @@ void cpu_use_item_strategy(s32 playerId) {
 
                 if (player->currentRank < highestHumanRank) {
                     // Code for backwards firing is the same for CPUs and humans
-                    Vec3f somePos2;
+                    UNUSED Vec3f somePos2;
                     Vec3f somePosVel;
                     f32 var_f2;
 

@@ -1,4 +1,5 @@
 #include <stdbool.h>
+#include <macros.h>
 #include <stdint.h>
 #include <string.h>
 #include <stdio.h>
@@ -133,7 +134,7 @@ static inline int16_t clamp16(int32_t v) {
     return (int16_t) v;
 }
 
-static inline int32_t clamp32(int64_t v) {
+UNUSED static inline int32_t clamp32(int64_t v) {
     if (v < -0x7fffffff - 1) {
         return -0x7fffffff - 1;
     } else if (v > 0x7fffffff) {
@@ -167,7 +168,7 @@ void aLoadADPCMImpl(int num_entries_times_16, const int16_t* book_source_addr) {
     memcpy(rspa.adpcm_table, book_source_addr, num_entries_times_16);
 }
 
-void aSetBufferImpl(uint8_t flags, uint16_t in, uint16_t out, uint16_t nbytes) {
+void aSetBufferImpl(UNUSED uint8_t flags, uint16_t in, uint16_t out, uint16_t nbytes) {
     rspa.in = in;
     rspa.out = out;
     rspa.nbytes = nbytes;
@@ -297,7 +298,7 @@ void aADPCMdecImpl(uint8_t flags, ADPCM_STATE state) {
 
     while (nbytes > 0) {
         int shift = *in >> 4; // should be in 0..12 or 0..14
-        __m128i shift_vec = _mm_set1_epi16(shift);
+        UNUSED __m128i shift_vec = _mm_set1_epi16(shift);
         int table_index = *in++ & 0xf; // should be in 0..7
         int16_t(*tbl)[8] = rspa.adpcm_table[table_index];
 
@@ -587,7 +588,7 @@ void aResampleImpl(uint8_t flags, uint16_t pitch, RESAMPLE_STATE state) {
 
 #endif
 
-void aEnvSetup1Impl(uint8_t initial_vol_wet, uint16_t rate_wet, uint16_t rate_left, uint16_t rate_right) {
+void aEnvSetup1Impl(uint8_t initial_vol_wet, UNUSED uint16_t rate_wet, uint16_t rate_left, uint16_t rate_right) {
     rspa.vol_wet = (uint16_t) (initial_vol_wet << 8);
     rspa.rate_wet = 0;
     rspa.rate[0] = rate_left;
@@ -734,7 +735,7 @@ void aMixImpl(int16_t gain, uint16_t in_addr, uint16_t out_addr, uint16_t count)
     int16_t* in = BUF_S16(in_addr);
     int16_t* out = BUF_S16(out_addr);
     int i;
-    int32_t sample;
+    UNUSED int32_t sample;
 
     if (gain == -0x8000) {
         while (nbytes > 0) {
@@ -1041,7 +1042,7 @@ void aHiLoGainImpl(uint8_t g, uint16_t count, uint16_t addr) {
     } while (nbytes > 0);
 }
 
-void aUnkCmd3Impl(uint16_t a, uint16_t b, uint16_t c) {
+void aUnkCmd3Impl(UNUSED uint16_t a, UNUSED uint16_t b, UNUSED uint16_t c) {
 }
 
 void aUnkCmd19Impl(uint8_t f, uint16_t count, uint16_t out_addr, uint16_t in_addr) {
