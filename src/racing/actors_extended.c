@@ -863,7 +863,7 @@ s32 use_banana_item(Player* player) {
     }
     // Extremely weird fake match to fix a tiny stack difference
     // place the banana in back of the player
-    startingPos[0, 0] = 0.0f;
+    startingPos[0] = 0.0f;
     startingPos[1] = -player->boundingBoxSize;
     startingPos[2] = -(player->boundingBoxSize + 4.0f);
 

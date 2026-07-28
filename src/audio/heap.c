@@ -418,7 +418,7 @@ void* alloc_bank_or_seq(struct SoundMultiPool* arg0, s32 arg1, s32 size, s32 arg
                 tp->entries[1].ptr = pool->start + pool->size - size - 0x10;
                 tp->entries[1].id = (s16) id;
                 tp->entries[1].size = (u32) size;
-                if ((u32) tp->entries[1].ptr < (u32) pool->cur) {
+                if ((uintptr_t) tp->entries[1].ptr < (uintptr_t) pool->cur) {
                     table[tp->entries[0].id] = 0;
                     switch (isSound) { /* switch 1; irregular */
                         case 0:        /* switch 1 */
@@ -734,7 +734,7 @@ void func_800BA8B0(s32 poolIdx, s32 id) {
             break;
     }
     if (sp3C->seqArray[id].len == 0) {
-        id = (s32) sp3C->seqArray[id].offset;
+        id = (s32) (uintptr_t) sp3C->seqArray[id].offset;
     }
     if (unk_pool1_lookup(poolIdx, id) == NULL) {
         temp_a2 = gUnkPool1.pool.numAllocatedEntries;

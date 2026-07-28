@@ -11,7 +11,9 @@
 #include "port/Game.h"
 #include <port/interpolation/FrameInterpolation.h>
 #include <port/interpolation/matrix.h>
+#ifdef _MSC_VER
 #pragma intrinsic(sqrtf, fabs)
+#endif
 
 s32 D_802B91C0[2] = { 13, 13 };
 Vec3f D_802B91C8 = { 0.0f, 0.0f, 0.0f };
@@ -1104,11 +1106,11 @@ f32 is_within_render_distance(Vec3f cameraPos, Vec3f objectPos, u16 orientationY
     f32 distance;
     f32 distanceY;
     f32 scaleFov;
-    f32 maxDistance2;
+    UNUSED f32 maxDistance2;
     s32 plus_fov_angle;
     s32 minus_fov_angle;
     u16 temp;
-    s32 count = 0;
+    UNUSED s32 count = 0;
 
     maxDistance *= 6.5f;
     maxDistance2 = 1.0f;

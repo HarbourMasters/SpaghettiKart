@@ -47,7 +47,7 @@ s32 D_800EA4A4 = 0;
 char port_eu_unused_string7[] = "Undefined Port Command %d\n";
 
 void create_next_audio_buffer(s16* samples, u32 num_samples) {
-    static s32 gMaxAbiCmdCnt = 128;
+    UNUSED static s32 gMaxAbiCmdCnt = 128;
     s32 abiCmdCount;
     OSMesg specId;
     OSMesg msg;
@@ -100,7 +100,7 @@ struct SPTask* create_next_audio_frame_task(void) {
     osSendMesg(D_800EA3A8, (OSMesg) gAudioFrameCount, OS_MESG_NOBLOCK);
 #else
     OSMesg audioMesg;
-    audioMesg.ptr = (void*) gAudioFrameCount;
+    audioMesg.ptr = (void*) (uintptr_t) gAudioFrameCount;
     osSendMesg(D_800EA3A8, audioMesg, OS_MESG_NOBLOCK);
 #endif
 

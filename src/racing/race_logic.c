@@ -28,7 +28,9 @@
 #include "port/audio/HMAS.h"
 #include "engine/editor/Editor.h"
 
+#ifdef _MSC_VER
 #pragma intrinsic(sqrtf)
+#endif
 
 extern s16 gPlayerBalloonCount[];
 extern s16 D_8016348C;
@@ -423,7 +425,7 @@ void func_8028EC38(s32 arg0) {
     }
 }
 
-void func_8028EC98(s32 arg0) {
+void func_8028EC98(UNUSED s32 arg0) {
 
     // We want music in multiplayer, so this was removed
     //if (gScreenModeSelection == SCREEN_MODE_3P_4P_SPLITSCREEN) {
@@ -927,7 +929,7 @@ void func_8028FCBC(void) {
                     phi_v0_4 = 0x1;
                     //! @warning this used to be < gCurrentCourseId
                     // Hopefully this is equivallent.
-                    for (i = 0; i < TrackBrowser_GetTrackIndex(); i++) {
+                    for (i = 0; i < (s32) TrackBrowser_GetTrackIndex(); i++) {
                         phi_v0_4 <<= 1;
                     }
                     if ((D_8015F890 == 0) && (!(D_800DC5AC & phi_v0_4))) {

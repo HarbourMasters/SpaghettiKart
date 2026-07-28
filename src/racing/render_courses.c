@@ -199,11 +199,11 @@ void func_80291198(void) {
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_mario_raceway_packed_dl_1140); //
 }
 
-void draw_transparent_geography(ScreenContext* screen, s32 playerId) {
+void draw_transparent_geography(ScreenContext* screen, UNUSED s32 playerId) {
     UNUSED s32 pad;
-    Player* player = screen->player;
+    UNUSED Player* player = screen->player;
     Mat4 matrix;
-    Vec3f vector;
+    UNUSED Vec3f vector;
     u16 pathCounter;
     u16 cameraRot;
     s16 playerDirection;
