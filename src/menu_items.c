@@ -1601,7 +1601,7 @@ void func_80092290(s32 arg0, s32* arg1, s32* arg2) {
     s32 temp_t7;
     s32 temp_t8_2;
     s32 temp_t9;
-    s32 temp_t0;
+    UNUSED s32 temp_t0;
     s32 a, b, c, d;
     Vtx* vtx;
 
@@ -2530,7 +2530,7 @@ void func_800942D0(void) {
     }
 }
 
-void func_80094660(struct GfxPool* arg0, UNUSED s32 arg1) {
+void func_80094660(UNUSED struct GfxPool* arg0, UNUSED s32 arg1) {
     u16 perspNorm;
 
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
@@ -2566,7 +2566,7 @@ void render_checkered_flag(struct GfxPool* arg0, UNUSED s32 arg1) {
     gSPDisplayList(gDisplayListHead++, D_02007650);
 }
 
-void func_80094A64(struct GfxPool* pool) {
+void func_80094A64(UNUSED struct GfxPool* pool) {
     ClearObjectsMatrixPool();
     gMatrixHudCount = 0;
     gMatrixEffectCount = 0;
@@ -2901,8 +2901,8 @@ Gfx* func_800959F8(Gfx* displayListHead, Vtx* arg1) {
     }
 #ifdef AVOID_UB
     arg1 = LOAD_ASSET(arg1);
-    gSPVertex(displayListHead++, arg1, 2, 0);
-    gSPVertex(displayListHead++, &arg1[(index + 1) * 2], 2, 2);
+    gSPVertex(displayListHead++, (uintptr_t) arg1, 2, 0);
+    gSPVertex(displayListHead++, (uintptr_t) &arg1[(index + 1) * 2], 2, 2);
     gSPDisplayList(displayListHead++, common_rectangle_display);
 #else
     if (arg1 == D_02007BB8) {
@@ -3078,7 +3078,7 @@ Gfx* func_80095BD0_wide_right(Gfx* displayListHead, u8* arg1, f32 arg2, f32 arg3
 // Player select menu character border
 Gfx* func_80095E10(Gfx* displayListHead, s8 textureFormat, s32 texScaleS, s32 texScaleT, s32 srcX, s32 srcY,
                    s32 srcWidth, s32 srcHeight, s32 screenX, s32 screenY, u8* textureData, u32 texWidth,
-                   u32 texHeight) {
+                   UNUSED u32 texHeight) {
     gDPLoadTextureTile(displayListHead++, textureData, textureFormat, G_IM_SIZ_16b, texWidth, texHeight, srcX, srcY,
                        srcX + srcWidth - 1, srcY + srcHeight - 1, 0, G_TX_NOMIRROR | G_TX_WRAP,
                        G_TX_NOMIRROR | G_TX_WRAP, 0, 0, G_TX_NOLOD, G_TX_NOLOD);
@@ -3090,8 +3090,8 @@ Gfx* func_80095E10(Gfx* displayListHead, s8 textureFormat, s32 texScaleS, s32 te
 // Cup select menu, an alt version to fix cup and trophy
 Gfx* func_80095E10_alt(Gfx* displayListHead, s8 textureFormat, s32 texScaleS, s32 texScaleT, s32 srcX, s32 srcY,
                        s32 srcWidth, s32 srcHeight, s32 screenX, s32 screenY, u8* textureData, u32 texWidth,
-                       u32 texHeight) {
-    if (GameEngine_ResourceGetTexTypeByName(textureData) != 1) {
+                       UNUSED u32 texHeight) {
+    if (GameEngine_ResourceGetTexTypeByName((const char*) textureData) != 1) {
         gDPLoadTextureTile(displayListHead++, textureData, textureFormat, G_IM_SIZ_16b, texWidth, texHeight, srcX, srcY,
                            srcX + srcWidth - 1, srcY + srcHeight + 2, 0, G_TX_NOMIRROR | G_TX_WRAP,
                            G_TX_NOMIRROR | G_TX_WRAP, 0, 0, G_TX_NOLOD, G_TX_NOLOD);
@@ -3109,7 +3109,7 @@ Gfx* func_80095E10_alt(Gfx* displayListHead, s8 textureFormat, s32 texScaleS, s3
 }
 
 Gfx* func_800963F0(Gfx* displayListHead, s8 textureFormat, s32 texScaleS, s32 texScaleT, f32 scaleX, f32 scaleY,
-                   s32 srcX, s32 srcY, s32 srcHeight, s32 srcWidth, s32 screenX, s32 screenY, u8* textureData,
+                   s32 srcX, s32 srcY, UNUSED s32 srcHeight, UNUSED s32 srcWidth, s32 screenX, s32 screenY, u8* textureData,
                    u32 texWidth, u32 texHeight) {
     gDPLoadTextureTile(displayListHead++, textureData, textureFormat, G_IM_SIZ_16b, texWidth, texHeight, srcX, srcY,
                        srcX + texWidth - 1, srcY + texHeight - 1, 0, G_TX_NOMIRROR | G_TX_WRAP,
@@ -3170,8 +3170,8 @@ Gfx* func_80096CD8(Gfx* displayListHead, s32 xPos, s32 yPos, u32 width, u32 heig
     // Clamp positions to valid range
     s32 xStart = CLAMP(xPos << 2, -32768, 32767); // Ensure no overflow in fixed-point
     s32 yStart = CLAMP(yPos << 2, -32768, 32767);
-    s32 xEnd = CLAMP((xPos + width) << 2, -32768, 32767);
-    s32 yEnd = CLAMP((yPos + height) << 2, -32768, 32767);
+    s32 xEnd = CLAMP((s32) ((xPos + width) << 2), -32768, 32767);
+    s32 yEnd = CLAMP((s32) ((yPos + height) << 2), -32768, 32767);
 
     // Updated call with clamped values
     gSPWideTextureRectangle(displayListHead++, xStart, yStart, xEnd, yEnd, G_TX_RENDERTILE, 0, 0, 1024, 1024);
@@ -3181,7 +3181,7 @@ Gfx* func_80096CD8(Gfx* displayListHead, s32 xPos, s32 yPos, u32 width, u32 heig
 
 #ifdef NON_MATCHING
 Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8,
-                   s32 arg9, u16* argA, u32 argB, u32 argC, s32 argD) {
+                   s32 arg9, UNUSED u16* argA, u32 argB, u32 argC, UNUSED s32 argD) {
     u32 var_a1_2 = arg4;
     u32 var_s3 = arg5;
     s32 sp7C;
@@ -3245,7 +3245,7 @@ Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
     sp7C = arg8;
     for (var_s3 = arg5; var_s3 < (u32) arg7; var_s3 += temp_lo) {
 
-        if (arg7 < (s32) temp_lo + var_s3) {
+        if (arg7 < (s32) (temp_lo + var_s3)) {
             var_s4 = arg7 - var_s3;
             if (!var_s4) {
                 break;
@@ -3256,7 +3256,7 @@ Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
 
         for (var_a1_2 = arg4; var_a1_2 < (u32) arg6; var_a1_2 += var_t0) {
 
-            if (arg6 < (s32) var_t0 + var_a1_2) {
+            if (arg6 < (s32) (var_t0 + var_a1_2)) {
                 var_s2 = arg6 - var_a1_2;
                 if (!var_s2) {
                     break;
@@ -3316,7 +3316,7 @@ Gfx* func_80097AE4(Gfx* displayListHead, s8 textureFormat, s32 destX, s32 destY,
 }
 
 // Render player characters at player select menu
-Gfx* func_80097E58(Gfx* displayListHead, s8 textureFormat, u32 uls, u32 ult, u32 lrs, u32 lrt, s32 screenX, s32 screenY,
+Gfx* func_80097E58(Gfx* displayListHead, s8 textureFormat, u32 uls, u32 ult, UNUSED u32 lrs, UNUSED u32 lrt, s32 screenX, s32 screenY,
                    u8* textureData, u32 textureWidth, u32 textureHeight, s32 width) {
     if (width >= 32) {
         return displayListHead;
@@ -3722,7 +3722,7 @@ void clear_menu_textures(void) {
 #include <assets/textures/player_selection.h>
 
 void load_menu_img(MenuTexture* addr) {
-    u16 size;
+    UNUSED u16 size;
     s32 i;
     s32 imgLoaded;
     MenuTexture* texAddr;
@@ -3805,7 +3805,7 @@ void load_menu_img_mio0_forced(MenuTexture* addr) {
 void load_menu_img_comp_type(MenuTexture* texAddr, s32 compType) {
     s32 i;
     s32 imgLoaded;
-    u8 clearBit;
+    UNUSED u8 clearBit;
     TextureMap* texMap = &sMenuTextureMap[0];
 
     while (texAddr->textureData != NULL) {
@@ -3824,7 +3824,7 @@ void load_menu_img_comp_type(MenuTexture* texAddr, s32 compType) {
     }
 }
 
-void func_80099958(MenuTexture* addr, s32 arg1, s32 arg2) {
+void func_80099958(MenuTexture* addr, UNUSED s32 arg1, UNUSED s32 arg2) {
     u16 size;
     MenuTexture* texAddr;
 
@@ -3869,9 +3869,9 @@ void func_80099AEC(void) {
     s8 texEnd;
     s32 size;
     s32 texSize;
-    OSIoMesg mb;
+    UNUSED OSIoMesg mb;
     OSMesg msg;
-    s32 bufSize;
+    UNUSED s32 bufSize;
     MenuTexture* texAddr;
     struct_8018E060_entry* var_s1;
 
@@ -3978,7 +3978,7 @@ void func_80099EC4(void) {
     s8 texEnd;
     s32 size;
     UNUSED s32 pad[2];
-    OSIoMesg sp68;
+    UNUSED OSIoMesg sp68;
     OSMesg sp64;
     s32 texSize;
     MenuTexture* texAddr;
@@ -4069,8 +4069,8 @@ void func_80099EC4(void) {
 
 void func_8009A238(MenuTexture* arg0, s32 arg1) {
     s32 var_a3;
-    s32 temp_v1;
-    u64* sp24;
+    UNUSED s32 temp_v1;
+    UNUSED u64* sp24;
     UNUSED TextureMap* temp_v0;
 
     temp_v1 = sMenuTextureMap[arg1].offset;
@@ -4448,7 +4448,7 @@ void adjust_img_colour(s32 index, s32 screenSize, s32 r, s32 g, s32 b) {
 
     color = LOAD_ASSET(sMenuTextureList[sMenuTextureMap[index].offset]);
 
-    for (size_t i = 0; i < screenSize; i++) {
+    for (size_t i = 0; i < (size_t) screenSize; i++) {
         u16 color_pixel = BSWAP16(*color);
         red = ((color_pixel & 0xF800) >> 0xB) * 0x4D;
         green = ((color_pixel & 0x7C0) >> 6) * 0x96;
@@ -4578,7 +4578,7 @@ Gfx* render_menu_textures(Gfx* arg0, MenuTexture* arg1, s32 column, s32 row) {
 }
 
 Gfx* render_menu_textures_alt(Gfx* arg0, MenuTexture* arg1, s32 column, s32 row) {
-    u8* temp_v0_3;
+    UNUSED u8* temp_v0_3;
     s8 var_s4;
 
     while (arg1->textureData != NULL) {
@@ -4665,7 +4665,7 @@ Gfx* func_8009BC9C(Gfx* arg0, MenuTexture* texProps, s32 arg2, s32 arg3, s32 arg
 
 Gfx* print_letter(Gfx* arg0, MenuTexture* glyphTexture, f32 arg2, f32 arg3, s32 mode, f32 scaleX, f32 scaleY) {
     s32 var_v0;
-    u8* temp_v0_2;
+    UNUSED u8* temp_v0_2;
     f32 thing0;
     f32 thing1;
     MenuTexture* var_s0;
@@ -4809,7 +4809,7 @@ Gfx* func_8009C204(Gfx* arg0, MenuTexture* arg1, s32 arg2, s32 arg3, s32 arg4) {
 }
 
 Gfx* func_8009C434(Gfx* arg0, struct_8018DEE0_entry* arg1, s32 arg2, s32 arg3, s32 arg4) {
-    s32 var_t0;
+    UNUSED s32 var_t0;
     s32 var_t1;
     Gfx* temp;
     MenuTexture* var_s0;
@@ -4866,7 +4866,7 @@ Gfx* func_8009C434(Gfx* arg0, struct_8018DEE0_entry* arg1, s32 arg2, s32 arg3, s
 }
 
 Gfx* func_8009C434_alt(Gfx* arg0, struct_8018DEE0_entry* arg1, s32 arg2, s32 arg3) {
-    s32 var_t0;
+    UNUSED s32 var_t0;
     s32 var_t1;
     Gfx* temp;
     MenuTexture* var_s0;
@@ -4899,7 +4899,7 @@ Gfx* func_8009C434_alt(Gfx* arg0, struct_8018DEE0_entry* arg1, s32 arg2, s32 arg
     return arg0;
 }
 
-Gfx* func_8009C708(Gfx* arg0, struct_8018DEE0_entry* arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
+Gfx* func_8009C708(Gfx* arg0, struct_8018DEE0_entry* arg1, s32 arg2, s32 arg3, UNUSED s32 arg4, s32 arg5) {
     s32 var_t0;
     UNUSED s32 thing;
     Gfx* temp;
@@ -5895,8 +5895,8 @@ void add_menu_item(s32 type, s32 column, s32 row, s8 priority) {
     s32 temp_a1;
     MkAnimation* var_a0;
     s32 one = 1;
-    int original_width;
-    int height;
+    UNUSED int original_width;
+    UNUSED int height;
 
     var_v0 = 0;
     var_ra = gMenuItems;
@@ -6673,7 +6673,7 @@ void render_menus(MenuItem* arg0) {
                 break;
             case COURSE_SELECT_OK:
                 func_800A8564(arg0);
-                int32_t original_width = D_02004E80->width;
+                UNUSED int32_t original_width = D_02004E80->width;
                 int32_t height = D_02004E80->height;
                 D_02004E80->width = ResourceGetTexWidthByName(D_02004E80->textureData) * height /
                                     ResourceGetTexHeightByName(D_02004E80->textureData);
@@ -9676,7 +9676,7 @@ void func_800A890C(s32 arg0, MenuItem* arg1) {
         gDPPipeSync(gDisplayListHead++);
         gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
         gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_DECALRGBA);
-        if (arg0 == GetCupIndex()) {
+        if (arg0 == (s32) GetCupIndex()) {
             if (gSubMenuSelection == SUB_MENU_MAP_SELECT_CUP) {
                 gDisplayListHead = draw_flash_select_case_slow(gDisplayListHead, temp_t1 + temp_t7, temp_a2,
                                                                (temp_t1 - temp_t7) + 64, temp_a2 + 39);
@@ -9700,8 +9700,8 @@ void func_800A8A98(MenuItem* item) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
     gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_DECALRGBA);
 
-    for (i = 0; i < GetCupSize(); i++) {
-        if ((i == GetCupCursorPosition()) && (gSubMenuSelection > SUB_MENU_MAP_SELECT_CUP) &&
+    for (i = 0; i < (s32) GetCupSize(); i++) {
+        if ((i == (s32) GetCupCursorPosition()) && (gSubMenuSelection > SUB_MENU_MAP_SELECT_CUP) &&
             (gModeSelection != GRAND_PRIX)) {
             if ((gSubMenuSelection == SUB_MENU_MAP_SELECT_COURSE) ||
                 (gSubMenuSelection == SUB_MENU_MAP_SELECT_BATTLE_COURSE)) {
@@ -10879,14 +10879,14 @@ void func_800AB020(MenuItem* arg0) {
 void func_800AB098(MenuItem* arg0) {
     switch (arg0->state) {
         case 0:
-            if ((GetCupIndex() + 0x53) == arg0->type) {
+            if (((s32) GetCupIndex() + 0x53) == arg0->type) {
                 arg0->state = 2;
             } else {
                 arg0->state = 1;
             }
             break;
         case 4:
-            if ((GetCupIndex() + 0x53) == arg0->type) {
+            if (((s32) GetCupIndex() + 0x53) == arg0->type) {
                 arg0->state = 2;
                 arg0->param1 = 0;
                 break;
@@ -10903,7 +10903,7 @@ void func_800AB098(MenuItem* arg0) {
             }
             break;
         case 3:
-            if ((GetCupIndex() + 0x53) == arg0->type) {
+            if (((s32) GetCupIndex() + 0x53) == arg0->type) {
                 arg0->state = 2;
             }
             break;
@@ -10916,7 +10916,7 @@ void func_800AB098(MenuItem* arg0) {
 void func_800AB164(MenuItem* arg0) {
     Unk_D_800E70A0* thing = &D_800E7148[arg0->type - 0x53];
 
-    if ((GetCupIndex() + 0x53) == arg0->type) {
+    if (((s32) GetCupIndex() + 0x53) == arg0->type) {
         arg0->priority = 0x0A;
     } else {
         arg0->priority = 4;
@@ -10947,7 +10947,7 @@ void func_800AB164(MenuItem* arg0) {
 
 void func_800AB260(MenuItem* arg0) {
     s32 temp = (arg0->type - 0x58);
-    if (temp == GetCupIndex()) {
+    if (temp == (s32) GetCupIndex()) {
         arg0->visible = 1;
     } else {
         arg0->visible = 0;
@@ -10955,7 +10955,7 @@ void func_800AB260(MenuItem* arg0) {
 }
 
 void func_800AB290(MenuItem* arg0) {
-    if (arg0->param1 != GetCupIndex()) {
+    if (arg0->param1 != (s32) GetCupIndex()) {
         arg0->param1 = GetCupIndex();
         func_8009A594(arg0->D_8018DEE0_index, 0,
                       D_800E7E34[gCupCourseOrder[GetCupIndex()][arg0->type - 0x5F]]);
@@ -10980,8 +10980,8 @@ void func_800AB314(MenuItem* arg0) {
             if (gSubMenuSelection != one) {
                 arg0->state = 0;
                 arg0->param2 = 0;
-                for (var_a1 = 0; var_a1 < GetCupSize(); var_a1++) {
-                    if (GetCupCursorPosition() == var_a1) {
+                for (var_a1 = 0; var_a1 < (s32) GetCupSize(); var_a1++) {
+                    if ((s32) GetCupCursorPosition() == var_a1) {
                         sp24[var_a1]->visible = one;
                         if (arg0->param1 != var_a1) {
                             arg0->param1 = var_a1;
@@ -11001,7 +11001,7 @@ void func_800AB314(MenuItem* arg0) {
         case 0:
             switch (arg0->state) {
                 case 0:
-                    if ((arg0->param1 / 4) == GetCupIndex()) {
+                    if ((arg0->param1 / 4) == (s32) GetCupIndex()) {
                         arg0->param2++;
                         if (arg0->param2 >= 0x33) {
                             arg0->state = one;
@@ -11019,7 +11019,7 @@ void func_800AB314(MenuItem* arg0) {
                     }
                     break;
                 case 1:
-                    if ((arg0->param1 / 4) != GetCupIndex()) {
+                    if ((arg0->param1 / 4) != (s32) GetCupIndex()) {
                         arg0->state = 0;
                         arg0->param2 = 0;
                         arg0->param1 = 0;
@@ -11119,7 +11119,7 @@ void func_800AB904(MenuItem* arg0) {
 void func_800AB9B0(MenuItem* arg0) {
     Unk_D_800E70A0* temp_v1;
 
-    if (arg0->param1 != GetCupIndex()) {
+    if (arg0->param1 != (s32) GetCupIndex()) {
         arg0->param1 = GetCupIndex();
         arg0->param2 = func_800B54C0((s32) GetCupIndex(), gCCSelection);
         func_8009A594(arg0->D_8018DEE0_index, 0,
