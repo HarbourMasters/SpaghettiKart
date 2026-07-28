@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <macros.h>
 #include <libultraship/libultra.h>
 #include <string.h>
 #include <stdio.h>
@@ -19,48 +20,47 @@ u32 osResetType;
 
 u8 osAppNmiBuffer[64];
 
-void rmonPrintf(const char* fmt, ...) {
+void rmonPrintf(UNUSED const char* fmt, ...) {
 }
 
-void func_80040030(u8* arg0, u8* arg1) {
+void func_80040030(UNUSED u8* arg0, UNUSED u8* arg1) {
 }
 
-void func_80040174(void* arg0, s32 arg1, s32 arg2) {
+void func_80040174(UNUSED void* arg0, UNUSED s32 arg1, UNUSED s32 arg2) {
 }
 
-s32 osAiSetFrequency(u32 freq) {
+s32 osAiSetFrequency(UNUSED u32 freq) {
     return 1;
 }
 
-void mio0decode(u8* arg0, u8* arg1) {
-    arg1 = arg0;
+void mio0decode(UNUSED u8* arg0, UNUSED u8* arg1) {
 }
 
-s32 mio0encode(s32 input, s32 arg1, s32 arg2) {
+s32 mio0encode(UNUSED s32 input, UNUSED s32 arg1, UNUSED s32 arg2) {
     return 1;
 }
 
-void osStartThread(OSThread* thread) {
+void osStartThread(UNUSED OSThread* thread) {
 }
 
-void osCreateThread(OSThread* thread, OSId id, void (*entry)(void*), void* arg, void* sp, OSPri pri) {
+void osCreateThread(UNUSED OSThread* thread, UNUSED OSId id, void (UNUSED *entry)(void*), UNUSED void* arg, UNUSED void* sp, UNUSED OSPri pri) {
 }
 
 void osInitialize(void) {
 }
 
-void osSetThreadPri(OSThread* thread, OSPri pri) {
+void osSetThreadPri(UNUSED OSThread* thread, UNUSED OSPri pri) {
 }
 
-void osSpTaskLoad(OSTask* task) {
+void osSpTaskLoad(UNUSED OSTask* task) {
 }
 
-void osSpTaskStartGo(OSTask* task) {
+void osSpTaskStartGo(UNUSED OSTask* task) {
 }
 
 void osSpTaskYield(void) {
 }
 
-OSYieldResult osSpTaskYielded(OSTask* task) {
+OSYieldResult osSpTaskYielded(UNUSED OSTask* task) {
     return 0;
 }
