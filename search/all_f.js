@@ -278,7 +278,7 @@ var searchData=
   ['loaded_275',['loaded',['../structAudioBankSample.html#a4a8e416b277a7be4501e5cee2eca2cb5',1,'AudioBankSample::loaded'],['../structInstrument.html#a79fbb05cba2ad89835ab5b9f57673c6c',1,'Instrument::loaded'],['../structDrum.html#a594bcec833a2b26bbf8a9134a9b16f9e',1,'Drum::loaded'],['../structInstrument.html#a35ae8f8ae47cf36010ed10c0ce699157',1,'Instrument::loaded'],['../structDrum.html#a522aa4461898868236533c00107ff955',1,'Drum::loaded'],['../structAudioBankSample.html#a250c94ffe7e955c809f453584283950b',1,'AudioBankSample::loaded']]],
   ['loadfog_276',['LoadFog',['../namespaceTrackEditor.html#add90fd8e24d64905c489b256d1e849d5',1,'TrackEditor']]],
   ['loadimgcomptype_277',['LoadImgCompType',['../menu__items_8h.html#a5b0661979d1f6c0ea9432647ab4f0ecf',1,'menu_items.h']]],
-  ['loading_20order_278',['Mod Loading Order',['../md_docs_2modding.html#mod-loading-order',1,'']]],
+  ['loading_20order_278',['Mod Loading Order',['../modding.html#mod-loading-order',1,'']]],
   ['loadingbankid_279',['loadingBankId',['../structSequencePlayer.html#a7ff39707aa512005fa36b220cc546881',1,'SequencePlayer']]],
   ['loadminimap_280',['LoadMinimap',['../namespaceTrackEditor.html#a9075bc0d22971dfd312b0557e9d6bec8',1,'TrackEditor']]],
   ['loadmtx_281',['LoadMtx',['../classOBombKart.html#a8eeddb6c81e13c774f6914afa0579098',1,'OBombKart::LoadMtx()'],['../classPlayerBombKart.html#ab9363ab7b5a7b4c104ff997bcc82064f',1,'PlayerBombKart::LoadMtx()']]],

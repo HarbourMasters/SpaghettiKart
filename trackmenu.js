@@ -67,7 +67,7 @@ var trackmenu =
     [ "Minimap", "minimap.html", [
       [ "Minimap", "minimap.html#minimap", [
         [ "Format", "minimap.html#format", null ],
-        [ "Tips", "minimap.html#tips-2", null ],
+        [ "Tips", "minimap.html#tips-1", null ],
         [ "Option 1: Black Background, White Track", "minimap.html#option-1-black-background-white-track", null ],
         [ "Option 2: Transparent Background, White Track", "minimap.html#option-2-transparent-background-white-track", null ],
         [ "Export", "minimap.html#export-1", null ],

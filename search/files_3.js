@@ -90,7 +90,6 @@ var searchData=
   ['cup_2ecpp_87',['Cup.cpp',['../Cup_8cpp.html',1,'']]],
   ['cup_2eh_88',['Cup.h',['../Cup_8h.html',1,'']]],
   ['custom_2daudio_2emd_89',['custom-audio.md',['../custom-audio_8md.html',1,'']]],
-  ['custom_2dcharacters_2emd_90',['custom-characters.md',['../custom-characters_8md.html',1,'']]],
-  ['customtrack_2ecpp_91',['CustomTrack.cpp',['../CustomTrack_8cpp.html',1,'']]],
-  ['customtrack_2eh_92',['CustomTrack.h',['../CustomTrack_8h.html',1,'']]]
+  ['customtrack_2ecpp_90',['CustomTrack.cpp',['../CustomTrack_8cpp.html',1,'']]],
+  ['customtrack_2eh_91',['CustomTrack.h',['../CustomTrack_8h.html',1,'']]]
 ];
