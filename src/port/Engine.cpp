@@ -27,6 +27,8 @@
 #include <ship/window/gui/Fonts.h>
 #include "ship/window/gui/resource/Font.h"
 #include "ship/window/gui/resource/FontFactory.h"
+#include "libultraship/window/gui/InputEditorWindow.h"
+#include "libultraship/window/gui/GfxDebuggerWindow.h"
 #include "libultraship/controller/controldeck/ControlDeck.h"
 #include "SpaghettiGui.h"
 
@@ -175,6 +177,9 @@ GameEngine::GameEngine() {
 
     // auto wnd = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
     // auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetRawInstance()->GetWindow());
+
+    gui->AddGuiWindow(std::make_shared<LUS::InputEditorWindow>(CVAR_CONTROLLER_CONFIGURATION_WINDOW_OPEN, "Input Editor"));
+    gui->AddGuiWindow(std::make_shared<LUS::GfxDebuggerWindow>(CVAR_GFX_DEBUGGER_WINDOW_OPEN, "GfxDebuggerWindow", ImVec2(520, 600)));
 
     this->context->Init({assets_path}, {}, 3, { 26800, 512, 1100 }, wnd, controlDeck);
 
