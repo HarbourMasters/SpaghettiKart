@@ -25,7 +25,14 @@ size_t SkySnow::_count = 0;
 SkySnow::SkySnow(ScreenContext* screen) : SkyActor(screen) {
     _idx = _count;
 
+    mTexture = (u8*)D_0D0293D8;
+    mTextureWidth = 16;
+    mTextureHeight = 16;
+    mScale = 0.15f;
+    mVisible = true;
+
     mVtx = (Vtx*)LOAD_ASSET(common_vtx_rectangle);
+
     mState = 0;
     mState2 = 0;
 
@@ -102,10 +109,10 @@ void SkySnow::Draw(ScreenContext* screen, s32 arg0) { // render_clouds
 }
 
 void SkySnow::func_80077E20() {
-    u8* tex = (u8*) LOAD_ASSET(D_0D0293D8);
+    //u8* tex = (u8*) LOAD_ASSET(D_0D0293D8);
     //Vtx* vtx = (Vtx*) LOAD_ASSET(common_vtx_rectangle);
 
-    mTexture = tex;
+    //mTexture = tex;
     //! @bug frappe snowland There's something up with the handling of common_vtx_rectangle and the loading of 0x10
     //! right here
     // root function: func_80078C70
