@@ -1049,7 +1049,7 @@ void render_light_environment_on_player(Player* player, s8 arg1) {
             ((gNearestPathPointByPlayerId[arg1] >= 0x216) && (gNearestPathPointByPlayerId[arg1] < 0x21D)) ||
             ((gNearestPathPointByPlayerId[arg1] >= 0x230) && (gNearestPathPointByPlayerId[arg1] < 0x23A)) ||
             ((gNearestPathPointByPlayerId[arg1] >= 0x24C) && (gNearestPathPointByPlayerId[arg1] < 0x256)) ||
-            ((gNearestPathPointByPlayerId[arg1] >= bugFix) && (gNearestPathPointByPlayerId[arg1] < 617)) ||
+            ((gNearestPathPointByPlayerId[arg1] >= bugFix) && (gNearestPathPointByPlayerId[arg1] < 0x269)) ||
             ((gNearestPathPointByPlayerId[arg1] >= 0x274) &&
              (gNearestPathPointByPlayerId[arg1] < 0x27E))) { // under a lamp
             change_player_color_effect_rgb(player, arg1, COLOR_LIGHT, 0.3f);
