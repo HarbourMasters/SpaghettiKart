@@ -114,8 +114,15 @@ jobs:
           wget -O $APP/Contents/Resources/gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
           codesign --force --deep --sign - --options runtime --entitlements cmake/macos/entitlements.plist $APP
           mkdir spaghetti-${{ matrix.config }}
-          # Zip with ditto so the executable bit survives artifact upload.
-          ditto -c -k --keepParent $APP spaghetti-${{ matrix.config }}/SpaghettiKart.app.zip
+          # Ship a .dmg like the other HarbourMasters macOS ports: a disk image
+          # survives GitHub's own artifact zip intact, so the download expands in
+          # one step and the app can be dragged straight to Applications.
+          STAGE=dmg-staging
+          mkdir -p $STAGE
+          ditto $APP $STAGE/SpaghettiKart.app
+          ln -s /Applications $STAGE/Applications
+          hdiutil create -volname SpaghettiKart -srcfolder $STAGE -ov -format UDZO spaghetti-${{ matrix.config }}/SpaghettiKart.dmg
+          cp README.md spaghetti-${{ matrix.config }}/readme.txt
       - name: Publish packaged artifacts
         if: matrix.config == 'Release'
         uses: actions/upload-artifact@v4
@@ -155,8 +162,15 @@ jobs:
           wget -O $APP/Contents/Resources/gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
           codesign --force --deep --sign - --options runtime --entitlements cmake/macos/entitlements.plist $APP
           mkdir spaghetti-${{ matrix.config }}
-          # Zip with ditto so the executable bit survives artifact upload.
-          ditto -c -k --keepParent $APP spaghetti-${{ matrix.config }}/SpaghettiKart.app.zip
+          # Ship a .dmg like the other HarbourMasters macOS ports: a disk image
+          # survives GitHub's own artifact zip intact, so the download expands in
+          # one step and the app can be dragged straight to Applications.
+          STAGE=dmg-staging
+          mkdir -p $STAGE
+          ditto $APP $STAGE/SpaghettiKart.app
+          ln -s /Applications $STAGE/Applications
+          hdiutil create -volname SpaghettiKart -srcfolder $STAGE -ov -format UDZO spaghetti-${{ matrix.config }}/SpaghettiKart.dmg
+          cp README.md spaghetti-${{ matrix.config }}/readme.txt
       - name: Publish packaged artifacts
         if: matrix.config == 'Release'
         uses: actions/upload-artifact@v4
