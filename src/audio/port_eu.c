@@ -168,8 +168,6 @@ struct SPTask* create_next_audio_frame_task(void) {
 
     index = gAudioTaskIndex;
     gAudioTask->msgqueue = NULL;
-    // wtf?
-    writtenCmdsCopy += 0;
     gAudioTask->msg.ptr = NULL;
 
     task = &gAudioTask->task.t;

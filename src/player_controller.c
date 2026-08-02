@@ -3824,9 +3824,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
         func_8002BD58(player);
     }
     player->effects &= 0xDFFFFFFF;
-    if (((s32) player->tyres[BACK_RIGHT].surfaceType) > 0xE) {
-        var_f12 = var_f12;
-    } else {
+    if (((s32) player->tyres[BACK_RIGHT].surfaceType) <= 0xE) {
         var_f12 += D_800E3410[player->characterId][player->tyres[BACK_RIGHT].surfaceType];
     }
     if (((s32) player->tyres[BACK_LEFT].surfaceType) < 0xF) {

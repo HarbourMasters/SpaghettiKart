@@ -62,4 +62,5 @@ void osSpTaskYield(void) {
 }
 
 OSYieldResult osSpTaskYielded(OSTask* task) {
+    return 0;
 }

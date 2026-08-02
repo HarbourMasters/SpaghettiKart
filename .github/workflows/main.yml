@@ -107,13 +107,15 @@ jobs:
           path: ./build-cmake
       - name: Create Package
         run: |
+          APP=build-cmake/SpaghettiKart.app
+          # Insert the canonical spaghetti.o2r from the generate-port-o2r job and
+          # the controller database, then re-sign since the bundle contents changed.
+          cp build-cmake/spaghetti.o2r $APP/Contents/Resources/spaghetti.o2r
+          wget -O $APP/Contents/Resources/gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
+          codesign --force --deep --sign - --options runtime --entitlements cmake/macos/entitlements.plist $APP
           mkdir spaghetti-${{ matrix.config }}
-          mv build-cmake/Spaghettify spaghetti-${{ matrix.config }}/
-          mv build-cmake/spaghetti.o2r spaghetti-${{ matrix.config }}/
-          mv config.yml spaghetti-${{ matrix.config }}/
-          mv yamls spaghetti-${{ matrix.config }}/
-          mv meta spaghetti-${{ matrix.config }}/
-          wget -O spaghetti-${{ matrix.config }}/gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
+          # Zip with ditto so the executable bit survives artifact upload.
+          ditto -c -k --keepParent $APP spaghetti-${{ matrix.config }}/SpaghettiKart.app.zip
       - name: Publish packaged artifacts
         if: matrix.config == 'Release'
         uses: actions/upload-artifact@v4
@@ -146,13 +148,15 @@ jobs:
           path: ./build-cmake
       - name: Create Package
         run: |
+          APP=build-cmake/SpaghettiKart.app
+          # Insert the canonical spaghetti.o2r from the generate-port-o2r job and
+          # the controller database, then re-sign since the bundle contents changed.
+          cp build-cmake/spaghetti.o2r $APP/Contents/Resources/spaghetti.o2r
+          wget -O $APP/Contents/Resources/gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
+          codesign --force --deep --sign - --options runtime --entitlements cmake/macos/entitlements.plist $APP
           mkdir spaghetti-${{ matrix.config }}
-          mv build-cmake/Spaghettify spaghetti-${{ matrix.config }}/
-          mv build-cmake/spaghetti.o2r spaghetti-${{ matrix.config }}/
-          mv config.yml spaghetti-${{ matrix.config }}/
-          mv yamls spaghetti-${{ matrix.config }}/
-          mv meta spaghetti-${{ matrix.config }}/
-          wget -O spaghetti-${{ matrix.config }}/gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
+          # Zip with ditto so the executable bit survives artifact upload.
+          ditto -c -k --keepParent $APP spaghetti-${{ matrix.config }}/SpaghettiKart.app.zip
       - name: Publish packaged artifacts
         if: matrix.config == 'Release'
         uses: actions/upload-artifact@v4

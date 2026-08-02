@@ -24,7 +24,7 @@ void nullify_displaylist(uintptr_t addr) {
     Gfx* macro;
 
     macro = (Gfx*) addr;
-    macro->words.w0 = (G_ENDDL << 24);
+    macro->words.w0 = ((u32) (G_ENDDL & 0xFF) << 24);
     macro->words.w1 = 0;
 }
 
@@ -689,10 +689,10 @@ UNUSED s32 detect_tyre_collision(KartTyre* tyre) {
     }
     tyre->baseHeight = tyreY;
     tyre->surfaceType = 0;
-    //! @bug
-    // Another function that has a return value but doesn't have an explicit return statement in one of its codepaths.
-    // The return value at this point will be whatever was last returned by func_802AAE4C/func_802AB6C4/func_802AB288
-    // depending on which (if any) if statements were entered on the loop's last cycle
+    // Used to fall off the end here (see git history for the original @bug
+    // note): the return value was whatever the last helper call left behind.
+    // No surface was found, so report no collision.
+    return 0;
 }
 
 s32 is_colliding_with_drivable_surface(struct Collision* collision, f32 boundingBoxSize, f32 newX, f32 newY, f32 newZ,
@@ -2187,7 +2187,7 @@ void find_vtx_and_set_colours(Gfx* displayList, s8 alpha, u8 red, u8 green, u8 b
         lo = gfx->words.w0;
         hi = gfx->words.w1;
         opcode = GFX_GET_OPCODE(lo);
-        if (opcode == (G_ENDDL << 24)) {
+        if (opcode == ((u32) (G_ENDDL & 0xFF) << 24)) {
             break;
         } else if (opcode == (G_DL << 24)) {
             find_vtx_and_set_colours((Gfx*) hi, alpha, red, green, blue);

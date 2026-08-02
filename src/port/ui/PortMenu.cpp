@@ -405,6 +405,9 @@ void PortMenu::AddEnhancements() {
     AddWidget(path, "Enable Look Behind Camera", WIDGET_CVAR_CHECKBOX)
         .CVar("gLookBehind")
         .Options(CheckboxOptions().Tooltip("Press C-Left to look behind you"));
+    AddWidget(path, "Fix Visuals", WIDGET_CVAR_CHECKBOX)
+        .CVar("gFixVisuals")
+        .Options(CheckboxOptions().Tooltip("Fixes the second last lamp glow in Banshee Boardwalk"));
 
     AddRulesets();
 
@@ -464,6 +467,9 @@ void PortMenu::AddRulesets() {
         .CVar("gGoFish")
         .Options(CheckboxOptions().Tooltip(
             "Collect as many trophies as you can. Racer with the most trophies wins!"));
+    AddWidget(path, "Shells Shoot Straight", WIDGET_CVAR_CHECKBOX)
+        .CVar("gShellsShootStraight")
+        .Options(CheckboxOptions().Tooltip("Fixes a logic bug in the game code. No evidence if this is intended gameplay or not."));
     AddWidget(path, "Track X Stretch", WIDGET_SLIDER_FLOAT)
         .ValuePointer(&gVtxStretch[0])
         .Options(UIWidgets::FloatSliderOptions().Min(0.1f).Max(10.0f).Step(0.1f).Format("%.2f"));

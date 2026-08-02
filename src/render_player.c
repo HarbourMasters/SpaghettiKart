@@ -1021,6 +1021,18 @@ void render_light_environment_on_player(Player* player, s8 arg1) {
             D_80164B80[arg1] = 0;
         }
     } else if (IsBansheeBoardwalk()) {
+        /**
+         * @bug For the second last lamp 
+         * 
+         * The condition for this lamp does not work, and if it did,
+         * the lamp area extends nearly to the finishline.
+         * This adjustment places the lamp glow into a suitable area
+         */ 
+        s16 bugFix = 0x288; // Original game value
+        if (CVarGetInteger("gFixVisuals", 0)) {
+            bugFix = 0x25F; // Bug fix
+        }
+
         if (((gNearestPathPointByPlayerId[arg1] >= 0xD) && (gNearestPathPointByPlayerId[arg1] < 0x15)) ||
             ((gNearestPathPointByPlayerId[arg1] >= 0x29) && (gNearestPathPointByPlayerId[arg1] < 0x39)) ||
             ((gNearestPathPointByPlayerId[arg1] >= 0x46) && (gNearestPathPointByPlayerId[arg1] < 0x4E)) ||
@@ -1037,7 +1049,7 @@ void render_light_environment_on_player(Player* player, s8 arg1) {
             ((gNearestPathPointByPlayerId[arg1] >= 0x216) && (gNearestPathPointByPlayerId[arg1] < 0x21D)) ||
             ((gNearestPathPointByPlayerId[arg1] >= 0x230) && (gNearestPathPointByPlayerId[arg1] < 0x23A)) ||
             ((gNearestPathPointByPlayerId[arg1] >= 0x24C) && (gNearestPathPointByPlayerId[arg1] < 0x256)) ||
-            ((gNearestPathPointByPlayerId[arg1] >= 0x288) && (gNearestPathPointByPlayerId[arg1] < 0x269)) ||
+            ((gNearestPathPointByPlayerId[arg1] >= bugFix) && (gNearestPathPointByPlayerId[arg1] < 0x269)) ||
             ((gNearestPathPointByPlayerId[arg1] >= 0x274) &&
              (gNearestPathPointByPlayerId[arg1] < 0x27E))) { // under a lamp
             change_player_color_effect_rgb(player, arg1, COLOR_LIGHT, 0.3f);

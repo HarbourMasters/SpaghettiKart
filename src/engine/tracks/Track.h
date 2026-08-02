@@ -120,9 +120,9 @@ typedef struct Properties {
 #ifdef __cplusplus
     nlohmann::json to_json() const {
         nlohmann::json j;
-        j["Name"] = Name ? Name : "";
-        j["DebugName"] = DebugName ? DebugName : "";
-        j["TrackLength"] = TrackLength ? TrackLength : "";
+        j["Name"] = Name;
+        j["DebugName"] = DebugName;
+        j["TrackLength"] = TrackLength;
         //j["AIBehaviour"] = AIBehaviour ? AIBehaviour : "";
         j["LakituTowType"] = LakituTowType;
         j["AIMaximumSeparation"] = AIMaximumSeparation;

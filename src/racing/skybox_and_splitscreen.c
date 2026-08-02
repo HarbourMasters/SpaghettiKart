@@ -240,30 +240,6 @@ void init_rdp(void) {
     gSPClipRatio(gDisplayListHead++, FRUSTRATIO_1);
 }
 
-UNUSED void func_802A40A4(void) {
-}
-UNUSED void func_802A40AC(void) {
-}
-UNUSED void func_802A40B4(void) {
-}
-UNUSED void func_802A40BC(void) {
-}
-UNUSED void func_802A40C4(void) {
-}
-UNUSED void func_802A40CC(void) {
-}
-UNUSED void func_802A40D4(void) {
-}
-UNUSED void func_802A40DC(void) {
-}
-
-UNUSED s32 set_viewport2(void) {
-    gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gScreenOneCtx->viewport));
-    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
-    gSPSetGeometryMode(gDisplayListHead++,
-                       G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH | G_CLIPPING);
-}
-
 void set_viewport(void) {
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
     gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
@@ -623,7 +599,8 @@ void render_screens(ScreenContext* screen, s32 mode, s32 someId, s32 playerId) {
     s32 screenId = screen - gScreenContexts;
 
     if (NULL == camera) {
-        printf("[skybox_and_splitscreen.c] Skipping rendering for screen %d. This viewport has no camera\n", screen - gScreenContexts);
+        printf("[skybox_and_splitscreen.c] Skipping rendering for screen %ld. This viewport has no camera\n",
+               (long) (screen - gScreenContexts));
         return;
     }
 

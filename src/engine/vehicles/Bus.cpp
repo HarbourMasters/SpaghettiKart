@@ -40,7 +40,7 @@ ABus::ABus(const SpawnParams& params) : AActor(params) {
             BusCounts[PathIndex].push_back(PathPoint);
             break;
         case SpawnMode::AUTO: // Automatically distribute buses based on a specific path point
-            printf("vehicle path size %d\n", gVehiclePathSize);
+            printf("vehicle path size %zu\n", gVehiclePathSize);
             PathPoint = GetVehiclePathPointDistributed(BusCounts[PathIndex], gVehiclePathSize);
             BusCounts[PathIndex].push_back(PathPoint);
             printf("train spawn path point: %d\n", PathPoint);

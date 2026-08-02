@@ -155,7 +155,6 @@ void determine_ideal_cpu_position_offset(s32, u16);
 s16 func_8000D6D0(Vec3f, s16*, f32, f32, s16, s16);
 s16 func_8000D940(Vec3f, s16*, f32, f32, s16);
 s16 update_vehicle_following_path(Vec3f, s16*, f32);
-void set_bomb_kart_spawn_positions(void);
 void func_8000DF8C(s32);
 
 s32 add_actor_in_unexpired_actor_list(s32, s16);

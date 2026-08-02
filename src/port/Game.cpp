@@ -288,6 +288,7 @@ s32 CM_GetCrossingOnTriggered(uintptr_t* crossing) {
     if (ptr) {
         return ptr->OnTriggered;
     }
+    return 0;
 }
 
 /**
@@ -1034,6 +1035,14 @@ extern "C"
     // `defaults write -app <App> ApplePressAndHoldEnabled -bool false`; key repeat still works.
     CFPreferencesSetAppValue(CFSTR("ApplePressAndHoldEnabled"), kCFBooleanFalse, kCFPreferencesCurrentApplication);
     CFPreferencesAppSynchronize(kCFPreferencesCurrentApplication);
+#endif
+#if defined(__APPLE__) && !defined(PLATFORM_IOS)
+    // Default the writable data folder to ~/Library/Application Support/SpaghettiKart
+    // (libultraship expands the ~ and creates the directory). Without this, a Finder
+    // launch has no SHIP_HOME and libultraship falls back to the current working
+    // directory, scattering config/saves/mods into the user's home folder.
+    // overwrite=0 keeps any SHIP_HOME the user already set.
+    setenv("SHIP_HOME", "~/Library/Application Support/SpaghettiKart", 0);
 #endif
     // load_wasm();
     GameEngine::Create();

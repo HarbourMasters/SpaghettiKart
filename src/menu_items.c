@@ -4314,7 +4314,8 @@ void func_8009A9FC(s32 arg0, s32 arg1, u32 arg2, s32 arg3) {
     color0 = LOAD_ASSET(sMenuTextureList[sMenuTextureMap[arg0].offset]);
     color1 = LOAD_ASSET(sMenuTextureList[sMenuTextureMap[arg1].offset]);
     for (size_t i = 0; i < arg2; i++) {
-        temp_a0 = BSWAP16(*color0++);
+        temp_a0 = BSWAP16(*color0);
+        color0++;
         red = (temp_a0 & 0xF800) >> 0xB;
         green = (temp_a0 & 0x7C0) >> 6;
         blue = (temp_a0 & 0x3E) >> 1;
@@ -4529,8 +4530,9 @@ Gfx* func_8009B9D0(Gfx* displayListHead, MenuTexture* textures) {
     }
     if (found) {
         gSPDisplayList(displayListHead++, displayList);
-        return displayListHead;
     }
+    // Texture not found: draw nothing.
+    return displayListHead;
 }
 
 Gfx* render_menu_textures(Gfx* arg0, MenuTexture* arg1, s32 column, s32 row) {
@@ -7388,8 +7390,8 @@ void func_800A1F30(UNUSED MenuItem* unused) {
 void func_800A1FB0(MenuItem* arg0) {
     Unk_D_800E70A0 spE0 = { 0 };
     s32 i;
-    s32 var_s5;
-    s32 var_s4;
+    s32 var_s5 = SUB_MENU_COPY_PAK_FROM_GHOST_MIN;
+    s32 var_s4 = 0;
     char spB8[3];
     s32 var_s1;
     char spA8[3];
@@ -8441,7 +8443,8 @@ void render_pause_battle(MenuItem* arg0) {
 
 void func_800A54EC(void) {
     Unk_D_800E70A0 sp50;
-    Unk_D_800E70A0* var_v1;
+    // Initialized against the (unreachable) default of the mode switch below.
+    Unk_D_800E70A0* var_v1 = &D_800E8538[0];
     MenuItem* sp48;
     s32 whyTheSequel;
     s32 why;
@@ -8767,12 +8770,6 @@ void pause_menu_item_box_cursor(MenuItem* arg0, Unk_D_800E70A0* arg1) {
     x2 += x1;
     y2 += y1;
     z2 += z1;
-
-    // clang-format off
-    if (x2);
-    if (y2);
-    if (z2);
-    // clang-format on
 
     guScale(mtx, 1.2f, 1.2f, 1.2f);
     guRotate(mtx2, y2, 0.0f, 1.0f, 0.0f);
@@ -10074,12 +10071,13 @@ const s8 D_800F0CA0[] = {
 };
 
 void update_ok_menu_item(MenuItem* arg0) {
-    s32 sp4;
     s32 var_v0;
 
     switch (arg0->type) {
         default:
-            var_v0 = sp4; // wut?
+            // Was an uninitialized read; -1 hits no animation case below,
+            // which is what the garbage value did in practice.
+            var_v0 = -1;
             break;
         case MENU_ITEM_UI_OK:
             var_v0 = D_800F0CA0[gMainMenuSelection - 1];

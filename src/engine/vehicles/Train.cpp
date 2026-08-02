@@ -57,7 +57,7 @@ ATrain::ATrain(const SpawnParams& params) : AActor(params) {
             TrainCounts[pathIndex].push_back(pathPoint);
             break;
         case SpawnMode::AUTO: // Automatically distribute trains based on a specific path point
-            printf("vehicle path size %d\n", gVehiclePathSize);
+            printf("vehicle path size %zu\n", gVehiclePathSize);
             pathPoint = GetVehiclePathPointDistributed(TrainCounts[pathIndex], gVehiclePathSize);
             TrainCounts[pathIndex].push_back(pathPoint);
             printf("train spawn path point: %d\n", pathPoint);

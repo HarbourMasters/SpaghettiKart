@@ -2978,61 +2978,6 @@ s16 update_vehicle_following_path(Vec3f pos, s16* waypointIndex, f32 speed) {
     return get_angle_between_path(sp38, pos);
 }
 
-void set_bomb_kart_spawn_positions(void) {
-    UNUSED struct Collision* var_s2;
-    f32 startingXPos;
-    f32 startingZPos;
-    f32 startingYPos;
-    s32 var_s3;
-    TrackPathPoint* temp_v0;
-    UNUSED BombKart* var_s0;
-    BombKartSpawn* bombKartSpawn;
-
-    for (var_s3 = 0; var_s3 < NUM_BOMB_KARTS_VERSUS; var_s3++) {
-        // bombKartSpawn = &gBombKartSpawns[gCurrentCourseId][var_s3];
-        if (IsYoshiValley()) {
-            startingXPos = bombKartSpawn->startingXPos;
-            startingZPos = bombKartSpawn->startingZPos;
-            startingYPos = spawn_actor_on_surface(startingXPos, 2000.0f, startingZPos);
-        } else if (IsPodiumCeremony()) {
-            temp_v0 = &gTrackPaths[3][bombKartSpawn->waypointIndex];
-            startingXPos = temp_v0->x;
-            startingYPos = temp_v0->y;
-            startingZPos = temp_v0->z;
-        } else {
-            temp_v0 = &gTrackPaths[0][bombKartSpawn->waypointIndex];
-            startingXPos = temp_v0->x;
-            startingYPos = temp_v0->y;
-            startingZPos = temp_v0->z;
-        }
-
-        gBombKarts[var_s3].bombPos[0] = startingXPos;
-        gBombKarts[var_s3].bombPos[1] = startingYPos;
-        gBombKarts[var_s3].bombPos[2] = startingZPos;
-        gBombKarts[var_s3].wheel1Pos[0] = startingXPos;
-        gBombKarts[var_s3].wheel1Pos[1] = startingYPos;
-        gBombKarts[var_s3].wheel1Pos[2] = startingZPos;
-        gBombKarts[var_s3].wheel2Pos[0] = startingXPos;
-        gBombKarts[var_s3].wheel2Pos[1] = startingYPos;
-        gBombKarts[var_s3].wheel2Pos[2] = startingZPos;
-        gBombKarts[var_s3].wheel3Pos[0] = startingXPos;
-        gBombKarts[var_s3].wheel3Pos[1] = startingYPos;
-        gBombKarts[var_s3].wheel3Pos[2] = startingZPos;
-        gBombKarts[var_s3].wheel4Pos[0] = startingXPos;
-        gBombKarts[var_s3].wheel4Pos[1] = startingYPos;
-        gBombKarts[var_s3].wheel4Pos[2] = startingZPos;
-        gBombKarts[var_s3].waypointIndex = bombKartSpawn->waypointIndex;
-        gBombKarts[var_s3].unk_3C = bombKartSpawn->unk_04;
-        gBombKarts[var_s3].bounceTimer = 0;
-        gBombKarts[var_s3].circleTimer = 0;
-        gBombKarts[var_s3].state = bombKartSpawn->startingState;
-        gBombKarts[var_s3].unk_4A = 0;
-        gBombKarts[var_s3].unk_4C = 1;
-        gBombKarts[var_s3].yPos = startingYPos;
-        check_bounding_collision(&gBombKartCollision[var_s3], 2.0f, startingXPos, startingYPos, startingZPos);
-    }
-}
-
 void func_8000DF8C(s32 bombKartId) {
     UNUSED s32 stackPadding0;
     f32 sp118;

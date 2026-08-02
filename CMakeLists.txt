@@ -204,6 +204,10 @@ endif()
 # ##############################################################################
 
 
+# On macOS these live in the .app's Contents/Resources instead (see
+# cmake/macos/apple_bundle.cmake); copying them next to the executable would
+# just duplicate them inside Contents/MacOS.
+if(NOT CMAKE_SYSTEM_NAME MATCHES "Darwin")
 add_custom_command(
   TARGET ${PROJECT_NAME}
   POST_BUILD
@@ -213,6 +217,7 @@ add_custom_command(
     -DDESTINATION_DIR=$<TARGET_FILE_DIR:${PROJECT_NAME}>
     -P ${CMAKE_SOURCE_DIR}/cmake/StageRuntimeFiles.cmake
   VERBATIM)
+endif()
 
 if(NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
   include(ExternalProject)
@@ -281,16 +286,12 @@ if(NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
   endif()
 
   if(APPLE AND NOT SPAGHETTIKART_IOS)
-    add_custom_target(
-      CreateOSXIcons
-      COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/macosx
-      COMMAND sips -s format icns icon.png --out
-              ${CMAKE_BINARY_DIR}/macosx/spaghettikart.icns
-      WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-      COMMENT "Creating OSX icons ...")
-    add_dependencies(${PROJECT_NAME} CreateOSXIcons)
     configure_file("${CMAKE_SOURCE_DIR}/Info.plist"
                    "${CMAKE_BINARY_DIR}/Info.plist" COPYONLY)
+    # Assemble SpaghettiKart.app: app icon, bundle metadata, resources, dylib
+    # relinking, and ad-hoc codesigning. Also generates the icns (superseding
+    # the old CreateOSXIcons target).
+    include(${CMAKE_SOURCE_DIR}/cmake/macos/apple_bundle.cmake)
   endif()
 
   set_property(TARGET ${PROJECT_NAME} PROPERTY APPIMAGE_DESKTOP_FILE_TERMINAL
