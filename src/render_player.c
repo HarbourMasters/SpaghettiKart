@@ -1028,9 +1028,9 @@ void render_light_environment_on_player(Player* player, s8 arg1) {
          * the lamp area extends nearly to the finishline.
          * This adjustment places the lamp glow into a suitable area
          */ 
-        s16 bugFix = 648;
+        s16 bugFix = 0x288; // Original game value
         if (CVarGetInteger("gFixVisuals", 0)) {
-            bugFix = 607;
+            bugFix = 0x25F; // Bug fix
         }
 
         if (((gNearestPathPointByPlayerId[arg1] >= 0xD) && (gNearestPathPointByPlayerId[arg1] < 0x15)) ||
