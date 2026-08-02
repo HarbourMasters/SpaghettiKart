@@ -1,4 +1,4 @@
-# Modding
+# Modding {#modding}
 
 * Very focused on ease of modding without weird formats or obscure tools.
 * Early stages of modding and as such some features are not fully implemented yet
@@ -44,10 +44,10 @@ Mods are loaded in dependency order. If mod A depends on mod B, then B will be l
   * [link](textures-pack.md)
 * Custom Tracks (CT)
   * Custom tracks are reserved for advanced users. Don't hesitate to make feedback and PR to improve the doc.
-  * [link](custom-track.md)
+  * [link](@ref trackmenu)
 * Custom Characters
   * Custom characters can only replace existing characters for now. We plan to allow to add new characters in the future.
-  * [link](custom-characters.md)
+  * [link](@ref characteroverview)
 * Custom Audio
   * Only custom sequences are supported, not custom samples (like voices or sound effects).
   * [link](custom-audio.md)
