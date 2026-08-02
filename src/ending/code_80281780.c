@@ -28,8 +28,11 @@
 // For init podium ceremony
 #include "ceremony_and_credits.h"
 
+// bcopy takes (src, dst); memcpy takes (dst, src), so the old shim silently
+// reversed every call. Map it explicitly and undef first, since some
+// platforms already define bcopy.
 #undef bcopy
-#define bcopy memcpy
+#define bcopy(src, dst, n) memmove(dst, src, n)
 
 u8 defaultCharacterIds[] = { 1, 2, 3, 4, 5, 6, 7, 0 };
 
