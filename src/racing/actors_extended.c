@@ -477,7 +477,7 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                     shell = (struct ShellActor*) GET_ACTOR((s16) parent->shellIndices[1]);
                     if (CVarGetInteger("gShellsShootStraight", 0)) {
                         // Forces shell 2 to fire inside a cone of 5 to 14.95 degrees
-                        if ((shell->rotAngle < 0x38E) && (shell->rotAngle > 0xAA1)) {
+                        if ((shell->rotAngle < 0x38E) || (shell->rotAngle > 0xAA1)) {
                             break;
                         }
                     }
