@@ -15,7 +15,7 @@ var main_8h =
     [ "MTX_KART_POOL_SIZE", "main_8h.html#a3e7f5dc57f158b3772b2ab86f730b3d7", null ],
     [ "MTX_OBJECT_POOL_SIZE", "main_8h.html#a31c11d55d8bb43ea93782bb27eb387a3", null ],
     [ "MTX_SHADOW_POOL_SIZE", "main_8h.html#a92feae5b57f31cf54ba83ec8dacfa031", null ],
-    [ "clear_framebuffer", "main_8h.html#a9410901312e9664a26f6a854227f2f8b", null ],
+    [ "clear_framebuffer", "main_8h.html#a75ab0f18ca53c96a67d1020d85568473", null ],
     [ "config_gfx_pool", "main_8h.html#a9b253735194a23ab701e8ab9cdc7b128", null ],
     [ "create_gfx_task_structure", "main_8h.html#ac1eb673d52197b3566bdd06480dd5a7b", null ],
     [ "create_thread", "main_8h.html#af6e5ea9388c56a589083d9d868bbb19c", null ],

@@ -2,7 +2,7 @@ var main_8c =
 [
     [ "audio_init", "main_8c.html#a1057a490ba85ab32c800c0e3c9e85c78", null ],
     [ "calculate_delta_time", "main_8c.html#a95ff41a7dc7b358aae7abb46f96bb01c", null ],
-    [ "clear_framebuffer", "main_8c.html#ac6df158ad2a863eb16f6b82e12ea26e4", null ],
+    [ "clear_framebuffer", "main_8c.html#af1fa2c1eb6eccff51dab4e07749dbca7", null ],
     [ "config_gfx_pool", "main_8c.html#a9b253735194a23ab701e8ab9cdc7b128", null ],
     [ "create_debug_thread", "main_8c.html#a77471bbea209b9d664b6569191c60787", null ],
     [ "create_gfx_task_structure", "main_8c.html#ac1eb673d52197b3566bdd06480dd5a7b", null ],

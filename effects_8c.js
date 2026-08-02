@@ -11,7 +11,7 @@ var effects_8c =
     [ "apply_star_effect", "effects_8c.html#ab044d6f7bf1cacf740cf0a27ea0902b5", null ],
     [ "clean_effect", "effects_8c.html#aeda67f98b2369b1c3952d9e4eb30b4d1", null ],
     [ "CM_Waypoints", "effects_8c.html#a7e9518ba542378bf7248d848a2391138", null ],
-    [ "func_8008C1D8", "effects_8c.html#aa49f6b2af30d5848ad5521aa986e4c68", null ],
+    [ "func_8008C1D8", "effects_8c.html#a476e53c5b88ed1fe6fa2f6219f7a4821", null ],
     [ "func_8008C1E0", "effects_8c.html#aa9f387d9b3a1deca5df00a6a9353ddae", null ],
     [ "func_8008C204", "effects_8c.html#a05a53cb305ff1e50e984272b7880aa20", null ],
     [ "func_8008C214", "effects_8c.html#a9600f0f40af746c185f4121a3b04c55d", null ],

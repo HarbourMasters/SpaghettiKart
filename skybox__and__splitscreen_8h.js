@@ -33,6 +33,6 @@ var skybox__and__splitscreen_8h =
     [ "set_editor_screen", "skybox__and__splitscreen_8h.html#af0018a2ee17ccf0a0c9155d767f0ca48", null ],
     [ "set_screen", "skybox__and__splitscreen_8h.html#a58e23917e0a11f717598a99e1e7ebc97", null ],
     [ "set_viewport", "skybox__and__splitscreen_8h.html#aa627a5166fe0e9f01475246065b6923c", null ],
-    [ "set_viewport2", "skybox__and__splitscreen_8h.html#a3d19ba08f130a164d0ee2ec90e054301", null ],
+    [ "set_viewport2", "skybox__and__splitscreen_8h.html#aecbbe966ec4e0eeae2485caae4a79b32", null ],
     [ "D_802B8880", "skybox__and__splitscreen_8h.html#aa9561e7be092d9cd53decc5700218e26", null ]
 ];

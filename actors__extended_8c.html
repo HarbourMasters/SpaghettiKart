@@ -661,6 +661,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <p>Fires shell. Uses += 1.0f because this code is ran multiple times per frame. A bool would be turned on and off again resulting in no change</p>
+<p>Below is a feature that continues holding triple shells until they are aiming forward. In decomp the three gShellsShootStraight conditions always evaluated to true, thus negating the feature from ever working. It has been re-added in for experimental purposes with slight adjustments to behave correctly and for clean code.</p>
+<p>Forces shell 3 to fire inside a cone of -5 to -14.95 degrees -0xAA1 was originally -10 degrees (0x71C). However, shell 3 would continue looping for a bit so it's been adjusted to mirror shell 2</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

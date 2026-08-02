@@ -9,7 +9,7 @@ var effects_8h =
     [ "apply_lightning_effect", "effects_8h.html#a189393f804f5330285542a918bbf8a40", null ],
     [ "apply_star_effect", "effects_8h.html#a27bdf77241c31e79c6e856936241d76e", null ],
     [ "clean_effect", "effects_8h.html#afc9688b14a873b2f572b6fe4f1e9c7d0", null ],
-    [ "func_8008C1D8", "effects_8h.html#a68d4fc7858a71748c5df4c517c233066", null ],
+    [ "func_8008C1D8", "effects_8h.html#a295c1f970ddef56763fc4f7e69cb47d7", null ],
     [ "func_8008C1E0", "effects_8h.html#a2388902d0a1bcbe2233e71a4621118d1", null ],
     [ "func_8008C204", "effects_8h.html#a05a53cb305ff1e50e984272b7880aa20", null ],
     [ "func_8008C214", "effects_8h.html#aa9df1a02b58e123e046d32edbdb3a896", null ],
