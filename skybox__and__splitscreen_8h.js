@@ -5,14 +5,6 @@ var skybox__and__splitscreen_8h =
     [ "func_802A38AC", "skybox__and__splitscreen_8h.html#ab8435f5b83d0fc118a6bbad43a0a806d", null ],
     [ "func_802A38B4", "skybox__and__splitscreen_8h.html#a3e841fd472316b42bf7b4d8f077b2d1c", null ],
     [ "func_802A39E0", "skybox__and__splitscreen_8h.html#aff357b76e91546136991d98ef7614585", null ],
-    [ "func_802A40A4", "skybox__and__splitscreen_8h.html#acbee56a803ead7946e1c703e7039930a", null ],
-    [ "func_802A40AC", "skybox__and__splitscreen_8h.html#a6caeb2f1b332ba9723dd8ef89c9c262c", null ],
-    [ "func_802A40B4", "skybox__and__splitscreen_8h.html#a7d5a2d851adf72234fc5499e56ec391f", null ],
-    [ "func_802A40BC", "skybox__and__splitscreen_8h.html#a60cff02b9efa70e36b28e1f82c824ed1", null ],
-    [ "func_802A40C4", "skybox__and__splitscreen_8h.html#ab4d59c5fb18fa704f1f4a74d79204e3a", null ],
-    [ "func_802A40CC", "skybox__and__splitscreen_8h.html#a34179c1d3f41299b17b99497fd6238b0", null ],
-    [ "func_802A40D4", "skybox__and__splitscreen_8h.html#a213c7db805b5f5abc6c4511b44b24c96", null ],
-    [ "func_802A40DC", "skybox__and__splitscreen_8h.html#a5baf6806d3a9bd2c602b6693860dd292", null ],
     [ "func_802A4300", "skybox__and__splitscreen_8h.html#a67bde07a20019a64500eba855d93ff4a", null ],
     [ "func_802A450C", "skybox__and__splitscreen_8h.html#a1997568f9573e9aa62f3662c0a360f42", null ],
     [ "func_802A487C", "skybox__and__splitscreen_8h.html#a28e4897b5ea47cba9a122d53a0e65b84", null ],
@@ -33,6 +25,5 @@ var skybox__and__splitscreen_8h =
     [ "set_editor_screen", "skybox__and__splitscreen_8h.html#af0018a2ee17ccf0a0c9155d767f0ca48", null ],
     [ "set_screen", "skybox__and__splitscreen_8h.html#a58e23917e0a11f717598a99e1e7ebc97", null ],
     [ "set_viewport", "skybox__and__splitscreen_8h.html#aa627a5166fe0e9f01475246065b6923c", null ],
-    [ "set_viewport2", "skybox__and__splitscreen_8h.html#aecbbe966ec4e0eeae2485caae4a79b32", null ],
     [ "D_802B8880", "skybox__and__splitscreen_8h.html#aa9561e7be092d9cd53decc5700218e26", null ]
 ];

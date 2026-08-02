@@ -1,8 +1,5 @@
 var NAVTREEINDEX34 =
 {
-"freecam_8cpp.html#ac6c655eab5d6bd3f806ce3166f8a7127":[18,0,3,7,0,0,13],
-"freecam_8cpp.html#ac900b57837488f4606719d9b0a594621":[18,0,3,7,0,0,2],
-"freecam_8cpp.html#aebafc6430a3f2591e8051a3afae4a22d":[18,0,3,7,0,0,8],
 "freecam_8h.html":[18,0,3,7,0,1],
 "freecam_8h.html#a1fb98ab226cba765b203135f0ef5097b":[18,0,3,7,0,1,11],
 "freecam_8h.html#a24b2cd5df26cae966ef3a74d545954aa":[18,0,3,7,0,1,3],
@@ -249,5 +246,8 @@ var NAVTREEINDEX34 =
 "globals_d.html":[18,1,0,4],
 "globals_defs.html":[18,1,6],
 "globals_defs.html":[18,1,6,0],
-"globals_defs_a.html":[18,1,6,1]
+"globals_defs_a.html":[18,1,6,1],
+"globals_defs_b.html":[18,1,6,2],
+"globals_defs_c.html":[18,1,6,3],
+"globals_defs_d.html":[18,1,6,4]
 };

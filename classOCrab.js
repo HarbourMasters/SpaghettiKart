@@ -4,7 +4,6 @@ var classOCrab =
     [ "~OCrab", "classOCrab.html#a24304a6f964aa284a428a1f4c15f6480", null ],
     [ "Draw", "classOCrab.html#a71a7d61fe580c22650d08446177f0d69", null ],
     [ "DrawEditorProperties", "classOCrab.html#af5ec11cb214c994e5e5c46714c6b1a58", null ],
-    [ "DrawModel", "classOCrab.html#a1342716f34378e4700baae3df702d294", null ],
     [ "func_80082B34", "classOCrab.html#a1532950f8506924eb4d0ce391e328fbc", null ],
     [ "func_80082C30", "classOCrab.html#aec8b891fdee0f175925e748bb043ab21", null ],
     [ "func_80082E18", "classOCrab.html#ad86dd8cdf24030cde7c4322b4adb547e", null ],

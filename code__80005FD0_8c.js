@@ -143,7 +143,6 @@ var code__80005FD0_8c =
     [ "regulate_cpu_speed", "code__80005FD0_8c.html#ad4df55240035a099df20cb3fddc355ca", null ],
     [ "reset_cpu_behaviour", "code__80005FD0_8c.html#a8c0f6d25932c46807c96532f6c573973", null ],
     [ "reset_cpu_behaviour_none", "code__80005FD0_8c.html#a135ec35ea5dd53f5ceaeda9e3ca8eb41", null ],
-    [ "set_bomb_kart_spawn_positions", "code__80005FD0_8c.html#ada59072ef0e7fec8eb6eeaabdc4ebe03", null ],
     [ "set_current_path", "code__80005FD0_8c.html#aed1a4df415ec78112e486c4503c728e3", null ],
     [ "set_places", "code__80005FD0_8c.html#a52731d6b2880816d8559df507cbdb912", null ],
     [ "set_places_end_course_with_time", "code__80005FD0_8c.html#a9fc4cde6a11c3d5856e79a4a78b1dbfd", null ],
