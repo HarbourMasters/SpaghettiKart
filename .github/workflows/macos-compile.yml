@@ -25,7 +25,9 @@ jobs:
       - name: Create Package
         run: |
           mkdir spaghetti-${{ matrix.config }}
-          mv build-cmake/Spaghettify spaghetti-${{ matrix.config }}/
+          # The mac build now produces SpaghettiKart.app; zip with ditto so the
+          # executable bit survives artifact upload.
+          ditto -c -k --keepParent build-cmake/SpaghettiKart.app spaghetti-${{ matrix.config }}/SpaghettiKart.app.zip
       - name: Publish packaged artifacts
         uses: actions/upload-artifact@v4
         with:
