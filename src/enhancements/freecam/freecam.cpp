@@ -236,9 +236,11 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
     if (bFreecamUseController) {
         if (fController.buttonDepressed & R_TRIG) {
             fTargetPlayer = true;
+            FrameInterpolation_DontInterpolateCamera();
         }
         if (fController.buttonDepressed & L_TRIG) {
             fTargetPlayer = false;
+            FrameInterpolation_DontInterpolateCamera();
         }
         if (fController.buttonPressed & L_JPAD) {
             TargetPreviousPlayer = true;
@@ -273,6 +275,7 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
     else if (wnd->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
         if (FreecamKeyDown('F')) {
             fTargetPlayer = !fTargetPlayer;
+            FrameInterpolation_DontInterpolateCamera();
         }
         if (FreecamKeyDown('N')) {
             TargetPreviousPlayer = true;
@@ -309,6 +312,7 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
         const uint8_t* keystate = SDL_GetKeyboardState(NULL);
         if (FreecamKeyDown(SDL_SCANCODE_F)) {
             fTargetPlayer = !fTargetPlayer;
+            FrameInterpolation_DontInterpolateCamera();
         }
         if (FreecamKeyDown(SDL_SCANCODE_N)) {
             TargetPreviousPlayer = true;
@@ -345,6 +349,7 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
             fRankIndex--;
             camera->playerId = fRankIndex;
             gScreenOneCtx->player = &gPlayers[fRankIndex];
+            FrameInterpolation_DontInterpolateCamera();
         }
     }
 
@@ -354,6 +359,7 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
             fRankIndex++;
             camera->playerId = fRankIndex;
             gScreenOneCtx->player = &gPlayers[fRankIndex];
+            FrameInterpolation_DontInterpolateCamera();
         }
     }
 

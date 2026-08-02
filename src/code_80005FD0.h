@@ -261,7 +261,7 @@ void func_8001933C(Camera*, UNUSED Player*, s32, s32);
 void func_8001968C(void);
 void func_8001969C(s32, f32, s32, s16);
 void func_80019760(Camera*, UNUSED Player*, s32, s32);
-void func_80019890(s32, s32);
+void camera_start_cinematic_shot(s32, s32);
 void func_80019B50(s32, u16);
 void func_80019C50(s32);
 void func_80019D2C(Camera*, Player*, s32);

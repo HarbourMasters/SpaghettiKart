@@ -41,6 +41,7 @@
 #include <stdio.h>
 
 #include "port/Game.h"
+#include "port/interpolation/FrameInterpolation.h"
 #include "engine/tracks/Track.h"
 #include "engine/RaceManager.h"
 
@@ -6550,11 +6551,18 @@ void func_80019760(Camera* camera, UNUSED Player* player, UNUSED s32 arg2, s32 c
     camera->rot[2] = 0;
 }
 
-void func_80019890(s32 playerId, s32 cameraId) {
+// Starts the cinematic shot selected in D_80164680[cameraId]: dispatches to the
+// per-shot setup, which teleports the camera to the shot's opening position.
+void camera_start_cinematic_shot(s32 playerId, s32 cameraId) {
     s32 pathIndex;
+    f32 prevX, prevY, prevZ, dx, dy, dz;
     Camera* camera = camera1;
     camera += cameraId;
     camera->playerId = playerId;
+
+    prevX = camera->pos[0];
+    prevY = camera->pos[1];
+    prevZ = camera->pos[2];
 
     D_801646C0[cameraId] = 0;
     pathIndex = gPathIndexByPlayerId[playerId];
@@ -6613,6 +6621,15 @@ void func_80019890(s32 playerId, s32 cameraId) {
         func_8000BD94(camera->pos[0], camera->pos[1], camera->pos[2], (s32) pathIndex);
     if ((s16) D_80164680[cameraId] == 9) {
         D_80163DD8[cameraId] = (s32) pathIndex;
+    }
+
+    // Flag a camera cut only when the camera teleported to a new shot;
+    // small moves are continuous tracking updates that should stay smooth.
+    dx = camera->pos[0] - prevX;
+    dy = camera->pos[1] - prevY;
+    dz = camera->pos[2] - prevZ;
+    if ((dx * dx + dy * dy + dz * dz) > 100.0f * 100.0f) {
+        FrameInterpolation_DontInterpolateCamera();
     }
 }
 
@@ -6737,11 +6754,11 @@ void func_80019DF4(void) {
 
 void func_80019E58(void) {
     D_80164680[0] = 1;
-    func_80019890(0, 0);
+    camera_start_cinematic_shot(0, 0);
     D_80164670[0] = D_80164678[0];
     D_80164678[0] = 1;
     D_80164680[1] = 9;
-    func_80019890(0, 1);
+    camera_start_cinematic_shot(0, 1);
     D_80164670[1] = D_80164678[1];
     D_80164678[1] = 0;
 }
@@ -6866,7 +6883,7 @@ void func_8001A348(s32 cameraId, f32 arg1, s32 arg2) {
     playerId = cameras[cameraId].playerId;
     D_80164688[cameraId] = arg1;
     D_80164680[cameraId] = func_8001A310((s32) gNearestPathPointByCameraId[cameraId], arg2);
-    func_80019890(playerId, cameraId);
+    camera_start_cinematic_shot(playerId, cameraId);
 }
 
 void func_8001A3D8(s32 arg0, f32 arg1, s32 arg2) {
@@ -6876,7 +6893,7 @@ void func_8001A3D8(s32 arg0, f32 arg1, s32 arg2) {
     D_80164688[arg0] = arg1;
     if (arg2 != D_80164680[arg0]) {
         D_80164680[arg0] = arg2;
-        func_80019890(playerId, arg0);
+        camera_start_cinematic_shot(playerId, arg0);
     }
 }
 
@@ -6891,7 +6908,7 @@ void func_8001A450(s32 playerId, s32 arg1, s32 arg2) {
         temp_v0 = func_8001A310(waypoint, (temp_v1 + 1) % 10);
         if ((temp_v0 != temp_v1) || (arg2 != playerId)) {
             D_80164680[arg1] = temp_v0;
-            func_80019890(arg2, arg1);
+            camera_start_cinematic_shot(arg2, arg1);
         }
     }
 }
@@ -6938,7 +6955,7 @@ void func_8001A588(UNUSED u16* localD_80152300, Camera* camera, Player* player, 
         } else {
             func_8001A124((s32) playerId, cameraIndex);
         }
-        func_80019890((s32) playerId, cameraIndex);
+        camera_start_cinematic_shot((s32) playerId, cameraIndex);
     }
 
     if ((D_80164680[cameraIndex] == 14) || (D_80164680[cameraIndex] == 0)) {

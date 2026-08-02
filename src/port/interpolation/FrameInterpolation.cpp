@@ -253,6 +253,7 @@ bool is_recording;
 vector<Path*> current_path;
 uint32_t camera_epoch;
 uint32_t previous_camera_epoch;
+bool frame_had_camera_cut;
 Recording current_recording;
 Recording previous_recording;
 
@@ -599,8 +600,10 @@ struct InterpolateCtx {
 
 unordered_map<Mtx*, MtxF> FrameInterpolation_Interpolate(float step) {
     InterpolateCtx ctx;
-    ctx.step = step;
-    ctx.w = 1.0f - step;
+    // On a camera cut, blending the two frames would mix unrelated views;
+    // snap every sub-frame to the new frame instead (hard cut, like hardware).
+    ctx.step = frame_had_camera_cut ? 1.0f : step;
+    ctx.w = 1.0f - ctx.step;
     ctx.interpolate_branch(&previous_recording.root_path, &current_recording.root_path);
     return ctx.mtx_replacements;
 }
@@ -633,6 +636,7 @@ void FrameInterpolation_StartRecord(void) {
 }
 
 void FrameInterpolation_StopRecord(void) {
+    frame_had_camera_cut = camera_epoch != previous_camera_epoch;
     previous_camera_epoch = camera_epoch;
     is_recording = false;
 }
