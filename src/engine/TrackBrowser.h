@@ -59,7 +59,7 @@ public:
         );
     }
 
-    void SetTrack(std::string name) {
+    void SetTrack(const std::string& name) {
         if (gTrackRegistry.Find(name)) {
             gTrackRegistry.Invoke(name);
         } else {
