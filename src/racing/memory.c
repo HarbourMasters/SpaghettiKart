@@ -63,25 +63,6 @@ void* get_next_available_memory_addr(uintptr_t size) {
     return (void*) freeSpace;
 }
 
-UNUSED static uintptr_t get_texture2(size_t offset, const course_texture* textures) {
-    if (!((offset >= 0x5000000) && (offset < 0x6000000))) {
-        return 0;
-    }
-    size_t totalOffset = 0x5000000;
-
-    while (textures->addr) {
-        if (totalOffset == offset) {
-            return (uintptr_t) (textures->addr);
-        }
-        totalOffset += textures->data_size;
-        textures++;
-    }
-
-    printf("memory.c: get_texture()\n  TEXTURE NOT FOUND DURING DISPLAYLIST EXTRACT\n");
-    printf("  offset: 0x%zX\n", offset);
-    return 0;
-}
-
 /**
  * @brief Sets the starting location for allocating memory and calculates pool size.
  *

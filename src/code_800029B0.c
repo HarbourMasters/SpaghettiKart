@@ -118,7 +118,7 @@ u16 D_8015F700;
 u16 D_8015F702;
 f32 D_8015F704;
 Vec3f D_8015F708;
-UNUSED u32 D_8015F718[3]; // Likely held ptrs to segmented data.
+UNUSED uintptr_t D_8015F718[3]; // Likely held ptrs to segmented data.
 size_t gFreeMemorySize;
 uintptr_t gNextFreeMemoryAddress;
 uintptr_t gHeapEndPtr;

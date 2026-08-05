@@ -17,7 +17,7 @@ UNUSED void func_800914E0(void) {
     UNUSED Vec3f sp64 = { 0.0f, -20.0f, 150.0f };
     UNUSED Vec3f sp58 = { 0.0f, -6.0f, 4.0f };
     Camera* camera = &cameras[0];
-    struct ActorSpawnData* sp48 = (struct ActorSpawnData*) (uintptr_t) D_8015F718[0];
+    struct ActorSpawnData* sp48 = (struct ActorSpawnData*) D_8015F718[0];
     struct ActorSpawnData* tempData;
 
     s16 temp3 = (s16) D_80152308;

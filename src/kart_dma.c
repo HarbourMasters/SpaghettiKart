@@ -715,7 +715,7 @@ void load_wheel_palette_non_blocking(UNUSED Player* player, const char* texture,
                  (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(arg1)], vAddr, size, &gDmaMesgQueue);
 #else
     u16* tex = (u16*) LOAD_ASSET(texture);
-    UNUSED size_t textureSize = ResourceGetTexSizeByName(texture);
+    // size_t textureSize = ResourceGetTexSizeByName(texture);
     memcpy(vAddr, tex, size);
 #endif
 }
