@@ -80,8 +80,18 @@ extern "C" void TrackBrowser_SetTrack(const char* name) {
     TrackBrowser::Instance->SetTrack(std::string(name));
 }
 
+static std::string gCurrentlySelectedTrack = "";
 extern "C" void TrackBrowser_SetTrackFromCup() {
-    TrackBrowser::Instance->SetTrack(GetWorld()->GetCurrentCup()->GetTrack());
+    const std::string& track = GetWorld()->GetCurrentCup()->GetTrack();
+    // Prevent repeated invoke spams
+    if (track != gCurrentlySelectedTrack) {
+        gCurrentlySelectedTrack = track;
+        TrackBrowser::Instance->SetTrack(track);
+    }
+}
+
+extern "C" void TrackBrowser_ResetSelectedTrack() {
+    gCurrentlySelectedTrack = "";
 }
 
 extern "C" void TrackBrowser_NextTrack(void) {
