@@ -3179,7 +3179,6 @@ Gfx* func_80096CD8(Gfx* displayListHead, s32 xPos, s32 yPos, u32 width, u32 heig
     return displayListHead;
 }
 
-#ifdef NON_MATCHING
 Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8,
                    s32 arg9, UNUSED u16* argA, u32 argB, u32 argC, UNUSED s32 argD) {
     u32 var_a1_2 = arg4;
@@ -3192,50 +3191,41 @@ Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
     s32 sp68 = 0;
     s32 sp64 = 0;
     s32 var_v0_2;
-
     gDPPipeSync(displayListHead++);
     gDPSetCycleType(displayListHead++, G_CYC_2CYCLE);
     gDPSetTextureLOD(displayListHead++, G_TL_TILE);
     gDPSetPrimColor(displayListHead++, 0, 0, 0, 0, 0, gGlobalTimer % 256);
     gDPSetCombineLERP(displayListHead++, TEXEL1, TEXEL0, PRIMITIVE_ALPHA, TEXEL0, TEXEL1, TEXEL0, PRIMITIVE, TEXEL0, 0,
                       0, 0, COMBINED, 0, 0, 0, COMBINED);
-
-    while (var_t0 < (s32) argB) {
+    while ((u32) var_t0 < argB) {
         var_t0 *= 2;
     }
-
     temp_lo = 0x400 / var_t0;
-
-    while ((temp_lo / 2) > (s32) argC) {
+    while ((u32) (temp_lo / 2) > argC) {
         temp_lo /= 2;
     }
-
     var_v0_2 = var_t0;
     while (var_v0_2 > 1) {
         var_v0_2 /= 2;
         sp68 += 1;
     }
     var_v0_2 = temp_lo;
-
     while (var_v0_2 > 1) {
         var_v0_2 /= 2;
         sp64 += 1;
     }
-
     if (arg8 < 0) {
         arg4 -= arg8;
         arg8 = 0;
-    } else if (((arg6 - arg4) + arg8) > SCREEN_WIDTH) {
-        arg6 = (arg4 - arg8) + SCREEN_WIDTH;
+    } else if (((arg6 - arg4) + arg8) > 320) {
+        arg6 = (arg4 - arg8) + 320;
     }
-
     if (arg9 < 0) {
         arg5 -= arg9;
         arg9 = 0;
-    } else if (((arg7 - arg5) + arg9) > SCREEN_HEIGHT) {
-        arg7 = (arg5 - arg9) + SCREEN_HEIGHT;
+    } else if (((arg7 - arg5) + arg9) > 240) {
+        arg7 = (arg5 - arg9) + 240;
     }
-
     if (arg6 < arg4) {
         return displayListHead;
     }
@@ -3244,8 +3234,7 @@ Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
     }
     sp7C = arg8;
     for (var_s3 = arg5; var_s3 < (u32) arg7; var_s3 += temp_lo) {
-
-        if (arg7 < (s32) (temp_lo + var_s3)) {
+        if ((u32) arg7 < temp_lo + var_s3) {
             var_s4 = arg7 - var_s3;
             if (!var_s4) {
                 break;
@@ -3253,10 +3242,8 @@ Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
         } else {
             var_s4 = temp_lo;
         }
-
         for (var_a1_2 = arg4; var_a1_2 < (u32) arg6; var_a1_2 += var_t0) {
-
-            if (arg6 < (s32) (var_t0 + var_a1_2)) {
+            if ((u32) arg6 < var_t0 + var_a1_2) {
                 var_s2 = arg6 - var_a1_2;
                 if (!var_s2) {
                     break;
@@ -3264,21 +3251,16 @@ Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
             } else {
                 var_s2 = var_t0;
             }
-
-            gDPLoadMultiTile(displayListHead++, arg1, 0, G_TX_RENDERTILE, arg2, G_IM_SIZ_16b, argB, argC, var_a1_2,
+            gDPLoadMultiTile(displayListHead++, argA, 0, G_TX_RENDERTILE, arg1, G_IM_SIZ_16b, argB, argC, var_a1_2,
                              var_s3, var_a1_2 + var_s2, var_s3 + var_s4, 0, G_TX_WRAP, G_TX_WRAP, sp68, sp64,
                              G_TX_NOLOD, G_TX_NOLOD);
-
-            gDPLoadMultiTile(displayListHead++, D_0B002A00 + random_int(128) * 2, 256, G_TX_RENDERTILE + 1, arg2,
+            gDPLoadMultiTile(displayListHead++, D_0B002A00 + random_int(128) * 2, 256, G_TX_RENDERTILE + 1, arg1,
                              G_IM_SIZ_16b, argB, argC, var_a1_2, var_s3, var_a1_2 + var_s2, var_s3 + var_s4, 0,
                              G_TX_WRAP, G_TX_WRAP, sp68, sp64, G_TX_NOLOD, G_TX_NOLOD);
-
             gSPTextureRectangle(displayListHead++, arg8 * 4, arg9 * 4, (arg8 + var_s2) * 4, (arg9 + var_s4) * 4, 0,
                                 (var_a1_2 * 32) & 0xFFFF, (var_s3 * 32) & 0xFFFF, arg2, arg3);
-
             arg8 += var_t0;
         }
-
         arg8 = sp7C;
         arg9 += temp_lo;
     }
@@ -3286,9 +3268,6 @@ Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
     gDPSetCycleType(displayListHead++, G_CYC_1CYCLE);
     return displayListHead;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menu_items/func_80097274.s")
-#endif
 
 #undef D_0B002A00
 
