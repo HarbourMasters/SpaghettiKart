@@ -3217,14 +3217,14 @@ Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
     if (arg8 < 0) {
         arg4 -= arg8;
         arg8 = 0;
-    } else if (((arg6 - arg4) + arg8) > 320) {
-        arg6 = (arg4 - arg8) + 320;
+    } else if (((arg6 - arg4) + arg8) > SCREEN_WIDTH) {
+        arg6 = (arg4 - arg8) + SCREEN_WIDTH;
     }
     if (arg9 < 0) {
         arg5 -= arg9;
         arg9 = 0;
-    } else if (((arg7 - arg5) + arg9) > 240) {
-        arg7 = (arg5 - arg9) + 240;
+    } else if (((arg7 - arg5) + arg9) > SCREEN_HEIGHT) {
+        arg7 = (arg5 - arg9) + SCREEN_HEIGHT;
     }
     if (arg6 < arg4) {
         return displayListHead;
