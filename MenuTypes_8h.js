@@ -71,5 +71,5 @@ var MenuTypes_8h =
       [ "WIDGET_CUSTOM", "MenuTypes_8h.html#a7b98518122eb2e94554d2b99d29d1452ab06ba654e370d62a33e9faa9c730fa24", null ]
     ] ],
     [ "audioBackendsMap", "MenuTypes_8h.html#a3b2157d66ffbaad0696904367e9ae983", null ],
-    [ "windowBackendsMap", "MenuTypes_8h.html#aa64b99963f4be54218510d673eb5bb05", null ]
+    [ "windowBackendsMap", "MenuTypes_8h.html#aa42710ff6cb4eed7096c8e58fe37172a", null ]
 ];

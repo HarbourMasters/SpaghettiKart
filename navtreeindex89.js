@@ -1,5 +1,7 @@
 var NAVTREEINDEX89 =
 {
+"textures_2tracks_2bowsers__castle_2bowsers__castle__data_8h.html#a758d9a51e1ad285b00f24e27c6293358":[18,0,2,0,3,1,1,0,0],
+"textures_2tracks_2bowsers__castle_2bowsers__castle__data_8h_source.html":[18,0,2,0,3,1,1,0],
 "textures_2tracks_2choco__mountain_2choco__mountain__data_8h.html":[18,0,2,0,3,1,2,0],
 "textures_2tracks_2choco__mountain_2choco__mountain__data_8h.html#a9bcf093978a74cea9164b8e05ada3131":[18,0,2,0,3,1,2,0,0],
 "textures_2tracks_2choco__mountain_2choco__mountain__data_8h_source.html":[18,0,2,0,3,1,2,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX89 =
 "textures_8c.html#a429a33118907da14457cefc8cee89bd3":[18,0,3,3,5,570],
 "textures_8c.html#a42bb174a905b6fd7c7ba51ca840f94d3":[18,0,3,3,5,189],
 "textures_8c.html#a42d28431f00eebf97c45e5c96bd7cd1f":[18,0,3,3,5,262],
-"textures_8c.html#a433f10a6257c2805055cbcff007c746f":[18,0,3,3,5,497],
-"textures_8c.html#a44910038cba33582ce0ce48a5c0e6bf4":[18,0,3,3,5,365],
-"textures_8c.html#a45574cc011b65d34d3e3b3058093cb85":[18,0,3,3,5,508]
+"textures_8c.html#a433f10a6257c2805055cbcff007c746f":[18,0,3,3,5,497]
 };

@@ -114,6 +114,9 @@ var hierarchy =
     [ "pfd::internal::executor", "classpfd_1_1internal_1_1executor.html", null ],
     [ "FakeItemBox", "structFakeItemBox.html", null ],
     [ "FallingRock", "structFallingRock.html", null ],
+    [ "Fast::Fast3dGui", null, [
+      [ "Ship::SpaghettiGui", "classShip_1_1SpaghettiGui.html", null ]
+    ] ],
     [ "Firework", "structFirework.html", null ],
     [ "FreeCam", "structFreeCam.html", null ],
     [ "freecamSaveState", "structfreecamSaveState.html", null ],
@@ -135,9 +138,6 @@ var hierarchy =
     ] ],
     [ "GfxPool", "structGfxPool.html", null ],
     [ "TrackEditor::Gizmo", "classTrackEditor_1_1Gizmo.html", null ],
-    [ "Gui", "classGui.html", [
-      [ "Ship::SpaghettiGui", "classShip_1_1SpaghettiGui.html", null ]
-    ] ],
     [ "Ship::GuiMenuBar", null, [
       [ "GameMenuBar", "classGameMenuBar.html", null ]
     ] ],

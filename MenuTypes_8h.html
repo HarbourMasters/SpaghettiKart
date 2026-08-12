@@ -114,6 +114,7 @@ $(function(){initNavTree('MenuTypes_8h.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;libultraship/libultraship.h&gt;</code><br />
+<code>#include &lt;fast/Fast3dWindow.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="UIWidgets_8h_source.html">UIWidgets.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for MenuTypes.h:</div>
@@ -239,8 +240,8 @@ Enumerations</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:a3b2157d66ffbaad0696904367e9ae983" id="r_a3b2157d66ffbaad0696904367e9ae983"><td class="memItemLeft" align="right" valign="top">static const std::unordered_map&lt; Ship::AudioBackend, const char * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b2157d66ffbaad0696904367e9ae983">audioBackendsMap</a></td></tr>
 <tr class="separator:a3b2157d66ffbaad0696904367e9ae983"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa64b99963f4be54218510d673eb5bb05" id="r_aa64b99963f4be54218510d673eb5bb05"><td class="memItemLeft" align="right" valign="top">static const std::unordered_map&lt; Ship::WindowBackend, const char * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa64b99963f4be54218510d673eb5bb05">windowBackendsMap</a></td></tr>
-<tr class="separator:aa64b99963f4be54218510d673eb5bb05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa42710ff6cb4eed7096c8e58fe37172a" id="r_aa42710ff6cb4eed7096c8e58fe37172a"><td class="memItemLeft" align="right" valign="top">static const std::unordered_map&lt; int32_t, const char * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa42710ff6cb4eed7096c8e58fe37172a">windowBackendsMap</a></td></tr>
+<tr class="separator:aa42710ff6cb4eed7096c8e58fe37172a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a087c40096a263f0722c06c9d69a3d771" name="a087c40096a263f0722c06c9d69a3d771"></a>
@@ -491,8 +492,8 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="aa64b99963f4be54218510d673eb5bb05" name="aa64b99963f4be54218510d673eb5bb05"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa64b99963f4be54218510d673eb5bb05">&#9670;&#160;</a></span>windowBackendsMap</h2>
+<a id="aa42710ff6cb4eed7096c8e58fe37172a" name="aa42710ff6cb4eed7096c8e58fe37172a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa42710ff6cb4eed7096c8e58fe37172a">&#9670;&#160;</a></span>windowBackendsMap</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -501,7 +502,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::unordered_map&lt;Ship::WindowBackend, const char*&gt; windowBackendsMap</td>
+          <td class="memname">const std::unordered_map&lt;int32_t, const char*&gt; windowBackendsMap</td>
         </tr>
       </table>
   </td>
@@ -511,9 +512,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    { Ship::WindowBackend::FAST3D_DXGI_DX11, <span class="stringliteral">&quot;DirectX&quot;</span> },</div>
-<div class="line">    { Ship::WindowBackend::FAST3D_SDL_OPENGL, <span class="stringliteral">&quot;OpenGL&quot;</span> },</div>
-<div class="line">    { Ship::WindowBackend::FAST3D_SDL_METAL, <span class="stringliteral">&quot;Metal&quot;</span> },</div>
+<div class="line">    { Fast::WindowBackend::FAST3D_DXGI_DX11, <span class="stringliteral">&quot;DirectX&quot;</span> },</div>
+<div class="line">    { Fast::WindowBackend::FAST3D_SDL_OPENGL, <span class="stringliteral">&quot;OpenGL&quot;</span> },</div>
+<div class="line">    { Fast::WindowBackend::FAST3D_SDL_METAL, <span class="stringliteral">&quot;Metal&quot;</span> },</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>

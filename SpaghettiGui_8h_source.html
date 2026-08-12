@@ -112,27 +112,28 @@ $(function(){initNavTree('SpaghettiGui_8h_source.html',''); initResizable(true);
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;libultraship.h&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;ship/window/gui/Gui.h&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;ship/window/Window.h&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">class </span><a class="code hl_class" href="classGui.html">Gui</a>; <span class="comment">// &lt;-- forward declare</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">//class Window;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceShip.html">Ship</a> {</div>
-<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classShip_1_1SpaghettiGui.html">   11</a></span>    <span class="keyword">class </span><a class="code hl_function" href="classShip_1_1SpaghettiGui.html#a939c942b2068ca039bb11d3160a22038">SpaghettiGui</a> : <span class="keyword">public</span> <a class="code hl_class" href="classGui.html">Gui</a> {</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>      <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classShip_1_1SpaghettiGui.html#a939c942b2068ca039bb11d3160a22038">   13</a></span>        <a class="code hl_function" href="classShip_1_1SpaghettiGui.html#a939c942b2068ca039bb11d3160a22038">SpaghettiGui</a>() : <a class="code hl_class" href="classGui.html">Gui</a>() {}</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classShip_1_1SpaghettiGui.html#af3b8807b330a6fc0fa13118bf4d188cf">   14</a></span>        <a class="code hl_function" href="classShip_1_1SpaghettiGui.html#af3b8807b330a6fc0fa13118bf4d188cf">SpaghettiGui</a>(std::vector&lt;std::shared_ptr&lt;GuiWindow&gt;&gt; guiWindows) : <a class="code hl_class" href="classGui.html">Gui</a>(guiWindows) {}</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>      <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classShip_1_1SpaghettiGui.html#afa61a266d1e286ece3fe56601195ba89">DrawMenu</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    };</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;fast/Fast3dGui.h&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;ship/window/Window.h&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">class </span>Gui; <span class="comment">// &lt;-- forward declare</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">//class Window;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceShip.html">Ship</a> {</div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classShip_1_1SpaghettiGui.html">   12</a></span>    <span class="keyword">class </span><a class="code hl_function" href="classShip_1_1SpaghettiGui.html#a939c942b2068ca039bb11d3160a22038">SpaghettiGui</a> : <span class="keyword">public</span> Fast::Fast3dGui {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>      <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classShip_1_1SpaghettiGui.html#a939c942b2068ca039bb11d3160a22038">   14</a></span>        <a class="code hl_function" href="classShip_1_1SpaghettiGui.html#a939c942b2068ca039bb11d3160a22038">SpaghettiGui</a>() : <a class="code hl_namespace" href="namespaceFast.html">Fast</a>::Fast3dGui() {}</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classShip_1_1SpaghettiGui.html#af3b8807b330a6fc0fa13118bf4d188cf">   15</a></span>        <a class="code hl_function" href="classShip_1_1SpaghettiGui.html#af3b8807b330a6fc0fa13118bf4d188cf">SpaghettiGui</a>(std::vector&lt;std::shared_ptr&lt;GuiWindow&gt;&gt; guiWindows) : <a class="code hl_namespace" href="namespaceFast.html">Fast</a>::Fast3dGui(guiWindows) {}</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>      <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classShip_1_1SpaghettiGui.html#afa61a266d1e286ece3fe56601195ba89">DrawMenu</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    };</div>
 </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>}</div>
-<div class="ttc" id="aclassGui_html"><div class="ttname"><a href="classGui.html">Gui</a></div></div>
-<div class="ttc" id="aclassShip_1_1SpaghettiGui_html_a939c942b2068ca039bb11d3160a22038"><div class="ttname"><a href="classShip_1_1SpaghettiGui.html#a939c942b2068ca039bb11d3160a22038">Ship::SpaghettiGui::SpaghettiGui</a></div><div class="ttdeci">SpaghettiGui()</div><div class="ttdef"><b>Definition</b> SpaghettiGui.h:13</div></div>
-<div class="ttc" id="aclassShip_1_1SpaghettiGui_html_af3b8807b330a6fc0fa13118bf4d188cf"><div class="ttname"><a href="classShip_1_1SpaghettiGui.html#af3b8807b330a6fc0fa13118bf4d188cf">Ship::SpaghettiGui::SpaghettiGui</a></div><div class="ttdeci">SpaghettiGui(std::vector&lt; std::shared_ptr&lt; GuiWindow &gt; &gt; guiWindows)</div><div class="ttdef"><b>Definition</b> SpaghettiGui.h:14</div></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>}</div>
+<div class="ttc" id="aclassShip_1_1SpaghettiGui_html_a939c942b2068ca039bb11d3160a22038"><div class="ttname"><a href="classShip_1_1SpaghettiGui.html#a939c942b2068ca039bb11d3160a22038">Ship::SpaghettiGui::SpaghettiGui</a></div><div class="ttdeci">SpaghettiGui()</div><div class="ttdef"><b>Definition</b> SpaghettiGui.h:14</div></div>
+<div class="ttc" id="aclassShip_1_1SpaghettiGui_html_af3b8807b330a6fc0fa13118bf4d188cf"><div class="ttname"><a href="classShip_1_1SpaghettiGui.html#af3b8807b330a6fc0fa13118bf4d188cf">Ship::SpaghettiGui::SpaghettiGui</a></div><div class="ttdeci">SpaghettiGui(std::vector&lt; std::shared_ptr&lt; GuiWindow &gt; &gt; guiWindows)</div><div class="ttdef"><b>Definition</b> SpaghettiGui.h:15</div></div>
 <div class="ttc" id="aclassShip_1_1SpaghettiGui_html_afa61a266d1e286ece3fe56601195ba89"><div class="ttname"><a href="classShip_1_1SpaghettiGui.html#afa61a266d1e286ece3fe56601195ba89">Ship::SpaghettiGui::DrawMenu</a></div><div class="ttdeci">virtual void DrawMenu() override</div><div class="ttdef"><b>Definition</b> SpaghettiGui.cpp:43</div></div>
+<div class="ttc" id="anamespaceFast_html"><div class="ttname"><a href="namespaceFast.html">Fast</a></div><div class="ttdef"><b>Definition</b> Array.h:5</div></div>
 <div class="ttc" id="anamespaceShip_html"><div class="ttname"><a href="namespaceShip.html">Ship</a></div><div class="ttdef"><b>Definition</b> SpaghettiGui.cpp:39</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,23 +1,25 @@
 <map id="src/port/ui/MenuTypes.h" name="src/port/ui/MenuTypes.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="101,5,277,31"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="83,5,259,31"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,225,189,251"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,33,142,83,121,116,105,153,99,183,98,212,93,211,94,182,100,151,116,114,137,79,177,29"/>
-<area shape="rect" id="Node000003" href="$UIWidgets_8h.html" title=" " alt="" coords="281,79,383,104"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="213,28,298,70,295,75,211,33"/>
-<area shape="poly" id="edge8_Node000003_Node000002" title=" " alt="" coords="282,96,243,101,201,111,160,128,125,154,115,167,108,181,101,212,96,211,103,180,110,164,121,150,157,124,199,106,242,96,281,91"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="135,152,193,177"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="306,106,205,149,203,144,304,102"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="218,152,281,177"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="320,106,275,145,272,141,317,102"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="305,152,359,177"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="335,104,335,138,329,138,329,104"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="383,152,454,177"/>
-<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="348,102,396,141,392,145,344,106"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="478,152,549,177"/>
-<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="362,102,472,144,470,149,360,107"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="573,152,697,177"/>
-<area shape="poly" id="edge9_Node000003_Node000009" title=" " alt="" coords="381,101,573,146,572,151,380,107"/>
-<area shape="rect" id="Node000010" href="$ShipUtils_8h.html" title=" " alt="" coords="721,152,844,177"/>
-<area shape="poly" id="edge10_Node000003_Node000010" title=" " alt="" coords="383,98,708,149,707,154,382,103"/>
-<area shape="poly" id="edge11_Node000010_Node000002" title=" " alt="" coords="721,178,710,180,436,210,203,231,203,226,435,205,709,175,721,173"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,33,108,52,94,65,82,80,72,113,72,149,79,183,89,212,84,213,74,185,67,150,67,113,78,77,90,61,105,47,138,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="93,79,249,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="173,31,173,65,168,65,168,31"/>
+<area shape="rect" id="Node000004" href="$UIWidgets_8h.html" title=" " alt="" coords="281,79,383,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="198,28,294,71,292,75,196,33"/>
+<area shape="poly" id="edge9_Node000004_Node000002" title=" " alt="" coords="281,104,190,125,150,139,124,154,115,167,108,181,101,212,96,211,103,180,110,164,121,150,148,134,189,120,280,99"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="135,152,193,177"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="306,106,205,149,203,144,304,102"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="218,152,281,177"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="320,106,275,145,272,141,317,102"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="305,152,359,177"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="335,104,335,138,329,138,329,104"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="383,152,454,177"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="348,102,396,141,392,145,344,106"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="478,152,549,177"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="362,102,472,144,470,149,360,107"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="573,152,697,177"/>
+<area shape="poly" id="edge10_Node000004_Node000010" title=" " alt="" coords="381,101,573,146,572,151,380,107"/>
+<area shape="rect" id="Node000011" href="$ShipUtils_8h.html" title=" " alt="" coords="721,152,844,177"/>
+<area shape="poly" id="edge11_Node000004_Node000011" title=" " alt="" coords="383,98,708,149,707,154,382,103"/>
+<area shape="poly" id="edge12_Node000011_Node000002" title=" " alt="" coords="721,178,710,180,436,210,203,231,203,226,435,205,709,175,721,173"/>
 </map>

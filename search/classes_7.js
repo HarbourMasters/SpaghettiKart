@@ -8,6 +8,5 @@ var searchData=
   ['genericarray_5',['GenericArray',['../classSF64_1_1GenericArray.html',1,'SF64']]],
   ['gfxpool_6',['GfxPool',['../structGfxPool.html',1,'']]],
   ['gizmo_7',['Gizmo',['../classTrackEditor_1_1Gizmo.html',1,'TrackEditor']]],
-  ['gui_8',['Gui',['../classGui.html',1,'']]],
-  ['guiwindow_9',['GuiWindow',['../classGuiWindow.html',1,'']]]
+  ['guiwindow_8',['GuiWindow',['../classGuiWindow.html',1,'']]]
 ];

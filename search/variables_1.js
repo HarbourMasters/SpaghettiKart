@@ -106,6 +106,6 @@ var searchData=
   ['audio4_103',['audio4',['../unionma__device__id.html#aac1aa3c3e1cd82b70897ca0974459d04',1,'ma_device_id']]],
   ['audiobackendsmap_104',['audioBackendsMap',['../MenuTypes_8h.html#a3b2157d66ffbaad0696904367e9ae983',1,'MenuTypes.h']]],
   ['audiobanksound_105',['audioBankSound',['../structNoteSubEu.html#a0ac4bf2c813a28afcaf8a427edac84f0',1,'NoteSubEu']]],
-  ['availablewindowbackends_106',['availableWindowBackends',['../classShip_1_1Menu.html#adb180581b0892a1de0fe9bbf479208af',1,'Ship::Menu']]],
-  ['availablewindowbackendsmap_107',['availableWindowBackendsMap',['../classShip_1_1Menu.html#acf648d900051905bcc55b0e7fe47aef1',1,'Ship::Menu']]]
+  ['availablewindowbackends_106',['availableWindowBackends',['../classShip_1_1Menu.html#acb7b35e2571a66478d3feed96678b58b',1,'Ship::Menu']]],
+  ['availablewindowbackendsmap_107',['availableWindowBackendsMap',['../classShip_1_1Menu.html#a3eaa5edebc5c9f6db4578f217ef7a6c8',1,'Ship::Menu']]]
 ];

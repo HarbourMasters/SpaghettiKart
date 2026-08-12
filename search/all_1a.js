@@ -118,7 +118,7 @@ var searchData=
   ['width_115',['Width',['../structMinimapProps.html#a1a841d178badc847b4ab2278e903fa73',1,'MinimapProps::Width'],['../structMK64_1_1MinimapTexture.html#aa7f1e0a3b50bf411db340cc99350f512',1,'MK64::MinimapTexture::Width']]],
   ['width_116',['width',['../structAText_1_1CharacterList.html#a5aa3285d217183fe2b4062dc8f43d9c8',1,'AText::CharacterList::width'],['../structprintf__struct.html#ad8c9b5c908f18b8933081ae4b8f19b3a',1,'printf_struct::width'],['../structMenuTexture.html#a5fe7845221098d951d48bdab25232d1b',1,'MenuTexture::width']]],
   ['widthoffset_117',['WidthOffset',['../classAText.html#a8eb64aef764413c847b209cdc468660b',1,'AText']]],
-  ['windowbackendsmap_118',['windowBackendsMap',['../MenuTypes_8h.html#aa64b99963f4be54218510d673eb5bb05',1,'MenuTypes.h']]],
+  ['windowbackendsmap_118',['windowBackendsMap',['../MenuTypes_8h.html#aa42710ff6cb4eed7096c8e58fe37172a',1,'MenuTypes.h']]],
   ['windowbutton_119',['WindowButton',['../namespaceUIWidgets.html#a2e6551e3cad6ecb45d3994d609743801',1,'UIWidgets']]],
   ['windowheight_120',['windowHeight',['../classShip_1_1Menu.html#aaa24bab2a495dc0d1573ad9a1b293104',1,'Ship::Menu']]],
   ['windowname_121',['WindowName',['../structWidgetInfo.html#aeea77b4ba4faf5a2440b454857c019e5',1,'WidgetInfo']]],

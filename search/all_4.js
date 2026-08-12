@@ -536,7 +536,7 @@ var searchData=
   ['aunkcmd3impl_533',['aUnkCmd3Impl',['../mixer_8c.html#a2aa08798809cc1f647f3fa20102f2725',1,'aUnkCmd3Impl(uint16_t a, uint16_t b, uint16_t c):&#160;mixer.c'],['../mixer_8h.html#a2aa08798809cc1f647f3fa20102f2725',1,'aUnkCmd3Impl(uint16_t a, uint16_t b, uint16_t c):&#160;mixer.c']]],
   ['auto_534',['AUTO',['../classABoat.html#a4c5e1df94adddcecd87ec7c0411e66ada6e71dc1f8966124edba5631cd4b514ac',1,'ABoat::AUTO'],['../classABus.html#a3b606829d2b09a9842c16675740e0754a3eadc7f48bd7e55063bfa3a74293185c',1,'ABus::AUTO'],['../classACar.html#a99d0539b055526b17dda89ee7a9b233aa5c6ac5199955c5b849a037076cffea43',1,'ACar::AUTO'],['../classATankerTruck.html#a17716b2b23c940fc7a84527d6a89beaba70af9b8ceae1a18a91a9065017dbbfec',1,'ATankerTruck::AUTO'],['../classATrain.html#af652b479a846362e6e9c7736e1a922a3a183f637bf79a9135af35f5f7bf469943',1,'ATrain::AUTO'],['../classATruck.html#aa1c986c1ca35dc614619af0f2282ba60a237ed3d7691fc50fc64aa6e96b21bffa',1,'ATruck::AUTO']]],
   ['available_535',['available',['../classpfd_1_1settings.html#a54fb5598e7501ac38d17e3629190b2fe',1,'pfd::settings']]],
-  ['availablewindowbackends_536',['availableWindowBackends',['../classShip_1_1Menu.html#adb180581b0892a1de0fe9bbf479208af',1,'Ship::Menu']]],
-  ['availablewindowbackendsmap_537',['availableWindowBackendsMap',['../classShip_1_1Menu.html#acf648d900051905bcc55b0e7fe47aef1',1,'Ship::Menu']]],
+  ['availablewindowbackends_536',['availableWindowBackends',['../classShip_1_1Menu.html#acb7b35e2571a66478d3feed96678b58b',1,'Ship::Menu']]],
+  ['availablewindowbackendsmap_537',['availableWindowBackendsMap',['../classShip_1_1Menu.html#a3eaa5edebc5c9f6db4578f217ef7a6c8',1,'Ship::Menu']]],
   ['awariosign_538',['AWarioSign',['../classAWarioSign.html',1,'AWarioSign'],['../classAWarioSign.html#a8b1dbadc1b7f123b87b9f7d9a078a934',1,'AWarioSign::AWarioSign()']]]
 ];

@@ -647,7 +647,7 @@ $(function(){initNavTree('UIWidgets_8h_source.html',''); initResizable(true); })
 <div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span><span class="comment">        int32_t value = CVarGetInteger(cvarName, options.defaultIndex);</span></div>
 <div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span><span class="comment">        if (Combobox(label, &amp;value, comboSource, options)) {</span></div>
 <div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span><span class="comment">            CVarSetInteger(cvarName, value);</span></div>
-<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span><span class="comment">            Ship::Context::GetInstance()-&gt;GetWindow()-&gt;GetGui()-&gt;SaveConsoleVariablesNextFrame();</span></div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span><span class="comment">            Ship::Context::GetRawInstance()-&gt;GetWindow()-&gt;GetGui()-&gt;SaveConsoleVariablesNextFrame();</span></div>
 <div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span><span class="comment">            ShipInit::Init(cvarName);</span></div>
 <div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span><span class="comment">            dirty = true;</span></div>
 <div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span><span class="comment">        }</span></div>
@@ -893,7 +893,7 @@ $(function(){initNavTree('UIWidgets_8h_source.html',''); initResizable(true); })
 <div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span>        int32_t value = CVarGetInteger(cvarName, options.defaultIndex);</div>
 <div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceUIWidgets.html#ab602d66bd389006842f8da46eabf9064">Combobox&lt;T&gt;</a>(label, &amp;value, comboMap, options)) {</div>
 <div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>            CVarSetInteger(cvarName, value);</div>
-<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>            Ship::Context::GetInstance()-&gt;GetWindow()-&gt;GetGui()-&gt;SaveConsoleVariablesNextFrame();</div>
+<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>            Ship::Context::GetRawInstance()-&gt;GetWindow()-&gt;GetGui()-&gt;SaveConsoleVariablesNextFrame();</div>
 <div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>            dirty = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span>        }</div>
 <div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span>        <span class="keywordflow">return</span> dirty;</div>
@@ -907,7 +907,7 @@ $(function(){initNavTree('UIWidgets_8h_source.html',''); initResizable(true); })
 <div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span>        int32_t value = CVarGetInteger(cvarName, options.defaultIndex);</div>
 <div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceUIWidgets.html#ab602d66bd389006842f8da46eabf9064">Combobox&lt;T&gt;</a>(label, &amp;value, comboVector, options)) {</div>
 <div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span>            CVarSetInteger(cvarName, value);</div>
-<div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>            Ship::Context::GetInstance()-&gt;GetWindow()-&gt;GetGui()-&gt;SaveConsoleVariablesNextFrame();</div>
+<div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>            Ship::Context::GetRawInstance()-&gt;GetWindow()-&gt;GetGui()-&gt;SaveConsoleVariablesNextFrame();</div>
 <div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span>            dirty = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span>        }</div>
 <div class="line"><a id="l00688" name="l00688"></a><span class="lineno">  688</span>        <span class="keywordflow">return</span> dirty;</div>
@@ -921,7 +921,7 @@ $(function(){initNavTree('UIWidgets_8h_source.html',''); initResizable(true); })
 <div class="line"><a id="l00694" name="l00694"></a><span class="lineno">  694</span>        int32_t value = CVarGetInteger(cvarName, options.defaultIndex);</div>
 <div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceUIWidgets.html#ab602d66bd389006842f8da46eabf9064">Combobox&lt;T&gt;</a>(label, &amp;value, comboArray, options)) {</div>
 <div class="line"><a id="l00696" name="l00696"></a><span class="lineno">  696</span>            CVarSetInteger(cvarName, value);</div>
-<div class="line"><a id="l00697" name="l00697"></a><span class="lineno">  697</span>            Ship::Context::GetInstance()-&gt;GetWindow()-&gt;GetGui()-&gt;SaveConsoleVariablesNextFrame();</div>
+<div class="line"><a id="l00697" name="l00697"></a><span class="lineno">  697</span>            Ship::Context::GetRawInstance()-&gt;GetWindow()-&gt;GetGui()-&gt;SaveConsoleVariablesNextFrame();</div>
 <div class="line"><a id="l00698" name="l00698"></a><span class="lineno">  698</span>            dirty = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00699" name="l00699"></a><span class="lineno">  699</span>        }</div>
 <div class="line"><a id="l00700" name="l00700"></a><span class="lineno">  700</span>        <span class="keywordflow">return</span> dirty;</div>

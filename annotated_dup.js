@@ -240,7 +240,6 @@ var annotated_dup =
     [ "GameMenuBar", "classGameMenuBar.html", "classGameMenuBar" ],
     [ "GameModePack", "unionGameModePack.html", "unionGameModePack" ],
     [ "GfxPool", "structGfxPool.html", "structGfxPool" ],
-    [ "Gui", "classGui.html", null ],
     [ "GuiWindow", "classGuiWindow.html", null ],
     [ "Harbour", "classHarbour.html", "classHarbour" ],
     [ "HegdehogSpawn", "structHegdehogSpawn.html", "structHegdehogSpawn" ],
