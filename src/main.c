@@ -40,6 +40,7 @@
 #include "port/Game.h"
 #include "port/Engine.h"
 #include "engine/Matrix.h"
+#include "engine/TrackBrowser.h"
 
 // Declarations (not in this file)
 void func_80091B78(void);
@@ -1108,6 +1109,7 @@ void update_gamestate(void) {
              */
             // init_segment_racing();
             setup_race();
+            TrackBrowser_ResetSelectedTrack(); // Same function as gCurrentlyLoadedTrackAddr
             break;
         case ENDING:
             gCurrentlyLoadedTrackAddr = NULL;
