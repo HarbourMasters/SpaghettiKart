@@ -618,7 +618,6 @@ void race_begin_viewport_4p(ScreenContext* screen) {
 }
 
 void render_screens(ScreenContext* screen, s32 mode, s32 someId, s32 playerId) {
-    UNUSED Mat4 matrix;
     Camera* camera = screen->camera;
     s32 screenId = screen - gScreenContexts;
 
@@ -750,7 +749,7 @@ void render_screens(ScreenContext* screen, s32 mode, s32 someId, s32 playerId) {
 void set_screen(void) {
     ScreenContext* wrapper = &gScreenContexts[0];
     Player* player = &gPlayers[0];
-    UNUSED Camera* camera = &cameras[0];
+    // Camera* camera = &cameras[0];
     struct Controller* controller = &gControllers[0];
 
     // struct? size = 0x10. unk++ doesn't work cause s32 too small.
@@ -815,7 +814,7 @@ void set_screen(void) {
                 break;
         }
         player++;
-        camera++;
+        // camera++;
         wrapper++;
         unk += 0x10;
     }

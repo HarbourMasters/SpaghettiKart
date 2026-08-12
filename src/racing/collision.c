@@ -2183,13 +2183,13 @@ void find_vtx_and_set_colours(Gfx* displayList, s8 alpha, u8 red, u8 green, u8 b
     Gfx* gfx = displayList;
     uintptr_t lo;
     uintptr_t hi;
-    u32 opcode;
+    s32 opcode;
 
     while (true) {
         lo = gfx->words.w0;
         hi = gfx->words.w1;
         opcode = GFX_GET_OPCODE(lo);
-        if (opcode == ((u32) (G_ENDDL & 0xFF) << 24)) {
+        if (opcode == (G_ENDDL << 24)) {
             break;
         } else if (opcode == (G_DL << 24)) {
             find_vtx_and_set_colours((Gfx*) hi, alpha, red, green, blue);

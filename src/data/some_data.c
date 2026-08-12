@@ -193,14 +193,12 @@ Vtx gBalloonVertexPlane2[] = {
 //     #include "assets/code/some_data/gTLUTOnomatopoeia.rgba16.inc.c"
 // };
 
-u8* gCourseOutlineTextures[] = {
-    (u8*) minimap_mario_raceway,      (u8*) minimap_choco_mountain, (u8*) minimap_bowsers_castle,
-    (u8*) minimap_banshee_boardwalk,  (u8*) minimap_yoshi_valley,   (u8*) minimap_frappe_snowland,
-    (u8*) minimap_koopa_troopa_beach, (u8*) minimap_royal_raceway,  (u8*) minimap_luigi_raceway,
-    (u8*) minimap_moo_moo_farm,       (u8*) minimap_toads_turnpike, (u8*) minimap_kalimari_desert,
-    (u8*) minimap_sherbet_land,       (u8*) minimap_rainbow_road,   (u8*) minimap_wario_stadium,
-    (u8*) minimap_block_fort,         (u8*) minimap_skyscraper,     (u8*) minimap_double_deck,
-    (u8*) minimap_dks_jungle_parkway, (u8*) minimap_big_donut,
+const char* gCourseOutlineTextures[] = {
+    minimap_mario_raceway, minimap_choco_mountain,  minimap_bowsers_castle,     minimap_banshee_boardwalk,
+    minimap_yoshi_valley,  minimap_frappe_snowland, minimap_koopa_troopa_beach, minimap_royal_raceway,
+    minimap_luigi_raceway, minimap_moo_moo_farm,    minimap_toads_turnpike,     minimap_kalimari_desert,
+    minimap_sherbet_land,  minimap_rainbow_road,    minimap_wario_stadium,      minimap_block_fort,
+    minimap_skyscraper,    minimap_double_deck,     minimap_dks_jungle_parkway, minimap_big_donut,
 };
 
 s16 D_800E5520[] = {

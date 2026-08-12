@@ -113,7 +113,6 @@ void decrease_reverb_gain(void);
 s32 audio_shut_down_and_reset_step(void);
 void audio_reset_session(void);
 void* unk_pool1_lookup(s32 poolIdx, s32 id);
-void func_800BA8B0(s32, s32);
 
 extern s32 D_800EA5D0;
 

@@ -34,7 +34,7 @@
 extern s32 D_802BA038;
 extern s16 D_802BA048;
 s16 gCurrentCourseId = 0;
-uintptr_t gCurrentlyLoadedTrackAddr = (uintptr_t) NULL;
+uintptr_t gCurrentlyLoadedTrackAddr = 0;
 u16 D_800DC5A8 = 0;
 s32 D_800DC5AC = 0;
 u16 D_800DC5B0 = 1;

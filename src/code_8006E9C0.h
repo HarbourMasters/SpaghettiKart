@@ -34,6 +34,6 @@ void init_hud_two_player_horizontal(void);
 extern Vtx cloudvtx[4][4];
 extern Vtx cloudvtx2[3][4];
 extern s16 D_800E5520[];
-extern u8* gCourseOutlineTextures[0x14]; // 800e54d0
+extern const char* gCourseOutlineTextures[0x14]; // 800e54d0
 
 #endif
