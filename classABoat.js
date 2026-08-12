@@ -13,7 +13,7 @@ var classABoat =
     [ "IsMod", "classABoat.html#ad8389b108bf97c6c021b5f69a21d00f0", null ],
     [ "SetSpawnParams", "classABoat.html#ad4fa0a3c7953a5191adaa914586212d9", null ],
     [ "Spawn", "classABoat.html#a2a8755582504f510d51f7988b42df18b", null ],
-    [ "Tick", "classABoat.html#a9edd4ca53a59cadb0e65f49bd5502bc1", null ],
+    [ "Tick60fps", "classABoat.html#a8643457903b0aa05e6ad21757747a6e3", null ],
     [ "VehicleCollision", "classABoat.html#af8c2fe7da0757f60649de40ec229b70a", null ],
     [ "_count", "classABoat.html#a470612ef40cc3cb151f9e3811e1004be", null ],
     [ "ActorIndex", "classABoat.html#a9d2e59206ef9749f0feeef8563c7da1d", null ],

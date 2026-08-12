@@ -103,9 +103,9 @@ var sectionId = 'dynsection-203';
 <!-- Node9 -->
 <g id="Node000009" class="node">
 <title>Node9</title>
-<g id="a_Node000009"><a xlink:href="classABoat.html#a9edd4ca53a59cadb0e65f49bd5502bc1" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="793.5,-142 721.5,-142 721.5,-123 793.5,-123 793.5,-142"/>
-<text text-anchor="middle" x="757.5" y="-130" font-family="Helvetica,sans-Serif" font-size="10.00">ABoat::Tick</text>
+<g id="a_Node000009"><a xlink:href="classABoat.html#a8643457903b0aa05e6ad21757747a6e3" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="807,-142 708,-142 708,-123 807,-123 807,-142"/>
+<text text-anchor="middle" x="757.5" y="-130" font-family="Helvetica,sans-Serif" font-size="10.00">ABoat::Tick60fps</text>
 </a>
 </g>
 </g>
@@ -113,7 +113,7 @@ var sectionId = 'dynsection-203';
 <g id="edge8_Node000001_Node000009" class="edge">
 <title>Node1&#45;&gt;Node9</title>
 <g id="a_edge8_Node000001_Node000009"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M847.69,-123.21C828.41,-125.22 809.26,-127.22 793.67,-128.84"/>
+<path fill="none" stroke="#63b8ff" d="M847.6,-123.22C833.64,-124.68 819.74,-126.12 807.22,-127.43"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="848.18,-126.68 857.76,-122.17 847.45,-119.72 848.18,-126.68"/>
 </a>
 </g>
@@ -121,9 +121,9 @@ var sectionId = 'dynsection-203';
 <!-- Node10 -->
 <g id="Node000010" class="node">
 <title>Node10</title>
-<g id="a_Node000010"><a xlink:href="classATrain.html#acc8b87940356921e15f3e6859bd83cf1" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="793.5,-105 721.5,-105 721.5,-86 793.5,-86 793.5,-105"/>
-<text text-anchor="middle" x="757.5" y="-93" font-family="Helvetica,sans-Serif" font-size="10.00">ATrain::Tick</text>
+<g id="a_Node000010"><a xlink:href="classATrain.html#a930239ba398ab6ffec31a7df126a698a" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="807,-105 708,-105 708,-86 807,-86 807,-105"/>
+<text text-anchor="middle" x="757.5" y="-93" font-family="Helvetica,sans-Serif" font-size="10.00">ATrain::Tick60fps</text>
 </a>
 </g>
 </g>
@@ -131,7 +131,7 @@ var sectionId = 'dynsection-203';
 <g id="edge9_Node000001_Node000010" class="edge">
 <title>Node1&#45;&gt;Node10</title>
 <g id="a_edge9_Node000001_Node000010"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M847.69,-104.3C828.41,-102.4 809.26,-100.51 793.67,-98.97"/>
+<path fill="none" stroke="#63b8ff" d="M847.6,-104.29C833.64,-102.91 819.74,-101.54 807.22,-100.31"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="847.47,-107.79 857.76,-105.29 848.15,-100.83 847.47,-107.79"/>
 </a>
 </g>

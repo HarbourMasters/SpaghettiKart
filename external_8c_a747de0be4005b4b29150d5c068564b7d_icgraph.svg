@@ -585,9 +585,9 @@ var sectionId = 'dynsection-11';
 <!-- Node121 -->
 <g id="Node000121" class="node">
 <title>Node121</title>
-<g id="a_Node000121"><a xlink:href="classABoat.html#a9edd4ca53a59cadb0e65f49bd5502bc1" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="340.5,-1163 268.5,-1163 268.5,-1144 340.5,-1144 340.5,-1163"/>
-<text text-anchor="middle" x="304.5" y="-1151" font-family="Helvetica,sans-Serif" font-size="10.00">ABoat::Tick</text>
+<g id="a_Node000121"><a xlink:href="classAFallingRock.html#a78da7ee050ed40f6c83c0a334f7d901f" target="_top" xlink:title="Updates the falling rock actor. Actor used in Choco Mountain.">
+<polygon fill="white" stroke="#666666" points="357,-1163 252,-1163 252,-1144 357,-1144 357,-1163"/>
+<text text-anchor="middle" x="304.5" y="-1151" font-family="Helvetica,sans-Serif" font-size="10.00">AFallingRock::Tick</text>
 </a>
 </g>
 </g>
@@ -595,7 +595,7 @@ var sectionId = 'dynsection-11';
 <g id="edge33_Node000082_Node000121" class="edge">
 <title>Node82&#45;&gt;Node121</title>
 <g id="a_edge33_Node000082_Node000121"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M466.62,-971.68C460.04,-1009.91 440.26,-1092.87 388,-1135.5 374.82,-1146.25 356.65,-1150.95 340.71,-1152.88"/>
+<path fill="none" stroke="#63b8ff" d="M466.62,-971.68C460.04,-1009.91 440.26,-1092.87 388,-1135.5 379.25,-1142.64 368.3,-1147.11 357.27,-1149.87"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="470.15,-971.77 468.25,-961.35 463.23,-970.68 470.15,-971.77"/>
 </a>
 </g>
@@ -603,9 +603,9 @@ var sectionId = 'dynsection-11';
 <!-- Node122 -->
 <g id="Node000122" class="node">
 <title>Node122</title>
-<g id="a_Node000122"><a xlink:href="classAFallingRock.html#a78da7ee050ed40f6c83c0a334f7d901f" target="_top" xlink:title="Updates the falling rock actor. Actor used in Choco Mountain.">
-<polygon fill="white" stroke="#666666" points="357,-1126 252,-1126 252,-1107 357,-1107 357,-1126"/>
-<text text-anchor="middle" x="304.5" y="-1114" font-family="Helvetica,sans-Serif" font-size="10.00">AFallingRock::Tick</text>
+<g id="a_Node000122"><a xlink:href="classOSeagull.html#a86b5da4447db382837540ab7dc34c95a" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="347.5,-1126 261.5,-1126 261.5,-1107 347.5,-1107 347.5,-1126"/>
+<text text-anchor="middle" x="304.5" y="-1114" font-family="Helvetica,sans-Serif" font-size="10.00">OSeagull::Tick</text>
 </a>
 </g>
 </g>
@@ -613,7 +613,7 @@ var sectionId = 'dynsection-11';
 <g id="edge34_Node000082_Node000122" class="edge">
 <title>Node82&#45;&gt;Node122</title>
 <g id="a_edge34_Node000082_Node000122"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M464.33,-971.16C454.85,-1003.14 431.56,-1066.09 388,-1098.5 379.06,-1105.15 368.16,-1109.44 357.25,-1112.18"/>
+<path fill="none" stroke="#63b8ff" d="M464.33,-971.16C454.85,-1003.14 431.56,-1066.09 388,-1098.5 376.47,-1107.08 361.68,-1111.72 347.81,-1114.19"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="467.78,-971.82 467.11,-961.24 461.04,-969.93 467.78,-971.82"/>
 </a>
 </g>
@@ -621,9 +621,9 @@ var sectionId = 'dynsection-11';
 <!-- Node123 -->
 <g id="Node000123" class="node">
 <title>Node123</title>
-<g id="a_Node000123"><a xlink:href="classATrain.html#acc8b87940356921e15f3e6859bd83cf1" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="340.5,-1089 268.5,-1089 268.5,-1070 340.5,-1070 340.5,-1089"/>
-<text text-anchor="middle" x="304.5" y="-1077" font-family="Helvetica,sans-Serif" font-size="10.00">ATrain::Tick</text>
+<g id="a_Node000123"><a xlink:href="classABoat.html#a8643457903b0aa05e6ad21757747a6e3" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="354,-1089 255,-1089 255,-1070 354,-1070 354,-1089"/>
+<text text-anchor="middle" x="304.5" y="-1077" font-family="Helvetica,sans-Serif" font-size="10.00">ABoat::Tick60fps</text>
 </a>
 </g>
 </g>
@@ -631,7 +631,7 @@ var sectionId = 'dynsection-11';
 <g id="edge35_Node000082_Node000123" class="edge">
 <title>Node82&#45;&gt;Node123</title>
 <g id="a_edge35_Node000082_Node000123"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M460.84,-970.45C448.41,-995.42 423.08,-1038.81 388,-1061.5 373.97,-1070.57 356.07,-1075.14 340.54,-1077.41"/>
+<path fill="none" stroke="#63b8ff" d="M460.84,-970.45C448.41,-995.42 423.08,-1038.81 388,-1061.5 377.91,-1068.03 365.81,-1072.22 354.04,-1074.9"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="464.07,-971.81 465.24,-961.28 457.76,-968.79 464.07,-971.81"/>
 </a>
 </g>
@@ -639,9 +639,9 @@ var sectionId = 'dynsection-11';
 <!-- Node124 -->
 <g id="Node000124" class="node">
 <title>Node124</title>
-<g id="a_Node000124"><a xlink:href="classOSeagull.html#a86b5da4447db382837540ab7dc34c95a" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="347.5,-1052 261.5,-1052 261.5,-1033 347.5,-1033 347.5,-1052"/>
-<text text-anchor="middle" x="304.5" y="-1040" font-family="Helvetica,sans-Serif" font-size="10.00">OSeagull::Tick</text>
+<g id="a_Node000124"><a xlink:href="classATrain.html#a930239ba398ab6ffec31a7df126a698a" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="354,-1052 255,-1052 255,-1033 354,-1033 354,-1052"/>
+<text text-anchor="middle" x="304.5" y="-1040" font-family="Helvetica,sans-Serif" font-size="10.00">ATrain::Tick60fps</text>
 </a>
 </g>
 </g>
@@ -649,7 +649,7 @@ var sectionId = 'dynsection-11';
 <g id="edge36_Node000082_Node000124" class="edge">
 <title>Node82&#45;&gt;Node124</title>
 <g id="a_edge36_Node000082_Node000124"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M454.59,-968.96C439.48,-985.51 414.59,-1009.82 388,-1023.5 375.58,-1029.89 361.02,-1034.15 347.61,-1036.98"/>
+<path fill="none" stroke="#63b8ff" d="M454.59,-968.96C439.48,-985.51 414.59,-1009.82 388,-1023.5 377.54,-1028.88 365.57,-1032.75 354.04,-1035.53"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="457.54,-970.91 461.56,-961.1 452.3,-966.26 457.54,-970.91"/>
 </a>
 </g>

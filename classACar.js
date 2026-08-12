@@ -12,7 +12,7 @@ var classACar =
     [ "IsMod", "classACar.html#af7f3aa4373f200b2d3322d65f2cce81f", null ],
     [ "SetSpawnParams", "classACar.html#a50b8c522ce21ef770090b8c965be1fef", null ],
     [ "Spawn", "classACar.html#a657415a24ab2c0d907f25fd227156848", null ],
-    [ "Tick", "classACar.html#aa5a07144df2ce488c986f2c9eece9916", null ],
+    [ "Tick60fps", "classACar.html#a56ab601d7311e3a2bcb796236916711c", null ],
     [ "VehicleCollision", "classACar.html#a807f87400ace96904e2ad6dc4a27409a", null ],
     [ "_count", "classACar.html#a9ef1f8cda27d51f731b911df6db79c4d", null ],
     [ "ActorIndex", "classACar.html#ab40c38ab9e236b31167bf794b73b3ab8", null ],

@@ -12,7 +12,7 @@ var classATankerTruck =
     [ "IsMod", "classATankerTruck.html#aa510e571609e5945c36252c292195d4d", null ],
     [ "SetSpawnParams", "classATankerTruck.html#a9ab759051eeea02a00c37c783eadce1c", null ],
     [ "Spawn", "classATankerTruck.html#a2aacacbab3ba357a304a26523e4e3679", null ],
-    [ "Tick", "classATankerTruck.html#a7a57be806639c04fa4d391a47bf09ab3", null ],
+    [ "Tick60fps", "classATankerTruck.html#ac237da6f1ad3a82063a9ac8430d460e1", null ],
     [ "VehicleCollision", "classATankerTruck.html#a078da317114c1c0cb7b1d1ab2aa052f0", null ],
     [ "_count", "classATankerTruck.html#a89afb9b77f011d75c222899c8725644c", null ],
     [ "ActorIndex", "classATankerTruck.html#addd8d533acd8268c477b13044a4ee24a", null ],

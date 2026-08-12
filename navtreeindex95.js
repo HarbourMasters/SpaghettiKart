@@ -1,5 +1,9 @@
 var NAVTREEINDEX95 =
 {
+"toads__turnpike__offsets_8h.html#aa9aa179efbd24581e12e70e5da3a964b":[18,0,2,0,0,0,17,2,0],
+"toads__turnpike__offsets_8h_source.html":[18,0,2,0,0,0,17,2],
+"toads__turnpike__vertices_8h.html":[18,0,2,0,0,0,17,3],
+"toads__turnpike__vertices_8h.html#a7da316fc2d9013303f5dd84b3d150f68":[18,0,2,0,0,0,17,3,0],
 "toads__turnpike__vertices_8h_source.html":[18,0,2,0,0,0,17,3],
 "todo.html":[15],
 "track-properties.html":[12,9],
@@ -245,9 +249,5 @@ var NAVTREEINDEX95 =
 "track_8c.html#afb6fced98ddf7c71240dc8e1108bf3d2":[18,0,0,8,12,38],
 "track_8c.html#afd0ed2f0bad2e45c64f0d14844c5b4c3":[18,0,0,8,12,212],
 "track_8c.html#afd321e8d25b802bdd89ca5f4e143563f":[18,0,0,8,12,60],
-"track_8c.html#afe8d78d545c730fece490e504e92e4bd":[18,0,0,8,12,45],
-"track_8h.html":[18,0,0,8,13],
-"track_8h.html#a01ea1f8de04f1e92a9690b1bbb863d28":[18,0,0,8,13,188],
-"track_8h.html#a084474c907510c72e791147be961c247":[18,0,0,8,13,44],
-"track_8h.html#a084ec96c6fd369fec9d30d700a80c4f9":[18,0,0,8,13,175]
+"track_8c.html#afe8d78d545c730fece490e504e92e4bd":[18,0,0,8,12,45]
 };

@@ -142,8 +142,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab12dd7e28af71b65fbe47b19d9707060"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4fa0a3c7953a5191adaa914586212d9" id="r_ad4fa0a3c7953a5191adaa914586212d9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4fa0a3c7953a5191adaa914586212d9">SetSpawnParams</a> (<a class="el" href="structSpawnParams.html">SpawnParams</a> &amp;params) override</td></tr>
 <tr class="separator:ad4fa0a3c7953a5191adaa914586212d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9edd4ca53a59cadb0e65f49bd5502bc1" id="r_a9edd4ca53a59cadb0e65f49bd5502bc1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9edd4ca53a59cadb0e65f49bd5502bc1">Tick</a> () override</td></tr>
-<tr class="separator:a9edd4ca53a59cadb0e65f49bd5502bc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8643457903b0aa05e6ad21757747a6e3" id="r_a8643457903b0aa05e6ad21757747a6e3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8643457903b0aa05e6ad21757747a6e3">Tick60fps</a> () override</td></tr>
+<tr class="separator:a8643457903b0aa05e6ad21757747a6e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae546640529b04b08ae2ee3dee9e308ee" id="r_ae546640529b04b08ae2ee3dee9e308ee"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae546640529b04b08ae2ee3dee9e308ee">Draw</a> (<a class="el" href="structCamera.html">Camera</a> *camera) override</td></tr>
 <tr class="separator:ae546640529b04b08ae2ee3dee9e308ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8c2fe7da0757f60649de40ec229b70a" id="r_af8c2fe7da0757f60649de40ec229b70a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8c2fe7da0757f60649de40ec229b70a">VehicleCollision</a> (s32 playerId, <a class="el" href="structPlayer.html">Player</a> *player) override</td></tr>
@@ -163,6 +163,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5695d0c1bfd8ae5fe08bf235c2801863 inherit pub_methods_classAActor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa18a335c99d43d74ac46328df5c4918b inherit pub_methods_classAActor" id="r_aa18a335c99d43d74ac46328df5c4918b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAActor.html#aa18a335c99d43d74ac46328df5c4918b">BeginPlay</a> ()</td></tr>
 <tr class="separator:aa18a335c99d43d74ac46328df5c4918b inherit pub_methods_classAActor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01513538fc3200ebd1e8624a81a1d661 inherit pub_methods_classAActor" id="r_a01513538fc3200ebd1e8624a81a1d661"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAActor.html#a01513538fc3200ebd1e8624a81a1d661">Tick</a> ()</td></tr>
+<tr class="separator:a01513538fc3200ebd1e8624a81a1d661 inherit pub_methods_classAActor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeaa70cd566baefbcccce8adfa608ca02 inherit pub_methods_classAActor" id="r_aeaa70cd566baefbcccce8adfa608ca02"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAActor.html#aeaa70cd566baefbcccce8adfa608ca02">Collision</a> (<a class="el" href="structPlayer.html">Player</a> *player, <a class="el" href="classAActor.html">AActor</a> *actor)</td></tr>
 <tr class="separator:aeaa70cd566baefbcccce8adfa608ca02 inherit pub_methods_classAActor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2242f7915fdde70c732b6186ccb6ddcf inherit pub_methods_classAActor" id="r_a2242f7915fdde70c732b6186ccb6ddcf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAActor.html#a2242f7915fdde70c732b6186ccb6ddcf">SetLocation</a> (<a class="el" href="structFVector.html">FVector</a> pos)</td></tr>
@@ -398,7 +400,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classABoat_a3bf4384ddc2a42e84bef6c6ca038bd7e_icgraph.svg" width="294" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classABoat_a3bf4384ddc2a42e84bef6c6ca038bd7e_icgraph.svg" width="330" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -586,8 +588,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a9edd4ca53a59cadb0e65f49bd5502bc1" name="a9edd4ca53a59cadb0e65f49bd5502bc1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9edd4ca53a59cadb0e65f49bd5502bc1">&#9670;&#160;</a></span>Tick()</h2>
+<a id="a8643457903b0aa05e6ad21757747a6e3" name="a8643457903b0aa05e6ad21757747a6e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8643457903b0aa05e6ad21757747a6e3">&#9670;&#160;</a></span>Tick60fps()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -596,7 +598,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ABoat::Tick </td>
+          <td class="memname">void ABoat::Tick60fps </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -609,11 +611,11 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented from <a class="el" href="classAActor.html#a01513538fc3200ebd1e8624a81a1d661">AActor</a>.</p>
+<p>Reimplemented from <a class="el" href="classAActor.html#a241ca2fff330182d6181e3fc9dc149e5">AActor</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classABoat_a9edd4ca53a59cadb0e65f49bd5502bc1_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classABoat_a8643457903b0aa05e6ad21757747a6e3_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>

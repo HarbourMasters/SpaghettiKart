@@ -17,6 +17,7 @@ var classAActor =
     [ "SetScale", "classAActor.html#a1524ae9171e0aa00e777cab2f9aba88b", null ],
     [ "SetSpawnParams", "classAActor.html#ab16eea21b72bb5626366533654f8aa5c", null ],
     [ "Tick", "classAActor.html#a01513538fc3200ebd1e8624a81a1d661", null ],
+    [ "Tick60fps", "classAActor.html#a241ca2fff330182d6181e3fc9dc149e5", null ],
     [ "Translate", "classAActor.html#adfa31ccf6a62e6dcb073cff34d6fa742", null ],
     [ "VehicleCollision", "classAActor.html#a411c2279b7e08e0e31a02c3f98462c55", null ],
     [ "BoundingBoxSize", "classAActor.html#ae21ae71bb87411d5db04d471a8864c2d", null ],

@@ -18,7 +18,7 @@ var classATrain =
     [ "SetSpawnParams", "classATrain.html#a09a2d62eeeb4019762863561558df14c", null ],
     [ "Spawn", "classATrain.html#aa39976112e962ff1536c33236e16cc20", null ],
     [ "SyncComponents", "classATrain.html#aa82e623dbfe2747f8be8f2e4781c9973", null ],
-    [ "Tick", "classATrain.html#acc8b87940356921e15f3e6859bd83cf1", null ],
+    [ "Tick60fps", "classATrain.html#a930239ba398ab6ffec31a7df126a698a", null ],
     [ "VehicleCollision", "classATrain.html#a1d96ec0abbb709840cffb53cda396d8e", null ],
     [ "_count", "classATrain.html#a99032234c1afebce76f1eefefa1e934d", null ],
     [ "AnotherSmokeTimer", "classATrain.html#a95528e98918631f17ff7e143f115d835", null ],

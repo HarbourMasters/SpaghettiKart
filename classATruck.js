@@ -12,7 +12,7 @@ var classATruck =
     [ "IsMod", "classATruck.html#a758db167c0e1915f3c5fc7c738b21878", null ],
     [ "SetSpawnParams", "classATruck.html#a6760c2d20998e4d46db66440aab1ee0a", null ],
     [ "Spawn", "classATruck.html#afe7c33a6d77655f1404a658a747fa3f6", null ],
-    [ "Tick", "classATruck.html#a251df5418c913a4e27ab67cfb068fdfc", null ],
+    [ "Tick60fps", "classATruck.html#a4a811c1ed18215ebe5abe6dcd9ac9767", null ],
     [ "VehicleCollision", "classATruck.html#a7d1a8e16b8b0e0231fac07674d25dd8c", null ],
     [ "_count", "classATruck.html#aa807bdc1b580c5cff3028ce64a9a182c", null ],
     [ "ActorIndex", "classATruck.html#a48146b60efc961e3ea142dfc25f7cb82", null ],

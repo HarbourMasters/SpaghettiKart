@@ -98,7 +98,7 @@ var searchData=
   ['explode_95',['EXPLODE',['../classOBombKart.html#a8e4601861010249f2213d909b9daa116a9127ef625aea854376623b48209e86ba',1,'OBombKart']]],
   ['explosion_96',['EXPLOSION',['../defines_8h.html#a33e3ab8014df1b21b2256c9bc14274f4',1,'defines.h']]],
   ['exponent_5fby_5fsquaring_97',['exponent_by_squaring',['../menu__items_8c.html#a588742e39aadb10158a7afdf054afccc',1,'exponent_by_squaring(f64 base, s32 exponent):&#160;menu_items.c'],['../menu__items_8h.html#a693c6f9d8d1377e9edc1c7f8af5d7a0b',1,'exponent_by_squaring(f64, s32):&#160;menu_items.c']]],
-  ['export_98',['Export',['../export.html',1,'Export'],['../export.html#export',1,'Export'],['../trackoverview.html#export-1',1,'Export'],['../trackoverview.html#export-2',1,'Export'],['../minimap.html#export-3',1,'Export']]],
+  ['export_98',['Export',['../export.html',1,'Export'],['../export.html#export',1,'Export'],['../minimap.html#export-1',1,'Export'],['../trackoverview.html#export-2',1,'Export'],['../trackoverview.html#export-3',1,'Export']]],
   ['export_99',['Prepare for export',['../trackoverview.html#prepare-for-export',1,'']]],
   ['export_20panel_100',['Export Panel',['../export.html#export-panel',1,'']]],
   ['export_2emd_101',['export.md',['../export_8md.html',1,'']]],

@@ -20,9 +20,9 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="classATrain.html#acc8b87940356921e15f3e6859bd83cf1" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="98,-56 26,-56 26,-37 98,-37 98,-56"/>
-<text text-anchor="middle" x="62" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00">ATrain::Tick</text>
+<g id="a_Node000002"><a xlink:href="classATrain.html#a930239ba398ab6ffec31a7df126a698a" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="111.5,-56 12.5,-56 12.5,-37 111.5,-37 111.5,-56"/>
+<text text-anchor="middle" x="62" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00">ATrain::Tick60fps</text>
 </a>
 </g>
 </g>
@@ -30,7 +30,7 @@
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node1&#45;&gt;Node2</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M149.2,-36.39C131.46,-38.47 113.4,-40.59 98.42,-42.35"/>
+<path fill="none" stroke="#63b8ff" d="M149.37,-36.37C136.58,-37.87 123.6,-39.39 111.72,-40.79"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="150.05,-39.81 159.58,-35.17 149.24,-32.86 150.05,-39.81"/>
 </a>
 </g>

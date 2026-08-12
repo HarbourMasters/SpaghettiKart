@@ -138,6 +138,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa18a335c99d43d74ac46328df5c4918b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01513538fc3200ebd1e8624a81a1d661" id="r_a01513538fc3200ebd1e8624a81a1d661"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01513538fc3200ebd1e8624a81a1d661">Tick</a> ()</td></tr>
 <tr class="separator:a01513538fc3200ebd1e8624a81a1d661"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a241ca2fff330182d6181e3fc9dc149e5" id="r_a241ca2fff330182d6181e3fc9dc149e5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a241ca2fff330182d6181e3fc9dc149e5">Tick60fps</a> ()</td></tr>
+<tr class="separator:a241ca2fff330182d6181e3fc9dc149e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85d714b98fe1a42151871f865c0e37f7" id="r_a85d714b98fe1a42151871f865c0e37f7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85d714b98fe1a42151871f865c0e37f7">Draw</a> (<a class="el" href="structCamera.html">Camera</a> *camera)</td></tr>
 <tr class="separator:a85d714b98fe1a42151871f865c0e37f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeaa70cd566baefbcccce8adfa608ca02" id="r_aeaa70cd566baefbcccce8adfa608ca02"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeaa70cd566baefbcccce8adfa608ca02">Collision</a> (<a class="el" href="structPlayer.html">Player</a> *player, <a class="el" href="classAActor.html">AActor</a> *actor)</td></tr>
@@ -689,7 +691,34 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="classABanana.html#af7ffeaebdef0bcd311f06cce82f2ec80">ABanana</a>, <a class="el" href="classABoat.html#a9edd4ca53a59cadb0e65f49bd5502bc1">ABoat</a>, <a class="el" href="classABowserStatue.html#a16c20f73231729bcf09ccbf9c4f43592">ABowserStatue</a>, <a class="el" href="classABus.html#a07af38f3fced338dc420cffcdfddb826">ABus</a>, <a class="el" href="classACar.html#aa5a07144df2ce488c986f2c9eece9916">ACar</a>, <a class="el" href="classACloud.html#ad05f1335b7e0b0ef9b0ed9c750b39eab">ACloud</a>, <a class="el" href="classAFallingRock.html#a78da7ee050ed40f6c83c0a334f7d901f">AFallingRock</a>, <a class="el" href="classAFinishline.html#a793725aefa6f9bb8c66b7ad7c7f41e4f">AFinishline</a>, <a class="el" href="classAMarioSign.html#a2a8262b5061a320a4fc1d0ddae6a5398">AMarioSign</a>, <a class="el" href="classAShip.html#a3e4457ab685466c67aa1cbb8cf398196">AShip</a>, <a class="el" href="classASpaghettiShip.html#aabfb3bdc331da98c0e6caacf02797c31">ASpaghettiShip</a>, <a class="el" href="classAStarship.html#a13d936f05c0f19811e1753f026ed3ae4">AStarship</a>, <a class="el" href="classATankerTruck.html#a7a57be806639c04fa4d391a47bf09ab3">ATankerTruck</a>, <a class="el" href="classAText.html#a0d7bf3848c318df5a0f02278aafbb963">AText</a>, <a class="el" href="classATrain.html#acc8b87940356921e15f3e6859bd83cf1">ATrain</a>, <a class="el" href="classATree.html#a6ff6b0b816e195b8142cb5564d90db8e">ATree</a>, <a class="el" href="classATruck.html#a251df5418c913a4e27ab67cfb068fdfc">ATruck</a>, and <a class="el" href="classAWarioSign.html#a20207b1db85d661c98a11f79b85c7afd">AWarioSign</a>.</p>
+<p>Reimplemented in <a class="el" href="classABanana.html#af7ffeaebdef0bcd311f06cce82f2ec80">ABanana</a>, <a class="el" href="classABowserStatue.html#a16c20f73231729bcf09ccbf9c4f43592">ABowserStatue</a>, <a class="el" href="classACloud.html#ad05f1335b7e0b0ef9b0ed9c750b39eab">ACloud</a>, <a class="el" href="classAFallingRock.html#a78da7ee050ed40f6c83c0a334f7d901f">AFallingRock</a>, <a class="el" href="classAFinishline.html#a793725aefa6f9bb8c66b7ad7c7f41e4f">AFinishline</a>, <a class="el" href="classAMarioSign.html#a2a8262b5061a320a4fc1d0ddae6a5398">AMarioSign</a>, <a class="el" href="classAShip.html#a3e4457ab685466c67aa1cbb8cf398196">AShip</a>, <a class="el" href="classASpaghettiShip.html#aabfb3bdc331da98c0e6caacf02797c31">ASpaghettiShip</a>, <a class="el" href="classAStarship.html#a13d936f05c0f19811e1753f026ed3ae4">AStarship</a>, <a class="el" href="classAText.html#a0d7bf3848c318df5a0f02278aafbb963">AText</a>, <a class="el" href="classATree.html#a6ff6b0b816e195b8142cb5564d90db8e">ATree</a>, and <a class="el" href="classAWarioSign.html#a20207b1db85d661c98a11f79b85c7afd">AWarioSign</a>.</p>
+
+</div>
+</div>
+<a id="a241ca2fff330182d6181e3fc9dc149e5" name="a241ca2fff330182d6181e3fc9dc149e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a241ca2fff330182d6181e3fc9dc149e5">&#9670;&#160;</a></span>Tick60fps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AActor::Tick60fps </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="classABoat.html#a8643457903b0aa05e6ad21757747a6e3">ABoat</a>, <a class="el" href="classABus.html#ad7f27537db486b628c99975edd27a47f">ABus</a>, <a class="el" href="classACar.html#a56ab601d7311e3a2bcb796236916711c">ACar</a>, <a class="el" href="classATankerTruck.html#ac237da6f1ad3a82063a9ac8430d460e1">ATankerTruck</a>, <a class="el" href="classATrain.html#a930239ba398ab6ffec31a7df126a698a">ATrain</a>, and <a class="el" href="classATruck.html#a4a811c1ed18215ebe5abe6dcd9ac9767">ATruck</a>.</p>
 
 </div>
 </div>

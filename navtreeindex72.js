@@ -1,5 +1,9 @@
 var NAVTREEINDEX72 =
 {
+"starship__model_8c.html#ac8fdd420a3463c1854017c1ffdd312ca":[18,0,0,8,10,37],
+"starship__model_8c.html#ac96589f3fda9dc4bd6a7c2e4b8fc672d":[18,0,0,8,10,9],
+"starship__model_8c.html#ac9deed8b67584ab90dbc5ddbd5014f07":[18,0,0,8,10,11],
+"starship__model_8c.html#acd2638e1471eefddece45c3aaab80585":[18,0,0,8,10,21],
 "starship__model_8c.html#ad1dde1260567747d6a81777266dba8a5":[18,0,0,8,10,16],
 "starship__model_8c.html#af38b1a71477d2b71ebec039a43f57163":[18,0,0,8,10,13],
 "starship__model_8c.html#afa717eeef3f333c30e8f0bbbeec0594b":[18,0,0,8,10,3],
@@ -245,9 +249,5 @@ var NAVTREEINDEX72 =
 "structArmature.html#ac106591a5118c5a8fa8dcc7b03a8f51d":[17,0,59,4],
 "structAudioBank.html":[17,0,68],
 "structAudioBank.html#a18135a07ed4e0a146a36c2f3fdefd57c":[17,0,68,1],
-"structAudioBank.html#a24a599791d5abf0ba92582f55d2e9149":[17,0,68,0],
-"structAudioBankSample.html":[17,0,69],
-"structAudioBankSample.html#a024100001b19351bd6ce4e92dc9fa070":[17,0,69,8],
-"structAudioBankSample.html#a0747ce4e3f4d3d385ba811d5e261586d":[17,0,69,9],
-"structAudioBankSample.html#a250c94ffe7e955c809f453584283950b":[17,0,69,3]
+"structAudioBank.html#a24a599791d5abf0ba92582f55d2e9149":[17,0,68,0]
 };

@@ -1,11 +1,15 @@
 var NAVTREEINDEX55 =
 {
+"miniaudio_8h.html#afd8ace768b7c6de89c73b03dbd205c66":[18,0,2,1,0,746],
+"miniaudio_8h.html#afd9d5eb73b8dd3a668f27bbb7b85e2b1":[18,0,2,1,0,1068],
+"miniaudio_8h.html#aff3a43c45bb5bc07be08980f3b45a59d":[18,0,2,1,0,1180],
+"miniaudio_8h.html#aff452525f931432d9492b71050322ee0":[18,0,2,1,0,341],
 "miniaudio_8h.html#aff46897b9ab02de460ca57a0c60d66c7":[18,0,2,1,0,242],
 "miniaudio_8h.html#affa9a1e169a9952a6d649df64e96e8e6":[18,0,2,1,0,779],
 "miniaudio_8h.html#affce927390c9f35e222dd3f0976e71f1":[18,0,2,1,0,507],
 "miniaudio_8h_source.html":[18,0,2,1,0],
 "minimap.html":[12,6],
-"minimap.html#export-3":[12,6,0,4],
+"minimap.html#export-1":[12,6,0,4],
 "minimap.html#format":[12,6,0,0],
 "minimap.html#in-game-configuration":[12,6,0,5],
 "minimap.html#minimap":[12,6,0],
@@ -245,9 +249,5 @@ var NAVTREEINDEX55 =
 "models_2tracks_2block__fort_2block__fort__data_8h.html":[18,0,2,0,0,0,2,0],
 "models_2tracks_2block__fort_2block__fort__data_8h.html#ac9d1c241bb53158682959c99f2b88bae":[18,0,2,0,0,0,2,0,0],
 "models_2tracks_2block__fort_2block__fort__data_8h_source.html":[18,0,2,0,0,0,2,0],
-"models_2tracks_2bowsers__castle_2bowsers__castle__data_8h.html":[18,0,2,0,0,0,3,0],
-"models_2tracks_2bowsers__castle_2bowsers__castle__data_8h.html#ae84f7e8f9496e50de0fa84c8c2b84b53":[18,0,2,0,0,0,3,0,0],
-"models_2tracks_2bowsers__castle_2bowsers__castle__data_8h_source.html":[18,0,2,0,0,0,3,0],
-"models_2tracks_2choco__mountain_2choco__mountain__data_8h.html":[18,0,2,0,0,0,4,0],
-"models_2tracks_2choco__mountain_2choco__mountain__data_8h.html#a3374cd3722784dd9c4e5685931939e3a":[18,0,2,0,0,0,4,0,0]
+"models_2tracks_2bowsers__castle_2bowsers__castle__data_8h.html":[18,0,2,0,0,0,3,0]
 };

@@ -20,7 +20,7 @@ var searchData=
   ['actorcontent_17',['ActorContent',['../classTrackEditor_1_1ContentBrowserWindow.html#a236aa3acc3f060b7a3085636efcba0c9',1,'TrackEditor::ContentBrowserWindow']]],
   ['actorindex_18',['ActorIndex',['../classABoat.html#a9d2e59206ef9749f0feeef8563c7da1d',1,'ABoat::ActorIndex'],['../classABus.html#ae354955276ceb1b62cd249aae6590461',1,'ABus::ActorIndex'],['../classACar.html#ab40c38ab9e236b31167bf794b73b3ab8',1,'ACar::ActorIndex'],['../classATankerTruck.html#addd8d533acd8268c477b13044a4ee24a',1,'ATankerTruck::ActorIndex'],['../classATruck.html#a48146b60efc961e3ea142dfc25f7cb82',1,'ATruck::ActorIndex']]],
   ['actorindex_19',['actorIndex',['../structunexpiredActors.html#a1e1419ce2f7577336dd49e2bd062ce17',1,'unexpiredActors::actorIndex'],['../structCpuItemStrategyData.html#a64646e154024acc1d4e40610811b0520',1,'CpuItemStrategyData::actorIndex'],['../structTrainCarStuff.html#a534b8b495eec302fd11a493758be8a80',1,'TrainCarStuff::actorIndex'],['../structPaddleBoatStuff.html#ad9b828347dae9adcc6c5d8a301faad06',1,'PaddleBoatStuff::actorIndex'],['../structVehicleStuff.html#aa2cb9651e75a3ddf588ecda2135ed1b8',1,'VehicleStuff::actorIndex']]],
-  ['actors_20',['Actors',['../classWorld.html#ab85d8989d364e03673452ff207a9d310',1,'World']]],
+  ['actors_20',['Actors',['../classWorld.html#a83d96cb69a57ef98dd558e7fc99863dc',1,'World']]],
   ['actorspawndatalist_21',['ActorSpawnDataList',['../classMK64_1_1ActorSpawn.html#a8f3483e6282b40f432465798de4a9822',1,'MK64::ActorSpawn']]],
   ['actortimer_22',['actorTimer',['../structstruct__D__802874D8.html#a81915496d06fe4f254ed97b7aec7904e',1,'struct_D_802874D8']]],
   ['addr_23',['addr',['../structcourse__texture.html#a547f8da8ca10c726467cb6c716e4ce27',1,'course_texture']]],

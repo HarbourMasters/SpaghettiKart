@@ -147,9 +147,9 @@
 <!-- Node18 -->
 <g id="Node000018" class="node">
 <title>Node18</title>
-<g id="a_Node000018"><a xlink:href="classABus.html#a07af38f3fced338dc420cffcdfddb826" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="444.5,-284.5 376.5,-284.5 376.5,-265.5 444.5,-265.5 444.5,-284.5"/>
-<text text-anchor="middle" x="410.5" y="-272.5" font-family="Helvetica,sans-Serif" font-size="10.00">ABus::Tick</text>
+<g id="a_Node000018"><a xlink:href="classOChainChomp.html#afdcecc46c8c4ff9245a00ace65733d3e" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="467,-284.5 354,-284.5 354,-265.5 467,-265.5 467,-284.5"/>
+<text text-anchor="middle" x="410.5" y="-272.5" font-family="Helvetica,sans-Serif" font-size="10.00">OChainChomp::Tick</text>
 </a>
 </g>
 </g>
@@ -157,7 +157,7 @@
 <g id="edge21_Node000001_Node000018" class="edge">
 <title>Node1&#45;&gt;Node18</title>
 <g id="a_edge21_Node000001_Node000018"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M520.65,-305.56C507.94,-301.79 493.91,-297.68 481,-294 469.21,-290.64 456.26,-287.07 444.77,-283.94"/>
+<path fill="none" stroke="#63b8ff" d="M520.65,-305.56C507.94,-301.79 493.91,-297.68 481,-294 469.93,-290.85 457.84,-287.51 446.9,-284.52"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="519.92,-309 530.5,-308.5 521.92,-302.29 519.92,-309"/>
 </a>
 </g>
@@ -165,9 +165,9 @@
 <!-- Node19 -->
 <g id="Node000019" class="node">
 <title>Node19</title>
-<g id="a_Node000019"><a xlink:href="classACar.html#aa5a07144df2ce488c986f2c9eece9916" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="443.5,-247.5 377.5,-247.5 377.5,-228.5 443.5,-228.5 443.5,-247.5"/>
-<text text-anchor="middle" x="410.5" y="-235.5" font-family="Helvetica,sans-Serif" font-size="10.00">ACar::Tick</text>
+<g id="a_Node000019"><a xlink:href="classABus.html#ad7f27537db486b628c99975edd27a47f" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="458,-247.5 363,-247.5 363,-228.5 458,-228.5 458,-247.5"/>
+<text text-anchor="middle" x="410.5" y="-235.5" font-family="Helvetica,sans-Serif" font-size="10.00">ABus::Tick60fps</text>
 </a>
 </g>
 </g>
@@ -175,7 +175,7 @@
 <g id="edge22_Node000001_Node000019" class="edge">
 <title>Node1&#45;&gt;Node19</title>
 <g id="a_edge22_Node000001_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M544.18,-300.95C528.64,-286.97 504.91,-267.65 481,-256 469.35,-250.32 455.69,-246.29 443.58,-243.5"/>
+<path fill="none" stroke="#63b8ff" d="M544.18,-300.95C528.64,-286.97 504.91,-267.65 481,-256 473.83,-252.51 465.9,-249.63 458.04,-247.29"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="542.19,-303.88 551.92,-308.09 546.94,-298.73 542.19,-303.88"/>
 </a>
 </g>
@@ -183,9 +183,9 @@
 <!-- Node20 -->
 <g id="Node000020" class="node">
 <title>Node20</title>
-<g id="a_Node000020"><a xlink:href="classATankerTruck.html#a7a57be806639c04fa4d391a47bf09ab3" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="463.5,-210.5 357.5,-210.5 357.5,-191.5 463.5,-191.5 463.5,-210.5"/>
-<text text-anchor="middle" x="410.5" y="-198.5" font-family="Helvetica,sans-Serif" font-size="10.00">ATankerTruck::Tick</text>
+<g id="a_Node000020"><a xlink:href="classACar.html#a56ab601d7311e3a2bcb796236916711c" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="457,-210.5 364,-210.5 364,-191.5 457,-191.5 457,-210.5"/>
+<text text-anchor="middle" x="410.5" y="-198.5" font-family="Helvetica,sans-Serif" font-size="10.00">ACar::Tick60fps</text>
 </a>
 </g>
 </g>
@@ -193,7 +193,7 @@
 <g id="edge23_Node000001_Node000020" class="edge">
 <title>Node1&#45;&gt;Node20</title>
 <g id="a_edge23_Node000001_Node000020"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M551.86,-299.51C538.56,-277.03 513.1,-239.54 481,-219 475.65,-215.57 469.67,-212.8 463.52,-210.55"/>
+<path fill="none" stroke="#63b8ff" d="M551.86,-299.51C538.56,-277.03 513.1,-239.54 481,-219 473.86,-214.43 465.61,-211.02 457.34,-208.47"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="548.94,-301.46 556.95,-308.41 555.02,-297.99 548.94,-301.46"/>
 </a>
 </g>
@@ -201,9 +201,9 @@
 <!-- Node21 -->
 <g id="Node000021" class="node">
 <title>Node21</title>
-<g id="a_Node000021"><a xlink:href="classATruck.html#a251df5418c913a4e27ab67cfb068fdfc" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="447.5,-173.5 373.5,-173.5 373.5,-154.5 447.5,-154.5 447.5,-173.5"/>
-<text text-anchor="middle" x="410.5" y="-161.5" font-family="Helvetica,sans-Serif" font-size="10.00">ATruck::Tick</text>
+<g id="a_Node000021"><a xlink:href="classATankerTruck.html#ac237da6f1ad3a82063a9ac8430d460e1" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="477,-173.5 344,-173.5 344,-154.5 477,-154.5 477,-173.5"/>
+<text text-anchor="middle" x="410.5" y="-161.5" font-family="Helvetica,sans-Serif" font-size="10.00">ATankerTruck::Tick60fps</text>
 </a>
 </g>
 </g>
@@ -211,7 +211,7 @@
 <g id="edge24_Node000001_Node000021" class="edge">
 <title>Node1&#45;&gt;Node21</title>
 <g id="a_edge24_Node000001_Node000021"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M555.89,-298.72C545.46,-269 521.34,-212.25 481,-182 471.43,-174.82 459.26,-170.49 447.79,-167.89"/>
+<path fill="none" stroke="#63b8ff" d="M555.89,-298.72C545.46,-269 521.34,-212.25 481,-182 476.41,-178.56 471.23,-175.77 465.82,-173.52"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="552.62,-299.98 559.12,-308.35 559.26,-297.76 552.62,-299.98"/>
 </a>
 </g>
@@ -219,9 +219,9 @@
 <!-- Node22 -->
 <g id="Node000022" class="node">
 <title>Node22</title>
-<g id="a_Node000022"><a xlink:href="classOChainChomp.html#afdcecc46c8c4ff9245a00ace65733d3e" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="467,-136.5 354,-136.5 354,-117.5 467,-117.5 467,-136.5"/>
-<text text-anchor="middle" x="410.5" y="-124.5" font-family="Helvetica,sans-Serif" font-size="10.00">OChainChomp::Tick</text>
+<g id="a_Node000022"><a xlink:href="classATruck.html#a4a811c1ed18215ebe5abe6dcd9ac9767" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="461,-136.5 360,-136.5 360,-117.5 461,-117.5 461,-136.5"/>
+<text text-anchor="middle" x="410.5" y="-124.5" font-family="Helvetica,sans-Serif" font-size="10.00">ATruck::Tick60fps</text>
 </a>
 </g>
 </g>
@@ -229,7 +229,7 @@
 <g id="edge25_Node000001_Node000022" class="edge">
 <title>Node1&#45;&gt;Node22</title>
 <g id="a_edge25_Node000001_Node000022"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M558.44,-298.2C550.9,-262.09 529.8,-185.54 481,-145 476.88,-141.58 472.18,-138.79 467.21,-136.53"/>
+<path fill="none" stroke="#63b8ff" d="M558.44,-298.2C550.9,-262.09 529.8,-185.54 481,-145 475.25,-140.22 468.37,-136.69 461.22,-134.09"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="555.09,-299.26 560.44,-308.41 561.96,-297.92 555.09,-299.26"/>
 </a>
 </g>

@@ -58,6 +58,7 @@ var Game_8h =
     [ "CM_SpawnStarterLakitu", "Game_8h.html#ac36c43e20fcfc2c96b91f33aa13d88f8", null ],
     [ "CM_ThrowRuntimeError", "Game_8h.html#a0ab4ae49534aa4673e1903cc5087bf6c", null ],
     [ "CM_TickActors", "Game_8h.html#ae181f7d71aa16b176abd7be2444a0299", null ],
+    [ "CM_TickActors60fps", "Game_8h.html#a6bc13c5ecce09e3e135ffb7bedd75d9d", null ],
     [ "CM_TickCameras", "Game_8h.html#a60b215c5adc1d7af1c7e1c36713035ae", null ],
     [ "CM_TickDraw", "Game_8h.html#aab7ed5bb41641c712e81cd5ce8d922e4", null ],
     [ "CM_TickEditor", "Game_8h.html#a6ca781f4055a82d58dda2cbb2fbb51ab", null ],

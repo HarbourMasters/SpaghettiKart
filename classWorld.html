@@ -150,6 +150,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:abac2990f5230e425fe26315b1b762bb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86d6ef1e859b7ba76982ec9feb7ff26e" id="r_a86d6ef1e859b7ba76982ec9feb7ff26e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86d6ef1e859b7ba76982ec9feb7ff26e">TickActors</a> ()</td></tr>
 <tr class="separator:a86d6ef1e859b7ba76982ec9feb7ff26e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc26c75e455b97164ae928510df3e55b" id="r_acc26c75e455b97164ae928510df3e55b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc26c75e455b97164ae928510df3e55b">TickActors60fps</a> ()</td></tr>
+<tr class="separator:acc26c75e455b97164ae928510df3e55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a944244b32a2219826939859c6138f6ab" id="r_a944244b32a2219826939859c6138f6ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAActor.html">AActor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a944244b32a2219826939859c6138f6ab">ConvertActorToAActor</a> (<a class="el" href="structActor.html">Actor</a> *actor)</td></tr>
 <tr class="separator:a944244b32a2219826939859c6138f6ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5236ae88205fb91bc623711bfdf7e54b" id="r_a5236ae88205fb91bc623711bfdf7e54b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structActor.html">Actor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5236ae88205fb91bc623711bfdf7e54b">ConvertAActorToActor</a> (<a class="el" href="classAActor.html">AActor</a> *actor)</td></tr>
@@ -217,8 +219,8 @@ Data Fields</h2></td></tr>
 <tr class="separator:a4fff000d5e63641881b117d258341e06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7d7ec4f75f47071f83655159f47bb9d" id="r_af7d7ec4f75f47071f83655159f47bb9d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classStaticMeshActor.html">StaticMeshActor</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7d7ec4f75f47071f83655159f47bb9d">StaticMeshActors</a></td></tr>
 <tr class="separator:af7d7ec4f75f47071f83655159f47bb9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab85d8989d364e03673452ff207a9d310" id="r_ab85d8989d364e03673452ff207a9d310"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classAActor.html">AActor</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab85d8989d364e03673452ff207a9d310">Actors</a></td></tr>
-<tr class="separator:ab85d8989d364e03673452ff207a9d310"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83d96cb69a57ef98dd558e7fc99863dc" id="r_a83d96cb69a57ef98dd558e7fc99863dc"><td class="memItemLeft" align="right" valign="top">std::deque&lt; std::unique_ptr&lt; <a class="el" href="classAActor.html">AActor</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83d96cb69a57ef98dd558e7fc99863dc">Actors</a></td></tr>
+<tr class="separator:a83d96cb69a57ef98dd558e7fc99863dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23319a7a3335ca173d1597f041f31b55" id="r_a23319a7a3335ca173d1597f041f31b55"><td class="memItemLeft" align="right" valign="top">std::deque&lt; std::unique_ptr&lt; <a class="el" href="classOObject.html">OObject</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23319a7a3335ca173d1597f041f31b55">Objects</a></td></tr>
 <tr class="separator:a23319a7a3335ca173d1597f041f31b55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a681773e85669b7fff8d160ee2fec5a51" id="r_a681773e85669b7fff8d160ee2fec5a51"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classParticleEmitter.html">ParticleEmitter</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a681773e85669b7fff8d160ee2fec5a51">Emitters</a></td></tr>
@@ -1085,6 +1087,28 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="acc26c75e455b97164ae928510df3e55b" name="acc26c75e455b97164ae928510df3e55b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc26c75e455b97164ae928510df3e55b">&#9670;&#160;</a></span>TickActors60fps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void World::TickActors60fps </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classWorld_acc26c75e455b97164ae928510df3e55b_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
 <a id="aa74f5e967e46a14dbc82cf55062d922b" name="aa74f5e967e46a14dbc82cf55062d922b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa74f5e967e46a14dbc82cf55062d922b">&#9670;&#160;</a></span>TickCameras()</h2>
 
@@ -1174,14 +1198,14 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Field Documentation</h2>
-<a id="ab85d8989d364e03673452ff207a9d310" name="ab85d8989d364e03673452ff207a9d310"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab85d8989d364e03673452ff207a9d310">&#9670;&#160;</a></span>Actors</h2>
+<a id="a83d96cb69a57ef98dd558e7fc99863dc" name="a83d96cb69a57ef98dd558e7fc99863dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83d96cb69a57ef98dd558e7fc99863dc">&#9670;&#160;</a></span>Actors</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::unique_ptr&lt;<a class="el" href="classAActor.html">AActor</a>&gt; &gt; World::Actors</td>
+          <td class="memname">std::deque&lt;std::unique_ptr&lt;<a class="el" href="classAActor.html">AActor</a>&gt; &gt; World::Actors</td>
         </tr>
       </table>
 </div><div class="memdoc">

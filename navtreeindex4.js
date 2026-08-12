@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"ModManager_8cpp.html#adb21fd7d6f39f4b982b7bf70f2893c6d":[18,0,3,6,4,0,13],
+"ModManager_8cpp.html#adeda271dcb5c5ad06356d21dd8002133":[18,0,3,6,4,0,1],
 "ModManager_8cpp.html#ae3d6dbc917100f1d518ea35677d95939":[18,0,3,6,4,0,5],
 "ModManager_8cpp.html#af7086f01c55d70c50b70991523450d18":[18,0,3,6,4,0,8],
 "ModManager_8h.html":[18,0,3,6,4,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX4 =
 "Thwomp_8cpp.html#a886ab4f1c17fdd6e69ac9900f67cab22":[18,0,3,6,5,36,4],
 "Thwomp_8cpp.html#aa0e00bdaf1e6092ce02fd50ce67f580b":[18,0,3,6,5,36,5],
 "Thwomp_8cpp.html#ad215bb7475acbc736936cc6c514fc5b3":[18,0,3,6,5,36,6],
-"Thwomp_8cpp.html#aea0a81fd6b6c908933320101a3c53a08":[18,0,3,6,5,36,3],
-"Thwomp_8h.html":[18,0,3,6,5,37],
-"Thwomp_8h_source.html":[18,0,3,6,5,37]
+"Thwomp_8cpp.html#aea0a81fd6b6c908933320101a3c53a08":[18,0,3,6,5,36,3]
 };

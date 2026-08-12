@@ -67,9 +67,9 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="classABoat.html#a9edd4ca53a59cadb0e65f49bd5502bc1" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="100.5,-67.5 28.5,-67.5 28.5,-48.5 100.5,-48.5 100.5,-67.5"/>
-<text text-anchor="middle" x="64.5" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00">ABoat::Tick</text>
+<g id="a_Node000003"><a xlink:href="classABoat.html#a8643457903b0aa05e6ad21757747a6e3" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="114,-67.5 15,-67.5 15,-48.5 114,-48.5 114,-67.5"/>
+<text text-anchor="middle" x="64.5" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00">ABoat::Tick60fps</text>
 </a>
 </g>
 </g>
@@ -77,7 +77,7 @@
 <g id="edge2_Node000002_Node000003" class="edge">
 <title>Node2&#45;&gt;Node3</title>
 <g id="a_edge2_Node000002_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M159.65,-56.79C139.6,-57.05 118.02,-57.32 100.59,-57.55"/>
+<path fill="none" stroke="#63b8ff" d="M159.41,-56.79C144.37,-56.99 128.49,-57.19 114.16,-57.37"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="159.7,-60.29 169.65,-56.66 159.61,-53.29 159.7,-60.29"/>
 </a>
 </g>

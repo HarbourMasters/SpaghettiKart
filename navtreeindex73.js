@@ -1,5 +1,9 @@
 var NAVTREEINDEX73 =
 {
+"structAudioBankSample.html":[17,0,69],
+"structAudioBankSample.html#a024100001b19351bd6ce4e92dc9fa070":[17,0,69,8],
+"structAudioBankSample.html#a0747ce4e3f4d3d385ba811d5e261586d":[17,0,69,9],
+"structAudioBankSample.html#a250c94ffe7e955c809f453584283950b":[17,0,69,3],
 "structAudioBankSample.html#a4a8e416b277a7be4501e5cee2eca2cb5":[17,0,69,2],
 "structAudioBankSample.html#a517a332f739a77f584a27cc507053ef3":[17,0,69,7],
 "structAudioBankSample.html#a8eb091509a0dccf66789081e342dfe86":[17,0,69,11],
@@ -245,9 +249,5 @@ var NAVTREEINDEX73 =
 "structController.html#a2c98cdcc97bd05b040f4e95c0b0c906d":[17,0,94,7],
 "structController.html#a2eb55eb863b55bf426bcf878d1aca0a3":[17,0,94,6],
 "structController.html#a39c7a74a972763941bfc294e4a730ea6":[17,0,94,8],
-"structController.html#a4c8479bb1db62602c401aafdb6c15507":[17,0,94,3],
-"structController.html#a8c4688ece90c09c9c228512234b82fbb":[17,0,94,2],
-"structController.html#a8f3f94b10fd3d0c3623ee72c17d39eb1":[17,0,94,5],
-"structController.html#aa5d1a358227833467d015fe3b2b35967":[17,0,94,0],
-"structController.html#ac44615b87b1ed88181861c5050783a03":[17,0,94,9]
+"structController.html#a4c8479bb1db62602c401aafdb6c15507":[17,0,94,3]
 };

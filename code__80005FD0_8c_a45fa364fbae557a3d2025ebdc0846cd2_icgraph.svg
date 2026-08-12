@@ -176,9 +176,9 @@ var sectionId = 'dynsection-70';
 <!-- Node16 -->
 <g id="Node000016" class="node">
 <title>Node16</title>
-<g id="a_Node000016"><a xlink:href="classABus.html#a07af38f3fced338dc420cffcdfddb826" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="442,-248.5 374,-248.5 374,-229.5 442,-229.5 442,-248.5"/>
-<text text-anchor="middle" x="408" y="-236.5" font-family="Helvetica,sans-Serif" font-size="10.00">ABus::Tick</text>
+<g id="a_Node000016"><a xlink:href="classABus.html#ad7f27537db486b628c99975edd27a47f" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="455.5,-248.5 360.5,-248.5 360.5,-229.5 455.5,-229.5 455.5,-248.5"/>
+<text text-anchor="middle" x="408" y="-236.5" font-family="Helvetica,sans-Serif" font-size="10.00">ABus::Tick60fps</text>
 </a>
 </g>
 </g>
@@ -186,7 +186,7 @@ var sectionId = 'dynsection-70';
 <g id="edge19_Node000001_Node000016" class="edge">
 <title>Node1&#45;&gt;Node16</title>
 <g id="a_edge19_Node000001_Node000016"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M515.77,-269.57C503,-265.83 488.93,-261.73 476,-258 464.96,-254.82 452.89,-251.38 442.07,-248.32"/>
+<path fill="none" stroke="#63b8ff" d="M515.77,-269.57C503,-265.83 488.93,-261.73 476,-258 465.2,-254.89 453.4,-251.53 442.76,-248.51"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="515.11,-273.02 525.69,-272.48 517.08,-266.3 515.11,-273.02"/>
 </a>
 </g>
@@ -194,9 +194,9 @@ var sectionId = 'dynsection-70';
 <!-- Node17 -->
 <g id="Node000017" class="node">
 <title>Node17</title>
-<g id="a_Node000017"><a xlink:href="classACar.html#aa5a07144df2ce488c986f2c9eece9916" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="441,-211.5 375,-211.5 375,-192.5 441,-192.5 441,-211.5"/>
-<text text-anchor="middle" x="408" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00">ACar::Tick</text>
+<g id="a_Node000017"><a xlink:href="classACar.html#a56ab601d7311e3a2bcb796236916711c" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="454.5,-211.5 361.5,-211.5 361.5,-192.5 454.5,-192.5 454.5,-211.5"/>
+<text text-anchor="middle" x="408" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00">ACar::Tick60fps</text>
 </a>
 </g>
 </g>
@@ -204,7 +204,7 @@ var sectionId = 'dynsection-70';
 <g id="edge20_Node000001_Node000017" class="edge">
 <title>Node1&#45;&gt;Node17</title>
 <g id="a_edge20_Node000001_Node000017"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M539.8,-265.39C523.98,-251.73 499.9,-232.78 476,-221 465.16,-215.65 452.56,-211.59 441.24,-208.61"/>
+<path fill="none" stroke="#63b8ff" d="M539.8,-265.39C523.98,-251.73 499.9,-232.78 476,-221 468.41,-217.26 459.96,-214.14 451.69,-211.59"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="537.88,-268.36 547.69,-272.35 542.51,-263.11 537.88,-268.36"/>
 </a>
 </g>
@@ -212,9 +212,9 @@ var sectionId = 'dynsection-70';
 <!-- Node18 -->
 <g id="Node000018" class="node">
 <title>Node18</title>
-<g id="a_Node000018"><a xlink:href="classATankerTruck.html#a7a57be806639c04fa4d391a47bf09ab3" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="461,-174.5 355,-174.5 355,-155.5 461,-155.5 461,-174.5"/>
-<text text-anchor="middle" x="408" y="-162.5" font-family="Helvetica,sans-Serif" font-size="10.00">ATankerTruck::Tick</text>
+<g id="a_Node000018"><a xlink:href="classATankerTruck.html#ac237da6f1ad3a82063a9ac8430d460e1" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="474.5,-174.5 341.5,-174.5 341.5,-155.5 474.5,-155.5 474.5,-174.5"/>
+<text text-anchor="middle" x="408" y="-162.5" font-family="Helvetica,sans-Serif" font-size="10.00">ATankerTruck::Tick60fps</text>
 </a>
 </g>
 </g>
@@ -230,9 +230,9 @@ var sectionId = 'dynsection-70';
 <!-- Node19 -->
 <g id="Node000019" class="node">
 <title>Node19</title>
-<g id="a_Node000019"><a xlink:href="classATruck.html#a251df5418c913a4e27ab67cfb068fdfc" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="445,-137.5 371,-137.5 371,-118.5 445,-118.5 445,-137.5"/>
-<text text-anchor="middle" x="408" y="-125.5" font-family="Helvetica,sans-Serif" font-size="10.00">ATruck::Tick</text>
+<g id="a_Node000019"><a xlink:href="classATruck.html#a4a811c1ed18215ebe5abe6dcd9ac9767" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="458.5,-137.5 357.5,-137.5 357.5,-118.5 458.5,-118.5 458.5,-137.5"/>
+<text text-anchor="middle" x="408" y="-125.5" font-family="Helvetica,sans-Serif" font-size="10.00">ATruck::Tick60fps</text>
 </a>
 </g>
 </g>
@@ -240,7 +240,7 @@ var sectionId = 'dynsection-70';
 <g id="edge22_Node000001_Node000019" class="edge">
 <title>Node1&#45;&gt;Node19</title>
 <g id="a_edge22_Node000001_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M551.71,-262.76C541.02,-233.09 516.41,-176.42 476,-146 467.05,-139.26 455.76,-135.05 445.01,-132.41"/>
+<path fill="none" stroke="#63b8ff" d="M551.71,-262.76C541.02,-233.09 516.41,-176.42 476,-146 470.8,-142.09 464.82,-139.03 458.61,-136.63"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="548.46,-264.06 555.03,-272.37 555.08,-261.78 548.46,-264.06"/>
 </a>
 </g>

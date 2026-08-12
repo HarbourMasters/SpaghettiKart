@@ -142,8 +142,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae04e1b93a88b1289a6faa3129f95be66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ab759051eeea02a00c37c783eadce1c" id="r_a9ab759051eeea02a00c37c783eadce1c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ab759051eeea02a00c37c783eadce1c">SetSpawnParams</a> (<a class="el" href="structSpawnParams.html">SpawnParams</a> &amp;params) override</td></tr>
 <tr class="separator:a9ab759051eeea02a00c37c783eadce1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a57be806639c04fa4d391a47bf09ab3" id="r_a7a57be806639c04fa4d391a47bf09ab3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a57be806639c04fa4d391a47bf09ab3">Tick</a> () override</td></tr>
-<tr class="separator:a7a57be806639c04fa4d391a47bf09ab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac237da6f1ad3a82063a9ac8430d460e1" id="r_ac237da6f1ad3a82063a9ac8430d460e1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac237da6f1ad3a82063a9ac8430d460e1">Tick60fps</a> () override</td></tr>
+<tr class="separator:ac237da6f1ad3a82063a9ac8430d460e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae76615ed127a1f3e85b3faa0f701c80d" id="r_ae76615ed127a1f3e85b3faa0f701c80d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae76615ed127a1f3e85b3faa0f701c80d">Draw</a> (<a class="el" href="structCamera.html">Camera</a> *camera) override</td></tr>
 <tr class="separator:ae76615ed127a1f3e85b3faa0f701c80d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a078da317114c1c0cb7b1d1ab2aa052f0" id="r_a078da317114c1c0cb7b1d1ab2aa052f0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a078da317114c1c0cb7b1d1ab2aa052f0">VehicleCollision</a> (s32 playerId, <a class="el" href="structPlayer.html">Player</a> *player) override</td></tr>
@@ -161,6 +161,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5695d0c1bfd8ae5fe08bf235c2801863 inherit pub_methods_classAActor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa18a335c99d43d74ac46328df5c4918b inherit pub_methods_classAActor" id="r_aa18a335c99d43d74ac46328df5c4918b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAActor.html#aa18a335c99d43d74ac46328df5c4918b">BeginPlay</a> ()</td></tr>
 <tr class="separator:aa18a335c99d43d74ac46328df5c4918b inherit pub_methods_classAActor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01513538fc3200ebd1e8624a81a1d661 inherit pub_methods_classAActor" id="r_a01513538fc3200ebd1e8624a81a1d661"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAActor.html#a01513538fc3200ebd1e8624a81a1d661">Tick</a> ()</td></tr>
+<tr class="separator:a01513538fc3200ebd1e8624a81a1d661 inherit pub_methods_classAActor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeaa70cd566baefbcccce8adfa608ca02 inherit pub_methods_classAActor" id="r_aeaa70cd566baefbcccce8adfa608ca02"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAActor.html#aeaa70cd566baefbcccce8adfa608ca02">Collision</a> (<a class="el" href="structPlayer.html">Player</a> *player, <a class="el" href="classAActor.html">AActor</a> *actor)</td></tr>
 <tr class="separator:aeaa70cd566baefbcccce8adfa608ca02 inherit pub_methods_classAActor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2242f7915fdde70c732b6186ccb6ddcf inherit pub_methods_classAActor" id="r_a2242f7915fdde70c732b6186ccb6ddcf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAActor.html#a2242f7915fdde70c732b6186ccb6ddcf">SetLocation</a> (<a class="el" href="structFVector.html">FVector</a> pos)</td></tr>
@@ -549,8 +551,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a7a57be806639c04fa4d391a47bf09ab3" name="a7a57be806639c04fa4d391a47bf09ab3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a57be806639c04fa4d391a47bf09ab3">&#9670;&#160;</a></span>Tick()</h2>
+<a id="ac237da6f1ad3a82063a9ac8430d460e1" name="ac237da6f1ad3a82063a9ac8430d460e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac237da6f1ad3a82063a9ac8430d460e1">&#9670;&#160;</a></span>Tick60fps()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -559,7 +561,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ATankerTruck::Tick </td>
+          <td class="memname">void ATankerTruck::Tick60fps </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -572,11 +574,11 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented from <a class="el" href="classAActor.html#a01513538fc3200ebd1e8624a81a1d661">AActor</a>.</p>
+<p>Reimplemented from <a class="el" href="classAActor.html#a241ca2fff330182d6181e3fc9dc149e5">AActor</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classATankerTruck_a7a57be806639c04fa4d391a47bf09ab3_cgraph.svg" width="100%" height="552"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classATankerTruck_ac237da6f1ad3a82063a9ac8430d460e1_cgraph.svg" width="100%" height="552"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>

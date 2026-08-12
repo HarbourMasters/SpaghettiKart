@@ -1,5 +1,9 @@
 var NAVTREEINDEX94 =
 {
+"textures_8h.html#aad3c7ff11c14dadd0134a4392e6b42fe":[18,0,3,67,21],
+"textures_8h.html#aad48ab671b274851bdf33bb2d552348d":[18,0,3,67,474],
+"textures_8h.html#aad71cb1732b919d2d8549856315fd257":[18,0,3,67,575],
+"textures_8h.html#aad7fcebbf91d8a9fb36d7dfb4caec38c":[18,0,3,67,550],
 "textures_8h.html#aad897ea98258342dd1a2bdb860f8d6f0":[18,0,3,67,198],
 "textures_8h.html#aada7b8724879995a6c6c9d10d547cc9e":[18,0,3,67,196],
 "textures_8h.html#aae026c1880d09133daa0dc6cbc7fc957":[18,0,3,67,368],
@@ -245,9 +249,5 @@ var NAVTREEINDEX94 =
 "toads__turnpike__displaylists_8h.html":[18,0,2,0,0,0,17,1],
 "toads__turnpike__displaylists_8h.html#a526d8cbeaf8e2d71e14b0aec5de347bd":[18,0,2,0,0,0,17,1,0],
 "toads__turnpike__displaylists_8h_source.html":[18,0,2,0,0,0,17,1],
-"toads__turnpike__offsets_8h.html":[18,0,2,0,0,0,17,2],
-"toads__turnpike__offsets_8h.html#aa9aa179efbd24581e12e70e5da3a964b":[18,0,2,0,0,0,17,2,0],
-"toads__turnpike__offsets_8h_source.html":[18,0,2,0,0,0,17,2],
-"toads__turnpike__vertices_8h.html":[18,0,2,0,0,0,17,3],
-"toads__turnpike__vertices_8h.html#a7da316fc2d9013303f5dd84b3d150f68":[18,0,2,0,0,0,17,3,0]
+"toads__turnpike__offsets_8h.html":[18,0,2,0,0,0,17,2]
 };
