@@ -96,7 +96,7 @@ var NAVTREE =
       [ "New Folder Structure", "md_docs_2migrations.html#new-folder-structure", null ],
       [ "Manual Migration", "md_docs_2migrations.html#manual-migration", null ],
       [ "Troubleshooting", "md_docs_2migrations.html#troubleshooting", null ],
-      [ "See Also", "md_docs_2migrations.html#see-also-1", null ]
+      [ "See Also", "md_docs_2migrations.html#see-also", null ]
     ] ],
     [ "Modding", "modding.html", [
       [ "General Structure", "modding.html#general-structure", [
@@ -121,7 +121,7 @@ var NAVTREE =
       [ "Load Order", "md_docs_2mods-toml.html#load-order", null ],
       [ "Best Practices", "md_docs_2mods-toml.html#best-practices", null ],
       [ "Migration Script Support", "md_docs_2mods-toml.html#migration-script-support", null ],
-      [ "See Also", "md_docs_2mods-toml.html#see-also", null ]
+      [ "See Also", "md_docs_2mods-toml.html#see-also-1", null ]
     ] ],
     [ "Sequence Information (Music)", "md_docs_2sequences-information.html", [
       [ "Race Tracks", "md_docs_2sequences-information.html#race-tracks", null ],
@@ -206,8 +206,8 @@ var NAVTREEINDEX =
 "classpfd_1_1internal_1_1executor.html#a2730c595c2994a227d46aa6b74b95987",
 "code__800029B0_8h.html#a400480f631a30b3b2e03db7e291f73d1",
 "code__80005FD0_8c.html#a61c267f79fb996461d6fdd7d65685dd2",
-"code__80005FD0_8c.html#acf2f8f122ed1b45482706d70656f6962",
-"code__80005FD0_8h.html#a6a3987fc720b4d6bdb1566d092553bcaa45bcb14003adc1ae161ef31f23686560",
+"code__80005FD0_8c.html#aceb0f0dce05bbf34cf559de2a69cae55",
+"code__80005FD0_8h.html#a6a3987fc720b4d6bdb1566d092553bcaa4fb47001fdd05308186aa4bb0ddac6dd",
 "code__80057C60_8c.html#a09fbf1aceb8363aae2e844ec3b327f66",
 "code__80057C60_8c.html#aa3c42b866be3ef4f4c2cf94dbce34024",
 "code__80057C60__var_8c.html#a7117dc45213b4adeb655212890626fac",

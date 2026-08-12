@@ -10,7 +10,7 @@ var trackmenu =
           ] ]
         ] ],
         [ "Prepare for export", "trackoverview.html#prepare-for-export", null ],
-        [ "Export", "trackoverview.html#export-2", [
+        [ "Export", "trackoverview.html#export-1", [
           [ "Mods Path", "trackoverview.html#mods-path", null ],
           [ "Name", "trackoverview.html#name-1", null ]
         ] ],
@@ -19,7 +19,7 @@ var trackmenu =
           [ "Extra info", "trackoverview.html#extra-info", null ]
         ] ],
         [ "Materials", "trackoverview.html#materials-1", null ],
-        [ "Export", "trackoverview.html#export-3", null ]
+        [ "Export", "trackoverview.html#export-2", null ]
       ] ]
     ] ],
     [ "Quick Reference", "quick.html", [
@@ -70,7 +70,7 @@ var trackmenu =
         [ "Tips", "minimap.html#tips-1", null ],
         [ "Option 1: Black Background, White Track", "minimap.html#option-1-black-background-white-track", null ],
         [ "Option 2: Transparent Background, White Track", "minimap.html#option-2-transparent-background-white-track", null ],
-        [ "Export", "minimap.html#export-1", null ],
+        [ "Export", "minimap.html#export-3", null ],
         [ "In-game configuration", "minimap.html#in-game-configuration", null ]
       ] ]
     ] ],

@@ -5,7 +5,7 @@ var NAVTREEINDEX55 =
 "miniaudio_8h.html#affce927390c9f35e222dd3f0976e71f1":[18,0,2,1,0,507],
 "miniaudio_8h_source.html":[18,0,2,1,0],
 "minimap.html":[12,6],
-"minimap.html#export-1":[12,6,0,4],
+"minimap.html#export-3":[12,6,0,4],
 "minimap.html#format":[12,6,0,0],
 "minimap.html#in-game-configuration":[12,6,0,5],
 "minimap.html#minimap":[12,6,0],

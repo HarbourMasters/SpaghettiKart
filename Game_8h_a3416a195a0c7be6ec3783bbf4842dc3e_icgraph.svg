@@ -67,9 +67,9 @@ var sectionId = 'dynsection-75';
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="code__80005FD0_8c.html#afea6c2109ebb5063725c4ad25fb59280" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="code__80005FD0_8c.html#aaca5df0d075547028221008076a7adbe" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="295,-1500.64 181,-1500.64 181,-1481.64 295,-1481.64 295,-1500.64"/>
-<text text-anchor="middle" x="238" y="-1488.64" font-family="Helvetica,sans-Serif" font-size="10.00">analyse_angle_path</text>
+<text text-anchor="middle" x="238" y="-1488.64" font-family="Helvetica,sans-Serif" font-size="10.00">analyze_path_angle</text>
 </a>
 </g>
 </g>
@@ -103,9 +103,9 @@ var sectionId = 'dynsection-75';
 <!-- Node50 -->
 <g id="Node000050" class="node">
 <title>Node50</title>
-<g id="a_Node000050"><a xlink:href="code__80005FD0_8c.html#af2f5c3f028965e86705c66f6cd51c680" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="300.5,-1300.64 175.5,-1300.64 175.5,-1281.64 300.5,-1281.64 300.5,-1300.64"/>
-<text text-anchor="middle" x="238" y="-1288.64" font-family="Helvetica,sans-Serif" font-size="10.00">analyze_track_section</text>
+<g id="a_Node000050"><a xlink:href="code__80005FD0_8c.html#ab865abe3bc633d810ba78ac766efc692" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="303.5,-1300.64 172.5,-1300.64 172.5,-1281.64 303.5,-1281.64 303.5,-1300.64"/>
+<text text-anchor="middle" x="238" y="-1288.64" font-family="Helvetica,sans-Serif" font-size="10.00">analyze_track_sections</text>
 </a>
 </g>
 </g>
@@ -113,7 +113,7 @@ var sectionId = 'dynsection-75';
 <g id="edge3_Node000001_Node000050" class="edge">
 <title>Node1&#45;&gt;Node50</title>
 <g id="a_edge3_Node000001_Node000050"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M603.88,-827.3C602.95,-908.64 594.96,-1211.35 528,-1272.14 495.85,-1301.34 375.49,-1299.78 300.61,-1295.68"/>
+<path fill="none" stroke="#63b8ff" d="M603.88,-827.3C602.95,-908.64 594.96,-1211.35 528,-1272.14 496.27,-1300.96 378.61,-1299.82 303.56,-1295.84"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="607.38,-826.99 603.97,-816.96 600.38,-826.92 607.38,-826.99"/>
 </a>
 </g>
