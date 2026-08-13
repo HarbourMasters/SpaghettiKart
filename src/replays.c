@@ -132,8 +132,8 @@ s32 func_800051C4(void) {
         // func_80040174 in mio0_decode.s
         func_80040174((void*) sReplayGhostBuffer, (sReplayGhostBufferSize * 4) + 0x20,
                       (s32) (uintptr_t) sReplayGhostEncoded);
-        phi_v0 = mio0encode((s32) (uintptr_t) sReplayGhostEncoded, (sReplayGhostBufferSize * 4) + 0x20,
-                            (s32) (uintptr_t) gReplayGhostCompressed);
+        phi_v0 = mio0encode((uintptr_t) sReplayGhostEncoded, (sReplayGhostBufferSize * 4) + 0x20,
+                            (uintptr_t) gReplayGhostCompressed);
         return phi_v0 + 0x1e;
     }
     // Empty buffer used to fall off the end; report zero encoded size (the

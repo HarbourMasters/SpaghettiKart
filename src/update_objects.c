@@ -78,39 +78,39 @@ Vtx D_800E44B0[] = {
     { { { -24, 20, 0 }, 0, { 3008, 2496 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
 };
 
-u16* gItemWindowTLUTs[] = { common_tlut_item_window_none,
-                            common_tlut_item_window_banana,
-                            common_tlut_item_window_banana_bunch,
-                            common_tlut_item_window_green_shell,
-                            common_tlut_item_window_triple_green_shell,
-                            common_tlut_item_window_red_shell,
-                            common_tlut_item_window_triple_red_shell,
-                            common_tlut_item_window_blue_shell,
-                            common_tlut_item_window_thunder_bolt,
-                            common_tlut_item_window_fake_item_box,
-                            common_tlut_item_window_star,
-                            common_tlut_item_window_boo,
-                            common_tlut_item_window_mushroom,
-                            common_tlut_item_window_double_mushroom,
-                            common_tlut_item_window_triple_mushroom,
-                            common_tlut_item_window_super_mushroom };
+const char* gItemWindowTLUTs[] = { common_tlut_item_window_none,
+                                   common_tlut_item_window_banana,
+                                   common_tlut_item_window_banana_bunch,
+                                   common_tlut_item_window_green_shell,
+                                   common_tlut_item_window_triple_green_shell,
+                                   common_tlut_item_window_red_shell,
+                                   common_tlut_item_window_triple_red_shell,
+                                   common_tlut_item_window_blue_shell,
+                                   common_tlut_item_window_thunder_bolt,
+                                   common_tlut_item_window_fake_item_box,
+                                   common_tlut_item_window_star,
+                                   common_tlut_item_window_boo,
+                                   common_tlut_item_window_mushroom,
+                                   common_tlut_item_window_double_mushroom,
+                                   common_tlut_item_window_triple_mushroom,
+                                   common_tlut_item_window_super_mushroom };
 
-u8* gItemWindowTextures[] = { (u8*) common_texture_item_window_none,
-                              (u8*) common_texture_item_window_banana,
-                              (u8*) common_texture_item_window_banana_bunch,
-                              (u8*) common_texture_item_window_green_shell,
-                              (u8*) common_texture_item_window_triple_green_shell,
-                              (u8*) common_texture_item_window_red_shell,
-                              (u8*) common_texture_item_window_triple_red_shell,
-                              (u8*) common_texture_item_window_blue_shell,
-                              (u8*) common_texture_item_window_thunder_bolt,
-                              (u8*) common_texture_item_window_fake_item_box,
-                              (u8*) common_texture_item_window_star,
-                              (u8*) common_texture_item_window_boo,
-                              (u8*) common_texture_item_window_mushroom,
-                              (u8*) common_texture_item_window_double_mushroom,
-                              (u8*) common_texture_item_window_triple_mushroom,
-                              (u8*) common_texture_item_window_super_mushroom };
+const char* gItemWindowTextures[] = { common_texture_item_window_none,
+                                      common_texture_item_window_banana,
+                                      common_texture_item_window_banana_bunch,
+                                      common_texture_item_window_green_shell,
+                                      common_texture_item_window_triple_green_shell,
+                                      common_texture_item_window_red_shell,
+                                      common_texture_item_window_triple_red_shell,
+                                      common_texture_item_window_blue_shell,
+                                      common_texture_item_window_thunder_bolt,
+                                      common_texture_item_window_fake_item_box,
+                                      common_texture_item_window_star,
+                                      common_texture_item_window_boo,
+                                      common_texture_item_window_mushroom,
+                                      common_texture_item_window_double_mushroom,
+                                      common_texture_item_window_triple_mushroom,
+                                      common_texture_item_window_super_mushroom };
 
 u16* gHudLapTextures[] = { common_texture_hud_lap_1_on_3, common_texture_hud_lap_2_on_3,
                            common_texture_hud_lap_3_on_3 };
@@ -760,13 +760,10 @@ UNUSED void func_800734D4() {
 }
 
 void update_neon_texture(s32 objectIndex) {
-    // I have no idea why this typecast works
-    gObjectList[objectIndex].activeTLUT = (const char*) (u8*) ((u32*) gObjectList[objectIndex].tlutList +
-                                                               (gObjectList[objectIndex].textureListIndex * 128));
     int idx = gObjectList[objectIndex].textureListIndex;
-    UNUSED char* texture = gObjectList[objectIndex].textureList[idx];
-    gObjectList[objectIndex].activeTexture =
-        gObjectList[objectIndex].textureList[gObjectList[objectIndex].textureListIndex];
+    // Each TLUT is 512 bytes (128 u32s); idx picks the palette for the frame.
+    gObjectList[objectIndex].activeTLUT = (const char*) (gObjectList[objectIndex].tlutList + (idx * 512));
+    gObjectList[objectIndex].activeTexture = gObjectList[objectIndex].textureList[idx];
 }
 
 void func_80073514(s32 objectIndex) {
@@ -2101,7 +2098,7 @@ void init_object_leaf_particle(s32 objectIndex, Vec3f arg1, s32 num) {
 
     init_object(objectIndex, 0);
     gObjectList[objectIndex].unk_0D5 = 7;
-    gObjectList[objectIndex].activeTLUT = (const char*) (u8*) common_texture_particle_leaf;
+    gObjectList[objectIndex].activeTLUT = common_texture_particle_leaf;
     gObjectList[objectIndex].tlutList = (u8*) common_texture_particle_leaf;
     gObjectList[objectIndex].sizeScaling = 0.1f;
     gObjectList[objectIndex].surfaceHeight = arg1[1];
@@ -2691,8 +2688,8 @@ void func_8007B34C(s32 playerId) {
             }
         }
     }
-    object->activeTLUT = (const char*) (u8*) gItemWindowTLUTs[object->textureListIndex];
-    object->activeTexture = (const char*) gItemWindowTextures[object->textureListIndex];
+    object->activeTLUT = gItemWindowTLUTs[object->textureListIndex];
+    object->activeTexture = gItemWindowTextures[object->textureListIndex];
     sp38->currentItemCopy = object->type;
 }
 

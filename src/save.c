@@ -120,10 +120,10 @@ u8 checksum_time_trial_records(s32 trackIdx) {
 
 u8 compute_save_data_checksum_1(void) {
     u8* grandPrixPoints = (u8*) &gSaveData.main.saveInfo.grandPrixPoints;
-    s32 i;
+    size_t i;
     s32 crc = 0;
 
-    for (i = 0; i < (s32) sizeof(SaveInfo); i++) {
+    for (i = 0; i < sizeof(SaveInfo); i++) {
         crc += ((grandPrixPoints[i] + 1) * (i + 1)) + i;
     }
 
@@ -979,13 +979,13 @@ GLOBAL_ASM("asm/non_matchings/save/func_800B68F4.s")
 #endif
 
 s32 func_800B69BC(s32 arg0) {
-    s32 i;
+    size_t i;
     struct_8018EE10_entry* plz = &D_8018EE10[arg0];
 
     plz->ghostDataSaved = false;
     plz->trackIndex = 0;
     plz->characterId = 0;
-    for (i = 0; i < (s32) sizeof(plz->unk_07); i++) {
+    for (i = 0; i < sizeof(plz->unk_07); i++) {
         plz->unk_07[i] = i;
     }
     plz->checksum = func_800B6828(arg0);

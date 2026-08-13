@@ -28,10 +28,6 @@
 #include "port/audio/HMAS.h"
 #include "engine/editor/Editor.h"
 
-#ifdef _MSC_VER
-#pragma intrinsic(sqrtf)
-#endif
-
 extern s16 gPlayerBalloonCount[];
 extern s16 D_8016348C;
 

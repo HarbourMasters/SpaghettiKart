@@ -11,10 +11,6 @@
 #include "port/Game.h"
 #include <port/interpolation/FrameInterpolation.h>
 #include <port/interpolation/matrix.h>
-#ifdef _MSC_VER
-#pragma intrinsic(sqrtf, fabs)
-#endif
-
 s32 D_802B91C0[2] = { 13, 13 };
 Vec3f D_802B91C8 = { 0.0f, 0.0f, 0.0f };
 

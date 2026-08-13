@@ -64,11 +64,11 @@ u16 D_802BA260;
  * the game will cleanup any dead red or green shells by deleting their actors.
  */
 void cleanup_red_and_green_shells(struct ShellActor* shell) {
-    s32 actorIndex;
+    size_t actorIndex;
     struct ShellActor* compare;
 
     // try finding the dead green shell
-    for (actorIndex = gNumPermanentActors; actorIndex < (s32) ACTOR_LIST_SIZE; actorIndex++) {
+    for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
         compare = (struct ShellActor*) CM_GetActor(actorIndex);
         if ((shell != compare) && !(compare->flags & ACTOR_IS_NOT_EXPIRED) && (compare->type == ACTOR_GREEN_SHELL)) {
             if (compare->state == MOVING_SHELL) {
@@ -81,7 +81,7 @@ void cleanup_red_and_green_shells(struct ShellActor* shell) {
     }
 
     // try finding the dead red shell
-    for (actorIndex = gNumPermanentActors; actorIndex < (s32) ACTOR_LIST_SIZE; actorIndex++) {
+    for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
         compare = (struct ShellActor*) CM_GetActor(actorIndex);
         if ((shell != compare) && !(compare->flags & ACTOR_IS_NOT_EXPIRED) && (compare->type == ACTOR_RED_SHELL)) {
             switch (compare->state) {
@@ -103,7 +103,7 @@ void cleanup_red_and_green_shells(struct ShellActor* shell) {
     }
 
     // try finding the green shell
-    for (actorIndex = gNumPermanentActors; actorIndex < (s32) ACTOR_LIST_SIZE; actorIndex++) {
+    for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
         compare = (struct ShellActor*) CM_GetActor(actorIndex);
         if ((shell != compare) && (compare->type == ACTOR_GREEN_SHELL)) {
             switch (compare->state) {
@@ -118,7 +118,7 @@ void cleanup_red_and_green_shells(struct ShellActor* shell) {
     }
 
     // try finding the red or blue shell
-    for (actorIndex = gNumPermanentActors; actorIndex < (s32) ACTOR_LIST_SIZE; actorIndex++) {
+    for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
         compare = (struct ShellActor*) CM_GetActor(actorIndex);
         if ((shell != compare) && (compare->type == ACTOR_RED_SHELL)) {
             switch (compare->state) {
@@ -741,7 +741,7 @@ void render_actor_shell(Camera* camera, Mat4 matrix, struct ShellActor* shell) {
     bool reverseShell = false;
 
     size_t actorIdx = CM_FindActorIndex((struct Actor*)shell);
-    if (-1 == (s32) actorIdx) {
+    if ((size_t) -1 == actorIdx) {
         printf("[render_actor_shell] Could not find actor index for FI, skipping!\n");
         return;
     }
@@ -1118,7 +1118,7 @@ void spawn_fake_item_box(Vec3f pos) {
     startingRot[1] = random_u16();
     startingRot[2] = random_u16();
     s32 id = add_actor_to_empty_slot(pos, startingRot, startingVelocity, ACTOR_FAKE_ITEM_BOX);
-    UNUSED f32 height = spawn_actor_on_surface(pos[0], pos[1], pos[2]);
+    spawn_actor_on_surface(pos[0], pos[1], pos[2]);
 
     struct FakeItemBox* box = (struct FakeItemBox*) CM_GetActor(id);
     box->state = 1;
@@ -1157,9 +1157,9 @@ void init_kiwano_fruit(void) {
  * members such as pos and rot should be set to prevent using expired data
  **/
 void destroy_all_actors(void) {
-    s32 i;
+    size_t i;
     gNumActors = 0;
-    for (i = 0; i < (s32) ACTOR_LIST_SIZE; i++) {
+    for (i = 0; i < ACTOR_LIST_SIZE; i++) {
         struct Actor* actor = CM_GetActor(i);
         actor->flags = 0;
         actor->type = 0;
@@ -1221,11 +1221,11 @@ void destroy_actor(struct Actor* actor) {
 }
 
 s16 try_remove_destructable_item(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
-    s32 actorIndex;
+    size_t actorIndex;
     struct ShellActor* compare;
 
     // try removing a red shell, green shell, banana, or a fake item box if the actor is expired
-    for (actorIndex = gNumPermanentActors; actorIndex < (s32) ACTOR_LIST_SIZE; actorIndex++) {
+    for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
         compare = (struct ShellActor*) CM_GetActor(actorIndex);
         if (!(compare->flags & ACTOR_IS_NOT_EXPIRED)) {
             switch (compare->type) {
@@ -1282,7 +1282,7 @@ s16 try_remove_destructable_item(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actor
     }
 
     // will remove the oldest destructable actor in the list
-    for (actorIndex = gNumPermanentActors; actorIndex < (s32) ACTOR_LIST_SIZE; actorIndex++) {
+    for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
         compare = (struct ShellActor*) CM_GetActor(actorIndex);
         switch (compare->type) {
             case ACTOR_RED_SHELL:
@@ -2176,7 +2176,8 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
 
 void evaluate_collision_for_players_and_actors(void) {
     struct Actor* temp_a1;
-    s32 i, j;
+    s32 i;
+    size_t j;
     Player* phi_s1;
 
     for (i = 0; i < NUM_PLAYERS; i++) {
@@ -2184,7 +2185,7 @@ void evaluate_collision_for_players_and_actors(void) {
 
         if (((phi_s1->type & 0x8000) != 0) && ((phi_s1->effects & 0x4000000) == 0)) {
             func_802977E4(phi_s1);
-            for (j = 0; j < (s32) ACTOR_LIST_SIZE; j++) {
+            for (j = 0; j < ACTOR_LIST_SIZE; j++) {
                 temp_a1 = CM_GetActor(j);
 
                 if ((phi_s1->effects & 0x4000000) == 0) {
@@ -2202,10 +2203,10 @@ void evaluate_collision_for_players_and_actors(void) {
 void evaluate_collision_for_destructible_actors(void) {
     struct Actor* actor1;
     struct Actor* actor2;
-    s32 i, j;
+    size_t i, j;
     UNUSED s32 pad;
 
-    for (i = gNumPermanentActors; i < (s32) (ACTOR_LIST_SIZE); i++) {
+    for (i = gNumPermanentActors; i < ACTOR_LIST_SIZE; i++) {
         actor1 = CM_GetActor(i);
 
         if ((actor1->flags & 0x8000) == 0) {
@@ -2222,7 +2223,7 @@ void evaluate_collision_for_destructible_actors(void) {
             case ACTOR_BLUE_SPINY_SHELL:
             case ACTOR_FAKE_ITEM_BOX:
 
-                for (j = i + 1; j < (s32) ACTOR_LIST_SIZE; j++) {
+                for (j = i + 1; j < ACTOR_LIST_SIZE; j++) {
                     actor2 = CM_GetActor(j);
 
                     if ((actor1->flags & 0x8000) == 0) {
@@ -2324,10 +2325,10 @@ void init_actor_hot_air_balloon_item_box(f32 x, f32 y, f32 z) {
 void render_item_boxes(ScreenContext* arg0) {
     Camera* camera = arg0->camera;
     struct Actor* actor;
-    s32 i;
+    size_t i;
     D_8015F8DC = 0;
 
-    for (i = 0; i < (s32) CM_GetActorSize(); i++) {
+    for (i = 0; i < CM_GetActorSize(); i++) {
         actor = CM_GetActor(i);
 
         if (actor->flags == 0) {
@@ -2352,7 +2353,7 @@ void render_course_actors(ScreenContext* screen) {
     Camera* camera = screen->camera;
     u16 pathCounter = screen->pathCounter;
     UNUSED s32 pad[12];
-    s32 i;
+    size_t i;
 
     struct Actor* actor;
     UNUSED Vec3f sp4C = { 0.0f, 5.0f, 10.0f };
@@ -2383,7 +2384,7 @@ void render_course_actors(ScreenContext* screen) {
     }
     D_8015F8E0 = 0;
 
-    for (i = 0; i < (s32) CM_GetActorSize(); i++) {
+    for (i = 0; i < CM_GetActorSize(); i++) {
         actor = CM_GetActor(i);
 
         if (actor->flags == 0) {
@@ -2507,8 +2508,8 @@ void render_course_actors(ScreenContext* screen) {
 
 void update_course_actors(void) {
     struct Actor* actor;
-    s32 i;
-    for (i = 0; i < (s32) CM_GetActorSize(); i++) {
+    size_t i;
+    for (i = 0; i < CM_GetActorSize(); i++) {
 
         actor = CM_GetActor(i);
         if (actor->flags == 0) {

@@ -553,7 +553,7 @@ void func_802A4EF4(void) {
  * The swapping of logic may be a required for proper draw order.
  * Or, perhaps they slapped functions in differing orders for each screen on a wim.
  */
-void race_begin_viewport(ScreenContext* screen, UNUSED s32 mode) {
+void race_begin_viewport(ScreenContext* screen) {
     init_rdp();
 
     // --------------------------------------------------
@@ -647,7 +647,7 @@ void render_screens(ScreenContext* screen, s32 mode, s32 someId, s32 playerId) {
             }
             break;
         default:
-            race_begin_viewport(screen, mode);
+            race_begin_viewport(screen);
 
             if ((CVarGetInteger("gDrawSky", true) == true)) {
                 CM_RaceDrawSky(screen, someId);

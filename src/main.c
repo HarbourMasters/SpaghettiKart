@@ -388,7 +388,7 @@ void update_controller(s32 index) {
 }
 
 void read_controllers(void) {
-    UNUSED OSMesg msg;
+    // OSMesg msg;
 
     osContStartReadData(&gSIEventMesgQueue);
     // osRecvMesg(&gSIEventMesgQueue, &msg, OS_MESG_BLOCK);
@@ -1087,19 +1087,19 @@ void update_gamestate(void) {
     switch (gGamestate) {
         case START_MENU_FROM_QUIT:
             func_80002658();
-            gCurrentlyLoadedTrackAddr = (uintptr_t) NULL;
+            gCurrentlyLoadedTrackAddr = 0;
             break;
         case MAIN_MENU_FROM_QUIT:
             func_800025D4();
-            gCurrentlyLoadedTrackAddr = (uintptr_t) NULL;
+            gCurrentlyLoadedTrackAddr = 0;
             break;
         case PLAYER_SELECT_MENU_FROM_QUIT:
             func_80002600();
-            gCurrentlyLoadedTrackAddr = (uintptr_t) NULL;
+            gCurrentlyLoadedTrackAddr = 0;
             break;
         case COURSE_SELECT_MENU_FROM_QUIT:
             func_8000262C();
-            gCurrentlyLoadedTrackAddr = (uintptr_t) NULL;
+            gCurrentlyLoadedTrackAddr = 0;
             break;
         case RACING:
             /**
@@ -1110,12 +1110,12 @@ void update_gamestate(void) {
             setup_race();
             break;
         case ENDING:
-            gCurrentlyLoadedTrackAddr = (uintptr_t) NULL;
+            gCurrentlyLoadedTrackAddr = 0;
             init_segment_ending_sequences();
             setup_podium_ceremony();
             break;
         case CREDITS_SEQUENCE:
-            gCurrentlyLoadedTrackAddr = (uintptr_t) NULL;
+            gCurrentlyLoadedTrackAddr = 0;
             // init_segment_racing();
             init_segment_ending_sequences();
             load_credits();

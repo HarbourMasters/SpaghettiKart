@@ -6,6 +6,12 @@
 #include <stubs.h>
 #include "save.h"
 
+// Everything here is a stub, so unused parameters are the norm; silence the
+// warning once for the file instead of tagging every signature.
+#if defined(__GNUC__) || defined(__clang__)
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+
 struct state_pak {
     OSPfsState state;
     FILE* file;
@@ -20,48 +26,47 @@ u32 osResetType;
 
 u8 osAppNmiBuffer[64];
 
-void rmonPrintf(UNUSED const char* fmt, ...) {
+void rmonPrintf(const char* fmt, ...) {
 }
 
-void func_80040030(UNUSED u8* arg0, UNUSED u8* arg1) {
+void func_80040030(u8* arg0, u8* arg1) {
 }
 
-void func_80040174(UNUSED void* arg0, UNUSED s32 arg1, UNUSED s32 arg2) {
+void func_80040174(void* arg0, s32 arg1, s32 arg2) {
 }
 
-s32 osAiSetFrequency(UNUSED u32 freq) {
+s32 osAiSetFrequency(u32 freq) {
     return 1;
 }
 
-void mio0decode(UNUSED u8* arg0, UNUSED u8* arg1) {
+void mio0decode(u8* arg0, u8* arg1) {
 }
 
-s32 mio0encode(UNUSED s32 input, UNUSED s32 arg1, UNUSED s32 arg2) {
+s32 mio0encode(uintptr_t input, s32 arg1, uintptr_t arg2) {
     return 1;
 }
 
-void osStartThread(UNUSED OSThread* thread) {
+void osStartThread(OSThread* thread) {
 }
 
-void osCreateThread(UNUSED OSThread* thread, UNUSED OSId id, void(UNUSED* entry)(void*), UNUSED void* arg,
-                    UNUSED void* sp, UNUSED OSPri pri) {
+void osCreateThread(OSThread* thread, OSId id, void(UNUSED* entry)(void*), void* arg, void* sp, OSPri pri) {
 }
 
 void osInitialize(void) {
 }
 
-void osSetThreadPri(UNUSED OSThread* thread, UNUSED OSPri pri) {
+void osSetThreadPri(OSThread* thread, OSPri pri) {
 }
 
-void osSpTaskLoad(UNUSED OSTask* task) {
+void osSpTaskLoad(OSTask* task) {
 }
 
-void osSpTaskStartGo(UNUSED OSTask* task) {
+void osSpTaskStartGo(OSTask* task) {
 }
 
 void osSpTaskYield(void) {
 }
 
-OSYieldResult osSpTaskYielded(UNUSED OSTask* task) {
+OSYieldResult osSpTaskYielded(OSTask* task) {
     return 0;
 }

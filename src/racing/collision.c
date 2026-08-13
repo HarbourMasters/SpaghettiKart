@@ -17,10 +17,6 @@
 #include <stdio.h>
 #include "engine/RaceManager.h"
 
-#ifdef _MSC_VER
-#pragma intrinsic(sqrtf)
-#endif
-
 // Used to delete the choco mountain guard rail
 void nullify_displaylist(uintptr_t addr) {
     Gfx* macro;
