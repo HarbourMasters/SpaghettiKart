@@ -21,7 +21,7 @@ extern "C" {
 #include "common_structs.h"
 #include "main.h"
 #include "defines.h"
-#include "actors.h"
+#include "racing/actors.h"
 #include "camera.h"
 }
 

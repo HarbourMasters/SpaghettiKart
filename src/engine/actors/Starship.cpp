@@ -1,12 +1,12 @@
 #include "Starship.h"
 
 #include <libultra/gbi.h>
-#include "Matrix.h"
+#include "engine/Matrix.h"
 #include "port/Game.h"
 
 extern "C" {
 #include "common_structs.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "main.h"
 #include "courses/harbour/starship_model.h"
 }

@@ -3,11 +3,11 @@
 #include <common_structs.h>
 #include "math_util_2.h"
 #include "main.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "objects.h"
 
 #include "memory.h"
-#include "collision.h"
+#include "racing/collision.h"
 #include "render_player.h"
 #include "code_80057C60.h"
 #include "defines.h"
@@ -332,29 +332,25 @@ s32 f32_step_towards(f32* value, f32 target, f32 step) {
     return targetReached;
 }
 
-Vec3f* vec3f_set_xyz(Vec3f arg0, f32 arg1, f32 arg2, f32 arg3) {
+void vec3f_set_xyz(Vec3f arg0, f32 arg1, f32 arg2, f32 arg3) {
     arg0[0] = arg1;
     arg0[1] = arg2;
     arg0[2] = arg3;
-    return (Vec3f*) &arg0;
 }
 
-Vec3f* vec3f_normalize(Vec3f dest) {
+void vec3f_normalize(Vec3f dest) {
     f32 invsqrt = 1.0f / sqrtf(dest[0] * dest[0] + dest[1] * dest[1] + dest[2] * dest[2]);
 
     dest[0] = dest[0] * invsqrt;
     dest[1] = dest[1] * invsqrt;
     dest[2] = dest[2] * invsqrt;
-    return (Vec3f*) &dest;
 }
 
-Vec3f* vec3f_cross_product(Vec3f dest, Vec3f arg1, Vec3f arg2) {
+void vec3f_cross_product(Vec3f dest, Vec3f arg1, Vec3f arg2) {
 
     dest[0] = (arg1[1] * arg2[2]) - (arg2[1] * arg1[2]);
     dest[1] = (arg1[2] * arg2[0]) - (arg2[2] * arg1[0]);
     dest[2] = (arg1[0] * arg2[1]) - (arg2[0] * arg1[1]);
-
-    return (Vec3f*) &dest;
 }
 
 UNUSED s32 is_within_distance_2d(f32 x1, f32 y1, f32 x2, f32 y2, f32 distance) {
@@ -436,7 +432,7 @@ s32 func_800418E8(f32 arg0, f32 arg1, Vec3f arg2) {
     return atan2s(arg0 - arg2[1], arg1 - arg2[2]);
 }
 
-s32 func_80041924(Collision* arg0, Vec3f arg1) {
+s32 func_80041924(struct Collision* arg0, Vec3f arg1) {
     s32 ret = 0;
 
     check_bounding_collision(arg0, 10.0f, arg1[0], arg1[1], arg1[2]);

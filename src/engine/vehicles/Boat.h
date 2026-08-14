@@ -1,7 +1,7 @@
 #pragma once
 
 #include <libultraship.h>
-#include "Actor.h"
+#include "engine/Actor.h"
 #include <vector>
 #include "engine/registry/RegisterContent.h"
 #include "engine/SpawnParams.h"
@@ -64,7 +64,7 @@ class ABoat : public AActor {
     uint32_t PathPoint = 0;
 
     virtual void SetSpawnParams(SpawnParams& params) override;
-    virtual void Tick() override;
+    virtual void Tick60fps() override;
     virtual void Draw(Camera* camera) override;
     virtual void VehicleCollision(s32 playerId, Player* player) override;
     virtual s32 AddSmoke(size_t, Vec3f, f32);

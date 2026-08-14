@@ -16,7 +16,7 @@
 #include "actors.h"
 #include "math_util.h"
 #include "memory.h"
-#include "code_80281780.h"
+#include "ending/code_80281780.h"
 #include "collision.h"
 #include "skybox_and_splitscreen.h"
 #include "courses/all_course_data.h"

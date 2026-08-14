@@ -246,7 +246,7 @@ void* alloc_bank_or_seq(struct SoundMultiPool* arg0, s32 arg1, s32 size, s32 arg
     u16 secondVal;
     s32 var_v1_2;
     u8* table;
-    u8 isSound;
+    u8 isSound = 0;
 
     if (arg3 == 0) {
         tp = &arg0->temporary;
@@ -254,8 +254,6 @@ void* alloc_bank_or_seq(struct SoundMultiPool* arg0, s32 arg1, s32 size, s32 arg
         if (arg0 == &gSeqLoadedPool) {
             table = gSeqLoadStatus; isSound = 0;
         } else {
-            // wtf?
-            firstVal += 0;
             if (arg0 == &gBankLoadedPool) {
                 isSound = 1; table = gBankLoadStatus;
             } else if (arg0 == &gUnusedLoadedPool) {

@@ -689,6 +689,9 @@ s32 controller_pak_2_status(void) {
                 return PFS_PAK_BAD_READ;
         }
     }
+    // Reached when the pak was just marked BAD above; used to fall off the
+    // end and return garbage.
+    return PFS_PAK_BAD_READ;
 }
 
 s32 func_800B5F30(void) {

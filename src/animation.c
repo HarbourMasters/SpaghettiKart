@@ -1,7 +1,7 @@
 #include <libultraship.h>
 #include <macros.h>
 #include <mk64.h>
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "animation.h"
 #include "memory.h"
 #include <main.h>

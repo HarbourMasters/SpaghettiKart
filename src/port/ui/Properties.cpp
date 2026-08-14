@@ -20,7 +20,7 @@
 #include "engine/vehicles/Train.h"
 
 extern "C" {
-#include "actors.h"
+#include "racing/actors.h"
 }
 
 namespace TrackEditor {
@@ -61,7 +61,7 @@ namespace TrackEditor {
 
             ImGui::SetCursorPosX((windowWidth - textWidth) * 0.5f);
             // Display actor title
-            ImGui::Text(title);
+            ImGui::Text("%s", title);
 
             // Display actor resource name. ex. mk:cloud
             if (obj->ResourceName[0] != '\0') { // Params is unset for some train components

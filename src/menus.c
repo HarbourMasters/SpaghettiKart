@@ -7,11 +7,11 @@
 #include <stubs.h>
 
 #include "menus.h"
-#include "TrackBrowser.h"
-#include "editor/Editor.h"
+#include "engine/TrackBrowser.h"
+#include "engine/editor/Editor.h"
 #include "main.h"
 #include "code_800029B0.h"
-#include "actors.h"
+#include "racing/actors.h"
 #include "audio/external.h"
 #include "code_800029B0.h"
 #include "code_80005FD0.h"
@@ -238,7 +238,7 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
     MenuItem* sp38;
     s32 res;
     struct_8018EE10_entry* sp30;
-    bool tempVar; // cursorWasMoved or communicateStoredAction
+    s32 tempVar; // cursorWasMoved or communicateStoredAction; also holds PFS_* status codes
     UNUSED u32 pad;
 
     btnAndStick = (controller->buttonPressed | controller->stickPressed);

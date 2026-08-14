@@ -4,9 +4,9 @@
 
 extern "C" {
 #include "common_structs.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "main.h"
-#include "actors.h"
+#include "racing/actors.h"
 }
 
 ATree::ATree(Vec3f pos, Gfx* displaylist, f32 drawDistance, f32 minDrawDistance, const char* tlut = nullptr) {

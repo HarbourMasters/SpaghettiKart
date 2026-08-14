@@ -51,7 +51,7 @@ typedef struct Matrix {
     Matrix()
         : Hud(200), Objects(1000)
     {}
-};
+} Matrix;
 private:
     std::unique_ptr<Track> mTrack;
     Cup* CurrentCup;
@@ -72,6 +72,7 @@ public:
     AActor* GetActor(size_t index);
 
     void TickActors();
+    void TickActors60fps();
     AActor* ConvertActorToAActor(Actor* actor);
     Actor* ConvertAActorToActor(AActor* actor);
 
@@ -112,7 +113,7 @@ public:
 
     void SetCurrentTrack(std::unique_ptr<Track> track);
 
-    Matrix Mtx;
+    Matrix world_mtx;
 
     std::vector<Cup*> Cups;
     size_t CupIndex = 1;
@@ -120,7 +121,7 @@ public:
     std::vector<std::unique_ptr<GameCamera>> Cameras;
 
     std::vector<std::unique_ptr<StaticMeshActor>> StaticMeshActors;
-    std::vector<std::unique_ptr<AActor>> Actors;
+    std::deque<std::unique_ptr<AActor>> Actors;
     std::deque<std::unique_ptr<OObject>> Objects;
     std::vector<std::unique_ptr<ParticleEmitter>> Emitters;
 

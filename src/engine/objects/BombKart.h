@@ -4,7 +4,7 @@
 #include "engine/registry/RegisterContent.h"
 #include "engine/objects/Object.h"
 
-#include "World.h"
+#include "engine/World.h"
 
 extern "C" {
 #include "common_structs.h"
@@ -41,7 +41,7 @@ class OBombKart : public OObject {
     u16 Unk_4A = 0;
     s16 Unk_4C = 1;
     f32 CenterY; // Center of the circle
-    Collision _Collision;
+    struct Collision _Collision;
 
 
     // This is simply a helper function to keep Spawning code clean
@@ -52,7 +52,7 @@ class OBombKart : public OObject {
             .Behaviour = behaviour,
             .Location = pos,
             .Speed = unk_3C, // Only used for podium ceremony. Arbitrarily chose Speed for this
-            .SpeedB = 2.7f, // Chase speed
+            .SpeedB = 7.0f, // Chase speed
         };
         return dynamic_cast<OBombKart*>(AddObjectToWorld<OBombKart>(params));
     }

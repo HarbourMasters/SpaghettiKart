@@ -7,7 +7,7 @@
 #include "engine/editor/Collision.h"
 
 extern "C" {
-#include "math_util.h"
+#include "racing/math_util.h"
 }
 
 AActor::AActor() {}
@@ -33,6 +33,7 @@ void AActor::BeginPlay() {
 
 // Virtual functions to be overridden by derived classes
 void AActor::Tick() {  }
+void AActor::Tick60fps() {  }
 void AActor::Draw(Camera *camera) {
     if (Model) {
         Mat4 mtx;

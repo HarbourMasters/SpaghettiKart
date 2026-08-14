@@ -37,7 +37,7 @@ namespace UIWidgets {
     void Tooltip(const char* text);
 
     // mostly in order for colors usable by the menu without custom text color
-    enum Colors {
+    typedef enum Colors {
         Red,
         DarkRed,
         Orange,
@@ -60,7 +60,7 @@ namespace UIWidgets {
         LightGray,
         White,
         NoColor
-    };
+    } Colors;
 
     const std::unordered_map<Colors, ImVec4> ColorValues = {
         { Colors::Pink, ImVec4(0.87f, 0.3f, 0.87f, 1.0f) },
@@ -149,8 +149,8 @@ namespace UIWidgets {
 
     struct CheckboxOptions : WidgetOptions {
         bool defaultValue = false; // Only applicable to CVarCheckbox
-        ComponentAlignment alignment = ComponentAlignment::Left;
-        LabelPosition labelPosition = LabelPosition::Near;
+        enum ComponentAlignment alignment = ComponentAlignment::Left;
+        enum LabelPosition labelPosition = LabelPosition::Near;
         Colors color = WidgetOptions::color = Colors::LightBlue;
 
         CheckboxOptions& DefaultValue(bool defaultValue_) {
@@ -178,8 +178,8 @@ namespace UIWidgets {
     struct ComboboxOptions : WidgetOptions {
         std::unordered_map<int32_t, const char*> comboMap = {};
         uint32_t defaultIndex = 0; // Only applicable to CVarCombobox
-        ComponentAlignment alignment = ComponentAlignment::Left;
-        LabelPosition labelPosition = LabelPosition::Above;
+        enum ComponentAlignment alignment = ComponentAlignment::Left;
+        enum LabelPosition labelPosition = LabelPosition::Above;
         ImGuiComboFlags flags = 0;
         Colors color = Colors::LightBlue;
 
@@ -216,8 +216,8 @@ namespace UIWidgets {
         int32_t min = 1;
         int32_t max = 10;
         int32_t defaultValue = 1;
-        ComponentAlignment alignment = ComponentAlignment::Left;
-        LabelPosition labelPosition = LabelPosition::Above;
+        enum ComponentAlignment alignment = ComponentAlignment::Left;
+        enum LabelPosition labelPosition = LabelPosition::Above;
         Colors color = Colors::Gray;
         ImGuiSliderFlags flags = 0;
 
@@ -271,8 +271,8 @@ namespace UIWidgets {
         float max = 10.0f;
         float defaultValue = 1.0f;
         bool isPercentage = false; // Multiplies visual value by 100
-        ComponentAlignment alignment = ComponentAlignment::Left;
-        LabelPosition labelPosition = LabelPosition::Above;
+        enum ComponentAlignment alignment = ComponentAlignment::Left;
+        enum LabelPosition labelPosition = LabelPosition::Above;
         Colors color = Colors::Gray;
         ImGuiSliderFlags flags = 0;
 
@@ -431,7 +431,7 @@ namespace UIWidgets {
         int32_t value = CVarGetInteger(cvarName, options.defaultIndex);
         if (Combobox(label, &value, comboSource, options)) {
             CVarSetInteger(cvarName, value);
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
+            Ship::Context::GetRawInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             ShipInit::Init(cvarName);
             dirty = true;
         }
@@ -670,7 +670,7 @@ namespace UIWidgets {
         int32_t value = CVarGetInteger(cvarName, options.defaultIndex);
         if (Combobox<T>(label, &value, comboMap, options)) {
             CVarSetInteger(cvarName, value);
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
+            Ship::Context::GetRawInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             dirty = true;
         }
         return dirty;
@@ -682,7 +682,7 @@ namespace UIWidgets {
         int32_t value = CVarGetInteger(cvarName, options.defaultIndex);
         if (Combobox<T>(label, &value, comboVector, options)) {
             CVarSetInteger(cvarName, value);
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
+            Ship::Context::GetRawInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             dirty = true;
         }
         return dirty;
@@ -694,7 +694,7 @@ namespace UIWidgets {
         int32_t value = CVarGetInteger(cvarName, options.defaultIndex);
         if (Combobox<T>(label, &value, comboArray, options)) {
             CVarSetInteger(cvarName, value);
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
+            Ship::Context::GetRawInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             dirty = true;
         }
         return dirty;

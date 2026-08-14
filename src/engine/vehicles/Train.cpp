@@ -15,8 +15,8 @@ extern "C" {
 #include "defines.h"
 #include "code_80005FD0.h"
 #include "vehicles.h"
-#include "actors.h"
-#include "math_util.h"
+#include "racing/actors.h"
+#include "racing/math_util.h"
 #include "sounds.h"
 #include "update_objects.h"
 #include "waypoints.h"
@@ -57,7 +57,7 @@ ATrain::ATrain(const SpawnParams& params) : AActor(params) {
             TrainCounts[pathIndex].push_back(pathPoint);
             break;
         case SpawnMode::AUTO: // Automatically distribute trains based on a specific path point
-            printf("vehicle path size %d\n", gVehiclePathSize);
+            printf("vehicle path size %zu\n", gVehiclePathSize);
             pathPoint = GetVehiclePathPointDistributed(TrainCounts[pathIndex], gVehiclePathSize);
             TrainCounts[pathIndex].push_back(pathPoint);
             printf("train spawn path point: %d\n", pathPoint);
@@ -182,7 +182,7 @@ void ATrain::SyncComponents(TrainCarStuff* trainCar, s16 orientationY) {
     trainCarActor->velocity[2] = trainCar->velocity[2];
 }
 
-void ATrain::Tick() {
+void ATrain::Tick60fps() {
     TrainCarStuff* car;
     u16 oldWaypointIndex;
     s16 orientationYUpdate;

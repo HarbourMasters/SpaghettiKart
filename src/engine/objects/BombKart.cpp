@@ -10,21 +10,21 @@
 extern "C" {
 #include "macros.h"
 #include "main.h"
-#include "actors.h"
-#include "math_util.h"
+#include "racing/actors.h"
+#include "racing/math_util.h"
 #include "sounds.h"
 #include "update_objects.h"
 #include "render_player.h"
-#include "external.h"
+#include "audio/external.h"
 #include "bomb_kart.h"
-#include "collision.h"
+#include "racing/collision.h"
 #include "code_80086E70.h"
 #include "render_objects.h"
 #include "code_80057C60.h"
 #include "defines.h"
 #include "code_80005FD0.h"
 #include "math_util_2.h"
-#include "collision.h"
+#include "racing/collision.h"
 #include <assets/models/common_data.h>
 extern s8 gPlayerCount;
 }
@@ -55,7 +55,7 @@ OBombKart::OBombKart(const SpawnParams& params) : OObject(params) {
     }
 
     Behaviour = static_cast<OBombKart::States>(params.Behaviour.value_or(OBombKart::States::COUNTERCLOCKWISE));
-    SpeedB = params.SpeedB.value_or(2.7f); // Chase speed
+    SpeedB = params.SpeedB.value_or(7.0f); // Chase speed
 
     WaypointIndex = params.PathPoint.value_or(0);
     Unk_3C = params.Speed.value_or(0);

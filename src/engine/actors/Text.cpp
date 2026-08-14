@@ -14,7 +14,7 @@ extern "C" {
 #include "menu_items.h"
 #include "assets/models/data_segment2.h"
 #include "render_player.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "assets/textures/texture_data_2.h"
 #include "render_objects.h"
 #include "common_structs.h"

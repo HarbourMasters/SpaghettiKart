@@ -311,7 +311,7 @@ void AsyncTextureUpgrader::PrefetchLoop() {
             mPrefetchDirs.pop_front();
         }
 
-        auto resourceManager = Ship::Context::GetInstance()->GetResourceManager();
+        auto resourceManager = Ship::Context::GetRawInstance()->GetResourceManager();
         auto files = resourceManager->GetArchiveManager()->ListFiles(dir + "/*");
         if (files == nullptr) {
             continue;

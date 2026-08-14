@@ -22,11 +22,11 @@ static constexpr size_t kSyncDecodeMaxBytes = 200 * 1024;
 // Image replacements (texture packs) are the port's "alternate assets";
 // gating the lookup here is what makes the alt-assets toggle work.
 static std::shared_ptr<Ship::File> findReplacementImage(const std::shared_ptr<Ship::ResourceInitData>& initData) {
-    if (!Ship::Context::GetInstance()->GetResourceManager()->IsAltAssetsEnabled()) {
+    if (!Ship::Context::GetRawInstance()->GetResourceManager()->IsAltAssetsEnabled()) {
         return nullptr;
     }
     for (const auto& ext : extension) {
-        auto filePng = Ship::Context::GetInstance()->GetResourceManager()->LoadFileProcess(initData->Path + ext);
+        auto filePng = Ship::Context::GetRawInstance()->GetResourceManager()->LoadFileProcess(initData->Path + ext);
         if (filePng != nullptr) {
             return filePng;
         }

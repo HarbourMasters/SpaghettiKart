@@ -23,7 +23,7 @@ typedef enum RenderMode {
     RENDER_TRACK_SECTIONS,
     RENDER_FULL_SCENE,
     RENDER_COLLISION_MESH
-};
+} RenderMode;
 
 typedef struct {
     f32 unk_0;
@@ -49,7 +49,7 @@ typedef struct {
     /* 0x48 */ s32 unk_48;
     /* 0x4C */ s32 unk_4C;
     /* 0x50 */ s32 unk_50;
-    /* 0x54 */ Collision collision;
+    /* 0x54 */ struct Collision collision;
     // When you hit a wall (or another driver) the camera's pos and lookAt bounce up and down. This is the velocity(?)
     // of that bouncing
     /* 0x94 */ UnkCameraInner unk_94;

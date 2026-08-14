@@ -1,5 +1,5 @@
 #include <camera.h>
-#include <actors.h>
+#include <racing/actors.h>
 #include <defines.h>
 #include <main.h>
 #include "port/interpolation/FrameInterpolation.h"

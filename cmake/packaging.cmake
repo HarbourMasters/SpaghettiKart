@@ -43,9 +43,7 @@ set(CPACK_DEB_COMPONENT_INSTALL YES)
 set(CPACK_EXTERNAL_ENABLE_STAGING YES)
 set(CPACK_EXTERNAL_PACKAGE_SCRIPT "${PROJECT_BINARY_DIR}/appimage-generate.cmake")
 
-file(GENERATE
-  OUTPUT "${PROJECT_BINARY_DIR}/appimage-generate.cmake"
-  CONTENT [[
+set(APPIMAGE_SCRIPT_TEMPLATE [[
 include(CMakePrintHelpers)
 cmake_print_variables(CPACK_TEMPORARY_DIRECTORY)
 cmake_print_variables(CPACK_TOPLEVEL_DIRECTORY)
@@ -69,9 +67,10 @@ if (NOT LINUXDEPLOY_EXECUTABLE)
 endif()
 
 execute_process(
-  COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CPACK_PACKAGE_DIRECTORY}/config.yml" "${CPACK_TEMPORARY_DIRECTORY}/usr/bin/config.yml"
-	COMMAND ${CMAKE_COMMAND} -E copy_directory "${CPACK_PACKAGE_DIRECTORY}/yamls/" "${CPACK_TEMPORARY_DIRECTORY}/usr/bin/yamls/"
-	COMMAND ${CMAKE_COMMAND} -E copy_directory "${CPACK_PACKAGE_DIRECTORY}/meta/" "${CPACK_TEMPORARY_DIRECTORY}/usr/bin/meta/"
+  COMMAND ${CMAKE_COMMAND}
+    -DSOURCE_DIR=${CPACK_PACKAGE_DIRECTORY}
+    -DDESTINATION_DIR=${CPACK_TEMPORARY_DIRECTORY}/usr/bin
+    -P @CMAKE_CURRENT_LIST_DIR@/StageRuntimeFiles.cmake
   COMMAND
     ${CMAKE_COMMAND} -E env
       OUTPUT=${CPACK_PACKAGE_FILE_NAME}.appimage
@@ -80,13 +79,16 @@ execute_process(
     ${LINUXDEPLOY_EXECUTABLE}
     --appimage-extract-and-run
     --appdir=${CPACK_TEMPORARY_DIRECTORY}
-    --executable=$<TARGET_FILE:Spaghettify>
-    $<$<BOOL:$<TARGET_PROPERTY:Spaghettify,APPIMAGE_DESKTOP_FILE>>:--desktop-file=$<TARGET_PROPERTY:Spaghettify,APPIMAGE_DESKTOP_FILE>>
-    $<$<BOOL:$<TARGET_PROPERTY:Spaghettify,APPIMAGE_ICON_FILE>>:--icon-file=$<TARGET_PROPERTY:Spaghettify,APPIMAGE_ICON_FILE>>
+    --executable=$<TARGET_FILE:@PROJECT_NAME@>
+    $<$<BOOL:$<TARGET_PROPERTY:@PROJECT_NAME@,APPIMAGE_DESKTOP_FILE>>:--desktop-file=$<TARGET_PROPERTY:@PROJECT_NAME@,APPIMAGE_DESKTOP_FILE>>
+    $<$<BOOL:$<TARGET_PROPERTY:@PROJECT_NAME@,APPIMAGE_ICON_FILE>>:--icon-file=$<TARGET_PROPERTY:@PROJECT_NAME@,APPIMAGE_ICON_FILE>>
     --output=appimage
     --verbosity=2
 )
 ]])
+string(CONFIGURE "${APPIMAGE_SCRIPT_TEMPLATE}" APPIMAGE_SCRIPT @ONLY)
+file(GENERATE OUTPUT "${PROJECT_BINARY_DIR}/appimage-generate.cmake"
+     CONTENT "${APPIMAGE_SCRIPT}")
 
 endif()
 

@@ -3,8 +3,6 @@
 FROM --platform=linux/386 debian:bookworm
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV VCPKG_ROOT=/opt/vcpkg
-ENV PATH="${VCPKG_ROOT}:${PATH}"
 
 # Install base dependencies
 RUN apt-get update -y && apt-get -y upgrade && \

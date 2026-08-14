@@ -6,17 +6,17 @@
 #include <align_asset_macro.h>
 
 #include "code_80005FD0.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "code_800029B0.h"
 #include "racing/memory.h"
 #include "waypoints.h"
 #include "camera.h"
-#include "actors.h"
-#include "actors_extended.h"
+#include "racing/actors.h"
+#include "racing/actors_extended.h"
 #include "render_player.h"
 #include "player_controller.h"
 #include "update_objects.h"
-#include "collision.h"
+#include "racing/collision.h"
 #include <actor_types.h>
 #include "vehicles.h"
 #include "render_objects.h"
@@ -41,11 +41,12 @@
 #include <stdio.h>
 
 #include "port/Game.h"
+#include "port/interpolation/FrameInterpolation.h"
 #include "engine/tracks/Track.h"
 #include "engine/RaceManager.h"
 
 s32 unk_code_80005FD0_pad[24];
-Collision D_80162E70;
+struct Collision D_80162E70;
 s16 D_80162EB0; // Possibly a float.
 s16 D_80162EB2; // possibly [3]
 
@@ -117,7 +118,6 @@ u16 D_8016334C[8]; // Increased from 2 to 8 to prevent array overflow.
 u16 gSpeedCPUBehaviour[12];
 s32 D_80163368[4];
 s32 gIncrementUpdatePlayer;
-s32 D_8016337C;
 s16 gCurrentPlayerLookAhead[12];
 s16 D_80163398[12];
 s16 D_801633B0[12];
@@ -161,7 +161,7 @@ VehicleStuff gTankerTruckList[NUM_RACE_TANKER_TRUCKS];
 VehicleStuff gCarList[NUM_RACE_CARS];
 s32 D_80163DD8[4];
 BombKart gBombKarts[NUM_BOMB_KARTS_MAX];
-Collision gBombKartCollision[NUM_BOMB_KARTS_MAX];
+struct Collision gBombKartCollision[NUM_BOMB_KARTS_MAX];
 struct unexpiredActors gUnexpiredActorsList[8];
 CpuItemStrategyData cpu_ItemStrategy[8];
 s16 D_80164358;
@@ -1555,7 +1555,7 @@ void update_player_path_completion(s32 playerId, Player* player) {
 void update_vehicles(void) {
     s32 i;
     generate_player_smoke();
-    D_8016337C++;
+    // D_8016337C++;
 
     // CM_TickBombKarts();
     // CM_VehiclesTick();
@@ -2665,7 +2665,7 @@ s16 find_closest_vehicles_path_point(f32 xPos, UNUSED f32 yPos, f32 zPos, s16 wa
 
 s16 func_8000D24C(f32 posX, f32 posY, f32 posZ, s32* pathIndex) {
     UNUSED s32 pad;
-    Collision sp24;
+    struct Collision sp24;
 
     check_bounding_collision(&sp24, 10.0f, posX, posY, posZ);
     return find_closest_path_point_track_section(posX, posY, posZ, get_track_section_id(sp24.meshIndexZX), pathIndex);
@@ -2977,61 +2977,6 @@ s16 update_vehicle_following_path(Vec3f pos, s16* waypointIndex, f32 speed) {
     return get_angle_between_path(sp38, pos);
 }
 
-void set_bomb_kart_spawn_positions(void) {
-    UNUSED Collision* var_s2;
-    f32 startingXPos;
-    f32 startingZPos;
-    f32 startingYPos;
-    s32 var_s3;
-    TrackPathPoint* temp_v0;
-    UNUSED BombKart* var_s0;
-    BombKartSpawn* bombKartSpawn;
-
-    for (var_s3 = 0; var_s3 < NUM_BOMB_KARTS_VERSUS; var_s3++) {
-        // bombKartSpawn = &gBombKartSpawns[gCurrentCourseId][var_s3];
-        if (IsYoshiValley()) {
-            startingXPos = bombKartSpawn->startingXPos;
-            startingZPos = bombKartSpawn->startingZPos;
-            startingYPos = spawn_actor_on_surface(startingXPos, 2000.0f, startingZPos);
-        } else if (IsPodiumCeremony()) {
-            temp_v0 = &gTrackPaths[3][bombKartSpawn->waypointIndex];
-            startingXPos = temp_v0->x;
-            startingYPos = temp_v0->y;
-            startingZPos = temp_v0->z;
-        } else {
-            temp_v0 = &gTrackPaths[0][bombKartSpawn->waypointIndex];
-            startingXPos = temp_v0->x;
-            startingYPos = temp_v0->y;
-            startingZPos = temp_v0->z;
-        }
-
-        gBombKarts[var_s3].bombPos[0] = startingXPos;
-        gBombKarts[var_s3].bombPos[1] = startingYPos;
-        gBombKarts[var_s3].bombPos[2] = startingZPos;
-        gBombKarts[var_s3].wheel1Pos[0] = startingXPos;
-        gBombKarts[var_s3].wheel1Pos[1] = startingYPos;
-        gBombKarts[var_s3].wheel1Pos[2] = startingZPos;
-        gBombKarts[var_s3].wheel2Pos[0] = startingXPos;
-        gBombKarts[var_s3].wheel2Pos[1] = startingYPos;
-        gBombKarts[var_s3].wheel2Pos[2] = startingZPos;
-        gBombKarts[var_s3].wheel3Pos[0] = startingXPos;
-        gBombKarts[var_s3].wheel3Pos[1] = startingYPos;
-        gBombKarts[var_s3].wheel3Pos[2] = startingZPos;
-        gBombKarts[var_s3].wheel4Pos[0] = startingXPos;
-        gBombKarts[var_s3].wheel4Pos[1] = startingYPos;
-        gBombKarts[var_s3].wheel4Pos[2] = startingZPos;
-        gBombKarts[var_s3].waypointIndex = bombKartSpawn->waypointIndex;
-        gBombKarts[var_s3].unk_3C = bombKartSpawn->unk_04;
-        gBombKarts[var_s3].bounceTimer = 0;
-        gBombKarts[var_s3].circleTimer = 0;
-        gBombKarts[var_s3].state = bombKartSpawn->startingState;
-        gBombKarts[var_s3].unk_4A = 0;
-        gBombKarts[var_s3].unk_4C = 1;
-        gBombKarts[var_s3].yPos = startingYPos;
-        check_bounding_collision(&gBombKartCollision[var_s3], 2.0f, startingXPos, startingYPos, startingZPos);
-    }
-}
-
 void func_8000DF8C(s32 bombKartId) {
     UNUSED s32 stackPadding0;
     f32 sp118;
@@ -3084,7 +3029,7 @@ void func_8000DF8C(s32 bombKartId) {
     TrackPathPoint* temp_v0_4;
     BombKart* bombKart;
     BombKart* bombKart2;
-    Collision* temp_a0_4;
+    struct Collision* temp_a0_4;
     Player* var_v0;
 
     bombKart = &gBombKarts[bombKartId];
@@ -3519,8 +3464,8 @@ void init_course_path_point(void) {
         if (D_80163368[i] >= 2) {
             load_track_path(i);
             calculate_track_boundaries(i);
-            analyze_track_section(i);
-            analyse_angle_path(i);
+            analyze_track_sections(i);
+            analyze_path_angle(i);
             analyze_curved_path(i);
         }
     }
@@ -3677,7 +3622,7 @@ void init_players(void) {
     D_8016435C = 1;
     gBestRankedHumanPlayer = 0;
     gIncrementUpdatePlayer = 0;
-    D_8016337C = 0;
+    gTickCounter = 0; // Originally D_8016337C = 0;
     gPathStartZ = (f32) gTrackPaths[0][0].z; // [i][2]
     D_801634F0 = 0;
     D_801634F4 = 0;
@@ -3856,7 +3801,7 @@ f32 calculate_track_curvature(s32 pathIndex, u16 waypointIndex) {
     return -((temp_f10 * temp_f10_2) - (temp_f8_2 * temp_f8)) / (root2 * root1);
 }
 
-void analyze_track_section(s32 pathIndex) {
+void analyze_track_sections(s32 pathIndex) {
     f64 sectionCurvature;
     UNUSED s32 pad;
     s32 k;
@@ -3931,7 +3876,7 @@ s16 calculate_angle_path(s32 pathIndex, s32 waypointIndex) {
 }
 
 // Populates gPathExpectedRotation
-void analyse_angle_path(s32 pathIndex) {
+void analyze_path_angle(s32 pathIndex) {
     s32 waypointIndex;
     u16* angle;
 
@@ -6550,11 +6495,18 @@ void func_80019760(Camera* camera, UNUSED Player* player, UNUSED s32 arg2, s32 c
     camera->rot[2] = 0;
 }
 
-void func_80019890(s32 playerId, s32 cameraId) {
+// Starts the cinematic shot selected in D_80164680[cameraId]: dispatches to the
+// per-shot setup, which teleports the camera to the shot's opening position.
+void camera_start_cinematic_shot(s32 playerId, s32 cameraId) {
     s32 pathIndex;
+    f32 prevX, prevY, prevZ, dx, dy, dz;
     Camera* camera = camera1;
     camera += cameraId;
     camera->playerId = playerId;
+
+    prevX = camera->pos[0];
+    prevY = camera->pos[1];
+    prevZ = camera->pos[2];
 
     D_801646C0[cameraId] = 0;
     pathIndex = gPathIndexByPlayerId[playerId];
@@ -6613,6 +6565,15 @@ void func_80019890(s32 playerId, s32 cameraId) {
         func_8000BD94(camera->pos[0], camera->pos[1], camera->pos[2], (s32) pathIndex);
     if ((s16) D_80164680[cameraId] == 9) {
         D_80163DD8[cameraId] = (s32) pathIndex;
+    }
+
+    // Flag a camera cut only when the camera teleported to a new shot;
+    // small moves are continuous tracking updates that should stay smooth.
+    dx = camera->pos[0] - prevX;
+    dy = camera->pos[1] - prevY;
+    dz = camera->pos[2] - prevZ;
+    if ((dx * dx + dy * dy + dz * dz) > 100.0f * 100.0f) {
+        FrameInterpolation_DontInterpolateCamera();
     }
 }
 
@@ -6737,11 +6698,11 @@ void func_80019DF4(void) {
 
 void func_80019E58(void) {
     D_80164680[0] = 1;
-    func_80019890(0, 0);
+    camera_start_cinematic_shot(0, 0);
     D_80164670[0] = D_80164678[0];
     D_80164678[0] = 1;
     D_80164680[1] = 9;
-    func_80019890(0, 1);
+    camera_start_cinematic_shot(0, 1);
     D_80164670[1] = D_80164678[1];
     D_80164678[1] = 0;
 }
@@ -6866,7 +6827,7 @@ void func_8001A348(s32 cameraId, f32 arg1, s32 arg2) {
     playerId = cameras[cameraId].playerId;
     D_80164688[cameraId] = arg1;
     D_80164680[cameraId] = func_8001A310((s32) gNearestPathPointByCameraId[cameraId], arg2);
-    func_80019890(playerId, cameraId);
+    camera_start_cinematic_shot(playerId, cameraId);
 }
 
 void func_8001A3D8(s32 arg0, f32 arg1, s32 arg2) {
@@ -6876,7 +6837,7 @@ void func_8001A3D8(s32 arg0, f32 arg1, s32 arg2) {
     D_80164688[arg0] = arg1;
     if (arg2 != D_80164680[arg0]) {
         D_80164680[arg0] = arg2;
-        func_80019890(playerId, arg0);
+        camera_start_cinematic_shot(playerId, arg0);
     }
 }
 
@@ -6891,7 +6852,7 @@ void func_8001A450(s32 playerId, s32 arg1, s32 arg2) {
         temp_v0 = func_8001A310(waypoint, (temp_v1 + 1) % 10);
         if ((temp_v0 != temp_v1) || (arg2 != playerId)) {
             D_80164680[arg1] = temp_v0;
-            func_80019890(arg2, arg1);
+            camera_start_cinematic_shot(arg2, arg1);
         }
     }
 }
@@ -6938,7 +6899,7 @@ void func_8001A588(UNUSED u16* localD_80152300, Camera* camera, Player* player, 
         } else {
             func_8001A124((s32) playerId, cameraIndex);
         }
-        func_80019890((s32) playerId, cameraIndex);
+        camera_start_cinematic_shot((s32) playerId, cameraIndex);
     }
 
     if ((D_80164680[cameraIndex] == 14) || (D_80164680[cameraIndex] == 0)) {

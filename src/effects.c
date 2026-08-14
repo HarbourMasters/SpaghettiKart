@@ -5,7 +5,7 @@
 #include <defines.h>
 #include <sounds.h>
 #include "code_800029B0.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "kart_attributes.h"
 #include "waypoints.h"
 #include "code_80005FD0.h"
@@ -29,7 +29,7 @@ s32 D_8018D990[8];
 UNUSED void func_unnamed(void) {
 }
 
-s32 func_8008C1D8(UNUSED s32* arg0) {
+void func_8008C1D8(UNUSED s32* arg0) {
 }
 
 void func_8008C1E0(UNUSED s32* arg0, UNUSED s32 arg1) {

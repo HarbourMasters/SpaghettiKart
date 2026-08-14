@@ -4,7 +4,7 @@
 
 extern "C" {
 #include "main.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "math_util_2.h"
 }
 

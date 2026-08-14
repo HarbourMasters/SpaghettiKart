@@ -1,4 +1,4 @@
-#include <actors.h>
+#include <racing/actors.h>
 #include <main.h>
 #include <libultra/gbi.h>
 #include <assets/models/tracks/mario_raceway/mario_raceway_data.h>

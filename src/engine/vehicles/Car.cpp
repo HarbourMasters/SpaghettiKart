@@ -9,12 +9,12 @@ extern "C" {
 #include "main.h"
 #include "defines.h"
 #include "code_80005FD0.h"
-#include "actors.h"
-#include "math_util.h"
+#include "racing/actors.h"
+#include "racing/math_util.h"
 #include "sounds.h"
 #include "update_objects.h"
 #include "render_player.h"
-#include "external.h"
+#include "audio/external.h"
 extern s8 gPlayerCount;
 }
 
@@ -41,7 +41,7 @@ ACar::ACar(const SpawnParams& params) : AActor(params) {
             CarCounts[PathIndex].push_back(PathPoint);
             break;
         case SpawnMode::AUTO: // Automatically distribute cars based on a specific path point
-            printf("vehicle path size %d\n", gVehiclePathSize);
+            printf("vehicle path size %zu\n", gVehiclePathSize);
             PathPoint = GetVehiclePathPointDistributed(CarCounts[PathIndex], gVehiclePathSize);
             CarCounts[PathIndex].push_back(PathPoint);
             printf("train spawn path point: %d\n", PathPoint);
@@ -97,7 +97,7 @@ bool ACar::IsMod() {
     return true;
 }
 
-void ACar::Tick() {
+void ACar::Tick60fps() {
     f32 temp_f0_2;
     f32 temp_f0_3;
     f32 sp5C;

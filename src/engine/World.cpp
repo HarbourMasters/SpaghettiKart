@@ -160,8 +160,16 @@ AActor* World::GetActor(size_t index) {
 void World::TickActors() {
     // This only ticks modded actors
     for (auto& actor : Actors) {
-        if (actor->IsMod()) {
+        if (actor->IsMod()) { // Do not tick unported C actors
             actor->Tick();
+        }
+    }
+}
+
+void World::TickActors60fps() {
+    for (auto& actor: Actors) {
+        if (actor->IsMod()) {
+            actor->Tick60fps();
         }
     }
 }

@@ -6,11 +6,11 @@
 
 extern "C" {
 #include "common_structs.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "main.h"
 #include "actor_types.h"
 #include "code_800029B0.h"
-#include "collision.h"
+#include "racing/collision.h"
 }
 
 size_t AWarioSign::_count = 0;

@@ -16,6 +16,7 @@
 #include <imgui_internal.h>
 #include <libultraship/libultraship.h>
 #include <fast/Fast3dWindow.h>
+#include <fast/Fast3dGui.h>
 #include "port/Engine.h"
 #include "PortMenu.h"
 
@@ -40,7 +41,7 @@ std::shared_ptr<Ship::GuiWindow> mTrackPropertiesWindow;
 std::shared_ptr<Ship::GuiWindow> mContentBrowserWindow;
 
 void SetupGuiElements() {
-    auto gui = Ship::Context::GetInstance()->GetWindow()->GetGui();
+    auto gui = Ship::Context::GetRawInstance()->GetWindow()->GetGui();
 
     // mGameMenuBar = std::make_shared<GameMenuBar>("gOpenMenuBar", CVarGetInteger("gOpenMenuBar", 0));
     // gui->SetMenuBar(mGameMenuBar);
@@ -155,23 +156,23 @@ void DrawSettingsMenu() {
     //             };
     //
     //             ImGui::Text("Audio API (Needs reload)");
-    //             auto currentAudioBackend = Ship::Context::GetInstance()->GetAudio()->GetCurrentAudioBackend();
+    //             auto currentAudioBackend = Ship::Context::GetRawInstance()->GetAudio()->GetCurrentAudioBackend();
     //
-    //             if (Ship::Context::GetInstance()->GetAudio()->GetAvailableAudioBackends()->size() <= 1) {
+    //             if (Ship::Context::GetRawInstance()->GetAudio()->GetAvailableAudioBackends()->size() <= 1) {
     //                 UIWidgets::DisableComponent(ImGui::GetStyle().Alpha * 0.5f);
     //             }
     //             if (ImGui::BeginCombo("##AApi", audioBackendNames[currentAudioBackend])) {
     //                 for (uint8_t i = 0; i <
-    //                 Ship::Context::GetInstance()->GetAudio()->GetAvailableAudioBackends()->size(); i++) {
+    //                 Ship::Context::GetRawInstance()->GetAudio()->GetAvailableAudioBackends()->size(); i++) {
     //                     auto backend =
-    //                     Ship::Context::GetInstance()->GetAudio()->GetAvailableAudioBackends()->data()[i]; if
+    //                     Ship::Context::GetRawInstance()->GetAudio()->GetAvailableAudioBackends()->data()[i]; if
     //                     (ImGui::Selectable(audioBackendNames[backend], backend == currentAudioBackend)) {
-    //                         Ship::Context::GetInstance()->GetAudio()->SetCurrentAudioBackend(backend);
+    //                         Ship::Context::GetRawInstance()->GetAudio()->SetCurrentAudioBackend(backend);
     //                     }
     //                 }
     //                 ImGui::EndCombo();
     //             }
-    //             if (Ship::Context::GetInstance()->GetAudio()->GetAvailableAudioBackends()->size() <= 1) {
+    //             if (Ship::Context::GetRawInstance()->GetAudio()->GetAvailableAudioBackends()->size() <= 1) {
     //                 UIWidgets::ReEnableComponent("");
     //             }
     //
@@ -219,7 +220,7 @@ void DrawSettingsMenu() {
     //        UIWidgets::Spacer(0);
     //
     //        // Previously was running every frame, and nothing was setting it? Maybe a bad copy/paste?
-    //        // Ship::Context::GetInstance()->GetWindow()->SetResolutionMultiplier(CVarGetFloat("gInternalResolution",
+    //        // Ship::Context::GetRawInstance()->GetWindow()->SetResolutionMultiplier(CVarGetFloat("gInternalResolution",
     //        1));
     //        // UIWidgets::Tooltip("Multiplies your output resolution by the value inputted, as a more intensive but
     //        // effective form of anti-aliasing");
@@ -229,18 +230,18 @@ void DrawSettingsMenu() {
     //                { .tooltip =
     //                      "Activates multi-sample anti-aliasing when above 1x up to 8x for 8 samples for every pixel"
     //                      })) {
-    //            Ship::Context::GetInstance()->GetWindow()->SetMsaaLevel(CVarGetInteger("gMSAAValue", 1));
+    //            Ship::Context::GetRawInstance()->GetWindow()->SetMsaaLevel(CVarGetInteger("gMSAAValue", 1));
     //        }
     // #endif
     //
     //        { // FPS Slider
     //            const int minFps = 30;
     //            static int maxFps;
-    //            if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() ==
-    //                Ship::WindowBackend::FAST3D_DXGI_DX11) {
+    //            if (Ship::Context::GetRawInstance()->GetWindow()->GetWindowBackend() ==
+    //                Fast::WindowBackend::FAST3D_DXGI_DX11) {
     //                maxFps = 360;
     //            } else {
-    //                maxFps = Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
+    //                maxFps = Ship::Context::GetRawInstance()->GetWindow()->GetCurrentRefreshRate();
     //            }
     //            int currentFps = 0;
     // #ifdef __WIIU__
@@ -302,18 +303,18 @@ void DrawSettingsMenu() {
     //                currentFps = 60;
     //            }
     //            CVarSetInteger("gInterpolationFPS", currentFps);
-    //            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
+    //            Ship::Context::GetRawInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
     // #else
     //            bool matchingRefreshRate =
     //                CVarGetInteger("gMatchRefreshRate", 0) &&
-    //                Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() !=
-    //                Ship::WindowBackend::FAST3D_DXGI_DX11;
+    //                Ship::Context::GetRawInstance()->GetWindow()->GetWindowBackend() !=
+    //                Fast::WindowBackend::FAST3D_DXGI_DX11;
     //            UIWidgets::CVarSliderInt((currentFps == 20) ? "FPS: Original (20)" : "FPS: %d", "gInterpolationFPS",
     //            minFps,
     //                                     maxFps, 1, { .disabled = matchingRefreshRate });
     // #endif
-    //            if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() ==
-    //                Ship::WindowBackend::FAST3D_DXGI_DX11) {
+    //            if (Ship::Context::GetRawInstance()->GetWindow()->GetWindowBackend() ==
+    //                Fast::WindowBackend::FAST3D_DXGI_DX11) {
     //                UIWidgets::Tooltip(
     //                    "Uses Matrix Interpolation to create extra frames, resulting in smoother graphics. "
     //                    "This is purely "
@@ -327,14 +328,14 @@ void DrawSettingsMenu() {
     //            }
     //        } // END FPS Slider
     //
-    //        if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() ==
-    //        Ship::WindowBackend::FAST3D_DXGI_DX11) {
+    //        if (Ship::Context::GetRawInstance()->GetWindow()->GetWindowBackend() ==
+    //        Fast::WindowBackend::FAST3D_DXGI_DX11) {
     //            UIWidgets::Spacer(0);
     //            if (ImGui::Button("Match Refresh Rate")) {
-    //                int hz = Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
+    //                int hz = Ship::Context::GetRawInstance()->GetWindow()->GetCurrentRefreshRate();
     //                if (hz >= 30 && hz <= 360) {
     //                    CVarSetInteger("gInterpolationFPS", hz);
-    //                    Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
+    //                    Ship::Context::GetRawInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
     //                }
     //            }
     //        } else {
@@ -343,8 +344,8 @@ void DrawSettingsMenu() {
     //
     //        UIWidgets::Tooltip("Matches interpolation value to the current game's window refresh rate");
     //
-    //        if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() ==
-    //        Ship::WindowBackend::FAST3D_DXGI_DX11) {
+    //        if (Ship::Context::GetRawInstance()->GetWindow()->GetWindowBackend() ==
+    //        Fast::WindowBackend::FAST3D_DXGI_DX11) {
     //            UIWidgets::PaddedEnhancementSliderInt(
     //                CVarGetInteger("gExtraLatencyThreshold", 0) == 0 ? "Jitter fix: Off" : "Jitter fix: >= %d FPS",
     //                "##ExtraLatencyThreshold", "gExtraLatencyThreshold", 0, 360, "", 0, true, true, false);
@@ -357,53 +358,53 @@ void DrawSettingsMenu() {
     //
     //        UIWidgets::PaddedSeparator(true, true, 3.0f, 3.0f);
     //
-    //        static std::unordered_map<Ship::WindowBackend, const char*> windowBackendNames = {
-    //            { Ship::WindowBackend::FAST3D_DXGI_DX11, "DirectX" },
-    //            { Ship::WindowBackend::FAST3D_SDL_OPENGL, "OpenGL" },
-    //            { Ship::WindowBackend::FAST3D_SDL_METAL, "Metal" },
+    //        static std::unordered_map<Fast::WindowBackend, const char*> windowBackendNames = {
+    //            { Fast::WindowBackend::FAST3D_DXGI_DX11, "DirectX" },
+    //            { Fast::WindowBackend::FAST3D_SDL_OPENGL, "OpenGL" },
+    //            { Fast::WindowBackend::FAST3D_SDL_METAL, "Metal" },
     //        };
     //
     //        ImGui::Text("Renderer API (Needs reload)");
-    //        Ship::WindowBackend runningWindowBackend = Ship::Context::GetInstance()->GetWindow()->GetWindowBackend();
-    //        Ship::WindowBackend configWindowBackend;
-    //        int configWindowBackendId = Ship::Context::GetInstance()->GetConfig()->GetInt("Window.Backend.Id", -1);
-    //        if (Ship::Context::GetInstance()->GetWindow()->IsAvailableWindowBackend(configWindowBackendId)) {
-    //            configWindowBackend = static_cast<Ship::WindowBackend>(configWindowBackendId);
+    //        Fast::WindowBackend runningWindowBackend = Ship::Context::GetRawInstance()->GetWindow()->GetWindowBackend();
+    //        Fast::WindowBackend configWindowBackend;
+    //        int configWindowBackendId = Ship::Context::GetRawInstance()->GetConfig()->GetInt("Window.Backend.Id", -1);
+    //        if (Ship::Context::GetRawInstance()->GetWindow()->IsAvailableWindowBackend(configWindowBackendId)) {
+    //            configWindowBackend = static_cast<Fast::WindowBackend>(configWindowBackendId);
     //        } else {
     //            configWindowBackend = runningWindowBackend;
     //        }
     //
-    //        if (Ship::Context::GetInstance()->GetWindow()->GetAvailableWindowBackends()->size() <= 1) {
+    //        if (Ship::Context::GetRawInstance()->GetWindow()->GetAvailableWindowBackends()->size() <= 1) {
     //            UIWidgets::DisableComponent(ImGui::GetStyle().Alpha * 0.5f);
     //        }
     //        if (ImGui::BeginCombo("##RApi", windowBackendNames[configWindowBackend])) {
     //            for (size_t i = 0; i <
-    //            Ship::Context::GetInstance()->GetWindow()->GetAvailableWindowBackends()->size();
+    //            Ship::Context::GetRawInstance()->GetWindow()->GetAvailableWindowBackends()->size();
     //                 i++) {
-    //                auto backend = Ship::Context::GetInstance()->GetWindow()->GetAvailableWindowBackends()->data()[i];
+    //                auto backend = Ship::Context::GetRawInstance()->GetWindow()->GetAvailableWindowBackends()->data()[i];
     //                if (ImGui::Selectable(windowBackendNames[backend], backend == configWindowBackend)) {
-    //                    Ship::Context::GetInstance()->GetConfig()->SetInt("Window.Backend.Id",
+    //                    Ship::Context::GetRawInstance()->GetConfig()->SetInt("Window.Backend.Id",
     //                    static_cast<int>(backend));
-    //                    Ship::Context::GetInstance()->GetConfig()->SetString("Window.Backend.Name",
+    //                    Ship::Context::GetRawInstance()->GetConfig()->SetString("Window.Backend.Name",
     //                                                                         windowBackendNames[backend]);
-    //                    Ship::Context::GetInstance()->GetConfig()->Save();
+    //                    Ship::Context::GetRawInstance()->GetConfig()->Save();
     //                }
     //            }
     //            ImGui::EndCombo();
     //        }
-    //        if (Ship::Context::GetInstance()->GetWindow()->GetAvailableWindowBackends()->size() <= 1) {
+    //        if (Ship::Context::GetRawInstance()->GetWindow()->GetAvailableWindowBackends()->size() <= 1) {
     //            UIWidgets::ReEnableComponent("");
     //        }
     //
-    //        if (Ship::Context::GetInstance()->GetWindow()->CanDisableVerticalSync()) {
+    //        if (Ship::Context::GetRawInstance()->GetWindow()->CanDisableVerticalSync()) {
     //            UIWidgets::PaddedEnhancementCheckbox("Enable Vsync", "gVsyncEnabled", true, false);
     //        }
     //
-    //        if (Ship::Context::GetInstance()->GetWindow()->SupportsWindowedFullscreen()) {
+    //        if (Ship::Context::GetRawInstance()->GetWindow()->SupportsWindowedFullscreen()) {
     //            UIWidgets::PaddedEnhancementCheckbox("Windowed fullscreen", "gSdlWindowedFullscreen", true, false);
     //        }
     //
-    //        if (Ship::Context::GetInstance()->GetWindow()->GetGui()->SupportsViewports()) {
+    //        if (Ship::Context::GetRawInstance()->GetWindow()->GetGui()->SupportsViewports()) {
     //            UIWidgets::PaddedEnhancementCheckbox("Allow multi-windows", "gEnableMultiViewports", true, false,
     //            false, "",
     //                                                 UIWidgets::CheckboxGraphics::Cross, true);
@@ -419,7 +420,7 @@ void DrawSettingsMenu() {
     //
     //        UIWidgets::Spacer(0);
     //
-    //        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGameOverlay()->DrawSettings();
+    //        Ship::Context::GetRawInstance()->GetWindow()->GetGui()->GetGameOverlay()->DrawSettings();
     //
     //        ImGui::EndMenu();
     //    }
@@ -428,26 +429,28 @@ void DrawSettingsMenu() {
 void DrawMenuBarIcon() {
     static bool gameIconLoaded = false;
     if (!gameIconLoaded) {
-        // Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadTexture("Game_Icon",
+        // Ship::Context::GetRawInstance()->GetWindow()->GetGui()->LoadTexture("Game_Icon",
         // "textures/icons/gIcon.png");
         gameIconLoaded = false;
     }
 
-    if (Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName("Game_Icon")) {
+    if (auto fast3dGui = std::dynamic_pointer_cast<Fast::Fast3dGui>(Ship::Context::GetRawInstance()->GetWindow()->GetGui())) {
+        if (fast3dGui->GetTextureByName("Game_Icon")) {
 #ifdef __SWITCH__
-        ImVec2 iconSize = ImVec2(20.0f, 20.0f);
-        float posScale = 1.0f;
+                ImVec2 iconSize = ImVec2(20.0f, 20.0f);
+                float posScale = 1.0f;
 #elif defined(__WIIU__)
-        ImVec2 iconSize = ImVec2(16.0f * 2, 16.0f * 2);
-        float posScale = 2.0f;
+                ImVec2 iconSize = ImVec2(16.0f * 2, 16.0f * 2);
+                float posScale = 2.0f;
 #else
-        ImVec2 iconSize = ImVec2(20.0f, 20.0f);
-        float posScale = 1.5f;
+                ImVec2 iconSize = ImVec2(20.0f, 20.0f);
+                float posScale = 1.5f;
 #endif
-        ImGui::SetCursorPos(ImVec2(5, 2.5f) * posScale);
-        ImGui::Image(Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName("Game_Icon"), iconSize);
-        ImGui::SameLine();
-        ImGui::SetCursorPos(ImVec2(25, 0) * posScale);
+                ImGui::SetCursorPos(ImVec2(5, 2.5f) * posScale);
+                ImGui::Image(fast3dGui->GetTextureByName("Game_Icon"), iconSize);
+                ImGui::SameLine();
+                ImGui::SetCursorPos(ImVec2(25, 0) * posScale);
+            }
     }
 }
 

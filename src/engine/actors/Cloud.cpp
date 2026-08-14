@@ -8,9 +8,9 @@
 extern "C" {
 #include "macros.h"
 #include "common_structs.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "actor_types.h"
-#include "actors.h"
+#include "racing/actors.h"
 #include "assets/textures/other_textures.h"
 extern f32 gKartHopInitialVelocityTable[];
 extern f32 gKartGravityTable[];

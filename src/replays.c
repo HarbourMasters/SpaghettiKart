@@ -72,11 +72,11 @@ void load_course_ghost(void) {
     u8* ghost = (u8*) D_80162DC4;
 
     size_t size = 0;
-    if (ghost == d_luigi_raceway_staff_ghost) {
+    if (ghost == (u8*) d_luigi_raceway_staff_ghost) {
         size = 1046 * sizeof(StaffGhost);
-    } else if (ghost == d_mario_raceway_staff_ghost) {
+    } else if (ghost == (u8*) d_mario_raceway_staff_ghost) {
         size = 935 * sizeof(StaffGhost);
-    } else if (ghost == d_royal_raceway_staff_ghost) {
+    } else if (ghost == (u8*) d_royal_raceway_staff_ghost) {
         size = 1907 * sizeof(StaffGhost);
     }
 
@@ -135,6 +135,9 @@ s32 func_800051C4(void) {
             mio0encode((s32) sReplayGhostEncoded, (sReplayGhostBufferSize * 4) + 0x20, (s32) gReplayGhostCompressed);
         return phi_v0 + 0x1e;
     }
+    // Empty buffer used to fall off the end; report zero encoded size (the
+    // caller only checks this against an upper bound).
+    return 0;
 }
 
 void func_8000522C(void) {
