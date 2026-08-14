@@ -17,10 +17,6 @@
 #include "engine/Matrix.h"
 #include "port/interpolation/FrameInterpolation.h"
 
-#ifdef _MSC_VER
-#pragma intrinsic(sqrtf)
-#endif
-
 Mat4 sInterpolationMatrixStack[0x1000];
 Mat4* gInterpolationMatrix = &sInterpolationMatrixStack[0];
 

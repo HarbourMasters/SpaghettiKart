@@ -1242,7 +1242,7 @@ void func_8007466C(s32 objectIndex, const char** lakituTexturePtr) {
     if ((gObjectList[objectIndex].status & 1) != 0) {
         // I have no idea why this typecase works
         gObjectList[objectIndex].activeTLUT =
-            (const char*) (u8*) ((u32*) gObjectList[objectIndex].tlutList + (gObjectList[objectIndex].unk_0D3 << 7));
+            (const char*) ((u32*) gObjectList[objectIndex].tlutList + (gObjectList[objectIndex].unk_0D3 << 7));
         gObjectList[objectIndex].status ^= 2;
         phi_a1 = 0;
         if ((gObjectList[objectIndex].status & 2) != 0) {

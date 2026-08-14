@@ -26,13 +26,7 @@
 #define ADSR_GOTO -2
 #define ADSR_RESTART -3
 
-// Envelopes are always stored as big endian, to match sequence files which are
-// byte blobs and can embed envelopes. Hence this byteswapping macro.
-#if IS_BIG_ENDIAN
-#define BSWAP16(x) (x)
-#else
-#include "ship/utils/binarytools/endianness.h"
-#endif
+#include <macros.h> // for BSWAP16
 
 void sequence_channel_process_sound(struct SequenceChannel* seqChannel, s32 recalculateVolume);
 void sequence_player_process_sound(struct SequencePlayer* seqPlayer);

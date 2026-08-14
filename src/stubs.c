@@ -49,7 +49,7 @@ s32 mio0encode(uintptr_t input, s32 arg1, uintptr_t arg2) {
 void osStartThread(OSThread* thread) {
 }
 
-void osCreateThread(OSThread* thread, OSId id, void(UNUSED* entry)(void*), void* arg, void* sp, OSPri pri) {
+void osCreateThread(OSThread* thread, OSId id, void (*entry)(void*), void* arg, void* sp, OSPri pri) {
 }
 
 void osInitialize(void) {

@@ -421,7 +421,7 @@ void func_8028EC38(s32 arg0) {
     }
 }
 
-void func_8028EC98(UNUSED s32 arg0) {
+void func_8028EC98(void) {
 
     // We want music in multiplayer, so this was removed
     //if (gScreenModeSelection == SCREEN_MODE_3P_4P_SPLITSCREEN) {
@@ -442,7 +442,7 @@ void start_race(void) {
 
     D_8015011E = -1;
     if (!gDemoMode) {
-        func_8028EC98(gCurrentCourseId);
+        func_8028EC98();
     }
 
     if (gRaceState == RACE_STAGING) {

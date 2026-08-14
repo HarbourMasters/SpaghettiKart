@@ -532,10 +532,10 @@ void update_save_data_backup(void) {
 
 u8 compute_save_data_checksum_backup_1(void) {
     u8* backupGrandPrixPoints = gSaveData.backup.saveInfo.grandPrixPoints;
-    s32 i;
+    size_t i;
     s32 crc = 0;
 
-    for (i = 0; i < (s32) sizeof(SaveInfo); i++) {
+    for (i = 0; i < sizeof(SaveInfo); i++) {
         crc += ((backupGrandPrixPoints[i] + 1) * (i + 1)) + i;
     }
 
