@@ -77,7 +77,7 @@ struct_D_802874D8 D_802874D8; // 31 bytes
 // u8 D_802874F5;
 // u8 D_802874F6;
 CeremonyActor* sPodiumActorList;
-s32 D_802874FC;
+s32 gPodiumDebugPrintIdx;
 
 void func_80280650(void) {
 }
@@ -467,7 +467,7 @@ void podium_ceremony_loop(void) {
     Editor_ClearMatrix();
     CM_TickEditor();
     gMatrixObjectCount = 0;
-    D_802874FC = 0;
+    gPodiumDebugPrintIdx = 0;
     update_camera_podium_ceremony();
     func_80028F70();
     func_80022744();
@@ -478,7 +478,7 @@ void podium_ceremony_loop(void) {
         func_8001C14C();
         update_vehicles();
     }
-    func_80281D00();
+    render_podium_ceremony();
     func_80281540();
 #if DVDL
     display_dvdl();
