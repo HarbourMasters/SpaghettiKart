@@ -26,7 +26,7 @@
 #define ADSR_GOTO -2
 #define ADSR_RESTART -3
 
-#include <macros.h> // for BSWAP16
+#include <macros.h>
 
 void sequence_channel_process_sound(struct SequenceChannel* seqChannel, s32 recalculateVolume);
 void sequence_player_process_sound(struct SequencePlayer* seqPlayer);
