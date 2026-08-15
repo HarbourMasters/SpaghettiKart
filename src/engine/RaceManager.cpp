@@ -8,7 +8,7 @@
 #include "engine/RandomItemTable.h"
 
 extern "C" {
-#include "render_courses.h"
+#include "racing/render_courses.h"
 }
 
 RaceManager::RaceManager(World& world) : WorldContext(world) {
@@ -137,12 +137,15 @@ void RaceManager::SetItemTables() {
             switch (gPlayerCountSelection1) {
                 case TWO_PLAYERS_SELECTED:
                     humanTableName = "mk:versus_2p";
+                    cpuTableName = "mk:versus_2p"; // Required for demo mode to work
                     break;
                 case THREE_PLAYERS_SELECTED:
                     humanTableName = "mk:versus_3p";
+                    cpuTableName = "mk:versus_3p";
                     break;
                 case FOUR_PLAYERS_SELECTED:
                     humanTableName = "mk:versus_4p";
+                    cpuTableName = "mk:versus_4p";
                     break;
             }
             break;

@@ -5,7 +5,7 @@
 #include "Object.h"
 
 #include "engine/registry/RegisterContent.h"
-#include "World.h"
+#include "engine/World.h"
 
 extern "C" {
 #include "macros.h"
@@ -15,7 +15,7 @@ extern "C" {
 #include "common_structs.h"
 #include "objects.h"
 #include "camera.h"
-#include "some_data.h"
+#include "assets/textures/some_data.h"
 }
 
 // This used to use directional_angle for rot. It now uses orientation for editor compatibility.

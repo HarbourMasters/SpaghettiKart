@@ -2,6 +2,7 @@
 #define MENUTYPES_H
 
 #include <libultraship/libultraship.h>
+#include <fast/Fast3dWindow.h>
 #include "UIWidgets.h"
 
 typedef enum {
@@ -260,10 +261,10 @@ static const std::unordered_map<Ship::AudioBackend, const char*> audioBackendsMa
     { Ship::AudioBackend::COREAUDIO, "CoreAudio" },
 };
 
-static const std::unordered_map<Ship::WindowBackend, const char*> windowBackendsMap = {
-    { Ship::WindowBackend::FAST3D_DXGI_DX11, "DirectX" },
-    { Ship::WindowBackend::FAST3D_SDL_OPENGL, "OpenGL" },
-    { Ship::WindowBackend::FAST3D_SDL_METAL, "Metal" },
+static const std::unordered_map<int32_t, const char*> windowBackendsMap = {
+    { Fast::WindowBackend::FAST3D_DXGI_DX11, "DirectX" },
+    { Fast::WindowBackend::FAST3D_SDL_OPENGL, "OpenGL" },
+    { Fast::WindowBackend::FAST3D_SDL_METAL, "Metal" },
 };
 
 struct MenuInit {

@@ -3,7 +3,7 @@
 #include <libultraship.h>
 #include <vector>
 #include "ParticleEmitter.h"
-#include "World.h"
+#include "engine/World.h"
 
 extern "C" {
 #include "macros.h"
@@ -13,7 +13,7 @@ extern "C" {
 #include "common_structs.h"
 #include "objects.h"
 #include "course_offsets.h"
-#include "some_data.h"
+#include "textures/some_data.h"
 }
 
 /**

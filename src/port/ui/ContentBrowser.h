@@ -2,7 +2,7 @@
 
 #include <libultraship/libultraship.h>
 #include "engine/tracks/Track.h"
-#include "AllActors.h"
+#include "engine/AllActors.h"
 
 namespace TrackEditor {
 class ContentBrowserWindow : public Ship::GuiWindow {

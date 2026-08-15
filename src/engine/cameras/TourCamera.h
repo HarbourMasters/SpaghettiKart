@@ -2,7 +2,7 @@
 
 #include <libultraship.h>
 #include "GameCamera.h"
-#include "CoreMath.h"
+#include "engine/CoreMath.h"
 
 extern "C" {
 #include "camera.h"

@@ -3,15 +3,15 @@
 #include <libultra/gbi.h>
 #include <assets/models/tracks/mario_raceway/mario_raceway_data.h>
 #include "port/interpolation/FrameInterpolation.h"
-#include "CoreMath.h"
+#include "engine/CoreMath.h"
 
 extern "C" {
 #include "common_structs.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "main.h"
 #include "actor_types.h"
 #include "code_800029B0.h"
-#include "collision.h"
+#include "racing/collision.h"
 }
 
 size_t AMarioSign::_count = 0;

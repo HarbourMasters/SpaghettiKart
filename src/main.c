@@ -17,20 +17,20 @@
 #include <defines.h>
 #include "buffers.h"
 #include "camera.h"
-#include "race_logic.h"
-#include "skybox_and_splitscreen.h"
+#include "racing/race_logic.h"
+#include "racing/skybox_and_splitscreen.h"
 #include "render_objects.h"
 #include "effects.h"
-#include "code_80281780.h"
+#include "ending/code_80281780.h"
 #include "audio/external.h"
 #include "code_800029B0.h"
-#include "code_80280000.h"
-#include "podium_ceremony_actors.h"
+#include "ending/code_80280000.h"
+#include "ending/podium_ceremony_actors.h"
 #include "menu_items.h"
 #include "code_80057C60.h"
 #include "player_controller.h"
 #include "render_player.h"
-#include "actors.h"
+#include "racing/actors.h"
 #include "replays.h"
 #include <debug.h>
 #include "enhancements/freecam/freecam.h"
@@ -40,6 +40,7 @@
 #include "port/Game.h"
 #include "port/Engine.h"
 #include "engine/Matrix.h"
+#include "engine/TrackBrowser.h"
 
 // Declarations (not in this file)
 void func_80091B78(void);
@@ -193,6 +194,7 @@ s16 sNumVBlanks = 0;
 UNUSED s16 D_800DC590 = 0;
 f32 gVBlankTimer = 0.0f;
 f32 gCourseTimer = 0.0f;
+uint64_t gTickCounter;
 
 void create_thread(OSThread* thread, OSId id, void (*entry)(void*), void* arg, void* sp, OSPri pri) {
     thread->next = NULL;
@@ -458,7 +460,7 @@ void end_master_display_list(void) {
 
 // clear_frame_buffer from SM64, with a few edits
 //! @todo Why did void* work for matching
-void* clear_framebuffer(s32 color) {
+void clear_framebuffer(s32 color) {
     gDPPipeSync(gDisplayListHead++);
 
     gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
@@ -662,6 +664,7 @@ void display_debug_info(void) {
 }
 
 void process_game_tick(void) {
+    gTickCounter += 1;
 
     if (Editor_IsPaused() == false) {
         if (D_8015011E) {
@@ -685,6 +688,9 @@ void process_game_tick(void) {
     func_80059AC8();
     update_course_actors();
     CM_TickActors();
+    if (gTickCounter & 1) { // Only run once per game loop
+        CM_TickActors60fps();
+    }
     CM_TickTrack();
     if (CM_IsTourEnabled() == false) {
         func_8028FCBC();
@@ -1108,6 +1114,7 @@ void update_gamestate(void) {
              */
             // init_segment_racing();
             setup_race();
+            TrackBrowser_ResetSelectedTrack(); // Same function as gCurrentlyLoadedTrackAddr
             break;
         case ENDING:
             gCurrentlyLoadedTrackAddr = NULL;

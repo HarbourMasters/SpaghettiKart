@@ -9,8 +9,9 @@
 #include "main.h"
 #include "memory.h"
 #include "camera.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "math_util_2.h"
+#include "racing/memory.h"
 #include "render_objects.h"
 #include "objects.h"
 #include "waypoints.h"
@@ -22,13 +23,13 @@
 #include <assets/models/common_data.h>
 #include "audio/external.h"
 #include "sounds.h"
-#include <actors.h>
-#include "race_logic.h"
-#include "collision.h"
+#include <racing/actors.h>
+#include "racing/race_logic.h"
+#include "racing/collision.h"
 #include "effects.h"
 #include "code_80091440.h"
 #include "menu_items.h"
-#include "podium_ceremony_actors.h"
+#include "ending/podium_ceremony_actors.h"
 #include "courses/all_course_data.h"
 #include <assets/models/ceremony_data.h>
 #include "src/ending/ceremony_and_credits.h"
@@ -942,6 +943,7 @@ s32 func_80073B34(s32 arg0, s16* arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s
     if (arg3 < *arg1) {
         return func_80073A10(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
     }
+    return 0;
 }
 
 bool func_80073B78(s32 arg0, s32 objectIndex, s16* arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7) {
@@ -1111,6 +1113,7 @@ s32 func_8007415C(s32 objectIndex, f32* arg1, f32 arg2, f32 arg3, f32 arg4, s32 
     if (*arg1 < arg3) {
         return func_8007401C(objectIndex, arg1, arg2, arg3, arg4, arg5, arg6);
     }
+    return 0;
 }
 
 s32 func_800741B4(s32 objectIndex, f32* arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5, s32 arg6) {
@@ -1222,7 +1225,7 @@ void func_800745C8(s32 objectIndex, const char** lakituTexturePtr) {
 
     if ((gObjectList[objectIndex].status & 1) != 0) {
         phi_a1 = 0;
-        if (gObjectList[objectIndex].tlutList != gObjectList[objectIndex].activeTLUT) {
+        if (gObjectList[objectIndex].tlutList != (const u8*) gObjectList[objectIndex].activeTLUT) {
             gObjectList[objectIndex].activeTLUT = gObjectList[objectIndex].tlutList;
         }
 
@@ -2909,7 +2912,8 @@ void func_8007D714(s32 arg0) {
 }
 
 void func_8007DDC0(s32 objectIndex) {
-    f32 sp2C;
+    // Initialized for the non-race CC modes the switch below doesn't cover.
+    f32 sp2C = 1150.0f;
     Object* object;
 
     object = &gObjectList[objectIndex];
@@ -2950,7 +2954,8 @@ void func_8007DDC0(s32 objectIndex) {
 }
 
 void func_8007E1F4(s32 objectIndex) {
-    f32 sp2C;
+    // Initialized for the non-race CC modes the check below doesn't cover.
+    f32 sp2C = 700.0f;
     Object* object;
 
     object = &gObjectList[objectIndex];

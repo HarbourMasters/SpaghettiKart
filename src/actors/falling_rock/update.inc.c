@@ -1,5 +1,5 @@
-#include "math_util.h"
-#include <actors.h>
+#include "racing/math_util.h"
+#include <racing/actors.h>
 #include <code_800029B0.h>
 #include <main.h>
 #include <assets/models/tracks/choco_mountain/choco_mountain_data.h>
@@ -42,7 +42,7 @@ void spawn_falling_rocks(struct ActorSpawnData* spawnData) {
         temp_v1 = (struct FallingRock*) GET_ACTOR(temp);
 
         temp_v1->unk_06 = temp_s0->someId;
-        func_802AAAAC((Collision*) &temp_v1->unk30);
+        func_802AAAAC((struct Collision*) &temp_v1->unk30);
         temp_s0++;
     }
 }

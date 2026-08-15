@@ -1,8 +1,6 @@
 FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV VCPKG_ROOT=/opt/vcpkg
-ENV PATH="${VCPKG_ROOT}:${PATH}"
 
 # Install base dependencies
 RUN apt-get update -y && apt-get -y upgrade && \
@@ -43,10 +41,5 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v${DOCKER_CMAKE_VERS
     chmod +x cmake-${DOCKER_CMAKE_VERSION}-linux-x86_64.sh && \
     ./cmake-${DOCKER_CMAKE_VERSION}-linux-x86_64.sh --prefix=/usr/local --skip-license && \
     rm cmake-${DOCKER_CMAKE_VERSION}-linux-x86_64.sh
-
-# Install vcpkg
-RUN git clone https://github.com/microsoft/vcpkg.git ${VCPKG_ROOT} && \
-    cd ${VCPKG_ROOT} && \
-    ./bootstrap-vcpkg.sh -disableMetrics
 
 WORKDIR /project

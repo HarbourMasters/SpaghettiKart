@@ -1,11 +1,11 @@
 #include "SpaghettiShip.h"
 
 #include <libultra/gbi.h>
-#include "Matrix.h"
+#include "engine/Matrix.h"
 
 extern "C" {
 #include "common_structs.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "main.h"
 #include "courses/harbour/ship_model.h"
 }

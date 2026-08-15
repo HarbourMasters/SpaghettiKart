@@ -7,7 +7,7 @@
 #include "menu_items.h"
 #include "memory.h"
 #include "main.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include <stdlib.h>
 
 Lights1 D_800E8680 = gdSPDefLights1(31, 31, 31, 255, 255, 255, 40, 40, 20);

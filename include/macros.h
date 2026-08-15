@@ -42,13 +42,6 @@
 
 // Avoid undefined behaviour for non-returning functions
 #ifdef __GNUC__
-#define NORETURN __attribute__((noreturn))
-#else
-#define NORETURN
-#endif
-
-// Avoid undefined behaviour for non-returning functions
-#ifdef __GNUC__
 #define NO_REORDER __attribute__((no_reorder))
 #else
 #define NO_REORDER

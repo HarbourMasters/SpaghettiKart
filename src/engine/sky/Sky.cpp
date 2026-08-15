@@ -15,8 +15,8 @@
 extern "C" {
 #include "macros.h"
 #include "mk64.h"
-#include "math_util.h"
-#include "skybox_and_splitscreen.h"
+#include "racing/math_util.h"
+#include "racing/skybox_and_splitscreen.h"
 #include "menus.h"
 }
 
@@ -184,15 +184,18 @@ void Sky::Draw(ScreenContext* screen) { // func_802A4A0C(Vtx* vtx, ScreenContext
     this->SetColours(vtx); //func_802A450C(vtx);
     // Widescreen skybox
     // Note that this is the correct fit for each screen due to how the viewport works
-    vtx[0].v.ob[0] = OTRGetRectDimensionFromRightEdge(SCREEN_WIDTH);
-    vtx[1].v.ob[0] = OTRGetRectDimensionFromRightEdge(SCREEN_WIDTH);
-    vtx[2].v.ob[0] = OTRGetRectDimensionFromLeftEdge(0);
-    vtx[3].v.ob[0] = OTRGetRectDimensionFromLeftEdge(0);
+    // +/-8: overshoot the gradient past both edges; this quad's projection
+    // path does not preserve the Rect getters' outward rounding, which left
+    // the last window column unpainted at some aspect ratios.
+    vtx[0].v.ob[0] = OTRGetRectDimensionFromRightEdge(SCREEN_WIDTH) + 8;
+    vtx[1].v.ob[0] = OTRGetRectDimensionFromRightEdge(SCREEN_WIDTH) + 8;
+    vtx[2].v.ob[0] = OTRGetRectDimensionFromLeftEdge(0) - 8;
+    vtx[3].v.ob[0] = OTRGetRectDimensionFromLeftEdge(0) - 8;
 
-    vtx[4].v.ob[0] = OTRGetRectDimensionFromRightEdge(SCREEN_WIDTH);
-    vtx[5].v.ob[0] = OTRGetRectDimensionFromRightEdge(SCREEN_WIDTH);
-    vtx[6].v.ob[0] = OTRGetRectDimensionFromLeftEdge(0);
-    vtx[7].v.ob[0] = OTRGetRectDimensionFromLeftEdge(0);
+    vtx[4].v.ob[0] = OTRGetRectDimensionFromRightEdge(SCREEN_WIDTH) + 8;
+    vtx[5].v.ob[0] = OTRGetRectDimensionFromRightEdge(SCREEN_WIDTH) + 8;
+    vtx[6].v.ob[0] = OTRGetRectDimensionFromLeftEdge(0) - 8;
+    vtx[7].v.ob[0] = OTRGetRectDimensionFromLeftEdge(0) - 8;
 
     sp5C[0] = 0.0f;
     sp5C[1] = 0.0f;

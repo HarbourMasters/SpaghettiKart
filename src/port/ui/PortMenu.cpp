@@ -100,8 +100,8 @@ void PortMenu::AddSettings() {
 #ifndef __SWITCH__
     AddWidget(path, "Toggle Fullscreen", WIDGET_CHECKBOX)
         .ValuePointer(&isFullscreen)
-        .PreFunc([](WidgetInfo& info) { isFullscreen = Ship::Context::GetInstance()->GetWindow()->IsFullscreen(); })
-        .Callback([](WidgetInfo& info) { Ship::Context::GetInstance()->GetWindow()->ToggleFullscreen(); })
+        .PreFunc([](WidgetInfo& info) { isFullscreen = Ship::Context::GetRawInstance()->GetWindow()->IsFullscreen(); })
+        .Callback([](WidgetInfo& info) { Ship::Context::GetRawInstance()->GetWindow()->ToggleFullscreen(); })
         .Options(CheckboxOptions().Tooltip("Toggles Fullscreen On/Off."));
 #endif
 
@@ -148,7 +148,7 @@ void PortMenu::AddSettings() {
     AddWidget(path, "Cursor Always Visible", WIDGET_CVAR_CHECKBOX)
         .CVar("gSettings.CursorVisibility")
         .Callback([](WidgetInfo& info) {
-            Ship::Context::GetInstance()->GetWindow()->SetForceCursorVisibility(
+            Ship::Context::GetRawInstance()->GetWindow()->SetForceCursorVisibility(
                 CVarGetInteger("gSettings.CursorVisibility", 0));
         })
         .Options(CheckboxOptions().Tooltip("Makes the cursor always visible, even in full screen."));
@@ -175,7 +175,7 @@ void PortMenu::AddSettings() {
 #ifndef __SWITCH__
     AddWidget(path, "Open App Files Folder", WIDGET_BUTTON)
         .Callback([](WidgetInfo& info) {
-            std::string filesPath = Ship::Context::GetInstance()->GetAppDirectoryPath();
+            std::string filesPath = Ship::Context::GetRawInstance()->GetAppDirectoryPath();
             SDL_OpenURL(std::string("file:///" + std::filesystem::absolute(filesPath).string()).c_str());
         })
         .Options(ButtonOptions().Tooltip("Opens the folder that contains the save and mods folders, etc."));
@@ -217,13 +217,13 @@ void PortMenu::AddSettings() {
     // Graphics Settings
     static int32_t maxFps;
     const char* tooltip = "";
-    if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
+    if (Ship::Context::GetRawInstance()->GetWindow()->GetWindowBackend() == Fast::WindowBackend::FAST3D_DXGI_DX11) {
         maxFps = MAX_FPS;
         tooltip = "Uses Matrix Interpolation to create extra frames, resulting in smoother graphics. This is "
                   "purely visual and does not impact game logic, execution of glitches etc.\n\nA higher target "
                   "FPS than your monitor's refresh rate will waste resources, and might give a worse result.";
     } else {
-        maxFps = Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
+        maxFps = Ship::Context::GetRawInstance()->GetWindow()->GetCurrentRefreshRate();
         tooltip = "Uses Matrix Interpolation to create extra frames, resulting in smoother graphics. This is "
                   "purely visual and does not impact game logic, execution of glitches etc.";
     }
@@ -234,7 +234,7 @@ void PortMenu::AddSettings() {
     AddWidget(path, "Internal Resolution: %.0f%%", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar(CVAR_INTERNAL_RESOLUTION)
         .Callback([](WidgetInfo& info) {
-            Ship::Context::GetInstance()->GetWindow()->SetResolutionMultiplier(
+            Ship::Context::GetRawInstance()->GetWindow()->SetResolutionMultiplier(
                 CVarGetFloat(CVAR_INTERNAL_RESOLUTION, 1));
         })
         .PreFunc([](WidgetInfo& info) {
@@ -260,7 +260,7 @@ void PortMenu::AddSettings() {
     AddWidget(path, "Anti-aliasing (MSAA): %d", WIDGET_CVAR_SLIDER_INT)
         .CVar(CVAR_MSAA_VALUE)
         .Callback([](WidgetInfo& info) {
-            Ship::Context::GetInstance()->GetWindow()->SetMsaaLevel(CVarGetInteger(CVAR_MSAA_VALUE, 1));
+            Ship::Context::GetRawInstance()->GetWindow()->SetMsaaLevel(CVarGetInteger(CVAR_MSAA_VALUE, 1));
         })
         .Options(
             IntSliderOptions()
@@ -289,10 +289,10 @@ void PortMenu::AddSettings() {
         .Options(IntSliderOptions().Tooltip(tooltip).Min(30).Max(maxFps).DefaultValue(30));
     AddWidget(path, "Match Refresh Rate", WIDGET_BUTTON)
         .Callback([](WidgetInfo& info) {
-            int hz = Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
+            int hz = Ship::Context::GetRawInstance()->GetWindow()->GetCurrentRefreshRate();
             if (hz >= 30 && hz <= MAX_FPS) {
                 CVarSetInteger("gInterpolationFPS", hz);
-                Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
+                Ship::Context::GetRawInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             }
         })
         .PreFunc([](WidgetInfo& info) { info.isHidden = mPortMenu->disabledMap.at(DISABLE_FOR_NOT_DIRECTX).active; })
@@ -405,6 +405,9 @@ void PortMenu::AddEnhancements() {
     AddWidget(path, "Enable Look Behind Camera", WIDGET_CVAR_CHECKBOX)
         .CVar("gLookBehind")
         .Options(CheckboxOptions().Tooltip("Press C-Left to look behind you"));
+    AddWidget(path, "Fix Visuals", WIDGET_CVAR_CHECKBOX)
+        .CVar("gFixVisuals")
+        .Options(CheckboxOptions().Tooltip("Fixes the second last lamp glow in Banshee Boardwalk"));
 
     AddRulesets();
 
@@ -464,6 +467,9 @@ void PortMenu::AddRulesets() {
         .CVar("gGoFish")
         .Options(CheckboxOptions().Tooltip(
             "Collect as many trophies as you can. Racer with the most trophies wins!"));
+    AddWidget(path, "Shells Shoot Straight", WIDGET_CVAR_CHECKBOX)
+        .CVar("gShellsShootStraight")
+        .Options(CheckboxOptions().Tooltip("Fixes a logic bug in the game code. No evidence if this is intended gameplay or not."));
     AddWidget(path, "Track X Stretch", WIDGET_SLIDER_FLOAT)
         .ValuePointer(&gVtxStretch[0])
         .Options(UIWidgets::FloatSliderOptions().Min(0.1f).Max(10.0f).Step(0.1f).Format("%.2f"));
@@ -645,29 +651,29 @@ void PortMenu::InitElement() {
             "Debug Mode is Disabled" } },
         { DISABLE_FOR_NO_VSYNC,
           { [](disabledInfo& info) -> bool {
-               return !Ship::Context::GetInstance()->GetWindow()->CanDisableVerticalSync();
+               return !Ship::Context::GetRawInstance()->GetWindow()->CanDisableVerticalSync();
            },
             "Disabling VSync not supported" } },
         { DISABLE_FOR_NO_WINDOWED_FULLSCREEN,
           { [](disabledInfo& info) -> bool {
-               return !Ship::Context::GetInstance()->GetWindow()->SupportsWindowedFullscreen();
+               return !Ship::Context::GetRawInstance()->GetWindow()->SupportsWindowedFullscreen();
            },
             "Windowed Fullscreen not supported" } },
         { DISABLE_FOR_NO_MULTI_VIEWPORT,
           { [](disabledInfo& info) -> bool {
-               return !Ship::Context::GetInstance()->GetWindow()->GetGui()->SupportsViewports();
+               return !Ship::Context::GetRawInstance()->GetWindow()->GetGui()->SupportsViewports();
            },
             "Multi-viewports not supported" } },
         { DISABLE_FOR_NOT_DIRECTX,
           { [](disabledInfo& info) -> bool {
-               return Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() !=
-                      Ship::WindowBackend::FAST3D_DXGI_DX11;
+               return Ship::Context::GetRawInstance()->GetWindow()->GetWindowBackend() !=
+                      Fast::WindowBackend::FAST3D_DXGI_DX11;
            },
             "Available Only on DirectX" } },
         { DISABLE_FOR_DIRECTX,
           { [](disabledInfo& info) -> bool {
-               return Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() ==
-                      Ship::WindowBackend::FAST3D_DXGI_DX11;
+               return Ship::Context::GetRawInstance()->GetWindow()->GetWindowBackend() ==
+                      Fast::WindowBackend::FAST3D_DXGI_DX11;
            },
             "Not Available on DirectX" } },
         { DISABLE_FOR_MATCH_REFRESH_RATE_ON,

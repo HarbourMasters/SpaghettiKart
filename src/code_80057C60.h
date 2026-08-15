@@ -115,9 +115,9 @@ void func_8005D1F4(s32);
 void func_8005D290(void);
 void reset_player_particle_pool(Player*);
 void set_particle_position_and_rotation(Player*, UnkPlayerStruct258*, f32, f32, f32, s8, s8);
-s32 init_particle_player(UnkPlayerStruct258*, s8, f32);
-s32 set_particle_colour(UnkPlayerStruct258*, s32, s16);
-s32 set_particle_colour_randomly_varried(UnkPlayerStruct258*, s32, s16);
+void init_particle_player(UnkPlayerStruct258*, s8, f32);
+void set_particle_colour(UnkPlayerStruct258*, s32, s16);
+void set_particle_colour_randomly_varried(UnkPlayerStruct258*, s32, s16);
 void set_drift_particles(Player*, s16, s32, s8, s8);
 void check_drift_particles_setup_valid(Player*, s16, s32, s8, s8);
 void func_8005DAD0(void);
@@ -404,14 +404,14 @@ extern const char* gLakituTextureBuffer[4][2];
 
 extern const char** gLakituTexturePtr;
 // extern s32 indexObjectList4[]; -> objects.h
-// extern Collision D_8018C0B0[]; -> objects.h
+// extern struct Collision D_8018C0B0[]; -> objects.h
 // extern s32 gObjectParticle1[]; -> objects.h
 
-extern Collision D_8018C3B0;
+extern struct Collision D_8018C3B0;
 // extern s32 gObjectParticle2[]; -> objects.h
 // extern s32 gObjectParticle3[]; -> objects.h
 
-extern Collision D_8018C830;
+extern struct Collision D_8018C830;
 // extern s32 gObjectParticle4[]; -> objects.h
 // extern s32 gLeafParticle[]; -> objects.h
 

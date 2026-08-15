@@ -2,7 +2,7 @@
 
 #include <libultraship/libultraship.h>
 #include <libultra/gbi.h>
-#include "Matrix.h"
+#include "engine/Matrix.h"
 
 #include "engine/Actor.h"
 #include "engine/objects/Object.h"

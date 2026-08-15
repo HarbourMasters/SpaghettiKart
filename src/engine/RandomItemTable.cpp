@@ -3,7 +3,7 @@
 #include "port/Game.h"
 
 extern "C" {
-#include "math_util.h"
+#include "racing/math_util.h"
 }
 
 RandomItemTable::RandomItemTable() {

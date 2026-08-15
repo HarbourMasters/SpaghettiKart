@@ -8,7 +8,7 @@
 #include <macros.h>
 #include <segments.h>
 #include <common_structs.h>
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "ceremony_and_credits.h"
 #include "code_800029B0.h"
 #include "code_80280000.h"

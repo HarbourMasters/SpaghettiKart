@@ -1,7 +1,7 @@
 #pragma once
 
 #include <libultraship.h>
-#include "CoreMath.h"
+#include "engine/CoreMath.h"
 #include "engine/registry/RegisterContent.h"
 #include "engine/Actor.h"
 

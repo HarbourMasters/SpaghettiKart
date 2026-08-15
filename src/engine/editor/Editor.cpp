@@ -20,7 +20,7 @@ extern "C" {
 #include "common_structs.h"
 #include "main.h"
 #include "defines.h"
-#include "actors.h"
+#include "racing/actors.h"
 #include "camera.h"
 }
 
@@ -52,11 +52,11 @@ namespace TrackEditor {
         bIsEditorPaused = true;
         CVarSetInteger("gFreecam", true);
         CM_SetFreeCamera(true);
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Tools")->Show();
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Scene Explorer")->Show();
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Content Browser")->Show();
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Track Properties")->Show();
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Properties")->Show();
+        Ship::Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Tools")->Show();
+        Ship::Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Scene Explorer")->Show();
+        Ship::Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Content Browser")->Show();
+        Ship::Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Track Properties")->Show();
+        Ship::Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Properties")->Show();
     }
 
     void Editor::Disable() {
@@ -64,11 +64,11 @@ namespace TrackEditor {
         bIsEditorPaused = false;
         CVarSetInteger("gFreecam", false);
         CM_SetFreeCamera(false);
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Tools")->Hide();
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Scene Explorer")->Hide();
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Content Browser")->Hide();
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Track Properties")->Hide();
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Properties")->Hide();
+        Ship::Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Tools")->Hide();
+        Ship::Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Scene Explorer")->Hide();
+        Ship::Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Content Browser")->Hide();
+        Ship::Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Track Properties")->Hide();
+        Ship::Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Properties")->Hide();
     }
 
     bool Editor::IsEnabled() {

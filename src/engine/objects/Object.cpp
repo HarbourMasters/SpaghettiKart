@@ -1,7 +1,7 @@
 #include <libultraship.h>
 #include "Object.h"
 
-#include "World.h"
+#include "engine/World.h"
 
 extern "C" {
     #include "camera.h"

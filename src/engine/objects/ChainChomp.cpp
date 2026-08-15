@@ -1,5 +1,5 @@
 #include "ChainChomp.h"
-#include "World.h"
+#include "engine/World.h"
 #include "port/interpolation/FrameInterpolation.h"
 
 extern "C" {
@@ -9,12 +9,12 @@ extern "C" {
 #include "assets/textures/tracks/rainbow_road/rainbow_road_data.h"
 #include "assets/other/tracks/rainbow_road/rainbow_road_data.h"
 #include "assets/models/common_data.h"
-#include "math_util.h"
+#include "racing/math_util.h"
 #include "math_util_2.h"
 #include "code_80086E70.h"
 #include "code_80057C60.h"
 #include "code_80005FD0.h"
-#include "external.h"
+#include "audio/external.h"
 #include "course_offsets.h"
 }
 

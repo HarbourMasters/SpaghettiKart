@@ -41,7 +41,7 @@ class GameEngine {
   public:
     static GameEngine* Instance;
 
-    std::shared_ptr<Ship::Context> context;
+    Ship::Context* context;
     std::vector<CtlEntry*> banksTable;
     std::vector<std::string> sequenceTable;
     std::vector<AudioSequenceData*> audioSequenceTable;

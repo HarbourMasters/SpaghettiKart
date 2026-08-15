@@ -59,7 +59,7 @@ public:
         );
     }
 
-    void SetTrack(std::string name) {
+    void SetTrack(const std::string& name) {
         if (gTrackRegistry.Find(name)) {
             gTrackRegistry.Invoke(name);
         } else {
@@ -191,6 +191,7 @@ extern "C" {
 #endif // __cplusplus
 void TrackBrowser_SetTrack(const char* name);
 void TrackBrowser_SetTrackFromCup(void); // <-- Not in TrackBrowser class
+void TrackBrowser_ResetSelectedTrack(void);
 void TrackBrowser_NextTrack(void);
 void TrackBrowser_PreviousTrack(void);
 size_t TrackBrowser_GetTrackIndex(void);

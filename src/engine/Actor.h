@@ -23,7 +23,7 @@ public:
     /* 0x16 */ s16 Unk_16;
     /* 0x18 */ Vec3f Pos;
     /* 0x24 */ Vec3f Velocity = {0, 0, 0};
-    /* 0x30 */ Collision Unk30;
+    /* 0x30 */ struct Collision Unk30;
     /* 0x   */ const char* Model = "";
     uint8_t uuid[16];
     const char* Name = "";
@@ -52,7 +52,8 @@ public:
      */
     virtual void SetSpawnParams(SpawnParams& params);
     virtual void BeginPlay();
-    virtual void Tick();
+    virtual void Tick();      // Ticks twice per frame (faster simulation speed)
+    virtual void Tick60fps(); // Ticks once per frame
     virtual void Draw(Camera* camera);
     virtual void Collision(Player* player, AActor* actor);
     virtual void VehicleCollision(s32 playerId, Player* player);

@@ -9,8 +9,8 @@ extern "C" {
 #include "main.h"
 #include "defines.h"
 #include "code_80005FD0.h"
-#include "actors.h"
-#include "math_util.h"
+#include "racing/actors.h"
+#include "racing/math_util.h"
 #include "sounds.h"
 #include "update_objects.h"
 extern s8 gPlayerCount;
@@ -87,7 +87,7 @@ bool ABoat::IsMod() {
     return true;
 }
 
-void ABoat::Tick() {
+void ABoat::Tick60fps() {
     TrackPathPoint* waypoint;
     struct Actor* paddleBoatActor;
     f32 temp_f26;
