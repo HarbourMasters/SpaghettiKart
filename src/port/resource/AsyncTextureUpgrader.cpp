@@ -1,5 +1,6 @@
 #include "AsyncTextureUpgrader.h"
 
+#include "fast/interpreter.h"
 #include "fast/resource/type/Texture.h"
 #include "ship/resource/File.h"
 #include "ship/Context.h"
@@ -292,6 +293,43 @@ void AsyncTextureUpgrader::ResetPrefetch() {
         delete[] d.pixels;
     }
     mHeldByGroup.clear();
+}
+
+// All course art lives under textures/tracks/<course>/ and only one course is
+// loaded at a time, so this subtree is exactly "the course that just ended".
+// A worker mid-decode on a course texture may still deliver afterward; it
+// applies to an orphaned texture object nothing draws, then frees with it.
+void AsyncTextureUpgrader::EvictTrackTextures() {
+    auto* ctx = Ship::Context::GetRawInstance();
+    if (ctx == nullptr || ctx->GetResourceManager() == nullptr ||
+        !ctx->GetResourceManager()->IsAltAssetsEnabled()) {
+        return;
+    }
+    static constexpr char kPrefix[] = "textures/tracks/";
+    const auto underPrefix = [](const std::string& path) { return path.rfind(kPrefix, 0) == 0; };
+    {
+        const std::lock_guard<std::mutex> lock(mMutex);
+        std::erase_if(mQueuedDirs, underPrefix);
+        std::erase_if(mPrefetchDirs, underPrefix);
+        std::erase_if(mPending, [&](const Job& job) { return underPrefix(job.texture->GetInitData()->Path); });
+        std::erase_if(mDecoded, [&](Decoded& d) {
+            if (!underPrefix(d.texture->GetInitData()->Path)) {
+                return false;
+            }
+            delete[] d.pixels;
+            return true;
+        });
+        std::erase_if(mHeldByGroup, [&](Decoded& d) {
+            if (!underPrefix(d.texture->GetInitData()->Path)) {
+                return false;
+            }
+            delete[] d.pixels;
+            return true;
+        });
+        std::erase_if(mInflightByGroup, [&](const auto& entry) { return underPrefix(entry.first); });
+    }
+    ctx->GetResourceManager()->UnloadResources("textures/tracks/*");
+    gfx_texture_cache_clear();
 }
 
 // Image-sibling extensions the texture factory recognizes (kept in sync with

@@ -56,6 +56,11 @@ class AsyncTextureUpgrader {
     // worker and live textures stop upgrading.
     void ResetPrefetch();
 
+    // Course teardown: evict the finished course's replacements (everything
+    // under textures/tracks/) so long sessions stay flat on low-end devices;
+    // karts/HUD/common stay resident, decoded cache kept (RAM-bounded).
+    void EvictTrackTextures();
+
     // Main thread, between frames. `invalidate` evicts a data pointer from the
     // renderer's texture cache (Interpreter::TextureCacheDelete).
     void ApplyCompleted(const std::function<void(const uint8_t*)>& invalidate);
