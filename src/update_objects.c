@@ -48,6 +48,19 @@
 #include "engine/RaceManager.h"
 #include "engine/sky/Sky.h"
 
+extern void AsyncTextureUpgrader_RegisterFrameSet(const char* const* names, size_t count);
+
+// Register an animation's frames with the texture streamer so replacement
+// frames swap in together instead of one by one.
+#define REGISTER_FRAME_SET(list)                                            \
+    {                                                                       \
+        static u8 sRegistered = 0;                                          \
+        if (!sRegistered) {                                                 \
+            sRegistered = 1;                                                \
+            AsyncTextureUpgrader_RegisterFrameSet(list, ARRAY_COUNT(list)); \
+        }                                                                   \
+    }
+
 float OTRGetAspectRatio(void);
 
 //! @todo unused?
@@ -2732,6 +2745,7 @@ void func_8007C420(s32 objectIndex, Player* player, Camera* camera) {
 void func_8007CE0C(s32 objectIndex) {
     Object* object;
 
+    REGISTER_FRAME_SET(gTextureGhosts);
     init_texture_object(objectIndex, d_course_banshee_boardwalk_boo_tlut, gTextureGhosts, 0x30U, (u16) 0x00000028);
     object = &gObjectList[objectIndex];
     object->textureListIndex = 0x1C;
@@ -3139,6 +3153,7 @@ const char* sNeonMushroomList[] = { d_course_rainbow_road_neon_mushroom1, d_cour
                                     d_course_rainbow_road_neon_mushroom5 };
 
 void init_obj_neon_mushroom(s32 objectIndex) {
+    REGISTER_FRAME_SET(sNeonMushroomList);
     set_obj_origin_pos(objectIndex, xOrientation * -1431.0, 827.0f, -2957.0f);
     init_texture_object(objectIndex,
                         load_lakitu_tlut_x64(d_course_rainbow_road_neon_mushroom_tlut_list,
@@ -3184,6 +3199,7 @@ const char* sNeonMarioList[] = { d_course_rainbow_road_neon_mario1, d_course_rai
                             d_course_rainbow_road_neon_mario5 };
 
 void func_80085DB8(s32 objectIndex) {
+    REGISTER_FRAME_SET(sNeonMarioList);
     set_obj_origin_pos(objectIndex, xOrientation * 799.0, 1193.0f, -5891.0f);
     init_texture_object(objectIndex,
                         load_lakitu_tlut_x64(d_course_rainbow_road_neon_mario_tlut_list,
@@ -3220,6 +3236,7 @@ const char* sNeonBooList[] = { d_course_rainbow_road_neon_boo1, d_course_rainbow
                                d_course_rainbow_road_neon_boo5 };
 
 void func_80085EF8(s32 objectIndex) {
+    REGISTER_FRAME_SET(sNeonBooList);
     set_obj_origin_pos(objectIndex, xOrientation * -2013.0, 555.0f, 0.0f);
     init_texture_object(objectIndex,
                         load_lakitu_tlut_x64(d_course_rainbow_road_neon_boo_tlut_list,

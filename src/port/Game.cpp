@@ -34,6 +34,7 @@
 #include "engine/TrackBrowser.h"
 #include "engine/RandomItemTable.h"
 #include "engine/sky/Sky.h"
+#include "port/resource/AsyncTextureUpgrader.h"
 
 #ifdef _WIN32
 #include <locale.h>
@@ -50,6 +51,7 @@ extern "C" {
 #include "src/enhancements/collision_viewer.h"
 #include "code_800029B0.h"
 #include "code_80057C60.h"
+#include "assets/textures/common_data.h"
 // #include "engine/wasm.h"
 }
 
@@ -94,6 +96,16 @@ void CustomEngineInit() {
     // Close the editor because lus remembers if it was open
     // This also turns off freecam
     gEditor.Disable();
+
+    // Register the always-loaded flipbook animations (exhaust smoke, drift
+    // sparks, bomb kart) with the texture streamer so replacement frames swap
+    // in together instead of one by one. Track objects register their own
+    // sets at spawn.
+    auto& up = MK64::AsyncTextureUpgrader::Instance();
+    up.RegisterFrameSet(common_texture_particle_smoke, ARRAY_COUNT(common_texture_particle_smoke));
+    up.RegisterFrameSet(common_texture_particle_spark, ARRAY_COUNT(common_texture_particle_spark));
+    up.RegisterFrameSet(common_texture_bomb, ARRAY_COUNT(common_texture_bomb));
+
 
     gSky = std::make_unique<Sky>();
     RegisterTracks(gTrackRegistry);
