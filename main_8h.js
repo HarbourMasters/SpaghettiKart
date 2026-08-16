@@ -142,7 +142,7 @@ var main_8h =
     [ "gSIEventMesgQueue", "main_8h.html#aeddf12822189d471d55eb15756589a12", null ],
     [ "gSPTaskMesgBuf", "main_8h.html#aeabe6f1db6a11fc38c5581395baca767", null ],
     [ "gSPTaskMesgQueue", "main_8h.html#a71be1829d77470850ff3e20fd2fc41c0", null ],
-    [ "gTickCounter", "main_8h.html#a0575a91f19af11a7295fbb321bb35cfb", null ],
+    [ "gTickCounter", "main_8h.html#a6d52706a7ff0900bbaf0b7798926fcf3", null ],
     [ "gTickLogic", "main_8h.html#afc45d18dddc64896e7bbb8ce0cdea316", null ],
     [ "gTickVisuals", "main_8h.html#af5ad47e50b8cbe36cf860278aeb24d29", null ],
     [ "gTourComplete", "main_8h.html#a5a2ecceb8ad7e2be39fd74784bba5772", null ],

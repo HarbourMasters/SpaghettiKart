@@ -158,7 +158,7 @@ var main_8c =
     [ "gSIEventMesgQueue", "main_8c.html#aeddf12822189d471d55eb15756589a12", null ],
     [ "gSPTaskMesgBuf", "main_8c.html#aeabe6f1db6a11fc38c5581395baca767", null ],
     [ "gSPTaskMesgQueue", "main_8c.html#a71be1829d77470850ff3e20fd2fc41c0", null ],
-    [ "gTickCounter", "main_8c.html#a0575a91f19af11a7295fbb321bb35cfb", null ],
+    [ "gTickCounter", "main_8c.html#a6d52706a7ff0900bbaf0b7798926fcf3", null ],
     [ "gTickGame", "main_8c.html#a9430ed200a7ab87457f7aa908c12d00e", null ],
     [ "gTickLogic", "main_8c.html#afc45d18dddc64896e7bbb8ce0cdea316", null ],
     [ "gTickVisuals", "main_8c.html#af5ad47e50b8cbe36cf860278aeb24d29", null ],
