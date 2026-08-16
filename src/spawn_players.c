@@ -1174,7 +1174,7 @@ void func_8003CD98(Player* player, Camera* camera, s8 playerId, s8 screenId) {
         } else {
             load_kart_palette(player, playerId, screenId, 0);
             load_kart_palette(player, playerId, screenId, 1);
-            load_kart_texture(player, (s8) (playerId + 4), screenId, (s8) (screenId - 2), 0);
+            load_kart_texture(player, (s8) (playerId), screenId, (s8) (screenId), 0);
 #ifdef TARGET_N64
             mio0decode((u8*) &gEncodedKartTexture[0][screenId - 2][playerId + 4],
                        (u8*) &D_802BFB80.arraySize8[0][screenId - 2][playerId + 4]);
