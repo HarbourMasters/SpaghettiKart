@@ -225,7 +225,7 @@ extern s32 D_800DC56C[];
 extern s16 sNumVBlanks;
 extern f32 gVBlankTimer;
 extern f32 gCourseTimer;
-extern uint64_t gTickCounter;
+extern size_t gTickCounter;
 
 // end of definition of main.c variables
 

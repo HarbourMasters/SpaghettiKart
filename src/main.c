@@ -194,7 +194,7 @@ s16 sNumVBlanks = 0;
 UNUSED s16 D_800DC590 = 0;
 f32 gVBlankTimer = 0.0f;
 f32 gCourseTimer = 0.0f;
-uint64_t gTickCounter;
+size_t gTickCounter;
 
 void create_thread(OSThread* thread, OSId id, void (*entry)(void*), void* arg, void* sp, OSPri pri) {
     thread->next = NULL;
