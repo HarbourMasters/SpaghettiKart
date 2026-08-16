@@ -188,7 +188,8 @@ bool FreecamKeyDown(int virtualKey) {
     static bool prevKeyState[256] = { false }; // Store previous key states
     bool isDownNow = false;
 
-    if (wnd->GetWindowBackend() == Fast::WindowBackend::FAST3D_SDL_OPENGL) {
+    if (wnd->GetWindowBackend() == Fast::WindowBackend::FAST3D_SDL_OPENGL ||
+        wnd->GetWindowBackend() == Fast::WindowBackend::FAST3D_SDL_METAL) {
         // Use SDL to check key states
         const uint8_t* keystate = SDL_GetKeyboardState(NULL);
         isDownNow = keystate[virtualKey] != 0;
@@ -308,7 +309,8 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
         // Keyboard/mouse OpenGL/SDL
     }
 #endif
-    else if (wnd->GetWindowBackend() == Fast::WindowBackend::FAST3D_SDL_OPENGL) {
+    else if (wnd->GetWindowBackend() == Fast::WindowBackend::FAST3D_SDL_OPENGL ||
+             wnd->GetWindowBackend() == Fast::WindowBackend::FAST3D_SDL_METAL) {
         const uint8_t* keystate = SDL_GetKeyboardState(NULL);
         if (FreecamKeyDown(SDL_SCANCODE_F)) {
             fTargetPlayer = !fTargetPlayer;
