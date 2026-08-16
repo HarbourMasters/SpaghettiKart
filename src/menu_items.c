@@ -5750,7 +5750,7 @@ void func_8009E0F0(s32 arg0) {
         if (gTransitionDuration[4] >= 0x100U) {
             gTransitionDuration[4] = 0x000000FF;
         }
-        gCurrentTransitionTime[4] = arg0;
+        gCurrentTransitionTime[4] = 0;
         for (var_v0 = 0; var_v0 < 0x4B0; var_v0++) {
             sTKMK00_LowResBuffer[var_v0] = 0;
         }
