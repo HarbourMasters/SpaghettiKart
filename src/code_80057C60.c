@@ -5338,18 +5338,10 @@ void render_player_onomatopoeia_boing(Player* player, UNUSED s8 arg1, UNUSED f32
     Vec3f sp64;
     Vec3s sp5C;
 
-    sp64[1] = player->pos[1];
-    sp64[2] = player->pos[2];
-    sp64[0] = player->pos[0];
-
     if ((player->particlePool2[arg4].isAlive == 1) && (player->animFrameSelector[arg3] < 0xD)) {
-        if (gTickVisuals) {
-            sp64[1] = player->pos[1] - 3.0f;
-            sp64[2] =
-                player->pos[2] + ((-2.5 * player->particlePool2[arg4].unk_01E) * coss(player->unk_048[arg3]));
-            sp64[0] =
-                player->pos[0] + ((-2.5 * player->particlePool2[arg4].unk_01E) * sins(player->unk_048[arg3]));
-        }
+        sp64[1] = player->pos[1] - 3.0f;
+        sp64[2] = player->pos[2] + ((-2.5 * player->particlePool2[arg4].unk_01E) * coss(player->unk_048[arg3]));
+        sp64[0] = player->pos[0] + ((-2.5 * player->particlePool2[arg4].unk_01E) * sins(player->unk_048[arg3]));
         sp5C[0] = 0;
         sp5C[1] = player->unk_048[arg3];
         sp5C[2] = 0;
