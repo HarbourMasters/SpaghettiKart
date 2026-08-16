@@ -3954,7 +3954,7 @@ UNUSED void func_800579B8(s32 arg0, s32 arg1, char* arg2) {
     func_80057778();
 }
 
-void func_800579F8(s32 arg0, s32 arg1, char* arg2, u32 arg3) {
+void render_podium_debug_prints(s32 arg0, s32 arg1, char* arg2, u32 arg3) {
     load_debug_font();
     debug_print_string(&arg0, &arg1, arg2);
     debug_print_number(&arg0, &arg1, arg3, 10);
