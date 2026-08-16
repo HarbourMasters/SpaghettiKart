@@ -1,7 +1,7 @@
 #include "Properties.h"
 #include "port/ui/PortMenu.h"
 #include "UIWidgets.h"
-#include "ship/Context.h"
+#include "port/ShipCompat.h"
 #include <variant>
 
 #include <imgui.h>

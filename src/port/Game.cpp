@@ -93,7 +93,9 @@ World* GetWorld() {
 void CustomEngineInit() {
     // Close the editor because lus remembers if it was open
     // This also turns off freecam
-    gEditor.Disable();
+
+    //! @todo RE-ENABLE THIS AFTER WORKING
+    //gEditor.Disable();
 
     gSky = std::make_unique<Sky>();
     RegisterTracks(gTrackRegistry);

@@ -89,7 +89,7 @@ namespace TrackEditor {
 
             Ship::ResourceIdentifier id(sceneFile, 0, track->Archive);
             // Write file to disk
-            auto rm = GameEngine::Instance->context->GetResourceManager();
+            auto rm = ShipCompat::GetResourceManager();
             bool wrote = rm->WriteResource(id, bytes, true);
             if (!wrote) {
                 SPDLOG_INFO("[SceneManager] [SaveLevel] Failed to write scene file!");
@@ -119,7 +119,7 @@ namespace TrackEditor {
          * the init data needs to be manually populated
          */
         auto initData = std::make_shared<Ship::ResourceInitData>();
-        initData->Parent = track->Archive;
+        initData->Identifier.SetParent(track->Archive);
         initData->Format = RESOURCE_FORMAT_BINARY;
         initData->ByteOrder = Ship::Endianness::Little;
         initData->Type = static_cast<uint32_t>(Ship::ResourceType::Json);
@@ -128,7 +128,7 @@ namespace TrackEditor {
         // Load the scene file and return the json data
         Ship::ResourceIdentifier id(sceneFile, 0, track->Archive);
         nlohmann::json data = std::static_pointer_cast<Ship::Json>(
-            GameEngine::Instance->context->GetResourceManager()->LoadResource(id, true, initData))->Data;
+            ShipCompat::GetResourceManager()->LoadResource(id, true, initData))->Data;
 
         // Check that the data is valid
         if (data.is_null() || !data.is_object() || data.empty()) {
@@ -160,7 +160,7 @@ namespace TrackEditor {
          * the init data needs to be manually populated
          */
         auto initData = std::make_shared<Ship::ResourceInitData>();
-        initData->Parent = archive;
+        initData->Identifier.SetParent(archive);
         initData->Format = RESOURCE_FORMAT_BINARY;
         initData->ByteOrder = Ship::Endianness::Little;
         initData->Type = static_cast<uint32_t>(Ship::ResourceType::Json);
@@ -169,7 +169,7 @@ namespace TrackEditor {
         // Load the scene file and return the json data
         Ship::ResourceIdentifier id(sceneFile, 0, archive);
         nlohmann::json data = std::static_pointer_cast<Ship::Json>(
-            GameEngine::Instance->context->GetResourceManager()->LoadResource(id, true, initData))->Data;
+            ShipCompat::GetResourceManager()->LoadResource(id, true, initData))->Data;
 
         // Check that the data is valid
         if (data.is_null() || !data.is_object() || data.empty()) {
@@ -200,14 +200,14 @@ namespace TrackEditor {
         * the init data needs to be manually populated
         */
         auto initData = std::make_shared<Ship::ResourceInitData>();
-        initData->Parent = track->Archive;
+        initData->Identifier.SetParent(track->Archive);
         initData->Format = RESOURCE_FORMAT_BINARY;
         initData->ByteOrder = Ship::Endianness::Little;
         initData->Type = static_cast<uint32_t>(MK64::ResourceType::Minimap);
         initData->ResourceVersion = 0;
 
         std::shared_ptr<MK64::Minimap> ptr = std::static_pointer_cast<MK64::Minimap>(
-            GameEngine::Instance->context->GetResourceManager()->LoadResource(minimapPath, true, initData));
+            ShipCompat::GetResourceManager()->LoadResource(minimapPath, true, initData));
 
         if (ptr) {
             SPDLOG_INFO("  Minimap Loaded!");

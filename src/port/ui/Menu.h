@@ -26,7 +26,7 @@ class Menu : public GuiWindow {
          UIWidgets::Colors menuThemeIndex_ = UIWidgets::Colors::LightBlue);
     virtual ~Menu() {}
 
-    void InitElement() override;
+    void OnInit(const nlohmann::json& initArgs = {}) override;
     void DrawElement() override;
     void UpdateElement() override;
     void Draw() override;

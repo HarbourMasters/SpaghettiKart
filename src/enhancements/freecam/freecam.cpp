@@ -2,6 +2,7 @@
 #include <ship/window/Window.h>
 #include "port/Engine.h"
 #include "port/Game.h"
+#include "port/ShipCompat.h"
 #include <ship/controller/controldevice/controller/mapping/keyboard/KeyboardScancodes.h>
 #include <ship/window/Window.h>
 #include "port/interpolation/FrameInterpolation.h"
@@ -139,7 +140,7 @@ void freecam_loop(Camera* camera) {
 }
 
 void freecam_mouse_manager(Camera* camera, Vec3f forwardVector) {
-    auto wnd = GameEngine::Instance->context->GetWindow();
+    auto wnd = ShipCompat::GetWindow();
     Ship::Coords mouse = wnd->GetMouseDelta();
     wnd->SetMouseCapture(false);
 
@@ -184,7 +185,7 @@ static bool prevKeyState[MAX_KEYS] = { false };
 
 // KeyDown function
 bool FreecamKeyDown(int virtualKey) {
-    auto wnd = GameEngine::Instance->context->GetWindow();
+    auto wnd = ShipCompat::GetWindow();
     static bool prevKeyState[256] = { false }; // Store previous key states
     bool isDownNow = false;
 
@@ -211,7 +212,7 @@ bool FreecamKeyDown(int virtualKey) {
 }
 
 void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
-    auto wnd = GameEngine::Instance->context->GetWindow();
+    auto wnd = ShipCompat::GetWindow();
     float moveSpeed = gFreecamSpeed;
 
     // Determine movement direction based on keys pressed

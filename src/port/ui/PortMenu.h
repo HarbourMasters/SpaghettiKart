@@ -63,7 +63,7 @@ class PortMenu : public Ship::Menu {
     PortMenu(const std::string& consoleVariable, const std::string& name);
     ~PortMenu() {}
 
-    void InitElement() override;
+    void OnInit(const nlohmann::json& initArgs = {}) override;
     void DrawElement() override;
     void UpdateElement() override;
     void Draw() override;

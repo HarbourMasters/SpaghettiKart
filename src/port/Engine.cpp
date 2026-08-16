@@ -5,8 +5,9 @@
 #include "GameExtractor.h"
 #include "engine/mods/ModManager.h"
 #include "ui/ImguiUI.h"
-#include "ship/Context.h"
+#include "port/ShipCompat.h"
 #include "ship/controller/controldevice/controller/mapping/ControllerDefaultMappings.h"
+#include <ship/audio/Audio.h>
 #include "resource/type/ResourceType.h"
 #include "fast/resource/ResourceType.h"
 #include "resource/importers/GenericArrayFactory.h"
@@ -30,6 +31,8 @@
 #include "libultraship/window/gui/InputEditorWindow.h"
 #include "libultraship/window/gui/GfxDebuggerWindow.h"
 #include "libultraship/controller/controldeck/ControlDeck.h"
+#include "libultraship/bridge/UltraBridge.h"
+#include <ship/core/Context.h>
 #include "SpaghettiGui.h"
 
 #include "port/interpolation/FrameInterpolation.h"
@@ -59,8 +62,13 @@ float gInterpolationStep = 0.0f;
 #include "audio/GameAudio.h"
 }
 
+std::shared_ptr<Ship::SpaghettiGui> gsSpaghettiGui;
+std::shared_ptr<Fast::Fast3dWindow> gsFast3dWindow;
+std::shared_ptr<LUS::InputEditorWindow> gsInputEditorWindow;
+std::shared_ptr<LUS::GfxDebuggerWindow> gsGfxDebuggerWindow;
+
 Fast::Interpreter* GetInterpreter() {
-    return static_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetRawInstance()->GetWindow())
+    return static_pointer_cast<Fast::Fast3dWindow>(ShipCompat::GetWindow())
         ->GetInterpreterWeak()
         .lock()
         .get();
@@ -83,8 +91,11 @@ bool CreateDirectoryRecursive(std::string const& dirName, std::error_code& err) 
 
 GameEngine::GameEngine() {
     // Initialize context properties early to recognize paths properly for non-portable builds
-    this->context = Ship::Context::CreateUninitializedInstance("Spaghetti Kart", "spaghettify", "spaghettify.cfg.json");
+    //this->context = Ship::Context::CreateUninitializedInstance("Spaghetti Kart", "spaghettify", "spaghettify.cfg.json");
 
+    this->context = Ship::Context::CreateInstance("Spaghetti Kart", "spaghettify");
+    this->context->Init();
+    ShipCompat::SetContext(this->context);
 #ifdef __SWITCH__
     Ship::Switch::Init(Ship::PreInitPhase);
 #endif
@@ -92,10 +103,59 @@ GameEngine::GameEngine() {
 #ifdef _WIN32
     AllocConsole();
 #endif
-
-    this->context->InitConfiguration();    // without this line InitConsoleVariables fails at Config::Reload()
-    this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
+    //this->context->InitConfiguration();    // without this line InitConsoleVariables fails at Config::Reload()
+    //this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
                                            // ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
+
+
+    auto logger = std::make_shared<Ship::Logger>(
+        "SpaghettiKart", Ship::Context::GetPathRelativeToAppDirectory("logs/spaghettify.log"));
+    context->GetChildren().Add(logger);
+    logger->Init();
+
+    auto config = std::make_shared<Ship::Config>(Ship::Context::GetPathRelativeToAppDirectory("spaghettify.cfg.json"),
+                                                 nullptr);
+    context->GetChildren().Add(config);
+
+    auto consoleVariables = std::make_shared<Ship::ConsoleVariable>(config);
+    context->GetChildren().Add(consoleVariables);
+    CVarSetConsoleVariable(consoleVariables);
+
+    auto ultraBridge = std::make_shared<LUS::UltraBridge>();
+    context->GetChildren().Add(ultraBridge);
+
+    gsSpaghettiGui = std::make_shared<Ship::SpaghettiGui>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
+
+    gsFast3dWindow = std::make_shared<Fast::Fast3dWindow>(gsSpaghettiGui, config,
+                                                          consoleVariables);
+
+#if (_DEBUG)
+    auto defaultLogLevel = spdlog::level::debug;
+#else
+    auto defaultLogLevel = spdlog::level::info;
+#endif
+
+    auto logLevel =
+        static_cast<spdlog::level::level_enum>(CVarGetInteger("gDeveloperTools.LogLevel", defaultLogLevel));
+    spdlog::set_level(logLevel);
+    spdlog::flush_on(logLevel);
+
+    auto threadPool = std::make_shared<Ship::ThreadPool>(std::max(1, (int32_t)(std::thread::hardware_concurrency() - 3 - 1)));
+                      context->GetChildren().Add(threadPool);
+
+#ifdef ENABLE_SCRIPTING
+    auto keystore = std::make_shared<Ship::Keystore>(config);
+    context->GetChildren().Add(keystore);
+    auto resourceManager = std::make_shared<Ship::ResourceManager>(threadPool, keystore);
+#else
+    auto resourceManager = std::make_shared<Ship::ResourceManager>(threadPool);
+#endif
+    context->GetChildren().Add(resourceManager);
+    
+    //auto controlDeck = std::make_shared<LUS::ControlDeck>(gsFast3dWindow, consoleVariables);
+    //context->GetChildren().Add(controlDeck);
+    
+   
 
     auto defaultMappings = std::make_shared<Ship::ControllerDefaultMappings>(
         // KeyboardKeyToButtonMappings
@@ -167,35 +227,63 @@ GameEngine::GameEngine() {
                       { BTN_DUP, "DUp" },
                       { BTN_DDOWN, "DDown" },
                   });
-    auto controlDeck = std::make_shared<LUS::ControlDeck>(std::vector<CONTROLLERBUTTONS_T>(), defaultMappings, buttonNames);
+
+    auto controlDeck = std::make_shared<LUS::ControlDeck>(gsFast3dWindow, consoleVariables);
+    // auto controlDeck = std::make_shared<LUS::ControlDeck>(std::vector<CONTROLLERBUTTONS_T>(), defaultMappings, buttonNames);
+    context->GetChildren().Add(controlDeck);
     const std::string assets_path = Ship::Context::LocateFileAcrossAppDirs(engine_asset_file);
-    this->context->InitResourceManager({assets_path}, {}, 3); // without this line InitWindow fails in Gui::Init()
-    this->context->InitConsole(); // without this line the GuiWindow constructor fails in ConsoleWindow::InitElement()
+    //this->context->InitResourceManager({assets_path}, {}, 3); // without this line InitWindow fails in Gui::Init()
+    //this->context->InitConsole(); // without this line the GuiWindow constructor fails in ConsoleWindow::OnInit()
 
-    auto gui = std::make_shared<Ship::SpaghettiGui>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
-    auto wnd = std::make_shared<Fast::Fast3dWindow>(gui);
+    try {
+        nlohmann::json rmArgs;
+        rmArgs["archivePaths"] = std::vector<std::string>{ assets_path };
+        rmArgs["validHashes"] = std::vector<uint32_t>{};
+        resourceManager->Init(rmArgs);
+    } catch (const std::exception& e) {
+        SPDLOG_WARN("ResourceManager init deferred: {}", e.what());
+    }
 
-    // auto wnd = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
-    // auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetRawInstance()->GetWindow());
+    auto console = std::make_shared<Ship::Console>();
+    context->GetChildren().Add(console);
+    console->Init();
 
-    gui->AddGuiWindow(std::make_shared<LUS::InputEditorWindow>(CVAR_CONTROLLER_CONFIGURATION_WINDOW_OPEN, "Input Editor"));
-    gui->AddGuiWindow(std::make_shared<LUS::GfxDebuggerWindow>(CVAR_GFX_DEBUGGER_WINDOW_OPEN, "GfxDebuggerWindow", ImVec2(520, 600)));
+    auto crashHandler = std::make_shared<Ship::CrashHandler>();
+    context->GetChildren().Add(crashHandler);
 
-    this->context->Init({assets_path}, {}, 3, { 26800, 512, 1100 }, wnd, controlDeck);
+    auto gfxDebugger = std::make_shared<Fast::GfxDebugger>();
+    context->GetChildren().Add(gfxDebugger);
 
-#ifndef __SWITCH__
-    Ship::Context::GetRawInstance()->GetLogger()->set_level(
-        (spdlog::level::level_enum) CVarGetInteger("gDeveloperTools.LogLevel", 1));
-    Ship::Context::GetRawInstance()->GetLogger()->set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
-#endif
+    context->GetChildren().Add(gsFast3dWindow);
+    
+    auto events = std::make_shared<Ship::Events>();
+    context->GetChildren().Add(events);
+
+    ultraBridge->Init();
+    ultraBridge->UpdateCaches(context);
+    
+    gsFast3dWindow->Init();
+    gsFast3dWindow->SetRendererUCode(ucode_f3dex);
+
+    if (gsSpaghettiGui) {
+
+        gsInputEditorWindow = std::make_shared<LUS::InputEditorWindow>(CVAR_CONTROLLER_CONFIGURATION_WINDOW_OPEN, "Input Editor", controlDeck, gsFast3dWindow);
+        gsGfxDebuggerWindow = std::make_shared<LUS::GfxDebuggerWindow>(CVAR_GFX_DEBUGGER_WINDOW_OPEN, "GfxDebuggerWindow",  std::dynamic_pointer_cast<Fast::Fast3dWindow>(ShipCompat::GetWindow()), gfxDebugger, resourceManager);
+        gsGfxDebuggerWindow->SetOriginalSize(ImVec2(520, 600));
+        gsSpaghettiGui->AddGuiWindow(gsInputEditorWindow);
+        gsSpaghettiGui->AddGuiWindow(gsGfxDebuggerWindow);// ImVec2(520, 600)));
+
+
+
+
+
+       // gsGfxDebuggerWindow->mOriginalSize = ImVec2(520, 600);
+    }
 
     SPDLOG_INFO("Spaghetti Kart " SPAGHETTI_VERSION);
     SPDLOG_INFO(CVarGetInteger("gEnableDebugMode", 0) == 0 ? "Debug Mode deactivated" : "Debug Mode activated");
 
-    wnd->SetRendererUCode(ucode_f3dex);
-    //this->context->InitGfxDebugger();
-
-    auto loader = context->GetResourceManager()->GetResourceLoader();
+    auto loader = ShipCompat::GetResourceManager()->GetResourceLoader();
     loader->RegisterResourceFactory(std::make_shared<SM64::AudioBankFactoryV0>(), RESOURCE_FORMAT_BINARY, "AudioBank",
                                     static_cast<uint32_t>(SF64::ResourceType::Bank), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::AudioSampleFactoryV0>(), RESOURCE_FORMAT_BINARY,
@@ -209,10 +297,6 @@ GameEngine::GameEngine() {
     loader->RegisterResourceFactory(std::make_shared<SF64::ResourceFactoryBinaryGenericArrayV0>(),
                                     RESOURCE_FORMAT_BINARY, "GenericArray",
                                     static_cast<uint32_t>(SF64::ResourceType::GenericArray), 0);
-    // loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryTextureV0>(), RESOURCE_FORMAT_BINARY,
-    //                                 "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 0);
-    // loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryTextureV1>(), RESOURCE_FORMAT_BINARY,
-    //                                 "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 1);
     loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryTextureV0>(), RESOURCE_FORMAT_BINARY,
                                     "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 0);
     loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryTextureV1>(), RESOURCE_FORMAT_BINARY,
@@ -295,11 +379,11 @@ bool GameEngine::GenAssetFile() {
 
 uint32_t GameEngine::GetInterpolationFPS() {
     if (CVarGetInteger("gMatchRefreshRate", 0)) {
-        return Ship::Context::GetRawInstance()->GetWindow()->GetCurrentRefreshRate();
+        return ShipCompat::GetWindow()->GetCurrentRefreshRate();
 
     } else if (CVarGetInteger("gVsyncEnabled", 1) ||
-               !Ship::Context::GetRawInstance()->GetWindow()->CanDisableVerticalSync()) {
-        return std::min<uint32_t>(Ship::Context::GetRawInstance()->GetWindow()->GetCurrentRefreshRate(),
+               !ShipCompat::GetWindow()->CanDisableVerticalSync()) {
+        return std::min<uint32_t>(ShipCompat::GetWindow()->GetCurrentRefreshRate(),
                                   CVarGetInteger("gInterpolationFPS", 30));
     }
 
@@ -353,8 +437,8 @@ int GameEngine::ShowYesNoBox(const char* title, const char* box) {
 void GameEngine::Create() {
     const auto instance = Instance = new GameEngine();
     InitModsSystem();
-    instance->gHMAS = new HMAS();
     instance->AudioInit();
+    instance->gHMAS = new HMAS();
     GameUI::SetupGuiElements();
 #if defined(__SWITCH__) || defined(__WIIU__)
     CVarRegisterInteger("gControlNav", 1); // always enable controller nav on switch/wii u
@@ -376,8 +460,8 @@ bool ShouldClearTextureCacheAtEndOfFrame = false;
 
 void GameEngine::StartFrame() const {
     using Ship::KbScancode;
-    const int32_t dwScancode = this->context->GetWindow()->GetLastScancode();
-    this->context->GetWindow()->SetLastScancode(-1);
+    const int32_t dwScancode = ShipCompat::GetWindow()->GetLastScancode();
+    ShipCompat::GetWindow()->SetLastScancode(-1);
 
     switch (dwScancode) {
         case KbScancode::LUS_KB_TAB: {
@@ -400,7 +484,7 @@ void GameEngine::StartFrame() const {
 // }
 
 void GameEngine::RunCommands(Gfx* pool, const std::vector<std::unordered_map<Mtx*, MtxF>>& mtx_replacements) {
-    auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetRawInstance()->GetWindow());
+    auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(ShipCompat::GetWindow());
 
     if (wnd == nullptr) {
         return;
@@ -421,7 +505,7 @@ void GameEngine::RunCommands(Gfx* pool, const std::vector<std::unordered_map<Mtx
     bool curAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0);
     if (prevAltAssets != curAltAssets) {
         prevAltAssets = curAltAssets;
-        Ship::Context::GetRawInstance()->GetResourceManager()->SetAltAssetsEnabled(curAltAssets);
+        ShipCompat::GetResourceManager()->SetAltAssetsEnabled(curAltAssets);
         gfx_texture_cache_clear();
     }
 }
@@ -467,7 +551,7 @@ void GameEngine::ProcessGfxCommands(Gfx* pool) {
 
     time -= fps;
 
-    auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetRawInstance()->GetWindow());
+    auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(ShipCompat::GetWindow());
     if (wnd != nullptr) {
         wnd->SetTargetFps(GetInterpolationFPS());
         wnd->SetMaximumFrameLatency(1);
@@ -538,7 +622,18 @@ void GameEngine::EndAudioFrame() {
 }
 
 void GameEngine::AudioInit() {
-    const auto resourceMgr = Ship::Context::GetRawInstance()->GetResourceManager();
+    const auto resourceMgr = ShipCompat::GetResourceManager();
+
+    auto audios = std::make_shared<Ship::Audio>(
+        Ship::AudioSettings{ .SampleRate = 26800, .SampleLength = 512, .DesiredBuffered = 1100 },
+        ShipCompat::GetConfig());
+    context->GetChildren().Add(audios);
+    audios->Init();
+
+    if (auto ultraBridge = context->GetChildren().GetFirst<LUS::UltraBridge>()) {
+        ultraBridge->UpdateCaches(context);
+    }
+
     resourceMgr->LoadResources("sound");
     const auto banksFiles = resourceMgr->GetArchiveManager()->ListFiles("sound/banks/*");
     const auto sequences_files = resourceMgr->GetArchiveManager()->ListFiles("sound/sequences/*");
@@ -613,9 +708,9 @@ ImFont* GameEngine::CreateFontWithSize(float size, std::string fontPath) {
         initData->Format = RESOURCE_FORMAT_BINARY;
         initData->Type = static_cast<uint32_t>(RESOURCE_TYPE_FONT);
         initData->ResourceVersion = 0;
-        initData->Path = fontPath;
+        initData->Identifier.SetPath(fontPath);
         std::shared_ptr<Ship::Font> fontData = std::static_pointer_cast<Ship::Font>(
-            Ship::Context::GetRawInstance()->GetResourceManager()->LoadResource(fontPath, false, initData));
+            ShipCompat::GetResourceManager()->LoadResource(fontPath, false, initData));
         char* fontDataPtr = (char*) malloc(fontData->DataSize);
         memcpy(fontDataPtr, fontData->Data, fontData->DataSize);
         ImFontConfig fontCfg = ImFontConfig();
@@ -638,7 +733,7 @@ ImFont* GameEngine::CreateFontWithSize(float size, std::string fontPath) {
 // End
 
 extern "C" uint32_t GameEngine_GetSampleRate() {
-    auto player = Ship::Context::GetRawInstance()->GetAudio()->GetAudioPlayer();
+    auto player = ShipCompat::GetAudio()->GetAudioPlayer();
     if (player == nullptr) {
         return 0;
     }

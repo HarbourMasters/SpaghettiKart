@@ -2,12 +2,13 @@
 #include "port/Engine.h"
 #include "engine/editor/SceneManager.h"
 #include "engine/tracks/CustomTrack.h"
+#include "port/ShipCompat.h"
 #include <imgui.h>
 
 TrackBrowser* TrackBrowser::Instance;
 
 void TrackBrowser::FindCustomTracks() {
-    auto manager = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager();
+    auto manager = ShipCompat::GetResourceManager()->GetArchiveManager();
 
     auto ptr2 = manager->ListDirectories("tracks/*");
     if (!ptr2) {

@@ -3,6 +3,7 @@
 #include <ship/window/gui/Gui.h>
 #include <ship/window/Window.h>
 #include "ship/config/Config.h"
+#include "port/ShipCompat.h"
 
 #ifdef __APPLE__
 #include <SDL_hints.h>
@@ -41,8 +42,8 @@ namespace Ship {
 #define TOGGLE_PAD_BTN ImGuiKey_GamepadBack
 
 void SpaghettiGui::DrawMenu() {
-    const std::shared_ptr<Window> wnd = Context::GetRawInstance()->GetWindow();
-    const std::shared_ptr<Config> conf = Context::GetRawInstance()->GetConfig();
+    const std::shared_ptr<Window> wnd = ShipCompat::GetWindow();
+    const std::shared_ptr<Config> conf = ShipCompat::GetConfig();
 
     ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoBackground |
                                    ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove |
@@ -112,7 +113,7 @@ void SpaghettiGui::DrawMenu() {
             Gui::GetMenuBar()->ToggleVisibility();
         }
         if (wnd->IsFullscreen()) {
-            Context::GetRawInstance()->GetWindow()->SetMouseCapture(
+            ShipCompat::GetWindow()->SetMouseCapture(
                 !(GetMenuOrMenubarVisible() || wnd->ShouldForceCursorVisibility()));
         }
         if (CVarGetInteger(CVAR_IMGUI_CONTROLLER_NAV, 0) && GetMenuOrMenubarVisible()) {
@@ -126,14 +127,14 @@ void SpaghettiGui::DrawMenu() {
     if ((ImGui::IsKeyDown(ImGuiKey_LeftSuper) || ImGui::IsKeyDown(ImGuiKey_RightSuper)) &&
         ImGui::IsKeyPressed(ImGuiKey_R, false)) {
         std::reinterpret_pointer_cast<ConsoleWindow>(
-            Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Console"))
+            ShipCompat::GetWindow()->GetGui()->GetGuiWindow("Console"))
             ->Dispatch("reset");
     }
 #else
     if ((ImGui::IsKeyDown(ImGuiKey_LeftCtrl) || ImGui::IsKeyDown(ImGuiKey_RightCtrl)) &&
         ImGui::IsKeyPressed(ImGuiKey_R, false)) {
         std::reinterpret_pointer_cast<ConsoleWindow>(
-            Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Console"))
+            ShipCompat::GetWindow()->GetGui()->GetGuiWindow("Console"))
             ->Dispatch("reset");
     }
 #endif

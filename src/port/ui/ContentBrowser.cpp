@@ -1,7 +1,7 @@
 #include "ContentBrowser.h"
 #include "port/ui/PortMenu.h"
 #include "UIWidgets.h"
-#include "ship/Context.h"
+#include "port/ShipCompat.h"
 #include "port/Engine.h"
 #include "engine/SpawnParams.h"
 
@@ -226,7 +226,7 @@ void ContentBrowserWindow::AddActorContent(std::string search) {
     }
 
     void ContentBrowserWindow::FindContent() {
-        auto ptr = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager()->ListFiles({"hmintro/*", "*tracks/*","actors/*", "objects/*"}, {""});
+        auto ptr = ShipCompat::GetResourceManager()->GetArchiveManager()->ListFiles({ "hmintro/*", "*tracks/*", "actors/*", "objects/*" }, { "" });
         if (ptr) {
             auto files = *ptr;
             for (const auto& file : files) {
