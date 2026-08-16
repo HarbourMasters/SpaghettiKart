@@ -1022,6 +1022,10 @@ void CM_ThrowRuntimeError(const char* fmt, ...) {
 
 #ifdef _WIN32
 int SDL_main(int argc, char** argv) {
+#elif defined(__ANDROID__)
+// SDLActivity dlsym()s "SDL_main" out of the game library, so the entry point
+// has to be named that and keep C linkage.
+extern "C" int SDL_main(int argc, char* argv[]) {
 #else
 #if defined(__cplusplus) && defined(PLATFORM_IOS)
 extern "C"

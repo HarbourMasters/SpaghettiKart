@@ -39,6 +39,12 @@ Your ROM needs to be in .z64 format. If it's in .n64 format, use the following t
 * Run one of the PC releases to generate an `mk64.o2r` file. After launching the game on PC, you will be able to find these files in the same directory as `Spaghettify.exe` or `spaghetti.appimage`.
 * Copy the files to your sd card
 
+#### Android
+
+* Install the APK and launch it, then pick your US ROM when prompted.
+* The app verifies the ROM and extracts `mk64.o2r` on the device — no PC step and no separate Torch app.
+* Everything the game uses lives in `Android/data/com.izzy.kart/files`, which any file manager can reach. Drop mods (`.o2r`, `.zip`, or plain folders) into the `mods` folder there; they load on the next launch.
+
 ### 4. Play
 
 * Launch `Spaghettify.exe`

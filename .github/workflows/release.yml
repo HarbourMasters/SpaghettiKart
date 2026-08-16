@@ -1,0 +1,169 @@
+name: Create Android Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., 1.0.1)'
+        required: true
+        default: '2.0.0'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  generate-port-o2r:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
+
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y gcc g++ git cmake ninja-build lsb-release
+
+    - name: ccache
+      uses: hendrikmuhs/ccache-action@v1.2.18
+      with:
+        key: ${{ runner.os }}-o2r-ccache-${{ github.ref }}-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-o2r-ccache-${{ github.ref }}
+          ${{ runner.os }}-o2r-ccache-
+
+    - name: Build Torch
+      run: |
+        export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
+        cmake -S torch -B torch/build-host -G Ninja \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DUSE_STANDALONE=ON \
+          -DBUILD_MK64=ON \
+          -DBUILD_NAUDIO=ON \
+          -DBUILD_SM64=OFF \
+          -DBUILD_SF64=OFF \
+          -DBUILD_FZERO=OFF \
+          -DBUILD_MARIO_ARTIST=OFF
+        cmake --build torch/build-host --parallel
+
+    - name: Generate spaghetti.o2r
+      run: torch/build-host/torch pack assets spaghetti.o2r o2r
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: spaghetti.o2r
+        path: spaghetti.o2r
+        retention-days: 1
+
+  build-android:
+    needs: generate-port-o2r
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+
+    - name: Install build tools
+      run: sudo apt-get update && sudo apt-get install -y ninja-build
+
+    - name: Download spaghetti.o2r
+      uses: actions/download-artifact@v4
+      with:
+        name: spaghetti.o2r
+        path: android/app/src/main/assets
+
+    - name: Configure Gradle permissions
+      run: chmod +x android/gradlew
+
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v4
+
+    - name: Update version
+      run: |
+        BUILD_FILE=android/app/build.gradle.kts
+        CURRENT_CODE=$(grep -oP 'versionCode = \K[0-9]+' "$BUILD_FILE")
+        NEW_CODE=$((CURRENT_CODE + 1))
+        sed -i "s/versionCode = $CURRENT_CODE/versionCode = $NEW_CODE/" "$BUILD_FILE"
+        sed -i "s/versionName = \".*\"/versionName = \"${{ github.event.inputs.version }}\"/" "$BUILD_FILE"
+        echo "Updated to version ${{ github.event.inputs.version }} with code $NEW_CODE"
+
+    - name: Setup signing keystore
+      run: |
+        echo "$KEYSTORE_BASE64" | base64 -d > android/app/release.keystore
+        test -s android/app/release.keystore || (echo "Failed to create keystore file" && exit 1)
+      env:
+        KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+
+    - name: Build Release APK
+      run: |
+        cd android/
+        ./gradlew --no-daemon assembleRelease
+        mv app/build/outputs/apk/release/app-release.apk ../spaghettikart-release.apk
+      env:
+        KEYSTORE_FILE: release.keystore
+        KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+        KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+
+    - name: Clean up keystore
+      if: always()
+      run: rm -f android/app/release.keystore
+
+    - name: Upload Release APK (artifact for next job)
+      uses: actions/upload-artifact@v4
+      with:
+        name: spaghettikart-release-apk
+        path: spaghettikart-release.apk
+        retention-days: 1
+
+  create-release:
+    needs: build-android
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Download Release APK
+      uses: actions/download-artifact@v4
+      with:
+        name: spaghettikart-release-apk
+        path: .
+
+    - name: Rename APK
+      run: mv spaghettikart-release.apk SpaghettiKart-v${{ github.event.inputs.version }}-release.apk
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ github.event.inputs.version }}
+        name: 🏎️ Spaghetti Kart v${{ github.event.inputs.version }}
+        files: SpaghettiKart-v${{ github.event.inputs.version }}-release.apk
+        body: |
+          ## 🏎️ Spaghetti Kart v${{ github.event.inputs.version }}
+
+          ### 📱 Android Release
+
+          **✨ Highlights:**
+          - 🔥 No more Torch app — pick your ROM and the game extracts its own assets on the device
+          - 🧩 Full mod support: drop `.o2r`, `.zip` or plain folders into `Android/data/com.izzy.kart/files/mods`
+          - 🔒 No storage permissions needed any more
+
+          ### 📥 Installation
+          1. ⬇️ Download the APK below
+          2. 📲 Install on your Android device (enable "Install from unknown sources")
+          3. 🎮 Launch the app and select your own Mario Kart 64 (USA) `.z64` ROM
+          4. ⏳ Wait for the one-time extraction to finish — that's it
+
+          ### 🧩 Mods
+          Put mods in `Android/data/com.izzy.kart/files/mods`. They are picked up on the next launch.

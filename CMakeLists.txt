@@ -126,7 +126,13 @@ if(SPAGHETTIKART_IOS)
 
 endif()
 
-add_executable(${PROJECT_NAME} ${ALL_FILES})
+if(ANDROID)
+  # SDLActivity dlopen()s the game as a shared library and calls SDL_main in it,
+  # so there is no executable to produce.
+  add_library(${PROJECT_NAME} SHARED ${ALL_FILES})
+else()
+  add_executable(${PROJECT_NAME} ${ALL_FILES})
+endif()
 target_include_directories(
   ${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
                           ${CMAKE_CURRENT_SOURCE_DIR}/include
@@ -206,8 +212,12 @@ endif()
 
 # On macOS these live in the .app's Contents/Resources instead (see
 # cmake/macos/apple_bundle.cmake); copying them next to the executable would
-# just duplicate them inside Contents/MacOS.
-if(NOT CMAKE_SYSTEM_NAME MATCHES "Darwin")
+# just duplicate them inside Contents/MacOS. On Android they are packaged as
+# APK assets by Gradle (see android/app/build.gradle.kts) and unpacked to the
+# app's external files directory on first run, so staging them next to the .so
+# would only bloat the build directory — and with more than one ABI the
+# per-ABI CMake invocations would race writing the same files.
+if(NOT CMAKE_SYSTEM_NAME MATCHES "Darwin" AND NOT ANDROID)
 add_custom_command(
   TARGET ${PROJECT_NAME}
   POST_BUILD
@@ -219,7 +229,12 @@ add_custom_command(
   VERBATIM)
 endif()
 
-if(NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
+# Android has no host toolchain available inside the NDK build, so the Torch
+# *executable* (and everything that shells out to it) is skipped there.
+# spaghetti.o2r is built on the CI host and shipped as an APK asset instead,
+# and mk64.o2r is generated on-device by the Torch library that is linked into
+# the game (see src/port/GameExtractor.cpp and src/port/android/AndroidBridge.cpp).
+if(NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" AND NOT ANDROID)
   include(ExternalProject)
   # Torch's pinned spdlog bundles an fmt that trips a consteval error under
   # newer AppleClang (Xcode 16+): "call to consteval function
@@ -303,14 +318,17 @@ if(NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
                                                "${CMAKE_SOURCE_DIR}/icon.png")
 endif()
 
-if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
-  set(CPACK_GENERATOR "External")
-elseif(CMAKE_SYSTEM_NAME MATCHES "Windows|NintendoSwitch|CafeOS")
-  set(CPACK_GENERATOR "ZIP")
-elseif(APPLE)
-  set(CPACK_GENERATOR "Bundle")
-endif()
+# Gradle packages the Android build into an APK; CPack has nothing to do there.
+if(NOT ANDROID)
+  if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    set(CPACK_GENERATOR "External")
+  elseif(CMAKE_SYSTEM_NAME MATCHES "Windows|NintendoSwitch|CafeOS")
+    set(CPACK_GENERATOR "ZIP")
+  elseif(APPLE)
+    set(CPACK_GENERATOR "Bundle")
+  endif()
 
-set(CPACK_PROJECT_CONFIG_FILE
-    ${CMAKE_SOURCE_DIR}/cmake/configure-packaging.cmake)
-include(cmake/packaging.cmake)
+  set(CPACK_PROJECT_CONFIG_FILE
+      ${CMAKE_SOURCE_DIR}/cmake/configure-packaging.cmake)
+  include(cmake/packaging.cmake)
+endif()
