@@ -355,7 +355,8 @@ void render_players(Camera* camera, s32 screenIdx) {
     init_render_player(gPlayerTwo, camera, PLAYER_TWO, screenIdx);
     init_render_player(gPlayerThree, camera, PLAYER_THREE, screenIdx);
     init_render_player(gPlayerFour, camera, PLAYER_FOUR, screenIdx);
-    if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
+    if ((gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) ||
+        (gModeSelection == GRAND_PRIX)) {
         init_render_player(gPlayerFive, camera, PLAYER_FIVE, screenIdx);
         init_render_player(gPlayerSix, camera, PLAYER_SIX, screenIdx);
         init_render_player(gPlayerSeven, camera, PLAYER_SEVEN, screenIdx);
@@ -371,7 +372,8 @@ void render_players(Camera* camera, s32 screenIdx) {
     try_rendering_player(gPlayerTwo, PLAYER_TWO, screenIdx);
     try_rendering_player(gPlayerThree, PLAYER_THREE, screenIdx);
     try_rendering_player(gPlayerFour, PLAYER_FOUR, screenIdx);
-    if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
+    if ((gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) ||
+        (gModeSelection == GRAND_PRIX)) {
         try_rendering_player(gPlayerFive, PLAYER_FIVE, screenIdx);
         try_rendering_player(gPlayerSix, PLAYER_SIX, screenIdx);
         try_rendering_player(gPlayerSeven, PLAYER_SEVEN, screenIdx);
@@ -384,7 +386,8 @@ void render_players(Camera* camera, s32 screenIdx) {
     render_kart_particles(gPlayerTwo, PLAYER_TWO, screenIdx);
     render_kart_particles(gPlayerThree, PLAYER_THREE, screenIdx);
     render_kart_particles(gPlayerFour, PLAYER_FOUR, screenIdx);
-    if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
+    if ((gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) ||
+        (gModeSelection == GRAND_PRIX)) {
         render_kart_particles(gPlayerFive, PLAYER_FIVE, screenIdx);
         render_kart_particles(gPlayerSix, PLAYER_SIX, screenIdx);
         render_kart_particles(gPlayerSeven, PLAYER_SEVEN, screenIdx);
@@ -545,7 +548,8 @@ void func_80021B0C(void) {
     func_8006E7CC(gPlayerTwo, 1, 0);
     func_8006E7CC(gPlayerThree, 2, 0);
     func_8006E7CC(gPlayerFour, 3, 0);
-    if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
+    if ((gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) ||
+        (gModeSelection == GRAND_PRIX)) {
         func_8006E7CC(gPlayerFive, 4, 0);
         func_8006E7CC(gPlayerSix, 5, 0);
         func_8006E7CC(gPlayerSeven, 6, 0);
@@ -829,15 +833,27 @@ void func_8002276C(void) {
             }
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
-            if ((VERSUS == gModeSelection) || (BATTLE == gModeSelection)) {
-                func_80022A98(gPlayerOne, 0);
-                func_80022A98(gPlayerTwo, 1);
-                func_80022A98(gPlayerThree, 2);
-                if (gPlayerCountSelection1 == 4) {
+            switch (gModeSelection) {
+                case GRAND_PRIX:      /* switch 1 */
+                    func_80022A98(gPlayerOne, 0);
+                    func_80022A98(gPlayerTwo, 1);
+                    func_80022A98(gPlayerThree, 2);
                     func_80022A98(gPlayerFour, 3);
-                }
+                    func_80022A98(gPlayerFive, 4);
+                    func_80022A98(gPlayerSix, 5);
+                    func_80022A98(gPlayerSeven, 6);
+                    func_80022A98(gPlayerEight, 7);
+                break;
+                case VERSUS:
+                case BATTLE:
+                    func_80022A98(gPlayerOne, 0);
+                    func_80022A98(gPlayerTwo, 1);
+                    func_80022A98(gPlayerThree, 2);
+                    if (gPlayerCountSelection1 == 4) {
+                        func_80022A98(gPlayerFour, 3);
+                    }
+                    break;
             }
-            break;
     }
 }
 
@@ -1356,17 +1372,9 @@ void render_kart(Player* player, s8 playerId, s8 screenId, s8 flipOffset) {
     }
     load_kart_palette(player, playerId, screenId, D_801651D0[screenId][playerId]);
     gPlayerPalette = &gPlayerPalettesList[D_801651D0[screenId][playerId]][screenId][playerId];
-    // When screenId >= 2 (in 3/4 player mode), adjust indices to fit gEncodedKartTexture[2][2][8] dimensions
-    if ((screenId == 0) || (screenId == 1)) {
-        load_kart_texture(player, playerId, screenId, screenId, D_801651D0[screenId][playerId]);
-    } else {
-        load_kart_texture(player, playerId - 4, screenId, screenId - 1, D_801651D0[screenId][playerId]);
-    }
-    if ((screenId == 0) || (screenId == 1)) {
-        sKartTexture = gEncodedKartTexture[D_801651D0[screenId][playerId]][screenId][playerId].unk_00;
-    } else {
-        sKartTexture = gEncodedKartTexture[D_801651D0[screenId][playerId]][screenId - 1][playerId - 4].unk_00;
-    }
+
+    load_kart_texture(player, playerId, screenId, screenId, D_801651D0[screenId][playerId]);
+    sKartTexture = gEncodedKartTexture[D_801651D0[screenId][playerId]][screenId][playerId].unk_00;
     mtxf_translate_rotate(mtx, sp154, sp14C);
     mtxf_scale(mtx, gCharacterSize[player->characterId] * player->size);
     convert_to_fixed_point_matrix(GetKartMatrix(playerId + (screenId * 8)), mtx);
@@ -1475,11 +1483,7 @@ void render_ghost(Player* player, s8 playerId, s8 screenId, s8 flipOffset) {
     gPlayerPalette =
         (struct_D_802F1F80*) &gPlayerPalettesList[D_801651D0[screenId][playerId]][screenId][playerId * 0x100];
 #endif
-    if ((screenId == 0) || (screenId == 1)) {
-        sKartTexture = gEncodedKartTexture[D_801651D0[screenId][playerId]][screenId][playerId].unk_00;
-    } else {
-        sKartTexture = gEncodedKartTexture[D_801651D0[screenId][playerId]][screenId - 1][playerId - 4].unk_00;
-    }
+    sKartTexture = gEncodedKartTexture[D_801651D0[screenId][playerId]][screenId][playerId].unk_00;
 
     mtxf_translate_rotate(mtx, spDC, spD4);
     mtxf_scale(mtx, gCharacterSize[player->characterId] * player->size);

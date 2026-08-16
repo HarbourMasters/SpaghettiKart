@@ -5394,7 +5394,7 @@ void func_8009CE64(s32 arg0) {
                 switch (gModeSelection) {
                     case 0:
                     case 1:
-                        gModeSelection = 2;
+                        gModeSelection = VERSUS;
                         break;
                 }
             }

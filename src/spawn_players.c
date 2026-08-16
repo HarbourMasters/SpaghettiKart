@@ -755,6 +755,83 @@ void spawn_players_2p_battle(f32* arg0, f32* arg1, f32 arg2) {
     func_80039AE4();
 }
 
+// Added function
+void spawn_players_gp_three_player(f32* arg0, f32* arg1, f32 arg2) {
+    func_80039DA4();
+    if ((GetCupCursorPosition() == TRACK_ONE) || (gDemoMode == 1) ||
+        (gDebugMenuSelection == DEBUG_MENU_OPTION_SELECTED)) {
+
+        // Players
+        s32 arr[] = {MARIO, LUIGI, YOSHI, TOAD, DK, WARIO, PEACH, BOWSER};
+
+        // Remove human players
+        for (size_t i = 0; i < NUM_PLAYERS; i++) {
+            for (size_t j = 0; j < gPlayerCountSelection1; j++) {
+                if (arr[i] == gCharacterSelections[j]) {
+                    arr[i] = -1;
+                    break;
+                 }
+            }
+        }
+
+        // Set remaining players into chooseCPUPlayers
+        size_t numCPU = 0;
+        for (size_t i = 0; i < NUM_PLAYERS; i++) {
+            if (arr[i] != -1) {
+                chooseCPUPlayers[numCPU] = arr[i];
+                numCPU++;
+            }
+        }
+
+        // Shuffle
+        for (size_t i = numCPU - 1; i > 0; i--) {
+            size_t j = random_int(i);
+            size_t tmp = chooseCPUPlayers[i];
+            chooseCPUPlayers[i] = chooseCPUPlayers[j];
+            chooseCPUPlayers[j] = tmp;
+        }
+    }
+
+    if (gPlayerCountSelection1 == 3) {
+        spawn_player(gPlayerFour, 3, arg0[D_80165270[3]], arg1[D_80165270[3]], arg2, 32768.0f, chooseCPUPlayers[0],
+                     PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerFive, 4, arg0[D_80165270[4]], arg1[D_80165270[4]], arg2, 32768.0f, chooseCPUPlayers[1],
+                     PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerSix, 5, arg0[D_80165270[5]], arg1[D_80165270[5]], arg2, 32768.0f, chooseCPUPlayers[2],
+                     PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerSeven, 6, arg0[D_80165270[6]], arg1[D_80165270[6]], arg2, 32768.0f, chooseCPUPlayers[3],
+                     PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerEight, 7, arg0[D_80165270[7]], arg1[D_80165270[7]], arg2, 32768.0f, chooseCPUPlayers[4],
+                     PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerOne, 0, arg0[D_80165270[0]], arg1[D_80165270[0]], arg2, 32768.0f, gCharacterSelections[0],
+                    PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        spawn_player(gPlayerTwo, 1, arg0[D_80165270[1]], arg1[D_80165270[1]], arg2, 32768.0f,
+                        gCharacterSelections[1], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        spawn_player(gPlayerThree, 2, arg0[D_80165270[2]], arg1[D_80165270[2]], arg2, 32768.0f, gCharacterSelections[2],
+                        PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+    } else { // 4 player
+        spawn_player(gPlayerFive, 4, arg0[D_80165270[4]], arg1[D_80165270[4]], arg2, 32768.0f, chooseCPUPlayers[0],
+                    PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerSix, 5, arg0[D_80165270[5]], arg1[D_80165270[5]], arg2, 32768.0f, chooseCPUPlayers[1],
+                    PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerSeven, 6, arg0[D_80165270[6]], arg1[D_80165270[6]], arg2, 32768.0f, chooseCPUPlayers[2],
+                    PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerEight, 7, arg0[D_80165270[7]], arg1[D_80165270[7]], arg2, 32768.0f, chooseCPUPlayers[3],
+                    PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerOne, 0, arg0[D_80165270[0]], arg1[D_80165270[0]], arg2, 32768.0f, gCharacterSelections[0],
+                     PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        spawn_player(gPlayerTwo, 1, arg0[D_80165270[1]], arg1[D_80165270[1]], arg2, 32768.0f, gCharacterSelections[1],
+                    PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        spawn_player(gPlayerThree, 2, arg0[D_80165270[2]], arg1[D_80165270[2]], arg2, 32768.0f,
+                        gCharacterSelections[2], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        spawn_player(gPlayerFour, 3, arg0[D_80165270[3]], arg1[D_80165270[3]], arg2, 32768.0f, gCharacterSelections[3],
+                        PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+    }
+
+    D_80164A28 = 0;
+    func_80039AE4();
+}
+
 void func_8003B318(f32* arg0, f32* arg1, f32 arg2) {
     spawn_player(gPlayerOne, 0, arg0[0], arg1[0], arg2, 32768.0f, gCharacterSelections[0],
                  PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
@@ -972,6 +1049,19 @@ void spawn_and_set_player_spawns(void) {
 
             case SCREEN_MODE_3P_4P_SPLITSCREEN:
                 switch (gModeSelection) {
+                    case GRAND_PRIX: // Added case to allow grand prix in 3/4 player split-screen
+                        D_80165210[0] = (D_80165210[2] = (D_80165210[4] = (D_80165210[6] = sp5E + 0x14)));
+                        D_80165210[1] = (D_80165210[3] = (D_80165210[5] = (D_80165210[7] = sp5E - 0x14)));
+                        D_80165230[0] = sp5C + 0x1E;
+                        D_80165230[1] = sp5C + 0x32;
+                        D_80165230[2] = sp5C + 0x46;
+                        D_80165230[3] = sp5C + 0x5A;
+                        D_80165230[4] = sp5C + 0x6E;
+                        D_80165230[5] = sp5C + 0x82;
+                        D_80165230[6] = sp5C + 0x96;
+                        D_80165230[7] = sp5C + 0xAA;
+                        spawn_players_gp_three_player(D_80165210, D_80165230, sp5A);
+                        break;
                     case VERSUS:
                         D_80165210[0] = sp5E + 0x1E;
                         D_80165210[6] = sp5E - 0xA;
@@ -1174,7 +1264,7 @@ void func_8003CD98(Player* player, Camera* camera, s8 playerId, s8 screenId) {
         } else {
             load_kart_palette(player, playerId, screenId, 0);
             load_kart_palette(player, playerId, screenId, 1);
-            load_kart_texture(player, (s8) (playerId + 4), screenId, (s8) (screenId - 2), 0);
+            load_kart_texture(player, (s8) (playerId), screenId, (s8) (screenId), 0);
 #ifdef TARGET_N64
             mio0decode((u8*) &gEncodedKartTexture[0][screenId - 2][playerId + 4],
                        (u8*) &D_802BFB80.arraySize8[0][screenId - 2][playerId + 4]);

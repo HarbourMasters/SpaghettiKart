@@ -264,6 +264,9 @@ void func_8028E678(void) {
                 case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
                     D_8015F894 = 6;
                     break;
+                case SCREEN_MODE_3P_4P_SPLITSCREEN:
+                    D_8015F894 = 5;
+                    break;
             }
             break;
         case 5:
@@ -983,6 +986,26 @@ void func_8028FCBC(void) {
                                     gPlayerWinningIndex = 1;
                                 } else {
                                     gPlayerWinningIndex = 0;
+                                }
+
+                                func_8028E298();
+                                D_802BA038 = 600;
+                                gRaceState = RACE_FINISHED;
+                            }
+                            break;
+                        case SCREEN_MODE_3P_4P_SPLITSCREEN:
+                            if (((gPlayerOne->type & PLAYER_CINEMATIC_MODE) != 0) &&
+                                ((gPlayerTwo->type & PLAYER_CINEMATIC_MODE) != 0) &&
+                                ((gPlayerThree->type & PLAYER_CINEMATIC_MODE) != 0) &&
+                                ((gPlayerFour->type & PLAYER_CINEMATIC_MODE) != 0)) {
+
+                                size_t bestRank = gPlayers[0].currentRank;
+                                gPlayerWinningIndex = 0;
+                                for (size_t i = 1; i < gPlayerCountSelection1; i++) {
+                                    if (gPlayers[i].currentRank < bestRank) {
+                                        bestRank = gPlayers[i].currentRank;
+                                        gPlayerWinningIndex = i;
+                                    }
                                 }
 
                                 func_8028E298();
