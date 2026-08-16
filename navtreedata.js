@@ -73,7 +73,7 @@ var NAVTREE =
     [ "Courses", "coursesmenu.html", "coursesmenu" ],
     [ "Custom Audio", "md_docs_2custom-audio.html", [
       [ "Example:", "md_docs_2custom-audio.html#example", null ],
-      [ "Future plans", "md_docs_2custom-audio.html#future-plans", null ]
+      [ "Future plans", "md_docs_2custom-audio.html#future-plans-1", null ]
     ] ],
     [ "faq", "md_docs_2faq.html", null ],
     [ "Migration: Beta to v1.0", "md_docs_2migrations.html", [
