@@ -123,7 +123,7 @@ static void ApplySignSeamFix() {
     if (vtx == NULL) {
         return;
     }
-    vtx[10].v.ob[0] = CVarGetInteger("gEnhancements.Fixes.LuigiRacewaySignSeam", 0) ? -223 : -222;
+    vtx[10].v.ob[0] = CVarGetInteger("gFixVisuals", 0) ? -223 : -222;
 }
 
 void LuigiRaceway::Load() {

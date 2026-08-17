@@ -377,10 +377,6 @@ void PortMenu::AddEnhancements() {
     AddWidget(path, "Disable Rubberbanding", WIDGET_CVAR_CHECKBOX)
         .CVar("gDisableRubberbanding")
         .Options(CheckboxOptions().Tooltip("Disable rubberbanding in the game."));
-    AddWidget(path, "Fix Luigi Raceway sign gap", WIDGET_CVAR_CHECKBOX)
-        .CVar("gEnhancements.Fixes.LuigiRacewaySignSeam")
-        .Options(CheckboxOptions().Tooltip(
-            "Closes the see-through gap in the 64 sign (takes effect after track reload)."));
     AddWidget(path, "Far Frustrum", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar("gFarFrustrum")
         .PreFunc([](WidgetInfo& info) { info.isHidden = !CVarGetInteger("gNoCulling", 0); })
@@ -411,7 +407,8 @@ void PortMenu::AddEnhancements() {
         .Options(CheckboxOptions().Tooltip("Press C-Left to look behind you"));
     AddWidget(path, "Fix Visuals", WIDGET_CVAR_CHECKBOX)
         .CVar("gFixVisuals")
-        .Options(CheckboxOptions().Tooltip("Fixes the second last lamp glow in Banshee Boardwalk"));
+        .Options(CheckboxOptions().Tooltip("Fixes minor visual bugs: the second last lamp glow in Banshee Boardwalk, "
+                                           "and the gap in the Luigi Raceway 64 sign (applies at track load)."));
 
     AddRulesets();
 
