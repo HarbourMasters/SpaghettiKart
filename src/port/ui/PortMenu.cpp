@@ -363,7 +363,8 @@ void PortMenu::AddEnhancements() {
     AddSidebarEntry("Enhancements", "General", 3);
     AddWidget(path, "No multiplayer feature cuts", WIDGET_CVAR_CHECKBOX)
         .CVar("gMultiplayerNoFeatureCuts")
-        .Options(CheckboxOptions().Tooltip("Allows full train and jumbotron in multiplayer, etc."));
+        .Options(CheckboxOptions().Tooltip(
+            "Allows full train and jumbotron in multiplayer, course music in 3P/4P modes, etc."));
     AddWidget(path, "Widescreen portrait spacing", WIDGET_CVAR_CHECKBOX)
         .CVar("gBetterResultPortraits")
         .Options(CheckboxOptions().Tooltip("Alters result portrait spacing for better aesthetics on widescreen"));

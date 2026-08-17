@@ -425,10 +425,11 @@ void func_8028EC38(s32 arg0) {
 
 void func_8028EC98(s32 arg0) {
 
-    // We want music in multiplayer, so this was removed
-    //if (gScreenModeSelection == SCREEN_MODE_3P_4P_SPLITSCREEN) {
-    //    return;
-    //}
+    // @port The original game skips course music in 3P/4P splitscreen; the
+    // "No multiplayer feature cuts" enhancement restores it.
+    if (!CVarGetInteger("gMultiplayerNoFeatureCuts", 0) && (gScreenModeSelection == SCREEN_MODE_3P_4P_SPLITSCREEN)) {
+        return;
+    }
 
     func_800029B0();
 
