@@ -9,6 +9,7 @@
 #include "align_asset_macro.h"
 #include "engine/objects/BombKart.h"
 #include "assets/models/tracks/luigi_raceway/luigi_raceway_data.h"
+#include "assets/models/tracks/luigi_raceway/luigi_raceway_vertices.h"
 #include "assets/other/tracks/luigi_raceway/luigi_raceway_data.h"
 #include "engine/objects/HotAirBalloon.h"
 #include "engine/actors/Finishline.h"
@@ -115,8 +116,19 @@ LuigiRaceway::LuigiRaceway() {
     Props.Sequence = MusicSeq::MUSIC_SEQ_LUIGI_RACEWAY;
 }
 
+// Two vertices of the 64 sign differ by one unit in X, splitting the triangle
+// ring that meets there and leaving an uncovered sliver. Snapping them closes it.
+static void ApplySignSeamFix() {
+    Vtx* vtx = (Vtx*) ResourceGetDataByName(d_course_luigi_raceway_vertex_0x0400B2C0);
+    if (vtx == NULL) {
+        return;
+    }
+    vtx[10].v.ob[0] = CVarGetInteger("gEnhancements.Fixes.LuigiRacewaySignSeam", 0) ? -223 : -222;
+}
+
 void LuigiRaceway::Load() {
     Track::Load();
+    ApplySignSeamFix();
     if (gIsMirrorMode != 0) {
         for (size_t i = 0; i < ARRAY_COUNT(luigi_raceway_dls); i++) {
             InvertTriangleWindingByName(luigi_raceway_dls[i]);

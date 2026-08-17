@@ -377,6 +377,10 @@ void PortMenu::AddEnhancements() {
     AddWidget(path, "Disable Rubberbanding", WIDGET_CVAR_CHECKBOX)
         .CVar("gDisableRubberbanding")
         .Options(CheckboxOptions().Tooltip("Disable rubberbanding in the game."));
+    AddWidget(path, "Fix Luigi Raceway sign gap", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.Fixes.LuigiRacewaySignSeam")
+        .Options(CheckboxOptions().Tooltip(
+            "Closes the see-through gap in the 64 sign (takes effect after track reload)."));
     AddWidget(path, "Far Frustrum", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar("gFarFrustrum")
         .PreFunc([](WidgetInfo& info) { info.isHidden = !CVarGetInteger("gNoCulling", 0); })
