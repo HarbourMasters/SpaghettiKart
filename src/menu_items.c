@@ -7665,6 +7665,17 @@ void func_800A2D1C(MenuItem* arg0) {
     }
 }
 
+// @port In splitscreen the viewports split at the center of the window, but the
+// vanilla 2D text coordinates assume a 4:3 screen, so on wider windows text drawn
+// over the side viewports drifts toward the middle (issue #285).
+static f32 get_left_half_center(void) {
+    return (OTRGetDimensionFromLeftEdge(0) + (SCREEN_WIDTH / 2)) / 2.0f;
+}
+
+static f32 get_right_half_center(void) {
+    return (OTRGetDimensionFromRightEdge(SCREEN_WIDTH) + (SCREEN_WIDTH / 2)) / 2.0f;
+}
+
 void func_800A2EB8(MenuItem* arg0) {
     s8 sp70[8];
     UNUSED s32 stackPadding0;
@@ -7672,16 +7683,31 @@ void func_800A2EB8(MenuItem* arg0) {
     s32 temp_s0;
     s32 var_a0;
     s32 var_s2;
+    s32 leftShift;
+    s32 rightShift;
+
+    // @port Keep each results column centered over its half of the window; this
+    // screen parks ranks 1-4 in the right half and ranks 5-8 in the left half.
+    // print_letter culls glyphs that start outside the vanilla 320 wide area,
+    // so clamp on very wide windows.
+    leftShift = get_left_half_center() - 80;
+    rightShift = get_right_half_center() - 240;
+    if (leftShift < -25) {
+        leftShift = -25;
+    }
+    if (rightShift > 32) {
+        rightShift = 32;
+    }
 
     for (var_s2 = 0; var_s2 < NUM_PLAYERS; var_s2++) {
         sp70[var_s2] = gPlayers[gGPCurrentRacePlayerIdByRank[var_s2]].characterId;
     }
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-    print_text_mode_1(arg0->column + 0x1E, arg0->row + 0x19, "results", 0, 1.0f, 1.0f);
+    print_text_mode_1(arg0->column + rightShift + 0x1E, arg0->row + 0x19, "results", 0, 1.0f, 1.0f);
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
-    print_text_mode_1(arg0->column + 0x2C, arg0->row + 0x28, "round", 0, 0.7f, 0.7f);
+    print_text_mode_1(arg0->column + rightShift + 0x2C, arg0->row + 0x28, "round", 0, 0.7f, 0.7f);
     convert_number_to_ascii(GetCupCursorPosition() + 1, sp68);
-    print_text_mode_1(arg0->column + 0x57, arg0->row + 0x28, &sp68[1], 0, 0.7f, 0.7f);
+    print_text_mode_1(arg0->column + rightShift + 0x57, arg0->row + 0x28, &sp68[1], 0, 0.7f, 0.7f);
     for (var_s2 = 0; var_s2 < 4; var_s2++) {
         if (gGPCurrentRacePlayerIdByRank[var_s2] < gPlayerCount) {
             var_a0 = (s32) gGlobalTimer % 3;
@@ -7689,7 +7715,7 @@ void func_800A2EB8(MenuItem* arg0) {
             var_a0 = TEXT_YELLOW;
         }
         set_text_color(var_a0);
-        func_800A32B4(arg0->column + 7, arg0->row + (0x10 * var_s2) + 0x38, (s32) sp70[var_s2], var_s2);
+        func_800A32B4(arg0->column + rightShift + 7, arg0->row + (0x10 * var_s2) + 0x38, (s32) sp70[var_s2], var_s2);
     }
     for (var_s2 = 4; var_s2 < 8; var_s2++) {
         if (gGPCurrentRacePlayerIdByRank[var_s2] < gPlayerCount) {
@@ -7698,16 +7724,17 @@ void func_800A2EB8(MenuItem* arg0) {
             var_a0 = TEXT_YELLOW;
         }
         set_text_color(var_a0);
-        func_800A32B4(0xBE - arg0->column, arg0->row + (0x10 * var_s2) + 0x5A, sp70[var_s2], var_s2);
+        func_800A32B4((0xBE + leftShift) - arg0->column, arg0->row + (0x10 * var_s2) + 0x5A, sp70[var_s2], var_s2);
     }
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
     temp_s0 = (s32) (((f32) (get_string_width(GetCupName()) + 8) * 0.6f) /
                      2); //  gCupNames[GetCupIndex()]) + 8) * 0.6f) / 2);
     print_text1_center_mode_1(
-        (-(s32) (((f32) (get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xF5,
+        (-(s32) (((f32) (get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + leftShift +
+            0xF5,
         arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.6f, 0.6f);
     print_text1_center_mode_1(
-        (temp_s0 - arg0->column) + 0xF5, arg0->row + 0xE1,
+        (temp_s0 - arg0->column) + leftShift + 0xF5, arg0->row + 0xE1,
         D_800E76CC[gGameModeSubMenuColumn[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]], 0, 0.6f, 0.6f);
 }
 
@@ -7748,6 +7775,20 @@ void func_800A34A8(MenuItem* arg0) {
     s32 temp_s0_3;
     s32 rank;
     s32 test;
+    s32 leftShift;
+    s32 rightShift;
+
+    // @port Keep each tally column centered over its half of the window; the
+    // vanilla columns center them on a 4:3 screen. print_letter culls glyphs
+    // that start outside the vanilla 320 wide area, so clamp on very wide windows.
+    leftShift = get_left_half_center() - 80;
+    rightShift = get_right_half_center() - 240;
+    if (leftShift < -25) {
+        leftShift = -25;
+    }
+    if (rightShift > 24) {
+        rightShift = 24;
+    }
 
     if (arg0->state != 0) {
         if (arg0->state < 9) {
@@ -7759,11 +7800,11 @@ void func_800A34A8(MenuItem* arg0) {
             func_800A3A10(gCharacterIdByGPOverallRank);
         }
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-        print_text_mode_1(arg0->column + 0x19, 0x19 - arg0->row, "driver's points", 0, 0.8f, 0.8f);
+        print_text_mode_1(arg0->column + leftShift + 0x19, 0x19 - arg0->row, "driver's points", 0, 0.8f, 0.8f);
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
-        print_text_mode_1(arg0->column + 0x36, 0x28 - arg0->row, "round", 0, 0.7f, 0.7f);
+        print_text_mode_1(arg0->column + leftShift + 0x36, 0x28 - arg0->row, "round", 0, 0.7f, 0.7f);
         convert_number_to_ascii(GetCupCursorPosition() + 1, sp78);
-        print_text_mode_1(arg0->column + 0x61, (0x28 & 0xFFFFFFFF) - arg0->row, &sp78[1], 0, 0.7f, 0.7f);
+        print_text_mode_1(arg0->column + leftShift + 0x61, (0x28 & 0xFFFFFFFF) - arg0->row, &sp78[1], 0, 0.7f, 0.7f);
         for (rank = 0; rank < 4; rank++) {
             test = arg0->state;
             if ((test != 8) && (test != 9)) {
@@ -7789,8 +7830,8 @@ void func_800A34A8(MenuItem* arg0) {
                     var_a0 = 3;
                 }
                 set_text_color(var_a0);
-                func_800A3ADC(arg0, arg0->column + var_v1 + 0x1C, ((rank * 0x10) - arg0->row) + 0x38, sp80[rank], rank,
-                              sp80);
+                func_800A3ADC(arg0, arg0->column + var_v1 + leftShift + 0x1C, ((rank * 0x10) - arg0->row) + 0x38,
+                              sp80[rank], rank, sp80);
             }
         }
         for (rank = 4; rank < NUM_PLAYERS; rank++) {
@@ -7816,16 +7857,17 @@ void func_800A34A8(MenuItem* arg0) {
                     var_a0 = 3;
                 }
                 set_text_color(var_a0);
-                func_800A3ADC(arg0, 0xBE - arg0->column, arg0->row + (rank * 0x10) + 0x5A, sp80[rank], rank, sp80);
+                func_800A3ADC(arg0, (0xBE + rightShift) - arg0->column, arg0->row + (rank * 0x10) + 0x5A, sp80[rank],
+                              rank, sp80);
             }
         }
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
         temp_s0_3 = ((get_string_width(gCupNames[GetCupIndex()]) + 8) * 0.6f) / 2;
         print_text1_center_mode_1(
-            (-(s32) (((get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xE6,
+            (-(s32) (((get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + rightShift + 0xE6,
             arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.6f, 0.6f);
         print_text1_center_mode_1(
-            (temp_s0_3 - arg0->column) + 0xE6, arg0->row + 0xE1,
+            (temp_s0_3 - arg0->column) + rightShift + 0xE6, arg0->row + 0xE1,
             D_800E76CC[gGameModeSubMenuColumn[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]], 0, 0.6f, 0.6f);
     }
 }
@@ -8273,9 +8315,9 @@ static s32 get_pause_menu_column(s32 column) {
 
     screen = &gScreenContexts[gIsGamePaused - 1];
     if ((screen->player == gPlayerOne) || (screen->player == gPlayerThree)) {
-        halfCenter = (OTRGetDimensionFromLeftEdge(0) + (SCREEN_WIDTH / 2)) / 2.0f;
+        halfCenter = get_left_half_center();
     } else {
-        halfCenter = (OTRGetDimensionFromRightEdge(SCREEN_WIDTH) + (SCREEN_WIDTH / 2)) / 2.0f;
+        halfCenter = get_right_half_center();
     }
 
     // The menu items are left-aligned, so center the widest one.
