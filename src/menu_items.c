@@ -8259,6 +8259,43 @@ void render_pause_menu_time_trials(MenuItem* arg0) {
     }
 }
 
+// @port Center the pause menu text within the pausing player's half of the window in
+// 3/4 player splitscreen. The vanilla columns assume a 4:3 quadrant, so on wider
+// windows the text drifts toward the middle of the screen.
+static s32 get_pause_menu_column(s32 column) {
+    ScreenContext* screen;
+    f32 halfCenter;
+    s32 textWidth;
+
+    if (gScreenModeSelection != SCREEN_MODE_3P_4P_SPLITSCREEN) {
+        return column;
+    }
+
+    screen = &gScreenContexts[gIsGamePaused - 1];
+    if ((screen->player == gPlayerOne) || (screen->player == gPlayerThree)) {
+        halfCenter = (OTRGetDimensionFromLeftEdge(0) + (SCREEN_WIDTH / 2)) / 2.0f;
+    } else {
+        halfCenter = (OTRGetDimensionFromRightEdge(SCREEN_WIDTH) + (SCREEN_WIDTH / 2)) / 2.0f;
+    }
+
+    // The menu items are left-aligned, so center the widest one.
+    textWidth = MAX(get_string_width(gTextPauseButton[CONTINUE_GAME]),
+                    MAX(get_string_width(gTextPauseButton[COURSE_CHANGE]),
+                        get_string_width(gTextPauseButton[DRIVER_CHANGE])));
+    textWidth = textWidth * 0.75f;
+
+    column = halfCenter - (textWidth / 2);
+    // print_letter culls glyphs that fall entirely outside the vanilla 320 wide
+    // area, so keep the text inside it on very wide windows.
+    if (column < 2) {
+        column = 2;
+    }
+    if (column > (SCREEN_WIDTH - 2) - textWidth) {
+        column = (SCREEN_WIDTH - 2) - textWidth;
+    }
+    return column;
+}
+
 void render_pause_menu_versus(MenuItem* arg0) {
     s16 temp_t0;
     s16 temp_v1;
@@ -8268,6 +8305,7 @@ void render_pause_menu_versus(MenuItem* arg0) {
     s32 var_s1;
     s32 leftEdge;
     s32 rightEdge;
+    s32 column;
     Unk_D_800E70A0* temp_s3;
     ScreenContext* temp_v0;
 
@@ -8313,6 +8351,7 @@ void render_pause_menu_versus(MenuItem* arg0) {
     }
 
     temp_s3 = &D_800E8540[(gScreenModeSelection * 4) + (gIsGamePaused - 1)];
+    column = get_pause_menu_column(temp_s3->column);
     for (var_s0 = 0; var_s0 < 4; var_s0++) {
         if (var_s0 > 0) {
             var_s1 = var_s0 + 1;
@@ -8320,7 +8359,7 @@ void render_pause_menu_versus(MenuItem* arg0) {
             var_s1 = var_s0;
         }
         text_rainbow_effect(arg0->state - 0x15, var_s0, TEXT_YELLOW);
-        print_text_mode_1(temp_s3->column - 2, temp_s3->row + (13 * var_s0), gTextPauseButton[var_s1], 0, 0.75f, 0.75f);
+        print_text_mode_1(column - 2, temp_s3->row + (13 * var_s0), gTextPauseButton[var_s1], 0, 0.75f, 0.75f);
     }
 }
 
@@ -8386,6 +8425,7 @@ void render_pause_battle(MenuItem* arg0) {
     s32 var_s1;
     s32 leftEdge;
     s32 rightEdge;
+    s32 column;
     Unk_D_800E70A0* temp_s3;
 
     temp_v0 = &gScreenContexts[gIsGamePaused - 1];
@@ -8430,6 +8470,7 @@ void render_pause_battle(MenuItem* arg0) {
     }
 
     temp_s3 = &D_800E8600[(gScreenModeSelection * 4) + (gIsGamePaused - 1)];
+    column = get_pause_menu_column(temp_s3->column);
     for (var_a1 = 0; var_a1 < 4; var_a1++) {
         if (var_a1 > 0) {
             var_s1 = var_a1 + 1;
@@ -8437,7 +8478,7 @@ void render_pause_battle(MenuItem* arg0) {
             var_s1 = var_a1;
         }
         text_rainbow_effect(arg0->state - 41, var_a1, TEXT_YELLOW);
-        print_text_mode_1(temp_s3->column - 2, temp_s3->row + 13 * var_a1, gTextPauseButton[var_s1], 0, 0.75f, 0.75f);
+        print_text_mode_1(column - 2, temp_s3->row + 13 * var_a1, gTextPauseButton[var_s1], 0, 0.75f, 0.75f);
     }
 }
 
@@ -8479,7 +8520,7 @@ void func_800A54EC(void) {
             break;
     }
     whyTheSequel = D_800F0B50[why];
-    sp50.column = var_v1->column - 8;
+    sp50.column = get_pause_menu_column(var_v1->column) - 8;
     sp50.row = (var_v1->row + ((sp48->state - whyTheSequel) * 0xD)) - 8;
     pause_menu_item_box_cursor(sp48, &sp50);
 }
