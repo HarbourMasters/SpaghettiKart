@@ -425,10 +425,11 @@ void func_8028EC38(s32 arg0) {
 
 void func_8028EC98(s32 arg0) {
 
-    // We want music in multiplayer, so this was removed
-    //if (gScreenModeSelection == SCREEN_MODE_3P_4P_SPLITSCREEN) {
-    //    return;
-    //}
+    // @port The original game skips course music in 3P/4P splitscreen; the
+    // "No multiplayer feature cuts" enhancement restores it.
+    if (!CVarGetInteger("gMultiplayerNoFeatureCuts", 0) && (gScreenModeSelection == SCREEN_MODE_3P_4P_SPLITSCREEN)) {
+        return;
+    }
 
     func_800029B0();
 
@@ -1060,6 +1061,8 @@ void func_80290338(void) {
     gQuitToMenuTransitionCounter = 5;
     gGotoMode = MAIN_MENU_FROM_QUIT;
     gTourComplete = false;
+    // @port Fade the music players out; the original relied on the audio session reset for this
+    func_800CA330(0x19);
 }
 
 // Driver Change
@@ -1068,6 +1071,7 @@ void func_80290360(void) {
     gQuitToMenuTransitionCounter = 5;
     gGotoMode = PLAYER_SELECT_MENU_FROM_QUIT;
     gTourComplete = false;
+    func_800CA330(0x19);
 }
 
 // Course Change
@@ -1076,6 +1080,7 @@ void func_80290388(void) {
     gQuitToMenuTransitionCounter = 5;
     gGotoMode = COURSE_SELECT_MENU_FROM_QUIT;
     gTourComplete = false;
+    func_800CA330(0x19);
 }
 
 // Retry
@@ -1084,6 +1089,7 @@ void func_802903B0(void) {
     gQuitToMenuTransitionCounter = 5;
     gGotoMode = RACING;
     gTourComplete = false;
+    func_800CA330(0x19);
     // Stop when retrying
     if(HMAS_IsPlaying(HMAS_MUSIC)) {
         HMAS_Stop(HMAS_MUSIC);
