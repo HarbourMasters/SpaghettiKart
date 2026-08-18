@@ -407,7 +407,8 @@ void PortMenu::AddEnhancements() {
         .Options(CheckboxOptions().Tooltip("Press C-Left to look behind you"));
     AddWidget(path, "Fix Visuals", WIDGET_CVAR_CHECKBOX)
         .CVar("gFixVisuals")
-        .Options(CheckboxOptions().Tooltip("Fixes the second last lamp glow in Banshee Boardwalk"));
+        .Options(CheckboxOptions().Tooltip(
+            "Fixes the second last lamp glow in Banshee Boardwalk, and true text centering within quadrants"));
 
     AddRulesets();
 

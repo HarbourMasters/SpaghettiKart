@@ -7686,12 +7686,20 @@ void func_800A2EB8(MenuItem* arg0) {
     s32 leftShift;
     s32 rightShift;
 
-    // @port Keep each results column centered over its half of the window; this
-    // screen parks ranks 1-4 in the right half and ranks 5-8 in the left half.
-    // print_letter culls glyphs that start outside the vanilla 320 wide area,
-    // so clamp on very wide windows.
-    leftShift = get_left_half_center() - 80;
-    rightShift = get_right_half_center() - 240;
+    // @port Keep each results column over its half of the window; this screen
+    // parks ranks 1-4 in the right half and ranks 5-8 in the left half. The
+    // baseline keeps vanilla's anchors (a 4:3 window renders unchanged); Fix
+    // Visuals centers the rank rows truly on their halves (vanilla parks them
+    // on x=225 and x=88, slightly toward the middle). print_letter culls
+    // glyphs that start outside the vanilla 320 wide area, so clamp on very
+    // wide windows.
+    if (CVarGetInteger("gFixVisuals", 0) == true) {
+        leftShift = get_left_half_center() - 88;
+        rightShift = get_right_half_center() - 225;
+    } else {
+        leftShift = get_left_half_center() - 80;
+        rightShift = get_right_half_center() - 240;
+    }
     if (leftShift < -25) {
         leftShift = -25;
     }
@@ -7778,11 +7786,18 @@ void func_800A34A8(MenuItem* arg0) {
     s32 leftShift;
     s32 rightShift;
 
-    // @port Keep each tally column centered over its half of the window; the
-    // vanilla columns center them on a 4:3 screen. print_letter culls glyphs
-    // that start outside the vanilla 320 wide area, so clamp on very wide windows.
-    leftShift = get_left_half_center() - 80;
-    rightShift = get_right_half_center() - 240;
+    // @port Keep each tally column over its half of the window. The baseline
+    // keeps vanilla's anchors (a 4:3 window renders unchanged); Fix Visuals
+    // centers the rows truly on their halves (vanilla parks them on x=86 and
+    // x=248, slightly toward the middle). print_letter culls glyphs that
+    // start outside the vanilla 320 wide area, so clamp on very wide windows.
+    if (CVarGetInteger("gFixVisuals", 0) == true) {
+        leftShift = get_left_half_center() - 82;
+        rightShift = get_right_half_center() - 231;
+    } else {
+        leftShift = get_left_half_center() - 80;
+        rightShift = get_right_half_center() - 240;
+    }
     if (leftShift < -25) {
         leftShift = -25;
     }
@@ -8729,18 +8744,40 @@ void render_menu_item_end_course_option(MenuItem* arg0) {
 }
 
 void func_800A6034(MenuItem* arg0) {
-    char* text;
+    char* cupText;
+    char* courseText;
+    s32 rightShift;
+    s32 maxShift;
+    s32 cupHalf;
+    s32 courseHalf;
 
     if (D_801657E8 != true) {
+        // @port Follow the fourth viewport's black panel, which stretches to the
+        // window edge. The baseline keeps vanilla's anchor (a 4:3 window renders
+        // unchanged); Fix Visuals centers the text truly on the panel (vanilla
+        // parks it on x = 160 + 0x41 = 225, slightly left of center).
+        // print_letter culls glyphs that start past the vanilla 320 area, so
+        // back off just enough to keep the wider line intact.
+        cupText = gCupNames[D_800DC540];
+        courseText = CM_GetProps()->Name;
+        if (CVarGetInteger("gFixVisuals", 0) == true) {
+            rightShift = get_right_half_center() - (160 + 0x41);
+        } else {
+            rightShift = get_right_half_center() - 240;
+        }
+        cupHalf = (s32) (get_string_width(cupText) * 0.85f) / 2;
+        courseHalf = (s32) (get_string_width(courseText) * 0.65f) / 2;
+        maxShift = (SCREEN_WIDTH - 2) - (cupHalf > courseHalf ? cupHalf : courseHalf) - (160 + 0x41);
+        if (rightShift > maxShift) {
+            rightShift = maxShift;
+        }
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, arg0->param1);
-        text = gCupNames[D_800DC540];
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
-        print_text1_center_mode_2(arg0->column + 0x41, arg0->row + 0xA0, text, 0, 0.85f, 1.0f);
-        text = CM_GetProps()->Name;
+        print_text1_center_mode_2(arg0->column + rightShift + 0x41, arg0->row + 0xA0, cupText, 0, 0.85f, 1.0f);
         //! @warning this used to be gCurrentCourseId % 4
         // Hopefully this is equivallent.
         set_text_color((s32) TrackBrowser_GetTrackIndex() % 4);
-        print_text1_center_mode_2(arg0->column + 0x41, arg0->row + 0xC3, text, 0, 0.65f, 0.85f);
+        print_text1_center_mode_2(arg0->column + rightShift + 0x41, arg0->row + 0xC3, courseText, 0, 0.65f, 0.85f);
     }
 }
 
