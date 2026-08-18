@@ -493,26 +493,35 @@ void GameEngine::HandleAudioThread() {
         }
         std::unique_lock<std::mutex> Lock(audio.mutex);
 
-        int samples_left = AudioPlayerBuffered();
-        u32 num_audio_samples = samples_left < AudioPlayerGetDesiredBuffered() ? SAMPLES_HIGH : SAMPLES_LOW;
+        // Top the player buffer back up with at most three batches per tick so
+        // a game tick rate below 30 cannot starve the speakers; the N64 ran its
+        // audio thread at vblank rate, independent of the game thread's rate.
+        for (int batch = 0; batch < 3; batch++) {
+            int samples_left = AudioPlayerBuffered();
+            u32 num_audio_samples = samples_left < AudioPlayerGetDesiredBuffered() ? SAMPLES_HIGH : SAMPLES_LOW;
 
-        s16 nas_buffer[SAMPLES_PER_FRAME] = { 0 };
-        f32 hmas_buffer[SAMPLES_PER_FRAME] = { 0 };
-        s16 mix_buffer[SAMPLES_PER_FRAME] = { 0 };
+            s16 nas_buffer[SAMPLES_PER_FRAME] = { 0 };
+            f32 hmas_buffer[SAMPLES_PER_FRAME] = { 0 };
+            s16 mix_buffer[SAMPLES_PER_FRAME] = { 0 };
 
-        for (size_t i = 0; i < NUM_AUDIO_CHANNELS; i++) {
-            create_next_audio_buffer(nas_buffer + i * (num_audio_samples * 2), num_audio_samples);
+            for (size_t i = 0; i < NUM_AUDIO_CHANNELS; i++) {
+                create_next_audio_buffer(nas_buffer + i * (num_audio_samples * 2), num_audio_samples);
+            }
+
+            GameEngine::Instance->gHMAS->CreateBuffer((u8*)hmas_buffer, 4 * num_audio_samples * sizeof(float));
+
+            float master_vol = CVarGetFloat("gGameMasterVolume", 1.0f);
+
+            for (size_t i = 0; i < SAMPLES_PER_FRAME; i++) {
+                mix_buffer[i] = nas_buffer[i] + ((int16_t)(hmas_buffer[i] * 32767.0f) * master_vol);
+            }
+
+            AudioPlayerPlayFrame((u8*) mix_buffer, 2 * num_audio_samples * 4);
+
+            if (AudioPlayerBuffered() >= AudioPlayerGetDesiredBuffered()) {
+                break;
+            }
         }
-
-        GameEngine::Instance->gHMAS->CreateBuffer((u8*)hmas_buffer, 4 * num_audio_samples * sizeof(float));
-
-        float master_vol = CVarGetFloat("gGameMasterVolume", 1.0f);
-
-        for (size_t i = 0; i < SAMPLES_PER_FRAME; i++) {
-            mix_buffer[i] = nas_buffer[i] + ((int16_t)(hmas_buffer[i] * 32767.0f) * master_vol);
-        }
-
-        AudioPlayerPlayFrame((u8*) mix_buffer, 2 * num_audio_samples * 4);
 
         audio.processing = false;
         audio.cv_from_thread.notify_one();
