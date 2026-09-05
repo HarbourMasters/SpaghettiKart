@@ -192,7 +192,11 @@ void GameExtractor::ScanForRoms(const std::string& directory, std::vector<std::s
     }
 #else
     std::error_code ec;
-    for (const auto& file : std::filesystem::directory_iterator(directory, ec)) {
+    std::filesystem::directory_iterator entries(directory, ec);
+    if (ec) {
+        return;
+    }
+    for (const auto& file : entries) {
         if (file.is_directory())
             continue;
         if (file.path().extension() == ".z64") {
