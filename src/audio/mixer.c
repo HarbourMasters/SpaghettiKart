@@ -1,5 +1,4 @@
 #include <stdbool.h>
-#include <macros.h>
 #include <stdint.h>
 #include <string.h>
 #include <stdio.h>
@@ -7,6 +6,12 @@
 #include <align_asset_macro.h>
 
 #include "mixer.h"
+
+// The Impl signatures mirror the RSP command layout, so unused parameters are expected here;
+// suppress the warning once for the file instead of tagging every signature.
+#if defined(__GNUC__) || defined(__clang__)
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
 
 #ifndef __clang__
 #pragma GCC optimize("unroll-loops")
@@ -159,7 +164,7 @@ void aLoadADPCMImpl(int num_entries_times_16, const int16_t* book_source_addr) {
     memcpy(rspa.adpcm_table, book_source_addr, num_entries_times_16);
 }
 
-void aSetBufferImpl(uint16_t in, uint16_t out, uint16_t nbytes) {
+void aSetBufferImpl(uint8_t flags, uint16_t in, uint16_t out, uint16_t nbytes) {
     rspa.in = in;
     rspa.out = out;
     rspa.nbytes = nbytes;
@@ -578,7 +583,7 @@ void aResampleImpl(uint8_t flags, uint16_t pitch, RESAMPLE_STATE state) {
 
 #endif
 
-void aEnvSetup1Impl(uint8_t initial_vol_wet, uint16_t rate_left, uint16_t rate_right) {
+void aEnvSetup1Impl(uint8_t initial_vol_wet, uint16_t rate_wet, uint16_t rate_left, uint16_t rate_right) {
     rspa.vol_wet = (uint16_t) (initial_vol_wet << 8);
     rspa.rate_wet = 0;
     rspa.rate[0] = rate_left;
@@ -1031,7 +1036,7 @@ void aHiLoGainImpl(uint8_t g, uint16_t count, uint16_t addr) {
     } while (nbytes > 0);
 }
 
-void aUnkCmd3Impl(void) {
+void aUnkCmd3Impl(uint16_t a, uint16_t b, uint16_t c) {
 }
 
 void aUnkCmd19Impl(uint8_t f, uint16_t count, uint16_t out_addr, uint16_t in_addr) {
