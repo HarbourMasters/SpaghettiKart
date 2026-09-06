@@ -353,8 +353,12 @@ void credits_spawn_actors(void) {
     gNextFreeMemoryAddress += 0x9000;
     destroy_all_actors();
     CM_CleanWorld();
-    CM_CreditsSpawnActors();
+    // init_hud() clears gObjectList, so it has to run before BeginPlay hands out
+    // object slots (same order as setup_race). BeginPlay also clears the actor
+    // list, so the credits-only actors are spawned after it.
+    init_hud();
     CM_BeginPlay();
+    CM_CreditsSpawnActors();
 
     gNumPermanentActors = gNumActors;
 }
