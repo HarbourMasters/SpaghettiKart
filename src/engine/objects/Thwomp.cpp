@@ -710,9 +710,7 @@ void OThwomp::Draw(s32 cameraId) {
     minusone = gObjectList[objectIndex].unk_0DF - 1;
     plusone = gObjectList[objectIndex].unk_0DF + 1;
 
-    if (gGamestate != CREDITS_SEQUENCE) {
-        OThwomp::DrawModel(cameraId, objectIndex);
-    }
+    OThwomp::DrawModel(cameraId, objectIndex);
 
     gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D0079C8);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);

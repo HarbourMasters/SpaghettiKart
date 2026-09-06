@@ -134,13 +134,12 @@ void YoshiValley::BeginPlay() {
     position[0] *= gTrackDirection;
     add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
 
-    if (gGamestate != CREDITS_SEQUENCE) {
-        //! @bug Skip spawning in credits due to animation crash for now
-        SpawnActor<OFlagpole>(FVector(-902, 70, -1406), 0x3800);
-        SpawnActor<OFlagpole>(FVector(-948, 70, -1533), 0x3800);
-        SpawnActor<OFlagpole>(FVector(-2170, 0, 723), 0x400);
-        SpawnActor<OFlagpole>(FVector(-2193, 0, 761), 0x400);
+    SpawnActor<OFlagpole>(FVector(-902, 70, -1406), 0x3800);
+    SpawnActor<OFlagpole>(FVector(-948, 70, -1533), 0x3800);
+    SpawnActor<OFlagpole>(FVector(-2170, 0, 723), 0x400);
+    SpawnActor<OFlagpole>(FVector(-2193, 0, 761), 0x400);
 
+    if (gGamestate != CREDITS_SEQUENCE) {
         SpawnActor<OHedgehog>(FVector(-1683, -80, -88), FVector2D(-1650, -114), 9);
         SpawnActor<OHedgehog>(FVector(-1636, -93, -147), FVector2D(-1661, -151), 9);
         SpawnActor<OHedgehog>(FVector(-1628, -86, -108), FVector2D(-1666, -58), 9);
