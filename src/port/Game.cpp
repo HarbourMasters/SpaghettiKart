@@ -469,6 +469,11 @@ Camera* CM_AddTourCamera(Vec3f spawn, s16 rot, u32 mode) {
     return tour->Get();
 }
 
+bool CM_IsTrackMod() {
+    auto track = GetWorld()->GetTrack();
+    return (track != nullptr) && track->IsMod();
+}
+
 bool CM_IsTourEnabled() {
     if (nullptr != GetWorld()->GetTrack()) {
         if ((GetWorld()->GetTrack()->bTourEnabled) && (gTourComplete == false)) {

@@ -1445,7 +1445,10 @@ s32 are_players_in_course_section(s16 arg0, s16 arg1) {
     s16* var_v0;
     s32 i;
 
-    return 1; //! @todo This is the easiest solution otherwise actors would not collide on custom courses.
+    // Custom tracks have no sections, so every player counts as in range there.
+    if (CM_IsTrackMod()) {
+        return 1;
+    }
 
     var_v1 = 0;
     for (i = 0; i < gPlayerCountSelection1; i++) {
