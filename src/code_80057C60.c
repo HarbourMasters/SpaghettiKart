@@ -1226,6 +1226,7 @@ void func_8005A070(void) {
         } else if (gGamestate == CREDITS_SEQUENCE) {
             func_80059820(PLAYER_ONE);
             func_80078C70();
+            tick_objects();
             CM_TickObjects();
             CM_TickParticles();
         } else { // normal gameplay
