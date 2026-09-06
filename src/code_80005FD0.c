@@ -118,7 +118,6 @@ u16 D_8016334C[8]; // Increased from 2 to 8 to prevent array overflow.
 u16 gSpeedCPUBehaviour[12];
 s32 D_80163368[4];
 s32 gIncrementUpdatePlayer;
-s32 D_8016337C;
 s16 gCurrentPlayerLookAhead[12];
 s16 D_80163398[12];
 s16 D_801633B0[12];
@@ -1556,7 +1555,7 @@ void update_player_path_completion(s32 playerId, Player* player) {
 void update_vehicles(void) {
     UNUSED s32 i;
     generate_player_smoke();
-    D_8016337C++;
+    // D_8016337C++;
 
     // CM_TickBombKarts();
     // CM_VehiclesTick();
@@ -2978,62 +2977,6 @@ s16 update_vehicle_following_path(Vec3f pos, s16* waypointIndex, f32 speed) {
     return get_angle_between_path(sp38, pos);
 }
 
-void set_bomb_kart_spawn_positions(void) {
-    UNUSED struct Collision* var_s2;
-    f32 startingXPos;
-    f32 startingZPos;
-    f32 startingYPos;
-    s32 var_s3;
-    TrackPathPoint* temp_v0;
-    UNUSED BombKart* var_s0;
-    BombKartSpawn* bombKartSpawn;
-
-    for (var_s3 = 0; var_s3 < NUM_BOMB_KARTS_VERSUS; var_s3++) {
-        bombKartSpawn = NULL;
-        // bombKartSpawn = &gBombKartSpawns[gCurrentCourseId][var_s3];
-        if (IsYoshiValley()) {
-            startingXPos = bombKartSpawn->startingXPos;
-            startingZPos = bombKartSpawn->startingZPos;
-            startingYPos = spawn_actor_on_surface(startingXPos, 2000.0f, startingZPos);
-        } else if (IsPodiumCeremony()) {
-            temp_v0 = &gTrackPaths[3][bombKartSpawn->waypointIndex];
-            startingXPos = temp_v0->x;
-            startingYPos = temp_v0->y;
-            startingZPos = temp_v0->z;
-        } else {
-            temp_v0 = &gTrackPaths[0][bombKartSpawn->waypointIndex];
-            startingXPos = temp_v0->x;
-            startingYPos = temp_v0->y;
-            startingZPos = temp_v0->z;
-        }
-
-        gBombKarts[var_s3].bombPos[0] = startingXPos;
-        gBombKarts[var_s3].bombPos[1] = startingYPos;
-        gBombKarts[var_s3].bombPos[2] = startingZPos;
-        gBombKarts[var_s3].wheel1Pos[0] = startingXPos;
-        gBombKarts[var_s3].wheel1Pos[1] = startingYPos;
-        gBombKarts[var_s3].wheel1Pos[2] = startingZPos;
-        gBombKarts[var_s3].wheel2Pos[0] = startingXPos;
-        gBombKarts[var_s3].wheel2Pos[1] = startingYPos;
-        gBombKarts[var_s3].wheel2Pos[2] = startingZPos;
-        gBombKarts[var_s3].wheel3Pos[0] = startingXPos;
-        gBombKarts[var_s3].wheel3Pos[1] = startingYPos;
-        gBombKarts[var_s3].wheel3Pos[2] = startingZPos;
-        gBombKarts[var_s3].wheel4Pos[0] = startingXPos;
-        gBombKarts[var_s3].wheel4Pos[1] = startingYPos;
-        gBombKarts[var_s3].wheel4Pos[2] = startingZPos;
-        gBombKarts[var_s3].waypointIndex = bombKartSpawn->waypointIndex;
-        gBombKarts[var_s3].unk_3C = bombKartSpawn->unk_04;
-        gBombKarts[var_s3].bounceTimer = 0;
-        gBombKarts[var_s3].circleTimer = 0;
-        gBombKarts[var_s3].state = bombKartSpawn->startingState;
-        gBombKarts[var_s3].unk_4A = 0;
-        gBombKarts[var_s3].unk_4C = 1;
-        gBombKarts[var_s3].yPos = startingYPos;
-        check_bounding_collision(&gBombKartCollision[var_s3], 2.0f, startingXPos, startingYPos, startingZPos);
-    }
-}
-
 void func_8000DF8C(s32 bombKartId) {
     UNUSED s32 stackPadding0;
     f32 sp118;
@@ -3521,8 +3464,8 @@ void init_course_path_point(void) {
         if (D_80163368[i] >= 2) {
             load_track_path(i);
             calculate_track_boundaries(i);
-            analyze_track_section(i);
-            analyse_angle_path(i);
+            analyze_track_sections(i);
+            analyze_path_angle(i);
             analyze_curved_path(i);
         }
     }
@@ -3679,7 +3622,7 @@ void init_players(void) {
     D_8016435C = 1;
     gBestRankedHumanPlayer = 0;
     gIncrementUpdatePlayer = 0;
-    D_8016337C = 0;
+    gTickCounter = 0; // Originally D_8016337C = 0;
     gPathStartZ = (f32) gTrackPaths[0][0].z; // [i][2]
     D_801634F0 = 0;
     D_801634F4 = 0;
@@ -3858,7 +3801,7 @@ f32 calculate_track_curvature(s32 pathIndex, u16 waypointIndex) {
     return -((temp_f10 * temp_f10_2) - (temp_f8_2 * temp_f8)) / (root2 * root1);
 }
 
-void analyze_track_section(s32 pathIndex) {
+void analyze_track_sections(s32 pathIndex) {
     f64 sectionCurvature;
     UNUSED s32 pad;
     s32 k;
@@ -3933,7 +3876,7 @@ s16 calculate_angle_path(s32 pathIndex, s32 waypointIndex) {
 }
 
 // Populates gPathExpectedRotation
-void analyse_angle_path(s32 pathIndex) {
+void analyze_path_angle(s32 pathIndex) {
     s32 waypointIndex;
     u16* angle;
 

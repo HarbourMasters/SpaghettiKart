@@ -97,7 +97,7 @@ bool ACar::IsMod() {
     return true;
 }
 
-void ACar::Tick() {
+void ACar::Tick60fps() {
     f32 temp_f0_2;
     f32 temp_f0_3;
     f32 sp5C;

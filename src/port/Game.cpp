@@ -95,7 +95,6 @@ void CustomEngineInit() {
     // This also turns off freecam
     gEditor.Disable();
 
-    
     gSky = std::make_unique<Sky>();
     RegisterTracks(gTrackRegistry);
     gTrackBrowser = std::make_unique<TrackBrowser>(gTrackRegistry);
@@ -341,6 +340,12 @@ void CM_DrawTrack(ScreenContext* screen) {
 void CM_TickActors() {
     if (GetWorld()->GetTrack()) {
         GetWorld()->TickActors();
+    }
+}
+
+void CM_TickActors60fps() {
+    if (GetWorld()->GetTrack()) {
+        GetWorld()->TickActors60fps();
     }
 }
 

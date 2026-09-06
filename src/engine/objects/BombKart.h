@@ -52,7 +52,7 @@ class OBombKart : public OObject {
             .Behaviour = behaviour,
             .Location = pos,
             .Speed = unk_3C, // Only used for podium ceremony. Arbitrarily chose Speed for this
-            .SpeedB = 2.7f, // Chase speed
+            .SpeedB = 7.0f, // Chase speed
         };
         return dynamic_cast<OBombKart*>(AddObjectToWorld<OBombKart>(params));
     }

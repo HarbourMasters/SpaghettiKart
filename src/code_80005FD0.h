@@ -155,7 +155,6 @@ void determine_ideal_cpu_position_offset(s32, u16);
 s16 func_8000D6D0(Vec3f, s16*, f32, f32, s16, s16);
 s16 func_8000D940(Vec3f, s16*, f32, f32, s16);
 s16 update_vehicle_following_path(Vec3f, s16*, f32);
-void set_bomb_kart_spawn_positions(void);
 void func_8000DF8C(s32);
 
 s32 add_actor_in_unexpired_actor_list(s32, s16);
@@ -175,9 +174,9 @@ void init_players(void);
 void load_track_path(s32);
 void calculate_track_boundaries(s32);
 f32 calculate_track_curvature(s32, u16);
-void analyze_track_section(s32);
+void analyze_track_sections(s32);
 s16 calculate_angle_path(s32, s32);
-void analyse_angle_path(s32);
+void analyze_path_angle(s32);
 void analyze_curved_path(s32);
 f32 func_80010F40(f32, f32, f32, s32, s32);
 f32 func_80010FA0(f32, f32, f32, s32, s32);
@@ -350,7 +349,6 @@ extern u16 gSpeedCPUBehaviour[];
 enum { SPEED_CPU_BEHAVIOUR_NORMAL, SPEED_CPU_BEHAVIOUR_FAST, SPEED_CPU_BEHAVIOUR_SLOW, SPEED_CPU_BEHAVIOUR_MAX };
 
 extern s32 gIncrementUpdatePlayer;
-extern s32 D_8016337C;
 extern s16 gCurrentPlayerLookAhead[];
 extern s16 D_80163398[];
 extern s16 D_801633B0[];

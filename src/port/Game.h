@@ -145,6 +145,8 @@ void CM_VehicleCollision(s32 playerId, Player* player);
 
 void CM_TickActors();
 
+void CM_TickActors60fps();
+
 void CM_DrawBombKarts(s32 cameraId);
 
 void SetMarioRaceway(void);

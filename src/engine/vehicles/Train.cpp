@@ -182,7 +182,7 @@ void ATrain::SyncComponents(TrainCarStuff* trainCar, s16 orientationY) {
     trainCarActor->velocity[2] = trainCar->velocity[2];
 }
 
-void ATrain::Tick() {
+void ATrain::Tick60fps() {
     TrainCarStuff* car;
     u16 oldWaypointIndex;
     s16 orientationYUpdate;

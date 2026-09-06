@@ -52,7 +52,8 @@ public:
      */
     virtual void SetSpawnParams(SpawnParams& params);
     virtual void BeginPlay();
-    virtual void Tick();
+    virtual void Tick();      // Ticks twice per frame (faster simulation speed)
+    virtual void Tick60fps(); // Ticks once per frame
     virtual void Draw(Camera* camera);
     virtual void Collision(Player* player, AActor* actor);
     virtual void VehicleCollision(s32 playerId, Player* player);

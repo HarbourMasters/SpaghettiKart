@@ -74,6 +74,13 @@ Vtx common_vtx_crab[] = {
 void OCrab::Draw(s32 cameraId) {
     Camera* camera;
     s32 objectIndex = _objectIndex;
+
+    // With this the crab disappears too early when the camera is rotating away from the crab
+    // func_8008A364(objectIndex, cameraId, 0x2AABU, 800);
+    // if (is_obj_flag_status_active(objectIndex, VISIBLE) == 0) {
+    //     return;
+    // }
+    
     if (gObjectList[objectIndex].state >= 2) {
         camera = &camera1[cameraId];
         FrameInterpolation_RecordOpenChild("crab", (_idx << 5) | cameraId);
@@ -91,34 +98,6 @@ void OCrab::Draw(s32 cameraId) {
         gSPDisplayList(gDisplayListHead++, (Gfx*) common_rectangle_display);
         gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
         FrameInterpolation_RecordCloseChild();
-    }
-}
-
-void OCrab::DrawModel(s32 cameraId) {
-    s32 someIndex;
-    s32 objectIndex = _objectIndex;
-    func_8008A364(objectIndex, cameraId, 0x2AABU, 800);
-    if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
-        Camera* camera;
-
-        if (gObjectList[objectIndex].state >= 2) {
-            camera = &camera1[cameraId];
-            FrameInterpolation_RecordOpenChild("crab3", (_idx << 5) | cameraId);
-            func_8004A6EC(objectIndex, 0.5f);
-            FrameInterpolation_RecordCloseChild();
-            gObjectList[objectIndex].orientation[1] =
-                func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
-            FrameInterpolation_RecordOpenChild("crab4", (_idx << 5) | cameraId);
-            rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation,
-                                          gObjectList[objectIndex].sizeScaling);
-            gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007D78);
-            gDPLoadTLUT_pal256(gDisplayListHead++, gObjectList[objectIndex].activeTLUT);
-            rsp_load_texture((u8*) gObjectList[objectIndex].activeTexture, 64, 64);
-            gSPVertex(gDisplayListHead++, (uintptr_t) common_vtx_crab, 4, 0);
-            gSPDisplayList(gDisplayListHead++, (Gfx*) common_rectangle_display);
-            gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
-            FrameInterpolation_RecordCloseChild();
-        }
     }
 }
 

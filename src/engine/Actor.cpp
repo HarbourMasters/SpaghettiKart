@@ -33,6 +33,7 @@ void AActor::BeginPlay() {
 
 // Virtual functions to be overridden by derived classes
 void AActor::Tick() {  }
+void AActor::Tick60fps() {  }
 void AActor::Draw(Camera *camera) {
     if (Model) {
         Mat4 mtx;

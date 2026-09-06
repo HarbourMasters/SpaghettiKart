@@ -115,7 +115,7 @@ void ATankerTruck::Draw(Camera* camera) {
     }
 }
 
-void ATankerTruck::Tick() {
+void ATankerTruck::Tick60fps() {
     f32 temp_f0_2;
     f32 temp_f0_3;
     f32 sp5C;

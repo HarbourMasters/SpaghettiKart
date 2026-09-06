@@ -55,7 +55,7 @@ OBombKart::OBombKart(const SpawnParams& params) : OObject(params) {
     }
 
     Behaviour = static_cast<OBombKart::States>(params.Behaviour.value_or(OBombKart::States::COUNTERCLOCKWISE));
-    SpeedB = params.SpeedB.value_or(2.7f); // Chase speed
+    SpeedB = params.SpeedB.value_or(7.0f); // Chase speed
 
     WaypointIndex = params.PathPoint.value_or(0);
     Unk_3C = params.Speed.value_or(0);

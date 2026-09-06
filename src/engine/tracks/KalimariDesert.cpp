@@ -199,7 +199,7 @@ void KalimariDesert::BeginPlay() {
                 }
             }
 
-            SpawnActor<ATrain>(_tender, _numCarriages, 2.5f, 0, waypoint, ATrain::SpawnMode::POINT);
+            SpawnActor<ATrain>(_tender, _numCarriages, 5.0f, 0, waypoint, ATrain::SpawnMode::POINT);
         }
 
         if (gModeSelection == VERSUS) {

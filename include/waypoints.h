@@ -34,7 +34,7 @@ extern TrackPathPoint* gTrackRightPaths[];
  **/
 // PathPoint types?
 extern s16* gTrackSectionTypes[];
-// Based on analyse_angle_path this may be angles between path point
+// Based on analyze_path_angle this may be angles between path point
 // gPathExpectedRotation[i] = atan2(path_point_i, path_point_i+1)?
 extern s16* gPathExpectedRotation[];
 // No idea. Adjacency list?

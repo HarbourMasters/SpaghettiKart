@@ -87,7 +87,7 @@ bool ABoat::IsMod() {
     return true;
 }
 
-void ABoat::Tick() {
+void ABoat::Tick60fps() {
     TrackPathPoint* waypoint;
     struct Actor* paddleBoatActor;
     f32 temp_f26;

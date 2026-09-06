@@ -52,8 +52,6 @@ public:
     virtual void SetSpawnParams(SpawnParams& params) override;
     virtual void DrawEditorProperties() override;
 
-    void DrawModel(s32 cameraId);
-
     void init_ktb_crab(s32 objectIndex);
     void func_80082B34(s32 objectIndex);
     void func_80082C30(s32 objectIndex);

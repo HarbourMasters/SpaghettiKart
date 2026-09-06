@@ -74,7 +74,7 @@ class ATrain : public AActor {
     }
 
     virtual void SetSpawnParams(SpawnParams& params);
-    virtual void Tick() override;
+    virtual void Tick60fps() override;
     virtual void Draw(Camera* camera) override;
     virtual void VehicleCollision(s32 playerId, Player* player) override;
     virtual bool IsMod() override;

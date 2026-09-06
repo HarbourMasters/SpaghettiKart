@@ -152,8 +152,6 @@ void ToadsTurnpike::BeginPlay() {
         uint32_t pathPoint;
         f32 a = ((gCCSelection * 90.0) / 216.0f) + 4.583333333333333;
         f32 b = ((gCCSelection * 90.0) / 216.0f) + 2.9166666666666665;
-        a /= 2; // Normally vehicle logic is only ran every 2 frames. This slows the vehicles down to match.
-        b /= 2;
 
         _numTrucks = CVarGetInteger("gNumTrucks", 7);
         _numBuses = CVarGetInteger("gNumBuses", 7);

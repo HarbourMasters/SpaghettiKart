@@ -72,6 +72,7 @@ public:
     AActor* GetActor(size_t index);
 
     void TickActors();
+    void TickActors60fps();
     AActor* ConvertActorToAActor(Actor* actor);
     Actor* ConvertAActorToActor(AActor* actor);
 
@@ -120,7 +121,7 @@ public:
     std::vector<std::unique_ptr<GameCamera>> Cameras;
 
     std::vector<std::unique_ptr<StaticMeshActor>> StaticMeshActors;
-    std::vector<std::unique_ptr<AActor>> Actors;
+    std::deque<std::unique_ptr<AActor>> Actors;
     std::deque<std::unique_ptr<OObject>> Objects;
     std::vector<std::unique_ptr<ParticleEmitter>> Emitters;
 

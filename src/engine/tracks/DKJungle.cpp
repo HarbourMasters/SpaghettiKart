@@ -174,9 +174,7 @@ void DKJungle::BeginPlay() {
 
         generate_ferry_path();
 
-        // The original game only ran vehicle logic every second frame.
-        // Thus the speed gets divided by two to set speed to match properly
-        SpawnActor<ABoat>((0.6666666f)/4, 0, 0, ABoat::SpawnMode::POINT);
+        SpawnActor<ABoat>(1.6666666f, 0, 0, ABoat::SpawnMode::POINT);
 
         if (gModeSelection == VERSUS) {
             SpawnActor<OBombKart>(0, 50, 3, 0.8333333f);
