@@ -128,7 +128,7 @@
 #if IS_BIG_ENDIAN
 #define BSWAP16(x) (x)
 #else
-#define BSWAP16(x) (((x) & 0xff) << 8 | (((x) >> 8) & 0xff))
+#include "ship/utils/binarytools/endianness.h"
 #endif
 #endif
 

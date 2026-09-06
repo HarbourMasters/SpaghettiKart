@@ -26,7 +26,7 @@ const char* sPiranhaPlantTextures[] = {
  */
 void render_actor_piranha_plant(Camera* camera, Mat4 arg1, struct PiranhaPlant* arg2) {
     UNUSED s32 pad;
-    u8* addr;
+    UNUSED u8* addr;
     s16 temp_lo = camera - camera1;
     s16 animationFrame; // unconfirmed
     s16 temp = arg2->flags;

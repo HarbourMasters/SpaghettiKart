@@ -26,7 +26,7 @@ s32 sGfxSeekPosition;
 s32 sPackedSeekPosition;
 
 static u8 sMemoryPool[0x10000000] ALIGNED4096;
-uintptr_t sPoolEnd = sMemoryPool + sizeof(sMemoryPool);
+uintptr_t sPoolEnd = (uintptr_t) (sMemoryPool + sizeof(sMemoryPool));
 
 uintptr_t sPoolFreeSpace;
 struct MainPoolBlock* sPoolListHeadL;
@@ -61,25 +61,6 @@ void* get_next_available_memory_addr(uintptr_t size) {
     }
 
     return (void*) freeSpace;
-}
-
-static uintptr_t get_texture2(size_t offset, const course_texture* textures) {
-    if (!((offset >= 0x5000000) && (offset < 0x6000000))) {
-        return NULL;
-    }
-    size_t totalOffset = 0x5000000;
-
-    while (textures->addr) {
-        if (totalOffset == offset) {
-            return (uintptr_t) (textures->addr);
-        }
-        totalOffset += textures->data_size;
-        textures++;
-    }
-
-    printf("memory.c: get_texture()\n  TEXTURE NOT FOUND DURING DISPLAYLIST EXTRACT\n");
-    printf("  offset: 0x%zX\n", offset);
-    return NULL;
 }
 
 /**
@@ -272,7 +253,7 @@ UNUSED void* func_802A80B0(u8* dest, u8* srcStart, u8* srcEnd) {
     return addr;
 }
 
-uintptr_t MIO0_0F(u8* arg0, uintptr_t arg1, uintptr_t arg2) {
+uintptr_t MIO0_0F(UNUSED u8* arg0, uintptr_t arg1, uintptr_t arg2) {
     uintptr_t oldHeapEndPtr;
     void* temp_v0;
 
@@ -291,7 +272,6 @@ uintptr_t MIO0_0F(u8* arg0, uintptr_t arg1, uintptr_t arg2) {
     gHeapEndPtr += arg2;
     return oldHeapEndPtr;
 }
-
 
 /* To help verify if ptrs are pointing within segments see gfx_pc.cpp gfx_step() */
 uintptr_t vtxSegEnd;

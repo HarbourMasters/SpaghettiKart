@@ -6,7 +6,7 @@
 
 /* Function Prototypes */
 /** @cond */
-void spawn_player(Player*, s8, f32, f32, f32, f32, u16, s16);
+void spawn_player(Player*, s8, f32, f32, f32, f32, u16, s32);
 void func_80039AE4(void);
 void func_80039DA4(void);
 void spawn_and_set_player_spawns(void);

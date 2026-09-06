@@ -304,32 +304,28 @@ void load_kart_texture_and_render_kart_particles(s32 screenIdx) {
             D_801651D0[gPlayersToRenderScreenId[i]][gPlayersToRenderPlayerId[i]]
         );
 
-        strcpy(
-            D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[i - 1]]
-                                 [gPlayersToRenderPlayerId[i - 1]]]
-                                 [gPlayersToRenderScreenId[i - 1] + screenOffset]
-                                 [gPlayersToRenderPlayerId[i - 1] + playerOffset]
-            .pixel_index_array,
-            gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[i - 1]]
-                               [gPlayersToRenderPlayerId[i - 1]]]
-                               [gPlayersToRenderScreenId[i - 1] + screenOffset]
-                               [gPlayersToRenderPlayerId[i - 1] + playerOffset]
-            .unk_00
-        );
+        strcpy((char*) D_802BFB80
+                   .arraySize8[D_801651D0[gPlayersToRenderScreenId[i - 1]][gPlayersToRenderPlayerId[i - 1]]]
+                              [gPlayersToRenderScreenId[i - 1] + screenOffset]
+                              [gPlayersToRenderPlayerId[i - 1] + playerOffset]
+                   .pixel_index_array,
+               gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[i - 1]][gPlayersToRenderPlayerId[i - 1]]]
+                                  [gPlayersToRenderScreenId[i - 1] + screenOffset]
+                                  [gPlayersToRenderPlayerId[i - 1] + playerOffset]
+                                      .unk_00);
     }
 
-    strcpy(
-        D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount - 1]]
-                             [gPlayersToRenderPlayerId[gPlayersToRenderCount - 1]]]
-                             [gPlayersToRenderScreenId[gPlayersToRenderCount - 1] + screenOffset]
-                             [gPlayersToRenderPlayerId[gPlayersToRenderCount - 1] + playerOffset]
-        .pixel_index_array,
-        gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount - 1]]
-                           [gPlayersToRenderPlayerId[gPlayersToRenderCount - 1]]]
-                           [gPlayersToRenderScreenId[gPlayersToRenderCount - 1] + screenOffset]
-                           [gPlayersToRenderPlayerId[gPlayersToRenderCount - 1] + playerOffset]
-        .unk_00
-    );
+    strcpy((char*) D_802BFB80
+               .arraySize8[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount - 1]]
+                                     [gPlayersToRenderPlayerId[gPlayersToRenderCount - 1]]]
+                          [gPlayersToRenderScreenId[gPlayersToRenderCount - 1] + screenOffset]
+                          [gPlayersToRenderPlayerId[gPlayersToRenderCount - 1] + playerOffset]
+               .pixel_index_array,
+           gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount - 1]]
+                                         [gPlayersToRenderPlayerId[gPlayersToRenderCount - 1]]]
+                              [gPlayersToRenderScreenId[gPlayersToRenderCount - 1] + screenOffset]
+                              [gPlayersToRenderPlayerId[gPlayersToRenderCount - 1] + playerOffset]
+                                  .unk_00);
 }
 
 void try_rendering_player(Player* player, s8 playerId, s8 screenIdx) {
@@ -1247,7 +1243,7 @@ void render_player_shadow(Player* player, s8 playerId, s8 screenId) {
                         G_TX_NOLOD);
     func_8004B414(0, 0, 0, 0xFF);
     gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
-    gSPVertex(gDisplayListHead++, gKartShadowVertices, 4, 0);
+    gSPVertex(gDisplayListHead++, (uintptr_t) gKartShadowVertices, 4, 0);
 
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
@@ -1297,7 +1293,7 @@ void render_player_shadow_credits(Player* player, s8 playerId, s8 screenId) {
                         G_TX_NOLOD);
     func_8004B414(0, 0, 0, 0x000000D0);
     gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
-    gSPVertex(gDisplayListHead++, gKartShadowVertices, 4, 0);
+    gSPVertex(gDisplayListHead++, (uintptr_t) gKartShadowVertices, 4, 0);
 
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
@@ -1429,7 +1425,7 @@ void render_kart(Player* player, s8 playerId, s8 screenId, s8 flipOffset) {
     gDPLoadTextureBlock(gDisplayListHead++, sKartTexture, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 64, 0,
                         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
                         G_TX_NOLOD);
-    gSPVertex(gDisplayListHead++, &gPlayerVtx[playerId][flipOffset], 8, 0);
+    gSPVertex(gDisplayListHead++, (uintptr_t) &gPlayerVtx[playerId][flipOffset], 8, 0);
     gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 0, 2, 3, 0);
     gSP2Triangles(gDisplayListHead++, 4, 5, 6, 4, 4, 6, 7, 4);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
@@ -1501,7 +1497,7 @@ void render_ghost(Player* player, s8 playerId, s8 screenId, s8 flipOffset) {
     gDPLoadTextureBlock(gDisplayListHead++, sKartTexture, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 64, 0,
                         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
                         G_TX_NOLOD);
-    gSPVertex(gDisplayListHead++, &gPlayerVtx[playerId][flipOffset], 8, 0);
+    gSPVertex(gDisplayListHead++, (uintptr_t) &gPlayerVtx[playerId][flipOffset], 8, 0);
     gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 0, 2, 3, 0);
     gSP2Triangles(gDisplayListHead++, 4, 5, 6, 4, 4, 6, 7, 4);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
@@ -1544,7 +1540,7 @@ void func_80025DE8(Player* player, s8 playerId, s8 screenId, s8 flipOffset) {
     gDPLoadTextureBlock(gDisplayListHead++, sKartTexture, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 64, 0,
                         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
                         G_TX_NOLOD);
-    gSPVertex(gDisplayListHead++, &gPlayerVtx[playerId][flipOffset], 8, 0);
+    gSPVertex(gDisplayListHead++, (uintptr_t) &gPlayerVtx[playerId][flipOffset], 8, 0);
     gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 0, 2, 3, 0);
     gSP2Triangles(gDisplayListHead++, 4, 5, 6, 4, 4, 6, 7, 4);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
@@ -1589,7 +1585,7 @@ void render_player_ice_reflection(Player* player, s8 playerId, s8 screenId, s8 f
     gDPLoadTextureBlock(gDisplayListHead++, sKartTexture, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 64, 0,
                         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
                         G_TX_NOLOD);
-    gSPVertex(gDisplayListHead++, &gPlayerVtx[playerId][flipOffset], 8, 0);
+    gSPVertex(gDisplayListHead++, (uintptr_t) &gPlayerVtx[playerId][flipOffset], 8, 0);
     gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 0, 2, 3, 0);
     gSP2Triangles(gDisplayListHead++, 4, 5, 6, 4, 4, 6, 7, 4);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);

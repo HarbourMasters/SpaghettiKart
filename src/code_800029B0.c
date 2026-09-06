@@ -34,7 +34,7 @@
 extern s32 D_802BA038;
 extern s16 D_802BA048;
 s16 gCurrentCourseId = 0;
-uintptr_t gCurrentlyLoadedTrackAddr = NULL;
+uintptr_t gCurrentlyLoadedTrackAddr = 0;
 u16 D_800DC5A8 = 0;
 s32 D_800DC5AC = 0;
 u16 D_800DC5B0 = 1;
@@ -118,7 +118,7 @@ u16 D_8015F700;
 u16 D_8015F702;
 f32 D_8015F704;
 Vec3f D_8015F708;
-UNUSED u32 D_8015F718[3]; // Likely held ptrs to segmented data.
+UNUSED uintptr_t D_8015F718[3]; // Likely held ptrs to segmented data.
 size_t gFreeMemorySize;
 uintptr_t gNextFreeMemoryAddress;
 uintptr_t gHeapEndPtr;
@@ -337,9 +337,9 @@ void clear_nmi_buffer(void) {
  * Also spawns water features
  */
 void credits_spawn_actors(void) {
-    Vec3f position;
-    Vec3f velocity = { 0, 0, 0 };
-    Vec3s rotation = { 0, 0, 0 };
+    UNUSED Vec3f position;
+    UNUSED Vec3f velocity = { 0, 0, 0 };
+    UNUSED Vec3s rotation = { 0, 0, 0 };
 
     bFog = false;
     D_800DC5C8 = 0;

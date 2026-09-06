@@ -64,7 +64,7 @@ u16 D_802BA260;
  * the game will cleanup any dead red or green shells by deleting their actors.
  */
 void cleanup_red_and_green_shells(struct ShellActor* shell) {
-    s32 actorIndex;
+    size_t actorIndex;
     struct ShellActor* compare;
 
     // try finding the dead green shell
@@ -741,7 +741,7 @@ void render_actor_shell(Camera* camera, Mat4 matrix, struct ShellActor* shell) {
     bool reverseShell = false;
 
     size_t actorIdx = CM_FindActorIndex((struct Actor*)shell);
-    if (-1 == actorIdx) {
+    if ((size_t) -1 == actorIdx) {
         printf("[render_actor_shell] Could not find actor index for FI, skipping!\n");
         return;
     }
@@ -1118,8 +1118,8 @@ void spawn_fake_item_box(Vec3f pos) {
     startingRot[1] = random_u16();
     startingRot[2] = random_u16();
     s32 id = add_actor_to_empty_slot(pos, startingRot, startingVelocity, ACTOR_FAKE_ITEM_BOX);
-    f32 height = spawn_actor_on_surface(pos[0], pos[1], pos[2]);
-    
+    spawn_actor_on_surface(pos[0], pos[1], pos[2]);
+
     struct FakeItemBox* box = (struct FakeItemBox*) CM_GetActor(id);
     box->state = 1;
     box->targetY = pos[1];
@@ -1157,7 +1157,7 @@ void init_kiwano_fruit(void) {
  * members such as pos and rot should be set to prevent using expired data
  **/
 void destroy_all_actors(void) {
-    s32 i;
+    size_t i;
     gNumActors = 0;
     for (i = 0; i < ACTOR_LIST_SIZE; i++) {
         struct Actor* actor = CM_GetActor(i);
@@ -1221,7 +1221,7 @@ void destroy_actor(struct Actor* actor) {
 }
 
 s16 try_remove_destructable_item(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
-    s32 actorIndex;
+    size_t actorIndex;
     struct ShellActor* compare;
 
     // try removing a red shell, green shell, banana, or a fake item box if the actor is expired
@@ -1639,7 +1639,7 @@ bool collision_tree(Player* player, struct Actor* actor) {
         spawn_leaf(actorPos, 0);
     }
     if (xz_dist < 0.1f) {
-        sqrtf((sp48 * sp48) + (sp44 * sp44));
+        (void) sqrtf((sp48 * sp48) + (sp44 * sp44));
         if (xz_dist) {}
         player->velocity[0] = 0;
         player->velocity[2] = 0;
@@ -2176,7 +2176,8 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
 
 void evaluate_collision_for_players_and_actors(void) {
     struct Actor* temp_a1;
-    s32 i, j;
+    s32 i;
+    size_t j;
     Player* phi_s1;
 
     for (i = 0; i < NUM_PLAYERS; i++) {
@@ -2202,10 +2203,10 @@ void evaluate_collision_for_players_and_actors(void) {
 void evaluate_collision_for_destructible_actors(void) {
     struct Actor* actor1;
     struct Actor* actor2;
-    s32 i, j;
+    size_t i, j;
     UNUSED s32 pad;
 
-    for (i = gNumPermanentActors; i < (ACTOR_LIST_SIZE); i++) {
+    for (i = gNumPermanentActors; i < ACTOR_LIST_SIZE; i++) {
         actor1 = CM_GetActor(i);
 
         if ((actor1->flags & 0x8000) == 0) {
@@ -2324,7 +2325,7 @@ void init_actor_hot_air_balloon_item_box(f32 x, f32 y, f32 z) {
 void render_item_boxes(ScreenContext* arg0) {
     Camera* camera = arg0->camera;
     struct Actor* actor;
-    s32 i;
+    size_t i;
     D_8015F8DC = 0;
 
     for (i = 0; i < CM_GetActorSize(); i++) {
@@ -2352,7 +2353,7 @@ void render_course_actors(ScreenContext* screen) {
     Camera* camera = screen->camera;
     u16 pathCounter = screen->pathCounter;
     UNUSED s32 pad[12];
-    s32 i;
+    size_t i;
 
     struct Actor* actor;
     UNUSED Vec3f sp4C = { 0.0f, 5.0f, 10.0f };
@@ -2507,7 +2508,7 @@ void render_course_actors(ScreenContext* screen) {
 
 void update_course_actors(void) {
     struct Actor* actor;
-    s32 i;
+    size_t i;
     for (i = 0; i < CM_GetActorSize(); i++) {
 
         actor = CM_GetActor(i);

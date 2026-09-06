@@ -418,7 +418,7 @@ void* alloc_bank_or_seq(struct SoundMultiPool* arg0, s32 arg1, s32 size, s32 arg
                 tp->entries[1].ptr = pool->start + pool->size - size - 0x10;
                 tp->entries[1].id = (s16) id;
                 tp->entries[1].size = (u32) size;
-                if ((u32) tp->entries[1].ptr < (u32) pool->cur) {
+                if ((uintptr_t) tp->entries[1].ptr < (uintptr_t) pool->cur) {
                     table[tp->entries[0].id] = 0;
                     switch (isSound) { /* switch 1; irregular */
                         case 0:        /* switch 1 */
@@ -709,62 +709,4 @@ void* unk_pool1_lookup(s32 poolIdx, s32 id) {
         }
     }
     return NULL;
-}
-
-// SM64 does not appear to have a function
-// comparable to this one, not a clue what
-// this one is doing.
-void func_800BA8B0(s32 poolIdx, s32 id) {
-    ALSeqFile* sp3C;
-    s32 temp_a2;
-    u32 temp_a1;
-    u8* var_a3;
-    UNUSED u8* temp_v0;
-    UNUSED s32 pad;
-
-    switch (poolIdx) { /* irregular */
-        case 0:
-            sp3C = gSeqFileHeader;
-            break;
-        case 1:
-            sp3C = gAlCtlHeader;
-            break;
-        case 2:
-            sp3C = gAlTbl;
-            break;
-    }
-    if (sp3C->seqArray[id].len == 0) {
-        id = (s32) sp3C->seqArray[id].offset;
-    }
-    if (unk_pool1_lookup(poolIdx, id) == NULL) {
-        temp_a2 = gUnkPool1.pool.numAllocatedEntries;
-        temp_a1 = sp3C->seqArray[id].len;
-        var_a3 = sp3C->seqArray[id].offset;
-        if (poolIdx == 1) {
-            var_a3 += 0x10;
-        }
-        gUnkPool1.entries[temp_a2].ptr = soundAlloc(&gUnkPool1.pool, temp_a1);
-        if (gUnkPool1.entries[temp_a2].ptr != NULL) {
-            audio_dma_copy_immediate(var_a3, gUnkPool1.entries[temp_a2].ptr, temp_a1);
-            gUnkPool1.entries[temp_a2].poolIndex = poolIdx;
-            gUnkPool1.entries[temp_a2].id = id;
-            gUnkPool1.entries[temp_a2].size = temp_a1;
-            switch (poolIdx) { /* switch 1; irregular */
-                case 0:        /* switch 1 */
-                    if (gSeqLoadStatus[id] != 5) {
-                        gSeqLoadStatus[id] = 5;
-                    }
-                    break;
-                case 1: /* switch 1 */
-                    gCtlEntries[id].instruments = (struct Instrument**) (gUnkPool1.entries[temp_a2].ptr + 4);
-                    func_800BB584(id);
-                    if (gBankLoadStatus[id] != 5) {
-                        gBankLoadStatus[id] = 5;
-                    }
-                    break;
-                case 2: /* switch 1 */
-                    break;
-            }
-        }
-    }
 }

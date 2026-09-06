@@ -1599,7 +1599,7 @@ void func_8008FEDC(Player* player, UNUSED s8 arg1) {
 void CM_Waypoints(Player*, s8);
 
 void func_8008FF08(Player* player, s8 playerId) {
-    s16 waypoint;
+    UNUSED s16 waypoint;
 
     CM_Waypoints(player, playerId);
 }

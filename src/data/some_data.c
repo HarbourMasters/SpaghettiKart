@@ -193,7 +193,7 @@ Vtx gBalloonVertexPlane2[] = {
 //     #include "assets/code/some_data/gTLUTOnomatopoeia.rgba16.inc.c"
 // };
 
-u8* gCourseOutlineTextures[] = {
+const char* gCourseOutlineTextures[] = {
     minimap_mario_raceway, minimap_choco_mountain,  minimap_bowsers_castle,     minimap_banshee_boardwalk,
     minimap_yoshi_valley,  minimap_frappe_snowland, minimap_koopa_troopa_beach, minimap_royal_raceway,
     minimap_luigi_raceway, minimap_moo_moo_farm,    minimap_toads_turnpike,     minimap_kalimari_desert,
