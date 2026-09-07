@@ -599,9 +599,9 @@ void audio_reset_session(void) {
     s32 var_s1;
     s32 var_s5;
     s32 temp;
-    s32 totalMem;
-    s32 temporaryMem;
-    s32 persistentMem;
+    u32 totalMem;
+    u32 temporaryMem;
+    u32 persistentMem;
     s16* mem;
     struct SynthesisReverb* reverb;
     struct ReverbSettingsEU* reverbSettings;

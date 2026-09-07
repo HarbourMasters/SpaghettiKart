@@ -58,14 +58,14 @@ void create_next_audio_buffer(s16* samples, u32 num_samples) {
     gCurrAudioFrameDmaCount = 0;
 
     if (osRecvMesg(D_800EA3B0, &specId, 0) != -1) {
-        gAudioResetPresetIdToLoad = specId.data8;
+        gAudioResetPresetIdToLoad = (u8)specId.data32;
         gAudioResetStatus = 5;
     }
 
     if (gAudioResetStatus != 0) {
         if (audio_shut_down_and_reset_step() == 0) {
             if (gAudioResetStatus == 0) {
-                osSendMesg(D_800EA3B4, OS_MESG_8(gAudioResetPresetIdToLoad), OS_MESG_NOBLOCK);
+                osSendMesg(D_800EA3B4, OS_MESG_32(gAudioResetPresetIdToLoad), OS_MESG_NOBLOCK);
             }
             return;
         }
@@ -96,13 +96,8 @@ struct SPTask* create_next_audio_frame_task(void) {
     if ((gAudioFrameCount % gAudioBufferParameters.presetUnk4) != 0) {
         return NULL;
     }
-#ifdef TARGET_N64
-    osSendMesg(D_800EA3A8, (OSMesg) gAudioFrameCount, OS_MESG_NOBLOCK);
-#else
-    OSMesg audioMesg;
-    audioMesg.ptr = (void*) gAudioFrameCount;
-    osSendMesg(D_800EA3A8, audioMesg, OS_MESG_NOBLOCK);
-#endif
+
+    osSendMesg(D_800EA3A8, OS_MESG_32(gAudioFrameCount), OS_MESG_NOBLOCK);
 
     gAudioTaskIndex ^= 1;
     gCurrAiBufferIndex++;
@@ -133,13 +128,13 @@ struct SPTask* create_next_audio_frame_task(void) {
     gCurrAudioFrameDmaCount = 0;
     decrease_sample_dma_ttls();
     if (osRecvMesg(D_800EA3B0, &sp58, 0) != -1) {
-        // gAudioResetPresetIdToLoad = (u8) (u32) sp58;
+        gAudioResetPresetIdToLoad = (u8) sp58.data32;
         gAudioResetStatus = 5;
     }
     if (gAudioResetStatus != 0) {
         if (audio_shut_down_and_reset_step() == 0) {
             if (gAudioResetStatus == 0) {
-                osSendMesg(D_800EA3B4, sp58, OS_MESG_NOBLOCK);
+                osSendMesg(D_800EA3B4, OS_MESG_32(gAudioResetPresetIdToLoad), OS_MESG_NOBLOCK);
             }
             return NULL;
         }

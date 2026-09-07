@@ -56,7 +56,11 @@ void TourCamera::NextShot() {
 void TourCamera::Stop() {
     printf("[TourCamera] End of Track Tour\n");
     gTourComplete = true;
-    CM_ResetAudio();
+    func_800CA330(0x19); // Reset audio
+    if(HMAS_IsPlaying(HMAS_MUSIC)){
+        HMAS_AddEffect(HMAS_MUSIC, HMAS_EFFECT_VOLUME, HMAS_LINEAR, 10, 0);
+        HMAS_AddEffect(HMAS_MUSIC, HMAS_EFFECT_STOP,   HMAS_INSTANT, 1, 0);
+    }
 
     gScreenContexts[0].pendingCamera = &cameras[0];
     bActive = false;

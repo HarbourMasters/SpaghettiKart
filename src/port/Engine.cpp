@@ -480,21 +480,21 @@ void GameEngine::ProcessGfxCommands(Gfx* pool) {
 
 // Audio
 void GameEngine::HandleAudioThread() {
-    while (audio.running) {
-        {
-            std::unique_lock<std::mutex> Lock(audio.mutex);
-            while (!audio.processing && audio.running) {
-                audio.cv_to_thread.wait(Lock);
-            }
-
-            if (!audio.running) {
-                break;
-            }
-        }
+    while (true) {
         std::unique_lock<std::mutex> Lock(audio.mutex);
+
+        audio.cv_to_thread.wait(Lock, [&] {
+            return !audio.running || (audio.processing && !audio.paused);
+        });
+
+        if (!audio.running) {
+            break;
+        }
 
         int samples_left = AudioPlayerBuffered();
         u32 num_audio_samples = samples_left < AudioPlayerGetDesiredBuffered() ? SAMPLES_HIGH : SAMPLES_LOW;
+        
+        Lock.unlock();
 
         s16 nas_buffer[SAMPLES_PER_FRAME] = { 0 };
         f32 hmas_buffer[SAMPLES_PER_FRAME] = { 0 };
@@ -514,11 +514,13 @@ void GameEngine::HandleAudioThread() {
 
         AudioPlayerPlayFrame((u8*) mix_buffer, 2 * num_audio_samples * 4);
 
+        {
+        std::lock_guard<std::mutex> Lock(audio.mutex);
         audio.processing = false;
-        audio.cv_from_thread.notify_one();
+        }
+        audio.cv_from_thread.notify_all();
     }
 }
-
 void GameEngine::StartAudioFrame() {
     {
         std::unique_lock<std::mutex> Lock(audio.mutex);
@@ -531,9 +533,9 @@ void GameEngine::StartAudioFrame() {
 void GameEngine::EndAudioFrame() {
     {
         std::unique_lock<std::mutex> Lock(audio.mutex);
-        while (audio.processing) {
-            audio.cv_from_thread.wait(Lock);
-        }
+        audio.cv_from_thread.wait(Lock, [&] {
+            return !audio.processing;
+        });
     }
 }
 
@@ -580,6 +582,26 @@ void GameEngine::AudioExit() {
 
     // Wait until the audio thread quit
     audio.thread.join();
+}
+
+void GameEngine::AudioLock() {
+    std::unique_lock lock(audio.mutex);
+
+    audio.paused = true;
+
+    // Wait for any audio frame currently executing to finish.
+    audio.cv_from_thread.wait(lock, [&] {
+        return !audio.processing;
+    });
+}
+
+void GameEngine::AudioUnlock() {
+    {
+        std::lock_guard lock(audio.mutex);
+        audio.paused = false;
+    }
+
+    audio.cv_to_thread.notify_one();
 }
 
 uint8_t GameEngine::GetBankIdByName(const std::string& name) {
@@ -740,6 +762,16 @@ extern "C" int32_t GameEngine_ResourceGetTexTypeByName(const char* name) {
 
     SPDLOG_ERROR("Given texture path {} is a non-existent resource", name);
     return -1;
+}
+
+extern "C" void GameEngine_LockAudio() {
+    auto engine = GameEngine::Instance;
+    engine->AudioLock();
+}
+
+extern "C" void GameEngine_UnlockAudio() {
+    auto engine = GameEngine::Instance;
+    engine->AudioUnlock();
 }
 
 // struct TimedEntry {

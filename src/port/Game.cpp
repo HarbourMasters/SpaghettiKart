@@ -903,19 +903,6 @@ void* GetBattleCup(void) {
 void CM_RunGarbageCollector(void) {
     RunGarbageCollector();
 }
-
-void CM_ResetAudio(void) {
-    if(HMAS_IsPlaying(HMAS_MUSIC)){
-        HMAS_AddEffect(HMAS_MUSIC, HMAS_EFFECT_VOLUME, HMAS_LINEAR, 10, 0);
-        HMAS_AddEffect(HMAS_MUSIC, HMAS_EFFECT_STOP,   HMAS_INSTANT, 1, 0);
-    }
-
-    // Fade out music for all sequences and music player indexes 0, and 1
-    for (size_t soundId = 0; soundId < MUSIC_SEQ_MAX; soundId++) {
-        func_800C3448(0x10100000 | soundId);
-        func_800C3448(0x11100000 | soundId);
-    }
-}
 }
 
 static std::atomic<bool> sResetRequested{ false };
@@ -944,8 +931,6 @@ static void ApplyPendingReset() {
     SetMarioRaceway();
     memset(&gGameModeMenuColumn, 0, sizeof(s8) * NUM_ROWS_GAME_MODE_MENU);
     memset(&gGameModeSubMenuColumn, 0, sizeof(s8) * NUM_COLUMN_GAME_MODE_SUB_MENU * NUM_ROWS_GAME_MODE_SUB_MENU);
-
-    CM_ResetAudio();
 
     // Close the editor.
     if (gEditor.IsEnabled()) {

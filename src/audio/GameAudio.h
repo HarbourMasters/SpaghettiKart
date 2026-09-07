@@ -9,4 +9,5 @@ static struct {
     std::mutex mutex;
     bool running;
     bool processing;
+    bool paused;
 } audio;

@@ -230,7 +230,6 @@ void* GetBattleCup(void);
 void* GetCup();
 
 void CM_RunGarbageCollector(void);
-void CM_ResetAudio(void);
 
 NORETURN void CM_ThrowRuntimeError(const char* fmt, ...)
 #if defined(__GNUC__) || defined(__clang__)

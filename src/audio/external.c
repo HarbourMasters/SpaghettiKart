@@ -7,9 +7,12 @@
 #include "math_util_2.h"
 #include <sounds.h>
 #include "audio/external.h"
+#include "audio/heap.h"
 #include "audio/load.h"
+#include "audio/seqplayer.h"
 #include "audio/data.h"
 #include "audio/port_eu.h"
+#include "port/Engine.h"
 #include "code_800029B0.h"
 #include "code_80005FD0.h"
 #include "menu_items.h"
@@ -159,13 +162,38 @@ char external_unused_string_eu_03[] = "SE FADE OUT TIME %d\n";
 void func_800C13F0(void) {
 }
 
-void audio_reset_session_eu(OSMesg presetId) {
-    OSMesg mesg;
-    osRecvMesg(D_800EA3B4, &mesg, 0);
-    osSendMesg(D_800EA3B0, presetId, 0);
-    osRecvMesg(D_800EA3B4, &mesg, 1);
-    if (mesg.data32 != presetId.data32) {
-        osRecvMesg(D_800EA3B4, &mesg, 1);
+/**
+ * Fade out sequence players
+ */
+void audio_reset_session_eu(s32 presetId) {
+    // OSMesg mesg;
+    // osRecvMesg(D_800EA3B4, &mesg, OS_MESG_NOBLOCK);
+    
+    // osSendMesg(D_800EA3B0, OS_MESG_32(presetId), OS_MESG_NOBLOCK);
+
+    // osRecvMesg(D_800EA3B4, &mesg, OS_MESG_BLOCK);
+    
+    // if (mesg.data32 != presetId) {
+    //    osRecvMesg(D_800EA3B4, &mesg, OS_MESG_BLOCK);
+    // }
+
+    /** 
+     * The above code is for a threaded asynchronous system
+     * libultraship uses single-threaded Recv/Send which means values do not
+     * get set at the correct times:
+     * So, the code that 'does the work' must run *right now!* instead of 'later'
+     * Taken from audio_shut_down_and_reset_step() case 5:
+     **/
+    GameEngine_LockAudio();
+    for (size_t i = 0; i < SEQUENCE_PLAYERS; i++) {
+        sequence_player_disable(&gSequencePlayers[i]);
+    }
+    GameEngine_UnlockAudio();
+
+    // Reset HMAS audio
+    if(HMAS_IsPlaying(HMAS_MUSIC)){
+        HMAS_AddEffect(HMAS_MUSIC, HMAS_EFFECT_VOLUME, HMAS_LINEAR, 10, 0);
+        HMAS_AddEffect(HMAS_MUSIC, HMAS_EFFECT_STOP,   HMAS_INSTANT, 1, 0);
     }
 }
 
@@ -932,7 +960,7 @@ void func_800C2A2C(u32 cmd) {
             seqId = cmd & 0xFF;
             subArgs = (cmd & 0xFF00) >> 8;
             D_800EA1C0 = subArgs;
-            //audio_reset_session_eu((void*) seqId);
+            audio_reset_session_eu(seqId);
             D_800EA1F4[0] = seqId;
             func_800CBBE8(0x46020000, subArgs);
             func_800C5C40();
@@ -2603,6 +2631,8 @@ void func_800C76C0(u8 playerId) {
                             break;
                         case 2: /* switch 2 */
                             if ((D_800EA0EC[0] == 1) && (D_800EA0EC[1] == 1) && (D_800EA0EC[2] == 1)) {
+                                func_800C3448(0x100100FF); // Added: Reset sound in 3/4P so old music does not play over new music
+                                func_800C3448(0x110100FF); // Added: Reset sound in 3/4P so old music does not play over new music
                                 func_800C5278(5U);
                                 func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0x80, 0x26));
                                 play_sequence2(MUSIC_SEQ_VS_BATTLE_RESULTS);
@@ -2614,6 +2644,8 @@ void func_800C76C0(u8 playerId) {
                         case 3: /* switch 2 */
                             if ((D_800EA0EC[0] == 1) && (D_800EA0EC[1] == 1) && (D_800EA0EC[2] == 1) &&
                                 (D_800EA0EC[3] == 1)) {
+                                func_800C3448(0x100100FF); // Added: Reset sound in 3/4P so old music does not play over new music
+                                func_800C3448(0x110100FF); // Added: Reset sound in 3/4P so old music does not play over new music
                                 func_800C5278(5U);
                                 func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0x80, 0x26));
                                 play_sequence2(MUSIC_SEQ_VS_BATTLE_RESULTS);
