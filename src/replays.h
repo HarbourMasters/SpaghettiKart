@@ -23,7 +23,7 @@ void replays_loop(void);
 
 // mi0decode
 
-extern s32 mio0encode(s32 input, s32, s32);
+extern s32 mio0encode(uintptr_t input, s32, uintptr_t);
 
 extern StaffGhost* D_80162DC4;
 extern s32 D_80162DC8;

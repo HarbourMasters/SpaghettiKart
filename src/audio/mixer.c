@@ -7,6 +7,12 @@
 
 #include "mixer.h"
 
+// The Impl signatures mirror the RSP command layout, so unused parameters are expected here;
+// suppress the warning once for the file instead of tagging every signature.
+#if defined(__GNUC__) || defined(__clang__)
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+
 #ifndef __clang__
 #pragma GCC optimize("unroll-loops")
 #endif
@@ -131,15 +137,6 @@ static inline int16_t clamp16(int32_t v) {
         return 0x7fff;
     }
     return (int16_t) v;
-}
-
-static inline int32_t clamp32(int64_t v) {
-    if (v < -0x7fffffff - 1) {
-        return -0x7fffffff - 1;
-    } else if (v > 0x7fffffff) {
-        return 0x7fffffff;
-    }
-    return (int32_t) v;
 }
 
 void aClearBufferImpl(uint16_t addr, int nbytes) {
@@ -296,8 +293,7 @@ void aADPCMdecImpl(uint8_t flags, ADPCM_STATE state) {
     __m128i mask = _mm_loadl_epi64((__m128i*) lower_bit);
 
     while (nbytes > 0) {
-        int shift = *in >> 4; // should be in 0..12 or 0..14
-        __m128i shift_vec = _mm_set1_epi16(shift);
+        int shift = *in >> 4;          // should be in 0..12 or 0..14
         int table_index = *in++ & 0xf; // should be in 0..7
         int16_t(*tbl)[8] = rspa.adpcm_table[table_index];
 
@@ -734,7 +730,6 @@ void aMixImpl(int16_t gain, uint16_t in_addr, uint16_t out_addr, uint16_t count)
     int16_t* in = BUF_S16(in_addr);
     int16_t* out = BUF_S16(out_addr);
     int i;
-    int32_t sample;
 
     if (gain == -0x8000) {
         while (nbytes > 0) {

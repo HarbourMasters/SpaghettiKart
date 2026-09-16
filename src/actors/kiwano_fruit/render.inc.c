@@ -34,13 +34,13 @@ void render_actor_kiwano_fruit(UNUSED Camera* camera, Mat4 arg1, struct Actor* a
     size_t idx = (actor->rot[0] << 0xA) / ResourceGetTexSizeByName(gTextureDksJungleParkwayKiwanoFruit1);
     switch(idx) {
         case 0:
-            addr = gTextureDksJungleParkwayKiwanoFruit1;
+            addr = (uintptr_t) gTextureDksJungleParkwayKiwanoFruit1;
             break;
         case 1:
-            addr = gTextureDksJungleParkwayKiwanoFruit2;
+            addr = (uintptr_t) gTextureDksJungleParkwayKiwanoFruit2;
             break;
         case 2:
-            addr = gTextureDksJungleParkwayKiwanoFruit3;
+            addr = (uintptr_t) gTextureDksJungleParkwayKiwanoFruit3;
             break;
     }
 

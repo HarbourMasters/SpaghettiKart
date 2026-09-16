@@ -400,7 +400,7 @@ void func_802A487C(Vtx* arg0) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxScreen),
                   G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
         gSPMatrix(gDisplayListHead++, &gIdentityMatrix2, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-        gSPVertex(gDisplayListHead++, &arg0[4], 4, 0);
+        gSPVertex(gDisplayListHead++, (uintptr_t) &arg0[4], 4, 0);
         gSP2Triangles(gDisplayListHead++, 0, 3, 1, 0, 1, 3, 2, 0);
     }
 }
@@ -466,10 +466,10 @@ void func_802A4A0C(Vtx* vtx, ScreenContext* screen) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxScreen),
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, &gIdentityMatrix2, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gSPVertex(gDisplayListHead++, &vtx[0], 4, 0);
+    gSPVertex(gDisplayListHead++, (uintptr_t) &vtx[0], 4, 0);
     gSP2Triangles(gDisplayListHead++, 0, 3, 1, 0, 1, 3, 2, 0);
     if (IsRainbowRoad()) {
-        gSPVertex(gDisplayListHead++, &vtx[4], 4, 0);
+        gSPVertex(gDisplayListHead++, (uintptr_t) &vtx[4], 4, 0);
         gSP2Triangles(gDisplayListHead++, 0, 3, 1, 0, 1, 3, 2, 0);
     }
 }
@@ -529,7 +529,7 @@ void func_802A4EF4(void) {
  * The swapping of logic may be a required for proper draw order.
  * Or, perhaps they slapped functions in differing orders for each screen on a wim.
  */
-void race_begin_viewport(ScreenContext* screen, s32 mode) {
+void race_begin_viewport(ScreenContext* screen) {
     init_rdp();
 
     // --------------------------------------------------
@@ -594,7 +594,6 @@ void race_begin_viewport_4p(ScreenContext* screen) {
 }
 
 void render_screens(ScreenContext* screen, s32 mode, s32 someId, s32 playerId) {
-    Mat4 matrix;
     Camera* camera = screen->camera;
     s32 screenId = screen - gScreenContexts;
 
@@ -624,7 +623,7 @@ void render_screens(ScreenContext* screen, s32 mode, s32 someId, s32 playerId) {
             }
             break;
         default:
-            race_begin_viewport(screen, mode);
+            race_begin_viewport(screen);
 
             if ((CVarGetInteger("gDrawSky", true) == true)) {
                 CM_RaceDrawSky(screen, someId);
@@ -726,7 +725,7 @@ void render_screens(ScreenContext* screen, s32 mode, s32 someId, s32 playerId) {
 void set_screen(void) {
     ScreenContext* wrapper = &gScreenContexts[0];
     Player* player = &gPlayers[0];
-    Camera* camera = &cameras[0];
+    // Camera* camera = &cameras[0];
     struct Controller* controller = &gControllers[0];
 
     // struct? size = 0x10. unk++ doesn't work cause s32 too small.
@@ -791,7 +790,7 @@ void set_screen(void) {
                 break;
         }
         player++;
-        camera++;
+        // camera++;
         wrapper++;
         unk += 0x10;
     }

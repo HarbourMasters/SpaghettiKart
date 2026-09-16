@@ -53,7 +53,7 @@ void func_80280038(Camera* camera) {
     gMatrixEffectCount = 0;
     gMatrixHudCount = 0;
     init_rdp();
-    race_begin_viewport(gScreenOneCtx, 0);
+    race_begin_viewport(gScreenOneCtx);
     if ((CVarGetInteger("gDrawSky", true) == true)) {
         CM_RaceDrawSky(gScreenOneCtx, 0);
         func_80093A30(0); // Fill box for thunderbolt?

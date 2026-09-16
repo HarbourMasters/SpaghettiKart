@@ -392,8 +392,8 @@ void func_800C19D0(u8 arg0, u8 arg1, u8 arg2) {
 
 struct Unk_8018EFD8* func_800C1C88(u8 arg0, Vec3f position, f32* velocity, f32* arg3, u8 arg4, u32 soundBits) {
     struct Unk_8018EFD8* temp_a1;
-    struct Unk_8018EFD8* temp_v1;
-    u8 temp_t7;
+    UNUSED struct Unk_8018EFD8* temp_v1;
+    UNUSED u8 temp_t7;
     u8 why1;
 
     if (D_8018EFD8[D_8018FB90].next != 0xFF) {
@@ -949,7 +949,7 @@ void func_800C3448(u32 arg0) {
 }
 
 void func_800C3478(void) {
-    for (D_800EA1E8; D_800EA1E4 != D_800EA1E8;) {
+    while (D_800EA1E4 != D_800EA1E8) {
         func_800C2A2C(D_80192CD0[D_800EA1E8++]);
     }
 }
@@ -1410,7 +1410,7 @@ void func_800C4398(void) {
         sSoundBanks[bank][soundIndex].cameraId = var_a2->cameraId;
         sSoundBanks[bank][soundIndex].unk10 = var_a2->unk0C;
         sSoundBanks[bank][soundIndex].unk14 = var_a2->unk10;
-        sSoundBanks[bank][0, soundIndex].unk18 = var_a2->unk14;
+        sSoundBanks[bank][soundIndex].unk18 = var_a2->unk14;
         sSoundBanks[bank][soundIndex].soundBits = var_a2->soundBits;
         sSoundBanks[bank][soundIndex].soundStatus = (u8) ((u32) (var_a2->soundBits & 0x01000000) >> 0x18);
         sSoundBanks[bank][soundIndex].freshness = 2;
@@ -1928,11 +1928,11 @@ void func_800C5E38(u8 playerId) {
                             if ((s32) D_800EA1C0 < 2) {
                                 play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF9, 0x26), &D_800E9F7C[playerId].pos, playerId,
                                            &D_800E9F7C[playerId].unk_38, &D_800E9F04[playerId],
-                                           (u8*) &D_800E9F7C[playerId].unk_14);
+                                           (s8*) &D_800E9F7C[playerId].unk_14);
                             } else {
                                 play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0x80, 0x26), &D_800E9F7C[playerId].pos, playerId,
                                            &D_800E9F7C[playerId].unk_38, &D_800E9F04[playerId],
-                                           (u8*) &D_800E9F7C[playerId].unk_14);
+                                           (s8*) &D_800E9F7C[playerId].unk_14);
                             }
                         }
                         break;
@@ -2097,144 +2097,144 @@ void func_800C683C(u8 cameraId) {
             switch (D_800E9E74[cameraId]) {
                 case 3:
                     play_sound(SOUND_ACTION_TYRE_SQUEAL, &D_800E9F7C[cameraId].pos, cameraId, &D_800E9F14[cameraId],
-                               &D_800E9EF4[cameraId], (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9EF4[cameraId], (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ACTION_TYRE_SQUEAL;
                     break;
                 case 18:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF8, 0x1D), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4,
-                               &D_800EA1D4, (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800EA1D4, (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF8, 0x1D);
                     break;
                 case 19:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF8, 0x22), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4,
-                               &D_800EA1D4, (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800EA1D4, (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF8, 0x22);
                     break;
                 case 1:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x09), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4,
-                               &D_800E9EF4[cameraId], (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9EF4[cameraId], (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x09);
                     break;
                 case 2:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF4, 0x0A), &D_800E9F7C[cameraId].pos, cameraId,
-                               &D_800E9F14[cameraId], &D_800EA1D4, (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9F14[cameraId], &D_800EA1D4, (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF4, 0x0A);
                     break;
                 case 17:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x1E), &D_800E9F7C[cameraId].pos, cameraId,
-                               &D_800E9F14[cameraId], &D_800E9EF4[cameraId], (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9F14[cameraId], &D_800E9EF4[cameraId], (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x1E);
                     break;
                 case 15:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x1F), &D_800E9F7C[cameraId].pos, cameraId,
-                               &D_800E9F14[cameraId], &D_800EA1D4, (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9F14[cameraId], &D_800EA1D4, (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x1F);
                     break;
                 case 16:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x21), &D_800E9F7C[cameraId].pos, cameraId,
-                               &D_800E9F14[cameraId], &D_800EA1D4, (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9F14[cameraId], &D_800EA1D4, (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x21);
                     break;
                 case 20:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x27), &D_800E9F7C[cameraId].pos, cameraId,
-                               &D_800E9F14[cameraId], &D_800EA1D4, (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9F14[cameraId], &D_800EA1D4, (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x27);
                     break;
                 case 25:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x20), &D_800E9F7C[cameraId].pos, cameraId,
-                               &D_800E9F14[cameraId], &D_800EA1D4, (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9F14[cameraId], &D_800EA1D4, (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x20);
                     break;
                 case 26:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x23), &D_800E9F7C[cameraId].pos, cameraId,
-                               &D_800E9F14[cameraId], &D_800EA1D4, (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9F14[cameraId], &D_800EA1D4, (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x23);
                     break;
                 case 27:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0x80, 0x46), &D_800E9F7C[cameraId].pos, cameraId,
-                               &D_800E9F14[cameraId], &D_800EA1D4, (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9F14[cameraId], &D_800EA1D4, (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0x80, 0x46);
                     break;
                 case 28:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x25), &D_800E9F7C[cameraId].pos, cameraId,
-                               &D_800E9F14[cameraId], &D_800EA1D4, (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9F14[cameraId], &D_800EA1D4, (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x25);
                     break;
                 case 4:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x0B), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4,
-                               &D_800E9EF4[cameraId], (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9EF4[cameraId], (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x0B);
                     break;
                 case 5:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x0C), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4,
-                               &D_800E9EF4[cameraId], (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9EF4[cameraId], (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x0C);
                     break;
                 case 6:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x0D), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4,
-                               &D_800E9EF4[cameraId], (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9EF4[cameraId], (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x0D);
                     break;
                 case 7:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x0E), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4,
-                               &D_800E9EF4[cameraId], (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9EF4[cameraId], (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x0E);
                     break;
                 case 8:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x0F), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4,
-                               &D_800E9EF4[cameraId], (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9EF4[cameraId], (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x0F);
                     break;
                 case 9:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x10), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4,
-                               &D_800E9EF4[cameraId], (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9EF4[cameraId], (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x10);
                     break;
                 case 10:
                 case 14:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x11), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4,
-                               &D_800E9EF4[cameraId], (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9EF4[cameraId], (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x11);
                     break;
                 case 11:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x12), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4,
-                               &D_800E9EF4[cameraId], (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9EF4[cameraId], (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x12);
                     break;
                 case 12:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x13), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4,
-                               &D_800E9EF4[cameraId], (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9EF4[cameraId], (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x13);
                     break;
                 case 29:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x48), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4,
-                               &D_800E9EF4[cameraId], (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9EF4[cameraId], (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x48);
                     break;
                 case 30:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x49), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4,
-                               &D_800E9EF4[cameraId], (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9EF4[cameraId], (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x49);
                     break;
                 case 31:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x4A), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4,
-                               &D_800E9EF4[cameraId], (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9EF4[cameraId], (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x4A);
                     break;
                 case 13:
                 case 22:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x29), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4,
-                               &D_800E9EF4[cameraId], (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9EF4[cameraId], (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x29);
                     break;
                 case 23:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x2A), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4,
-                               &D_800E9EF4[cameraId], (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9EF4[cameraId], (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x2A);
                     break;
                 case 24:
                     play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x2B), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4,
-                               &D_800E9EF4[cameraId], (u8*) &D_800E9F7C[cameraId].unk_14);
+                               &D_800E9EF4[cameraId], (s8*) &D_800E9F7C[cameraId].unk_14);
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x2B);
                     break;
                 default:
@@ -2751,7 +2751,7 @@ void func_800C847C(u8 playerId) {
                 (D_800EA0EC[playerId] == 0)) {
                 play_sound((gPlayers[playerId].characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x05),
                            &D_800E9F7C[playerId].pos, playerId, &D_800EA1D4, &D_800EA1D4,
-                           (u8*) &D_800E9F7C[playerId].unk_14);
+                           (s8*) &D_800E9F7C[playerId].unk_14);
             }
         }
     } else {
@@ -2763,7 +2763,7 @@ void func_800C847C(u8 playerId) {
             if ((IsKoopaTroopaBeach()) && (D_800EA0EC[playerId] == 0)) {
                 play_sound((gPlayers[playerId].characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x08),
                            &D_800E9F7C[playerId].pos, playerId, &D_800EA1D4, &D_800EA1D4,
-                           (u8*) &D_800E9F7C[playerId].unk_14);
+                           (s8*) &D_800E9F7C[playerId].unk_14);
             }
         }
     }
@@ -2927,7 +2927,7 @@ void play_sound2(s32 soundBits) {
     if ((soundBits == SOUND_ACTION_REV_ENGINE_2) && (IsDkJungle())) {
         soundBits = SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x28);
     }
-    play_sound(soundBits, &D_800EA1C8, 4, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
+    play_sound(soundBits, &D_800EA1C8, 4, &D_800EA1D4, &D_800EA1D4, (s8*) &D_800EA1DC);
 }
 
 void play_sequence(u16 arg0) {
@@ -2957,7 +2957,7 @@ void func_800C8F80(u8 arg0, u32 soundBits) {
             case 2:
                 D_800EA0EC[arg0] = 1;
             case 0:
-                play_sound(soundBits, &D_800E9F7C[arg0].pos, arg0, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
+                play_sound(soundBits, &D_800E9F7C[arg0].pos, arg0, &D_800EA1D4, &D_800EA1D4, (s8*) &D_800EA1DC);
                 break;
         }
     }
@@ -2974,7 +2974,7 @@ void func_800C9060(u8 playerId, u32 soundBits) {
                 D_800EA0EC[playerId] = 1;
             case 0:
                 play_sound(soundBits, &D_800E9F7C[playerId].pos, playerId, &D_800EA1D4, &D_800EA1D4,
-                           (u8*) &D_800E9F7C[playerId].unk_14);
+                           (s8*) &D_800E9F7C[playerId].unk_14);
                 break;
         }
     }
@@ -2993,10 +2993,10 @@ void func_800C90F4(u8 playerId, u32 soundBits) {
                 }
                 if (((gPlayers[playerId].effects & 0x40000000) == 0x40000000) && ((s32) D_800E9F2C[playerId] >= 0x1F)) {
                     play_sound(soundBits, &D_800E9F7C[playerId].pos, playerId, &D_800EA150, &D_800EA1D4,
-                               (u8*) &D_800E9F7C[playerId].unk_14);
+                               (s8*) &D_800E9F7C[playerId].unk_14);
                 } else {
                     play_sound(soundBits, &D_800E9F7C[playerId].pos, playerId, &D_800EA1D4, &D_800EA1D4,
-                               (u8*) &D_800E9F7C[playerId].unk_14);
+                               (s8*) &D_800E9F7C[playerId].unk_14);
                 }
                 break;
             default:
@@ -3022,10 +3022,10 @@ void func_800C92CC(u8 playerId, u32 soundBits) {
                 temp_v0->unk34 = 170.0f;
                 if (((gPlayers[playerId].effects & 0x40000000) == 0x40000000) && ((s32) D_800E9F2C[playerId] >= 0x1F)) {
                     play_sound((gPlayers[playerId].characterId * 0x10) + soundBits, &temp_v0->unk18, var_s0,
-                               &D_800EA150, &D_800EA1D4, &D_800EA06C[playerId].unk0C);
+                               &D_800EA150, &D_800EA1D4, (s8*) &D_800EA06C[playerId].unk0C);
                 } else {
                     play_sound((gPlayers[playerId].characterId * 0x10) + soundBits, &temp_v0->unk18, var_s0,
-                               &temp_v0->unk2C, &D_800EA1D4, &D_800EA06C[playerId].unk0C);
+                               &temp_v0->unk2C, &D_800EA1D4, (s8*) &D_800EA06C[playerId].unk0C);
                 }
             }
         }
@@ -3116,7 +3116,7 @@ void func_800C94A4(u8 playerId) {
                         break;
                 }
                 play_sound(var_a0, &D_800E9F7C[playerId].pos, playerId, &D_800E9F7C[playerId].unk_0C,
-                           &D_800E9F7C[playerId].unk_10, (u8*) &D_800E9F7C[playerId].unk_14);
+                           &D_800E9F7C[playerId].unk_10, (s8*) &D_800E9F7C[playerId].unk_14);
                 break;
             default:
                 break;
@@ -3141,7 +3141,7 @@ void func_800C98B8(Vec3f position, Vec3f velocity, u32 soundBits) {
             temp_v0 = func_800C1C88(0U, position, velocity, D_800EA1C8, (u8) var_s0, soundBits);
             if (temp_v0 != 0) {
                 temp_v0->unk34 = 170.0f;
-                play_sound(soundBits, &temp_v0->unk18, var_s0, &temp_v0->unk2C, &D_800EA1D4, &D_800EA1DC);
+                play_sound(soundBits, &temp_v0->unk18, var_s0, &temp_v0->unk2C, &D_800EA1D4, (s8*) &D_800EA1DC);
             }
         }
     }
@@ -3204,7 +3204,7 @@ void func_800C9A88(u8 playerId) {
                         if (temp_v0_6 != NULL) {
                             temp_v0_6->unk34 = 40.0f;
                             play_sound(soundBits, &temp_v0_6->unk18, var_s0, &temp_v0_6->unk2C,
-                                       &D_800EA06C[playerId].unk00[2], &D_800EA06C[playerId].unk0C);
+                                       &D_800EA06C[playerId].unk00[2], (s8*) &D_800EA06C[playerId].unk0C);
                         }
                     }
                 }
@@ -3230,9 +3230,9 @@ void func_800C9D80(Vec3f position, Vec3f velocity, u32 soundBits) {
             if (temp_v0 != 0) {
                 temp_v0->unk34 = 170.0f;
                 if (soundBits == SOUND_ARG_LOAD(0x51, 0x03, 0x70, 0x0B)) {
-                    play_sound(soundBits, &temp_v0->unk18, var_s0, &D_800EA178, &D_800EA17C, &D_800EA1DC);
+                    play_sound(soundBits, &temp_v0->unk18, var_s0, &D_800EA178, &D_800EA17C, (s8*) &D_800EA1DC);
                 } else {
-                    play_sound(soundBits, &temp_v0->unk18, var_s0, &temp_v0->unk2C, &D_800EA1D4, &D_800EA1DC);
+                    play_sound(soundBits, &temp_v0->unk18, var_s0, &temp_v0->unk2C, &D_800EA1D4, (s8*) &D_800EA1DC);
                 }
             }
         }
@@ -3415,7 +3415,7 @@ void func_800CA49C(u8 arg0) {
 void func_800CA59C(u8 playerId) {
     if ((D_800EA0EC[playerId] == 0) && (D_800EA108 == 0)) {
         play_sound((gPlayers[playerId].characterId * 0x10) + 0x29008001, &D_800E9F7C[playerId].pos, playerId,
-                   &D_800EA1D4, &D_800EA1D4, (u8*) &D_800E9F7C[playerId].unk_14);
+                   &D_800EA1D4, &D_800EA1D4, (s8*) &D_800E9F7C[playerId].unk_14);
         D_800EA164 = 1;
         if ((s32) D_800EA1C0 >= 2) {
             func_800C8F80(playerId, 0x0100FF2C);
@@ -3443,7 +3443,7 @@ void func_800CA730(u8 arg0) {
     if (D_800EA0EC[arg0] == 0) {
         if ((D_800EA108 == 0) && (D_800EA10C[arg0] != 0)) {
             play_sound(gPlayers[arg0].characterId * 0x10 + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x08),
-                       &D_800E9F7C[arg0].pos, arg0, &D_800EA1D4, &D_800EA1D4, (u8*) &D_800E9F7C[arg0].unk_14);
+                       &D_800E9F7C[arg0].pos, arg0, &D_800EA1D4, &D_800EA1D4, (s8*) &D_800E9F7C[arg0].unk_14);
             if (D_800EA10C[arg0] != 0) {
                 if ((s32) D_800EA1C0 >= 2) {
                     func_800C9018(arg0, SOUND_ARG_LOAD(0x01, 0x00, 0xFF, 0x2C));
@@ -3490,7 +3490,7 @@ void func_800CA984(u8 arg0) {
             temp_v0_2 =
                 func_800C1C88(arg0, gPlayers[arg0].pos, D_800EA1C8, &gPlayers[arg0].unk_098, (u8) i, SOUND_ITEM_STAR);
             if (temp_v0_2) {
-                play_sound(SOUND_ITEM_STAR, &temp_v0_2->unk18, i, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
+                play_sound(SOUND_ITEM_STAR, &temp_v0_2->unk18, i, &D_800EA1D4, &D_800EA1D4, (s8*) &D_800EA1DC);
             }
         }
     }
@@ -3513,7 +3513,7 @@ void func_800CAB4C(u8 arg0) {
             case 0:
                 func_800C36C4(0, 1U, 0x55U, 5);
                 func_800C9060(arg0, 0x1900F013U);
-                play_sound(SOUND_ITEM_THUNDERBOLT, &D_800EA1C8, 0U, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
+                play_sound(SOUND_ITEM_THUNDERBOLT, &D_800EA1C8, 0U, &D_800EA1D4, &D_800EA1D4, (s8*) &D_800EA1DC);
                 break;
             default:
                 break;
@@ -3532,10 +3532,10 @@ void func_800CAC08() {
 
 void func_800CAC60(UNUSED s32 arg0) {
     if ((D_800EA108 == 0) && (D_800EA0F0 == 0)) {
-        play_sound(SOUND_ACTION_EXPLOSION_2, &D_800EA1C8, 0U, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
+        play_sound(SOUND_ACTION_EXPLOSION_2, &D_800EA1C8, 0U, &D_800EA1D4, &D_800EA1D4, (s8*) &D_800EA1DC);
         if ((D_800EA10C[0] != 1) && (D_800EA10C[1] != 1)) {
             func_800C36C4(0, 1, 0x37U, 5);
-            play_sound(SOUND_ITEM_THUNDERBOLT, &D_800EA1C8, 0U, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
+            play_sound(SOUND_ITEM_THUNDERBOLT, &D_800EA1C8, 0U, &D_800EA1D4, &D_800EA1D4, (s8*) &D_800EA1DC);
             D_800EA168 = 1;
         }
     }
@@ -3567,7 +3567,7 @@ void func_800CADD0(u8 playerId, f32 arg1) {
                 }
                 D_800EA110[playerId] = arg1;
                 play_sound(0x1900A209U, &D_800E9F7C[playerId].pos, playerId, &D_800EA1D4, &D_800EA110[playerId],
-                           (u8*) &D_800E9F7C[playerId].unk_14);
+                           (s8*) &D_800E9F7C[playerId].unk_14);
                 break;
             default:
                 break;
@@ -3593,7 +3593,7 @@ void func_800CAEC4(u8 playerId, f32 arg1) {
                 //! @warning this used to be gCurrentCourseId + 0x19007020
                 // This may not be equivallent.
                 play_sound(TrackBrowser_GetTrackIndex() + 0x19007020, &D_800E9F7C[playerId].pos, playerId, &D_800EA1D4,
-                           &D_800EA120[playerId], (u8*) &D_800E9F7C[playerId].unk_14);
+                           &D_800EA120[playerId], (s8*) &D_800E9F7C[playerId].unk_14);
                 break;
             default:
                 break;

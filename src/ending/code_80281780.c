@@ -28,7 +28,9 @@
 // For init podium ceremony
 #include "ceremony_and_credits.h"
 
-#define bcopy memcpy
+// bcopy takes (src, dst); memcpy takes (dst, src), do not mix it up.
+#undef bcopy
+#define bcopy(src, dst, n) memmove(dst, src, n)
 
 u8 defaultCharacterIds[] = { 1, 2, 3, 4, 5, 6, 7, 0 };
 
@@ -94,8 +96,6 @@ void func_802818BC(void) {
 }
 
 void setup_podium_ceremony(void) {
-    Vec3f spawn = {0, 0, 0};
-
     clear_D_802874D8_actors();
 
     gCurrentCourseId = TRACK_ROYAL_RACEWAY;

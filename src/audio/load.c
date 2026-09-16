@@ -602,7 +602,7 @@ void* sequence_dma_async(s32 seqId, s32 arg1, struct SequencePlayer* seqPlayer) 
     return ptr;
 }
 
-uint8_t* load_sequence_immediate(s32 seqId, s32 arg1) {
+uint8_t* load_sequence_immediate(s32 seqId, UNUSED s32 arg1) {
     return GameEngine_LoadSequence(seqId)->data;
 }
 
@@ -660,7 +660,7 @@ void load_sequence(u32 player, u32 seqId, s32 loadAsync) {
     }
 }
 
-void load_sequence_internal(u32 player, u32 seqId, s32 loadAsync) {
+void load_sequence_internal(u32 player, u32 seqId, UNUSED s32 loadAsync) {
     struct SequencePlayer* seqPlayer = &gSequencePlayers[player];
 
     if (seqId >= gSequenceCount) {
@@ -707,13 +707,13 @@ void audio_init(void) {
     UNUSED s32 pad[2];
     s32 j;
     UNUSED s32 pad2[6];
-    u32 sp60[2];
+    UNUSED u32 sp60[2];
     UNUSED s32 pad1[2];
-    s32 aaa;
-    s32 size;
+    UNUSED s32 aaa;
+    UNUSED s32 size;
     UNUSED u64* ptr64;
     UNUSED s32 one = 1;
-    u8* test;
+    UNUSED u8* test;
 
     gAudioLoadLock = 0;
 

@@ -480,7 +480,7 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
             case SUB_MENU_COPY_PAK_TO_GHOST2_2P: {
                 // bit of a fake match, but if it works it works?
                 if ((sp30[sp38->param2].trackIndex !=
-                     ((0, (D_8018EE10 + (gSubMenuSelection - SUB_MENU_COPY_PAK_TO_GHOST_MIN))->trackIndex))) ||
+                     (((D_8018EE10 + (gSubMenuSelection - SUB_MENU_COPY_PAK_TO_GHOST_MIN))->trackIndex))) ||
                     ((D_8018EE10 + (gSubMenuSelection - SUB_MENU_COPY_PAK_TO_GHOST_MIN))->ghostDataSaved == 0)) {
                     if ((btnAndStick & D_JPAD) && (gSubMenuSelection < SUB_MENU_COPY_PAK_TO_GHOST_MAX)) {
                         gSubMenuSelection += 1;
@@ -1562,7 +1562,7 @@ bool is_character_spot_free(s32 gridId) {
  * Grid positions are from right to left, then top to bottom
  */
 void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
-    s8* bar;
+    UNUSED s8* bar;
     s8 selected;
     s8 i;
     s8 savedSelection;

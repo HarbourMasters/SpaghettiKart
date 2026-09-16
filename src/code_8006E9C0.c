@@ -121,7 +121,7 @@ void clear_object_list() {
 /**
  * Dma's mario kart 64 logo and track outline textures.
  */
-u8* dma_misc_textures(u8* devAddr, u8* baseAddress, u32 size, u32 offset) {
+u8* dma_misc_textures(u8* devAddr, u8* baseAddress, UNUSED u32 size, UNUSED u32 offset) {
 #ifdef TARGET_N64
     u8** tempAddress;
     u8* address;
@@ -156,8 +156,8 @@ void init_item_window(s32 objectIndex) {
     temp_v0->textureListIndex = temp_v0->currentItem;
     temp_v0->tlutList = (u8*) common_tlut_item_window_none;
     temp_v0->activeTLUT = (u8*) common_tlut_item_window_none;
-    temp_v0->textureList = common_texture_item_window_none;
-    temp_v0->activeTexture = common_texture_item_window_none;
+    temp_v0->textureList = (u8*) common_texture_item_window_none;
+    temp_v0->activeTexture = (u8*) common_texture_item_window_none;
     temp_v0->unk_04C = -1;
     temp_v0->unk_09C = 0x00A0;  // Screen X position
     temp_v0->unk_09E = -0x0020; // Screen Y position
@@ -174,10 +174,10 @@ void get_minimap_properties() {
 }
 
 void func_8006EF60(void) {
-    s32 i;
+    UNUSED s32 i;
     // `huh`'s and `i`'s types have to differ, for some reason
-    s16 huh;
-    u8* wut = 0;
+    UNUSED s16 huh;
+    UNUSED u8* wut = 0;
 
     // Commented the below code out because it is sketchy.
     // Just-in-case it results in ub or similar.
@@ -542,14 +542,14 @@ void init_cloud_object(s32 objectIndex, s32 arg1, CloudData* arg2) {
     temp_v0->direction_angle[1] = arg2->rotY;
     temp_v0->unk_09E = arg2->posY;
     temp_v0->sizeScaling = (f32) arg2->scalePercent / 100.0;
-    if (GameEngine_ResourceGetTexTypeByName(CM_GetProps()->CloudTexture) != 1) {
+    if (GameEngine_ResourceGetTexTypeByName((const char*) CM_GetProps()->CloudTexture) != 1) {
         temp_v0->activeTexture = ((u8*) LOAD_ASSET_RAW(CM_GetProps()->CloudTexture)) + (arg2->subType * 1024);
         func_80073404(objectIndex, 0x40U, 0x20U, D_0D005FB0);
     } else {
         temp_v0->activeTexture = CM_GetProps()->CloudTexture;
-        if (strcmp(CM_GetProps()->CloudTexture, gTextureExhaust0) == 0 ||
-            strcmp(CM_GetProps()->CloudTexture, gTextureExhaust1) == 0 ||
-            strcmp(CM_GetProps()->CloudTexture, gTextureExhaust2) == 0) {
+        if (strcmp((const char*) CM_GetProps()->CloudTexture, gTextureExhaust0) == 0 ||
+            strcmp((const char*) CM_GetProps()->CloudTexture, gTextureExhaust1) == 0 ||
+            strcmp((const char*) CM_GetProps()->CloudTexture, gTextureExhaust2) == 0) {
             func_80073404(objectIndex, 0x40U, 0x20U, cloudvtx2[arg2->subType]);
         } else {
             func_80073404(objectIndex, 0x40U, 0x20U, cloudvtx[arg2->subType]);
@@ -596,7 +596,7 @@ void init_star_object(s32 objectIndex, s32 arg1, StarData* arg2) {
     temp_v0->direction_angle[1] = arg2->rotY;
     temp_v0->unk_09E = arg2->posY;                           // screen Y position
     temp_v0->sizeScaling = (f32) arg2->scalePercent / 100.0; // some type of scaling on the texture
-    temp_v0->activeTexture = D_0D0293D8;
+    temp_v0->activeTexture = (u8*) D_0D0293D8;
     func_80073404(objectIndex, 0x10U, 0x10U, common_vtx_rectangle);
 }
 
@@ -615,8 +615,8 @@ void init_stars(StarData* starList) {
 }
 
 void func_8007055C(ScreenContext* screen) {
-    s32 var_s0;
-    s32 var_s4;
+    UNUSED s32 var_s0;
+    UNUSED s32 var_s4;
 
     InitSkyActors(screen);
     func_8008C23C();
@@ -637,8 +637,8 @@ void func_80070714(void) {
 }
 
 void init_course_object(void) {
-    s32 objectId;
-    s32 i;
+    UNUSED s32 objectId;
+    UNUSED s32 i;
 
     CM_InitTrackObjects();
 }
