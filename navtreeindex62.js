@@ -1,10 +1,5 @@
 var NAVTREEINDEX62 =
 {
-"podium__ceremony__actors_8c.html#abe5e7d6664a9f39449fbf6848898baa1":[18,0,3,5,13,7],
-"podium__ceremony__actors_8c.html#aca4471232210cb9f7177a97d0300af4e":[18,0,3,5,13,8],
-"podium__ceremony__actors_8c.html#acd848a10e2c1967db92d232e007fcc94":[18,0,3,5,13,22],
-"podium__ceremony__actors_8c.html#ada674a65695d9415cb4e50e687318e45":[18,0,3,5,13,11],
-"podium__ceremony__actors_8c.html#ade046f0ae71fd0bf16b218c94452509d":[18,0,3,5,13,23],
 "podium__ceremony__actors_8c.html#adef79cd63739d10c4236f8d811f606f3":[18,0,3,5,13,32],
 "podium__ceremony__actors_8c.html#ae26375ec0f4f77b7ff9296000eebec17":[18,0,3,5,13,39],
 "podium__ceremony__actors_8c.html#aeca264b613da45643915be89209b72da":[18,0,3,5,13,31],
@@ -243,11 +238,16 @@ var NAVTREEINDEX62 =
 "race__logic_8c.html#a76fe374b8488fe7ba4e7ae95385e9a0a":[18,0,3,10,12,37],
 "race__logic_8c.html#a7ef352a26863f1cb77a3cfca56164b91":[18,0,3,10,12,7],
 "race__logic_8c.html#a7f21a1ef55b61f5678170da62e5e51dc":[18,0,3,10,12,21],
-"race__logic_8c.html#a81fc82f45c9f9fcbf0d71fd2e0d6853c":[18,0,3,10,12,8],
 "race__logic_8c.html#a8248cb723a9174c8f6cc066ff76804b8":[18,0,3,10,12,39],
 "race__logic_8c.html#a836d0734cc365cdfb4b35561107bfe4e":[18,0,3,10,12,12],
 "race__logic_8c.html#a89ac412ce30c2e0e583d74258a887c8b":[18,0,3,10,12,45],
 "race__logic_8c.html#a9c6f4eb059607fcd18e4df0dcaaeec5b":[18,0,3,10,12,32],
 "race__logic_8c.html#a9eda822eb897f015332a199f25aee562":[18,0,3,10,12,41],
-"race__logic_8c.html#aa064451699e55c64c16a2e0da8dbca71":[18,0,3,10,12,43]
+"race__logic_8c.html#aa064451699e55c64c16a2e0da8dbca71":[18,0,3,10,12,43],
+"race__logic_8c.html#aac5e7f61ed2c0c4e066e6b1811ecdeb0":[18,0,3,10,12,34],
+"race__logic_8c.html#aac937545c174100218f0726a70d83e33":[18,0,3,10,12,20],
+"race__logic_8c.html#ab3cce6260fc4d7f0c4610aeebce8de54":[18,0,3,10,12,5],
+"race__logic_8c.html#ab653b6e6bb04ca0f7995cb58cbeba9af":[18,0,3,10,12,25],
+"race__logic_8c.html#abe207ea8c493abfaa7e63d66ae57453e":[18,0,3,10,12,4],
+"race__logic_8c.html#ac028ea2114c7fd2e35661cb1f1ec3aa7":[18,0,3,10,12,38]
 };

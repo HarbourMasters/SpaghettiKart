@@ -15,7 +15,7 @@ var spawn__players_8c =
     [ "load_kart_textures", "spawn__players_8c.html#a64d9c3853ec2b8782f7ac78271bc6b85", null ],
     [ "spawn_and_set_player_spawns", "spawn__players_8c.html#ad000bb04e2068b4167b6b350a42a8242", null ],
     [ "spawn_multiplayer_cameras", "spawn__players_8c.html#a5848165a158a960455081c33be0ccc0e", null ],
-    [ "spawn_player", "spawn__players_8c.html#a43c7f2d844178603dc415f549283e97c", null ],
+    [ "spawn_player", "spawn__players_8c.html#a265c33a366ca68e02184c6cb43f5b646", null ],
     [ "spawn_players_2p_battle", "spawn__players_8c.html#a82ae339563b96176bf4effcf6773decc", null ],
     [ "spawn_players_3p_battle", "spawn__players_8c.html#a4ff7e74c8b78fbfb85016c017a54b9e2", null ],
     [ "spawn_players_4p_battle", "spawn__players_8c.html#a2ed99af251cbc3e3e98e81d23b7cbcea", null ],

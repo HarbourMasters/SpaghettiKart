@@ -1,17 +1,19 @@
 <map id="src/os/__osResetGlobalIntMask.c" name="src/os/__osResetGlobalIntMask.c">
-<area shape="rect" id="Node000001" title=" " alt="" coords="45,5,235,45"/>
-<area shape="rect" id="Node000002" href="$libultra__internal_8h.html" title=" " alt="" coords="29,167,166,192"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,47,107,154,102,153,132,45"/>
-<area shape="rect" id="Node000006" href="$new__func_8h.html" title=" " alt="" coords="135,93,231,119"/>
-<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="153,44,172,80,168,83,148,47"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="5,313,112,339"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="97,193,68,301,63,299,92,192"/>
-<area shape="rect" id="Node000004" href="$macros_8h.html" title=" " alt="" coords="96,240,179,265"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="106,191,126,227,122,229,102,194"/>
-<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="126,267,83,306,80,302,123,263"/>
-<area shape="rect" id="Node000005" href="$math_8h.html" title=" " alt="" coords="137,313,205,339"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="145,265,162,300,157,302,140,267"/>
-<area shape="poly" id="edge7_Node000006_Node000002" title=" " alt="" coords="171,121,123,160,120,156,167,117"/>
-<area shape="rect" id="Node000007" href="$hardware_8h.html" title=" " alt="" coords="190,167,285,192"/>
-<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="194,117,222,154,218,157,190,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="61,5,251,45"/>
+<area shape="rect" id="Node000002" href="$libultra__internal_8h.html" title=" " alt="" coords="45,167,182,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="153,47,123,154,118,153,148,45"/>
+<area shape="rect" id="Node000007" href="$new__func_8h.html" title=" " alt="" coords="151,93,247,119"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="169,44,188,80,184,83,164,47"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,321,112,346"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="112,193,70,308,65,307,107,191"/>
+<area shape="rect" id="Node000004" href="$macros_8h.html" title=" " alt="" coords="120,240,203,265"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="123,191,148,227,144,230,119,194"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="148,268,87,314,83,310,145,263"/>
+<area shape="rect" id="Node000005" href="$math_8h.html" title=" " alt="" coords="137,321,205,346"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="165,265,170,307,165,307,160,266"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="229,313,387,353"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="184,263,262,304,259,309,182,268"/>
+<area shape="poly" id="edge8_Node000007_Node000002" title=" " alt="" coords="187,121,139,160,136,156,183,117"/>
+<area shape="rect" id="Node000008" href="$hardware_8h.html" title=" " alt="" coords="206,167,301,192"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="210,117,238,154,234,157,206,121"/>
 </map>

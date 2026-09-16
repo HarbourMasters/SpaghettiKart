@@ -10,7 +10,7 @@ var replays_8h =
     [ "load_course_ghost", "replays_8h.html#ada30ba013c97df306b243dbd89d8979f", null ],
     [ "load_player_ghost", "replays_8h.html#a83973fcda05d24a97b11dc1eca20aea5", null ],
     [ "load_post_time_trial_replay", "replays_8h.html#ae7d61f2c74810b3ee3efdf03b4dcc3d2", null ],
-    [ "mio0encode", "replays_8h.html#aee8d226c442bc6a60158a37eeef8656a", null ],
+    [ "mio0encode", "replays_8h.html#a71936c4af2a405c9658cb9eda042be98", null ],
     [ "process_course_ghost_replay", "replays_8h.html#a54bf30e0f61649a5c1337da985154dd9", null ],
     [ "process_player_ghost_replay", "replays_8h.html#a1222747ec31ebcacce5ef87743ab4846", null ],
     [ "process_post_time_trial_replay", "replays_8h.html#a34754865101fad6a4e3a9fc1b814c155", null ],

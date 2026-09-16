@@ -1,20 +1,22 @@
 <map id="src/os/osEPiRawStartDma.c" name="src/os/osEPiRawStartDma.c">
-<area shape="rect" id="Node000001" title=" " alt="" coords="111,5,311,31"/>
-<area shape="rect" id="Node000002" href="$libultra__internal_8h.html" title=" " alt="" coords="29,152,166,177"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,33,140,52,124,65,110,80,99,109,98,139,92,138,94,108,106,77,120,61,137,47,173,28"/>
-<area shape="rect" id="Node000006" href="$hardware_8h.html" title=" " alt="" coords="198,152,293,177"/>
-<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="217,30,231,78,243,138,238,139,225,79,212,32"/>
-<area shape="rect" id="Node000007" href="$new__func_8h.html" title=" " alt="" coords="120,79,216,104"/>
-<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="206,32,184,68,180,66,201,30"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="291,79,387,104"/>
-<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="233,28,307,69,304,74,230,33"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="5,299,112,324"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="97,178,68,286,63,285,92,177"/>
-<area shape="rect" id="Node000004" href="$macros_8h.html" title=" " alt="" coords="96,225,179,251"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="106,176,126,212,122,215,102,179"/>
-<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="126,253,83,291,80,288,123,249"/>
-<area shape="rect" id="Node000005" href="$math_8h.html" title=" " alt="" coords="137,299,205,324"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="145,250,162,285,157,287,140,252"/>
-<area shape="poly" id="edge8_Node000007_Node000002" title=" " alt="" coords="158,106,120,144,116,140,154,102"/>
-<area shape="poly" id="edge9_Node000007_Node000006" title=" " alt="" coords="182,102,224,141,221,144,179,106"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="127,5,327,31"/>
+<area shape="rect" id="Node000002" href="$libultra__internal_8h.html" title=" " alt="" coords="45,152,182,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,33,156,52,140,65,126,80,115,109,114,139,108,138,110,108,122,77,136,61,153,47,189,28"/>
+<area shape="rect" id="Node000007" href="$hardware_8h.html" title=" " alt="" coords="214,152,309,177"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="233,30,247,78,259,138,254,139,241,79,228,32"/>
+<area shape="rect" id="Node000008" href="$new__func_8h.html" title=" " alt="" coords="136,79,232,104"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="222,32,200,68,196,66,217,30"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="307,79,403,104"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="249,28,323,69,320,74,246,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,306,112,331"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="112,178,70,294,65,292,107,176"/>
+<area shape="rect" id="Node000004" href="$macros_8h.html" title=" " alt="" coords="120,225,203,251"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="123,176,148,213,144,216,119,179"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="148,253,87,299,83,295,145,249"/>
+<area shape="rect" id="Node000005" href="$math_8h.html" title=" " alt="" coords="137,306,205,331"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="165,251,170,292,165,292,160,251"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="229,299,387,339"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="184,248,262,290,259,295,182,253"/>
+<area shape="poly" id="edge9_Node000008_Node000002" title=" " alt="" coords="174,106,136,144,132,140,170,102"/>
+<area shape="poly" id="edge10_Node000008_Node000007" title=" " alt="" coords="198,102,240,141,237,144,195,106"/>
 </map>

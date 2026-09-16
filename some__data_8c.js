@@ -50,7 +50,7 @@ var some__data_8c =
     [ "D_800E6F48", "some__data_8c.html#a80bc24045862ceea3e7e4492f03a5066", null ],
     [ "gBalloonVertexPlane1", "some__data_8c.html#a93f1af7a7b23cc9d637414ffbe42b5ab", null ],
     [ "gBalloonVertexPlane2", "some__data_8c.html#a2e7a5f549e9dc7fa8ecedecdece20c93", null ],
-    [ "gCourseOutlineTextures", "some__data_8c.html#a6926564e6335140c5624d3dabc457b96", null ],
+    [ "gCourseOutlineTextures", "some__data_8c.html#ac4026f1cfb84edc600d45904529ff946", null ],
     [ "gCrabSpawns", "some__data_8c.html#a958826ee660f3bf98395f725d2be65a3", null ],
     [ "gFireBreathsSpawns", "some__data_8c.html#aba59102ad1b7652d467637b70c10d905", null ],
     [ "gFlagpoleSpawns", "some__data_8c.html#ab6a7a38095ab0592f7eb54c6bc77188a", null ],

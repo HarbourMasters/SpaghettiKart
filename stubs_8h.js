@@ -3,7 +3,7 @@ var stubs_8h =
     [ "func_80040030", "stubs_8h.html#ae06e715c1104a6ba2a27f8a152e1e5c6", null ],
     [ "func_80040174", "stubs_8h.html#ae86908ceffbd910c788b582125b90550", null ],
     [ "mio0decode", "stubs_8h.html#ae4722e596a88d66404ccaaf6ea181b41", null ],
-    [ "mio0encode", "stubs_8h.html#aee8d226c442bc6a60158a37eeef8656a", null ],
+    [ "mio0encode", "stubs_8h.html#a71936c4af2a405c9658cb9eda042be98", null ],
     [ "osAiSetFrequency", "stubs_8h.html#a9e52bbdd047be9c1af82a9b1aeff305c", null ],
     [ "osCreateThread", "stubs_8h.html#a215c9681dbf26ff00e8b240491f605fa", null ],
     [ "osInitialize", "stubs_8h.html#acfb0fdf45b4ccc5ad77f155cf184c910", null ],

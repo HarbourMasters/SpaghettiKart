@@ -113,6 +113,7 @@ $(function(){initNavTree('stubs_8c.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;libultraship.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="macros_8h_source.html">macros.h</a>&gt;</code><br />
 <code>#include &lt;libultraship/libultra.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="string_8h_source.html">string.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="stdio_8h_source.html">stdio.h</a>&gt;</code><br />
@@ -121,7 +122,7 @@ $(function(){initNavTree('stubs_8c.html',''); initResizable(true); });
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for stubs.c:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="stubs_8c__incl.svg" width="638" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="stubs_8c__incl.svg" width="100%" height="503"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -141,8 +142,8 @@ Functions</h2></td></tr>
 <tr class="separator:a9e52bbdd047be9c1af82a9b1aeff305c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4722e596a88d66404ccaaf6ea181b41" id="r_ae4722e596a88d66404ccaaf6ea181b41"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4722e596a88d66404ccaaf6ea181b41">mio0decode</a> (u8 *arg0, u8 *arg1)</td></tr>
 <tr class="separator:ae4722e596a88d66404ccaaf6ea181b41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e0b1e38e7d5d3a80dcc0c6d99b79f9e" id="r_a5e0b1e38e7d5d3a80dcc0c6d99b79f9e"><td class="memItemLeft" align="right" valign="top">s32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e0b1e38e7d5d3a80dcc0c6d99b79f9e">mio0encode</a> (s32 input, s32 arg1, s32 arg2)</td></tr>
-<tr class="separator:a5e0b1e38e7d5d3a80dcc0c6d99b79f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad33f7463c56d4366ef693a78199a9715" id="r_ad33f7463c56d4366ef693a78199a9715"><td class="memItemLeft" align="right" valign="top">s32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad33f7463c56d4366ef693a78199a9715">mio0encode</a> (uintptr_t input, s32 arg1, uintptr_t arg2)</td></tr>
+<tr class="separator:ad33f7463c56d4366ef693a78199a9715"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b144e814933e16a2fbf2642ad098ed3" id="r_a3b144e814933e16a2fbf2642ad098ed3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b144e814933e16a2fbf2642ad098ed3">osStartThread</a> (<a class="el" href="os__thread_8h.html#a88320e928808ff7d5374d52f2cd6ef84">OSThread</a> *<a class="el" href="GameAudio_8h.html#accda04e86905da56f6f9b7d5579d6f5a">thread</a>)</td></tr>
 <tr class="separator:a3b144e814933e16a2fbf2642ad098ed3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a215c9681dbf26ff00e8b240491f605fa" id="r_a215c9681dbf26ff00e8b240491f605fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a215c9681dbf26ff00e8b240491f605fa">osCreateThread</a> (<a class="el" href="os__thread_8h.html#a88320e928808ff7d5374d52f2cd6ef84">OSThread</a> *<a class="el" href="GameAudio_8h.html#accda04e86905da56f6f9b7d5579d6f5a">thread</a>, <a class="el" href="os__thread_8h.html#a25b08eccfed5df53b071aa9d81a35343">OSId</a> id, void(*entry)(void *), void *arg, void *sp, <a class="el" href="os__thread_8h.html#aee1a7320768e3064766977d984bb927f">OSPri</a> pri)</td></tr>
@@ -252,8 +253,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a5e0b1e38e7d5d3a80dcc0c6d99b79f9e" name="a5e0b1e38e7d5d3a80dcc0c6d99b79f9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e0b1e38e7d5d3a80dcc0c6d99b79f9e">&#9670;&#160;</a></span>mio0encode()</h2>
+<a id="ad33f7463c56d4366ef693a78199a9715" name="ad33f7463c56d4366ef693a78199a9715"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad33f7463c56d4366ef693a78199a9715">&#9670;&#160;</a></span>mio0encode()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -261,7 +262,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">s32 mio0encode </td>
           <td>(</td>
-          <td class="paramtype">s32</td>          <td class="paramname"><span class="paramname"><em>input</em></span>, </td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em>input</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -271,14 +272,14 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">s32</td>          <td class="paramname"><span class="paramname"><em>arg2</em></span>&#160;)</td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em>arg2</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="stubs_8c_a5e0b1e38e7d5d3a80dcc0c6d99b79f9e_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="stubs_8c_ad33f7463c56d4366ef693a78199a9715_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>

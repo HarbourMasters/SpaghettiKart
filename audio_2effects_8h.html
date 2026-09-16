@@ -112,10 +112,11 @@ $(function(){initNavTree('audio_2effects_8h.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="internal_8h_source.html">audio/internal.h</a>&quot;</code><br />
+<code>#include &lt;<a class="el" href="macros_8h_source.html">macros.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for effects.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="audio_2effects_8h__incl.svg" width="356" height="271"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="audio_2effects_8h__incl.svg" width="666" height="271"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -159,8 +160,6 @@ Macros</h2></td></tr>
 <tr class="separator:a30d0dec0168d06abcd8fc0a86ec5ebb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e128ab66fb03a6bdfbcb18ff3bfb39e" id="r_a2e128ab66fb03a6bdfbcb18ff3bfb39e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e128ab66fb03a6bdfbcb18ff3bfb39e">ADSR_RESTART</a>&#160;&#160;&#160;-3</td></tr>
 <tr class="separator:a2e128ab66fb03a6bdfbcb18ff3bfb39e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b9670220af6a7b1f964e53887255cab" id="r_a5b9670220af6a7b1f964e53887255cab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b9670220af6a7b1f964e53887255cab">BSWAP16</a>(x)</td></tr>
-<tr class="separator:a5b9670220af6a7b1f964e53887255cab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -406,24 +405,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a5b9670220af6a7b1f964e53887255cab" name="a5b9670220af6a7b1f964e53887255cab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b9670220af6a7b1f964e53887255cab">&#9670;&#160;</a></span>BSWAP16</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define BSWAP16</td>
-          <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">(((x) &amp; 0xff) &lt;&lt; 8 | (((x) &gt;&gt; 8) &amp; 0xff))</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>

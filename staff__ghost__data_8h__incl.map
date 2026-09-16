@@ -1,13 +1,15 @@
 <map id="courses/staff_ghost_data.h" name="courses/staff_ghost_data.h">
 <area shape="rect" id="Node000001" title=" " alt="" coords="20,5,168,45"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="41,167,147,192"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="58,48,36,62,19,79,9,98,12,118,31,141,55,158,52,162,27,145,7,120,4,97,14,76,33,58,55,43"/>
-<area shape="rect" id="Node000003" href="$macros_8h.html" title=" " alt="" coords="190,93,273,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="128,43,200,84,198,89,125,48"/>
-<area shape="rect" id="Node000005" href="$common__structs_8h.html" title=" " alt="" coords="23,93,165,119"/>
-<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="97,46,97,79,91,79,91,46"/>
-<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="210,121,130,163,127,158,208,116"/>
-<area shape="rect" id="Node000004" href="$math_8h.html" title=" " alt="" coords="197,167,265,192"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="234,119,234,153,229,153,229,119"/>
-<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="97,119,97,153,91,153,91,119"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="40,174,147,199"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="58,48,32,68,12,94,9,115,19,133,37,151,58,165,55,169,34,155,15,137,4,116,7,92,28,64,55,43"/>
+<area shape="rect" id="Node000003" href="$macros_8h.html" title=" " alt="" coords="190,93,272,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="128,43,200,84,197,89,125,48"/>
+<area shape="rect" id="Node000006" href="$common__structs_8h.html" title=" " alt="" coords="22,93,165,119"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="96,46,96,79,91,79,91,46"/>
+<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="212,121,127,169,124,165,209,117"/>
+<area shape="rect" id="Node000004" href="$math_8h.html" title=" " alt="" coords="184,174,252,199"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="232,119,224,161,219,160,226,118"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="276,167,434,207"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="251,117,315,157,312,161,248,121"/>
+<area shape="poly" id="edge7_Node000006_Node000002" title=" " alt="" coords="96,119,96,160,91,160,91,119"/>
 </map>

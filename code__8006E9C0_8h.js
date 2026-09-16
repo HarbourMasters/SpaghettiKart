@@ -29,5 +29,5 @@ var code__8006E9C0_8h =
     [ "cloudvtx", "code__8006E9C0_8h.html#a86860c73ccac021967c9de5a22986c69", null ],
     [ "cloudvtx2", "code__8006E9C0_8h.html#ac2e03bab413badd9cbd27948e7216504", null ],
     [ "D_800E5520", "code__8006E9C0_8h.html#aee58b6012d26ac5f24bc57244678bcee", null ],
-    [ "gCourseOutlineTextures", "code__8006E9C0_8h.html#a625d0ad27f8c5a2b2d0efd1899f76dae", null ]
+    [ "gCourseOutlineTextures", "code__8006E9C0_8h.html#ae3b72887995dddd4d7dd30b12317ccc3", null ]
 ];

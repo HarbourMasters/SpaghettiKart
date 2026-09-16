@@ -112,10 +112,11 @@ $(function(){initNavTree('macros_8h.html',''); initResizable(true); });
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="math_8h_source.html">math.h</a>&gt;</code><br />
 <code>#include &lt;libultraship.h&gt;</code><br />
+<code>#include &quot;ship/utils/binarytools/endianness.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for macros.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="macros_8h__incl.svg" width="211" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="macros_8h__incl.svg" width="394" height="124"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="macros_8h_source.html">Go to the source code of this file.</a></p>
@@ -166,8 +167,6 @@ Macros</h2></td></tr>
 <tr class="separator:ac33bc9457f1c1be3f60fcf54fab88ee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08b2c3c00c27891c0b0179c9d8a1c2b6" id="r_a08b2c3c00c27891c0b0179c9d8a1c2b6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08b2c3c00c27891c0b0179c9d8a1c2b6">ALIGN16</a>(val)</td></tr>
 <tr class="separator:a08b2c3c00c27891c0b0179c9d8a1c2b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b9670220af6a7b1f964e53887255cab" id="r_a5b9670220af6a7b1f964e53887255cab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b9670220af6a7b1f964e53887255cab">BSWAP16</a>(x)</td></tr>
-<tr class="separator:a5b9670220af6a7b1f964e53887255cab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a635e1ead21634c60d387a6602b27ada8" id="r_a635e1ead21634c60d387a6602b27ada8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a635e1ead21634c60d387a6602b27ada8">GET_PACKED_END</a>(dl)</td></tr>
 <tr class="separator:a635e1ead21634c60d387a6602b27ada8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa99ec4acc4ecb2dc3c2d05da15d0e3f" id="r_afa99ec4acc4ecb2dc3c2d05da15d0e3f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa99ec4acc4ecb2dc3c2d05da15d0e3f">MAX</a>(a,  b)</td></tr>
@@ -253,24 +252,6 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">(s32)(<span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(arr[0]))</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a5b9670220af6a7b1f964e53887255cab" name="a5b9670220af6a7b1f964e53887255cab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b9670220af6a7b1f964e53887255cab">&#9670;&#160;</a></span>BSWAP16</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define BSWAP16</td>
-          <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">(((x) &amp; 0xff) &lt;&lt; 8 | (((x) &gt;&gt; 8) &amp; 0xff))</div>
 </div><!-- fragment -->
 </div>
 </div>

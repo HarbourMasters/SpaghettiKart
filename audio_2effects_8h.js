@@ -16,7 +16,6 @@ var audio_2effects_8h =
     [ "ADSR_STATE_RELEASE", "audio_2effects_8h.html#a0f4bf3b5191ae99db4692c97d7aaca30", null ],
     [ "ADSR_STATE_START_LOOP", "audio_2effects_8h.html#a3c95c3e3185fa03213335743064a4103", null ],
     [ "ADSR_STATE_SUSTAIN", "audio_2effects_8h.html#ab3124561f1d3dafded5ed2f649b6f010", null ],
-    [ "BSWAP16", "audio_2effects_8h.html#a5b9670220af6a7b1f964e53887255cab", null ],
     [ "adsr_init", "audio_2effects_8h.html#a60e2639f0631b10d12a682a643266614", null ],
     [ "adsr_update", "audio_2effects_8h.html#a6201aa1f5129a2ef87c4d34a0cc935dc", null ],
     [ "get_portamento_freq_scale", "audio_2effects_8h.html#a845808744962457cb36c3867fdf2457e", null ],

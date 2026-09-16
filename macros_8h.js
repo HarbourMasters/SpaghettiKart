@@ -5,7 +5,6 @@ var macros_8h =
     [ "ALIGNED4096", "macros_8h.html#a75331565a964c7a959c3bcd10588551d", null ],
     [ "ALIGNED8", "macros_8h.html#afcf59d0855225b13f2060708ce1d6a9f", null ],
     [ "ARRAY_COUNT", "macros_8h.html#a4bf0a01781df461ad257e5391ac09ae7", null ],
-    [ "BSWAP16", "macros_8h.html#a5b9670220af6a7b1f964e53887255cab", null ],
     [ "CLAMP", "macros_8h.html#a8eb135fbf284e798769beb8a26247037", null ],
     [ "FIXTOF", "macros_8h.html#a6ee57cbc899a869579ce6c9a9d91481e", null ],
     [ "FIXTOI", "macros_8h.html#ace18d13c8231a0f9fa2367c88bda5d62", null ],

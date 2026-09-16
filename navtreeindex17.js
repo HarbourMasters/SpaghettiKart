@@ -1,6 +1,5 @@
 var NAVTREEINDEX17 =
 {
-"classTestTrack.html#ad49a1c8a2764c822549a48cdc55f3ac1":[17,0,449,0],
 "classTestTrack.html#adf4af6c299fc83f1bb0e7ea222869c82":[17,0,449,3],
 "classTestTrack.html#ae3bf027de914e7e9e7e814ebbf301efc":[17,0,449,2],
 "classToadsTurnpike.html":[17,0,453],
@@ -249,5 +248,6 @@ var NAVTREEINDEX17 =
 "classTrackEditor_1_1Handles.html#a563a2b89e124d7aa40b8b43862d56ebd":[16,0,9,3,3],
 "classTrackEditor_1_1Handles.html#a563a2b89e124d7aa40b8b43862d56ebd":[17,0,6,3,3],
 "classTrackEditor_1_1LightObject.html":[16,0,9,4],
-"classTrackEditor_1_1LightObject.html":[17,0,6,4]
+"classTrackEditor_1_1LightObject.html":[17,0,6,4],
+"classTrackEditor_1_1LightObject.html#a05b2c1beea70de25406eeb85b14ee82a":[16,0,9,4,8]
 };

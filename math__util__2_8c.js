@@ -27,7 +27,7 @@ var math__util__2_8c =
     [ "func_8004214C", "math__util__2_8c.html#a4125390517c917e903b0ff29fbaeaa3f", null ],
     [ "func_800421FC", "math__util__2_8c.html#a2e265abad316446694100562681aaf49", null ],
     [ "func_80042330", "math__util__2_8c.html#a22aa509214eeed1ba3197762e76d7bed", null ],
-    [ "func_80042330_portrait", "math__util__2_8c.html#a73fc9c004b7013f9562425001c315571", null ],
+    [ "func_80042330_portrait", "math__util__2_8c.html#a035b374442002de3d5169adc5d1c4bfb", null ],
     [ "func_80042330_unchanged", "math__util__2_8c.html#ae4327c5df49b333e448da750f14387ce", null ],
     [ "func_80042330_wide", "math__util__2_8c.html#a5e75cf095048d145dbee0e0428d88711", null ],
     [ "func_800423F0", "math__util__2_8c.html#a8a3f435eae79cf7c07be83d8889cb24c", null ],

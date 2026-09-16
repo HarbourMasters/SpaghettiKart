@@ -35,7 +35,6 @@ var mixer_8c =
     [ "aUnkCmd19Impl", "mixer_8c.html#a05ec48171b802632d2172ccc1c39069e", null ],
     [ "aUnkCmd3Impl", "mixer_8c.html#a2aa08798809cc1f647f3fa20102f2725", null ],
     [ "clamp16", "mixer_8c.html#ad2e81809a2ffef0134cfa52806ebbd36", null ],
-    [ "clamp32", "mixer_8c.html#a48bca15855ec07f002081d7ba39d1949", null ],
     [ "adpcm_loop_state", "mixer_8c.html#a38f5d90cf0e52d72f5f26f4675ba81d8", null ],
     [ "adpcm_table", "mixer_8c.html#a12b66e6c33854313c545c4d8b604cac5", null ],
     [ "as_s16", "mixer_8c.html#a8a3e546d02a9d5ff4527774edb52b6f3", null ],

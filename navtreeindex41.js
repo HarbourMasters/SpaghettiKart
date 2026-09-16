@@ -1,9 +1,5 @@
 var NAVTREEINDEX41 =
 {
-"mario__raceway__vertices_8h.html":[18,0,2,0,0,0,11,2],
-"mario__raceway__vertices_8h.html#aa8e8cb6a4e1a9e2259ec274e8899370d":[18,0,2,0,0,0,11,2,0],
-"mario__raceway__vertices_8h_source.html":[18,0,2,0,0,0,11,2],
-"mario__sign_2render_8inc_8c.html":[18,0,3,0,10,0],
 "mario__sign_2render_8inc_8c.html#ac1e5c532107d9c02836db8c456ae46f4":[18,0,3,0,10,0,0],
 "mario__sign_2render_8inc_8c_source.html":[18,0,3,0,10,0],
 "mario__sign_2update_8inc_8c.html":[18,0,3,0,10,1],
@@ -139,6 +135,7 @@ var NAVTREEINDEX41 =
 "math__util_8h.html#afc0d4143e6a52149098cc93bb4f2b5b9":[18,0,3,10,9,46],
 "math__util_8h_source.html":[18,0,3,10,9],
 "math__util__2_8c.html":[18,0,3,46],
+"math__util__2_8c.html#a035b374442002de3d5169adc5d1c4bfb":[18,0,3,46,27],
 "math__util__2_8c.html#a0477eb3c05bafb2dd984658abd1e56e9":[18,0,3,46,13],
 "math__util__2_8c.html#a0cb99c2639c8a3698284d7012ea9392f":[18,0,3,46,22],
 "math__util__2_8c.html#a11790b60b035bffc22b2332f1ee3e238":[18,0,3,46,64],
@@ -173,7 +170,6 @@ var NAVTREEINDEX41 =
 "math__util__2_8c.html#a6dd4a4716cd36dbda279e1c59401baab":[18,0,3,46,74],
 "math__util__2_8c.html#a6f90d4d34932da48fa6a3aaa5fa67ab7":[18,0,3,46,73],
 "math__util__2_8c.html#a72838b5aa6ee317abde4c7a2c30bc44b":[18,0,3,46,50],
-"math__util__2_8c.html#a73fc9c004b7013f9562425001c315571":[18,0,3,46,27],
 "math__util__2_8c.html#a742f148d5670e125f8923ed893139481":[18,0,3,46,75],
 "math__util__2_8c.html#a755fb5deda8e5f14ec98ac8b05eca62e":[18,0,3,46,11],
 "math__util__2_8c.html#a77d7fb3801386144fcd949c0d88dfa34":[18,0,3,46,55],
@@ -249,5 +245,9 @@ var NAVTREEINDEX41 =
 "math__util__2_8h.html#a524a45d0980a20bc50c2b4033c99f561":[18,0,3,47,35],
 "math__util__2_8h.html#a52e44abc78d7c2e11299ec71aede2905":[18,0,3,47,57],
 "math__util__2_8h.html#a543d48484d12052016101e8bb8ca99bb":[18,0,3,47,67],
-"math__util__2_8h.html#a58912afce95e46e3ff226257c1f50bc2":[18,0,3,47,13]
+"math__util__2_8h.html#a58912afce95e46e3ff226257c1f50bc2":[18,0,3,47,13],
+"math__util__2_8h.html#a5e7c494f76605c62b0861ec461ee3f28":[18,0,3,47,55],
+"math__util__2_8h.html#a60afc0e0793ab6ea8836623001048873":[18,0,3,47,51],
+"math__util__2_8h.html#a616f40d23cc329cdffcbe5fcf6cee747":[18,0,3,47,46],
+"math__util__2_8h.html#a66052313bcfde0d6781810162ab0fa2f":[18,0,3,47,1]
 };

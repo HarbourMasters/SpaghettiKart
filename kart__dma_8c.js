@@ -30,7 +30,7 @@ var kart__dma_8c =
     [ "load_kart_palette", "kart__dma_8c.html#a637d0acc4b8a5146a83b664d348b21f2", null ],
     [ "load_kart_texture", "kart__dma_8c.html#aac244fa71146e9abe9ee94f82ef2e932", null ],
     [ "load_kart_texture_non_blocking", "kart__dma_8c.html#ac20009b528ecc201f1f04264d1b32fd4", null ],
-    [ "load_player_data", "kart__dma_8c.html#a56041164eb897332d3b167b653d6c611", null ],
+    [ "load_player_data", "kart__dma_8c.html#aa161cf82169155c69b5f204a0c3e60f8", null ],
     [ "load_wheel_palette_non_blocking", "kart__dma_8c.html#a7fcac9592dc14342151b0dcc0f6b0746", null ],
     [ "D_800DDEB0", "kart__dma_8c.html#ab5d0bc34b2a35b5670d87e2ea665c337", null ],
     [ "gKartPalettes", "kart__dma_8c.html#a4ec1de54b6242c021ad3b695957757b7", null ],

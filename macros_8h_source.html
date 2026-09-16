@@ -240,7 +240,7 @@ $(function(){initNavTree('macros_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="preprocessor">#if IS_BIG_ENDIAN</span></div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="preprocessor">#define BSWAP16(x) (x)</span></div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="macros_8h.html#a5b9670220af6a7b1f964e53887255cab">  131</a></span><span class="preprocessor">#define BSWAP16(x) (((x) &amp; 0xff) &lt;&lt; 8 | (((x) &gt;&gt; 8) &amp; 0xff))</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="preprocessor">#include &quot;ship/utils/binarytools/endianness.h&quot;</span></div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span></div>

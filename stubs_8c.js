@@ -4,7 +4,7 @@ var stubs_8c =
     [ "func_80040030", "stubs_8c.html#ae06e715c1104a6ba2a27f8a152e1e5c6", null ],
     [ "func_80040174", "stubs_8c.html#a394b1e63b5fdc419adfcd1bcbfef1678", null ],
     [ "mio0decode", "stubs_8c.html#ae4722e596a88d66404ccaaf6ea181b41", null ],
-    [ "mio0encode", "stubs_8c.html#a5e0b1e38e7d5d3a80dcc0c6d99b79f9e", null ],
+    [ "mio0encode", "stubs_8c.html#ad33f7463c56d4366ef693a78199a9715", null ],
     [ "osAiSetFrequency", "stubs_8c.html#a9e52bbdd047be9c1af82a9b1aeff305c", null ],
     [ "osCreateThread", "stubs_8c.html#a215c9681dbf26ff00e8b240491f605fa", null ],
     [ "osInitialize", "stubs_8c.html#acfb0fdf45b4ccc5ad77f155cf184c910", null ],

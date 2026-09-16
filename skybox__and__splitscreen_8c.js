@@ -14,7 +14,7 @@ var skybox__and__splitscreen_8c =
     [ "func_802A7940", "skybox__and__splitscreen_8c.html#a862515e1d473f5fbbe04543cddfc4fa4", null ],
     [ "init_rdp", "skybox__and__splitscreen_8c.html#a1ff551b00275f32a4c52eb741006cbc2", null ],
     [ "init_z_buffer", "skybox__and__splitscreen_8c.html#af301b54a848553e5cbefdeaecc5dd67b", null ],
-    [ "race_begin_viewport", "skybox__and__splitscreen_8c.html#ac33d96b1f31d0815157485d38ee7b09e", null ],
+    [ "race_begin_viewport", "skybox__and__splitscreen_8c.html#a2c8e29968241f5c15bdc3c0cde1e5a1d", null ],
     [ "race_begin_viewport_4p", "skybox__and__splitscreen_8c.html#a0596f3eaaa90373aacd5776d15960dcc", null ],
     [ "race_blank_viewport", "skybox__and__splitscreen_8c.html#ade827a9b8ab981a4c7f95273ca9b49c5", null ],
     [ "race_set_viewport", "skybox__and__splitscreen_8c.html#a54b03b96e2e5525dfdaecd6e99cd0cda", null ],

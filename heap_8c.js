@@ -9,7 +9,6 @@ var heap_8c =
     [ "func_800B90E0", "heap_8c.html#abe485e48dbb11d78afab0ff0beb8e005", null ],
     [ "func_800B914C", "heap_8c.html#a48faacfdc2f40c8752604117d04b1ad5", null ],
     [ "func_800B9BE4", "heap_8c.html#a8588e1297574757af7ee63f73fd108e3", null ],
-    [ "func_800BA8B0", "heap_8c.html#ae8b7a3aad224c80e7d87654d866666ae", null ],
     [ "get_bank_or_seq", "heap_8c.html#a0a838f00c12383a6e9646c0072ecd434", null ],
     [ "get_bank_or_seq_inner", "heap_8c.html#a1e5351eeb12e68752cdb254cc9f00dd0", null ],
     [ "persistent_pool_clear", "heap_8c.html#a1e84414986c84176008e53d3705e9d78", null ],

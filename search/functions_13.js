@@ -194,7 +194,7 @@ var searchData=
   ['spawn_5fmultiplayer_5fcameras_191',['spawn_multiplayer_cameras',['../spawn__players_8c.html#a5848165a158a960455081c33be0ccc0e',1,'spawn_players.c']]],
   ['spawn_5fpalm_5ftrees_192',['spawn_palm_trees',['../actors_8c.html#a64785058c93cd477d4f1f3fd1eee38fe',1,'actors.c']]],
   ['spawn_5fpiranha_5fplants_193',['spawn_piranha_plants',['../actors_8c.html#af6d278bc785acfd772b70dd01b2a2dc0',1,'actors.c']]],
-  ['spawn_5fplayer_194',['spawn_player',['../spawn__players_8c.html#a43c7f2d844178603dc415f549283e97c',1,'spawn_players.c']]],
+  ['spawn_5fplayer_194',['spawn_player',['../spawn__players_8c.html#a265c33a366ca68e02184c6cb43f5b646',1,'spawn_players.c']]],
   ['spawn_5fplayers_5f2p_5fbattle_195',['spawn_players_2p_battle',['../spawn__players_8c.html#a82ae339563b96176bf4effcf6773decc',1,'spawn_players.c']]],
   ['spawn_5fplayers_5f3p_5fbattle_196',['spawn_players_3p_battle',['../spawn__players_8c.html#a4ff7e74c8b78fbfb85016c017a54b9e2',1,'spawn_players.c']]],
   ['spawn_5fplayers_5f4p_5fbattle_197',['spawn_players_4p_battle',['../spawn__players_8c.html#a2ed99af251cbc3e3e98e81d23b7cbcea',1,'spawn_players.c']]],

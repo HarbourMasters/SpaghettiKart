@@ -145,8 +145,8 @@ Include dependency graph for code_80281780.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ad4a33d84e5db799f6c4f73cd1461fd8a" id="r_ad4a33d84e5db799f6c4f73cd1461fd8a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4a33d84e5db799f6c4f73cd1461fd8a">bcopy</a>&#160;&#160;&#160;<a class="el" href="string_8c.html#ad7f1ae1bbb49dece44bda378982a704d">memcpy</a></td></tr>
-<tr class="separator:ad4a33d84e5db799f6c4f73cd1461fd8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0203197ca66656d851ec608f52cb90c5" id="r_a0203197ca66656d851ec608f52cb90c5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0203197ca66656d851ec608f52cb90c5">bcopy</a>(src,  dst,  n)</td></tr>
+<tr class="separator:a0203197ca66656d851ec608f52cb90c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -165,18 +165,31 @@ Variables</h2></td></tr>
 <tr class="separator:ad88934a4bcda92e222b2a466e1e26c12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="ad4a33d84e5db799f6c4f73cd1461fd8a" name="ad4a33d84e5db799f6c4f73cd1461fd8a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4a33d84e5db799f6c4f73cd1461fd8a">&#9670;&#160;</a></span>bcopy</h2>
+<a id="a0203197ca66656d851ec608f52cb90c5" name="a0203197ca66656d851ec608f52cb90c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0203197ca66656d851ec608f52cb90c5">&#9670;&#160;</a></span>bcopy</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define bcopy&#160;&#160;&#160;<a class="el" href="string_8c.html#ad7f1ae1bbb49dece44bda378982a704d">memcpy</a></td>
+          <td class="memname">#define bcopy</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>src</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>dst</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<b>Value:</b><div class="fragment"><div class="line">memmove(dst, src, n)</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>

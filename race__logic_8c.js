@@ -8,7 +8,7 @@ var race__logic_8c =
     [ "func_8028E438", "race__logic_8c.html#ab3cce6260fc4d7f0c4610aeebce8de54", null ],
     [ "func_8028E678", "race__logic_8c.html#aeb498a031d0fc8f31b5947bf329344f4", null ],
     [ "func_8028EC38", "race__logic_8c.html#a7ef352a26863f1cb77a3cfca56164b91", null ],
-    [ "func_8028EC98", "race__logic_8c.html#a81fc82f45c9f9fcbf0d71fd2e0d6853c", null ],
+    [ "func_8028EC98", "race__logic_8c.html#adeb38e6838b2bb4fd16701587b1dc06f", null ],
     [ "func_8028EE8C", "race__logic_8c.html#ac72458a1821d41e46b4017bc4ad752b7", null ],
     [ "func_8028EEF0", "race__logic_8c.html#a1ea1efbd97d34c4f81c9184a4a029a26", null ],
     [ "func_8028EF28", "race__logic_8c.html#a2645116d52469ec9b45c668d694e98c4", null ],

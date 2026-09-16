@@ -137,8 +137,8 @@ Functions</h2></td></tr>
 <tr class="separator:a9e52bbdd047be9c1af82a9b1aeff305c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4722e596a88d66404ccaaf6ea181b41" id="r_ae4722e596a88d66404ccaaf6ea181b41"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4722e596a88d66404ccaaf6ea181b41">mio0decode</a> (u8 *arg0, u8 *arg1)</td></tr>
 <tr class="separator:ae4722e596a88d66404ccaaf6ea181b41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee8d226c442bc6a60158a37eeef8656a" id="r_aee8d226c442bc6a60158a37eeef8656a"><td class="memItemLeft" align="right" valign="top">s32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee8d226c442bc6a60158a37eeef8656a">mio0encode</a> (s32 input, s32, s32)</td></tr>
-<tr class="separator:aee8d226c442bc6a60158a37eeef8656a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71936c4af2a405c9658cb9eda042be98" id="r_a71936c4af2a405c9658cb9eda042be98"><td class="memItemLeft" align="right" valign="top">s32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71936c4af2a405c9658cb9eda042be98">mio0encode</a> (uintptr_t input, s32, uintptr_t)</td></tr>
+<tr class="separator:a71936c4af2a405c9658cb9eda042be98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b144e814933e16a2fbf2642ad098ed3" id="r_a3b144e814933e16a2fbf2642ad098ed3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b144e814933e16a2fbf2642ad098ed3">osStartThread</a> (<a class="el" href="os__thread_8h.html#a88320e928808ff7d5374d52f2cd6ef84">OSThread</a> *<a class="el" href="GameAudio_8h.html#accda04e86905da56f6f9b7d5579d6f5a">thread</a>)</td></tr>
 <tr class="separator:a3b144e814933e16a2fbf2642ad098ed3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a215c9681dbf26ff00e8b240491f605fa" id="r_a215c9681dbf26ff00e8b240491f605fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a215c9681dbf26ff00e8b240491f605fa">osCreateThread</a> (<a class="el" href="os__thread_8h.html#a88320e928808ff7d5374d52f2cd6ef84">OSThread</a> *<a class="el" href="GameAudio_8h.html#accda04e86905da56f6f9b7d5579d6f5a">thread</a>, <a class="el" href="os__thread_8h.html#a25b08eccfed5df53b071aa9d81a35343">OSId</a> id, void(*entry)(void *), void *arg, void *sp, <a class="el" href="os__thread_8h.html#aee1a7320768e3064766977d984bb927f">OSPri</a> pri)</td></tr>
@@ -262,8 +262,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="aee8d226c442bc6a60158a37eeef8656a" name="aee8d226c442bc6a60158a37eeef8656a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee8d226c442bc6a60158a37eeef8656a">&#9670;&#160;</a></span>mio0encode()</h2>
+<a id="a71936c4af2a405c9658cb9eda042be98" name="a71936c4af2a405c9658cb9eda042be98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71936c4af2a405c9658cb9eda042be98">&#9670;&#160;</a></span>mio0encode()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -271,7 +271,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">s32 mio0encode </td>
           <td>(</td>
-          <td class="paramtype">s32</td>          <td class="paramname"><span class="paramname"><em>input</em></span>, </td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em>input</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -281,7 +281,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">s32</td>          <td class="paramname"><span class="paramname"><em>arg2</em></span>&#160;)</td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em>arg2</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -472,7 +472,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000041">Todo</a></b></dt><dd>magic constant </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000043">Todo</a></b></dt><dd>magic constant </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

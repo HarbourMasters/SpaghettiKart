@@ -1,7 +1,7 @@
 var code__8006E9C0_8c =
 [
     [ "clear_object_list", "code__8006E9C0_8c.html#a8a550ccbf88c5850622c9ce854e3bc07", null ],
-    [ "dma_misc_textures", "code__8006E9C0_8c.html#a09ec8bcaa5cabb80cf56de274ab1408b", null ],
+    [ "dma_misc_textures", "code__8006E9C0_8c.html#aa0bf7d6fe3ea86e870d6f87fb158a4b6", null ],
     [ "func_8006EB10", "code__8006E9C0_8c.html#a2e7b50a4e958c5bd727b199ced2511e5", null ],
     [ "func_8006EF60", "code__8006E9C0_8c.html#a2956212d9a77bb65bd839ca351c3132a", null ],
     [ "func_8006F008", "code__8006E9C0_8c.html#addcb705e0abe102e25517666b6a1eb84", null ],

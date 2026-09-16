@@ -1,24 +1,26 @@
 <map id="courses/staff_ghost_data.c" name="courses/staff_ghost_data.c">
-<area shape="rect" id="Node000001" title=" " alt="" coords="270,5,418,45"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="143,255,249,280"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="349,45,352,79,350,121,341,167,321,208,293,235,259,252,256,247,290,230,317,205,336,165,345,121,346,79,344,46"/>
-<area shape="rect" id="Node000003" href="$macros_8h.html" title=" " alt="" coords="5,181,88,207"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="270,32,226,38,179,50,133,69,92,95,78,111,67,130,54,169,49,167,62,128,74,108,89,91,131,64,177,45,225,33,269,27"/>
-<area shape="rect" id="Node000005" href="$common__structs_8h.html" title=" " alt="" coords="163,181,306,207"/>
-<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="334,47,252,172,247,169,329,44"/>
-<area shape="rect" id="Node000006" href="$staff__ghost__data_8h.html" title=" " alt="" coords="102,101,245,126"/>
-<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="308,48,209,97,207,92,305,43"/>
-<area shape="rect" id="Node000007" href="$mario__raceway_2staff__ghost_8inc_8c.html" title=" " alt="" coords="381,93,557,133"/>
-<area shape="poly" id="edge11_Node000001_Node000007" title=" " alt="" coords="373,43,432,83,429,88,370,48"/>
-<area shape="rect" id="Node000008" href="$luigi__raceway_2staff__ghost_8inc_8c.html" title=" " alt="" coords="582,93,749,133"/>
-<area shape="poly" id="edge12_Node000001_Node000008" title=" " alt="" coords="415,43,583,87,581,92,414,48"/>
-<area shape="rect" id="Node000009" href="$royal__raceway_2staff__ghost_8inc_8c.html" title=" " alt="" coords="773,93,944,133"/>
-<area shape="poly" id="edge13_Node000001_Node000009" title=" " alt="" coords="419,35,761,91,760,96,418,40"/>
-<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="72,204,160,246,158,251,70,209"/>
-<area shape="rect" id="Node000004" href="$math_8h.html" title=" " alt="" coords="13,255,81,280"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="49,207,49,241,44,241,44,207"/>
-<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="231,208,211,244,206,241,226,206"/>
-<area shape="poly" id="edge8_Node000006_Node000002" title=" " alt="" coords="169,127,155,163,152,185,155,206,164,225,177,243,173,246,160,228,149,207,146,185,150,162,164,125"/>
-<area shape="poly" id="edge9_Node000006_Node000003" title=" " alt="" coords="156,128,79,176,76,172,153,124"/>
-<area shape="poly" id="edge10_Node000006_Node000005" title=" " alt="" coords="184,125,219,169,215,172,180,128"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="219,5,367,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="74,262,181,287"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,41,150,62,114,77,81,96,55,114,36,132,23,153,10,182,8,194,10,206,24,226,47,242,75,255,73,260,45,247,20,229,5,208,3,194,5,181,18,150,32,128,52,110,78,91,112,72,148,57,218,36"/>
+<area shape="rect" id="Node000003" href="$macros_8h.html" title=" " alt="" coords="237,181,320,207"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="294,46,283,168,278,168,289,45"/>
+<area shape="rect" id="Node000006" href="$common__structs_8h.html" title=" " alt="" coords="19,181,162,207"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="219,36,188,44,156,55,127,72,103,95,94,112,89,130,89,167,84,167,84,130,89,110,99,92,124,68,154,51,186,39,218,31"/>
+<area shape="rect" id="Node000007" href="$staff__ghost__data_8h.html" title=" " alt="" coords="112,101,255,126"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="270,48,211,94,208,90,267,44"/>
+<area shape="rect" id="Node000008" href="$mario__raceway_2staff__ghost_8inc_8c.html" title=" " alt="" coords="330,93,506,133"/>
+<area shape="poly" id="edge12_Node000001_Node000008" title=" " alt="" coords="322,43,381,83,378,88,319,48"/>
+<area shape="rect" id="Node000009" href="$luigi__raceway_2staff__ghost_8inc_8c.html" title=" " alt="" coords="531,93,698,133"/>
+<area shape="poly" id="edge13_Node000001_Node000009" title=" " alt="" coords="364,43,532,87,531,92,363,48"/>
+<area shape="rect" id="Node000010" href="$royal__raceway_2staff__ghost_8inc_8c.html" title=" " alt="" coords="722,93,893,133"/>
+<area shape="poly" id="edge14_Node000001_Node000010" title=" " alt="" coords="368,35,710,91,709,96,367,40"/>
+<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="257,209,163,258,161,253,255,204"/>
+<area shape="rect" id="Node000004" href="$math_8h.html" title=" " alt="" coords="224,262,292,287"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="278,208,267,249,262,248,273,206"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="316,255,475,295"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="297,205,357,245,354,249,294,209"/>
+<area shape="poly" id="edge7_Node000006_Node000002" title=" " alt="" coords="98,206,119,248,114,251,94,208"/>
+<area shape="poly" id="edge9_Node000007_Node000002" title=" " alt="" coords="187,126,186,163,177,208,165,232,150,253,145,250,160,229,172,206,181,163,182,126"/>
+<area shape="poly" id="edge10_Node000007_Node000003" title=" " alt="" coords="199,124,255,170,252,174,196,128"/>
+<area shape="poly" id="edge11_Node000007_Node000006" title=" " alt="" coords="172,128,117,174,113,170,168,124"/>
 </map>
