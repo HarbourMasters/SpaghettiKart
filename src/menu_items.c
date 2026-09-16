@@ -2043,8 +2043,26 @@ UNUSED void func_800930E4(s32 arg0, s32 arg1, char* arg2) {
     print_text_mode_1(arg0, arg1, arg2, 0, 1.0, 1.0);
 }
 
+// Identity of a string for glyph interpolation tags: the menu item being drawn
+// (the results screens print the same names in several panels), the string's
+// address and content (the results print several strings from one stack
+// buffer), and its row (identical strings such as "00" sit on different rows).
+// Strings only ever slide horizontally, so the row is stable frame to frame.
+static uintptr_t sTextGroup = 0;
+
+static uintptr_t text_identity(const char* text, s32 row) {
+    uintptr_t h = ((uintptr_t) text >> 2) + (sTextGroup * 7919) + ((uintptr_t) row * 131);
+    s32 i;
+
+    for (i = 0; (i < 16) && (text[i] != 0); i++) {
+        h = (h * 31) + (u8) text[i];
+    }
+    return h & 0xFFFF;
+}
+
 // "tracking" is a uniform spacing between all characters in a given word
 void print_text0(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY, s32 mode) {
+    char* textStart = text;
     s32 stringWidth = 0;
     s32 glyphIndex;
 
@@ -2052,6 +2070,7 @@ void print_text0(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
         // @port if invalid text is loaded it will skip rendering it.
         return;
     }
+    uintptr_t textId = text_identity(text, row);
 
     gSPDisplayList(gDisplayListHead++, D_020077A8);
     if (*text != 0) {
@@ -2062,7 +2081,8 @@ void print_text0(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
                 gDisplayListHead =
                     print_letter(gDisplayListHead,
                                  (MenuTexture*) gGlyphTextureLUT[glyphIndex],
-                                 column + (stringWidth * scaleX), row, mode, scaleX, scaleY);
+                                 column + (stringWidth * scaleX), row, mode, scaleX, scaleY,
+                                 textId, (s32) (text - textStart));
                 stringWidth += gGlyphDisplayWidth[glyphIndex] + tracking;
             } else if ((glyphIndex != -2) && (glyphIndex == -1)) {
                 stringWidth += tracking + 7;
@@ -2082,6 +2102,7 @@ void print_text0(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
 
 // Time trials
 void print_text0_wide_right(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY, s32 mode) {
+    char* textStart = text;
     s32 stringWidth = 0;
     s32 glyphIndex;
 
@@ -2089,6 +2110,7 @@ void print_text0_wide_right(s32 column, s32 row, char* text, s32 tracking, f32 s
         // @port if invalid text is loaded it will skip rendering it.
         return;
     }
+    uintptr_t textId = text_identity(text, row);
 
     gSPDisplayList(gDisplayListHead++, D_020077A8);
     if (*text != 0) {
@@ -2099,7 +2121,8 @@ void print_text0_wide_right(s32 column, s32 row, char* text, s32 tracking, f32 s
                 gDisplayListHead = print_letter_wide_right(
                     gDisplayListHead,
                     (MenuTexture*) gGlyphTextureLUT[glyphIndex],
-                    column + (stringWidth * scaleX), row, mode, scaleX, scaleY);
+                    column + (stringWidth * scaleX), row, mode, scaleX, scaleY,
+                    textId, (s32) (text - textStart));
                 stringWidth += gGlyphDisplayWidth[glyphIndex] + tracking;
             } else if ((glyphIndex != -2) && (glyphIndex == -1)) {
                 stringWidth += tracking + 7;
@@ -2135,6 +2158,7 @@ void print_text_mode_2_wide_right(s32 column, s32 row, char* text, s32 tracking,
 
 // "tracking" is a uniform spacing between all characters in a given word
 void print_text1(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY, s32 arg6) {
+    char* textStart = text;
     char* temp_string = text;
     s32 stringWidth = 0;
     s32 glyphIndex;
@@ -2144,6 +2168,7 @@ void print_text1(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
         // @port if invalid text is loaded it will skip rendering it.
         return;
     }
+    uintptr_t textId = text_identity(text, row);
 
     while (*temp_string != 0) {
         glyphIndex = char_to_glyph_index(temp_string);
@@ -2189,7 +2214,8 @@ void print_text1(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
         if (glyphIndex >= 0) {
             load_menu_img((MenuTexture*) gGlyphTextureLUT[glyphIndex]);
             gDisplayListHead = print_letter(gDisplayListHead, (MenuTexture*) gGlyphTextureLUT[glyphIndex],
-                                            column, row, sp60, scaleX, scaleY);
+                                            column, row, sp60, scaleX, scaleY, textId,
+                                            (s32) (text - textStart));
             column = column + (s32) ((gGlyphDisplayWidth[glyphIndex] + tracking) * scaleX);
         } else if ((glyphIndex != -2) && (glyphIndex == -1)) {
             column = column + (s32) ((tracking + 7) * scaleX);
@@ -2223,6 +2249,7 @@ void print_text1_center_mode_2(s32 column, s32 row, char* text, s32 tracking, f3
 }
 
 void print_text2(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY, s32 arg6) {
+    char* textStart = text;
     MenuTexture* glyphTexture;
     s32 characterWidth;
     s32 glyphIndex;
@@ -2231,6 +2258,7 @@ void print_text2(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
         // @port if invalid text is loaded it will skip rendering it.
         return;
     }
+    uintptr_t textId = text_identity(text, row);
 
     gSPDisplayList(gDisplayListHead++, D_020077A8);
     if (*text != 0) {
@@ -2241,7 +2269,7 @@ void print_text2(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
                 load_menu_img(glyphTexture);
                 gDisplayListHead =
                     print_letter(gDisplayListHead, glyphTexture, column - (gGlyphDisplayWidth[glyphIndex] / 2), row,
-                                 arg6, scaleX, scaleY);
+                                 arg6, scaleX, scaleY, textId, (s32) (text - textStart));
                 if ((glyphIndex >= 0xD5) && (glyphIndex < 0xE0)) {
                     characterWidth = 0x20;
                 } else {
@@ -2266,6 +2294,7 @@ void print_text2(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
 }
 
 void print_text2_wide(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY, s32 arg6) {
+    char* textStart = text;
     MenuTexture* glyphTexture;
     s32 characterWidth;
     s32 glyphIndex;
@@ -2274,6 +2303,7 @@ void print_text2_wide(s32 column, s32 row, char* text, s32 tracking, f32 scaleX,
         // @port if invalid text is loaded it will skip rendering it.
         return;
     }
+    uintptr_t textId = text_identity(text, row);
 
     gSPDisplayList(gDisplayListHead++, D_020077A8);
     if (*text != 0) {
@@ -2284,7 +2314,8 @@ void print_text2_wide(s32 column, s32 row, char* text, s32 tracking, f32 scaleX,
                 load_menu_img(glyphTexture);
                 gDisplayListHead =
                     print_letter_wide_right(gDisplayListHead, glyphTexture,
-                                            column - (gGlyphDisplayWidth[glyphIndex] / 2), row, arg6, scaleX, scaleY);
+                                            column - (gGlyphDisplayWidth[glyphIndex] / 2), row, arg6, scaleX, scaleY,
+                                            textId, (s32) (text - textStart));
                 if ((glyphIndex >= 0xD5) && (glyphIndex < 0xE0)) {
                     characterWidth = 0x20;
                 } else {
@@ -2992,7 +3023,8 @@ void func_80095AE0(MTX_TYPE* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
 
 #undef MTX_TYPE
 
-Gfx* func_80095BD0(Gfx* displayListHead, u8* arg1, f32 arg2, f32 arg3, u32 arg4, u32 arg5, f32 arg6, f32 arg7) {
+Gfx* func_80095BD0(Gfx* displayListHead, u8* arg1, f32 arg2, f32 arg3, u32 arg4, u32 arg5, f32 arg6, f32 arg7,
+                   u32 tag) {
     Vtx* var_a1;
     // A match is a match, but why are goto's required here?
     if (gMatrixEffectCount >= 0x2F7) {
@@ -3002,7 +3034,7 @@ Gfx* func_80095BD0(Gfx* displayListHead, u8* arg1, f32 arg2, f32 arg3, u32 arg4,
     if (gMatrixEffectCount < 0) {
         rmonPrintf("effectcount < 0 !!!!!!(kawano)\n");
     }
-    FrameInterpolation_RecordOpenChild("flashing_text", TAG_LETTER((uintptr_t) &arg1 << 8) + (arg4 + arg5));
+    FrameInterpolation_RecordOpenChild("flashing_text", tag);
     Mat4 mf;
     SetTextMatrix(mf, arg2, arg3, arg6, arg7);
     // func_80095AE0(&gGfxPool->mtxEffect[gMatrixEffectCount], arg2, arg3, arg6, arg7);
@@ -3033,7 +3065,7 @@ Gfx* func_80095BD0(Gfx* displayListHead, u8* arg1, f32 arg2, f32 arg3, u32 arg4,
 
 // Time trials text box
 Gfx* func_80095BD0_wide_right(Gfx* displayListHead, u8* arg1, f32 arg2, f32 arg3, u32 arg4, u32 arg5, f32 arg6,
-                              f32 arg7) {
+                              f32 arg7, u32 tag) {
     Vtx* var_a1;
     // A match is a match, but why are goto's required here?
     if (gMatrixEffectCount >= 0x2F7) {
@@ -3044,7 +3076,7 @@ Gfx* func_80095BD0_wide_right(Gfx* displayListHead, u8* arg1, f32 arg2, f32 arg3
         rmonPrintf("func_80095BD0_wide_right: effectcount < 0 !!!!!!(kawano)\n");
     }
 
-    FrameInterpolation_RecordOpenChild("flashing_text_wide_right", TAG_LETTER((uintptr_t) &arg1 << 8) + (arg4 + arg5));
+    FrameInterpolation_RecordOpenChild("flashing_text_wide_right", tag);
     Mat4 mf;
     SetTextMatrix(mf, OTRGetDimensionFromRightEdge(arg2), arg3, arg6, arg7);
     // func_80095AE0(&gGfxPool->mtxEffect[gMatrixEffectCount], OTRGetDimensionFromRightEdge(arg2), arg3, arg6, arg7);
@@ -4642,7 +4674,14 @@ Gfx* func_8009BC9C(Gfx* arg0, MenuTexture* texProps, s32 arg2, s32 arg3, s32 arg
     return arg0;
 }
 
-Gfx* print_letter(Gfx* arg0, MenuTexture* glyphTexture, f32 arg2, f32 arg3, s32 mode, f32 scaleX, f32 scaleY) {
+// textId/charIndex identify the glyph across frames for interpolation; a glyph that
+// is culled must not shift the tags of the glyphs after it.
+static u32 letter_tag(uintptr_t textId, s32 charIndex, s32 subIndex) {
+    return TAG_LETTER(((textId & 0xFFFF) << 12) | (((u32) charIndex & 0xFF) << 4) | ((u32) subIndex & 0xF));
+}
+
+Gfx* print_letter(Gfx* arg0, MenuTexture* glyphTexture, f32 arg2, f32 arg3, s32 mode, f32 scaleX, f32 scaleY,
+                  uintptr_t textId, s32 charIndex) {
     s32 var_v0;
     UNUSED u8* temp_v0_2;
     f32 thing0;
@@ -4678,12 +4717,14 @@ Gfx* print_letter(Gfx* arg0, MenuTexture* glyphTexture, f32 arg2, f32 arg3, s32 
                     case 1:
                         gSPDisplayList(arg0++, D_020077F8);
                         arg0 = func_80095BD0(arg0, var_s0->textureData, var_s0->dX + arg2, var_s0->dY + arg3,
-                                             var_s0->width, var_s0->height, scaleX, scaleY);
+                                             var_s0->width, var_s0->height, scaleX, scaleY,
+                                             letter_tag(textId, charIndex, var_s0 - glyphTexture));
                         break;
                     case 2:
                         gSPDisplayList(arg0++, D_02007818);
                         arg0 = func_80095BD0(arg0, var_s0->textureData, var_s0->dX + arg2, var_s0->dY + arg3,
-                                             var_s0->width, var_s0->height, scaleX, scaleY);
+                                             var_s0->width, var_s0->height, scaleX, scaleY,
+                                             letter_tag(textId, charIndex, var_s0 - glyphTexture));
                         break;
                 }
             }
@@ -4694,7 +4735,7 @@ Gfx* print_letter(Gfx* arg0, MenuTexture* glyphTexture, f32 arg2, f32 arg3, s32 
 }
 
 Gfx* print_letter_wide_right(Gfx* arg0, MenuTexture* glyphTexture, f32 arg2, f32 arg3, s32 mode, f32 scaleX,
-                             f32 scaleY) {
+                             f32 scaleY, uintptr_t textId, s32 charIndex) {
     s32 var_v0;
     u8* temp_v0_2;
     f32 thing0;
@@ -4731,12 +4772,14 @@ Gfx* print_letter_wide_right(Gfx* arg0, MenuTexture* glyphTexture, f32 arg2, f32
                     case 1:
                         gSPDisplayList(arg0++, D_020077F8);
                         arg0 = func_80095BD0_wide_right(arg0, temp_v0_2, var_s0->dX + arg2, var_s0->dY + arg3,
-                                                        var_s0->width, var_s0->height, scaleX, scaleY);
+                                                        var_s0->width, var_s0->height, scaleX, scaleY,
+                                                        letter_tag(textId, charIndex, var_s0 - glyphTexture));
                         break;
                     case 2:
                         gSPDisplayList(arg0++, D_02007818);
                         arg0 = func_80095BD0_wide_right(arg0, temp_v0_2, var_s0->dX + arg2, var_s0->dY + arg3,
-                                                        var_s0->width, var_s0->height, scaleX, scaleY);
+                                                        var_s0->width, var_s0->height, scaleX, scaleY,
+                                                        letter_tag(textId, charIndex, var_s0 - glyphTexture));
                         break;
                 }
             }
@@ -9502,7 +9545,9 @@ void handle_menus_with_pri_arg(s32 priSpecial) {
                 isRendered = true;
             }
             if (isRendered && (j == (s8) menuItem->priority)) {
+                sTextGroup = (uintptr_t) (i + 1);
                 render_menus(menuItem);
+                sTextGroup = 0;
             }
         }
     }
