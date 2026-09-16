@@ -97,6 +97,15 @@ GameEngine::GameEngine() {
     this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
                                            // ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
 
+#ifdef __ANDROID__
+    // There is no windowed mode worth offering on a phone, so Settings ->
+    // Toggle Fullscreen starts on. Seeded only when the key is absent so that
+    // turning it off in the menu still sticks across launches.
+    if (!this->context->GetConfig()->Contains("Window.Fullscreen.Enabled")) {
+        this->context->GetConfig()->SetBool("Window.Fullscreen.Enabled", true);
+    }
+#endif
+
     auto defaultMappings = std::make_shared<Ship::ControllerDefaultMappings>(
         // KeyboardKeyToButtonMappings
         std::unordered_map<CONTROLLERBUTTONS_T, std::unordered_set<Ship::KbScancode>>{

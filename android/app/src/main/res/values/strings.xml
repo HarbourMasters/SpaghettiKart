@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Spaghetti Kart</string>
+    <string name="mods_button">Mods</string>
+    <string name="saves_title">Saves</string>
+    <string name="launcher_choose_rom">Choose Mario Kart 64 ROM</string>
+    <string name="launcher_preparing">Unpacking the bundled game files…</string>
+    <string name="launcher_verifying">Verifying the selected ROM…</string>
+    <string name="launcher_extracting">Extracting the game assets from your ROM.\n\nThis happens once and can take a few minutes.</string>
+</resources>
