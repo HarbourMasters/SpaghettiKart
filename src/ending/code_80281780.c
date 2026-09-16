@@ -28,9 +28,7 @@
 // For init podium ceremony
 #include "ceremony_and_credits.h"
 
-// bcopy takes (src, dst); memcpy takes (dst, src), so the old shim silently
-// reversed every call. Map it explicitly and undef first, since some
-// platforms already define bcopy.
+// bcopy takes (src, dst); memcpy takes (dst, src), do not mix it up.
 #undef bcopy
 #define bcopy(src, dst, n) memmove(dst, src, n)
 
