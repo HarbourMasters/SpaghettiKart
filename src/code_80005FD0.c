@@ -6629,7 +6629,6 @@ void func_80019C50(s32 arg0) {
 void look_behind_toggle(s32 cameraIdx) {
     static bool lookBehindActive[NUM_CAMERAS] = {0};
     bool pressed = gControllers[cameraIdx].button & L_CBUTTONS; // button held
-    UNUSED Camera* camera = &cameras[cameraIdx];
     ScreenContext* screenCtx = NULL;
 
     if (CVarGetInteger("gLookBehind", false) == false) {
