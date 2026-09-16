@@ -120,7 +120,7 @@ u8 checksum_time_trial_records(s32 trackIdx) {
 
 u8 compute_save_data_checksum_1(void) {
     u8* grandPrixPoints = (u8*) &gSaveData.main.saveInfo.grandPrixPoints;
-    s32 i;
+    size_t i;
     s32 crc = 0;
 
     for (i = 0; i < sizeof(SaveInfo); i++) {
@@ -532,7 +532,7 @@ void update_save_data_backup(void) {
 
 u8 compute_save_data_checksum_backup_1(void) {
     u8* backupGrandPrixPoints = gSaveData.backup.saveInfo.grandPrixPoints;
-    s32 i;
+    size_t i;
     s32 crc = 0;
 
     for (i = 0; i < sizeof(SaveInfo); i++) {
@@ -837,7 +837,7 @@ s32 func_800B63F0(s32 arg0) {
     func_80005AE8(gPlayerThree);
 
     phi_s3 = 0;
-    if (((GetCupIndex() * 4) + GetCupCursorPosition()) != D_8018EE10[arg0].trackIndex) {
+    if ((s8) ((GetCupIndex() * 4) + GetCupCursorPosition()) != D_8018EE10[arg0].trackIndex) {
         phi_s3 = 2;
     } else if (D_80162DFC != D_8018EE10[arg0].unk_00) {
         phi_s3 = 3;
@@ -864,7 +864,7 @@ s32 func_800B63F0(s32 arg0) {
 }
 
 s32 func_800B64EC(s32 arg0) {
-    s32 temp_s0;
+    UNUSED s32 temp_s0;
     s32 temp_v0;
 
     if ((arg0 != 0) && (arg0 != 1)) {
@@ -979,7 +979,7 @@ GLOBAL_ASM("asm/non_matchings/save/func_800B68F4.s")
 #endif
 
 s32 func_800B69BC(s32 arg0) {
-    s32 i;
+    size_t i;
     struct_8018EE10_entry* plz = &D_8018EE10[arg0];
 
     plz->ghostDataSaved = false;

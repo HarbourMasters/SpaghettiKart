@@ -17,8 +17,6 @@
 #include <stdio.h>
 #include "engine/RaceManager.h"
 
-#pragma intrinsic(sqrtf)
-
 // Used to delete the choco mountain guard rail
 void nullify_displaylist(uintptr_t addr) {
     Gfx* macro;
@@ -2068,7 +2066,7 @@ void generate_collision_mesh(Gfx* addr, s8 surfaceType, u16 sectionId) {
                 size_t vtxDataOff = gfx->words.w1 & 0xFFFF;
                 Vtx* vtx = ( (Vtx*)ResourceGetDataByName(filePath) ) + vtxDataOff;
 
-                set_vtx_buffer(vtx, count, index);
+                set_vtx_buffer((uintptr_t) vtx, count, index);
                 break;
             }
             case G_VTX_OTR_HASH:
@@ -2187,7 +2185,7 @@ void find_vtx_and_set_colours(Gfx* displayList, s8 alpha, u8 red, u8 green, u8 b
         lo = gfx->words.w0;
         hi = gfx->words.w1;
         opcode = GFX_GET_OPCODE(lo);
-        if (opcode == ((u32) (G_ENDDL & 0xFF) << 24)) {
+        if (opcode == (G_ENDDL << 24)) {
             break;
         } else if (opcode == (G_DL << 24)) {
             find_vtx_and_set_colours((Gfx*) hi, alpha, red, green, blue);

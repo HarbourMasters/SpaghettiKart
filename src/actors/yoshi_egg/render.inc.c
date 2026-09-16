@@ -20,7 +20,7 @@ void render_actor_yoshi_egg(Camera* camera, Mat4 arg1, struct YoshiValleyEgg* eg
     f32 temp_f0;
 
     size_t actorIdx = CM_FindActorIndex((struct Actor*) egg);
-    if (-1 == actorIdx) {
+    if (-1 == (s32) actorIdx) {
         printf("[render_actor_yoshi_egg] Could not find actor for FI, skipping\n");
         return;
     }

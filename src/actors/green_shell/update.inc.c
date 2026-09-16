@@ -183,7 +183,7 @@ void update_actor_green_shell(struct ShellActor* shell) {
             break;
         case GREEN_SHELL_HIT_A_RACER:
             // Somehow, this fake match affects stack management up in case 2
-            shell->velocity[1] -= (0, 0.3f);
+            shell->velocity[1] -= 0.3f;
             if (shell->velocity[1] < -5.0f) {
                 shell->velocity[1] = -5.0f;
             }

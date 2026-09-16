@@ -17,8 +17,6 @@
 #include "engine/Matrix.h"
 #include "port/interpolation/FrameInterpolation.h"
 
-#pragma intrinsic(sqrtf)
-
 Mat4 sInterpolationMatrixStack[0x1000];
 Mat4* gInterpolationMatrix = &sInterpolationMatrixStack[0];
 
@@ -718,7 +716,7 @@ void func_80042330_unchanged(s32 x, s32 y, u16 angle, f32 scale) {
 }
 
 // Allows a different way of lining up the portraits at the end of race sequence
-void func_80042330_portrait(s32 x, s32 y, u16 angle, f32 scale, s16 lapCount) {
+void func_80042330_portrait(s32 x, s32 y, u16 angle, f32 scale, UNUSED s16 lapCount) {
     Mat4 matrix;
     // printf("panel %d %d %d\n", x, (s32)OTRGetDimensionFromLeftEdge(x), (s32)OTRGetDimensionFromLeftEdge(0));
 
