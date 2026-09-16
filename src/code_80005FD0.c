@@ -4180,9 +4180,6 @@ void cpu_behaviour_start(s32 playerId, Player* player) {
     s16 pathPointStart;
     s16 pathPointEnd;
     s32 behaviourType;
-    UNUSED s32 test;
-
-    UNUSED CPUBehaviour* beh = (CPUBehaviour*) LOAD_ASSET(CM_GetProps()->AIBehaviour);
 
     sCurrentCPUBehaviour = &((CPUBehaviour*) LOAD_ASSET(CM_GetProps()->AIBehaviour))[gCurrentCPUBehaviourId[playerId]];
 
