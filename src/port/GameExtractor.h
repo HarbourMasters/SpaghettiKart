@@ -13,6 +13,8 @@ public:
     void GetRoms(std::vector<std::string>& roms);
     bool GenerateOTR() const;
 private:
+    static void ScanForRoms(const std::string& directory, std::vector<std::string>& roms);
+
     fs::path mGamePath;
     std::vector<uint8_t> mGameData;
 };

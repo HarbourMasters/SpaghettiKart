@@ -5,7 +5,9 @@
 #pragma comment(lib, "Shlwapi.lib")
 #endif
 #include "GameExtractor.h"
+#include <algorithm>
 #include <cstdio>
+#include <cstdlib>
 #include <unordered_map>
 
 #include <fstream>
@@ -119,9 +121,37 @@ bool GameExtractor::SelectGameFromUI() {
 }
 
 void GameExtractor::GetRoms(std::vector<std::string>& roms) {
+    // Also look next to the executable and in the data folder (where mk64.o2r is written), so a
+    // launcher that starts the game from another working directory still finds the ROM.
+    std::vector<std::string> candidates = { ".", Ship::Context::GetAppBundlePath(),
+                                            Ship::Context::GetAppDirectoryPath() };
+#ifdef __linux__
+    // An AppImage runs from a temporary mount, so the executable's folder is not where the user
+    // put the game. The AppImage runtime exports the image's own path.
+    if (const char* appImage = std::getenv("APPIMAGE")) {
+        candidates.push_back(std::filesystem::path(appImage).parent_path().string());
+    }
+#endif
+    std::vector<std::filesystem::path> scanned;
+
+    for (const auto& directory : candidates) {
+        std::error_code ec;
+        const auto canonical = std::filesystem::weakly_canonical(directory, ec);
+        if (ec || std::find(scanned.begin(), scanned.end(), canonical) != scanned.end()) {
+            continue;
+        }
+        scanned.push_back(canonical);
+        ScanForRoms(directory, roms);
+    }
+}
+
+void GameExtractor::ScanForRoms(const std::string& directory, std::vector<std::string>& roms) {
 #ifdef _WIN32
     WIN32_FIND_DATAA ffd;
-    HANDLE h = FindFirstFileA(".\\*", &ffd);
+    HANDLE h = FindFirstFileA((directory + "\\*").c_str(), &ffd);
+    if (h == INVALID_HANDLE_VALUE) {
+        return;
+    }
 
     do {
         if (!(ffd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
@@ -129,15 +159,13 @@ void GameExtractor::GetRoms(std::vector<std::string>& roms) {
 
             // Check for any standard N64 rom file extensions.
             if ((strcmp(ext, ".z64") == 0))
-                roms.push_back(ffd.cFileName);
+                roms.push_back(directory + "\\" + ffd.cFileName);
         }
     } while (FindNextFileA(h, &ffd) != 0);
-    // if (h != nullptr) {
-    //    CloseHandle(h);
-    //}
+    FindClose(h);
 #elif unix
     // Open the directory of the app.
-    DIR* d = opendir(".");
+    DIR* d = opendir(directory.c_str());
     struct dirent* dir;
 
     if (d != NULL) {
@@ -145,7 +173,7 @@ void GameExtractor::GetRoms(std::vector<std::string>& roms) {
         while ((dir = readdir(d)) != NULL) {
             struct stat path;
 
-            auto fullPath = std::filesystem::path(".") / dir->d_name;
+            auto fullPath = std::filesystem::path(directory) / dir->d_name;
             auto fullPathString = fullPath.string();
             const char* fullPathCStr = fullPathString.c_str();
 
@@ -160,10 +188,15 @@ void GameExtractor::GetRoms(std::vector<std::string>& roms) {
                 }
             }
         }
+        closedir(d);
     }
-    closedir(d);
 #else
-    for (const auto& file : std::filesystem::directory_iterator(".")) {
+    std::error_code ec;
+    std::filesystem::directory_iterator entries(directory, ec);
+    if (ec) {
+        return;
+    }
+    for (const auto& file : entries) {
         if (file.is_directory())
             continue;
         if (file.path().extension() == ".z64") {
