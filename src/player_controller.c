@@ -443,7 +443,14 @@ void func_80028F70(void) {
             }
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
-            for (size_t i = 0; i < 4; i++) {
+            size_t players;
+            if (gModeSelection == GRAND_PRIX) {
+                players = 8;
+            } else { // VERSUS, BATTLE
+                players = 4;
+            }
+
+            for (size_t i = 0; i < players; i++) {
                 func_80028E70(&gPlayers[i], camera1, i, 0);
             }
             break;
