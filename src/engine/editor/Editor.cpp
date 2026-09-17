@@ -15,6 +15,7 @@
 #include "engine/TrackBrowser.h"
 #include "engine/actors/Ship.h"
 #include "port/Game.h"
+#include "port/ShipCompat.h"
 
 extern "C" {
 #include "common_structs.h"
@@ -52,11 +53,11 @@ namespace TrackEditor {
         bIsEditorPaused = true;
         CVarSetInteger("gFreecam", true);
         CM_SetFreeCamera(true);
-        Ship::Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Tools")->Show();
-        Ship::Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Scene Explorer")->Show();
-        Ship::Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Content Browser")->Show();
-        Ship::Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Track Properties")->Show();
-        Ship::Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Properties")->Show();
+        ShipCompat::GetWindow()->GetGui()->GetGuiWindow("Tools")->Show();
+        ShipCompat::GetWindow()->GetGui()->GetGuiWindow("Scene Explorer")->Show();
+        ShipCompat::GetWindow()->GetGui()->GetGuiWindow("Content Browser")->Show();
+        ShipCompat::GetWindow()->GetGui()->GetGuiWindow("Track Properties")->Show();
+        ShipCompat::GetWindow()->GetGui()->GetGuiWindow("Properties")->Show();
     }
 
     void Editor::Disable() {
@@ -64,11 +65,11 @@ namespace TrackEditor {
         bIsEditorPaused = false;
         CVarSetInteger("gFreecam", false);
         CM_SetFreeCamera(false);
-        Ship::Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Tools")->Hide();
-        Ship::Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Scene Explorer")->Hide();
-        Ship::Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Content Browser")->Hide();
-        Ship::Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Track Properties")->Hide();
-        Ship::Context::GetRawInstance()->GetWindow()->GetGui()->GetGuiWindow("Properties")->Hide();
+        ShipCompat::GetWindow()->GetGui()->GetGuiWindow("Tools")->Hide();
+        ShipCompat::GetWindow()->GetGui()->GetGuiWindow("Scene Explorer")->Hide();
+        ShipCompat::GetWindow()->GetGui()->GetGuiWindow("Content Browser")->Hide();
+        ShipCompat::GetWindow()->GetGui()->GetGuiWindow("Track Properties")->Hide();
+        ShipCompat::GetWindow()->GetGui()->GetGuiWindow("Properties")->Hide();
     }
 
     bool Editor::IsEnabled() {
@@ -106,7 +107,7 @@ namespace TrackEditor {
             return;
         }
 
-        auto wnd = GameEngine::Instance->context->GetWindow();
+        auto wnd = ShipCompat::GetWindow();
 
         static bool wasMouseDown = false;
         static bool isDragging = false;

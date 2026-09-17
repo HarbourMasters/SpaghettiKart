@@ -33,14 +33,14 @@ SM64::AudioSequenceFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
     bank->mData.id = id;
 
     for (const auto& ext : extension) {
-        auto custom = Ship::Context::GetRawInstance()->GetResourceManager()->LoadFileProcess(initData->Path + ext);
+        auto custom = ShipCompat::GetResourceManager()->LoadFileProcess(initData->Identifier.GetPath() + ext);
 
         if (custom != nullptr) {
             bank->sampleData = std::vector<uint8_t>(custom->Buffer->begin(), custom->Buffer->end());
             uint8_t* data = bank->sampleData.data();
             size_t size = bank->sampleData.size();
 
-            auto metadata = Ship::Context::GetRawInstance()->GetResourceManager()->LoadFileProcess(initData->Path + ".json");
+            auto metadata = ShipCompat::GetResourceManager()->LoadFileProcess(initData->Identifier.GetPath() + ".json");
             if (metadata != nullptr) {
                 auto json = nlohmann::json::parse(std::string(metadata->Buffer->begin(), metadata->Buffer->end()));
                 HMAS_Info info;

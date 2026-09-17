@@ -1,7 +1,6 @@
 #include "Tools.h"
 #include "port/ui/PortMenu.h"
 #include "UIWidgets.h"
-#include "ship/Context.h"
 
 #include <imgui.h>
 #include <map>
@@ -26,7 +25,7 @@ namespace TrackEditor {
         SPDLOG_TRACE("destruct tools window");
     }
 
-    void ToolsWindow::InitElement() {
+    void ToolsWindow::OnInit(const nlohmann::json& initArgs) {
         
     }
 

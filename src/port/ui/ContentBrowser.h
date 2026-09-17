@@ -18,7 +18,7 @@ public:
     bool CustomContent = false;
     bool TrackContent = false;
 protected:
-    void InitElement() override {};
+    void OnInit(const nlohmann::json& initArgs = {}) override{};
     void DrawElement() override;
     void UpdateElement() override {};
     void AddTrackContent(std::string search);

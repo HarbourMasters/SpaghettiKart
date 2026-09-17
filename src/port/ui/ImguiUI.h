@@ -12,6 +12,6 @@ class GameMenuBar : public Ship::GuiMenuBar {
 
   protected:
     void DrawElement() override;
-    void InitElement() override {};
+    void OnInit(const nlohmann::json& initArgs = {}) override{};
     void UpdateElement() override {};
 };

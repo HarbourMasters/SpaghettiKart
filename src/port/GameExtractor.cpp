@@ -11,9 +11,10 @@
 #include <fstream>
 
 #include "Companion.h"
-#include "ship/Context.h"
+#include "port/ShipCompat.h"
 #include "spdlog/spdlog.h"
 #include <port/Engine.h>
+#include <ship/core/Context.h>
 
 #ifdef unix
 #include <dirent.h>

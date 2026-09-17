@@ -13,7 +13,7 @@ public:
 
     ~TrackPropertiesWindow();
 protected:
-    void InitElement() override {};
+    void OnInit(const nlohmann::json& initArgs = {}) override {};
     void DrawElement() override;
     void DrawResourceNameEdit();
     void DrawMusic();
