@@ -25,9 +25,9 @@ static const char engine_asset_file[] = "spaghetti.o2r";
 #define IDNO 7
 #endif
 
-#define SAMPLES_HIGH 448
-#define SAMPLES_LOW 432
-#define AUDIO_FRAMES_PER_UPDATE 2
+#define SAMPLES_HIGH 464
+#define SAMPLES_LOW 448
+#define AUDIO_FRAMES_PER_UPDATE 3
 #define NUM_AUDIO_CHANNELS 2
 #define SAMPLES_PER_FRAME (SAMPLES_HIGH * NUM_AUDIO_CHANNELS * 2)
 
