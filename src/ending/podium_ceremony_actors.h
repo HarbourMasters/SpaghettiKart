@@ -104,7 +104,7 @@ void podium_ceremony_loop(void);
 
 extern struct_D_802874D8 D_802874D8;
 extern CeremonyActor* sPodiumActorList;
-extern s32 D_802874FC;
+extern s32 gPodiumDebugPrintIdx;
 
 extern ActorInitParams initBalloon;
 extern ActorInitParams initCone;
@@ -112,7 +112,6 @@ extern ActorInitParams initInitUnk;
 extern ActorInitParams initBurst;
 
 extern Gfx* D_802874D4;
-extern s32 D_802874FC;
 extern Mat4 D_80287500;
 
 #endif

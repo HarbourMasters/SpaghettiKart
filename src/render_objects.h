@@ -364,7 +364,7 @@ void func_800578B0(s32, s32, char*, u32);
 void func_80057908(s32, s32, char*, u32);
 void func_80057960(s32, s32, char*, u32);
 void func_800579B8(s32, s32, char*);
-void func_800579F8(s32, s32, char*, u32);
+void render_podium_debug_prints(s32, s32, char*, u32);
 void func_80057A50(s32, s32, char*, u32);
 void func_80057AA8(s32, s32, char*, u32);
 void func_80057B14(s32, s32, char*, u32);
