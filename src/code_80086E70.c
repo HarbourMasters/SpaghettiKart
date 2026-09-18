@@ -1283,8 +1283,7 @@ s32 func_8008A0B4(s32 objectIndex, Player* player, Camera* camera, u16 arg3) {
     return var_t0;
 }
 
-// The angle test alone, not subject to the Disable Culling toggle. For object
-// logic that needs to know whether a camera is actually looking at the object.
+// For objects that should not be skipped by the no culling enhancement.
 bool is_object_in_camera_view(s32 objectIndex, Camera* camera, u16 angle) {
     u16 temp_t2;
     s32 var_t0;
@@ -1300,6 +1299,7 @@ bool is_object_in_camera_view(s32 objectIndex, Camera* camera, u16 angle) {
     return var_t0;
 }
 
+// Skippable using the no culling enhancement.
 bool is_object_visible_on_camera(s32 objectIndex, Camera* camera, u16 angle) {
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         return true;
