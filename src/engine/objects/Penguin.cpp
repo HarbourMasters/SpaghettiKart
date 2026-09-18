@@ -63,8 +63,6 @@ OPenguin::OPenguin(const SpawnParams& params) : OObject(params) {
             object->boundingBoxSize = 4;
             break;
         case PenguinType::CREDITS:
-            // func_800845C8 sets 0.15f for this penguin in the credits, then
-            // overwrites it with the chick values along with the other chicks.
             object->surfaceHeight = 5.0f;
             object->sizeScaling = 0.04f;
             object->boundingBoxSize = 4;
