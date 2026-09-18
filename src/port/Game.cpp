@@ -327,6 +327,7 @@ void CM_DrawTrack(ScreenContext* screen) {
                 } else {
                     GetWorld()->GetTrack()->DrawCredits();
                 }
+                break;
             case RENDER_TRACK_SECTIONS:
                 GetWorld()->GetTrack()->Draw(screen);
                 break;
@@ -466,6 +467,11 @@ Camera* CM_AddTourCamera(Vec3f spawn, s16 rot, u32 mode) {
     TourCamera* tour = static_cast<TourCamera*>(GetWorld()->Cameras.back().get());
     tour->SetActive(true);
     return tour->Get();
+}
+
+bool CM_IsTrackMod() {
+    auto track = GetWorld()->GetTrack();
+    return (track != nullptr) && track->IsMod();
 }
 
 bool CM_IsTourEnabled() {

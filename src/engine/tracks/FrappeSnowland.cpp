@@ -130,7 +130,9 @@ void FrappeSnowland::Load() {
 }
 
 void FrappeSnowland::BeginPlay() {
-    spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_frappe_snowland_tree_spawns));
+    if (gGamestate != CREDITS_SEQUENCE) {
+        spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_frappe_snowland_tree_spawns));
+    }
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_frappe_snowland_item_box_spawns));
 
     if (gGamestate != CREDITS_SEQUENCE) {
