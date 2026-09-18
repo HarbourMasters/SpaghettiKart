@@ -1654,7 +1654,6 @@ void func_8007601C(s32 objectIndex) {
     }
 
     if (gObjectList[objectIndex].unk_04C == 0) {
-        // Not func_8008A6DC: the burst cadence must not follow the Disable Culling toggle.
         if ((is_object_in_view_of_any_camera(objectIndex, 300.0f) != 0) && (func_80072354(objectIndex, 1) != 0)) {
             func_800722A4(objectIndex, 1);
             func_80075F98(gObjectList[objectIndex].pos, gObjectList[objectIndex].direction_angle[1], 1.0f);
