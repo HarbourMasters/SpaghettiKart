@@ -1472,7 +1472,7 @@ s32 are_players_in_course_section(s16 arg0, s16 arg1) {
     s16* var_v0;
     s32 i;
 
-    // Custom tracks have no sections, so every player counts as in range there.
+    // Always enable collision for custom tracks. They do not have sections.
     if (CM_IsTrackMod()) {
         return 1;
     }
