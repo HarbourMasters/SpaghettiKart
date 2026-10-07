@@ -561,9 +561,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y ninja-build
           sudo apt-get remove -y cmake
-          git -C libultraship remote add nx https://github.com/Net64DD/libultraship.git
-          git -C libultraship fetch nx
-          git -C libultraship checkout nx/main-nx
+          git -C libultraship remote add nx https://github.com/Project516/libultraship.git
+          git -C libultraship fetch nx port-maintenance-switch
+          git -C libultraship checkout FETCH_HEAD
           wget https://github.com/Kitware/CMake/releases/download/v3.28.3/cmake-3.28.3-linux-x86_64.sh -O /tmp/cmake.sh
           sudo sh /tmp/cmake.sh --prefix=/usr/local/ --exclude-subdir
           wget https://github.com/leethomason/tinyxml2/archive/refs/tags/10.0.0.tar.gz
