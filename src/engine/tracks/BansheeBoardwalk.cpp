@@ -1,4 +1,5 @@
 #include <cstdint>
+#include <macros.h>
 #include <libultraship.h>
 #include <libultra/gbi.h>
 #include <unordered_map>
@@ -148,7 +149,7 @@ void BansheeBoardwalk::Load() {
     gFogColour.a = 255;
     parse_track_displaylists((TrackSections*) LOAD_ASSET_RAW(d_course_banshee_boardwalk_track_sections));
     func_80295C6C();
-    find_vtx_and_set_colours((Gfx*) d_course_banshee_boardwalk_packed_dl_878, 128, 0, 0, 0);
+    find_vtx_and_set_colours((Gfx*) d_course_banshee_boardwalk_packed_dl_878, (s8) 128, 0, 0, 0);
 }
 
 void BansheeBoardwalk::BeginPlay() {
@@ -188,7 +189,7 @@ void BansheeBoardwalk::BeginPlay() {
 }
 
 void BansheeBoardwalk::InitTrackObjects() {
-    size_t objectId = 0;
+    UNUSED size_t objectId = 0;
     if (gGamestate != CREDITS_SEQUENCE) {
         init_object(indexObjectList1[2], 0);
     }
@@ -204,7 +205,7 @@ void BansheeBoardwalk::TickTrackObjects() {
     }
 }
 
-void BansheeBoardwalk::DrawTrackObjects(s32 cameraId) {
+void BansheeBoardwalk::DrawTrackObjects(UNUSED s32 cameraId) {
     if (gGamestate != CREDITS_SEQUENCE) {
         // render_object_bat(cameraId);
         // render_object_boos(cameraId);
@@ -214,7 +215,7 @@ void BansheeBoardwalk::DrawTrackObjects(s32 cameraId) {
 void BansheeBoardwalk::SomeSounds() {
 }
 
-void BansheeBoardwalk::WhatDoesThisDo(Player* player, int8_t playerId) {
+void BansheeBoardwalk::WhatDoesThisDo(UNUSED Player* player, int8_t playerId) {
     if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x180) &&
         ((s16) gNearestPathPointByPlayerId[playerId] < 0x1E1)) {
         if (D_80165300[playerId] != 1) {
@@ -229,7 +230,7 @@ void BansheeBoardwalk::WhatDoesThisDo(Player* player, int8_t playerId) {
     }
 }
 
-void BansheeBoardwalk::WhatDoesThisDoAI(Player* player, int8_t playerId) {
+void BansheeBoardwalk::WhatDoesThisDoAI(UNUSED Player* player, int8_t playerId) {
     if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x180) &&
         ((s16) gNearestPathPointByPlayerId[playerId] < 0x1E1)) {
         if (D_80165300[playerId] != 1) {
@@ -328,8 +329,8 @@ void BansheeBoardwalk::Waypoints(Player* player, int8_t playerId) {
     }
 }
 
-void BansheeBoardwalk::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
-                                 uint16_t playerDirection) {
+void BansheeBoardwalk::DrawTransparency(UNUSED ScreenContext* screen, UNUSED uint16_t pathCounter,
+                                        UNUSED uint16_t cameraRot, UNUSED uint16_t playerDirection) {
     gDPPipeSync(gDisplayListHead++);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);

@@ -28,8 +28,8 @@ public:
 
     explicit OTrashBin(const SpawnParams& params);
 
-    virtual void Tick() override;
-    virtual void Draw(s32 cameraId) override;
+    void Tick() override;
+    void Draw(s32 cameraId) override;
     void func_8007E00C(s32 objectIndex);
     void init_bb_trash_bin(s32);
 
@@ -42,6 +42,6 @@ private:
     FVector _pos;
     IRotator _rot;
     float _scale;
-    size_t _idx;
+    [[maybe_unused]] size_t _idx;
     bool _drawBin = false;
 };

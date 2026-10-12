@@ -25,12 +25,9 @@ extern "C" {
 #include "code_80057C60.h"
 #include "defines.h"
 #include "code_80005FD0.h"
-#include "racing/collision.h"
 #include "assets/models/tracks/bowsers_castle/bowsers_castle_data.h"
 #include "ending/ceremony_and_credits.h"
 #include "objects.h"
-#include "update_objects.h"
-#include "render_objects.h"
 #include "course_offsets.h"
 #include "data/some_data.h"
 #include "racing/race_logic.h"
@@ -132,7 +129,7 @@ void OLakitu::Draw(s32 cameraId) {
             FrameInterpolation_RecordOpenChild("lakitu", (_idx << 4) | cameraId);
             rsp_set_matrix_transformation(object->pos, object->orientation, object->sizeScaling);
             gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007D78);
-            s32 heightIndex;
+            UNUSED s32 heightIndex;
 
             gDPLoadTLUT_pal256(gDisplayListHead++, object->activeTLUT);
             gDPLoadTextureTile(gDisplayListHead++, object->activeTexture, G_IM_FMT_CI, G_IM_SIZ_8b, width, height, 0, 0,
@@ -152,7 +149,7 @@ void OLakitu::Draw(s32 cameraId) {
             gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
             set_transparency(object->primAlpha);
-            s32 heightIndex;
+            UNUSED s32 heightIndex;
 
             gDPLoadTLUT_pal256(gDisplayListHead++, object->activeTLUT);
             rsp_load_texture((u8*) object->activeTexture, width, height);

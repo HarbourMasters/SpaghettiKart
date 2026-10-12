@@ -1,4 +1,5 @@
 #include "PortMenu.h"
+#include <macros.h>
 #include "UIWidgets.h"
 #include "port/Game.h"
 #include "ship/window/gui/GuiMenuBar.h"
@@ -6,7 +7,6 @@
 #include <variant>
 #include "ship/utils/StringHelper.h"
 #include <spdlog/fmt/fmt.h>
-#include <variant>
 #include <tuple>
 #include "ResolutionEditor.h"
 
@@ -100,8 +100,10 @@ void PortMenu::AddSettings() {
 #ifndef __SWITCH__
     AddWidget(path, "Toggle Fullscreen", WIDGET_CHECKBOX)
         .ValuePointer(&isFullscreen)
-        .PreFunc([](WidgetInfo& info) { isFullscreen = Ship::Context::GetRawInstance()->GetWindow()->IsFullscreen(); })
-        .Callback([](WidgetInfo& info) { Ship::Context::GetRawInstance()->GetWindow()->ToggleFullscreen(); })
+        .PreFunc([](UNUSED WidgetInfo& info) {
+            isFullscreen = Ship::Context::GetRawInstance()->GetWindow()->IsFullscreen();
+        })
+        .Callback([](UNUSED WidgetInfo& info) { Ship::Context::GetRawInstance()->GetWindow()->ToggleFullscreen(); })
         .Options(CheckboxOptions().Tooltip("Toggles Fullscreen On/Off."));
 #endif
 
@@ -147,7 +149,7 @@ void PortMenu::AddSettings() {
             "items, A to select, B to move up in scope."));
     AddWidget(path, "Cursor Always Visible", WIDGET_CVAR_CHECKBOX)
         .CVar("gSettings.CursorVisibility")
-        .Callback([](WidgetInfo& info) {
+        .Callback([](UNUSED WidgetInfo& info) {
             Ship::Context::GetRawInstance()->GetWindow()->SetForceCursorVisibility(
                 CVarGetInteger("gSettings.CursorVisibility", 0));
         })
@@ -155,7 +157,7 @@ void PortMenu::AddSettings() {
 #endif
     AddWidget(path, "Search In Sidebar", WIDGET_CVAR_CHECKBOX)
         .CVar("gSettings.Menu.SidebarSearch")
-        .Callback([](WidgetInfo& info) {
+        .Callback([](UNUSED WidgetInfo& info) {
             if (CVarGetInteger("gSettings.Menu.SidebarSearch", 0)) {
                 mPortMenu->InsertSidebarSearch();
             } else {
@@ -174,7 +176,7 @@ void PortMenu::AddSettings() {
             CheckboxOptions().Tooltip("Allows pressing the Tab key to toggle alternate assets").DefaultValue(true));
 #ifndef __SWITCH__
     AddWidget(path, "Open App Files Folder", WIDGET_BUTTON)
-        .Callback([](WidgetInfo& info) {
+        .Callback([](UNUSED WidgetInfo& info) {
             std::string filesPath = Ship::Context::GetRawInstance()->GetAppDirectoryPath();
             SDL_OpenURL(std::string("file:///" + std::filesystem::absolute(filesPath).string()).c_str());
         })
@@ -233,7 +235,7 @@ void PortMenu::AddSettings() {
 
     AddWidget(path, "Internal Resolution: %.0f%%", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar(CVAR_INTERNAL_RESOLUTION)
-        .Callback([](WidgetInfo& info) {
+        .Callback([](UNUSED WidgetInfo& info) {
             Ship::Context::GetRawInstance()->GetWindow()->SetResolutionMultiplier(
                 CVarGetFloat(CVAR_INTERNAL_RESOLUTION, 1));
         })
@@ -259,7 +261,7 @@ void PortMenu::AddSettings() {
 #ifndef __WIIU__
     AddWidget(path, "Anti-aliasing (MSAA): %d", WIDGET_CVAR_SLIDER_INT)
         .CVar(CVAR_MSAA_VALUE)
-        .Callback([](WidgetInfo& info) {
+        .Callback([](UNUSED WidgetInfo& info) {
             Ship::Context::GetRawInstance()->GetWindow()->SetMsaaLevel(CVarGetInteger(CVAR_MSAA_VALUE, 1));
         })
         .Options(
@@ -288,9 +290,9 @@ void PortMenu::AddSettings() {
         })
         .Options(IntSliderOptions().Tooltip(tooltip).Min(30).Max(maxFps).DefaultValue(30));
     AddWidget(path, "Match Refresh Rate", WIDGET_BUTTON)
-        .Callback([](WidgetInfo& info) {
+        .Callback([](UNUSED WidgetInfo& info) {
             int hz = Ship::Context::GetRawInstance()->GetWindow()->GetCurrentRefreshRate();
-            if (hz >= 30 && hz <= MAX_FPS) {
+            if (hz >= 30 && hz <= (int) MAX_FPS) {
                 CVarSetInteger("gInterpolationFPS", hz);
                 Ship::Context::GetRawInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             }
@@ -513,7 +515,7 @@ void PortMenu::AddDevTools() {
         .Options(CheckboxOptions().Tooltip("Changes the menu display from overlay to windowed."));
     AddWidget(path, "Debug Mode", WIDGET_CVAR_CHECKBOX)
         .CVar("gEnableDebugMode")
-        .Callback([](WidgetInfo& info) {
+        .Callback([](UNUSED WidgetInfo& info) {
             SPDLOG_INFO(CVarGetInteger("gEnableDebugMode", 0) == 0 ? "Debug Mode deactivated" : "Debug Mode activated");
         })
         .Options(CheckboxOptions().Tooltip("Enables Debug Mode."));
@@ -632,52 +634,55 @@ void PortMenu::InitElement() {
 
     disabledMap = {
         { DISABLE_FOR_FREE_CAM_ON,
-          { [](disabledInfo& info) -> bool { return CVarGetInteger("gFreecam", 0); }, "Freecam is Enabled" } },
+          { [](UNUSED disabledInfo& info) -> bool { return CVarGetInteger("gFreecam", 0); }, "Freecam is Enabled" } },
         { DISABLE_FOR_FREE_CAM_OFF,
-          { [](disabledInfo& info) -> bool { return !CVarGetInteger("gFreecam", 0); }, "Freecam is Disabled" } },
+          { [](UNUSED disabledInfo& info) -> bool { return !CVarGetInteger("gFreecam", 0); }, "Freecam is Disabled" } },
         { DISABLE_FOR_DEBUG_MODE_OFF,
-          { [](disabledInfo& info) -> bool { return !CVarGetInteger("gEnableDebugMode", 0); },
+          { [](UNUSED disabledInfo& info) -> bool { return !CVarGetInteger("gEnableDebugMode", 0); },
             "Debug Mode is Disabled" } },
         { DISABLE_FOR_NO_VSYNC,
-          { [](disabledInfo& info) -> bool {
+          { [](UNUSED disabledInfo& info) -> bool {
                return !Ship::Context::GetRawInstance()->GetWindow()->CanDisableVerticalSync();
            },
             "Disabling VSync not supported" } },
         { DISABLE_FOR_NO_WINDOWED_FULLSCREEN,
-          { [](disabledInfo& info) -> bool {
+          { [](UNUSED disabledInfo& info) -> bool {
                return !Ship::Context::GetRawInstance()->GetWindow()->SupportsWindowedFullscreen();
            },
             "Windowed Fullscreen not supported" } },
         { DISABLE_FOR_NO_MULTI_VIEWPORT,
-          { [](disabledInfo& info) -> bool {
+          { [](UNUSED disabledInfo& info) -> bool {
                return !Ship::Context::GetRawInstance()->GetWindow()->GetGui()->SupportsViewports();
            },
             "Multi-viewports not supported" } },
         { DISABLE_FOR_NOT_DIRECTX,
-          { [](disabledInfo& info) -> bool {
+          { [](UNUSED disabledInfo& info) -> bool {
                return Ship::Context::GetRawInstance()->GetWindow()->GetWindowBackend() !=
                       Fast::WindowBackend::FAST3D_DXGI_DX11;
            },
             "Available Only on DirectX" } },
         { DISABLE_FOR_DIRECTX,
-          { [](disabledInfo& info) -> bool {
+          { [](UNUSED disabledInfo& info) -> bool {
                return Ship::Context::GetRawInstance()->GetWindow()->GetWindowBackend() ==
                       Fast::WindowBackend::FAST3D_DXGI_DX11;
            },
             "Not Available on DirectX" } },
         { DISABLE_FOR_MATCH_REFRESH_RATE_ON,
-          { [](disabledInfo& info) -> bool { return CVarGetInteger("gMatchRefreshRate", 0); },
+          { [](UNUSED disabledInfo& info) -> bool { return CVarGetInteger("gMatchRefreshRate", 0); },
             "Match Refresh Rate is Enabled" } },
         { DISABLE_FOR_ADVANCED_RESOLUTION_ON,
-          { [](disabledInfo& info) -> bool { return CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".Enabled", 0); },
+          { [](UNUSED disabledInfo& info) -> bool {
+               return CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".Enabled", 0);
+           },
             "Advanced Resolution Enabled" } },
         { DISABLE_FOR_VERTICAL_RES_TOGGLE_ON,
-          { [](disabledInfo& info) -> bool {
+          { [](UNUSED disabledInfo& info) -> bool {
                return CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".VerticalResolutionToggle", 0);
            },
             "Vertical Resolution Toggle Enabled" } },
         { DISABLE_FOR_LOW_RES_MODE_ON,
-          { [](disabledInfo& info) -> bool { return CVarGetInteger(CVAR_LOW_RES_MODE, 0); }, "N64 Mode Enabled" } },
+          { [](UNUSED disabledInfo& info) -> bool { return CVarGetInteger(CVAR_LOW_RES_MODE, 0); },
+            "N64 Mode Enabled" } },
         //{ DISABLE_FOR_MULTIPLAYER_CONNECTED,
         //  { CheckNetworkConnected, "Multiplayer Connected"}},
     };

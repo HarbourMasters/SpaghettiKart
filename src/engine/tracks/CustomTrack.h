@@ -5,12 +5,15 @@ class CustomTrack : public Track {
 public:
     explicit CustomTrack();
 
-    virtual void Load() override;
-    virtual void BeginPlay() override;
-    virtual void Draw(ScreenContext*) override;
-    virtual void DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) override;
-    virtual void Tick() override;
-    virtual bool IsMod() override { return true; }
+    void Load() override;
+    void BeginPlay() override;
+    void Draw(ScreenContext*) override;
+    void DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
+                          uint16_t playerDirection) override;
+    void Tick() override;
+    bool IsMod() override {
+        return true;
+    }
     void InvertTriangleWindingModdedByName(const char* name);
     void ParseMeshForCollision(TrackSections* sections, size_t numMesh);
     void TestPath();

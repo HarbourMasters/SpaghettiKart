@@ -53,8 +53,8 @@ public:
 
     TourCamera(FVector pos, s16 rot, u32 mode);
 
-    virtual void Tick() override;
-    virtual void SetViewProjection() override;
+    void Tick() override;
+    void SetViewProjection() override;
     void NextShot();
     void Reset();
     void Stop();

@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <macros.h>
 #include <libultra/gbi.h>
 #include <vector>
 #include <memory>
@@ -127,12 +128,12 @@ void SherbetLand::Load() {
     parse_track_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_sherbet_land_addr));
     func_80295C6C();
     // d_course_sherbet_land_packed_dl_1EB8
-    find_vtx_and_set_colours((Gfx*) d_course_sherbet_land_packed_dl_1EB8, 180, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_sherbet_land_packed_dl_1EB8, (s8) 180, 255, 255, 255);
     // d_course_sherbet_land_packed_dl_2308
-    find_vtx_and_set_colours((Gfx*) d_course_sherbet_land_packed_dl_2308, 150, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_sherbet_land_packed_dl_2308, (s8) 150, 255, 255, 255);
 }
 
-f32 SherbetLand::GetWaterLevel(FVector pos, struct Collision* collision) {
+f32 SherbetLand::GetWaterLevel(UNUSED FVector pos, struct Collision* collision) {
     if ((get_surface_type(collision->meshIndexZX) & 0xFF) == SNOW) {
         return (f32) (gTrackMinY - 0xA);
     }
@@ -209,7 +210,8 @@ void SherbetLand::DrawCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_sherbet_land_dl_9AE8));
 }
 
-void SherbetLand::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+void SherbetLand::DrawTransparency(ScreenContext* screen, UNUSED uint16_t pathCounter, UNUSED uint16_t cameraRot,
+                                   UNUSED uint16_t playerDirection) {
     gDPPipeSync(gDisplayListHead++);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -232,7 +234,7 @@ void SherbetLand::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, 
 
 void SherbetLand::CreditsSpawnActors() {
     // d_course_sherbet_land_packed_dl_1EB8
-    find_vtx_and_set_colours((Gfx*) d_course_sherbet_land_packed_dl_1EB8, 180, 0xFF, 0xFF, 0xFF);
+    find_vtx_and_set_colours((Gfx*) d_course_sherbet_land_packed_dl_1EB8, (s8) 180, 0xFF, 0xFF, 0xFF);
     // d_course_sherbet_land_packed_dl_2308
-    find_vtx_and_set_colours((Gfx*) d_course_sherbet_land_packed_dl_2308, 150, 0xFF, 0xFF, 0xFF);
+    find_vtx_and_set_colours((Gfx*) d_course_sherbet_land_packed_dl_2308, (s8) 150, 0xFF, 0xFF, 0xFF);
 }

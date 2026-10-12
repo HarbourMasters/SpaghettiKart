@@ -21,10 +21,7 @@
 #include "src/engine/editor/SceneManager.h"
 #include "engine/TrackBrowser.h"
 
-#include "engine/World.h"
-
 extern "C" {
-#include "common_structs.h"
 #include "racing/actors.h"
 #include "racing/collision.h"
 }

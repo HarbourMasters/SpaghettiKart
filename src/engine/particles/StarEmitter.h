@@ -30,8 +30,8 @@ public:
 
     explicit StarEmitter();
 
-    virtual void Tick() override;
-    virtual void Draw(s32 cameraId) override;
+    void Tick() override;
+    void Draw(s32 cameraId) override;
     void Emit(Vec3f arg1, s32 arg2);
     void func_80077428(s32 objectIndex);
     void func_80077584(s32 objectIndex);

@@ -11,7 +11,7 @@ class OSeagull : public OObject {
 public:
     explicit OSeagull(const SpawnParams& params);
 
-    ~OSeagull() {
+    ~OSeagull() override {
         _count--;
     }
 
@@ -28,8 +28,8 @@ public:
         return dynamic_cast<OSeagull*>(AddObjectToWorld<OSeagull>(params));
     }
 
-    virtual void Tick() override;
-    virtual void Draw(s32 cameraId) override;
+    void Tick() override;
+    void Draw(s32 cameraId) override;
 
     void func_800552BC(s32 cameraId, s32 objectIndex);
 
@@ -41,5 +41,5 @@ private:
     s32 _idx;
     bool _toggle;
 
-    SplineData *spline;
+    [[maybe_unused]] SplineData* spline;
 };

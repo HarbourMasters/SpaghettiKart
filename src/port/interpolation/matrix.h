@@ -27,7 +27,9 @@ typedef struct {
     f32 m5; f32 m6; f32 m7; f32 m8;
 } Mat4Interp;
 
+#ifndef M_PI
 #define M_PI    3.14159265358979323846f
+#endif
 #define M_RTOD	(180.0f / M_PI)
 #define SQ(val) ((val) * (val))
 

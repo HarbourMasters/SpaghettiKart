@@ -1,4 +1,5 @@
 #include <libultraship/bridge.h>
+#include <macros.h>
 
 #include <vector>
 #include <map>
@@ -259,7 +260,7 @@ Recording previous_recording;
 
 bool next_is_actor_pos_rot_matrix;
 bool has_inv_actor_mtx;
-MtxF inv_actor_mtx;
+UNUSED MtxF inv_actor_mtx;
 size_t inv_actor_mtx_path_index;
 
 Data& append(Op op) {
@@ -402,6 +403,9 @@ struct InterpolateCtx {
                 if (item.second < it->second.size()) {
                     Data& old_op = it->second[item.second];
                     switch (item.first) {
+                        // Unhandled states take no action.
+                        default:
+                            break;
                         case Op::OpenChild:
                         case Op::CloseChild:
                         case Op::Marker:
@@ -513,7 +517,7 @@ struct InterpolateCtx {
 
                         case Op::MatrixRotateAxis: {
                             lerp_vec3f(&tmp_vec3f, &old_op.matrix_rotate_axis.axis, &new_op.matrix_rotate_axis.axis);
-                            auto tmp =
+                            UNUSED auto tmp =
                                 interpolate_angle(old_op.matrix_rotate_axis.angle, new_op.matrix_rotate_axis.angle);
                             // Matrix_RotateAxis((Matrix*) &tmp_vec3f, tmp, 1.0f, 1.0f, 1.0f,
                             // new_op.matrix_rotate_axis.mode);
@@ -620,7 +624,7 @@ bool check_if_recording() {
 }
 
 void FrameInterpolation_StartRecord(void) {
-    previous_recording = move(current_recording);
+    previous_recording = std::move(current_recording);
     current_recording = {};
     current_path.clear();
     current_path.push_back(&current_recording.root_path);
@@ -707,7 +711,7 @@ void FrameInterpolation_RecordMarker(const char* file, int line) {
 //    append(Op::MatrixPop).matrix_ptr = { (Mat4**) matrix };
 //}
 
-void FrameInterpolation_RecordMatrixPut(MtxF* src) {
+void FrameInterpolation_RecordMatrixPut(UNUSED MtxF* src) {
     if (!check_if_recording()) {
         return;
     }
@@ -743,7 +747,7 @@ void FrameInterpolation_RecordMatrixScale(Mat4* matrix, f32 scale) {
     append(Op::MatrixScale).matrix_scale = { matrix, scale };
 }
 
-void FrameInterpolation_RecordMatrixMultVec3fNoTranslate(Mat4* matrix, Vec3f src, Vec3f dest) {
+void FrameInterpolation_RecordMatrixMultVec3fNoTranslate(UNUSED Mat4* matrix, UNUSED Vec3f src, UNUSED Vec3f dest) {
     if (!check_if_recording()) {
         return;
     }
@@ -771,7 +775,8 @@ void FrameInterpolation_RecordSetMatrixTransformation(Mat4* dest, Vec3f location
     append(Op::SetMatrixTransformation).set_matrix_transformation_data = { dest, {location[0], location[1], location[2]}, { rotation[0], rotation[1], rotation[2] }, scale};
 }
 
-void FrameInterpolation_RecordCalculateOrientationMatrix(Mat3* dest, f32 x, f32 y, f32 z, s16 rot) {
+void FrameInterpolation_RecordCalculateOrientationMatrix(UNUSED Mat3* dest, UNUSED f32 x, UNUSED f32 y, UNUSED f32 z,
+                                                         UNUSED s16 rot) {
     if (!check_if_recording()) {
         return;
     }
@@ -797,7 +802,7 @@ void FrameInterpolation_RecordMatrixPosRotScaleXY(Mat4* matrix, s32 x, s32 y, u1
     append(Op::SetMatrixPosRotScaleXY).matrix_pos_rot_scale_xy = { matrix, x, y, angle, scale };
 }
 
-void FrameInterpolation_RecordMatrixMultVec3f(Mat4* matrix, Vec3f src, Vec3f dest) {
+void FrameInterpolation_RecordMatrixMultVec3f(UNUSED Mat4* matrix, UNUSED Vec3f src, UNUSED Vec3f dest) {
     if (!check_if_recording()) {
         return;
     }
@@ -818,7 +823,7 @@ void FrameInterpolation_RecordMatrixMtxFToMtx(MtxF* src, Mtx* dest) {
     append(Op::MatrixMtxFToMtx).matrix_mtxf_to_mtx = { .src = *src, .dest = dest };
 }
 
-void FrameInterpolation_RecordMatrixToMtx(Mtx* dest, char* file, s32 line) {
+void FrameInterpolation_RecordMatrixToMtx(Mtx* dest, UNUSED char* file, UNUSED s32 line) {
     if (!check_if_recording()) {
         return;
     }
@@ -831,7 +836,7 @@ void FrameInterpolation_RecordMatrixToMtx(Mtx* dest, char* file, s32 line) {
     }
 }
 
-void FrameInterpolation_RecordMatrixRotateAxis(f32 angle, Vec3f* axis, u8 mode) {
+void FrameInterpolation_RecordMatrixRotateAxis(UNUSED f32 angle, UNUSED Vec3f* axis, UNUSED u8 mode) {
     if (!check_if_recording()) {
         return;
     }
@@ -846,7 +851,7 @@ void FrameInterpolation_RecordSkinMatrixMtxFToMtx(MtxF* src, Mtx* dest) {
 }
 
 // https://stackoverflow.com/questions/1148309/inverting-a-4x4-matrix
-static bool invert_matrix(const float m[16], float invOut[16]) {
+UNUSED static bool invert_matrix(const float m[16], float invOut[16]) {
     float inv[16], det;
     int i;
 

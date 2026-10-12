@@ -36,9 +36,7 @@
 #include "menus.h"
 #include <assets/textures/other_textures.h>
 #include "data/some_data.h"
-#include "memory.h"
 #include "courses/all_course_offsets.h"
-#include "courses/all_course_data.h"
 #include <assets/textures/boo_frames.h>
 #include "port/Game.h"
 #include <assets/textures/tracks/banshee_boardwalk/banshee_boardwalk_data.h>

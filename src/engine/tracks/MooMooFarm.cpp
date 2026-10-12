@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <macros.h>
 #include <libultra/gbi.h>
 #include <vector>
 #include <memory>
@@ -226,7 +227,7 @@ void MooMooFarm::BeginPlay() {
     }
 }
 
-void MooMooFarm::WhatDoesThisDo(Player* player, int8_t playerId) {
+void MooMooFarm::WhatDoesThisDo(UNUSED Player* player, int8_t playerId) {
     if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x145) &&
         ((s16) gNearestPathPointByPlayerId[playerId] < 0x18B)) {
         if (D_80165300[playerId] != 1) {
@@ -241,7 +242,7 @@ void MooMooFarm::WhatDoesThisDo(Player* player, int8_t playerId) {
     }
 }
 
-void MooMooFarm::WhatDoesThisDoAI(Player* player, int8_t playerId) {
+void MooMooFarm::WhatDoesThisDoAI(UNUSED Player* player, int8_t playerId) {
     if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x145) &&
         ((s16) gNearestPathPointByPlayerId[playerId] < 0x18B)) {
         if (D_80165300[playerId] != 1) {

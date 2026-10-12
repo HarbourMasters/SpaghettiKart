@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <macros.h>
 
 #include "Engine.h"
 #include "fast/resource/type/DisplayList.h"
@@ -39,8 +40,6 @@ extern "C" void gSPInvalidateTexCache(Gfx* pkt, uintptr_t texAddr) {
 
     if (texAddr != 0 && GameEngine_OTRSigCheck(data)) {
         const auto res = Ship::Context::GetRawInstance()->GetResourceManager()->LoadResource(data);
-        const auto type = static_cast<Fast::ResourceType>(res->GetInitData()->Type);
-
         if (res->GetInitData()->Type == static_cast<uint32_t>(Fast::ResourceType::DisplayList)) {
             texAddr = reinterpret_cast<uintptr_t>(&std::static_pointer_cast<Fast::DisplayList>(res)->Instructions[0]);
         } else if (res->GetInitData()->Type == static_cast<uint32_t>(MK64::ResourceType::MK_Array)) {

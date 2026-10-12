@@ -7,7 +7,7 @@ namespace TrackEditor {
 class PropertiesWindow : public Ship::GuiWindow {
 public:
     using Ship::GuiWindow::GuiWindow;
-    ~PropertiesWindow();
+    ~PropertiesWindow() override;
 
     const std::unordered_map<std::string, std::string> SpawnLabels {
         {"Name", "Name"},

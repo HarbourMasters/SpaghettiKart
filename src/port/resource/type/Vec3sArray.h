@@ -19,8 +19,8 @@ class Vec3sArray : public Ship::Resource<Vec3sData> {
     Vec3sArray() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {
     }
 
-    Vec3sData* GetPointer();
-    size_t GetPointerSize();
+    Vec3sData* GetPointer() override;
+    size_t GetPointerSize() override;
 
     std::vector<Vec3sData> mData;
 };

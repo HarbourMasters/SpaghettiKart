@@ -1,4 +1,5 @@
 #include "Boos.h"
+#include <macros.h>
 #include "engine/World.h"
 #include "engine/CoreMath.h"
 #include "port/interpolation/FrameInterpolation.h"
@@ -259,7 +260,7 @@ s32 OBoos::func_8007C9F8(void) {
     return ret;
 }
 
-void OBoos::BooStart(s32 group, s32 playerId) {
+void OBoos::BooStart(UNUSED s32 group, s32 playerId) {
     s32 objectIndex;
     s16 temp_s1_2;
     s16 temp_s4;
@@ -284,7 +285,7 @@ void OBoos::BooStart(s32 group, s32 playerId) {
     _isActive = true;
 }
 
-void OBoos::BooExit(s32 group) {
+void OBoos::BooExit(UNUSED s32 group) {
     s32 objectIndex;
     for (size_t i = 0; i < _numBoos; i++) {
         objectIndex = _indices[i]; // indexObjectList3[group + temp_a0];

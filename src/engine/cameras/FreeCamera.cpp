@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <macros.h>
 #include <libultra/gbi.h>
 #include "FreeCamera.h"
 #include "port/interpolation/FrameInterpolation.h"
@@ -46,10 +47,10 @@ void FreeCamera::Tick() {
 
 void FreeCamera::SetViewProjection() {
     u16 perspNorm;
-    Mat4 matrix;
+    UNUSED Mat4 matrix;
 
-    Mat4 persp;
-    Mat4 lookAt;
+    UNUSED Mat4 persp;
+    UNUSED Mat4 lookAt;
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK | G_CULL_BOTH | G_CULL_FRONT);

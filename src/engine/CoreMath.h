@@ -103,12 +103,6 @@ struct FVector2D {
     float x, z;
 
 #ifdef __cplusplus
-    FVector2D& operator=(const FVector2D& other) {
-        x = other.x;
-        z = other.z;
-        return *this;
-    }
-
     FVector2D() : x(0), z(0) {}
     FVector2D(float x, float z) : x(x), z(z) {}
     NLOHMANN_DEFINE_TYPE_INTRUSIVE(FVector2D, x, z)
@@ -143,13 +137,6 @@ struct IRotator {
 
 #ifdef __cplusplus
     NLOHMANN_DEFINE_TYPE_INTRUSIVE(IRotator, pitch, yaw, roll)
-
-    IRotator& operator=(const IRotator& other) {
-        pitch = other.pitch;
-        yaw   = other.yaw;
-        roll  = other.roll;
-        return *this;
-    }
 
     void Set(uint16_t p, uint16_t y, uint16_t r) {
         pitch = p;
@@ -204,9 +191,9 @@ struct FRotator {
     FRotator() : pitch(0), yaw(0), roll(0) {}
     FRotator(float p, float y, float r) : pitch(p), yaw(y), roll(r) {}
     FRotator(IRotator rot) {
-        pitch = static_cast<float>(rot.pitch * (360 / UINT16_MAX));
-        yaw   = static_cast<float>(rot.yaw   * (360 / UINT16_MAX));
-        roll  = static_cast<float>(rot.roll  * (360 / UINT16_MAX));
+        pitch = static_cast<float>(rot.pitch * (360.0f / UINT16_MAX));
+        yaw = static_cast<float>(rot.yaw * (360.0f / UINT16_MAX));
+        roll = static_cast<float>(rot.roll * (360.0f / UINT16_MAX));
     }
 #endif // __cplusplus
 };
@@ -226,15 +213,6 @@ struct IPathSpan {
     // Parameterized Constructor
     IPathSpan(int InStart, int InEnd)
         : Start(InStart), End(InEnd) {}
-
-    // Copy Assignment Operator
-    IPathSpan& operator=(const IPathSpan& Other) {
-        if (this != &Other) { // Avoid self-assignment
-            Start = Other.Start;
-            End = Other.End;
-        }
-        return *this;
-    }
 
     // Equality Operator
     bool operator==(const IPathSpan& Other) const {

@@ -60,7 +60,7 @@ public:
 
     // Constructor
     AText(const SpawnParams& params);
-    virtual ~AText() {
+    ~AText() override {
         _count--;
     };
 
@@ -116,12 +116,12 @@ public:
     }
 
     // Virtual functions to be overridden by derived classes
-    virtual void Tick() override;
-    virtual void Draw(Camera* camera) override;
-    virtual void SetSpawnParams(SpawnParams& params) override;
-    virtual bool IsMod() override;
-    virtual void DrawEditorProperties() override;
-      void DrawColourEditor(bool* updated);
+    void Tick() override;
+    void Draw(Camera* camera) override;
+    void SetSpawnParams(SpawnParams& params) override;
+    bool IsMod() override;
+    void DrawEditorProperties() override;
+    void DrawColourEditor(bool* updated);
     void FollowPlayer();
 
     void SetText(std::string text);

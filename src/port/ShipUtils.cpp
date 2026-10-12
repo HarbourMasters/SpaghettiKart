@@ -5,7 +5,7 @@ extern "C" {
 #include "macros.h"
 }
 
-constexpr f32 fourByThree = 4.0f / 3.0f;
+[[maybe_unused]] constexpr f32 fourByThree = 4.0f / 3.0f;
 
 extern "C" bool Ship_IsCStringEmpty(const char* str) {
     return str == NULL || str[0] == '\0';

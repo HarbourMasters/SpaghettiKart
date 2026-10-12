@@ -1,4 +1,5 @@
 #include "ChainChomp.h"
+#include <macros.h>
 #include "engine/World.h"
 #include "port/interpolation/FrameInterpolation.h"
 
@@ -30,7 +31,7 @@ OChainChomp::OChainChomp() {
     _count++;
 }
 
-OChainChomp::OChainChomp(const SpawnParams& params) {
+OChainChomp::OChainChomp(UNUSED const SpawnParams& params) {
     Name = "Chain Chomp";
     ResourceName = "mk:chain_chomp";
     _idx = _count;

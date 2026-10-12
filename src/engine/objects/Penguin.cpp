@@ -22,12 +22,9 @@ extern "C" {
 #include "defines.h"
 #include "code_80005FD0.h"
 #include "math_util_2.h"
-#include "racing/collision.h"
 #include "assets/models/tracks/bowsers_castle/bowsers_castle_data.h"
 #include "ending/ceremony_and_credits.h"
 #include "objects.h"
-#include "update_objects.h"
-#include "render_objects.h"
 #include "course_offsets.h"
 #include "data/some_data.h"
 extern s8 gPlayerCount;
@@ -147,6 +144,9 @@ void OPenguin::Behaviours(s32 objectIndex) { // func_800850B0
 
     object = &gObjectList[objectIndex];
     switch (SpawnBhv) {
+        // Unhandled states take no action.
+        default:
+            break;
         case 1: // emperor
             OPenguin::func_80085080(objectIndex);
             break;
@@ -382,6 +382,9 @@ void OPenguin::InitOtherPenguin(s32 objectIndex) {
     // This code has been significantly refactored from the original func_800845C8
     // Into a switch statement instead of checking for the index of the penguin
     switch(SpawnBhv) {
+        // Unhandled states take no action.
+        default:
+            break;
         case Behaviour::CIRCLE:
             object->unk_01C[1] = Speed;
 

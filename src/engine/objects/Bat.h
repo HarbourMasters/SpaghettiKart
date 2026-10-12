@@ -42,7 +42,7 @@ public:
 
     explicit OBat(const SpawnParams& params);
 
-    ~OBat() {
+    ~OBat() override {
         _count--;
     }
 
@@ -50,8 +50,8 @@ public:
         return _count;
     }
 
-    virtual void Tick() override;
-    virtual void Draw(s32 cameraId) override;
+    void Tick() override;
+    void Draw(s32 cameraId) override;
     void func_80046F60(u8* tlut, u8* arg1, s32 arg2, s32 arg3, s32 arg4);
 
     void func_8007D8AC(s32 arg0);
@@ -66,5 +66,5 @@ public:
 private:
     FVector _pos;
     static size_t _count;
-    size_t _idx;
+    [[maybe_unused]] size_t _idx;
 };

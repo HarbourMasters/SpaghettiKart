@@ -19,9 +19,9 @@ public:
         return dynamic_cast<OHotAirBalloon*>(AddObjectToWorld<OHotAirBalloon>(params));
     }
 
-    virtual void Tick() override;
-    virtual void Draw(s32 cameraId) override;
-    virtual void SetSpawnParams(SpawnParams& params) override;
+    void Tick() override;
+    void Draw(s32 cameraId) override;
+    void SetSpawnParams(SpawnParams& params) override;
 
     void func_80055CCC(s32 objectIndex, s32 cameraId);
     void init_hot_air_balloon(s32 objectIndex);

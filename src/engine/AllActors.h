@@ -17,7 +17,6 @@
 #include "vehicles/Bus.h"
 #include "vehicles/Truck.h"
 #include "vehicles/Car.h"
-#include "vehicles/Truck.h"
 #include "vehicles/TankerTruck.h"
 
 #include "objects/Bat.h"
@@ -34,7 +33,6 @@
 #include "objects/Penguin.h"
 #include "objects/Seagull.h"
 #include "objects/Thwomp.h"
-#include "objects/Seagull.h"
 #include "objects/TrashBin.h"
 #include "objects/Trophy.h"
 #include "objects/Snowman.h"

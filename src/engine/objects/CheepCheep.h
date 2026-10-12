@@ -40,10 +40,10 @@ public:
 
     IPathSpan ActivationPoints; // Path points activation points
 
-    virtual void SetSpawnParams(SpawnParams& params) override;
-    virtual void Tick() override;
-    virtual void Draw(s32 cameraId) override;
-    virtual void DrawEditorProperties() override;
+    void SetSpawnParams(SpawnParams& params) override;
+    void Tick() override;
+    void Draw(s32 cameraId) override;
+    void DrawEditorProperties() override;
     void func_8007BBBC(s32 objectIndex);
     void func_8007BD04(s32 playerId);
     void init_var_cheep_cheep(s32 objectIndex);
@@ -51,7 +51,6 @@ public:
     void func_8007BFB0(s32 objectIndex);
 
 private:
-
-    s32 _idx;
-    Behaviour _behaviour;
+  [[maybe_unused]] s32 _idx;
+  Behaviour _behaviour;
 };

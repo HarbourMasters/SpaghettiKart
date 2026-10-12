@@ -44,11 +44,12 @@ public:
     PenguinType Type = PenguinType::CHICK;
     Behaviour SpawnBhv = Behaviour::STRUT;
 
-    virtual void Tick() override;
-    virtual void Draw(s32 cameraId) override;
-    virtual void Reset() override;
-    virtual void DrawEditorProperties() override;
-private:
+    void Tick() override;
+    void Draw(s32 cameraId) override;
+    void Reset() override;
+    void DrawEditorProperties() override;
+
+  private:
     void Behaviours(s32 objectIndex);
     void EmperorPenguin(s32 objectIndex);
     void func_80085080(s32 objectIndex);

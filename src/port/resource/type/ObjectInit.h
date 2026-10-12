@@ -23,8 +23,8 @@ class ObjectInit : public Ship::Resource<ObjectInitData> {
     ObjectInit() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {
     }
 
-    ObjectInitData* GetPointer();
-    size_t GetPointerSize();
+    ObjectInitData* GetPointer() override;
+    size_t GetPointerSize() override;
 
     std::vector<ObjectInitData> mObjects;
 };

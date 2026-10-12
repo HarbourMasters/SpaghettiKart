@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <macros.h>
 #include "World.h"
 #include "Cup.h"
 #include "tracks/Track.h"
@@ -254,7 +255,7 @@ void World::Reset() {
     }
 }
 
-Object* World::GetObjectByIndex(size_t index) {
+Object* World::GetObjectByIndex(UNUSED size_t index) {
     // if (index < this->Objects.size()) {
     //  Assuming GameActor::a is accessible, use reinterpret_cast if needed
     //    return reinterpret_cast<Object*>(&this->Objects[index]->o);

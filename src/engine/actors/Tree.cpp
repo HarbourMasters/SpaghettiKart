@@ -1,4 +1,5 @@
 #include "Tree.h"
+#include <macros.h>
 
 #include <libultra/gbi.h>
 
@@ -64,5 +65,6 @@ void ATree::Draw(Camera* camera) {
     }
 }
 
-void ATree::Collision(Player* player, AActor*) { }
+void ATree::Collision(UNUSED Player* player, AActor*) {
+}
 void ATree::Destroy() { }

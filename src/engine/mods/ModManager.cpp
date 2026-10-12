@@ -1,4 +1,5 @@
 #include "ship/resource/archive/Archive.h"
+#include <macros.h>
 #include "ModMetadata.h"
 #include "ship/resource/archive/FolderArchive.h"
 #include "ship/resource/archive/O2rArchive.h"
@@ -235,7 +236,7 @@ void FindAndLoadMods() {
             continue;
         }
 
-        int nb_unknown_files = 0;
+        UNUSED int nb_unknown_files = 0;
         archive->Load();
         ModMetadata metadata;
         auto mods_file = archive->LoadFile("mods.toml");

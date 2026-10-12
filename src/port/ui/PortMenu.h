@@ -61,7 +61,8 @@ static const std::unordered_map<int32_t, const char*> logLevels = {
 class PortMenu : public Ship::Menu {
   public:
     PortMenu(const std::string& consoleVariable, const std::string& name);
-    ~PortMenu() {}
+    ~PortMenu() override {
+    }
 
     void InitElement() override;
     void DrawElement() override;

@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <macros.h>
 #include <libultra/gbi.h>
 #include "engine/CoreMath.h"
 #include <vector>
@@ -191,7 +192,7 @@ void TestTrack::BeginPlay() {
                                                                             ACTOR_RAILROAD_CROSSING));
     rrxing->crossingTrigger = crossing1;
 
-    Vec3f pos = {0, 80, 0};
+    UNUSED Vec3f pos = { 0, 80, 0 };
     // GetWorld()->AddActor(new ACloud(pos));
 
     // GetWorld()->AddActor(new OSeagull(0, pos));
@@ -224,7 +225,7 @@ void TestTrack::BeginPlay() {
 //    OGrandPrixBalloons::Spawn(FVector(0, 0, 0));
 }
 
-void TestTrack::WhatDoesThisDo(Player* player, int8_t playerId) {
+void TestTrack::WhatDoesThisDo(UNUSED Player* player, int8_t playerId) {
     if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x19B) &&
         ((s16) gNearestPathPointByPlayerId[playerId] < 0x1B9)) {
         if (D_80165300[playerId] != 1) {
@@ -239,7 +240,7 @@ void TestTrack::WhatDoesThisDo(Player* player, int8_t playerId) {
     }
 }
 
-void TestTrack::WhatDoesThisDoAI(Player* player, int8_t playerId) {
+void TestTrack::WhatDoesThisDoAI(UNUSED Player* player, int8_t playerId) {
     if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x19B) &&
         ((s16) gNearestPathPointByPlayerId[playerId] < 0x1B9)) {
         if (D_80165300[playerId] != 1) {

@@ -23,13 +23,14 @@ public:
 
 //    virtual void Load(const char* courseVtx, 
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
-    virtual void Load() override;
-    virtual f32 GetWaterLevel(FVector pos, struct Collision* collision) override;
-    virtual void BeginPlay() override;
-    virtual void TickTrackObjects() override;
-    virtual void DrawTrackObjects(s32 cameraId) override;
-    virtual void Draw(ScreenContext*) override;
-    virtual void DrawCredits() override;    
-    virtual void DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) override;
-    virtual void CreditsSpawnActors() override;
+    void Load() override;
+    f32 GetWaterLevel(FVector pos, struct Collision* collision) override;
+    void BeginPlay() override;
+    void TickTrackObjects() override;
+    void DrawTrackObjects(s32 cameraId) override;
+    void Draw(ScreenContext*) override;
+    void DrawCredits() override;
+    void DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
+                          uint16_t playerDirection) override;
+    void CreditsSpawnActors() override;
 };

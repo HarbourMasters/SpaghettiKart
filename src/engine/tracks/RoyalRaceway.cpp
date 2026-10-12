@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <macros.h>
 #include <libultra/gbi.h>
 #include <vector>
 #include <memory>
@@ -145,7 +146,7 @@ void RoyalRaceway::BeginPlay() {
 }
 
 void RoyalRaceway::InitTrackObjects() {
-    size_t i;
+    UNUSED size_t i;
     if (gGamestate != CREDITS_SEQUENCE) {
         if (gModeSelection == GRAND_PRIX) {
             func_80070714();
@@ -153,7 +154,7 @@ void RoyalRaceway::InitTrackObjects() {
     }
 }
 
-void RoyalRaceway::WhatDoesThisDo(Player* player, int8_t playerId) {
+void RoyalRaceway::WhatDoesThisDo(UNUSED Player* player, int8_t playerId) {
     if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x180) &&
         ((s16) gNearestPathPointByPlayerId[playerId] < 0x1E1)) {
         if (D_80165300[playerId] != 1) {
@@ -168,7 +169,7 @@ void RoyalRaceway::WhatDoesThisDo(Player* player, int8_t playerId) {
     }
 }
 
-void RoyalRaceway::WhatDoesThisDoAI(Player* player, int8_t playerId) {
+void RoyalRaceway::WhatDoesThisDoAI(UNUSED Player* player, int8_t playerId) {
     if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x180) &&
         ((s16) gNearestPathPointByPlayerId[playerId] < 0x1E1)) {
         if (D_80165300[playerId] != 1) {

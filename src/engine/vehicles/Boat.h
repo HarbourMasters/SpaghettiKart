@@ -39,7 +39,7 @@ class ABoat : public AActor {
 
     explicit ABoat(const SpawnParams& params);
 
-    ~ABoat() {
+    ~ABoat() override {
         _count--;
     }
 
@@ -63,14 +63,15 @@ class ABoat : public AActor {
     uint32_t PathIndex = 0;
     uint32_t PathPoint = 0;
 
-    virtual void SetSpawnParams(SpawnParams& params) override;
-    virtual void Tick60fps() override;
-    virtual void Draw(Camera* camera) override;
-    virtual void VehicleCollision(s32 playerId, Player* player) override;
+    void SetSpawnParams(SpawnParams& params) override;
+    void Tick60fps() override;
+    void Draw(Camera* camera) override;
+    void VehicleCollision(s32 playerId, Player* player) override;
     virtual s32 AddSmoke(size_t, Vec3f, f32);
-    virtual bool IsMod() override;
-    virtual void DrawEditorProperties() override;
-private:
+    bool IsMod() override;
+    void DrawEditorProperties() override;
+
+  private:
     static size_t _count;
     static std::map<uint32_t, std::vector<uint32_t>> BoatCounts;
 };

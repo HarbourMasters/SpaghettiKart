@@ -11,5 +11,5 @@ extern "C" {
 class LookBehindCamera : public GameCamera {
 public:
     LookBehindCamera(FVector pos, s16 rot, u32 mode);
-    virtual void Tick() override;
+    void Tick() override;
 };

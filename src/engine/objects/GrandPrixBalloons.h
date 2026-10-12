@@ -29,7 +29,7 @@ public:
         return dynamic_cast<OGrandPrixBalloons*>(AddObjectToWorld<OGrandPrixBalloons>(params));
     }
 
-    ~OGrandPrixBalloons() {
+    ~OGrandPrixBalloons() override {
         _count--;
     }
 
@@ -37,8 +37,8 @@ public:
         return _count;
     }
 
-    virtual void Tick() override;
-    virtual void Draw(s32 cameraId) override;
+    void Tick() override;
+    void Draw(s32 cameraId) override;
     void func_80053D74(s32 objectIndex, s32 cameraId, s32 vertexIndex, s32 index);
 
     void func_80074924(s32 objectIndex);
@@ -48,7 +48,7 @@ public:
 
 private:
     static size_t _count;
-    s32 _idx;
+    [[maybe_unused]] s32 _idx;
     FVector Pos;
     bool _active;
     size_t _numBalloons;

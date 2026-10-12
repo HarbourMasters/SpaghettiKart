@@ -1,4 +1,5 @@
 #include "ResolutionEditor.h"
+#include <macros.h>
 #include <imgui.h>
 #include <libultraship/libultraship.h>
 
@@ -53,22 +54,22 @@ const uint32_t maxVerticalPixelCount = 4320; // 18x native, or 8K TV resolution
 const unsigned short default_maxIntegerScaleFactor = 6; // Default size of Integer scale factor slider.
 
 enum messageType { MESSAGE_ERROR, MESSAGE_WARNING, MESSAGE_QUESTION, MESSAGE_INFO, MESSAGE_GRAY_75 };
-const ImVec4 messageColor[]{
+UNUSED const ImVec4 messageColor[]{
     { 0.85f, 0.0f, 0.0f, 1.0f },  // MESSAGE_ERROR
     { 0.85f, 0.85f, 0.0f, 1.0f }, // MESSAGE_WARNING
     { 0.0f, 0.85f, 0.85f, 1.0f }, // MESSAGE_QUESTION
     { 0.0f, 0.85f, 0.55f, 1.0f }, // MESSAGE_INFO
     { 0.75f, 0.75f, 0.75f, 1.0f } // MESSAGE_GRAY_75
 };
-static const float enhancementSpacerHeight = 19.0f;
+UNUSED static const float enhancementSpacerHeight = 19.0f;
 // Initialise update flags.
 static bool update[3];
 
 // Initialise integer scale bounds.
-static short max_integerScaleFactor = default_maxIntegerScaleFactor; // default value, which may or may not get
-                                                                     // overridden depending on viewport res
+UNUSED static short max_integerScaleFactor = default_maxIntegerScaleFactor; // default value, which may or may not get
+                                                                            // overridden depending on viewport res
 
-static short integerScale_maximumBounds = 1; // can change when window is resized
+UNUSED static short integerScale_maximumBounds = 1; // can change when window is resized
 
 // Combo List defaults
 static int32_t item_aspectRatio;
@@ -124,7 +125,7 @@ void RegisterResolutionWidgets() {
         .Options(WidgetOptions().Color(Colors::LightBlue));
     mPortMenu->AddWidget(path, "Click to disable N64 mode", WIDGET_BUTTON)
         .PreFunc([](WidgetInfo& info) { info.isHidden = !CVarGetInteger(CVAR_LOW_RES_MODE, 0); })
-        .Callback([](WidgetInfo& info) {
+        .Callback([](UNUSED WidgetInfo& info) {
             CVarSetInteger(CVAR_LOW_RES_MODE, 0);
             CVarSave();
         });
@@ -145,7 +146,7 @@ void RegisterResolutionWidgets() {
         .PreFunc([](WidgetInfo& info) {
             info.isHidden = !mPortMenu->GetDisabledMap().at(DISABLE_FOR_ADVANCED_RESOLUTION_ON).active;
         })
-        .Callback([](WidgetInfo& info) {
+        .Callback([](UNUSED WidgetInfo& info) {
             if (item_aspectRatio != default_aspectRatio) { // don't change anything if "Custom" is selected.
                 aspectRatioX = aspectRatioPresetsX[item_aspectRatio];
                 aspectRatioY = aspectRatioPresetsY[item_aspectRatio];
@@ -161,7 +162,7 @@ void RegisterResolutionWidgets() {
             CVarSave();
         })
         .Options(ComboboxOptions().ComboMap(aspectRatioPresetLabels));
-    mPortMenu->AddWidget(path, "AspectRationCustom", WIDGET_CUSTOM).CustomFunction([](WidgetInfo& info) {
+    mPortMenu->AddWidget(path, "AspectRationCustom", WIDGET_CUSTOM).CustomFunction([](UNUSED WidgetInfo& info) {
         // Hide aspect ratio input fields if using one of the presets.
         if (item_aspectRatio == default_aspectRatio && !showHorizontalResField) {
             // Declare input interaction bools outside of IF statement to prevent Y field from disappearing.
@@ -174,7 +175,7 @@ void RegisterResolutionWidgets() {
             }
         } else if (showHorizontalResField) { // Show calculated aspect ratio
             if (item_aspectRatio) {
-                auto gfx_current_game_window_viewport = GetInterpreter()->mGameWindowViewport;
+                UNUSED auto gfx_current_game_window_viewport = GetInterpreter()->mGameWindowViewport;
                 auto gfx_current_dimensions = GetInterpreter()->mCurDimensions;
                 ImGui::Dummy({ 0, 2 });
                 const float resolvedAspectRatio = (float)gfx_current_dimensions.width / gfx_current_dimensions.height;
@@ -479,10 +480,10 @@ void UpdateResolutionVars() {
         if (update[UPDATE_verticalPixelCount]) {
             // There's a upper and lower clamp on the Libultraship side too,
             // so clamping it here is entirely visual, so the vertical resolution field reflects it.
-            if (verticalPixelCount < minVerticalPixelCount) {
+            if (verticalPixelCount < (int32_t) minVerticalPixelCount) {
                 verticalPixelCount = minVerticalPixelCount;
             }
-            if (verticalPixelCount > maxVerticalPixelCount) {
+            if (verticalPixelCount > (int32_t) maxVerticalPixelCount) {
                 verticalPixelCount = maxVerticalPixelCount;
             }
             CVarSetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".VerticalPixelCount", verticalPixelCount);
@@ -492,12 +493,12 @@ void UpdateResolutionVars() {
         CVarSave();
     }
     // Initialise update flags.
-    for (uint8_t i = 0; i < sizeof(update); i++) {
+    for (size_t i = 0; i < sizeof(update); i++) {
         update[i] = false;
     }
 
     // Initialise integer scale bounds.
-    short max_integerScaleFactor = default_maxIntegerScaleFactor; // default value, which may or may not get
+    UNUSED short max_integerScaleFactor = default_maxIntegerScaleFactor; // default value, which may or may not get
     // overridden depending on viewport res
 
     short integerScale_maximumBounds = 1; // can change when window is resized

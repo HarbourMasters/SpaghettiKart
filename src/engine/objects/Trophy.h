@@ -42,10 +42,10 @@ public:
 
     explicit OTrophy(const SpawnParams& params);
 
-    virtual void SetSpawnParams(SpawnParams& params) override;
-    virtual void Tick() override;
-    virtual void Draw(s32 cameraId) override;
-    virtual void DrawEditorProperties() override;
+    void SetSpawnParams(SpawnParams& params) override;
+    void Tick() override;
+    void Draw(s32 cameraId) override;
+    void DrawEditorProperties() override;
     void func_80086700(s32 objectIndex);
     void func_80086940(s32 objectIndex);
     void func_80086C14(s32 objectIndex);

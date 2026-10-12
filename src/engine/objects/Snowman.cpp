@@ -1,4 +1,5 @@
 #include "Snowman.h"
+#include <macros.h>
 #include "engine/World.h"
 
 extern "C" {

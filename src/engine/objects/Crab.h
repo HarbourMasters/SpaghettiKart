@@ -43,14 +43,14 @@ public:
 
     explicit OCrab(const SpawnParams& params);
 
-    ~OCrab() {
+    ~OCrab() override {
         _count--;
     }
 
-    virtual void Tick() override;
-    virtual void Draw(s32 cameraId) override;
-    virtual void SetSpawnParams(SpawnParams& params) override;
-    virtual void DrawEditorProperties() override;
+    void Tick() override;
+    void Draw(s32 cameraId) override;
+    void SetSpawnParams(SpawnParams& params) override;
+    void DrawEditorProperties() override;
 
     void init_ktb_crab(s32 objectIndex);
     void func_80082B34(s32 objectIndex);

@@ -237,7 +237,7 @@ void ATrain::Tick60fps() {
         sync_train_components(car, orientationYUpdate);
     }
 
-    for (j = 0; j < PassengerCars.size(); j++) {
+    for (j = 0; j < (s32) PassengerCars.size(); j++) {
         car = &PassengerCars[j];
         if (car->isActive == 1) {
             temp_f20.x = car->position[0];
@@ -259,7 +259,7 @@ void ATrain::VehicleCollision(s32 playerId, Player* player) {
     f32 playerPosZ;
     f32 x_dist;
     f32 z_dist;
-    s32 trainIndex;
+    UNUSED s32 trainIndex;
 
     if (D_801631E0[playerId] != 1) {
         if (!(player->effects & 0x01000000)) {
@@ -304,10 +304,10 @@ void ATrain::VehicleCollision(s32 playerId, Player* player) {
     }
 }
 
-void ATrain::Draw(Camera* camera) {
+void ATrain::Draw(UNUSED Camera* camera) {
 }
 
-s32 ATrain::AddSmoke(s32 trainIndex, Vec3f pos, f32 velocity) {
+s32 ATrain::AddSmoke(UNUSED s32 trainIndex, Vec3f pos, f32 velocity) {
     s32 objectIndex = add_unused_obj_index(SmokeParticles, &NextParticlePtr, gObjectParticle2_SIZE);
     if (objectIndex != NULL_OBJECT_ID) {
         init_train_smoke(objectIndex, pos, velocity);

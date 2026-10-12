@@ -19,7 +19,7 @@ class SkyCloud : public SkyActor {
 public:
     SkyCloud(ScreenContext* screen, u16 cloudVariant, u16 posY, u16 rotY, u16 scalePercent);
 
-    ~SkyCloud() {
+    ~SkyCloud() override {
         _count--;
     }
 
@@ -27,9 +27,10 @@ public:
         return _count;
     }
 
-    virtual void Draw(ScreenContext* ctx, s32 arg0) override;
-    virtual void Tick() override;
-private:
+    void Draw(ScreenContext* ctx, s32 arg0) override;
+    void Tick() override;
+
+  private:
     static size_t _count;
     size_t _idx;
 };

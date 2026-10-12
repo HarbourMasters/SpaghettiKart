@@ -19,10 +19,12 @@ public:
     SkyActor(ScreenContext* screen) {
         mScreen = screen;
     };
-    SkyActor(ScreenContext* screen, u16 cloudVariant, u16 posY, u16 rotY, u16 scalePercent) {};
+    SkyActor(ScreenContext* /*screen*/, u16 /*cloudVariant*/, u16 /*posY*/, u16 /*rotY*/, u16 /*scalePercent*/) {
+    }
     virtual ~SkyActor() {};
 
-    virtual void Draw(ScreenContext* ctx, s32 arg0) {};
+    virtual void Draw(ScreenContext* /*ctx*/, s32 /*arg0*/) {
+    }
     virtual void Tick() {};
     ScreenContext* mScreen;
 protected:

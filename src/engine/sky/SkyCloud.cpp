@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <macros.h>
 #include <libultra/gbi.h>
 #include "SkyCloud.h"
 #include <vector>
@@ -32,7 +33,7 @@ SkyCloud::SkyCloud(ScreenContext* screen, u16 cloudVariant, u16 posY, u16 rotY, 
 
     // Stock
     if (GameEngine_ResourceGetTexTypeByName((const char*)CM_GetProps()->CloudTexture) != 1) {
-        mTexture = ((u8*) LOAD_ASSET_RAW(CM_GetProps()->CloudTexture)) + (cloudVariant * 1024);
+        mTexture = ((u8*) LOAD_ASSET_RAW(CM_GetProps()->CloudTexture)) + ((size_t) cloudVariant * 1024);
         mVtx = (Vtx*)D_0D005FB0;
     } else { // Texture pack
         mTexture = CM_GetProps()->CloudTexture;
@@ -86,8 +87,8 @@ void SkyCloud::Tick() { // func_800788F8
     }
 }
 
-void SkyCloud::Draw(ScreenContext* screen, s32 arg0) { // render_clouds
-   // Object* object = &gObjectList[_objectIndex];
+void SkyCloud::Draw(UNUSED ScreenContext* screen, s32 arg0) { // render_clouds
+                                                              // Object* object = &gObjectList[_objectIndex];
     s32 posY = arg0 - mY;
     func_8004B6C4(255, 255, 255);
     // Skip drawing the object this frame if it warped to the other side of the screen

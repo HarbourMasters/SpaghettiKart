@@ -54,7 +54,7 @@ class ATruck : public AActor {
 
     explicit ATruck(const SpawnParams& params);
 
-    ~ATruck() {
+    ~ATruck() override {
         _count--;
     }
 
@@ -62,12 +62,12 @@ class ATruck : public AActor {
         return _count;
     }
 
-    virtual void SetSpawnParams(SpawnParams& params) override;
-    virtual void Tick60fps() override;
-    virtual void Draw(Camera* camera) override;
-    virtual void VehicleCollision(s32 playerId, Player* player) override;
-    virtual bool IsMod() override;
-    virtual void DrawEditorProperties() override;
+    void SetSpawnParams(SpawnParams& params) override;
+    void Tick60fps() override;
+    void Draw(Camera* camera) override;
+    void VehicleCollision(s32 playerId, Player* player) override;
+    bool IsMod() override;
+    void DrawEditorProperties() override;
 
   private:
     static size_t _count;

@@ -1,5 +1,5 @@
-#ifndef __FRAME_INTERPOLATION_H
-#define __FRAME_INTERPOLATION_H
+#ifndef FRAME_INTERPOLATION_H
+#define FRAME_INTERPOLATION_H
 
 // #include "sf64math.h"
 #include <libultraship.h>
@@ -96,4 +96,4 @@ void FrameInterpolation_RecordTranslateRotate(Mat4* dest, Vec3f pos, Vec3s rotat
 }
 #endif
 
-#endif // __FRAME_INTERPOLATION_H
+#endif // FRAME_INTERPOLATION_H

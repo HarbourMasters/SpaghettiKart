@@ -80,7 +80,7 @@ void ABoat::SetSpawnParams(SpawnParams& params) {
     params.PathPoint = PathPoint;
 }
 
-void ABoat::Draw(Camera* camera) {
+void ABoat::Draw(UNUSED Camera* camera) {
 }
 
 bool ABoat::IsMod() {
@@ -184,7 +184,7 @@ void ABoat::Tick60fps() {
     }
 }
 
-void ABoat::VehicleCollision(s32 playerId, Player* player) {
+void ABoat::VehicleCollision(UNUSED s32 playerId, Player* player) {
     f32 x_diff;
     f32 y_diff;
     f32 z_diff;
@@ -213,7 +213,7 @@ void ABoat::VehicleCollision(s32 playerId, Player* player) {
     }
 }
 
-s32 ABoat::AddSmoke(size_t ferryIndex, Vec3f pos, f32 velocity) {
+s32 ABoat::AddSmoke(UNUSED size_t ferryIndex, Vec3f pos, f32 velocity) {
     s32 objectIndex = add_unused_obj_index(SmokeParticles, &NextParticlePtr, gObjectParticle2_SIZE);
     if (objectIndex != NULL_OBJECT_ID) {
         init_ferry_smoke(objectIndex, pos, velocity);

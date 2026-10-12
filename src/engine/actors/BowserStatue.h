@@ -22,13 +22,14 @@ public:
         CRUSH
     };
 
-    virtual ~ABowserStatue() = default;
+    ~ABowserStatue() override = default;
     explicit ABowserStatue(const SpawnParams& params);
 
-    virtual void Tick() override;
-    virtual void Draw(Camera*) override;
-    virtual bool IsMod() override;
-private:
+    void Tick() override;
+    void Draw(Camera*) override;
+    bool IsMod() override;
+
+  private:
     ABowserStatue::Behaviour mBehaviour;
     static size_t _count;
     size_t _idx;

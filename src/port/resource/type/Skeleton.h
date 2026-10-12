@@ -12,8 +12,8 @@ class Skeleton : public Ship::Resource<LimbData*> {
     Skeleton() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {
     }
 
-    LimbData** GetPointer();
-    size_t GetPointerSize();
+    LimbData** GetPointer() override;
+    size_t GetPointerSize() override;
 
     std::vector<LimbData*> mLimbs;
 };

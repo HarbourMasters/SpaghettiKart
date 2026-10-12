@@ -19,7 +19,7 @@ class ACar : public AActor {
 
     explicit ACar(const SpawnParams& params);
 
-    ~ACar() {
+    ~ACar() override {
         _count--;
     }
 
@@ -62,12 +62,12 @@ class ACar : public AActor {
     uint32_t PathIndex = 0;
     uint32_t PathPoint = 0;
 
-    virtual void SetSpawnParams(SpawnParams& params) override;
-    virtual void Tick60fps() override;
-    virtual void Draw(Camera*) override;
-    virtual void VehicleCollision(s32 playerId, Player* player) override;
-    virtual bool IsMod() override;
-    virtual void DrawEditorProperties() override;
+    void SetSpawnParams(SpawnParams& params) override;
+    void Tick60fps() override;
+    void Draw(Camera*) override;
+    void VehicleCollision(s32 playerId, Player* player) override;
+    bool IsMod() override;
+    void DrawEditorProperties() override;
 
   private:
     static size_t _count;

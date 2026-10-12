@@ -38,7 +38,7 @@ public:
         return static_cast<OHedgehog*>(AddObjectToWorld<OHedgehog>(params));
     }
 
-    ~OHedgehog() {
+    ~OHedgehog() override {
         _count--;
     }
 
@@ -46,10 +46,10 @@ public:
         return _count;
     }
 
-    virtual void Tick() override;
-    virtual void Draw(s32 cameraId) override;
-    virtual void SetSpawnParams(SpawnParams& params) override;
-    virtual void DrawEditorProperties() override;
+    void Tick() override;
+    void Draw(s32 cameraId) override;
+    void SetSpawnParams(SpawnParams& params) override;
+    void DrawEditorProperties() override;
 
     void func_800555BC(s32 objectIndex, s32 cameraId);
     void func_8004A870(s32 cameraId, s32 objectIndex, f32 arg1);

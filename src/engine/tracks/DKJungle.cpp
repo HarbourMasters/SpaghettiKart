@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <macros.h>
 #include <libultra/gbi.h>
 #include <vector>
 #include <memory>
@@ -211,7 +212,7 @@ void DKJungle::SomeSounds() {
     func_800C9D80(D_8015F738, D_802B91C8, 0x51028001);
 }
 
-void DKJungle::WhatDoesThisDo(Player* player, int8_t playerId) {
+void DKJungle::WhatDoesThisDo(UNUSED Player* player, int8_t playerId) {
     if ((((s16) gNearestPathPointByPlayerId[playerId] >= 0) &&
             ((s16) gNearestPathPointByPlayerId[playerId] < 0x65)) ||
         (((s16) gNearestPathPointByPlayerId[playerId] >= 0x14A) &&
@@ -241,7 +242,7 @@ void DKJungle::WhatDoesThisDo(Player* player, int8_t playerId) {
     }
 }
 
-void DKJungle::WhatDoesThisDoAI(Player* player, int8_t playerId) {
+void DKJungle::WhatDoesThisDoAI(UNUSED Player* player, int8_t playerId) {
     if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x288) &&
         ((s16) gNearestPathPointByPlayerId[playerId] < 0x305)) {
         if (D_80165300[playerId] != 1) {
@@ -323,7 +324,8 @@ void DKJungle::Tick() {
     evaluate_collision_players_palm_trees();
 }
 
-void DKJungle::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+void DKJungle::DrawTransparency(UNUSED ScreenContext* screen, uint16_t pathCounter, UNUSED uint16_t cameraRot,
+                                uint16_t playerDirection) {
     gDPPipeSync(gDisplayListHead++);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);

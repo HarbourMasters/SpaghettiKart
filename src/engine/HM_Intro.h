@@ -1,5 +1,5 @@
-#ifndef _HM_INTRO_H
-#define _HM_INTRO_H
+#ifndef HM_INTRO_H
+#define HM_INTRO_H
 
 #include <libultraship.h>
 #include <libultra/gbi.h>
@@ -77,4 +77,4 @@ void HM_DrawIntro(void);
 }
 #endif
 
-#endif // _HM_INTRO_H
+#endif // HM_INTRO_H

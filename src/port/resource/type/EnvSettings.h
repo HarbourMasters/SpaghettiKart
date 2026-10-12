@@ -33,8 +33,8 @@ class EnvSettings : public Ship::Resource<EnvSettingsData> {
     EnvSettings() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {
     }
 
-    EnvSettingsData* GetPointer();
-    size_t GetPointerSize();
+    EnvSettingsData* GetPointer() override;
+    size_t GetPointerSize() override;
 
     EnvSettingsData mSettings{};
 };

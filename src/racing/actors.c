@@ -8,7 +8,6 @@
 #include <common_structs.h>
 #include <actor_types.h>
 #include <defines.h>
-#include <macros.h>
 #include <stdio.h>
 
 #include "code_800029B0.h"
@@ -18,7 +17,6 @@
 #include "actors_extended.h"
 #include "actors.h"
 #include "waypoints.h"
-#include "macros.h"
 #include "code_80005FD0.h"
 #include "update_objects.h"
 #include "effects.h"
@@ -26,7 +24,6 @@
 #include "audio/external.h"
 #include <assets/models/common_data.h>
 #include "courses/all_course_data.h"
-#include "main.h"
 #include <assets/textures/other_textures.h>
 #include <assets/models/tracks/mario_raceway/mario_raceway_data.h>
 #include <assets/models/tracks/luigi_raceway/luigi_raceway_data.h>

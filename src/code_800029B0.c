@@ -13,7 +13,6 @@
 #include "audio/external.h"
 #include <defines.h>
 #include "racing/collision.h"
-#include "memory.h"
 #include "menu_items.h"
 #include "racing/skybox_and_splitscreen.h"
 #include "code_8006E9C0.h"

@@ -36,7 +36,7 @@ public:
         return dynamic_cast<OFlagpole*>(AddObjectToWorld<OFlagpole>(params));
     }
 
-    ~OFlagpole() {
+    ~OFlagpole() override {
         _count--;
     }
 
@@ -44,8 +44,8 @@ public:
         return _count;
     }
 
-    virtual void Tick() override;
-    virtual void Draw(s32 cameraId) override;
+    void Tick() override;
+    void Draw(s32 cameraId) override;
 
     void func_80055164(s32 cameraId, s32 objectIndex);
     void func_80082F1C(s32 objectIndex);

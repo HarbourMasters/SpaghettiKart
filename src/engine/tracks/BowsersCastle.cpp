@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <macros.h>
 #include <libultra/gbi.h>
 #include <vector>
 #include <memory>
@@ -225,7 +226,7 @@ void BowsersCastle::DrawTrackObjects(s32 cameraId) {
 void BowsersCastle::SomeSounds() {
 }
 
-void BowsersCastle::WhatDoesThisDo(Player* player, int8_t playerId) {
+void BowsersCastle::WhatDoesThisDo(UNUSED Player* player, int8_t playerId) {
     if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x29) &&
         ((s16) gNearestPathPointByPlayerId[playerId] < 0x1D2)) {
         if (D_80165300[playerId] != 1) {
@@ -240,7 +241,7 @@ void BowsersCastle::WhatDoesThisDo(Player* player, int8_t playerId) {
     }
 }
 
-void BowsersCastle::WhatDoesThisDoAI(Player* player, int8_t playerId) {
+void BowsersCastle::WhatDoesThisDoAI(UNUSED Player* player, int8_t playerId) {
     if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x29) &&
         ((s16) gNearestPathPointByPlayerId[playerId] < 0x1D2)) {
         if (D_80165300[playerId] != 1) {
@@ -304,8 +305,8 @@ void BowsersCastle::Waypoints(Player* player, int8_t playerId) {
     }
 }
 
-void BowsersCastle::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
-                              uint16_t playerDirection) {
+void BowsersCastle::DrawTransparency(UNUSED ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
+                                     UNUSED uint16_t playerDirection) {
     if (gActiveScreenMode != SCREEN_MODE_1P) {
         return;
     }

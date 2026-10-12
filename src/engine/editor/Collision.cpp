@@ -1,4 +1,5 @@
 #include "Collision.h"
+#include <macros.h>
 
 #include <libultraship/libultraship.h>
 #include <libultra/gbi.h>
@@ -22,7 +23,7 @@ namespace TrackEditor {
 
         Gfx* ptr = model;
         Vtx* vtx = NULL;
-        size_t i = 0;
+        UNUSED size_t i = 0;
         bool run = true;
 
         while (run) {

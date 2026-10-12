@@ -17,6 +17,7 @@ public:
     int32_t* CollisionMesh;
     bool bPendingDestroy = false;
     StaticMeshActor(std::string name, FVector pos, IRotator rot, FVector scale, std::string model, int32_t* collision);
+    virtual ~StaticMeshActor() = default;
 
     nlohmann::json to_json() const {
         nlohmann::json j;

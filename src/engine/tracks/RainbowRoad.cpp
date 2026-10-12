@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <macros.h>
 #include <libultra/gbi.h>
 #include <vector>
 #include <memory>
@@ -120,14 +121,14 @@ void RainbowRoad::Load() {
     parse_track_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_rainbow_road_addr));
     func_80295C6C();
     // d_course_rainbow_road_packed_dl_2068
-    find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_2068, 150, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_2068, (s8) 150, 255, 255, 255);
     // d_course_rainbow_road_packed_dl_1E18
-    find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_1E18, 150, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_1E18, (s8) 150, 255, 255, 255);
     // d_course_rainbow_road_packed_dl_1318
-    find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_1318, 255, 255, 255, 0);
+    find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_1318, (s8) 255, 255, 255, 0);
     if (gGamestate != CREDITS_SEQUENCE) {
         // d_course_rainbow_road_packed_dl_1FB8
-        find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_1FB8, 150, 255, 255, 255);
+        find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_1FB8, (s8) 150, 255, 255, 255);
     }
 }
 
@@ -177,11 +178,13 @@ void RainbowRoad::DrawTrackObjects(s32 cameraId) {
 void RainbowRoad::SomeSounds() {
 }
 
-void RainbowRoad::WhatDoesThisDo(Player* player, int8_t playerId) {}
+void RainbowRoad::WhatDoesThisDo(UNUSED Player* player, UNUSED int8_t playerId) {
+}
 
-void RainbowRoad::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
+void RainbowRoad::WhatDoesThisDoAI(UNUSED Player* player, UNUSED int8_t playerId) {
+}
 
-void RainbowRoad::Draw(ScreenContext* arg0) {
+void RainbowRoad::Draw(UNUSED ScreenContext* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -197,7 +200,8 @@ void RainbowRoad::Waypoints(Player* player, int8_t playerId) {
     player->nearestPathPointId = gCopyNearestWaypointByPlayerId[playerId];
 }
 
-void RainbowRoad::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+void RainbowRoad::DrawTransparency(ScreenContext* screen, UNUSED uint16_t pathCounter, UNUSED uint16_t cameraRot,
+                                   UNUSED uint16_t playerDirection) {
     gDPPipeSync(gDisplayListHead++);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     render_track_sections(rainbow_road_dls, screen);
@@ -208,11 +212,11 @@ void RainbowRoad::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, 
 
 void RainbowRoad::CreditsSpawnActors() {
     // d_course_rainbow_road_packed_dl_2068
-    find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_2068, 150, 0xFF, 0xFF, 0xFF);
+    find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_2068, (s8) 150, 0xFF, 0xFF, 0xFF);
     // d_course_rainbow_road_packed_dl_1E18
-    find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_1E18, 150, 0xFF, 0xFF, 0xFF);
+    find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_1E18, (s8) 150, 0xFF, 0xFF, 0xFF);
     // d_course_rainbow_road_packed_dl_1318
-    find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_1318, 255, 0xFF, 0xFF, 0);
+    find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_1318, (s8) 255, 0xFF, 0xFF, 0);
 }
 
 void RainbowRoad::Destroy() {}

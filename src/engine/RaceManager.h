@@ -37,6 +37,7 @@ class World;
 class RaceManager {
 public:
     RaceManager(World& world);
+    virtual ~RaceManager() = default;
     virtual void Load(); // virtual required here in the base class to allow inherited classes to override
     virtual void PreInit();
     virtual void BeginPlay();

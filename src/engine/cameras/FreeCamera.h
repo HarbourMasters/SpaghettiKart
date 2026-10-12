@@ -12,7 +12,7 @@ class FreeCamera : public GameCamera {
 public:
     FreeCamera(FVector pos, s16 rot, u32 mode);
 
-    virtual void Tick() override;
-    virtual void SetViewProjection() override;
-    virtual void SetActive(bool state) override;
+    void Tick() override;
+    void SetViewProjection() override;
+    void SetActive(bool state) override;
 };

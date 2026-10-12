@@ -17,6 +17,7 @@ public:
     std::vector<std::string> mTracks;
 
     explicit Cup(std::string id, const char* name, std::vector<std::string> tracks);
+    virtual ~Cup() = default;
 
     // Valide que tous les IDs de tracks existent dans le registre
     void ValidateTrackIds(const Registry<TrackInfo>& registry) const;

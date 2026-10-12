@@ -51,7 +51,7 @@ public:
 
     explicit OBoos(const SpawnParams& params);
 
-    ~OBoos() {
+    ~OBoos() override {
         _count--;
     }
 
@@ -59,10 +59,10 @@ public:
         return _count;
     }
 
-    virtual void SetSpawnParams(SpawnParams& params) override;
-    virtual void Tick() override;
-    virtual void Draw(s32 cameraId) override;
-    virtual void DrawEditorProperties() override;
+    void SetSpawnParams(SpawnParams& params) override;
+    void Tick() override;
+    void Draw(s32 cameraId) override;
+    void DrawEditorProperties() override;
     void func_800523B8(s32 objectIndex, s32 cameraId, u32 arg2);
 
     void func_8007CA70(void);
@@ -80,7 +80,7 @@ public:
 private:
     FVector _pos;
     static size_t _count;
-    size_t _idx;
+    [[maybe_unused]] size_t _idx;
     std::vector<s32> _indices; // indices into gObjectList
     size_t _numBoos;
 
