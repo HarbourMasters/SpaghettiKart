@@ -2,7 +2,7 @@
 #include "port/ui/PortMenu.h"
 #include "port/Game.h"
 #include "UIWidgets.h"
-#include "ship/Context.h"
+#include "port/ShipCompat.h"
 
 #include <imgui.h>
 #include <map>

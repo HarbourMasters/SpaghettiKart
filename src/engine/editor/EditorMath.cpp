@@ -3,6 +3,7 @@
 #include <libultraship/libultraship.h>
 #include "port/Game.h"
 #include "port/Engine.h"
+#include "port/ShipCompat.h"
 #include <libultra/types.h>
 #include "GameObject.h"
 
@@ -26,7 +27,7 @@ extern "C" {
 std::vector<Mtx> EditorMatrix;
 
 bool IsInGameScreen() {
-    auto wnd = GameEngine::Instance->context->GetWindow();
+    auto wnd = ShipCompat::GetWindow();
     Ship::Coords mouse = wnd->GetMousePos();
 
     // Define viewport boundaries
@@ -41,7 +42,7 @@ bool IsInGameScreen() {
 }
 
 FVector ScreenRayTrace() {
-    auto wnd = GameEngine::Instance->context->GetWindow();
+    auto wnd = ShipCompat::GetWindow();
     Camera* camera = gScreenOneCtx->camera;
 
     Ship::Coords mouse = wnd->GetMousePos();

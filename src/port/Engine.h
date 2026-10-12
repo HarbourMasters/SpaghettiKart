@@ -15,7 +15,7 @@ static const char engine_asset_file[] = "spaghetti.o2r";
 #include <SDL2/SDL.h>
 #include <fast/Fast3dWindow.h>
 #include <fast/interpreter.h>
-#include "ship/Context.h"
+#include "port/ShipCompat.h"
 #include <unordered_map>
 
 #ifndef IDYES
@@ -41,7 +41,7 @@ class GameEngine {
   public:
     static GameEngine* Instance;
 
-    Ship::Context* context;
+    std::shared_ptr<Ship::Context> context;
     std::vector<CtlEntry*> banksTable;
     std::vector<std::string> sequenceTable;
     std::vector<AudioSequenceData*> audioSequenceTable;

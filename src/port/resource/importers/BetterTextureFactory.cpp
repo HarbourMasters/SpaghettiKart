@@ -2,7 +2,7 @@
 #include "fast/resource/type/Texture.h"
 #include "spdlog/spdlog.h"
 #include <stb_image.h>
-#include <ship/Context.h>
+#include "port/ShipCompat.h"
 #include "ship/resource/archive/ArchiveManager.h"
 #include "ship/resource/ResourceManager.h"
 
@@ -32,8 +32,8 @@ ResourceFactoryBinaryTextureV0::ReadResource(std::shared_ptr<Ship::File> file,
     }
 
     for (const auto& ext : extension) {
-        auto filePng = Ship::Context::GetRawInstance()->GetResourceManager()->LoadFileProcess(
-        initData->Path + ext);
+        auto filePng = ShipCompat::GetResourceManager()->LoadFileProcess(
+        initData->Identifier.GetPath() + ext);
 
         if (filePng != nullptr) {
             return loadPngTexture(filePng, initData);
@@ -62,8 +62,8 @@ ResourceFactoryBinaryTextureV1::ReadResource(std::shared_ptr<Ship::File> file,
     }
 
     for (const auto& ext : extension) {
-        auto filePng = Ship::Context::GetRawInstance()->GetResourceManager()->LoadFileProcess(
-        initData->Path + ext);
+        auto filePng = ShipCompat::GetResourceManager()->LoadFileProcess(
+        initData->Identifier.GetPath() + ext);
 
         if (filePng != nullptr) {
             return loadPngTexture(filePng, initData);
