@@ -2567,8 +2567,12 @@ void func_8004EF9C(s32 arg0) {
 
     width = ResourceGetTexWidthByName(minimap);
     height = ResourceGetTexHeightByName(minimap);
-    func_8004D37C(0x00000104, 0x0000003C, (u8*) minimap, 0x000000FF, 0x000000FF, 0x000000FF, 0x000000FF, width, height,
-                  width, height);
+    // @port The records screen is drawn at 4:3, so keep the map at its 4:3 spot
+    // instead of pinning it to the window edge like the race minimap.
+    gSPDisplayList(gDisplayListHead++, D_0D007FE0);
+    func_8004B414(0xFF, 0xFF, 0xFF, 0xFF);
+    func_80044F34((u8*) minimap, width, height);
+    func_8004B97C(0x104 - (width / 2), 0x3C - (height / 2), width, height, 1);
 }
 
 void set_minimap_finishline_position(s32 playerId) {
