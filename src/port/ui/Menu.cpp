@@ -660,7 +660,15 @@ void Menu::DrawElement() {
     UIWidgets::ButtonOptions options2 = {};
     options2.color = UIWidgets::Colors::Red;
     options2.size = UIWidgets::Sizes::Inline;
-    options2.tooltip = "Reset";
+    options2.tooltip = "Reset"
+#ifdef __APPLE__
+                       " (Command-R)"
+#elif !defined(__SWITCH__) && !defined(__WIIU__)
+                       " (Ctrl+R)"
+#else
+                       ""
+#endif
+        ;
     if (UIWidgets::Button(ICON_FA_UNDO, options2)) {
         ProcessReset();
     }
