@@ -4,6 +4,7 @@
 #include "ship/window/gui/Gui.h"
 #include "fast/Fast3dGui.h"
 #include "ship/window/Window.h"
+#include "src/port/Game.h"
 
 class Gui; // <-- forward declare
 //class Window;
@@ -16,5 +17,9 @@ namespace Ship {
 
       protected:
         virtual void DrawMenu() override;
+        virtual void ProcessReset() {
+            // as per ui/Menu.h
+            CM_RequestReset();
+        }
     };
 }
