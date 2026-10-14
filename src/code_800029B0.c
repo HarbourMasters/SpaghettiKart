@@ -353,8 +353,9 @@ void credits_spawn_actors(void) {
     gNextFreeMemoryAddress += 0x9000;
     destroy_all_actors();
     CM_CleanWorld();
-    CM_CreditsSpawnActors();
+    init_hud(); // Moved here because it clears gObjectList which needs to happen before BeginPlay
     CM_BeginPlay();
+    CM_CreditsSpawnActors();
 
     gNumPermanentActors = gNumActors;
 }

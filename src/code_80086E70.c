@@ -1283,13 +1283,10 @@ s32 func_8008A0B4(s32 objectIndex, Player* player, Camera* camera, u16 arg3) {
     return var_t0;
 }
 
-bool is_object_visible_on_camera(s32 objectIndex, Camera* camera, u16 angle) {
+// For objects that should not be skipped by the no culling enhancement.
+bool is_object_in_camera_view(s32 objectIndex, Camera* camera, u16 angle) {
     u16 temp_t2;
     s32 var_t0;
-
-    if (CVarGetInteger("gNoCulling", 0) == 1) {
-        return true;
-    }
 
     var_t0 = false;
     temp_t2 = (get_angle_between_xy(camera->pos[0], gObjectList[objectIndex].pos[0], camera->pos[2],
@@ -1300,6 +1297,36 @@ bool is_object_visible_on_camera(s32 objectIndex, Camera* camera, u16 angle) {
         var_t0 = true;
     }
     return var_t0;
+}
+
+// Skippable using the no culling enhancement.
+bool is_object_visible_on_camera(s32 objectIndex, Camera* camera, u16 angle) {
+    if (CVarGetInteger("gNoCulling", 0) == 1) {
+        return true;
+    }
+    return is_object_in_camera_view(objectIndex, camera, angle);
+}
+
+// func_8008A6DC's test without the flags and without the Disable Culling toggle.
+s32 is_object_in_view_of_any_camera(s32 objectIndex, f32 distance) {
+    u16 angle;
+    s32 loopIndex;
+    Camera* camera;
+
+    for (camera = camera1, loopIndex = 0; loopIndex < gPlayerCountSelection1; loopIndex++, camera++) {
+        if ((gObjectList[objectIndex].state != 0) &&
+            (is_within_horizontal_distance_to_camera(objectIndex, camera, distance) != 0)) {
+            if (distance <= 500.0) {
+                angle = 0x4000;
+            } else {
+                angle = 0x2AAB;
+            }
+            if (is_object_in_camera_view(objectIndex, camera, angle) != 0) {
+                return 1;
+            }
+        }
+    }
+    return 0;
 }
 
 void func_8008A1D0(s32 objectIndex, s32 cameraId, s32 arg2, s32 arg3) {
@@ -1445,7 +1472,10 @@ s32 are_players_in_course_section(s16 arg0, s16 arg1) {
     s16* var_v0;
     s32 i;
 
-    return 1; //! @todo This is the easiest solution otherwise actors would not collide on custom courses.
+    // Always enable collision for custom tracks. They do not have sections.
+    if (CM_IsTrackMod()) {
+        return 1;
+    }
 
     var_v1 = 0;
     for (i = 0; i < gPlayerCountSelection1; i++) {

@@ -83,6 +83,7 @@ Camera* CM_AddCamera(Vec3f spawn, s16 rot, u32 mode);
 Camera* CM_AddFreeCamera(Vec3f spawn, s16 rot, u32 mode);
 Camera* CM_AddTourCamera(Vec3f spawn, s16 rot, u32 mode);
 bool CM_IsTourEnabled();
+bool CM_IsTrackMod();
 Camera* CM_AddLookBehindCamera(Vec3f spawn, s16 rot, u32 mode);
 void CM_AttachCamera(Camera* camera, s32 playerIdx);
 void CM_SetFreeCamera(bool state);

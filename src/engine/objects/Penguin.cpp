@@ -63,9 +63,9 @@ OPenguin::OPenguin(const SpawnParams& params) : OObject(params) {
             object->boundingBoxSize = 4;
             break;
         case PenguinType::CREDITS:
-            object->surfaceHeight = -80.0f;
-            object->sizeScaling = 0.08f;
-            object->sizeScaling = 0.15f;
+            object->surfaceHeight = 5.0f;
+            object->sizeScaling = 0.04f;
+            object->boundingBoxSize = 4;
             break;
         case PenguinType::EMPEROR:
             object->sizeScaling = 0.2f;
@@ -491,9 +491,9 @@ void OPenguin::DrawEditorProperties() {
                 object->boundingBoxSize = 4;
                 break;
             case PenguinType::CREDITS:
-                object->surfaceHeight = -80.0f;
-                object->sizeScaling = 0.08f;
-                object->sizeScaling = 0.15f;
+                object->surfaceHeight = 5.0f;
+                object->sizeScaling = 0.04f;
+                object->boundingBoxSize = 4;
                 break;
             case PenguinType::EMPEROR:
                 object->sizeScaling = 0.2f;
