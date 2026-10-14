@@ -2603,6 +2603,9 @@ void func_800C76C0(u8 playerId) {
                             break;
                         case 2: /* switch 2 */
                             if ((D_800EA0EC[0] == 1) && (D_800EA0EC[1] == 1) && (D_800EA0EC[2] == 1)) {
+                                // @port Fade out the course music the port enables in 3P/4P splitscreen
+                                func_800C3448(0x100100FF);
+                                func_800C3448(0x110100FF);
                                 func_800C5278(5U);
                                 func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0x80, 0x26));
                                 play_sequence2(MUSIC_SEQ_VS_BATTLE_RESULTS);
@@ -2614,6 +2617,8 @@ void func_800C76C0(u8 playerId) {
                         case 3: /* switch 2 */
                             if ((D_800EA0EC[0] == 1) && (D_800EA0EC[1] == 1) && (D_800EA0EC[2] == 1) &&
                                 (D_800EA0EC[3] == 1)) {
+                                func_800C3448(0x100100FF);
+                                func_800C3448(0x110100FF);
                                 func_800C5278(5U);
                                 func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0x80, 0x26));
                                 play_sequence2(MUSIC_SEQ_VS_BATTLE_RESULTS);
