@@ -20,41 +20,42 @@
 #include "engine/tracks/Track.h"
 #include "port/Game.h"
 
-struct UnkStruct80287560 {
-    s16 unk0;
-    s16 unk2;
-    s32 unk4;
-    s32 unk8;
+struct PodiumDebugPrintData {
+    s16 x;
+    s16 y;
+    s32 value;
+    const char* str;
 }; // 0xC
 
 /** bss **/
 s32 gGotoMenu;
 s32 D_80287554;
 s32 D_80281C40_pad[2];
-struct UnkStruct80287560 D_80287560[30];
+static struct PodiumDebugPrintData sDebugPrintData[30];
 
-void func_80281C40(void) {
+void podium_debug_draw_prints(void) {
     s32 i;
 
-    for (i = 0; i < D_802874FC; i++) {
-        func_800579F8(D_80287560[i].unk0, D_80287560[i].unk2, (char*) D_80287560[i].unk8, D_80287560[i].unk4);
+    for (i = 0; i < gPodiumDebugPrintIdx; i++) {
+        render_podium_debug_prints([i].x, sDebugPrintData[i].y, (char*) sDebugPrintData[i].str, sDebugPrintData[i].value);
     }
 }
 
-void func_80281CB4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    if (D_802874FC < 0x1E) {
-        D_80287560[D_802874FC].unk0 = arg0;
-        D_80287560[D_802874FC].unk2 = arg1;
-        D_80287560[D_802874FC].unk4 = arg3;
-        D_80287560[D_802874FC].unk8 = arg2;
-        D_802874FC++;
+// Allows printing a str and value
+UNUSED void podium_debug_print(s32 x, s32 y, const char* str, s32 value) {
+    if (gPodiumDebugPrintIdx < 30) {
+        sDebugPrintData[gPodiumDebugPrintIdx].x     = x;
+        sDebugPrintData[gPodiumDebugPrintIdx].y     = y;
+        sDebugPrintData[gPodiumDebugPrintIdx].value = value;
+        sDebugPrintData[gPodiumDebugPrintIdx].str   = str;
+        gPodiumDebugPrintIdx += 1;
     }
 }
 
 extern Gfx D_80284F70[];
 extern Gfx D_80284EE0[];
 
-void func_80281D00(void) {
+void render_podium_ceremony(void) {
     Camera* camera = gScreenOneCtx->camera;
     UNUSED s32 pad[3];
     u16 perspNorm;
@@ -99,6 +100,9 @@ void func_80281D00(void) {
     gSPDisplayList(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&D_80284EE0));
     func_80093F10();
     ceremony_transition_sliding_borders();
-    func_80281C40();
+
+    // Example of debug print if it was used
+    // podium_debug_print(10, 10, "my test str", 5);
+    podium_debug_draw_prints();
     init_rdp();
 }
