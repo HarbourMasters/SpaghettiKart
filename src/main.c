@@ -108,7 +108,6 @@ CollisionGrid gCollisionGrid[1024];
 u16 gNumActors;
 u16 gMatrixObjectCount;
 s32 gTickLogic = 2;
-s32 gTickVisuals = 1;
 s32 gTickGame;
 f32 D_80150118;
 
@@ -517,9 +516,7 @@ void display_and_vsync(void) {
     if (++sRenderingFramebuffer == 3) {
         sRenderingFramebuffer = 0;
     }
-    if (gTickVisuals) {
-        gGlobalTimer++;
-    }
+    gGlobalTimer++;
 }
 
 void init_segment_ending_sequences(void) {
