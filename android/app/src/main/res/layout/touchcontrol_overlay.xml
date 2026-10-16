@@ -1,0 +1,230 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <!-- New Grouping Layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/button_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <!-- Left Joystick -->
+    <FrameLayout
+        android:id="@+id/left_joystick"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/ic_stick"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:clipToPadding="false">
+
+        <ImageView
+            android:id="@+id/left_joystick_knob"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_button" />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_cross"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonDpadDown"
+        app:layout_constraintEnd_toEndOf="@+id/buttonDpadRight"
+        app:layout_constraintStart_toStartOf="@+id/buttonDpadLeft"
+        app:layout_constraintTop_toTopOf="@+id/buttonDpadUp" />
+
+    <!-- D-Pad -->
+    <Button
+        android:id="@+id/buttonDpadUp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toTopOf="@id/buttonDpadRight"
+        app:layout_constraintEnd_toStartOf="@id/buttonDpadRight"
+        android:background="@android:color/transparent"/>
+
+    <Button
+        android:id="@+id/buttonDpadDown"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintStart_toEndOf="@id/buttonDpadLeft"
+        app:layout_constraintTop_toBottomOf="@id/buttonDpadLeft"
+        android:background="@android:color/transparent" />
+
+    <Button
+        android:id="@+id/buttonDpadLeft"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="60dp"
+        app:layout_constraintBottom_toTopOf="@id/left_joystick"
+        app:layout_constraintEnd_toEndOf="@id/left_joystick"
+        app:layout_constraintStart_toStartOf="@id/left_joystick"
+        app:layout_constraintTop_toBottomOf="@id/buttonLB"
+        android:background="@android:color/transparent"/>
+
+    <Button
+        android:id="@+id/buttonDpadRight"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toTopOf="@id/buttonDpadDown"
+        app:layout_constraintStart_toEndOf="@id/buttonDpadDown"
+        android:background="@android:color/transparent"/>
+
+    <!-- Action Buttons (A, B, X, Y) -->
+    <Button
+        android:id="@+id/buttonB"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/ic_button"
+        android:text="B"
+        app:layout_constraintEnd_toStartOf="@id/buttonA"
+        app:layout_constraintTop_toBottomOf="@id/buttonA"
+        android:textColor="#25FFFFFF"/>
+
+    <Button
+        android:id="@+id/buttonA"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/ic_button"
+        android:text="A"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonZ"
+        android:textColor="#25FFFFFF"/>
+
+    <Button
+        android:id="@+id/buttonY"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/ic_button"
+        android:text="Y"
+        app:layout_constraintBottom_toTopOf="@id/buttonB"
+        app:layout_constraintEnd_toStartOf="@id/buttonB"
+        android:textColor="#25FFFFFF"/>
+
+    <Button
+        android:id="@+id/buttonX"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/ic_button"
+        android:text="X"
+        app:layout_constraintBottom_toTopOf="@id/buttonA"
+        app:layout_constraintEnd_toStartOf="@id/buttonA"
+        android:textColor="#25FFFFFF"/>
+
+    <!-- Shoulder Buttons -->
+    <Button
+        android:id="@+id/buttonLB"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ic_trigger_button_left"
+        android:text="L"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#25FFFFFF"/>
+
+    <Button
+        android:id="@+id/buttonRB"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/ic_trigger_button_right"
+        android:text="R"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#25FFFFFF"/>
+
+    <Button
+        android:id="@+id/buttonZ"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/ic_trigger_button_right"
+        android:text="Z"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonRB"
+        android:textColor="#25FFFFFF"/>
+
+    <!-- Start and Back Buttons -->
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/ic_rectangular_button"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#25FFFFFF"/>
+
+    <Button
+        android:id="@+id/buttonStart"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/ic_rectangular_button"
+        android:text="Start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#25FFFFFF"/>
+
+    <!-- Menu Button (Escape) -->
+    <Button
+        android:id="@+id/buttonMenu"
+        android:layout_width="60dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_rectangular_button"
+        android:text="Menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#25FFFFFF"
+        android:textSize="12sp"/>
+
+    <!-- Only while the in-game menu is open; MainActivity flips its visibility -->
+    <Button
+        android:id="@+id/buttonMods"
+        android:layout_width="60dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/ic_rectangular_button"
+        android:text="@string/mods_button"
+        android:textColor="#25FFFFFF"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/buttonMenu"
+        app:layout_constraintStart_toEndOf="@id/buttonMenu"
+        app:layout_constraintTop_toTopOf="@id/buttonMenu" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Toggle Button -->
+<Button
+android:id="@+id/buttonToggle"
+android:layout_width="30dp"
+android:layout_height="30dp"
+android:layout_marginEnd="10dp"
+android:layout_marginBottom="10dp"
+android:background="@drawable/ic_show"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
