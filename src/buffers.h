@@ -70,7 +70,7 @@ typedef struct {
 extern u16 gRandomSeed16;
 extern u8 randomSeedPadding[216];
 extern union_D_802BFB80 D_802BFB80;
-extern struct_D_802DFB80 gEncodedKartTexture[][2][8];
+extern struct_D_802DFB80 gEncodedKartTexture[][4][8];
 
 /**
  * It would be nice to define gPlayerPalettesList as "struct_D_802F1F80 gPlayerPalettesList[2][4][8]".
