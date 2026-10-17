@@ -924,6 +924,12 @@ void CM_RequestReset(void) {
     sResetRequested.store(true);
 }
 
+static std::atomic<bool> sControllerPakMenuRequested{ false };
+
+void RequestJumpToCPakMenu(void) {
+    sControllerPakMenuRequested.store(true);
+}
+
 // The reset widget only requests; the reset is applied here at the top of the
 // game frame. Applying it from the widget raced the menu state machine: a
 // press landing mid-fade was re-advanced by the in-flight transition, and a
@@ -970,45 +976,21 @@ static void ApplyPendingReset() {
             gMenuSelection = MAIN_MENU;
             break;
     }
-
-    // Debug mode override gSkipIntro
-    if (CVarGetInteger("gEnableDebugMode", 0) == true) {
+    // Debug mode overrides gSkipIntro
+    if (CVarGetInteger("gEnableDebugMode", 0)) {
         gMenuSelection = START_MENU;
     }
+    // Controller Pak menu overrides both.
+    if (sControllerPakMenuRequested.exchange(false)) {
+        gMenuSelection = CONTROLLER_PAK_MENU;
+    }
+
     // Re-enter through the intro's own transition protocol (see HM_TickIntro):
     // FADE_MODE_LOGO makes setup_menus rebuild the menu items and start a
     // fresh fade-in, replacing any in-flight transition that would otherwise
     // advance the stale screen right after the reset.
     gMenuFadeType = 0;
     gFadeModeSelection = FADE_MODE_LOGO;
-}
-
-void jump_to_controller_pak_menu() {
-    // redundant code
-
-    // The FROM_QUIT gamestates run identical inits; alternating keeps
-    // gGamestateNext != gGamestate true so every press re-enters the menus.
-    gGamestateNext = (gGamestate == MAIN_MENU_FROM_QUIT) ? START_MENU_FROM_QUIT : MAIN_MENU_FROM_QUIT;
-    gIsGamePaused = 0;
-    // Reset credits
-    D_800DC5E4 = 0;
-    gTourComplete = false;
-    SetMarioRaceway();
-    memset(&gGameModeMenuColumn, 0, sizeof(s8) * NUM_ROWS_GAME_MODE_MENU);
-    memset(&gGameModeSubMenuColumn, 0, sizeof(s8) * NUM_COLUMN_GAME_MODE_SUB_MENU * NUM_ROWS_GAME_MODE_SUB_MENU);
-
-    CM_ResetAudio();
-
-    // Close the editor.
-    if (gEditor.IsEnabled()) {
-        gEditor.Disable();
-    }
-
-    // Set the debug menu track browsing index back to zero
-    TrackBrowser::Instance->Reset();
-
-    // now do the thing
-    gMenuSelection = CONTROLLER_PAK_MENU;
 }
 
 void push_frame() {

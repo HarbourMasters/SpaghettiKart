@@ -36,6 +36,7 @@ extern Registry<ItemInfo> gItemRegistry;
 extern DataRegistry<RandomItemTable> gItemTableRegistry;
 World* GetWorld(void); // Retrieve the world instance
 void CM_RequestReset(void); // Queue a game reset; applied at the top of the next game frame
+void RequestJumpToCPakMenu(void);
 #endif
 // NOLINTBEGIN(readability-identifier-naming)
 
@@ -231,8 +232,6 @@ void* GetCup();
 
 void CM_RunGarbageCollector(void);
 void CM_ResetAudio(void);
-
-void jump_to_controller_pak_menu();
 
 NORETURN void CM_ThrowRuntimeError(const char* fmt, ...)
 #if defined(__GNUC__) || defined(__clang__)

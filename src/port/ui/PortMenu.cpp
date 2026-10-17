@@ -139,7 +139,10 @@ void PortMenu::AddSettings() {
     //    .Options(CheckboxOptions().Tooltip(
     //        "Enables the Controller Pak screen when starting the game."));
     AddWidget(path, "Go to N64 Controller Pak screen", WIDGET_BUTTON)
-        .Callback([](WidgetInfo& info) { jump_to_controller_pak_menu(); })
+        .Callback([](WidgetInfo& info) {
+            RequestJumpToCPakMenu();
+            CM_RequestReset();
+        })
         .Options(ButtonOptions().Tooltip("Fill this in later.")); // TODO
 #if not defined(__SWITCH__) and not defined(__WIIU__)
     AddWidget(path, "Menu Controller Navigation", WIDGET_CVAR_CHECKBOX)
