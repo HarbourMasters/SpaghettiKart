@@ -232,6 +232,8 @@ void* GetCup();
 void CM_RunGarbageCollector(void);
 void CM_ResetAudio(void);
 
+void jump_to_controller_pak_menu();
+
 NORETURN void CM_ThrowRuntimeError(const char* fmt, ...)
 #if defined(__GNUC__) || defined(__clang__)
     __attribute__((format(printf, 1, 2)))
