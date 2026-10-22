@@ -75,7 +75,14 @@ Vtx D_802B8A10[] = {
     { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x00, 0xDC, 0x00, 0xFF } } },
 };
 
+// @port The viewport is read when the display list runs. By then the results
+// screens have already moved the view for the next frame, so each call gets
+// its own copy to keep the picture and its clip area in step.
+static Vp sViewportCopies[64];
+static s32 sViewportCopyIndex = 0;
+
 void race_set_viewport(ScreenContext* arg0) {
+    Vp* viewport = &sViewportCopies[sViewportCopyIndex];
     s32 ulx;
     s32 uly;
     s32 lrx;
@@ -95,7 +102,9 @@ void race_set_viewport(ScreenContext* arg0) {
     arg0->viewport.vp.vtrans[2] = 511;
     arg0->viewport.vp.vtrans[3] = 0;
 
-    gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&arg0->viewport));
+    *viewport = arg0->viewport;
+    sViewportCopyIndex = (sViewportCopyIndex + 1) % ARRAY_COUNT(sViewportCopies);
+    gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(viewport));
 
     screenWidth /= 4;
     screenHeight /= 4;
