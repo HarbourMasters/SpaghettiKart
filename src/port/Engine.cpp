@@ -345,7 +345,13 @@ int GameEngine::ShowYesNoBox(const char* title, const char* box) {
     boxData.message = box;
     boxData.title = title;
     boxData.buttons = buttons;
-    SDL_ShowMessageBox(&boxData, &ret);
+    if (SDL_ShowMessageBox(&boxData, &ret) < 0) {
+        // Minimal desktops (Batocera and similar) cannot show SDL dialogs. Take the default
+        // button so first-run setup can continue instead of exiting with no message.
+        SPDLOG_WARN("Could not show the \"{}\" dialog ({}). Answering Yes. Message was: {}", title, SDL_GetError(),
+                    box);
+        ret = IDYES;
+    }
 #endif
     return ret;
 }
