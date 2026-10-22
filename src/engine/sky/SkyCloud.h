@@ -30,6 +30,7 @@ public:
     virtual void Draw(ScreenContext* ctx, s32 arg0) override;
     virtual void Tick() override;
 private:
+    void ResolveTexture();
     static size_t _count;
     size_t _idx;
 };

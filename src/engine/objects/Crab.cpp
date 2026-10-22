@@ -6,6 +6,7 @@
 
 #include "port/Game.h"
 #include "port/interpolation/FrameInterpolation.h"
+#include "port/resource/AsyncTextureUpgrader.h"
 
 extern "C" {
 #include "macros.h"
@@ -101,9 +102,22 @@ void OCrab::Draw(s32 cameraId) {
     }
 }
 
+// Register the animation frames with the texture streamer so replacement
+// frames swap in together instead of one by one.
+static void RegisterCrabFrameSet() {
+    static bool sDone = false;
+    if (sDone) {
+        return;
+    }
+    sDone = true;
+    MK64::AsyncTextureUpgrader::Instance().RegisterFrameSet(d_course_koopa_troopa_beach_crab_frames,
+                                                            ARRAY_COUNT(d_course_koopa_troopa_beach_crab_frames));
+}
+
 void OCrab::init_ktb_crab(s32 objectIndex) {
     Object* object;
 
+    RegisterCrabFrameSet();
     init_texture_object(objectIndex, (uint8_t*) d_course_koopa_troopa_beach_crab_tlut,
                         (const char**) d_course_koopa_troopa_beach_crab_frames, 64, (u16) 64);
     object = &gObjectList[objectIndex];

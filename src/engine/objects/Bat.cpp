@@ -2,6 +2,7 @@
 #include "engine/World.h"
 #include "engine/CoreMath.h"
 #include "port/interpolation/FrameInterpolation.h"
+#include "port/resource/AsyncTextureUpgrader.h"
 
 extern "C" {
 #include "render_objects.h"
@@ -18,6 +19,17 @@ extern "C" {
 
 const char* sBoardwalkTexList[] = { gTextureBat1, gTextureBat2, gTextureBat3, gTextureBat4 };
 
+// Register the animation frames with the texture streamer so replacement
+// frames swap in together instead of one by one.
+static void RegisterBatFrameSet() {
+    static bool sDone = false;
+    if (sDone) {
+        return;
+    }
+    sDone = true;
+    MK64::AsyncTextureUpgrader::Instance().RegisterFrameSet(sBoardwalkTexList, ARRAY_COUNT(sBoardwalkTexList));
+}
+
 size_t OBat::_count = 0;
 
 OBat::OBat(const SpawnParams& params) : OObject(params) {
@@ -29,6 +41,7 @@ OBat::OBat(const SpawnParams& params) : OObject(params) {
 
     find_unused_obj_index(&_objectIndex);
 
+    RegisterBatFrameSet();
     init_texture_object(_objectIndex, (uint8_t*) d_course_banshee_boardwalk_bat_tlut, sBoardwalkTexList, 0x20U,
                         (u16) 0x00000040);
     gObjectList[_objectIndex].orientation[0] = rot.pitch;

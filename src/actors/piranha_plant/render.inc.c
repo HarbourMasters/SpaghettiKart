@@ -16,6 +16,19 @@ const char* sPiranhaPlantTextures[] = {
     gTexturePiranhaPlant9
 };
 
+extern void AsyncTextureUpgrader_RegisterFrameSet(const char* const* names, size_t count);
+
+// Register the animation frames with the texture streamer so replacement
+// frames swap in together instead of one by one.
+static void register_piranha_frame_set(void) {
+    static u8 sDone = 0;
+    if (sDone) {
+        return;
+    }
+    sDone = 1;
+    AsyncTextureUpgrader_RegisterFrameSet(sPiranhaPlantTextures, ARRAY_COUNT(sPiranhaPlantTextures));
+}
+
 /**
  * @brief Renders the piranha plant actor.
  * Actor used in Mario Raceway and Royal Raceway.
@@ -32,6 +45,8 @@ void render_actor_piranha_plant(Camera* camera, Mat4 arg1, struct PiranhaPlant* 
     s16 temp = arg2->flags;
     f32 temp_f0;
     s32 maxObjectsReached;
+
+    register_piranha_frame_set();
 
     if (temp & 0x800) {
         return;

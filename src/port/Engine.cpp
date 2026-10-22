@@ -24,6 +24,7 @@
 #include "resource/importers/ArrayFactory.h"
 #include "resource/importers/MinimapFactory.h"
 #include "resource/importers/BetterTextureFactory.h"
+#include "resource/AsyncTextureUpgrader.h"
 #include <ship/window/gui/Fonts.h>
 #include "ship/window/gui/resource/Font.h"
 #include "ship/window/gui/resource/FontFactory.h"
@@ -268,6 +269,12 @@ GameEngine::GameEngine() {
     fontStandardLarger = CreateFontWithSize(20.0f, "fonts/Montserrat-Regular.ttf");
     fontStandardLargest = CreateFontWithSize(24.0f, "fonts/Montserrat-Regular.ttf");
     ImGui::GetIO().FontDefault = fontMono;
+
+    // Alternate assets (texture-pack replacements) are on by default; seed the
+    // resource manager before any texture loads so the toggle state and the
+    // loaded assets stay in sync.
+    prevAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 1);
+    Ship::Context::GetRawInstance()->GetResourceManager()->SetAltAssetsEnabled(prevAltAssets);
 }
 
 bool GameEngine::GenAssetFile() {
@@ -362,6 +369,7 @@ void GameEngine::Create() {
 }
 
 void GameEngine::Destroy() {
+    MK64::AsyncTextureUpgrader::Instance().Shutdown();
     AudioExit();
 #ifdef __SWITCH__
     Ship::Switch::Exit();
@@ -382,7 +390,10 @@ void GameEngine::StartFrame() const {
     switch (dwScancode) {
         case KbScancode::LUS_KB_TAB: {
             // Toggle HD Assets
-            CVarSetInteger("gEnhancements.Mods.AlternateAssets", !CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0));
+            if (CVarGetInteger("gEnhancements.Mods.AlternateAssetsHotkey", 1)) {
+                CVarSetInteger("gEnhancements.Mods.AlternateAssets",
+                               !CVarGetInteger("gEnhancements.Mods.AlternateAssets", 1));
+            }
             break;
         }
         case KbScancode::LUS_KB_P: {
@@ -408,6 +419,12 @@ void GameEngine::RunCommands(Gfx* pool, const std::vector<std::unordered_map<Mtx
 
     auto interpreter = wnd->GetInterpreterWeak().lock().get();
 
+    // Swap in any texture-pack replacements the background decoder finished,
+    // evicting the originals from the GPU texture cache. Runs between frames,
+    // before this frame's display list executes.
+    MK64::AsyncTextureUpgrader::Instance().ApplyCompleted(
+        [interpreter](const uint8_t* addr) { interpreter->TextureCacheDelete(addr); });
+
     // Process window events for resize, mouse, keyboard events
     wnd->HandleEvents();
 
@@ -418,10 +435,16 @@ void GameEngine::RunCommands(Gfx* pool, const std::vector<std::unordered_map<Mtx
         interpreter->mInterpolationIndex++;
     }
 
-    bool curAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0);
+    bool curAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 1);
     if (prevAltAssets != curAltAssets) {
         prevAltAssets = curAltAssets;
         Ship::Context::GetRawInstance()->GetResourceManager()->SetAltAssetsEnabled(curAltAssets);
+        // Texture-pack replacements load under the SAME path as the originals
+        // (png-sibling shortcut in the texture factory), so cached textures must
+        // be evicted for the toggle to take effect; they lazily reload through
+        // the factory in the new state.
+        Ship::Context::GetRawInstance()->GetResourceManager()->UnloadResources("textures/*");
+        MK64::AsyncTextureUpgrader::Instance().ResetPrefetch();
         gfx_texture_cache_clear();
     }
 }

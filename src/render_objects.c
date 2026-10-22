@@ -2567,6 +2567,17 @@ void func_8004EF9C(s32 arg0) {
 
     width = ResourceGetTexWidthByName(minimap);
     height = ResourceGetTexHeightByName(minimap);
+    // @port Texture packs report their own larger size. Bring it back to the
+    // original scale the same way the race minimap does (shorter side of 64).
+    if ((width > 0) && (height > 0)) {
+        if (height < width) {
+            width = (width * 64) / height;
+            height = 64;
+        } else {
+            height = (height * 64) / width;
+            width = 64;
+        }
+    }
     func_8004D37C(0x00000104, 0x0000003C, (u8*) minimap, 0x000000FF, 0x000000FF, 0x000000FF, 0x000000FF, width, height,
                   width, height);
 }

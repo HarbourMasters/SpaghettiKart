@@ -2,6 +2,7 @@
 #include "engine/World.h"
 #include "engine/CoreMath.h"
 #include "port/interpolation/FrameInterpolation.h"
+#include "port/resource/AsyncTextureUpgrader.h"
 
 extern "C" {
 #include "render_objects.h"
@@ -161,9 +162,21 @@ void OBoos::func_8007CA70(void) {
     }
 }
 
+// Register the animation frames with the texture streamer so replacement
+// frames swap in together instead of one by one.
+static void RegisterBooFrameSet() {
+    static bool sDone = false;
+    if (sDone) {
+        return;
+    }
+    sDone = true;
+    MK64::AsyncTextureUpgrader::Instance().RegisterFrameSet(gTextureGhosts, ARRAY_COUNT(gTextureGhosts));
+}
+
 void OBoos::func_8007C5B4(s32 objectIndex) {
     Object* object;
 
+    RegisterBooFrameSet();
     init_texture_object(objectIndex, (u8*) d_course_banshee_boardwalk_boo_tlut, gTextureGhosts, 48, 40);
     object = &gObjectList[objectIndex];
     object->pos[0] = 0.0f;

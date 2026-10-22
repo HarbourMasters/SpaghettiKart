@@ -7,6 +7,7 @@
 
 #include "port/Game.h"
 #include "port/interpolation/FrameInterpolation.h"
+#include "port/resource/AsyncTextureUpgrader.h"
 
 extern "C" {
 #include "macros.h"
@@ -853,6 +854,18 @@ void OThwomp::StationaryBehaviour(s32 objectIndex) { // func_8007ED6C
 }
 
 // Stationary
+// Register the animation frames with the texture streamer so replacement
+// frames swap in together instead of one by one.
+static void RegisterThwompFrameSet() {
+    static bool sDone = false;
+    if (sDone) {
+        return;
+    }
+    sDone = true;
+    MK64::AsyncTextureUpgrader::Instance().RegisterFrameSet(d_course_bowsers_castle_thwomp_faces,
+                                                            ARRAY_COUNT(d_course_bowsers_castle_thwomp_faces));
+}
+
 void OThwomp::func_8007EC30(s32 objectIndex) {
     Object* object;
 
@@ -867,6 +880,7 @@ void OThwomp::func_8007EC30(s32 objectIndex) {
         set_obj_direction_angle(objectIndex, 0U, _faceDirection, 0U);
         set_obj_orientation(objectIndex, 0U, _faceDirection, 0U);
     }
+    RegisterThwompFrameSet();
     init_texture_object(objectIndex, (uint8_t*) d_course_bowsers_castle_thwomp_tlut,
                         (const char**) d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     object->model = (Gfx*) d_course_bowsers_castle_dl_thwomp;
@@ -904,6 +918,7 @@ void OThwomp::MoveAndRotateBehaviour(s32 objectIndex) { // func_8007F5A8
 void OThwomp::func_8007EE5C(s32 objectIndex) {
     Object* object;
 
+    RegisterThwompFrameSet();
     init_texture_object(objectIndex, (u8*) d_course_bowsers_castle_thwomp_tlut,
                         (const char**) d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     object = &gObjectList[objectIndex];
@@ -957,6 +972,7 @@ void OThwomp::MoveFarBehaviour(s32 objectIndex) { // func_8007FFC0
 void OThwomp::func_8007FA08(s32 objectIndex) {
     Object* object;
 
+    RegisterThwompFrameSet();
     init_texture_object(objectIndex, (u8*) d_course_bowsers_castle_thwomp_tlut,
                         (const char**) d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     object = &gObjectList[objectIndex];
@@ -1123,6 +1139,7 @@ void OThwomp::StationaryFastBehaviour(s32 objectIndex) { // func_800801FC
 void OThwomp::func_80080078(s32 objectIndex) { // func_80080078
     Object* object;
 
+    RegisterThwompFrameSet();
     init_texture_object(objectIndex, (u8*) d_course_bowsers_castle_thwomp_tlut,
                         (const char**) d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     object = &gObjectList[objectIndex];
@@ -1194,6 +1211,7 @@ void OThwomp::func_800802C0(s32 objectIndex) {
 
     object = &gObjectList[objectIndex];
     object->unk_0D8 = 0;
+    RegisterThwompFrameSet();
     init_texture_object(objectIndex, (u8*) d_course_bowsers_castle_thwomp_tlut,
                         (const char**) d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     object->model = (Gfx*) d_course_bowsers_castle_dl_thwomp;
@@ -1304,6 +1322,7 @@ void OThwomp::func_8008078C(s32 objectIndex) {
 void OThwomp::func_80080524(s32 objectIndex) {
     Object* object;
 
+    RegisterThwompFrameSet();
     init_texture_object(objectIndex, (u8*) d_course_bowsers_castle_thwomp_tlut,
                         (const char**) d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     object = &gObjectList[objectIndex];
