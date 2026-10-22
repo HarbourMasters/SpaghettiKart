@@ -924,6 +924,12 @@ void CM_RequestReset(void) {
     sResetRequested.store(true);
 }
 
+static std::atomic<bool> sControllerPakMenuRequested{ false };
+
+void RequestJumpToCPakMenu(void) {
+    sControllerPakMenuRequested.store(true);
+}
+
 // The reset widget only requests; the reset is applied here at the top of the
 // game frame. Applying it from the widget raced the menu state machine: a
 // press landing mid-fade was re-advanced by the in-flight transition, and a
@@ -970,11 +976,15 @@ static void ApplyPendingReset() {
             gMenuSelection = MAIN_MENU;
             break;
     }
-
-    // Debug mode override gSkipIntro
-    if (CVarGetInteger("gEnableDebugMode", 0) == true) {
+    // Debug mode overrides gSkipIntro
+    if (CVarGetInteger("gEnableDebugMode", 0)) {
         gMenuSelection = START_MENU;
     }
+    // Controller Pak menu overrides both.
+    if (sControllerPakMenuRequested.exchange(false)) {
+        gMenuSelection = CONTROLLER_PAK_MENU;
+    }
+
     // Re-enter through the intro's own transition protocol (see HM_TickIntro):
     // FADE_MODE_LOGO makes setup_menus rebuild the menu items and start a
     // fresh fade-in, replacing any in-flight transition that would otherwise
