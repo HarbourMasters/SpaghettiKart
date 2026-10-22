@@ -13,9 +13,9 @@ jobs:
           - courses
           - src
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Run clang-format style check for C/C++/Protobuf programs.
-        uses: jidicula/clang-format-action@v4.13.0
+        uses: jidicula/clang-format-action@v4.18.0
         with:
           clang-format-version: "18"
           check-path: ${{ matrix.path }}

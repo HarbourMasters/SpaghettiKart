@@ -11,7 +11,7 @@ jobs:
       matrix:
         config: [Release, Debug]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: true
@@ -29,7 +29,7 @@ jobs:
           # executable bit survives artifact upload.
           ditto -c -k --keepParent build-cmake/SpaghettiKart.app spaghetti-${{ matrix.config }}/SpaghettiKart.app.zip
       - name: Publish packaged artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
             name: spaghetti-mac-universal-${{ matrix.config }}
             path: spaghetti-${{ matrix.config }}

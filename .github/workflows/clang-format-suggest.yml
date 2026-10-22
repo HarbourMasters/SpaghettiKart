@@ -8,7 +8,7 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Install Dependance
         run: |
           sudo apt install clang-format make
@@ -16,6 +16,6 @@ jobs:
         run: |
           clang-format --version
           python tools/format.py
-      - uses: parkerbxyz/suggest-changes@v1
+      - uses: parkerbxyz/suggest-changes@v3
         with:
           comment: "Please commit the suggested changes from clang-format."

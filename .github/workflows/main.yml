@@ -12,20 +12,20 @@ jobs:
   generate-port-o2r:
     runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
       with:
         submodules: true
     - name: Install dependencies
       run: sudo apt-get install gcc g++ git cmake ninja-build lsb-release
     - name: ccache
-      uses: hendrikmuhs/ccache-action@v1.2.13
+      uses: hendrikmuhs/ccache-action@v1.2.24
       with:
         key: ${{ runner.os }}-o2r-ccache-${{ github.ref }}-${{ github.sha }}
         restore-keys: |
           ${{ runner.os }}-o2r-ccache-${{ github.ref }}
           ${{ runner.os }}-o2r-ccache-
     - name: Cache build folders
-      uses: actions/cache@v4
+      uses: actions/cache@v6
       with:
         key: ${{ runner.os }}-o2r-build-${{ github.ref }}-${{ github.sha }}
         restore-keys: |
@@ -38,7 +38,7 @@ jobs:
         export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
         make -C torch type=release -j3
         torch/cmake-build-release/torch pack assets spaghetti.o2r o2r
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v7
       with:
         name: spaghetti.o2r
         path: spaghetti.o2r
@@ -52,7 +52,7 @@ jobs:
         config: [Release, Debug]
         arch: [x64, Win32]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: true
@@ -62,7 +62,7 @@ jobs:
           cmake -S . -B "build/${{ matrix.arch }}" -G "Visual Studio 17 2022" -T v143 -A ${{ matrix.arch }} -DCMAKE_BUILD_TYPE=${{ matrix.config }}
           cmake --build ./build/${{ matrix.arch }} --config ${{ matrix.config }} --parallel 10
       - name: Download spaghetti.o2r
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: spaghetti.o2r
           path: ./build/${{ matrix.arch }}/${{ matrix.config }}
@@ -77,7 +77,7 @@ jobs:
           Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt" -OutFile "spaghetti-${{ matrix.config }}/gamecontrollerdb.txt"
       - name: Upload build
         if: matrix.config == 'Release'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: spaghetti-windows-${{ matrix.arch }}
           path: spaghetti-${{ matrix.config }}
@@ -89,7 +89,7 @@ jobs:
       matrix:
         config: [Release, Debug]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: true
@@ -101,7 +101,7 @@ jobs:
           cmake -H. -Bbuild-cmake -GNinja -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=${{ matrix.config }} -DENABLE_VCPKG=ON
           cmake --build build-cmake --config ${{ matrix.config }} -j3
       - name: Download spaghetti.o2r
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: spaghetti.o2r
           path: ./build-cmake
@@ -118,7 +118,7 @@ jobs:
           ditto -c -k --keepParent $APP spaghetti-${{ matrix.config }}/SpaghettiKart.app.zip
       - name: Publish packaged artifacts
         if: matrix.config == 'Release'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
             name: spaghetti-mac-arm64
             path: spaghetti-${{ matrix.config }}
@@ -130,7 +130,7 @@ jobs:
       matrix:
         config: [Release, Debug]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: true
@@ -142,7 +142,7 @@ jobs:
           cmake -H. -Bbuild-cmake -GNinja -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=${{ matrix.config }} -DENABLE_VCPKG=ON
           cmake --build build-cmake --config ${{ matrix.config }} -j3
       - name: Download spaghetti.o2r
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: spaghetti.o2r
           path: ./build-cmake
@@ -159,7 +159,7 @@ jobs:
           ditto -c -k --keepParent $APP spaghetti-${{ matrix.config }}/SpaghettiKart.app.zip
       - name: Publish packaged artifacts
         if: matrix.config == 'Release'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
             name: spaghetti-mac-intel-x64
             path: spaghetti-${{ matrix.config }}
@@ -171,7 +171,7 @@ jobs:
       matrix:
         config: [Release, Debug]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: true
@@ -181,14 +181,14 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get install gcc g++ git cmake ninja-build lsb-release libsdl2-dev libsdl2-net-dev libpng-dev libsdl2-net-dev libzip-dev zipcmp zipmerge ziptool nlohmann-json3-dev libtinyxml2-dev libspdlog-dev libboost-dev libopengl-dev libogg-dev libvorbis-dev
       - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.14
+        uses: hendrikmuhs/ccache-action@v1.2.24
         with:
           key: linux-ccache-${{ github.ref }}-${{ github.sha }}
           restore-keys: |
             linux-ccache-${{ github.ref }}
             linux-ccache-
       - name: Cache build folders
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           key: linux-build-${{ github.ref }}-${{ github.sha }}
           restore-keys: |
@@ -236,7 +236,7 @@ jobs:
           sudo make install
           sudo cp -av /usr/local/lib/libzip* /lib/x86_64-linux-gnu/
       - name: Download spaghetti.o2r
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: spaghetti.o2r
           path: ./build-cmake
@@ -256,7 +256,7 @@ jobs:
       matrix:
         config: [Release, Debug]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: true
@@ -266,14 +266,14 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get install gcc g++ git cmake ninja-build lsb-release libsdl2-dev libsdl2-net-dev libpng-dev libsdl2-net-dev libzip-dev zipcmp zipmerge ziptool nlohmann-json3-dev libtinyxml2-dev libspdlog-dev libboost-dev libopengl-dev libogg-dev libvorbis-dev
       - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.14
+        uses: hendrikmuhs/ccache-action@v1.2.24
         with:
           key: linux-old-ccache-${{ github.ref }}-${{ github.sha }}
           restore-keys: |
             linux-old-ccache-${{ github.ref }}
             linux-old-ccache-
       - name: Cache build folders
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           key: linux-old-build-${{ github.ref }}-${{ github.sha }}
           restore-keys: |
@@ -333,7 +333,7 @@ jobs:
           sudo make install
           sudo cp -av /usr/local/lib/libzip* /lib/x86_64-linux-gnu/
       - name: Download spaghetti.o2r
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: spaghetti.o2r
           path: ./build-cmake
@@ -349,7 +349,7 @@ jobs:
       matrix:
         config: [Release, Debug]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: true
@@ -375,17 +375,17 @@ jobs:
       matrix:
         config: [Release]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: true
           submodules: recursive
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Cache Docker layers
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: /tmp/.buildx-cache
           key: ${{ runner.os }}-buildx-${{ hashFiles('script/Dockerfile', 'vcpkg.json') }}
@@ -393,7 +393,7 @@ jobs:
             ${{ runner.os }}-buildx-
 
       - name: Build Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: ./script/Dockerfile
@@ -419,7 +419,7 @@ jobs:
         run: sudo chown -R $(id -u):$(id -g) build
 
       - name: Download spaghetti.o2r
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: spaghetti.o2r
           path: ./build
@@ -442,7 +442,7 @@ jobs:
           cp build/*.appimage spaghetti-${{ matrix.config }}/spaghetti.appimage 2>/dev/null || true
 
       - name: Publish packaged artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: spaghetti-linux-x64
           path: spaghetti-${{ matrix.config }}
@@ -460,17 +460,17 @@ jobs:
       matrix:
         config: [Release]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: true
           submodules: recursive
  
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Cache Docker layers
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: /tmp/.buildx-cache-x86
           key: ${{ runner.os }}-buildx-x86-${{ hashFiles('script/Dockerfile.x86', 'vcpkg.json') }}
@@ -478,7 +478,7 @@ jobs:
             ${{ runner.os }}-buildx-x86-
 
       - name: Build Docker image for x86
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: ./script/Dockerfile.x86
@@ -504,7 +504,7 @@ jobs:
         run: sudo chown -R $(id -u):$(id -g) build-x86
 
       - name: Download spaghetti.o2r
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: spaghetti.o2r
           path: ./build-x86
@@ -527,7 +527,7 @@ jobs:
           cp build-x86/*.appimage spaghetti-x86-${{ matrix.config }}/spaghetti.appimage
 
       - name: Publish packaged artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: spaghetti-linux-x86
           path: spaghetti-x86-${{ matrix.config }}
@@ -546,13 +546,13 @@ jobs:
     container:
       image: devkitpro/devkita64:20251117
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: true
           submodules: recursive
       - name: Download spaghetti.o2r
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: spaghetti.o2r
           path: .
@@ -582,7 +582,7 @@ jobs:
           mv build-switch/*.nro Spaghettify.nro
       - name: Upload build
         if: matrix.config == 'Release'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: Spaghettify-switch
           path: |
