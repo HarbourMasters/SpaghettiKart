@@ -232,6 +232,63 @@ cpack
 cmake --build build-cmake --target clean
 ```
 
+## Android
+
+### Requirements
+
+* Android SDK platform 36 and build-tools 36
+* NDK `30.0.15729638`
+* CMake `3.30.3` (from the SDK's `cmake` package)
+* JDK 17
+
+The Gradle project lives in `android/`. Point it at your SDK with an
+`android/local.properties` containing `sdk.dir=/path/to/Android/Sdk`, or export
+`ANDROID_HOME`.
+
+### The one thing that is not built by Gradle
+
+`spaghetti.o2r` holds the port's own assets (fonts, shaders, custom tracks) and
+is packed by the Torch _executable_, which the NDK build cannot produce because
+it has no host toolchain. Build it on your machine first and drop it into the
+APK assets:
+
+```bash
+cmake -S torch -B torch/build-host -G Ninja \
+  -DCMAKE_BUILD_TYPE=Release -DUSE_STANDALONE=ON \
+  -DBUILD_MK64=ON -DBUILD_NAUDIO=ON \
+  -DBUILD_SM64=OFF -DBUILD_SF64=OFF -DBUILD_FZERO=OFF -DBUILD_MARIO_ARTIST=OFF
+cmake --build torch/build-host --parallel
+torch/build-host/torch pack assets spaghetti.o2r o2r
+cp spaghetti.o2r android/app/src/main/assets/
+```
+
+The APK builds without it, but the app will stop at the launcher with a missing
+asset error. `mk64.o2r` is _not_ built here — Torch is also linked into the game
+library and generates it on the device from the user's ROM.
+
+### Build
+
+```bash
+cd android
+./gradlew assembleDebug     # app/build/outputs/apk/debug/app-debug.apk
+./gradlew assembleRelease   # needs KEYSTORE_FILE/KEYSTORE_PASSWORD/KEY_ALIAS/KEY_PASSWORD
+```
+
+Gradle stages `config.yml`, `yamls/` and `meta/` into the APK assets itself
+(`stageTorchAssets`); the launcher unpacks them, along with `spaghetti.o2r`,
+into `Android/data/com.izzy.kart/files` on first run. That directory is where
+the game reads and writes everything, including the `mods` folder.
+
+### Keeping the SDL glue in sync
+
+`android/app/src/main/java/org/libsdl/app` is an unmodified copy of the Java
+glue from the SDL release that libultraship pins, and `SDLActivity` aborts at
+startup if the two disagree on their version. Whenever that pin moves in
+`libultraship/cmake/dependencies/android.cmake`, re-copy the directory from
+`android-project/app/src/main/java/org/libsdl/app` in the matching SDL tag —
+no local edits to re-apply, the game library name is overridden in
+`MainActivity.kt`.
+
 ## Getting CI to work on your fork
 
 The CI works via [Github Actions](https://github.com/features/actions) where we mostly make use of machines hosted by Github; except for the very first step of the CI process called "Extract assets". This steps extracts assets from the game file and generates an "assets" folder in `mm/`.

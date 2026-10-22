@@ -5,8 +5,10 @@
 #include "port/Engine.h"
 #include "semver.hpp"
 #include "utils/StringHelper.h"
+#include <algorithm>
 #include <cstdlib>
 #include <memory>
+#include <vector>
 #include <optional>
 #include <string>
 
@@ -93,12 +95,21 @@ std::vector<std::string> ListMods() {
     }
 
     if (std::filesystem::exists(mods_path) && std::filesystem::is_directory(mods_path)) {
+        std::vector<std::string> modPaths;
         for (const auto& p : std::filesystem::directory_iterator(mods_path)) {
             auto ext = p.path().extension().string();
             if (StringHelper::IEquals(ext, ".zip") || StringHelper::IEquals(ext, ".o2r") || std::filesystem::is_directory(p.path())) {
-                archiveFiles.push_back(p.path().generic_string());
+                modPaths.push_back(p.path().generic_string());
             }
         }
+
+        // A later archive overrides an earlier one, so load order decides which
+        // mod wins. directory_iterator hands entries back in whatever order the
+        // filesystem stored them, which can differ between machines and even
+        // between runs after a mod is replaced. Sort by path so the order is
+        // reproducible, and so users can drive it by naming.
+        std::sort(modPaths.begin(), modPaths.end());
+        archiveFiles.insert(archiveFiles.end(), modPaths.begin(), modPaths.end());
     }
 
     return archiveFiles;
@@ -151,7 +162,9 @@ void SortModsByDependencies() {
     // Core assets that should always be loaded first (at the bottom of the priority stack)
     static const std::vector<std::string> coreAssets = { "mk64-assets", "extended-assets" };
 
-    std::sort(Mods.begin(), Mods.end(),
+    // Stable, so mods with no dependency relationship keep the order ListMods
+    // produced instead of being shuffled by the sort's internal pivoting.
+    std::stable_sort(Mods.begin(), Mods.end(),
               [](const std::tuple<ModMetadata, std::shared_ptr<Ship::Archive>>& a,
                  const std::tuple<ModMetadata, std::shared_ptr<Ship::Archive>>& b) {
                   const ModMetadata& metaA = std::get<0>(a);
