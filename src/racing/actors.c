@@ -977,10 +977,6 @@ void spawn_foliage(struct ActorSpawnData* actor) {
     rotation[1] = 0;
     rotation[2] = 0;
 
-    if (gGamestate == CREDITS_SEQUENCE) {
-        return;
-    }
-
     while (var_s3->pos[0] != END_OF_SPAWN_DATA) {
         position[0] = var_s3->pos[0] * gTrackDirection;
         position[2] = var_s3->pos[2];

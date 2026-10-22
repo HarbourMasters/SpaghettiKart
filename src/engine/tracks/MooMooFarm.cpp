@@ -130,7 +130,7 @@ void MooMooFarm::Load() {
 }
 
 void MooMooFarm::BeginPlay() {
-    if (gPlayerCountSelection1 != 4) {
+    if ((gPlayerCountSelection1 != 4) && (gGamestate != CREDITS_SEQUENCE)) {
         spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_moo_moo_farm_tree_spawn));
     }
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_moo_moo_farm_item_box_spawns));
