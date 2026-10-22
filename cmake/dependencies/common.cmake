@@ -8,11 +8,7 @@ file(
 target_include_directories(${PROJECT_NAME} PRIVATE ${SSE2NEON_DIR})
 
 # ================== SEMVER ===================
-set(SEMVER_DIR ${CMAKE_BINARY_DIR}/_deps/semver)
-file(
-  DOWNLOAD
-  "https://raw.githubusercontent.com/Neargye/semver/refs/tags/v1.0.0-rc/include/semver.hpp"
-  "${SEMVER_DIR}/semver.hpp")
+include(${CMAKE_CURRENT_LIST_DIR}/semver.cmake)
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${SEMVER_DIR})
 
