@@ -9,6 +9,7 @@
 #include <memory>
 #include <optional>
 #include <string>
+#include <spdlog/spdlog.h>
 
 #include "ModManager.h"
 
@@ -195,15 +196,14 @@ void AddModMetadata(const ModMetadata& metadata, const std::shared_ptr<Ship::Arc
 void AddCoreDependencies() {
     ModMetadata meta;
     meta.name = "spaghettikart-core";
-    semver::parse(SPAGHETTI_VERSION, meta.version);
+    if (!semver::parse(SPAGHETTI_VERSION, meta.version)) {
+        SPDLOG_WARN("Invalid core version '{}'; using {}", SPAGHETTI_VERSION, meta.version.to_string());
+    }
 
-    semver::range_set<int, int, int> mk64Ver;
-    semver::parse("1.0.0-alpha1", mk64Ver);
-    semver::range_set<int, int, int> assetsVer;
-    semver::parse("1.0.0-alpha1", assetsVer);
+    const auto assetsVer = semver::try_parse_range("1.0.0-alpha1").value();
     meta.dependencies = {
-        {"mk64-assets", {mk64Ver, "1.0.0-alpha1"}},
-        {"extended-assets", {assetsVer, "1.0.0-alpha1"}},
+        { "mk64-assets", { assetsVer, "1.0.0-alpha1" } },
+        { "extended-assets", { assetsVer, "1.0.0-alpha1" } },
     };
     AddModMetadata(meta, nullptr);
 }
@@ -240,7 +240,13 @@ void FindAndLoadMods() {
         ModMetadata metadata;
         auto mods_file = archive->LoadFile("mods.toml");
         if (mods_file != nullptr) {
-            metadata = ModMetadata::LoadFromTOML(std::string(mods_file->Buffer->data(), mods_file->Buffer->size()));
+            try {
+                metadata = ModMetadata::LoadFromTOML(std::string(mods_file->Buffer->data(), mods_file->Buffer->size()));
+            } catch (const std::runtime_error& err) {
+                SPDLOG_ERROR("Failed to parse mods.toml in {}: {}", path, err.what());
+                archive->Unload();
+                continue;
+            }
             SPDLOG_INFO("Loaded mod: {}\n{}", metadata.name, metadata.ToString());
         } else {
             const std::string msg = "The archive at path " + path +
@@ -250,7 +256,7 @@ void FindAndLoadMods() {
                 _Exit(1);
             }
             metadata.name = std::filesystem::path(path).stem().string();
-            semver::parse("0.0.0", metadata.version);
+            metadata.version = semver::version<>(0, 0, 0);
             SPDLOG_WARN("The mod at path {} is missing a mods.toml file. Using default metadata:\n{}", path, metadata.ToString());
         }
 

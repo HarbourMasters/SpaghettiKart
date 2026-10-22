@@ -67,7 +67,14 @@ Version requirements follow semantic versioning ranges:
 | `>=1.0.0` | Greater than or equal | Version 1.0.0 or higher |
 | `>=1.0.0 <2.0.0` | Range | Between 1.0.0 (inclusive) and 2.0.0 (exclusive) |
 | `>=1.0.0-alpha1` | With prerelease | Version 1.0.0-alpha1 or higher |
-see [Semantic Versioning](https://semver.org/) for more details.
+| `^1.2.3` | Compatible major version | At least 1.2.3 and below 2.0.0 |
+| `~1.2.3` | Compatible minor version | At least 1.2.3 and below 1.3.0 |
+| `1.2.*` | Wildcard | Any release in the 1.2 series |
+| `>=1.0.0 <2.0.0 \|\| >=3.0.0` | Alternative ranges | Either range may match |
+
+Ranges use [Neargye/semver v1.0.1 syntax](https://github.com/Neargye/semver/blob/v1.0.1/doc/reference.md#ranges).
+A prerelease only matches a branch that explicitly names a prerelease with the same major, minor and patch.
+Build metadata is accepted in a mod's version, but not in dependency range bounds.
 
 ## Core Dependencies
 
@@ -89,8 +96,9 @@ mk64-assets = "=1.0.0-alpha1"
 When SpaghettiKart loads mods, it performs the following validations:
 
 1. **Missing mods.toml**: A warning is shown if the file is missing. The mod may still load but is considered incompatible.
-2. **Cyclic dependencies**: If mod A depends on mod B and mod B depends on mod A, an error is shown.
-3. **Missing dependencies**: If a required dependency is not found or has an incompatible version, an error is shown.
+2. **Invalid metadata**: Invalid TOML, version strings and dependency ranges cause the mod to be skipped. The log identifies the archive or folder and the parsing error; invalid version strings and ranges include the field and original value. Trailing junk is rejected.
+3. **Cyclic dependencies**: If mod A depends on mod B and mod B depends on mod A, an error is shown.
+4. **Missing dependencies**: If a required dependency is not found or has an incompatible version, an error is shown.
 
 ## Load Order
 
