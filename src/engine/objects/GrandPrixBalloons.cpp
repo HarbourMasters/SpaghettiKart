@@ -1,4 +1,5 @@
 #include "GrandPrixBalloons.h"
+#include <macros.h>
 
 #include "port/Game.h"
 #include "assets/textures/other_textures.h"
@@ -50,7 +51,7 @@ void OGrandPrixBalloons::Tick() {
         return;
     }
     someCount = 0;
-    for (someIndex = 0; someIndex < _numBalloons; someIndex++) {
+    for (someIndex = 0; someIndex < (s32) _numBalloons; someIndex++) {
         objectIndex = gObjectParticle3[someIndex];
         if (objectIndex != DELETED_OBJECT_ID) {
             object = &gObjectList[objectIndex];
@@ -89,14 +90,14 @@ void OGrandPrixBalloons::Draw(s32 cameraId) {
     D_80183E80[0] = 0;
     D_80183E80[1] = 0x8000;
     rsp_load_texture((uint8_t*) gTextureBalloon1, 64, 32);
-    for (var_s1 = 0; var_s1 < _numBalloons; var_s1++) {
+    for (var_s1 = 0; var_s1 < (s32) _numBalloons; var_s1++) {
         objectIndex = gObjectParticle3[var_s1];
         if ((objectIndex != NULL_OBJECT_ID) && (gObjectList[objectIndex].state >= 2)) {
             OGrandPrixBalloons::func_80053D74(objectIndex, cameraId, 0, var_s1);
         }
     }
     rsp_load_texture((uint8_t*) gTextureBalloon2, 64, 32);
-    for (var_s1 = 0; var_s1 < _numBalloons; var_s1++) {
+    for (var_s1 = 0; var_s1 < (s32) _numBalloons; var_s1++) {
         objectIndex = gObjectParticle3[var_s1];
         if ((objectIndex != NULL_OBJECT_ID) && (gObjectList[objectIndex].state >= 2)) {
             OGrandPrixBalloons::func_80053D74(objectIndex, cameraId, 4, var_s1);
@@ -109,7 +110,7 @@ void OGrandPrixBalloons::func_80053D74(s32 objectIndex, s32 cameraId, s32 vertex
 
     Vtx* vtx = (Vtx*) LOAD_ASSET_RAW(common_vtx_hedgehog);
 
-    size_t i = 0;
+    UNUSED size_t i = 0;
     if (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX) {
         object = &gObjectList[objectIndex];
 

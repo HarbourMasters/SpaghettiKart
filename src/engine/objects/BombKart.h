@@ -41,8 +41,7 @@ class OBombKart : public OObject {
     u16 Unk_4A = 0;
     s16 Unk_4C = 1;
     f32 CenterY; // Center of the circle
-    struct Collision _Collision;
-
+    struct Collision BombCollision;
 
     // This is simply a helper function to keep Spawning code clean
     // Spawn object at a position
@@ -72,7 +71,7 @@ class OBombKart : public OObject {
     // Set waypoint to NULL if using a spawn position and not a waypoint.
     explicit OBombKart(const SpawnParams& params);
 
-    ~OBombKart() {
+    ~OBombKart() override {
         _count--;
     }
 
@@ -80,10 +79,10 @@ class OBombKart : public OObject {
         return _count;
     }
 
-    virtual void Tick() override;
-    virtual void Draw(s32 cameraId) override;
-    virtual void Translate(FVector pos) override;
-    virtual void DrawEditorProperties() override;
+    void Tick() override;
+    void Draw(s32 cameraId) override;
+    void Translate(FVector pos) override;
+    void DrawEditorProperties() override;
     void DrawBattle(s32 cameraId);
     void func_800563DC(s32 cameraId, s32 arg2);
     void func_800562E4(s32 cameraId, s32 arg0, s32 arg1, s32 arg2, s32 id);

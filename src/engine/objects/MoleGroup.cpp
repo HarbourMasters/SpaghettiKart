@@ -14,7 +14,6 @@ OMoleGroup::OMoleGroup(std::vector<FVector>& spawns, size_t tickRate) {
     _idx = _count;
     _tickRate = tickRate;
     for (auto& pos : spawns) {
-        pos.x * xOrientation;
         OMole* ptr = reinterpret_cast<OMole*>(GetWorld()->AddObject(std::make_unique<OMole>(pos, this)));
         _moles.push_back({ptr, pos, false});
     }
@@ -58,7 +57,7 @@ void OMoleGroup::func_80081FF4(s32 objectIndex) {
     for (size_t i = 0; i < _moles.size(); i++) {
         if (_moles[mole].Active == true) {
             mole++;
-            if (mole == _moles.size()) {
+            if ((size_t) mole == _moles.size()) {
                 mole = 0;
             }
         } else { // if not active

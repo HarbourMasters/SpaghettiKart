@@ -11,9 +11,9 @@ class LightObject : public GameObject {
 public:
     LightObject(const char* name, FVector* pos, s8* direction);
 
-    virtual void Draw() override;
-    virtual void Tick() override;
-    virtual void Load() override;
+    void Draw() override;
+    void Tick() override;
+    void Load() override;
 
     static size_t NumLights;
     s8* Direction;

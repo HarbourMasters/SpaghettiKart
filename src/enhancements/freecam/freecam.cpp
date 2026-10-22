@@ -3,7 +3,6 @@
 #include "port/Engine.h"
 #include "port/Game.h"
 #include <ship/controller/controldevice/controller/mapping/keyboard/KeyboardScancodes.h>
-#include <ship/window/Window.h>
 #include "port/interpolation/FrameInterpolation.h"
 #include "engine/Matrix.h"
 
@@ -69,11 +68,11 @@ u32 bFreecamUseController = false;
  */
 
 // This function is no longer used because FreeCamera.cpp
-void freecam(Camera* camera, Player* player, s8 index) {
-    f32 dirX;
-    f32 dirY;
-    f32 dirZ;
-    f32 length;
+void freecam(Camera* camera, Player* player, UNUSED s8 index) {
+    UNUSED f32 dirX;
+    UNUSED f32 dirY;
+    UNUSED f32 dirZ;
+    UNUSED f32 length;
     static bool enabled = false; // Tracks previous activation state
     bool freecamEnabled = CVarGetInteger("gFreecam", 0);
 
@@ -138,7 +137,7 @@ void freecam_loop(Camera* camera) {
     //}
 }
 
-void freecam_mouse_manager(Camera* camera, Vec3f forwardVector) {
+void freecam_mouse_manager(UNUSED Camera* camera, UNUSED Vec3f forwardVector) {
     auto wnd = GameEngine::Instance->context->GetWindow();
     Ship::Coords mouse = wnd->GetMouseDelta();
     wnd->SetMouseCapture(false);
@@ -180,7 +179,7 @@ f32 gFreecamSpeedMultiplier = 2.0f;
 bool prevPrev = false;
 
 #define MAX_KEYS 256
-static bool prevKeyState[MAX_KEYS] = { false };
+UNUSED static bool prevKeyState[MAX_KEYS] = { false };
 
 // KeyDown function
 bool FreecamKeyDown(int virtualKey) {
@@ -227,7 +226,7 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
     //     fTargetPlayer = false;
     // }
     bool TargetNextPlayer = false, TargetPreviousPlayer = false;
-    bool prevNext;
+    UNUSED bool prevNext;
     bool Forward = false, PanLeft = false, Backward = false, PanRight = false;
     bool Up = false, Down = false;
     bool FastMove = false;

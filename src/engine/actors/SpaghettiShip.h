@@ -15,7 +15,7 @@ extern "C" {
 class ASpaghettiShip : public AActor {
 public:
     explicit ASpaghettiShip(const SpawnParams& params);
-    virtual ~ASpaghettiShip() = default;
+    ~ASpaghettiShip() override = default;
 
     // This is simply a helper function to keep Spawning code clean
     static inline ASpaghettiShip* Spawn(FVector pos, IRotator rot, FVector scale) {
@@ -28,9 +28,9 @@ public:
         return static_cast<ASpaghettiShip*>(AddActorToWorld<ASpaghettiShip>(params));
     }
 
-    virtual void Tick() override;
-    virtual void Draw(Camera*) override;
-    virtual bool IsMod() override;
+    void Tick() override;
+    void Draw(Camera*) override;
+    bool IsMod() override;
 
     IRotator WheelRot = {0, 0, 0};
 };

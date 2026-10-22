@@ -18,6 +18,7 @@ extern "C" {
 class TrainCrossing {
 public:
     TrainCrossing(Vec3f position, u32 waypointMin, u32 waypointMax, f32 approachRadius, f32 exitRadius);
+    virtual ~TrainCrossing() = default;
 
     Vec3f Position;
     s32 OnTriggered = 0;

@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <macros.h>
 #include <libultra/gbi.h>
 #include "engine/CoreMath.h"
 #include <vector>
@@ -179,15 +180,17 @@ void YoshiValley::InitTrackObjects() {
 void YoshiValley::TickTrackObjects() {
 }
 
-void YoshiValley::DrawTrackObjects(s32 cameraId) {
+void YoshiValley::DrawTrackObjects(UNUSED s32 cameraId) {
 }
 
 void YoshiValley::SomeSounds() {
 }
 
-void YoshiValley::WhatDoesThisDo(Player* player, int8_t playerId) {}
+void YoshiValley::WhatDoesThisDo(UNUSED Player* player, UNUSED int8_t playerId) {
+}
 
-void YoshiValley::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
+void YoshiValley::WhatDoesThisDoAI(UNUSED Player* player, UNUSED int8_t playerId) {
+}
 
 void YoshiValley::Draw(ScreenContext* arg0) {
     gDPPipeSync(gDisplayListHead++);

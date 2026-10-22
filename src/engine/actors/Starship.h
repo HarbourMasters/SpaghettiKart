@@ -15,7 +15,7 @@ extern "C" {
 class AStarship : public AActor {
 public:
     explicit AStarship(const SpawnParams& params);
-    virtual ~AStarship() = default;
+    ~AStarship() override = default;
 
     // This is simply a helper function to keep Spawning code clean
     static AStarship* Spawn(FVector pos, IRotator rot, FVector scale, f32 speed, f32 radius) {
@@ -32,9 +32,9 @@ public:
 
     float SpeedB;
 
-    virtual void SetSpawnParams(SpawnParams& params) override;
-    virtual void Tick() override;
-    virtual bool IsMod() override;
-    virtual void BeginPlay() override;
-    virtual void DrawEditorProperties() override;
+    void SetSpawnParams(SpawnParams& params) override;
+    void Tick() override;
+    bool IsMod() override;
+    void BeginPlay() override;
+    void DrawEditorProperties() override;
 };

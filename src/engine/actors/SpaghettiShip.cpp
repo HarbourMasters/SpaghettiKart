@@ -1,4 +1,5 @@
 #include "SpaghettiShip.h"
+#include <macros.h>
 
 #include <libultra/gbi.h>
 #include "engine/Matrix.h"
@@ -46,13 +47,13 @@ void ASpaghettiShip::Tick() {
     WheelRot.pitch += 500;
 }
 
-void ASpaghettiShip::Draw(Camera *camera) {
+void ASpaghettiShip::Draw(UNUSED Camera* camera) {
     Mat4 shipMtx;
     Mat4 objectMtx;
     Mat4 resultMtx;
-    Vec3f hullPos = {Pos[0], Pos[1], Pos[2]};
-    Vec3s hullRot = {Rot[0], Rot[1], Rot[2]};
-    Vec3s rot = {(s16) WheelRot.pitch, (s16) WheelRot.yaw, (s16) WheelRot.roll};
+    UNUSED Vec3f hullPos = { Pos[0], Pos[1], Pos[2] };
+    UNUSED Vec3s hullRot = { Rot[0], Rot[1], Rot[2] };
+    UNUSED Vec3s rot = { (s16) WheelRot.pitch, (s16) WheelRot.yaw, (s16) WheelRot.roll };
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);

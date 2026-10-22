@@ -10,11 +10,11 @@ public:
 
     // Constructor
     ABanana(const SpawnParams& params);
-    virtual ~ABanana() override = default;
+    ~ABanana() override = default;
 
     // Virtual functions to be overridden by derived classes
-    virtual void Tick() override;
-    virtual void Draw(Camera*) override;
-    virtual void Collision(Player*, AActor*) override;
-    virtual void Destroy() override;
+    void Tick() override;
+    void Draw(Camera*) override;
+    void Collision(Player*, AActor*) override;
+    void Destroy() override;
 };

@@ -8,8 +8,9 @@ namespace TrackEditor {
 class SceneExplorerWindow : public Ship::GuiWindow {
 public:
     using Ship::GuiWindow::GuiWindow;
-    ~SceneExplorerWindow();
-protected:
+    ~SceneExplorerWindow() override;
+
+  protected:
     void InitElement() override {};
     void DrawElement() override;
     void UpdateElement() override {};

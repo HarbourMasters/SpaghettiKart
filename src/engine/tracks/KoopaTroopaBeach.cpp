@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <macros.h>
 #include <libultra/gbi.h>
 #include "../CoreMath.h"
 #include <vector>
@@ -134,10 +135,10 @@ void KoopaTroopaBeach::Load() {
 
     parse_track_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_addr));
     func_80295C6C();
-    find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_ADE0, 150, 255, 255, 255);
-    find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_A540, 150, 255, 255, 255);
-    find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_9E70, 150, 255, 255, 255);
-    find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_358, 150, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_ADE0, (s8) 150, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_A540, (s8) 150, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_9E70, (s8) 150, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_358, (s8) 150, 255, 255, 255);
 }
 
 void KoopaTroopaBeach::BeginPlay() {
@@ -195,7 +196,7 @@ void KoopaTroopaBeach::TickTrackObjects() {
     }
 }
 
-void KoopaTroopaBeach::DrawTrackObjects(s32 cameraId) {
+void KoopaTroopaBeach::DrawTrackObjects(UNUSED s32 cameraId) {
     if (gGamestate != CREDITS_SEQUENCE) {
         //render_object_crabs(cameraId);
     }
@@ -214,9 +215,11 @@ void KoopaTroopaBeach::SomeSounds() {
     func_800C9D80(D_8015F738, D_802B91C8, 0x51028001);
 }
 
-void KoopaTroopaBeach::WhatDoesThisDo(Player* player, int8_t playerId) {}
+void KoopaTroopaBeach::WhatDoesThisDo(UNUSED Player* player, UNUSED int8_t playerId) {
+}
 
-void KoopaTroopaBeach::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
+void KoopaTroopaBeach::WhatDoesThisDoAI(UNUSED Player* player, UNUSED int8_t playerId) {
+}
 
 void KoopaTroopaBeach::Draw(ScreenContext* arg0) {
     gDPPipeSync(gDisplayListHead++);
@@ -287,7 +290,8 @@ void KoopaTroopaBeach::Tick() {
     find_and_set_tile_size((uintptr_t) d_course_koopa_troopa_beach_packed_dl_2E8, D_802B87C8, D_802B87CC);
 }
 
-void KoopaTroopaBeach::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+void KoopaTroopaBeach::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, UNUSED uint16_t cameraRot,
+                                        UNUSED uint16_t playerDirection) {
     Mat4 matrix;
     Vec3f vector;
 

@@ -1,4 +1,5 @@
 #include "UIWidgets.h"
+#include <macros.h>
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include <imgui_internal.h>
 #include <sstream>
@@ -27,7 +28,7 @@ std::string WrappedText(const char* text, unsigned int charactersPerLine) {
             lastSpace = currentCharacter;
         }
 
-        if ((currentLineLength >= charactersPerLine) && (lastSpace >= 0)) {
+        if ((currentLineLength >= (int) charactersPerLine) && (lastSpace >= 0)) {
             newText[lastSpace] = '\n';
             currentLineLength = currentCharacter - lastSpace - 1;
             lastSpace = -1;
@@ -412,7 +413,7 @@ bool CVarSliderInt(const char* label, const char* cvarName, const IntSliderOptio
 
 void ClampFloat(float* value, float min, float max, float step) {
     int ticks = 0;
-    float increment = 1.0f;
+    UNUSED float increment = 1.0f;
     if (step < 1.0f) {
         ticks++;
         increment = 0.1f;

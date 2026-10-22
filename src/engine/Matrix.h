@@ -1,5 +1,5 @@
-#ifndef _MATRIX_HEADER_
-#define _MATRIX_HEADER_
+#ifndef MATRIX_HEADER_H
+#define MATRIX_HEADER_H
 
 #include <libultraship.h>
 
@@ -36,4 +36,4 @@ void AddKartMatrix(Mat4 mtx, s32 flags);
 }
 #endif
 
-#endif // _MATRIX_HEADER_
+#endif // MATRIX_HEADER_H

@@ -20,10 +20,10 @@ class BigDonut : public Track {
 public:
     explicit BigDonut();
 
-    virtual void Load() override;
-    virtual void BeginPlay() override;
-    virtual void Draw(ScreenContext*) override;
-    virtual void DrawCredits() override;    
-    virtual void Waypoints(Player* player, int8_t playerId) override;
-    virtual void Destroy() override;
+    void Load() override;
+    void BeginPlay() override;
+    void Draw(ScreenContext*) override;
+    void DrawCredits() override;
+    void Waypoints(Player* player, int8_t playerId) override;
+    void Destroy() override;
 };

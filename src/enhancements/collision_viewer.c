@@ -322,9 +322,9 @@ void render_collision(void) {
                     break;
             }
         }
-        gSPVertex(gDisplayListHead++, gCollisionMesh[i].vtx1, 1, 0);
-        gSPVertex(gDisplayListHead++, gCollisionMesh[i].vtx2, 1, 1);
-        gSPVertex(gDisplayListHead++, gCollisionMesh[i].vtx3, 1, 2);
+        gSPVertex(gDisplayListHead++, (uintptr_t) gCollisionMesh[i].vtx1, 1, 0);
+        gSPVertex(gDisplayListHead++, (uintptr_t) gCollisionMesh[i].vtx2, 1, 1);
+        gSPVertex(gDisplayListHead++, (uintptr_t) gCollisionMesh[i].vtx3, 1, 2);
 
         // Draw tri
         gSP1Triangle(gDisplayListHead++, 0, 1, 2, 0);

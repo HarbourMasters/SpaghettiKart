@@ -5,7 +5,6 @@
 #include "engine/Actor.h"
 #include "engine/CoreMath.h"
 #include "engine/SpawnParams.h"
-#include "engine/CoreMath.h"
 
 // Falls from the sky bouncing off of geography until it goes through water.
 // Then after a brief period of time, respawns.
@@ -13,7 +12,7 @@ class AFallingRock : public AActor {
 public:
 
     explicit AFallingRock(SpawnParams params);
-    ~AFallingRock() {
+    ~AFallingRock() override {
         _count -= 1;
     };
 
@@ -30,11 +29,11 @@ public:
 
     int16_t TimerLength = 80;
 
-    virtual void SetSpawnParams(SpawnParams& params) override;
-    virtual bool IsMod() override;
-    virtual void Tick() override;
-    virtual void Draw(Camera*) override;
-    virtual void DrawEditorProperties() override;
+    void SetSpawnParams(SpawnParams& params) override;
+    bool IsMod() override;
+    void Tick() override;
+    void Draw(Camera*) override;
+    void DrawEditorProperties() override;
     void Reset();
 
 private:

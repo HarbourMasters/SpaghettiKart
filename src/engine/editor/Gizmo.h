@@ -83,6 +83,6 @@ public:
     FVector _ray;
     std::variant<AActor*, OObject*, GameObject*> _selected;
     private:
-    bool _draw = false;
+      [[maybe_unused]] bool _draw = false;
 };
 }

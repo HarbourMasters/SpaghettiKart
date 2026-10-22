@@ -28,8 +28,8 @@ class Animation : public Ship::Resource<AnimationData> {
     Animation() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {
     }
 
-    AnimationData* GetPointer();
-    size_t GetPointerSize();
+    AnimationData* GetPointer() override;
+    size_t GetPointerSize() override;
 
     AnimationData mData;
 

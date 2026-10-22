@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <macros.h>
 #include <typeinfo>
 
 #include "Game.h"
@@ -257,7 +258,7 @@ void CM_DisplayBattleBombKart(s32 playerId, s32 primAlpha) {
 }
 
 void CM_DrawBattleBombKarts(s32 cameraId) {
-    for (size_t i = 0; i < gPlayerCount; i++) {
+    for (size_t i = 0; i < (size_t) gPlayerCount; i++) {
         GetWorld()->mPlayerBombKart[i].Draw(i, cameraId);
     }
 }
@@ -396,7 +397,8 @@ void CM_BeginPlay() {
 Camera* CM_GetPlayerCamera(s32 playerIndex) {
     for (auto& cam : GetWorld()->Cameras) {
         // Make sure this is a player camera and not a different type of camera
-        if (typeid(*cam) == typeid(GameCamera)) {
+        auto& camRef = *cam;
+        if (typeid(camRef) == typeid(GameCamera)) {
             Camera* camera = cam->Get();
             if (camera->playerId == playerIndex) {
                 return camera;
@@ -675,7 +677,7 @@ void CM_SpawnStarterLakitu() {
         return;
     }
 
-    for (size_t i = 0; i < gPlayerCountSelection1; i++) {
+    for (size_t i = 0; i < (size_t) gPlayerCountSelection1; i++) {
         // Retry does not respawn actors, therefore, re-use lakitu.
         if (auto it = GetWorld()->Lakitus.find(i); it != GetWorld()->Lakitus.end()) {
             if (it->second) {
@@ -1027,7 +1029,7 @@ int SDL_main(int argc, char** argv) {
 extern "C"
 #endif
     int
-    main(int argc, char* argv[]) {
+    main(UNUSED int argc, UNUSED char* argv[]) {
 #endif
 #ifdef _WIN32
     // Allow non-ascii characters for Windows

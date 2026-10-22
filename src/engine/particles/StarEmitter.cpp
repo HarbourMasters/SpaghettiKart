@@ -1,6 +1,7 @@
 
 
 #include "StarEmitter.h"
+#include <macros.h>
 #include "port/interpolation/FrameInterpolation.h"
 
 extern "C" {

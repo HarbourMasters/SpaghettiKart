@@ -22,11 +22,11 @@ public:
      * The mole must also be ready to jump to be considered.
      */
     explicit OMoleGroup(std::vector<FVector>& moles, size_t tickRate);
-    ~OMoleGroup() {
+    ~OMoleGroup() override {
         _count--;
     }
 
-    virtual void Tick() override;
+    void Tick() override;
 
     void func_80081FF4(s32 objectIndex);
 

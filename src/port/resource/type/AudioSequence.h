@@ -21,8 +21,8 @@ class AudioSequence : public Ship::Resource<AudioSequenceData> {
 
     AudioSequence() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
 
-    AudioSequenceData* GetPointer();
-    size_t GetPointerSize();
+    AudioSequenceData* GetPointer() override;
+    size_t GetPointerSize() override;
 
     AudioSequenceData mData;
     std::vector<uint8_t> banks;

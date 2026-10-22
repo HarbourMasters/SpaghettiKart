@@ -7,10 +7,9 @@
 
 class AWarioSign : public AActor {
 public:
-
-    virtual ~AWarioSign() {
-        _count -= 1;
-    };
+  ~AWarioSign() override {
+      _count -= 1;
+  };
     explicit AWarioSign(const SpawnParams& params);
 
     // This is simply a helper function to keep Spawning code clean
@@ -26,10 +25,11 @@ public:
         return dynamic_cast<AWarioSign*>(AddActorToWorld<AWarioSign>(params));
     }
 
-    virtual bool IsMod() override;
-    virtual void Tick() override;
-    virtual void Draw(Camera*) override;
-private:
+    bool IsMod() override;
+    void Tick() override;
+    void Draw(Camera*) override;
+
+  private:
     static size_t _count;
     size_t _idx;
 };

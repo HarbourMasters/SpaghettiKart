@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <macros.h>
 #include <libultra/gbi.h>
 #include <vector>
 #include <memory>
@@ -134,11 +135,13 @@ void DoubleDeck::InitTrackObjects() {}
 
 void DoubleDeck::SomeSounds() {}
 
-void DoubleDeck::WhatDoesThisDo(Player* player, int8_t playerId) {}
+void DoubleDeck::WhatDoesThisDo(UNUSED Player* player, UNUSED int8_t playerId) {
+}
 
-void DoubleDeck::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
+void DoubleDeck::WhatDoesThisDoAI(UNUSED Player* player, UNUSED int8_t playerId) {
+}
 
-void DoubleDeck::Draw(ScreenContext* arg0) {
+void DoubleDeck::Draw(UNUSED ScreenContext* arg0) {
     set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -151,7 +154,7 @@ void DoubleDeck::Draw(ScreenContext* arg0) {
 
 void DoubleDeck::DrawCredits() {}
 
-void DoubleDeck::Waypoints(Player* player, int8_t playerId) {
+void DoubleDeck::Waypoints(Player* player, UNUSED int8_t playerId) {
     player->nearestPathPointId = 0;
 }
 

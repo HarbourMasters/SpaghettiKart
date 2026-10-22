@@ -11,8 +11,9 @@ class TrackPropertiesWindow : public Ship::GuiWindow {
 public:
     using Ship::GuiWindow::GuiWindow;
 
-    ~TrackPropertiesWindow();
-protected:
+    ~TrackPropertiesWindow() override;
+
+  protected:
     void InitElement() override {};
     void DrawElement() override;
     void DrawResourceNameEdit();

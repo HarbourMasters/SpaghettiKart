@@ -25,8 +25,7 @@ public:
     explicit OChainChomp();
     explicit OChainChomp(const SpawnParams& params);
 
-
-    ~OChainChomp() {
+    ~OChainChomp() override {
         _count--;
     }
 
@@ -34,8 +33,8 @@ public:
         return _count;
     }
 
-    virtual void Tick() override;
-    virtual void Draw(s32 cameraId) override;
+    void Tick() override;
+    void Draw(s32 cameraId) override;
     void func_80055AB8(s32 objectIndex, s32 cameraId);
 
     void func_80085878(s32 objectIndex, s32 arg1);

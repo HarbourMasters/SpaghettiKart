@@ -1,4 +1,5 @@
 #include "Podium.h"
+#include <macros.h>
 #include "assets/models/ceremony_data.h"
 
 extern "C" {
@@ -13,7 +14,6 @@ extern "C" {
 #include "assets/models/common_data.h"
 #include "textures/some_data.h"
 #include "code_80091440.h"
-#include "code_80086E70.h"
 #include "code_80086E70.h"
 extern Vec3s D_800E634C[];
 }
@@ -66,30 +66,30 @@ void OPodium::Tick() { // func_80086604
     }
 }
 
-void OPodium::Draw(s32 cameraId) { // func_80055F48
-        Object* object = &gObjectList[_podium1Index];
-        if (object->state >= 2) {
-            //func_80043220(object->pos, object->direction_angle, object->sizeScaling, object->model);
-            rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
-            gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D0077A0);
-            gSPDisplayList(gDisplayListHead++, object->model);
-        }
+void OPodium::Draw(UNUSED s32 cameraId) { // func_80055F48
+    Object* object = &gObjectList[_podium1Index];
+    if (object->state >= 2) {
+        // func_80043220(object->pos, object->direction_angle, object->sizeScaling, object->model);
+        rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
+        gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D0077A0);
+        gSPDisplayList(gDisplayListHead++, object->model);
+    }
 
-        object = &gObjectList[_podium2Index];
-        if (object->state >= 2) {
-            //func_80043220(object->pos, object->direction_angle, object->sizeScaling, object->model);
-            rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
-            gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D0077A0);
-            gSPDisplayList(gDisplayListHead++, object->model);
-        }
+    object = &gObjectList[_podium2Index];
+    if (object->state >= 2) {
+        // func_80043220(object->pos, object->direction_angle, object->sizeScaling, object->model);
+        rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
+        gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D0077A0);
+        gSPDisplayList(gDisplayListHead++, object->model);
+    }
 
-        object = &gObjectList[_podium3Index];
-        if (object->state >= 2) {
-            //func_80043220(object->pos, object->direction_angle, object->sizeScaling, object->model);
-            rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
-            gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D0077A0);
-            gSPDisplayList(gDisplayListHead++, object->model);
-        }
+    object = &gObjectList[_podium3Index];
+    if (object->state >= 2) {
+        // func_80043220(object->pos, object->direction_angle, object->sizeScaling, object->model);
+        rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
+        gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D0077A0);
+        gSPDisplayList(gDisplayListHead++, object->model);
+    }
 }
 
 void OPodium::func_8008629C(s32 objectIndex, s32 arg1) {

@@ -37,15 +37,15 @@ public:
 
 public:
     explicit OLakitu(s32 playerId, LakituType type);
-    ~OLakitu() {
+    ~OLakitu() override {
         _count -= 1;
     }
 
     void Activate(LakituType type); // Triggers Lakitu into a behaviour
 
-    virtual void Tick() override;
-    virtual void Tick60fps() override;
-    virtual void Draw(s32 playerId) override;
+    void Tick() override;
+    void Tick60fps() override;
+    void Draw(s32 playerId) override;
 
     void func_80078F64();
     void func_80079054(s32 playerId);

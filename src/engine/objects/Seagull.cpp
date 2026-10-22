@@ -40,9 +40,9 @@ OSeagull::OSeagull(const SpawnParams& params) : OObject(params) {
     _idx = _count;
     FVector pos = params.Location.value_or(FVector(0, 0, 0));
 
-    s16 randZ;
-    s16 randX;
-    s16 randY;
+    UNUSED s16 randZ;
+    UNUSED s16 randX;
+    UNUSED s16 randY;
     randX = random_int(200) + -100.0;
     randY = random_int(20);
     randZ = random_int(200) + -100.0;

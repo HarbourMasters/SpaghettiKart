@@ -1,4 +1,5 @@
 #include <filesystem>
+#include <macros.h>
 #include <fstream>
 #if __has_include(<fmt/format.h>)
 #include <fmt/format.h>
@@ -97,7 +98,7 @@ bool Pfs_PakHeader_Read(u32* file_size, u32* game_code, u16* company_code, char*
     return true;
 }
 
-extern "C" s32 osPfsIsPlug(OSMesgQueue* queue, u8* pattern) {
+extern "C" s32 osPfsIsPlug(UNUSED OSMesgQueue* queue, u8* pattern) {
     *pattern = 1;
     return PFS_NO_ERROR;
 }
@@ -124,7 +125,7 @@ extern "C" s32 osPfsInit(OSMesgQueue* queue, OSPfs* pfs, int channel) {
     return PFS_NO_ERROR;
 }
 
-extern "C" s32 osPfsFreeBlocks(OSPfs* pfs, s32* bytes_not_used) {
+extern "C" s32 osPfsFreeBlocks(UNUSED OSPfs* pfs, s32* bytes_not_used) {
     ControllerPak pak;
     std::string header_file = Pfs_PakHeader_GetPath();
 
@@ -160,7 +161,7 @@ extern "C" s32 osPfsFreeBlocks(OSPfs* pfs, s32* bytes_not_used) {
     return PFS_NO_ERROR;
 }
 
-extern "C" s32 osPfsAllocateFile(OSPfs* pfs, u16 company_code, u32 game_code, u8* game_name, u8* ext_name,
+extern "C" s32 osPfsAllocateFile(UNUSED OSPfs* pfs, u16 company_code, u32 game_code, u8* game_name, u8* ext_name,
                                  int file_size_in_bytes, s32* file_no) {
 
     if ((company_code == 0) || (game_code == 0)) {
@@ -207,7 +208,7 @@ extern "C" s32 osPfsAllocateFile(OSPfs* pfs, u16 company_code, u32 game_code, u8
     file_size_in_bytes = (file_size_in_bytes + 31) & ~31;
 
     char* zero_block = (char*) malloc(file_size_in_bytes);
-    for (size_t i = 0; i < file_size_in_bytes; i++) {
+    for (size_t i = 0; i < (size_t) file_size_in_bytes; i++) {
         zero_block[i] = 0;
     }
 
@@ -221,7 +222,7 @@ extern "C" s32 osPfsAllocateFile(OSPfs* pfs, u16 company_code, u32 game_code, u8
     return PFS_NO_ERROR;
 }
 
-extern "C" s32 osPfsFileState(OSPfs* pfs, s32 file_no, OSPfsState* state) {
+extern "C" s32 osPfsFileState(UNUSED OSPfs* pfs, s32 file_no, OSPfsState* state) {
     u32 file_size = 0;
     u32 game_code = 0;
     u16 company_code = 0;
@@ -259,9 +260,8 @@ extern "C" s32 osPfsFileState(OSPfs* pfs, s32 file_no, OSPfsState* state) {
     return PFS_NO_ERROR;
 }
 
-extern "C" s32 osPfsFindFile(OSPfs* pfs, u16 company_code, u32 game_code, u8* game_name, u8* ext_name, s32* file_no) {
-    ControllerPak pak;
-
+extern "C" s32 osPfsFindFile(UNUSED OSPfs* pfs, u16 company_code, u32 game_code, u8* game_name, u8* ext_name,
+                             s32* file_no) {
     for (size_t i = 0; i < MAX_FILES; i++) {
         u32 file_size_ = 0;
         u32 game_code_ = 0;
@@ -290,7 +290,8 @@ extern "C" s32 osPfsFindFile(OSPfs* pfs, u16 company_code, u32 game_code, u8* ga
     return PFS_ERR_INVALID;
 }
 
-extern "C" s32 osPfsReadWriteFile(OSPfs* pfs, s32 file_no, u8 flag, int offset, int size_in_bytes, u8* data_buffer) {
+extern "C" s32 osPfsReadWriteFile(UNUSED OSPfs* pfs, s32 file_no, u8 flag, int offset, int size_in_bytes,
+                                  u8* data_buffer) {
     ControllerPak pak;
     std::string filename = Pfs_PakFile_GetPath(file_no);
 
@@ -313,7 +314,7 @@ extern "C" s32 osPfsReadWriteFile(OSPfs* pfs, s32 file_no, u8 flag, int offset, 
     return PFS_NO_ERROR;
 }
 
-extern "C" s32 osPfsNumFiles(OSPfs* pfs, s32* max_files, s32* files_used) {
+extern "C" s32 osPfsNumFiles(UNUSED OSPfs* pfs, s32* max_files, s32* files_used) {
     u8 files = 0;
     for (size_t i = 0; i < MAX_FILES; i++) {
         u32 file_size = 0;
@@ -337,7 +338,7 @@ extern "C" s32 osPfsNumFiles(OSPfs* pfs, s32* max_files, s32* files_used) {
     return PFS_NO_ERROR;
 }
 
-extern "C" s32 osPfsDeleteFile(OSPfs* pfs, u16 company_code, u32 game_code, u8* game_name, u8* ext_name) {
+extern "C" s32 osPfsDeleteFile(UNUSED OSPfs* pfs, u16 company_code, u32 game_code, u8* game_name, u8* ext_name) {
     if (company_code == 0 || game_code == 0) {
         return PFS_ERR_INVALID;
     }

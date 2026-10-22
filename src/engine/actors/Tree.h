@@ -23,13 +23,13 @@ public:
     f32 BoundingBoxSize = 3.0f;
     f32 Unk_08 = 20.0f;
 
-    virtual ~ATree() = default;
+    ~ATree() override = default;
 
     // Set tlut to NULL if not using a tlut
     explicit ATree(Vec3f pos, Gfx* displaylist, f32 drawDistance, f32 minDrawDistance, const char* tlut);
 
-    virtual void Tick() override;
-    virtual void Draw(Camera* camera) override;
-    virtual void Collision(Player*, AActor*) override;
-    virtual void Destroy() override;
+    void Tick() override;
+    void Draw(Camera* camera) override;
+    void Collision(Player*, AActor*) override;
+    void Destroy() override;
 };

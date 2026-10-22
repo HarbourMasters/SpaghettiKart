@@ -501,10 +501,10 @@ void GameEngine::HandleAudioThread() {
         s16 mix_buffer[SAMPLES_PER_FRAME] = { 0 };
 
         for (size_t i = 0; i < NUM_AUDIO_CHANNELS; i++) {
-            create_next_audio_buffer(nas_buffer + i * (num_audio_samples * 2), num_audio_samples);
+            create_next_audio_buffer(nas_buffer + i * ((size_t) num_audio_samples * 2), num_audio_samples);
         }
 
-        GameEngine::Instance->gHMAS->CreateBuffer((u8*)hmas_buffer, 4 * num_audio_samples * sizeof(float));
+        GameEngine::Instance->gHMAS->CreateBuffer((u8*) hmas_buffer, 4 * (size_t) num_audio_samples * sizeof(float));
 
         float master_vol = CVarGetFloat("gGameMasterVolume", 1.0f);
 
@@ -512,7 +512,7 @@ void GameEngine::HandleAudioThread() {
             mix_buffer[i] = nas_buffer[i] + ((int16_t)(hmas_buffer[i] * 32767.0f) * master_vol);
         }
 
-        AudioPlayerPlayFrame((u8*) mix_buffer, 2 * num_audio_samples * 4);
+        AudioPlayerPlayFrame((u8*) mix_buffer, 2 * (size_t) num_audio_samples * 4);
 
         audio.processing = false;
         audio.cv_from_thread.notify_one();

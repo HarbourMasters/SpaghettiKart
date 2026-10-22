@@ -73,7 +73,7 @@ void ACloud::Tick() {
     }
 }
 
-void ACloud::Draw(Camera* camera) {
+void ACloud::Draw(UNUSED Camera* camera) {
     Mat4 mtx;
 
     if (PickedUp) {

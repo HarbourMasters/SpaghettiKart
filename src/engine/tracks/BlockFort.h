@@ -23,8 +23,8 @@ public:
 
 //    virtual void Load(const char* courseVtx, 
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
-    virtual void Load() override;
-    virtual void BeginPlay() override;
-    virtual void Draw(ScreenContext*) override;
-    virtual void Waypoints(Player*, int8_t) override;
+    void Load() override;
+    void BeginPlay() override;
+    void Draw(ScreenContext*) override;
+    void Waypoints(Player*, int8_t) override;
 };

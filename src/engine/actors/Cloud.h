@@ -14,7 +14,7 @@ class ACloud : public AActor {
 public:
     ACloud(const SpawnParams& params);
 
-    virtual ~ACloud() override = default;
+    ~ACloud() override = default;
 
     // This is simply a helper function to keep Spawning code clean
     static ACloud* Spawn(FVector pos, uint16_t time, f32 hop, f32 gravity) {
@@ -28,13 +28,13 @@ public:
         return dynamic_cast<ACloud*>(AddActorToWorld<ACloud>(params));
     }
 
-    virtual void Tick() override;
-    virtual void Draw(Camera*) override;
-    virtual void BeginPlay() override;
-    virtual void SetSpawnParams(SpawnParams& params) override;
-    virtual void DrawEditorProperties() override;
-    virtual void Collision(Player* player, AActor* actor) override;
-    virtual bool IsMod() override;
+    void Tick() override;
+    void Draw(Camera*) override;
+    void BeginPlay() override;
+    void SetSpawnParams(SpawnParams& params) override;
+    void DrawEditorProperties() override;
+    void Collision(Player* player, AActor* actor) override;
+    bool IsMod() override;
 
     bool PickedUp = false;
     uint32_t TimerLength = 500;

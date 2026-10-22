@@ -127,6 +127,9 @@ void Gizmo::Translate() {
         );
 
         switch(this->SelectedHandle) {
+            // Unhandled states take no action.
+            default:
+                break;
             case GizmoHandle::All_Axis:
                 if (CVarGetInteger("gEditorSnapToGround", 0) == true) {
                     y = SnapToSurface(location);
@@ -240,6 +243,9 @@ void Gizmo::Rotate() {
         // Set rotation sensitivity
         diff = diff * 100.0f;
         switch (SelectedHandle) {
+            // Unhandled states take no action.
+            default:
+                break;
             case GizmoHandle::X_Axis:
                 rot.Set(
                 (uint16_t)(InitialRotation.pitch + diff.x),
@@ -293,6 +299,9 @@ void Gizmo::Scale() {
         diff = diff * 0.01f;
 
         switch (SelectedHandle) {
+            // Unhandled states take no action.
+            default:
+                break;
             case GizmoHandle::X_Axis:
                 obj->SetScale(
                     FVector(

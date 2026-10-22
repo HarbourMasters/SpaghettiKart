@@ -1,4 +1,5 @@
 #include <iostream>
+#include <macros.h>
 #include <libultraship/libultraship.h>
 #include <libultra/gbi.h>
 #include "../CoreMath.h"
@@ -31,24 +32,24 @@ namespace TrackEditor {
 
 size_t LightObject::NumLights = 0;
 
-    LightObject::LightObject(const char* name, FVector* pos, s8* direction) {
-        Name = name;
-        ResourceName = "editor:light";
+LightObject::LightObject(const char* name, UNUSED FVector* pos, s8* direction) {
+    Name = name;
+    ResourceName = "editor:light";
 
-        Pos = FVector(0, 100, 0);
-        Rot = IRotator(0, 0, 0);
-        Scale = FVector(0.1, 0.1, 0.1);
+    Pos = FVector(0, 100, 0);
+    Rot = IRotator(0, 0, 0);
+    Scale = FVector(0.1, 0.1, 0.1);
 
-        SpawnPos = Pos;
-        SpawnRot = Rot;
+    SpawnPos = Pos;
+    SpawnRot = Rot;
 
-        Direction = direction;
+    Direction = direction;
 
-        Collision = CollisionType::BOUNDING_BOX;
-        BoundingBoxSize = 4.0f;
+    Collision = CollisionType::BOUNDING_BOX;
+    BoundingBoxSize = 4.0f;
 
-        NumLights += 1;
-    }
+    NumLights += 1;
+}
 
     void LightObject::Load() {
     }

@@ -1,4 +1,5 @@
 #include "Trophy.h"
+#include <macros.h>
 #include "assets/models/common_data.h"
 #include "assets/models/data_segment2.h"
 #include "port/Game.h"
@@ -79,6 +80,9 @@ OTrophy::OTrophy(const SpawnParams& params) : OObject(params) {
     }
 
     switch(_bhv) {
+        // Unhandled states take no action.
+        default:
+            break;
         case OTrophy::Behaviour::GO_FISH:
             gObjectList[_objectIndex].sizeScaling = 0.010f;
             break;
@@ -97,7 +101,7 @@ OTrophy::OTrophy(const SpawnParams& params) : OObject(params) {
 
 void OTrophy::SetSpawnParams(SpawnParams& params) {
     OObject::SetSpawnParams(params);
-    Object *object = &gObjectList[_objectIndex];
+    UNUSED Object* object = &gObjectList[_objectIndex];
     params.Type = _type;
     params.Behaviour = _bhv;
 }
@@ -113,6 +117,9 @@ void OTrophy::Tick() { // func_80086D80
     }
 
     switch(_bhv) {
+        // Unhandled states take no action.
+        default:
+            break;
         case OTrophy::Behaviour::PODIUM_CEREMONY:
             if (gObjectList[objectIndex].state != 0 && (*_toggleVisibility == true)) {
                 OTrophy::func_80086C14(objectIndex);
@@ -170,7 +177,7 @@ void OTrophy::Tick() { // func_80086D80
                 float lookAtZ = player->pos[2] + sin(yaw);
 
                 float forwardX = lookAtX - player->pos[0];
-                float forwardY = 0; // Optional: Ignore height changes
+                UNUSED float forwardY = 0; // Optional: Ignore height changes
                 float forwardZ = lookAtZ - player->pos[2];
 
                 // Normalize the forward vector
@@ -259,6 +266,9 @@ void OTrophy::Draw(s32 cameraId) {
         }
 
         switch (_bhv) {
+            // Unhandled states take no action.
+            default:
+                break;
             case GO_FISH:
                 size_t numTrophies = 0;
                 func_80057A50(40, 22, (char*) "Trophies Collected: ", (s16) numTrophies);

@@ -25,13 +25,10 @@ extern "C" {
 #include "defines.h"
 #include "code_80005FD0.h"
 #include "math_util_2.h"
-#include "racing/collision.h"
 #include "assets/models/tracks/bowsers_castle/bowsers_castle_data.h"
 #include "assets/textures/tracks/bowsers_castle/bowsers_castle_data.h"
 #include "ending/ceremony_and_credits.h"
 #include "objects.h"
-#include "update_objects.h"
-#include "render_objects.h"
 #include "textures/some_data.h"
 #include "assets/models/common_data.h"
 extern s8 gPlayerCount;
@@ -47,7 +44,7 @@ f32 D_800E594C[][2] = {
     { -0.0, 0.0 },
 };
 
-s16 D_800E597C[] = { 0x0000, 0x0000, 0x4000, 0x8000, 0x8000, 0xc000 };
+s16 D_800E597C[] = { 0x0000, 0x0000, 0x4000, (s16) 0x8000, (s16) 0x8000, (s16) 0xc000 };
 
 size_t OThwomp::_count = 0;
 size_t OThwomp::_rand = 0;
@@ -105,7 +102,7 @@ void OThwomp::SetSpawnParams(SpawnParams& params) {
 void OThwomp::Tick60fps() { // func_80081210
     Player* player;
     s32 objectIndex;
-    s32 var_s2_3;
+    UNUSED s32 var_s2_3;
     s32 var_s4;
 
     func_800722CC(_objectIndex, 0x00000010);
@@ -123,6 +120,9 @@ void OThwomp::Tick60fps() { // func_80081210
 
     if (gObjectList[_objectIndex].state != 0) {
         switch(Behaviour) {
+            // Unhandled states take no action.
+            default:
+                break;
             case States::STATIONARY:
                 OThwomp::StationaryBehaviour(_objectIndex);
                 break;
@@ -364,7 +364,7 @@ void OThwomp::SetVisibility(s32 objectIndex) { // func_8008A4CC
 void OThwomp::func_8007F8D8() {
     Player* player;
     s32 var_s0;
-    s32 someIndex;
+    UNUSED s32 someIndex;
     s32 var_s4;
     Object* object;
 
@@ -392,7 +392,7 @@ void OThwomp::func_8007F8D8() {
 }
 
 s32 OThwomp::func_8007F75C(s32 playerId) {
-    s32 someIndex;
+    UNUSED s32 someIndex;
     static s32 temp_s7 = 0; // Must be static to sync far travelling thwomp instances
     s32 var_s6;
     s32 waypoint;
@@ -695,7 +695,8 @@ void OThwomp::Draw(s32 cameraId) {
     s32 objectIndex = _objectIndex;
     s32 i;
     UNUSED s32 stackPadding0;
-    s16 minusone, plusone;
+    UNUSED s16 minusone;
+    UNUSED s16 plusone;
     Camera* camera;
     Object* object;
 

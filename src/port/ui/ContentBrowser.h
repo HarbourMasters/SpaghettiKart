@@ -8,7 +8,7 @@ namespace TrackEditor {
 class ContentBrowserWindow : public Ship::GuiWindow {
 public:
     using Ship::GuiWindow::GuiWindow;
-    ~ContentBrowserWindow();
+    ~ContentBrowserWindow() override;
 
     std::vector<std::string> Content;
 

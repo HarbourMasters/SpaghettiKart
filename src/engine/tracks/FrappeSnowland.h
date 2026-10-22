@@ -20,11 +20,11 @@ class FrappeSnowland : public Track {
 public:
     explicit FrappeSnowland();
 
-    virtual void Load() override;
-    virtual void BeginPlay() override;
-    virtual void InitTrackObjects() override;
-    virtual void TickTrackObjects() override;
-    virtual void Draw(ScreenContext*) override;
-    virtual void DrawCredits() override;    
-    virtual void Waypoints(Player* player, int8_t playerId) override;
+    void Load() override;
+    void BeginPlay() override;
+    void InitTrackObjects() override;
+    void TickTrackObjects() override;
+    void Draw(ScreenContext*) override;
+    void DrawCredits() override;
+    void Waypoints(Player* player, int8_t playerId) override;
 };

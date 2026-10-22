@@ -26,7 +26,7 @@ class SkyStar : public SkyActor {
 public:
     SkyStar(ScreenContext* screen, u16 cloudVariant, u16 posY, u16 rotY, u16 scalePercent);
 
-    virtual ~SkyStar() {
+    ~SkyStar() override {
         _count--;
     }
 
@@ -34,8 +34,8 @@ public:
         return _count;
     }
 
-    virtual void Draw(ScreenContext* ctx, s32 arg0) override;
-    virtual void Tick() override;
+    void Draw(ScreenContext* ctx, s32 arg0) override;
+    void Tick() override;
     bool star_func_80073B78(s32 arg0, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7);
 private:
     static size_t _count;

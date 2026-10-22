@@ -25,8 +25,8 @@ TrainCrossing::TrainCrossing(Vec3f position, u32 waypointMin, u32 waypointMax, f
 }
 
 void TrainCrossing::CrossingTrigger() {
-    f32 waypoint;
-    s32 i;
+    UNUSED f32 waypoint;
+    UNUSED s32 i;
     OnTriggered = 0;
 
     for (const auto& actor : GetWorld()->Actors) {
@@ -52,7 +52,8 @@ void TrainCrossing::AICrossingBehaviour(s32 playerId) {
     if ((!(D_801631E0[playerId] != 0)) ||
         (set_vehicle_render_distance_flags(gPlayers[playerId].pos, TRAIN_CROSSING_AI_DISTANCE, 0))) {
         if ((OnTriggered == 1) && ((Timer) > FRAMES_SINCE_CROSSING_ACTIVATED)) {
-            if ((sSomeNearestPathPoint > WaypointMin) && (sSomeNearestPathPoint < WaypointMax)) {
+            if (((s32) sSomeNearestPathPoint > (s32) WaypointMin) &&
+                ((s32) sSomeNearestPathPoint < (s32) WaypointMax)) {
                 bStopAICrossing[playerId] = 1;
             }
         }

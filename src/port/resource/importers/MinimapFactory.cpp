@@ -24,7 +24,7 @@ ResourceFactoryBinaryMinimapV0::ReadResource(std::shared_ptr<Ship::File> file,
     }
 
     // Calculate new size for 4bpp (two pixels per byte)
-    size_t pixelCount = width * height;
+    size_t pixelCount = (size_t) width * height;
     size_t packedSize = (pixelCount + 1) / 2; // Round up if odd
 
     uint8_t* packedData = new uint8_t[packedSize];

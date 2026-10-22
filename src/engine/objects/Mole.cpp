@@ -62,7 +62,7 @@ void OMole::Tick() {
 }
 
 void OMole::Draw(s32 cameraId) {
-    size_t i;
+    UNUSED size_t i;
 
     OMole::func_80054D00(_objectIndex, cameraId);
 
@@ -90,8 +90,8 @@ void OMole::func_80081790(s32 objectIndex) {
     }
 }
 
-void OMole::func_80081AFC(s32 objectIndex, s32 arg1) {
-    s8* sp2C;
+void OMole::func_80081AFC(s32 objectIndex, UNUSED s32 arg1) {
+    UNUSED s8* sp2C;
     Object* object;
 
     object = &gObjectList[objectIndex];
@@ -205,7 +205,7 @@ void OMole::func_80081D34(s32 objectIndex) {
     var_s5 = 0;
     player = gPlayerOne;
     camera = camera1;
-    for (size_t i = 0; i < D_8018D158; i++, player++, camera++) {
+    for (size_t i = 0; i < (size_t) D_8018D158; i++, player++, camera++) {
         if ((is_obj_flag_status_active(objectIndex, 0x00000200) != 0) && !(player->effects & 0x80000000) &&
             (has_collided_with_player(objectIndex, player) != 0)) {
             if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
@@ -344,7 +344,7 @@ void OMole::func_80054E10(s32 cameraId, s32 objectIndex) {
 
 // Almost certainly responsible for spawning/handling the moles on Moo Moo farm
 void OMole::func_80054EB8(s32 cameraId) {
-    s32 someIndex;
+    UNUSED s32 someIndex;
 
     // for (someIndex = 0; someIndex < NUM_TOTAL_MOLES; someIndex++) {
     func_80054E10(cameraId, _moleIndex);

@@ -74,8 +74,8 @@ class GenericArray : public Ship::Resource<uint8_t> {
     GenericArray() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {
     }
 
-    uint8_t* GetPointer();
-    size_t GetPointerSize();
+    uint8_t* GetPointer() override;
+    size_t GetPointerSize() override;
 
     std::vector<uint8_t> mData;
     size_t mSize;

@@ -18,6 +18,7 @@ class Sky {
 public:
     static Sky* Instance;
     Sky();
+    virtual ~Sky() = default;
     virtual void Draw(ScreenContext* screen);
     virtual void DrawFloor(ScreenContext* screen);
     Sky* GetSky();

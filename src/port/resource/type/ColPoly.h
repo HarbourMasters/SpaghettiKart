@@ -28,8 +28,8 @@ class ColPoly : public Ship::Resource<ColPolyData> {
     ColPoly() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {
     }
 
-    ColPolyData* GetPointer();
-    size_t GetPointerSize();
+    ColPolyData* GetPointer() override;
+    size_t GetPointerSize() override;
 
     std::vector<ColPolyData> mColPolys;
 };

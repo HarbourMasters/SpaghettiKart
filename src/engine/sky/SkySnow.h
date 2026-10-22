@@ -25,7 +25,7 @@ class SkySnow : public SkyActor {
 public:
     SkySnow(ScreenContext* screen);
 
-    ~SkySnow() {
+    ~SkySnow() override {
         _count--;
     }
 
@@ -33,8 +33,8 @@ public:
         return _count;
     }
 
-    virtual void Draw(ScreenContext* ctx, s32 arg0) override;
-    virtual void Tick() override;
+    void Draw(ScreenContext* ctx, s32 arg0) override;
+    void Tick() override;
     void func_80077E20();
     void func_80077F64(Camera* camera);
 private:

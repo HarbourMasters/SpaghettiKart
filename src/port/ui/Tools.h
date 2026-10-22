@@ -7,8 +7,9 @@ class ToolsWindow : public Ship::GuiWindow {
 public:
     using Ship::GuiWindow::GuiWindow;
 
-    ~ToolsWindow();
-protected:
+    ~ToolsWindow() override;
+
+  protected:
     void InitElement() override;
     void DrawElement() override;
     void UpdateElement() override {};

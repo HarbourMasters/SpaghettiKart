@@ -1,5 +1,8 @@
 #include "EditorMath.h"
 
+// TU-local; declared here because uses precede the definition.
+static bool InverseMatrix(const float m[16], float invOut[16]);
+
 #include <libultraship/libultraship.h>
 #include "port/Game.h"
 #include "port/Engine.h"

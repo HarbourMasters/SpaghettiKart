@@ -5,9 +5,6 @@
 #include "fast/Fast3dGui.h"
 #include "ship/window/Window.h"
 
-class Gui; // <-- forward declare
-//class Window;
-
 namespace Ship {
     class SpaghettiGui : public Fast::Fast3dGui {
       public:
@@ -15,6 +12,6 @@ namespace Ship {
         SpaghettiGui(std::vector<std::shared_ptr<GuiWindow>> guiWindows) : Fast::Fast3dGui(guiWindows) {}
 
       protected:
-        virtual void DrawMenu() override;
+        void DrawMenu() override;
     };
 }

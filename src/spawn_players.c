@@ -23,7 +23,6 @@
 #include "ending/podium_ceremony_actors.h"
 #include "main.h"
 #include "menus.h"
-#include "render_player.h"
 #include "menu_items.h"
 #include "effects.h"
 #include "decode.h"

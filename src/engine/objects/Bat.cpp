@@ -1,4 +1,5 @@
 #include "Bat.h"
+#include <macros.h>
 #include "engine/World.h"
 #include "engine/CoreMath.h"
 #include "port/interpolation/FrameInterpolation.h"

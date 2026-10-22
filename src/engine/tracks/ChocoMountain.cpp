@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <macros.h>
 #include <libultra/gbi.h>
 #include <vector>
 #include <memory>
@@ -32,9 +33,8 @@ extern "C" {
     #include "racing/actors.h"
     #include "racing/collision.h"
     #include "code_8003DC40.h"
-    #include "memory.h"
-    #include "course_offsets.h"
-    extern const char *choco_mountain_dls[96];
+#include "memory.h"
+extern const char* choco_mountain_dls[96];
 }
 
 ChocoMountain::ChocoMountain() {
@@ -180,7 +180,7 @@ void ChocoMountain::InitTrackObjects() {
         if (gModeSelection == GRAND_PRIX) {
             func_80070714();
         }
-        for (size_t i = 0; i < D_80165738; i++) {
+        for (size_t i = 0; i < (size_t) D_80165738; i++) {
             find_unused_obj_index(&gObjectParticle3[i]);
             init_object(gObjectParticle3[i], 0);
         }
@@ -192,7 +192,7 @@ void ChocoMountain::SomeSounds() {
     func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
 }
 
-void ChocoMountain::WhatDoesThisDo(Player* player, int8_t playerId) {
+void ChocoMountain::WhatDoesThisDo(UNUSED Player* player, int8_t playerId) {
     if (((s16) gNearestPathPointByPlayerId[playerId] >= 0xA0) &&
         ((s16) gNearestPathPointByPlayerId[playerId] < 0xB4)) {
         if (D_80165300[playerId] != 1) {
@@ -207,7 +207,7 @@ void ChocoMountain::WhatDoesThisDo(Player* player, int8_t playerId) {
     }
 }
 
-void ChocoMountain::WhatDoesThisDoAI(Player* player, int8_t playerId) {
+void ChocoMountain::WhatDoesThisDoAI(UNUSED Player* player, int8_t playerId) {
     if (((s16) gNearestPathPointByPlayerId[playerId] >= 0xA0) &&
         ((s16) gNearestPathPointByPlayerId[playerId] < 0xB4)) {
         if (D_80165300[playerId] != 1) {

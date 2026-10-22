@@ -1,4 +1,5 @@
 #include "SceneManager.h"
+#include <macros.h>
 
 #include "port/Game.h"
 #include "engine/CoreMath.h"
@@ -428,7 +429,7 @@ namespace TrackEditor {
         }
     }
 
-    void LoadStaticMeshActors(Track* track, nlohmann::json& data) {
+    void LoadStaticMeshActors(UNUSED Track* track, nlohmann::json& data) {
         if (!data.contains("StaticMeshActors") || !data["StaticMeshActors"].is_array()) {
             SPDLOG_INFO("  This track contains no StaticMeshActors!");
             return;

@@ -18,7 +18,7 @@ public:
      */
     AFinishline(const SpawnParams& params);
 
-    ~AFinishline() {
+    ~AFinishline() override {
         _count--;
     }
 
@@ -40,11 +40,11 @@ public:
     }
 
     // Virtual functions to be overridden by derived classes
-    virtual void Tick() override;
-    virtual void Draw(Camera*) override;
-    virtual void BeginPlay() override;
-    virtual void Collision(Player* player, AActor* actor) override;
-    virtual bool IsMod() override;
+    void Tick() override;
+    void Draw(Camera*) override;
+    void BeginPlay() override;
+    void Collision(Player* player, AActor* actor) override;
+    bool IsMod() override;
 
     bool bIsFinishline = false;
 

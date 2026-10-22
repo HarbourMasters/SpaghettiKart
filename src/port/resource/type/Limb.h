@@ -30,8 +30,8 @@ class Limb : public Ship::Resource<LimbData> {
     Limb() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {
     }
 
-    LimbData* GetPointer();
-    size_t GetPointerSize();
+    LimbData* GetPointer() override;
+    size_t GetPointerSize() override;
 
     LimbData mData{};
 };

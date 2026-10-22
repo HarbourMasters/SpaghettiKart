@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <macros.h>
 #include <unordered_set>
 #include <string>
 #include <cstring>
@@ -420,7 +421,7 @@ Track::Track() {
 }
 
 // Load custom track from code
-void Track::Load(Vtx* vtx, Gfx* gfx) {
+void Track::Load(UNUSED Vtx* vtx, UNUSED Gfx* gfx) {
     Track::Init();
 }
 
@@ -479,7 +480,7 @@ void Track::InitTrackObjects() {
 void Track::TickTrackObjects() {
 }
 
-void Track::DrawTrackObjects(s32 cameraId) {
+void Track::DrawTrackObjects(UNUSED s32 cameraId) {
 }
 
 // Implemented for the first cup of each track plus Koopa Beach
@@ -489,10 +490,10 @@ void Track::SomeSounds() {
 void Track::CreditsSpawnActors() {
 }
 
-void Track::WhatDoesThisDo(Player* player, int8_t playerId) {
+void Track::WhatDoesThisDo(UNUSED Player* player, UNUSED int8_t playerId) {
 }
 
-void Track::WhatDoesThisDoAI(Player* player, int8_t playerId) {
+void Track::WhatDoesThisDoAI(UNUSED Player* player, UNUSED int8_t playerId) {
 }
 
 void Track::SetStaffGhost() {
@@ -550,7 +551,7 @@ void Track::Draw(ScreenContext* arg0) {
 void Track::DrawCredits() {
 }
 
-f32 Track::GetWaterLevel(FVector pos, struct Collision* collision) {
+f32 Track::GetWaterLevel(FVector pos, UNUSED struct Collision* collision) {
     float highestWater = -FLT_MAX;
     bool found = false;
 
@@ -570,7 +571,8 @@ f32 Track::GetWaterLevel(FVector pos, struct Collision* collision) {
 
 void Track::Tick() {
 }
-void Track::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+void Track::DrawTransparency(UNUSED ScreenContext* screen, UNUSED uint16_t pathCounter, UNUSED uint16_t cameraRot,
+                             UNUSED uint16_t playerDirection) {
 }
 
 void Track::Destroy() {

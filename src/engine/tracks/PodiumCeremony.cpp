@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <macros.h>
 #include <libultra/gbi.h>
 #include <vector>
 #include <memory>
@@ -161,7 +162,7 @@ void PodiumCeremony::BeginPlay() {
 }
 
 void PodiumCeremony::InitTrackObjects() {
-    size_t i;
+    UNUSED size_t i;
     if (gGamestate != CREDITS_SEQUENCE) {
         if (gModeSelection == GRAND_PRIX) {
             func_80070714();
@@ -172,7 +173,7 @@ void PodiumCeremony::InitTrackObjects() {
 void PodiumCeremony::SomeSounds() {
 }
 
-void PodiumCeremony::WhatDoesThisDo(Player* player, int8_t playerId) {
+void PodiumCeremony::WhatDoesThisDo(UNUSED Player* player, int8_t playerId) {
     if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x180) &&
         ((s16) gNearestPathPointByPlayerId[playerId] < 0x1E1)) {
         if (D_80165300[playerId] != 1) {
@@ -187,7 +188,7 @@ void PodiumCeremony::WhatDoesThisDo(Player* player, int8_t playerId) {
     }
 }
 
-void PodiumCeremony::WhatDoesThisDoAI(Player* player, int8_t playerId) {
+void PodiumCeremony::WhatDoesThisDoAI(UNUSED Player* player, int8_t playerId) {
     if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x180) &&
         ((s16) gNearestPathPointByPlayerId[playerId] < 0x1E1)) {
         if (D_80165300[playerId] != 1) {

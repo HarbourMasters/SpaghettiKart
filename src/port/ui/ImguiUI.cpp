@@ -112,7 +112,7 @@ std::string GetWindowButtonText(const char* text, bool menuOpen) {
 }
 } // namespace GameUI
 
-static const char* filters[3] = {
+UNUSED static const char* filters[3] = {
 #ifdef __WIIU__
     "",
 #else

@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <macros.h>
 #include <libultra/gbi.h>
 #include <vector>
 #include <memory>
@@ -183,10 +184,10 @@ void WarioStadium::SomeSounds() {
     func_800C9D80(D_8015F778, D_802B91C8, 0x5103700B);
 }
 
-void WarioStadium::WhatDoesThisDo(Player* player, int8_t playerId) {
+void WarioStadium::WhatDoesThisDo(UNUSED Player* player, UNUSED int8_t playerId) {
 }
 
-void WarioStadium::WhatDoesThisDoAI(Player* player, int8_t playerId) {
+void WarioStadium::WhatDoesThisDoAI(UNUSED Player* player, UNUSED int8_t playerId) {
 }
 
 void WarioStadium::CopyJumbotron(s32 ulx, s32 uly, s16 portionToDraw, u16* source) {
@@ -294,8 +295,8 @@ void WarioStadium::SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Ve
     func_8003EE2C(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 }
 
-void WarioStadium::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
-                             uint16_t playerDirection) {
+void WarioStadium::DrawTransparency(UNUSED ScreenContext* screen, UNUSED uint16_t pathCounter,
+                                    UNUSED uint16_t cameraRot, UNUSED uint16_t playerDirection) {
 
     gDPPipeSync(gDisplayListHead++);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);

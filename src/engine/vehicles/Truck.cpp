@@ -27,7 +27,7 @@ ATruck::ATruck(const SpawnParams& params) : AActor(params) {
     BoundingBoxSize = 2.0f;
     TrackPathPoint* temp_v0;
     u16 waypointOffset;
-    s32 numWaypoints = gPathCountByPathIndex[0];
+    UNUSED s32 numWaypoints = gPathCountByPathIndex[0];
 
     Index = _count;
     PathIndex = params.PathIndex.value_or(0);
@@ -98,7 +98,7 @@ bool ATruck::IsMod() {
 
 void ATruck::Draw(Camera* camera) {
     s32 var_v0;
-    s32 var_s2;
+    UNUSED s32 var_s2;
     s32 waypointCount;
     u16 temp_a1;
 

@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <macros.h>
 #include <libultra/gbi.h>
 #include <vector>
 #include <memory>
@@ -166,7 +167,7 @@ void BigDonut::Draw(ScreenContext* arg0) {
 void BigDonut::DrawCredits() {
 }
 
-void BigDonut::Waypoints(Player* player, int8_t playerId) {
+void BigDonut::Waypoints(Player* player, UNUSED int8_t playerId) {
     player->nearestPathPointId = 0;
 }
 

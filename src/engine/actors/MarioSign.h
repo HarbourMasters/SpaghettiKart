@@ -12,10 +12,9 @@ extern "C" {
 
 class AMarioSign : public AActor {
 public:
-
-    virtual ~AMarioSign() {
-        _count -= 1;
-    };
+  ~AMarioSign() override {
+      _count -= 1;
+  };
     explicit AMarioSign(const SpawnParams& params);
 
     // This is simply a helper function to keep Spawning code clean
@@ -31,11 +30,12 @@ public:
         return static_cast<AMarioSign*>(AddActorToWorld<AMarioSign>(params));
     }
 
-    virtual bool IsMod() override;
-    virtual void SetSpawnParams(SpawnParams& params) override;
-    virtual void Tick() override;
-    virtual void Draw(Camera*) override;
-private:
+    bool IsMod() override;
+    void SetSpawnParams(SpawnParams& params) override;
+    void Tick() override;
+    void Draw(Camera*) override;
+
+  private:
     static size_t _count;
     size_t _idx;
 };

@@ -6,6 +6,6 @@ ColPolyData* ColPoly::GetPointer() {
 }
 
 size_t ColPoly::GetPointerSize() {
-    return sizeof(mColPolys);
+    return mColPolys.size() * sizeof(ColPolyData);
 }
 } // namespace SF64

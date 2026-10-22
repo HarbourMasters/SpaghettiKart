@@ -16,7 +16,7 @@ public:
     };
 
     explicit AShip(const SpawnParams& params);
-    virtual ~AShip() = default;
+    ~AShip() override = default;
 
     // This is simply a helper function to keep Spawning code clean
     static AShip* Spawn(FVector pos, IRotator rot, FVector scale, int16_t skin) {
@@ -32,11 +32,12 @@ public:
 
     AShip::Skin SpawnSkin = Skin::GHOSTSHIP;
 
-    virtual void SetSpawnParams(SpawnParams& params) override;
-    virtual void Tick() override;
-    virtual void BeginPlay() override;
-    virtual bool IsMod() override;
-    virtual void DrawEditorProperties() override;
-private:
+    void SetSpawnParams(SpawnParams& params) override;
+    void Tick() override;
+    void BeginPlay() override;
+    bool IsMod() override;
+    void DrawEditorProperties() override;
+
+  private:
     Gfx* _skin;
 };

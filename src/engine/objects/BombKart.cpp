@@ -24,7 +24,6 @@ extern "C" {
 #include "defines.h"
 #include "code_80005FD0.h"
 #include "math_util_2.h"
-#include "racing/collision.h"
 #include <assets/models/common_data.h>
 extern s8 gPlayerCount;
 }
@@ -76,7 +75,7 @@ OBombKart::OBombKart(const SpawnParams& params) : OObject(params) {
     WheelPos[3][0] = constPos.x;
     WheelPos[3][1] = constPos.y;
     WheelPos[3][2] = constPos.z;
-    check_bounding_collision(&_Collision, 2.0f, constPos.x, constPos.y, constPos.z);
+    check_bounding_collision(&BombCollision, 2.0f, constPos.x, constPos.y, constPos.z);
 
     find_unused_obj_index(&_objectIndex);
 
@@ -155,7 +154,7 @@ void OBombKart::Tick() {
                 }
             } else {
 
-                for (size_t i = 0; i < gPlayerCount; i++) {
+                for (size_t i = 0; i < (size_t) gPlayerCount; i++) {
                     player = &gPlayers[i];
                     if (!(player->effects & 0x80000000)) {
                         temp_f0 = newPos[0] - player->pos[0];
@@ -258,11 +257,12 @@ void OBombKart::Tick() {
                         newPos[0] += temp_f14 / 5.0f;
                         newPos[2] += temp_f16 / 5.0f;
                     }
-                    newPos[1] = calculate_surface_height(newPos[0], 2000.0f, newPos[2], _Collision.meshIndexZX) + 3.5f;
+                    newPos[1] =
+                        calculate_surface_height(newPos[0], 2000.0f, newPos[2], BombCollision.meshIndexZX) + 3.5f;
                     if (newPos[1] < (-1000.0)) {
                         newPos[1] = Pos[1];
                     }
-                    check_bounding_collision(&_Collision, 10.0f, newPos[0], newPos[1], newPos[2]);
+                    check_bounding_collision(&BombCollision, 10.0f, newPos[0], newPos[1], newPos[2]);
                 }
                 break;
             case States::CHASE:
@@ -389,8 +389,7 @@ void OBombKart::Draw(s32 cameraId) {
     }
 }
 
-void OBombKart::DrawBattle(s32 cameraId) {
-
+void OBombKart::DrawBattle(UNUSED s32 cameraId) {
 }
 
 void OBombKart::func_800563DC(s32 cameraId, s32 arg2) {
@@ -489,7 +488,7 @@ void OBombKart::LoadMtx(s32 cameraId) {
     D_80183E50[1] = CenterY + 1.0;
     D_80183E50[2] = Pos[2];
     FrameInterpolation_RecordOpenChild("object_bomb_kart", (_idx << 4) | cameraId);
-    set_transform_matrix(mat, _Collision.orientationVector, D_80183E50, 0U, 0.5f);
+    set_transform_matrix(mat, BombCollision.orientationVector, D_80183E50, 0U, 0.5f);
     //convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], mat);
 
     AddHudMatrix(mat, G_MTX_LOAD | G_MTX_NOPUSH | G_MTX_MODELVIEW);
@@ -575,13 +574,13 @@ void OBombKart::Chase(Player* player, Vec3f pos) {
     newPosition[1] = pos[1];
     newPosition[2] = pos[2];
 
-    newPosition[1] = calculate_surface_height(pos[0], 2000.0f, pos[2], _Collision.meshIndexZX) + 3.5f;
+    newPosition[1] = calculate_surface_height(pos[0], 2000.0f, pos[2], BombCollision.meshIndexZX) + 3.5f;
 
     pos[0] = newPosition[0];
     pos[1] = newPosition[1];
     pos[2] = newPosition[2];
 
-    check_bounding_collision(&_Collision, 10.0f, pos[0], pos[1], pos[2]);
+    check_bounding_collision(&BombCollision, 10.0f, pos[0], pos[1], pos[2]);
 }
 
 void OBombKart::Translate(FVector pos) {

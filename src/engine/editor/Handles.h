@@ -9,9 +9,8 @@ namespace TrackEditor {
 
         Handles();
 
-        virtual void Tick() override;
-        virtual void Draw() override;
-        virtual void Load() override;
-
+        void Tick() override;
+        void Draw() override;
+        void Load() override;
     };
 }

@@ -35,7 +35,6 @@ class StaticMeshActor;
 class OBombKart;
 class TrainCrossing;
 class OLakitu;
-class GameObject; // <-- Editor
 
 class World {
 typedef struct Matrix {

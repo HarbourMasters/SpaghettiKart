@@ -1,4 +1,5 @@
 #include <cstdint>
+#include <macros.h>
 #include <libultraship.h>
 #include <libultra/gbi.h>
 #include <vector>
@@ -153,7 +154,7 @@ void LuigiRaceway::BeginPlay() {
 }
 
 void LuigiRaceway::InitTrackObjects() {
-    size_t i;
+    UNUSED size_t i;
     if (gGamestate != CREDITS_SEQUENCE) {
         if (gModeSelection == GRAND_PRIX) {
             func_80070714();
@@ -166,7 +167,7 @@ void LuigiRaceway::SomeSounds() {
     func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
 }
 
-void LuigiRaceway::WhatDoesThisDo(Player* player, int8_t playerId) {
+void LuigiRaceway::WhatDoesThisDo(UNUSED Player* player, int8_t playerId) {
     if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x145) && ((s16) gNearestPathPointByPlayerId[playerId] < 0x18B)) {
         if (D_80165300[playerId] != 1) {
             func_800CA288(playerId, 0x55);
@@ -180,7 +181,7 @@ void LuigiRaceway::WhatDoesThisDo(Player* player, int8_t playerId) {
     }
 }
 
-void LuigiRaceway::WhatDoesThisDoAI(Player* player, int8_t playerId) {
+void LuigiRaceway::WhatDoesThisDoAI(UNUSED Player* player, int8_t playerId) {
     if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x145) && ((s16) gNearestPathPointByPlayerId[playerId] < 0x18B)) {
         if (D_80165300[playerId] != 1) {
             func_800CA2E4(playerId, 0x55);
@@ -246,7 +247,7 @@ void LuigiRaceway::CopyJumbotron(s32 ulx, s32 uly, s16 portionToDraw, u16* sourc
 
 void LuigiRaceway::Draw(ScreenContext* arg0) {
     UNUSED s32 pad;
-    u16 sp22 = (u16) arg0->pathCounter;
+    UNUSED u16 sp22 = (u16) arg0->pathCounter;
     s16 prevFrame;
 
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
