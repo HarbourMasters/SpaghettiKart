@@ -487,6 +487,9 @@ void init_object_list_index(void) {
     // for (loopIndex = 0; loopIndex < NUM_BOMB_KARTS_VERSUS; loopIndex++) {
     //     find_unused_obj_index(&gIndexObjectBombKart[loopIndex]);
     // }
+    for (loopIndex = 0; loopIndex < 4; loopIndex++) {
+        CM_DisplayBattleBombKart(loopIndex, 0);
+    }
 }
 
 Vtx cloudvtx[4][4] = { {
