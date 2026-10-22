@@ -192,8 +192,8 @@ jobs:
         with:
           key: linux-build-${{ github.ref }}-${{ github.sha }}
           restore-keys: |
-            linux-build-${{ github.ref }}
-            linux-build-
+            linux-${{ matrix.arch }}-build-${{ github.ref }}
+            linux-${{ matrix.arch }}-build-
           path: |
             SDL2-2.30.3
             tinyxml2-10.0.0
@@ -370,10 +370,17 @@ jobs:
 
   build-linux-release-docker:
     needs: generate-port-o2r
-    runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        config: [Release]
+        include:
+          - runner: ubuntu-22.04
+            arch: x86_64
+            config: Release
+          - runner: ubuntu-22.04-arm
+            arch: aarch64
+            config: Release
+    runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -388,9 +395,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ hashFiles('script/Dockerfile', 'vcpkg.json') }}
+          key: ${{ runner.os }}-${{ matrix.arch }}-buildx-${{ hashFiles('script/Dockerfile', 'vcpkg.json') }}
           restore-keys: |
-            ${{ runner.os }}-buildx-
+            ${{ runner.os }}-${{ matrix.arch }}-buildx-
 
       - name: Build Docker image
         uses: docker/build-push-action@v5
@@ -444,7 +451,7 @@ jobs:
       - name: Publish packaged artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: spaghetti-linux-x64
+          name: spaghetti-linux-${{ matrix.arch }}
           path: spaghetti-${{ matrix.config }}
 
       # Workaround for cache growing too large
