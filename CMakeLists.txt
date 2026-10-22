@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 
+# Must come before project() or CMake ignores it
+set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment version")
+
 # Set the project version and language
 project(
   Spaghettify

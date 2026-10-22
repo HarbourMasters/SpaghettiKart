@@ -2,9 +2,6 @@ if(APPLE)
   enable_language(OBJCXX)
 endif()
 
-# Set the minimum version of CMake and the deployment target for macOS
-set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment version")
-
 
 # Set the C++ standard and enable the MSVC parallel build option
 set(CMAKE_CXX_STANDARD 20 CACHE STRING "The C++ standard to use")
