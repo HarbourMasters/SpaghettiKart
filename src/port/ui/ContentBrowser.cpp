@@ -20,6 +20,7 @@
 #include "port/Game.h"
 #include "src/engine/editor/SceneManager.h"
 #include "engine/TrackBrowser.h"
+#include <fast/resource/ResourceType.h>
 
 #include "engine/World.h"
 
@@ -30,6 +31,23 @@ extern "C" {
 }
 
 namespace TrackEditor {
+
+namespace {
+// The browser lists archive paths by name, and the archive holds plenty of
+// non-model data (track sections, paths, CPU tables). Feeding one of those to
+// the renderer walks it as display list commands and crashes.
+bool IsDisplayListAsset(const std::string& path) {
+    auto rm = Ship::Context::GetRawInstance()->GetResourceManager();
+    if (rm == nullptr) {
+        return false;
+    }
+    auto res = rm->LoadResource(path);
+    if (res == nullptr || res->GetInitData() == nullptr) {
+        return false;
+    }
+    return static_cast<Fast::ResourceType>(res->GetInitData()->Type) == Fast::ResourceType::DisplayList;
+}
+} // namespace
     bool bIsTrainWindowOpen = false; // Global because member variables do not work in lambdas
 
     ContentBrowserWindow::~ContentBrowserWindow() {
@@ -249,6 +267,12 @@ void ContentBrowserWindow::AddActorContent(std::string search) {
                     continue;
                 } else if (file.find('.') != std::string::npos) {
                     // File has an extension
+                    continue;
+                }
+
+                // Only models can be spawned; the archive also holds data assets
+                // (track sections, paths) that would be drawn as garbage.
+                if (!IsDisplayListAsset(file)) {
                     continue;
                 }
 
