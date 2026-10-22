@@ -279,20 +279,9 @@ void PortMenu::AddSettings() {
                 info.activeDisables.push_back(DISABLE_FOR_MATCH_REFRESH_RATE_ON);
         })
         .Options(IntSliderOptions().Tooltip(tooltip).Min(30).Max(maxFps).DefaultValue(30));
-    AddWidget(path, "Match Refresh Rate", WIDGET_BUTTON)
-        .Callback([](WidgetInfo& info) {
-            int hz = Ship::Context::GetRawInstance()->GetWindow()->GetCurrentRefreshRate();
-            if (hz >= 30 && hz <= MAX_FPS) {
-                CVarSetInteger("gInterpolationFPS", hz);
-                Ship::Context::GetRawInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
-            }
-        })
-        .PreFunc([](WidgetInfo& info) { info.isHidden = mPortMenu->disabledMap.at(DISABLE_FOR_NOT_DIRECTX).active; })
-        .Options(ButtonOptions().Tooltip("Matches interpolation value to the current game's window refresh rate."));
     AddWidget(path, "Match Refresh Rate", WIDGET_CVAR_CHECKBOX)
         .CVar("gMatchRefreshRate")
-        .PreFunc([](WidgetInfo& info) { info.isHidden = mPortMenu->disabledMap.at(DISABLE_FOR_DIRECTX).active; })
-        .Options(CheckboxOptions().Tooltip("Matches interpolation value to the current game's window refresh rate."));
+        .Options(CheckboxOptions().Tooltip("Matches interpolation value to the refresh rate of your display."));
     AddWidget(path, "Enable Vsync", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_VSYNC_ENABLED)
         .PreFunc([](WidgetInfo& info) { info.isHidden = mPortMenu->disabledMap.at(DISABLE_FOR_NO_VSYNC).active; })
