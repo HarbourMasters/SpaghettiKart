@@ -67,7 +67,7 @@ var searchData=
   ['bat_2ecpp_64',['Bat.cpp',['../Bat_8cpp.html',1,'']]],
   ['bat_2eh_65',['Bat.h',['../Bat_8h.html',1,'']]],
   ['battle_66',['BATTLE',['../defines_8h.html#a3f48cce4d2125604131fc7878460f44a',1,'defines.h']]],
-  ['battle_20courses_67',['Battle Courses',['../md_docs_2sequences-information.html#battle-courses',1,'Battle Courses'],['../md_docs_2track__returns.html#battle-courses-1',1,'Battle Courses']]],
+  ['battle_20courses_67',['Battle Courses',['../md_docs_2track__returns.html#battle-courses-1',1,'Battle Courses'],['../md_docs_2sequences-information.html#battle-courses',1,'Battle Courses']]],
   ['battle_5fcup_68',['BATTLE_CUP',['../defines_8h.html#ae701751e4c86a447b2b7d96715151241ac92cb0afca1b2eb39ace61e1fa9cd730',1,'defines.h']]],
   ['bcleanworld_69',['bCleanWorld',['../Game_8cpp.html#a01d714b2b723ef06b42b05588c43b5c5',1,'Game.cpp']]],
   ['bcmp_70',['bcmp',['../bstring_8h.html#a41defc2ecf285507e63eb254a8b427fd',1,'bstring.h']]],

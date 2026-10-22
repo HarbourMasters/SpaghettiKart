@@ -569,7 +569,7 @@ var searchData=
   ['courserecords_566',['courseRecords',['../structCupTimeTrialRecords.html#acf18ab0e69f90a2eefe248ef7090bd1c',1,'CupTimeTrialRecords']]],
   ['courserecordsmenuselectiontypes_567',['CourseRecordsMenuSelectionTypes',['../menus_8h.html#a692cee32dee79047b93531b8284fdf2e',1,'menus.h']]],
   ['courserecordssubmenuselectiontypes_568',['CourseRecordsSubMenuSelectionTypes',['../menus_8h.html#aa8db4705a38fb4254f7ec67212635423',1,'menus.h']]],
-  ['courses_569',['Courses',['../md_docs_2sequences-information.html#battle-courses',1,'Battle Courses'],['../md_docs_2track__returns.html#battle-courses-1',1,'Battle Courses'],['../courses.html',1,'Courses'],['../coursesmenu.html',1,'Courses'],['../courses.html#courses',1,'Courses']]],
+  ['courses_569',['Courses',['../md_docs_2track__returns.html#battle-courses-1',1,'Battle Courses'],['../md_docs_2sequences-information.html#battle-courses',1,'Battle Courses'],['../courses.html',1,'Courses'],['../coursesmenu.html',1,'Courses'],['../courses.html#courses',1,'Courses']]],
   ['courses_20are_20adapted_20in_20the_20future_20including_20references_20too_570',['Specifically Used to help find music and to see how courses are adapted in the future including references too.',['../md_docs_2track__returns.html#specifically-used-to-help-find-music-and-to-see-how-courses-are-adapted-in-the-future-including-references-too',1,'']]],
   ['courses_2emd_571',['courses.md',['../courses_8md.html',1,'']]],
   ['coursesmenu_2emd_572',['coursesmenu.md',['../coursesmenu_8md.html',1,'']]],
