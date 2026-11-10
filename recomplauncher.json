@@ -36,14 +36,14 @@
     {
       "id": "resolution",
       "label": "Resolution",
-      "help": "How many times your screen's resolution the game draws at. Higher is sharper and needs a faster graphics card.",
+      "help": "Draws the picture sharper than the window size. Higher is sharper and needs a faster graphics card.",
       "choices": [
-        { "label": "1x", "set": { "CVars/gInternalResolution": "1" } },
-        { "label": "2x", "set": { "CVars/gInternalResolution": "2" } },
-        { "label": "3x", "set": { "CVars/gInternalResolution": "3" } },
-        { "label": "4x", "set": { "CVars/gInternalResolution": "4" } }
+        { "label": "Window size", "set": { "CVars/gInternalResolution": "1.0" } },
+        { "label": "1.5x window size", "set": { "CVars/gInternalResolution": "1.5" } },
+        { "label": "2x window size", "set": { "CVars/gInternalResolution": "2.0" } },
+        { "label": "3x window size", "set": { "CVars/gInternalResolution": "3.0" } }
       ],
-      "defaults": { "CVars/gInternalResolution": "1" }
+      "defaults": { "CVars/gInternalResolution": "1.0" }
     },
     {
       "id": "antialiasing",
