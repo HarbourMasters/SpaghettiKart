@@ -50,6 +50,9 @@ cmake_print_variables(CPACK_TOPLEVEL_DIRECTORY)
 cmake_print_variables(CPACK_PACKAGE_DIRECTORY)
 cmake_print_variables(CPACK_PACKAGE_FILE_NAME)
 
+# RecompLauncher reads this from the AppImage's root
+file(COPY "@CMAKE_SOURCE_DIR@/recomplauncher.json" DESTINATION "${CPACK_TEMPORARY_DIRECTORY}")
+
 find_program(LINUXDEPLOY_EXECUTABLE
   NAMES linuxdeploy linuxdeploy-x86_64.AppImage
   PATHS ${CPACK_PACKAGE_DIRECTORY}/linuxdeploy)

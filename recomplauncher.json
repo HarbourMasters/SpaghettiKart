@@ -1,0 +1,109 @@
+{
+  "$schema": "https://recomplauncher.com/schema/recomplauncher.json",
+  "format": 1,
+  "name": "SpaghettiKart",
+  "repo": "HarbourMasters/SpaghettiKart",
+  "game": {
+    "kind": "iso",
+    "label": "Your Mario Kart 64 (USA) ROM (.z64, .n64 or .v64)."
+  },
+  "start": {
+    "program": ["Spaghettify.exe", "Spaghettify", "spaghetti.appimage"],
+    "args": ["--game", "{game}"],
+    "env": { "SHIP_HOME": "{install}" }
+  },
+  "config": [
+    {
+      "id": "main",
+      "format": "json",
+      "file": [{ "path": "{install}/spaghettify.cfg.json" }]
+    }
+  ],
+  "folders": {
+    "logs": [{ "path": "{install}/logs" }]
+  },
+  "settings": [
+    {
+      "id": "fullscreen",
+      "label": "Full screen",
+      "help": "Fills your screen. Off plays in a window.",
+      "choices": [
+        { "label": "Off", "set": { "Window/Fullscreen/Enabled": "false" } },
+        { "label": "On", "set": { "Window/Fullscreen/Enabled": "true" } }
+      ],
+      "defaults": { "Window/Fullscreen/Enabled": "false" }
+    },
+    {
+      "id": "resolution",
+      "label": "Resolution",
+      "help": "How many times your screen's resolution the game draws at. Higher is sharper and needs a faster graphics card.",
+      "choices": [
+        { "label": "1x", "set": { "CVars/gInternalResolution": "1" } },
+        { "label": "2x", "set": { "CVars/gInternalResolution": "2" } },
+        { "label": "3x", "set": { "CVars/gInternalResolution": "3" } },
+        { "label": "4x", "set": { "CVars/gInternalResolution": "4" } }
+      ],
+      "defaults": { "CVars/gInternalResolution": "1" }
+    },
+    {
+      "id": "antialiasing",
+      "label": "Anti-aliasing",
+      "help": "Smooths the jagged edges of models. Higher costs more performance.",
+      "choices": [
+        { "label": "Off", "set": { "CVars/gMSAAValue": "1" } },
+        { "label": "2x", "set": { "CVars/gMSAAValue": "2" } },
+        { "label": "4x", "set": { "CVars/gMSAAValue": "4" } },
+        { "label": "8x", "set": { "CVars/gMSAAValue": "8" } }
+      ],
+      "defaults": { "CVars/gMSAAValue": "1" }
+    },
+    {
+      "id": "frame_rate",
+      "label": "Frame rate",
+      "help": "Adds smoothed in-between frames. It's only visual: the game itself still runs as on the console.",
+      "choices": [
+        { "label": "Original (30)", "set": { "CVars/gMatchRefreshRate": "0", "CVars/gInterpolationFPS": "30" } },
+        { "label": "60", "set": { "CVars/gMatchRefreshRate": "0", "CVars/gInterpolationFPS": "60" } },
+        { "label": "120", "set": { "CVars/gMatchRefreshRate": "0", "CVars/gInterpolationFPS": "120" } },
+        { "label": "Match my screen", "set": { "CVars/gMatchRefreshRate": "1" } }
+      ],
+      "defaults": { "CVars/gMatchRefreshRate": "0", "CVars/gInterpolationFPS": "30" }
+    },
+    {
+      "id": "vsync",
+      "label": "V-Sync",
+      "help": "Stops screen tearing, but holds the frame rate to your screen's refresh rate.",
+      "choices": [
+        { "label": "Off", "set": { "CVars/gVsyncEnabled": "0" } },
+        { "label": "On", "set": { "CVars/gVsyncEnabled": "1" } }
+      ],
+      "defaults": { "CVars/gVsyncEnabled": "1" }
+    },
+    {
+      "id": "filter",
+      "label": "Texture filter",
+      "help": "How textures are smoothed. Three-point is the console's own look. None keeps every pixel sharp.",
+      "choices": [
+        { "label": "Three-point", "set": { "CVars/gTextureFilter": "0" } },
+        { "label": "Linear", "set": { "CVars/gTextureFilter": "1" } },
+        { "label": "None", "set": { "CVars/gTextureFilter": "2" } }
+      ],
+      "defaults": { "CVars/gTextureFilter": "0" }
+    },
+    {
+      "id": "intro",
+      "label": "Startup",
+      "help": "What the game shows when it starts: both intros, the authentic one, or straight to a menu.",
+      "choices": [
+        { "label": "Both intros", "set": { "CVars/gSkipIntro": "0" } },
+        { "label": "Authentic", "set": { "CVars/gSkipIntro": "1" } },
+        { "label": "Start menu", "set": { "CVars/gSkipIntro": "2" } },
+        { "label": "Main menu", "set": { "CVars/gSkipIntro": "3" } }
+      ],
+      "defaults": { "CVars/gSkipIntro": "0" }
+    }
+  ],
+  "actions": [
+    { "id": "logs", "label": "Logs", "help": "The game's log files, for bug reports.", "open": "logs" }
+  ]
+}
