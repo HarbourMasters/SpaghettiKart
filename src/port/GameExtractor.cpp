@@ -7,6 +7,7 @@
 #include "GameExtractor.h"
 #include <cstdio>
 #include <unordered_map>
+#include <utility>
 
 #include <fstream>
 
@@ -30,9 +31,42 @@ std::unordered_map<std::string, std::string> mGameList = {
     { "579c48e211ae952530ffc8738709f078d5dd215e", "Mario Kart 64 (US)" },
 };
 
+static std::string sGamePath;
+
+void GameExtractor::SetGamePath(const std::string& path) {
+    sGamePath = path;
+}
+
+bool GameExtractor::HasGamePath() {
+    return !sGamePath.empty();
+}
+
+// .z64 is the byte order the rest of the code expects. .v64 swaps every pair of bytes and .n64 reverses every
+// 4 bytes, so put those back in .z64 order. The first word of a ROM says which one it is.
+static void ToZ64ByteOrder(std::vector<uint8_t>& data) {
+    if (data.size() < 4) {
+        return;
+    }
+    if (data[0] == 0x37 && data[1] == 0x80) {
+        for (size_t i = 0; i + 1 < data.size(); i += 2) {
+            std::swap(data[i], data[i + 1]);
+        }
+    } else if (data[0] == 0x40 && data[1] == 0x12) {
+        for (size_t i = 0; i + 3 < data.size(); i += 4) {
+            std::swap(data[i], data[i + 3]);
+            std::swap(data[i + 1], data[i + 2]);
+        }
+    }
+}
+
 bool GameExtractor::SelectGameFromUI() {
     std::vector<std::string> roms;
     GetRoms(roms);
+
+    // The ROM given with --game is tried first
+    if (HasGamePath()) {
+        roms.insert(roms.begin(), sGamePath);
+    }
 
     bool foundGame = false;
 
@@ -61,6 +95,7 @@ bool GameExtractor::SelectGameFromUI() {
         }
 
         inFile.close();
+        ToZ64ByteOrder(data);
         std::string hash = Companion::CalculateHash(data);
 
         if (mGameList.find(hash) != mGameList.end()) {
@@ -68,6 +103,10 @@ bool GameExtractor::SelectGameFromUI() {
             romData = std::move(data);
             foundGame = true;
             break;
+        }
+
+        if (HasGamePath() && rom == sGamePath) {
+            SPDLOG_ERROR("The ROM given with --game is not a supported Mario Kart 64 (US) ROM: {}", rom);
         }
     }
 
@@ -81,7 +120,7 @@ bool GameExtractor::SelectGameFromUI() {
             return false;
         }
 
-        auto selection = pfd::open_file("Select a file", ".", { "N64 Roms", "*.z64" }).result();
+        auto selection = pfd::open_file("Select a file", ".", { "N64 Roms", "*.z64 *.n64 *.v64" }).result();
         if (selection.empty()) return false;
 
         romPath = selection[0];
@@ -110,6 +149,7 @@ bool GameExtractor::SelectGameFromUI() {
 
         romData = std::vector<uint8_t>(std::istreambuf_iterator<char>(inFile), {});
         inFile.close();
+        ToZ64ByteOrder(romData);
     }
 
     this->mGamePath = romPath;

@@ -3,6 +3,7 @@
 
 #include "Game.h"
 #include "port/Engine.h"
+#include "port/GameExtractor.h"
 
 #include <fast/Fast3dWindow.h>
 #include <memory>
@@ -1049,6 +1050,12 @@ extern "C"
     // overwrite=0 keeps any SHIP_HOME the user already set.
     setenv("SHIP_HOME", "~/Library/Application Support/SpaghettiKart", 0);
 #endif
+    // --game <path>: the ROM to set the game up from, instead of searching for one or asking
+    for (int i = 1; i + 1 < argc; i++) {
+        if (strcmp(argv[i], "--game") == 0) {
+            GameExtractor::SetGamePath(argv[i + 1]);
+        }
+    }
     // load_wasm();
     GameEngine::Create();
     audio_init();
