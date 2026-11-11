@@ -11,6 +11,7 @@
 #include <string>
 
 #include "ModManager.h"
+#include "port/GameExtractor.h"
 
 void CheckMK64O2RExists();
 void FindAndLoadMods();
@@ -58,7 +59,9 @@ void UnloadMods() {
 // at this point, which segfaults — a crash report on what should be a clean quit (e.g. when
 // the user declines the first-run "Generate one now?" prompt).
 void GenerateAssetsMods() {
-    if (GameEngine::ShowYesNoBox("No O2R Files", "No O2R files found. Generate one now?") == IDYES) {
+    // With --game the player already chose a ROM, so don't ask
+    if (GameExtractor::HasGamePath() ||
+        GameEngine::ShowYesNoBox("No O2R Files", "No O2R files found. Generate one now?") == IDYES) {
         if (!GameEngine::GenAssetFile()) {
             GameEngine::ShowMessage("Error", "An error occured, no O2R file was generated.\n\nExiting...");
             _Exit(1);

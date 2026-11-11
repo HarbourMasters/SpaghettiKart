@@ -72,6 +72,7 @@ jobs:
           mv build/${{ matrix.arch }}/${{ matrix.config }}/Spaghettify.exe spaghetti-${{ matrix.config }}/
           mv build/${{ matrix.arch }}/${{ matrix.config }}/spaghetti.o2r spaghetti-${{ matrix.config }}/
           mv config.yml spaghetti-${{ matrix.config }}/
+          cp recomplauncher.json spaghetti-${{ matrix.config }}/
           mv yamls spaghetti-${{ matrix.config }}/
           mv meta spaghetti-${{ matrix.config }}/
           Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt" -OutFile "spaghetti-${{ matrix.config }}/gamecontrollerdb.txt"
@@ -439,6 +440,7 @@ jobs:
           mkdir -p spaghetti-${{ matrix.config }}
           wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
           mv gamecontrollerdb.txt spaghetti-${{ matrix.config }}/
+          cp recomplauncher.json spaghetti-${{ matrix.config }}/
           cp build/*.appimage spaghetti-${{ matrix.config }}/spaghetti.appimage 2>/dev/null || true
 
       - name: Publish packaged artifacts
