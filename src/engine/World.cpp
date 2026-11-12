@@ -96,19 +96,22 @@ void World::SetCurrentCup(Cup* cup) {
     }
 }
 
-void World::TickCameras() {
+void World::TickCameras(bool editorTick) {
 
-    for (size_t i = 0; i < 4; i++) {
-        ScreenContext* screen = &gScreenContexts[i];
-        if (NULL == screen->pendingCamera) { continue; }
-        if (screen->pendingCamera != screen->camera) {
-            screen->camera = screen->pendingCamera;
-            screen->pendingCamera = nullptr;
+    if (!editorTick) {
+        for (size_t i = 0; i < 4; i++) {
+            ScreenContext* screen = &gScreenContexts[i];
+            if (NULL == screen->pendingCamera) { continue; }
+            if (screen->pendingCamera != screen->camera) {
+                screen->camera = screen->pendingCamera;
+                screen->pendingCamera = nullptr;
+            }
         }
     }
 
     for (auto& camera : Cameras) {
-        if (camera->IsActive()) {
+        const bool isEditorFreeCamera = Editor_IsEnabled() && camera->Get() == gScreenOneCtx->freeCamera;
+        if (camera->IsActive() && isEditorFreeCamera == editorTick) {
             camera->Tick();
         }
     }

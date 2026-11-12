@@ -548,6 +548,12 @@ void CM_DrawObjects(s32 cameraId) {
 }
 
 void CM_TickEditor() {
+    if (Editor_IsEnabled() && !gIsGamePaused) {
+        // Keep the editor free camera at the normal two ticks per game loop.
+        for (size_t i = 0; i < 2; i++) {
+            GetWorld()->TickCameras(true);
+        }
+    }
     gEditor.Tick();
 }
 
