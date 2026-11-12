@@ -64,7 +64,8 @@ public:
     RaceManager& GetRaceManager() { return *RaceManagerInstance; }
     void SetRaceManager(std::unique_ptr<RaceManager> manager) { RaceManagerInstance = std::move(manager); }
 
-    void TickCameras();
+    // Editor ticks update only the free camera; simulation ticks update the other cameras.
+    void TickCameras(bool editorTick = false);
 
     AActor* AddActor(std::unique_ptr<AActor> actor);
     struct Actor* AddBaseActor();
