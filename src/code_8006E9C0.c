@@ -65,7 +65,7 @@ void reset_object_variable(void) {
     for (i = 0; i < HUD_PLAYERS_SIZE; i++) {
         playerHUD[i].lapCount = 0;
         playerHUD[i].alsoLapCount = 0;
-        playerHUD[i].unk_81 = 0;
+        playerHUD[i].hideRankingsBool = 0;
     }
     for (j = 0; j < HUD_PLAYERS_SIZE; j++) {
         playerHUD[j].raceCompleteBool = 0;

@@ -2435,7 +2435,7 @@ void draw_simplified_lap_count(s32 playerId) {
 
 void func_8004E800(s32 playerId) {
     FrameInterpolation_RecordOpenChild("Player place HUD", playerId);
-    if (playerHUD[playerId].unk_81 != 0) {
+    if (playerHUD[playerId].hideRankingsBool != 0) {
         if (playerHUD[playerId].lapCount != 3) {
             func_8004A384(playerHUD[playerId].rankX + playerHUD[playerId].slideRankX,
                           playerHUD[playerId].rankY + playerHUD[playerId].slideRankY, 0U,
@@ -2454,7 +2454,7 @@ void func_8004E800(s32 playerId) {
 }
 
 void func_8004E998(s32 playerId) {
-    if (playerHUD[playerId].unk_81 != 0) {
+    if (playerHUD[playerId].hideRankingsBool != 0) {
         FrameInterpolation_RecordOpenChild("Player place HUD2", playerId);
         if (playerHUD[playerId].lapCount != 3) {
             func_8004A384(playerHUD[playerId].rankX + playerHUD[playerId].slideRankX,
