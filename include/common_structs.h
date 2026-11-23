@@ -534,7 +534,7 @@ typedef struct {
     /* 0x7E */ u8 unk_7E;
     /* 0x7F */ u8 unk_7F;
     /* 0x80 */ u8 unk_80;
-    /* 0x81 */ u8 unk_81;
+    /* 0x81 */ u8 hideRankingsBool;
     /* 0x82 */ s8 unk_82;
     /* 0x83 */ s8 unk_83;
 } hud_player; // size = 0x84

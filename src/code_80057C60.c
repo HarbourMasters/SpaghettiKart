@@ -2353,7 +2353,7 @@ void func_8005CB60(s32 playerId, s32 lapCount) {
                         D_80165800[playerId] = 0;
                     }
                     if (IsYoshiValley()) {
-                        playerHUD[playerId].unk_81 = 1;
+                        playerHUD[playerId].hideRankingsBool = 1;
                     }
                     playerHUD[playerId].lap1CompletionTimeX = 0x0140;
                     playerHUD[playerId].lap2CompletionTimeX = 0x01E0;

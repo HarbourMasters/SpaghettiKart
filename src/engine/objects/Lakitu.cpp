@@ -357,7 +357,7 @@ void OLakitu::func_800729EC(s32 objectIndex) {
 
     if (!IsYoshiValley()) {
         for (i = 0; i < gPlayerCount; i++) {
-            playerHUD[i].unk_81 = temp_v1;
+            playerHUD[i].hideRankingsBool = temp_v1;
         }
     }
     func_8005AB20();
