@@ -2436,7 +2436,7 @@ void draw_simplified_lap_count(s32 playerId) {
 void func_8004E800(s32 playerId) {
     FrameInterpolation_RecordOpenChild("Player place HUD", playerId);
     if (playerHUD[playerId].hideRankingsBool != 0) {
-        if (playerHUD[playerId].lapCount != 3) {
+        if (playerHUD[playerId].lapCount != 3 && !CVarGetInteger("gShowRanksOnAllTracks", false) == false) {
             func_8004A384(playerHUD[playerId].rankX + playerHUD[playerId].slideRankX,
                           playerHUD[playerId].rankY + playerHUD[playerId].slideRankY, 0U,
                           playerHUD[playerId].rankScaling, 0x000000FF, D_800E55F8[D_8018CF98[playerId]], 0, 0x000000FF,
@@ -2456,7 +2456,7 @@ void func_8004E800(s32 playerId) {
 void func_8004E998(s32 playerId) {
     if (playerHUD[playerId].hideRankingsBool != 0) {
         FrameInterpolation_RecordOpenChild("Player place HUD2", playerId);
-        if (playerHUD[playerId].lapCount != 3) {
+        if (playerHUD[playerId].lapCount != 3 && CVarGetInteger("gShowRanksOnAllTracks", false) == false) {
             func_8004A384(playerHUD[playerId].rankX + playerHUD[playerId].slideRankX,
                           playerHUD[playerId].rankY + playerHUD[playerId].slideRankY, 0U,
                           playerHUD[playerId].rankScaling, 0x000000FF,
@@ -2842,7 +2842,7 @@ void draw_lap_count(s16 lapX, s16 lapY, s8 lap) {
 }
 
 void func_8004FDB4(f32 arg0, f32 arg1, s16 arg2, s16 arg3, s16 characterId, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
-    if ((IsYoshiValley()) && (arg3 < 3) && (arg8 == 0)) {
+    if ((IsYoshiValley()) && (arg3 < 3) && (arg8 == 0) && CVarGetInteger("gShowRanksOnAllTracks", false) == false) {
         func_80042330((s32) arg0, (s32) arg1, 0U, 1.0f);
         gSPDisplayList(gDisplayListHead++, D_0D007DB8);
         func_8004B35C(0x000000FF, 0x000000FF, 0x000000FF, D_8018D3E0);

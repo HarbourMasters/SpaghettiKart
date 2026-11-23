@@ -367,6 +367,9 @@ void PortMenu::AddEnhancements() {
     AddWidget(path, "Enable Digital Speedometer", WIDGET_CVAR_CHECKBOX)
         .CVar("gEnableDigitalSpeedometer")
         .Options(CheckboxOptions().Tooltip("Welcome to the modern era"));
+    AddWidget(path, "Show Ranks on All Tracks", WIDGET_CVAR_CHECKBOX)
+        .CVar("gShowRanksOnAllTracks")
+        .Options(CheckboxOptions().Tooltip("Show players' ranks on all tracks, including Yoshi Valley"));
 
     AddWidget(path, "Harder CPU", WIDGET_CVAR_CHECKBOX).CVar("gHarderCPU");
 
