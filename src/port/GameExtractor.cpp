@@ -158,6 +158,71 @@ bool GameExtractor::SelectGameFromUI() {
     return true;
 }
 
+bool GameExtractor::SelectGameFromPath(const std::string& path) {
+    std::ifstream inFile(path, std::ios::binary);
+    if (!inFile.is_open()) {
+        return false;
+    }
+
+    std::vector<uint8_t> data = std::vector<uint8_t>(std::istreambuf_iterator<char>(inFile), {});
+    inFile.close();
+    ToZ64ByteOrder(data);
+
+    this->mGamePath = path;
+    this->mGameData = std::move(data);
+
+    return true;
+}
+
+// The number is written as text: printf would use the player's decimal comma (setlocale in main)
+static void PrintProgress(const char* progress, const char* text) {
+    printf("progress %s %s\n", progress, text);
+    fflush(stdout);
+}
+
+int GameExtractor::Prepare() {
+    const std::string o2rPath = Ship::Context::GetPathRelativeToAppDirectory(game_asset_file);
+    // Written before mk64.o2r and removed once it's complete, so a run that was cut short is redone
+    const std::string unfinishedPath = o2rPath + ".unfinished";
+
+    if (std::filesystem::exists(o2rPath) && !std::filesystem::exists(unfinishedPath)) {
+        PrintProgress("1", "Already set up");
+        return 0;
+    }
+
+    if (!HasGamePath()) {
+        printf("The game isn't set up yet. Pick your Mario Kart 64 (USA) ROM.\n");
+        return 1;
+    }
+
+    PrintProgress("0.05", "Reading your ROM");
+    GameExtractor extractor;
+    if (!extractor.SelectGameFromPath(sGamePath)) {
+        printf("Couldn't open the ROM: %s\n", sGamePath.c_str());
+        return 2;
+    }
+
+    if (extractor.mGameData.size() < 0x1000 || !extractor.ValidateChecksum().has_value()) {
+        printf("This ROM isn't a supported Mario Kart 64. SpaghettiKart needs the USA version.\n");
+        return 3;
+    }
+
+    std::ofstream(unfinishedPath).close();
+    std::error_code ec;
+    std::filesystem::remove(o2rPath, ec);
+
+    PrintProgress("0.1", "Making the game's files from your ROM");
+    if (!extractor.GenerateOTR()) {
+        std::filesystem::remove(o2rPath, ec);
+        printf("Making the game's files from the ROM failed.\n");
+        return 4;
+    }
+
+    std::filesystem::remove(unfinishedPath, ec);
+    PrintProgress("1", "Done");
+    return 0;
+}
+
 void GameExtractor::GetRoms(std::vector<std::string>& roms) {
 #ifdef _WIN32
     WIN32_FIND_DATAA ffd;

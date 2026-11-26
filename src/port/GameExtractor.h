@@ -11,8 +11,12 @@ public:
     // A ROM passed on the command line with --game <path>, used instead of searching for one.
     static void SetGamePath(const std::string& path);
     static bool HasGamePath();
+    // --prepare: makes mk64.o2r from the --game ROM with no window or questions, printing "progress <0-1> <text>"
+    // lines. Returns the exit code.
+    static int Prepare();
     std::optional<std::string> ValidateChecksum() const;
     bool SelectGameFromUI();
+    bool SelectGameFromPath(const std::string& path);
     void GetRoms(std::vector<std::string>& roms);
     bool GenerateOTR() const;
 private:
