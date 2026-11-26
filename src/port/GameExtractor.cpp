@@ -181,13 +181,42 @@ static void PrintProgress(const char* progress, const char* text) {
     fflush(stdout);
 }
 
+// Writes the ROM to path through a .part file, so a cut-short copy never replaces a good one. On failure nothing is
+// left behind, not even an empty folder.
+static bool KeepRomCopy(const std::vector<uint8_t>& data, const std::string& dir, const std::string& path) {
+    std::error_code ec;
+    std::filesystem::create_directories(dir, ec);
+    const std::string partPath = path + ".part";
+    bool ok = !ec;
+    if (ok) {
+        std::ofstream out(partPath, std::ios::binary | std::ios::trunc);
+        out.write(reinterpret_cast<const char*>(data.data()), data.size());
+        out.close();
+        ok = out.good();
+    }
+    if (ok) {
+        std::filesystem::rename(partPath, path, ec);
+        ok = !ec;
+    }
+    if (!ok) {
+        std::filesystem::remove(partPath, ec);
+        if (std::filesystem::is_directory(dir, ec) && std::filesystem::is_empty(dir, ec)) {
+            std::filesystem::remove(dir, ec);
+        }
+    }
+    return ok;
+}
+
 int GameExtractor::Prepare() {
     const std::string o2rPath = Ship::Context::GetPathRelativeToAppDirectory(game_asset_file);
     // Written before mk64.o2r and removed once it's complete, so a run that was cut short is redone
     const std::string unfinishedPath = o2rPath + ".unfinished";
 
-    // A .z64 copy of the player's ROM, kept so a new release can make mk64.o2r again without asking for it
-    const std::string keptRomPath = Ship::Context::GetPathRelativeToAppDirectory("mk64.z64");
+    // A .z64 copy of the player's ROM, kept so a new release can make mk64.o2r again without asking for it. It has a
+    // folder of its own (the first folders.game in recomplauncher.json): the launcher takes a folder that isn't empty
+    // as a kept copy.
+    const std::string keptDir = Ship::Context::GetPathRelativeToAppDirectory("kept");
+    const std::string keptRomPath = keptDir + "/mk64.z64";
 
     // The same check the game makes at startup, so an mk64.o2r from an older release is made again
     const bool finished = std::filesystem::exists(o2rPath) && !std::filesystem::exists(unfinishedPath);
@@ -219,6 +248,12 @@ int GameExtractor::Prepare() {
         return 3;
     }
 
+    // Kept before anything is changed, so a copy that can't be kept leaves the game as it was
+    if (romPath != keptRomPath && !KeepRomCopy(extractor.mGameData, keptDir, keptRomPath)) {
+        printf("Couldn't keep a copy of the ROM in %s\n", keptDir.c_str());
+        return 5;
+    }
+
     std::ofstream(unfinishedPath).close();
     std::error_code ec;
     std::filesystem::remove(o2rPath, ec);
@@ -228,21 +263,6 @@ int GameExtractor::Prepare() {
         std::filesystem::remove(o2rPath, ec);
         printf("Making the game's files from the ROM failed.\n");
         return 4;
-    }
-
-    if (romPath != keptRomPath) {
-        // Written next to it first, so a cut-short copy never replaces a good one
-        const std::string partPath = keptRomPath + ".part";
-        std::ofstream out(partPath, std::ios::binary | std::ios::trunc);
-        out.write(reinterpret_cast<const char*>(extractor.mGameData.data()), extractor.mGameData.size());
-        out.close();
-        if (out.good()) {
-            std::filesystem::rename(partPath, keptRomPath, ec);
-        }
-        if (!out.good() || ec) {
-            std::filesystem::remove(partPath, ec);
-            printf("Couldn't keep a copy of the ROM at %s\n", keptRomPath.c_str());
-        }
     }
 
     std::filesystem::remove(unfinishedPath, ec);
