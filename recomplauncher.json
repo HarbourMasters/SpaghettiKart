@@ -3,15 +3,31 @@
   "format": 1,
   "name": "SpaghettiKart",
   "repo": "HarbourMasters/SpaghettiKart",
-  "game": {
-    "kind": "iso",
-    "label": "Your Mario Kart 64 (USA) ROM (.z64, .n64 or .v64)."
-  },
+  "inputs": [
+    {
+      "id": "game",
+      "label": "Your Mario Kart 64 ROM of the USA release (.z64, .n64 or .v64).",
+      "formats": [{ "type": "file", "extensions": ["z64", "n64", "v64"] }],
+      "check": { "ids": ["NKTE"] },
+      "dumps": [
+        { "name": "USA", "size": 12582912, "crc32": "434389c1" },
+        { "name": "USA (.v64)", "size": 12582912, "crc32": "2bcee11c" }
+      ]
+    }
+  ],
   "start": {
-    "program": ["Spaghettify.exe", "Spaghettify", "spaghetti.appimage"],
-    "args": ["--game", "{game}"],
+    "program": ["Spaghettify.exe", "spaghetti.appimage", "SpaghettiKart.app"],
     "env": { "SHIP_HOME": "{install}" }
   },
+  "prepare": {
+    "program": ["Spaghettify.exe", "spaghetti.appimage", "SpaghettiKart.app"],
+    "args": ["--prepare", "--game={input:game}"],
+    "env": { "SHIP_HOME": "{install}" },
+    "label": "The game's files from your ROM",
+    "done": ["{install}/mk64.o2r"],
+    "keeps_copy": true
+  },
+  "saves": ["{install}/default.sav", "{install}/controllerPak_*.sav"],
   "config": [
     {
       "id": "main",
@@ -20,6 +36,7 @@
     }
   ],
   "folders": {
+    "game": [{ "path": "{install}" }],
     "logs": [{ "path": "{install}/logs" }]
   },
   "settings": [
