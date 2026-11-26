@@ -186,6 +186,9 @@ int GameExtractor::Prepare() {
     // Written before mk64.o2r and removed once it's complete, so a run that was cut short is redone
     const std::string unfinishedPath = o2rPath + ".unfinished";
 
+    // A .z64 copy of the player's ROM, kept so a new release can make mk64.o2r again without asking for it
+    const std::string keptRomPath = Ship::Context::GetPathRelativeToAppDirectory("mk64.z64");
+
     // The same check the game makes at startup, so an mk64.o2r from an older release is made again
     const bool finished = std::filesystem::exists(o2rPath) && !std::filesystem::exists(unfinishedPath);
     if (finished && IsMK64O2RCurrent(o2rPath)) {
@@ -194,6 +197,9 @@ int GameExtractor::Prepare() {
     }
 
     std::string romPath = sGamePath;
+    if (romPath.empty() && std::filesystem::exists(keptRomPath)) {
+        romPath = keptRomPath;
+    }
     if (romPath.empty()) {
         printf(finished ? "The game's files are from an older version. Pick your Mario Kart 64 (USA) ROM to make "
                           "them again.\n"
@@ -222,6 +228,21 @@ int GameExtractor::Prepare() {
         std::filesystem::remove(o2rPath, ec);
         printf("Making the game's files from the ROM failed.\n");
         return 4;
+    }
+
+    if (romPath != keptRomPath) {
+        // Written next to it first, so a cut-short copy never replaces a good one
+        const std::string partPath = keptRomPath + ".part";
+        std::ofstream out(partPath, std::ios::binary | std::ios::trunc);
+        out.write(reinterpret_cast<const char*>(extractor.mGameData.data()), extractor.mGameData.size());
+        out.close();
+        if (out.good()) {
+            std::filesystem::rename(partPath, keptRomPath, ec);
+        }
+        if (!out.good() || ec) {
+            std::filesystem::remove(partPath, ec);
+            printf("Couldn't keep a copy of the ROM at %s\n", keptRomPath.c_str());
+        }
     }
 
     std::filesystem::remove(unfinishedPath, ec);
