@@ -195,17 +195,37 @@ void AddModMetadata(const ModMetadata& metadata, const std::shared_ptr<Ship::Arc
     Mods.push_back(std::make_tuple(metadata, archive));
 }
 
+// The mk64-assets version (meta/mods.toml, written into mk64.o2r) that this build needs
+static const char kMK64AssetsVersion[] = "1.0.0-alpha1";
+
+bool IsMK64O2RCurrent(const std::string& path) {
+    if (!std::filesystem::exists(path)) {
+        return false;
+    }
+    // Only read mods.toml: Archive::Load() needs the game's resource manager, which --prepare doesn't start
+    auto archive = std::make_shared<Ship::O2rArchive>(path);
+    auto modsFile = archive->LoadFile("mods.toml");
+    if (modsFile == nullptr || !modsFile->IsLoaded) {
+        return false;
+    }
+    const ModMetadata meta =
+        ModMetadata::LoadFromTOML(std::string(modsFile->Buffer->data(), modsFile->Buffer->size()));
+    semver::range_set<int, int, int> required;
+    semver::parse(kMK64AssetsVersion, required);
+    return meta.name == "mk64-assets" && required.contains(meta.version);
+}
+
 void AddCoreDependencies() {
     ModMetadata meta;
     meta.name = "spaghettikart-core";
     semver::parse(SPAGHETTI_VERSION, meta.version);
 
     semver::range_set<int, int, int> mk64Ver;
-    semver::parse("1.0.0-alpha1", mk64Ver);
+    semver::parse(kMK64AssetsVersion, mk64Ver);
     semver::range_set<int, int, int> assetsVer;
     semver::parse("1.0.0-alpha1", assetsVer);
     meta.dependencies = {
-        {"mk64-assets", {mk64Ver, "1.0.0-alpha1"}},
+        {"mk64-assets", {mk64Ver, kMK64AssetsVersion}},
         {"extended-assets", {assetsVer, "1.0.0-alpha1"}},
     };
     AddModMetadata(meta, nullptr);

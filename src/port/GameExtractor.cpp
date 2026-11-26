@@ -15,6 +15,7 @@
 #include "ship/Context.h"
 #include "spdlog/spdlog.h"
 #include <port/Engine.h>
+#include "engine/mods/ModManager.h"
 
 #ifdef unix
 #include <dirent.h>
@@ -185,20 +186,25 @@ int GameExtractor::Prepare() {
     // Written before mk64.o2r and removed once it's complete, so a run that was cut short is redone
     const std::string unfinishedPath = o2rPath + ".unfinished";
 
-    if (std::filesystem::exists(o2rPath) && !std::filesystem::exists(unfinishedPath)) {
+    // The same check the game makes at startup, so an mk64.o2r from an older release is made again
+    const bool finished = std::filesystem::exists(o2rPath) && !std::filesystem::exists(unfinishedPath);
+    if (finished && IsMK64O2RCurrent(o2rPath)) {
         PrintProgress("1", "Already set up");
         return 0;
     }
 
-    if (!HasGamePath()) {
-        printf("The game isn't set up yet. Pick your Mario Kart 64 (USA) ROM.\n");
+    std::string romPath = sGamePath;
+    if (romPath.empty()) {
+        printf(finished ? "The game's files are from an older version. Pick your Mario Kart 64 (USA) ROM to make "
+                          "them again.\n"
+                        : "The game isn't set up yet. Pick your Mario Kart 64 (USA) ROM.\n");
         return 1;
     }
 
     PrintProgress("0.05", "Reading your ROM");
     GameExtractor extractor;
-    if (!extractor.SelectGameFromPath(sGamePath)) {
-        printf("Couldn't open the ROM: %s\n", sGamePath.c_str());
+    if (!extractor.SelectGameFromPath(romPath)) {
+        printf("Couldn't open the ROM: %s\n", romPath.c_str());
         return 2;
     }
 
