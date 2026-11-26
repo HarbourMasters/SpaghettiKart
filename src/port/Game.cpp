@@ -3,6 +3,7 @@
 
 #include "Game.h"
 #include "port/Engine.h"
+#include "port/GameExtractor.h"
 
 #include <fast/Fast3dWindow.h>
 #include <memory>
@@ -1049,6 +1050,24 @@ extern "C"
     // overwrite=0 keeps any SHIP_HOME the user already set.
     setenv("SHIP_HOME", "~/Library/Application Support/SpaghettiKart", 0);
 #endif
+    // --game <path> or --game=<path>: the ROM to set the game up from, instead of searching for one or asking.
+    // --prepare: only set the game up from it, with no window, then exit (RecompLauncher's setup step).
+    bool prepare = false;
+    for (int i = 1; i < argc; i++) {
+        if (strcmp(argv[i], "--prepare") == 0) {
+            prepare = true;
+        } else if (strncmp(argv[i], "--game=", 7) == 0) {
+            GameExtractor::SetGamePath(argv[i] + 7);
+        } else if (strcmp(argv[i], "--game") == 0 && i + 1 < argc) {
+            GameExtractor::SetGamePath(argv[++i]);
+        }
+    }
+    if (prepare) {
+        const int code = GameExtractor::Prepare();
+        fflush(nullptr);
+        // _Exit for the same reason as below: no world was set up, so skip the static destructors
+        _Exit(code);
+    }
     // load_wasm();
     GameEngine::Create();
     audio_init();

@@ -287,8 +287,12 @@ bool GameEngine::GenAssetFile() {
         _Exit(1);
     }
 
-    ShowMessage(("Found " + game.value()).c_str(),
-                "The extraction process will now begin.\n\nThis may take a few minutes.", SDL_MESSAGEBOX_INFORMATION);
+    // With --game the player already chose a ROM, so don't stop to announce it
+    if (!GameExtractor::HasGamePath()) {
+        ShowMessage(("Found " + game.value()).c_str(),
+                    "The extraction process will now begin.\n\nThis may take a few minutes.",
+                    SDL_MESSAGEBOX_INFORMATION);
+    }
 
     return extractor->GenerateOTR();
 }

@@ -72,6 +72,7 @@ jobs:
           mv build/${{ matrix.arch }}/${{ matrix.config }}/Spaghettify.exe spaghetti-${{ matrix.config }}/
           mv build/${{ matrix.arch }}/${{ matrix.config }}/spaghetti.o2r spaghetti-${{ matrix.config }}/
           mv config.yml spaghetti-${{ matrix.config }}/
+          cp recomplauncher.json spaghetti-${{ matrix.config }}/
           mv yamls spaghetti-${{ matrix.config }}/
           mv meta spaghetti-${{ matrix.config }}/
           Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt" -OutFile "spaghetti-${{ matrix.config }}/gamecontrollerdb.txt"
@@ -116,6 +117,7 @@ jobs:
           mkdir spaghetti-${{ matrix.config }}
           # Zip with ditto so the executable bit survives artifact upload.
           ditto -c -k --keepParent $APP spaghetti-${{ matrix.config }}/SpaghettiKart.app.zip
+          cp recomplauncher.json spaghetti-${{ matrix.config }}/
       - name: Publish packaged artifacts
         if: matrix.config == 'Release'
         uses: actions/upload-artifact@v4
@@ -157,6 +159,7 @@ jobs:
           mkdir spaghetti-${{ matrix.config }}
           # Zip with ditto so the executable bit survives artifact upload.
           ditto -c -k --keepParent $APP spaghetti-${{ matrix.config }}/SpaghettiKart.app.zip
+          cp recomplauncher.json spaghetti-${{ matrix.config }}/
       - name: Publish packaged artifacts
         if: matrix.config == 'Release'
         uses: actions/upload-artifact@v4
@@ -439,6 +442,7 @@ jobs:
           mkdir -p spaghetti-${{ matrix.config }}
           wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
           mv gamecontrollerdb.txt spaghetti-${{ matrix.config }}/
+          cp recomplauncher.json spaghetti-${{ matrix.config }}/
           cp build/*.appimage spaghetti-${{ matrix.config }}/spaghetti.appimage 2>/dev/null || true
 
       - name: Publish packaged artifacts
@@ -524,6 +528,7 @@ jobs:
           mkdir -p spaghetti-x86-${{ matrix.config }}
           wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
           mv gamecontrollerdb.txt spaghetti-x86-${{ matrix.config }}/
+          cp recomplauncher.json spaghetti-x86-${{ matrix.config }}/
           cp build-x86/*.appimage spaghetti-x86-${{ matrix.config }}/spaghetti.appimage
 
       - name: Publish packaged artifacts
